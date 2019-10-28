@@ -15,6 +15,13 @@ extension UIView {
         self.layer.shadowOffset = CGSize.zero
         self.layer.shadowRadius = 1
     }
+    
+    func adddropShadow() {
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowOffset = CGSize.zero
+        self.layer.shadowRadius = 1
+    }
 }
 
 extension Int{
