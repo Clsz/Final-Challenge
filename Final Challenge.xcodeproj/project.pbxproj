@@ -58,6 +58,7 @@
 			children = (
 				E1E3A8B42366CFAA00F1571E /* Extension */,
 				E1E3A8B32366CF2800F1571E /* Supporting Files */,
+				E1E3A8A32366CA8900F1571E /* Assets.xcassets */,
 				E1E3A8A82366CA8900F1571E /* Info.plist */,
 			);
 			path = "Final Challenge";
@@ -69,7 +70,6 @@
 				E1E3A89A2366CA8800F1571E /* AppDelegate.swift */,
 				E1E3A89E2366CA8800F1571E /* ViewController.swift */,
 				E1E3A8A02366CA8800F1571E /* Main.storyboard */,
-				E1E3A8A32366CA8900F1571E /* Assets.xcassets */,
 				E1E3A8A52366CA8900F1571E /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
