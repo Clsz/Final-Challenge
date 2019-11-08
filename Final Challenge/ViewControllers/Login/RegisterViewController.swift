@@ -1,5 +1,5 @@
 //
-//  RegisterViewController.swift
+//  LoginViewController.swift
 //  Final Challenge
 //
 //  Created by Muhammad Reynaldi on 09/11/19.
@@ -8,15 +8,13 @@
 
 import UIKit
 import FirebaseAuth
-import Firebase
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
-
     
+
 }

@@ -10,5 +10,5 @@ import UIKit
 
 class ConstantManager{
     
-    static let mainColor = #colorLiteral(red: 0.03921568627, green: 0.5176470588, blue: 1, alpha: 1)
+    static let mainColor = #colorLiteral(red: 0.3254901961, green: 0.7803921569, blue: 0.9411764706, alpha: 1)
 }
