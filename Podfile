@@ -7,6 +7,8 @@ target 'Final Challenge' do
 
   # Pods for Final Challenge
   pod 'Firebase/Core'
-  pod 'Firebase/Database'
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
 
 end
