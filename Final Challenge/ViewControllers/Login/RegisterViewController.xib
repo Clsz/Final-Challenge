@@ -13,7 +13,7 @@
                 <outlet property="firstNameTF" destination="Wdw-uc-uxl" id="0jA-ta-8pu"/>
                 <outlet property="lastNameTF" destination="C6H-7j-tmj" id="YYR-0W-YRH"/>
                 <outlet property="loginButton" destination="AtA-yU-Dj0" id="5m8-5z-p4J"/>
-                <outlet property="passwordTF" destination="zPq-Ai-jWh" id="F4U-LF-R89"/>
+                <outlet property="passwordTF" destination="dhU-aN-zO8" id="mB9-yh-iwW"/>
                 <outlet property="registerButton" destination="WZd-Rn-8NG" id="LQh-c9-7pH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -49,17 +49,11 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Jg-TJ-71H">
                             <rect key="frame" x="0.0" y="0.0" width="344" height="42"/>
                             <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wdw-uc-uxl">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nama Depan" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wdw-uc-uxl">
                                     <rect key="frame" x="0.0" y="0.0" width="344" height="42"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nama Depan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7q-qh-Spd">
-                                    <rect key="frame" x="0.0" y="0.0" width="102.5" height="20.5"/>
-                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8O7-Mw-1Hx">
                                     <rect key="frame" x="0.0" y="41" width="344" height="1"/>
                                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -69,12 +63,10 @@
                                 </view>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="p7q-qh-Spd" firstAttribute="top" secondItem="6Jg-TJ-71H" secondAttribute="top" id="72T-JV-EAI"/>
                                 <constraint firstItem="Wdw-uc-uxl" firstAttribute="leading" secondItem="6Jg-TJ-71H" secondAttribute="leading" id="8dW-i2-nTJ"/>
                                 <constraint firstItem="8O7-Mw-1Hx" firstAttribute="leading" secondItem="6Jg-TJ-71H" secondAttribute="leading" id="BmE-Ec-D1X"/>
                                 <constraint firstAttribute="bottom" secondItem="Wdw-uc-uxl" secondAttribute="bottom" id="F0m-ty-xNQ"/>
                                 <constraint firstAttribute="height" constant="42" id="KUQ-NA-c2L"/>
-                                <constraint firstItem="p7q-qh-Spd" firstAttribute="leading" secondItem="6Jg-TJ-71H" secondAttribute="leading" id="NfW-6R-NMG"/>
                                 <constraint firstAttribute="trailing" secondItem="8O7-Mw-1Hx" secondAttribute="trailing" id="RdB-RA-A5S"/>
                                 <constraint firstItem="Wdw-uc-uxl" firstAttribute="top" secondItem="6Jg-TJ-71H" secondAttribute="top" id="h7Y-TI-1cq"/>
                                 <constraint firstAttribute="bottom" secondItem="8O7-Mw-1Hx" secondAttribute="bottom" id="j9W-0d-AXF"/>
@@ -84,17 +76,11 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bNc-nx-oJW">
                             <rect key="frame" x="0.0" y="76" width="344" height="42"/>
                             <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C6H-7j-tmj">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nama Belakang" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C6H-7j-tmj">
                                     <rect key="frame" x="0.0" y="0.0" width="344" height="42"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nama  Belakang" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tf9-TC-kGS">
-                                    <rect key="frame" x="0.0" y="0.0" width="128.5" height="20.5"/>
-                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="spl-rx-DVd">
                                     <rect key="frame" x="0.0" y="41" width="344" height="1"/>
                                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -112,24 +98,16 @@
                                 <constraint firstAttribute="height" constant="42" id="JBc-Ab-EPg"/>
                                 <constraint firstAttribute="trailing" secondItem="spl-rx-DVd" secondAttribute="trailing" id="Jci-CV-n4Y"/>
                                 <constraint firstAttribute="bottom" secondItem="C6H-7j-tmj" secondAttribute="bottom" id="JjX-nd-gs1"/>
-                                <constraint firstItem="tf9-TC-kGS" firstAttribute="top" secondItem="bNc-nx-oJW" secondAttribute="top" id="Ooa-G6-r3a"/>
-                                <constraint firstItem="tf9-TC-kGS" firstAttribute="leading" secondItem="bNc-nx-oJW" secondAttribute="leading" id="tht-e2-lii"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5eD-FH-L0q">
                             <rect key="frame" x="0.0" y="152" width="344" height="42"/>
                             <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="81R-mt-Mhu">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="81R-mt-Mhu">
                                     <rect key="frame" x="0.0" y="0.0" width="344" height="42"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TAy-gp-khO">
-                                    <rect key="frame" x="0.0" y="0.0" width="43.5" height="20.5"/>
-                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sBi-ty-J4V">
                                     <rect key="frame" x="0.0" y="41" width="344" height="1"/>
                                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -145,8 +123,6 @@
                                 <constraint firstAttribute="height" constant="42" id="HtJ-IB-EVE"/>
                                 <constraint firstAttribute="bottom" secondItem="sBi-ty-J4V" secondAttribute="bottom" id="T2t-gj-WNR"/>
                                 <constraint firstAttribute="trailing" secondItem="81R-mt-Mhu" secondAttribute="trailing" id="TXV-fF-8JP"/>
-                                <constraint firstItem="TAy-gp-khO" firstAttribute="top" secondItem="5eD-FH-L0q" secondAttribute="top" id="VLd-I5-WbW"/>
-                                <constraint firstItem="TAy-gp-khO" firstAttribute="leading" secondItem="5eD-FH-L0q" secondAttribute="leading" id="o42-nI-rPm"/>
                                 <constraint firstItem="81R-mt-Mhu" firstAttribute="top" secondItem="5eD-FH-L0q" secondAttribute="top" id="ssU-vi-qOj"/>
                                 <constraint firstItem="sBi-ty-J4V" firstAttribute="leading" secondItem="5eD-FH-L0q" secondAttribute="leading" id="yVB-al-LUn"/>
                             </constraints>
@@ -154,17 +130,11 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VPG-9f-HuN">
                             <rect key="frame" x="0.0" y="228" width="344" height="42"/>
                             <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dhU-aN-zO8">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dhU-aN-zO8">
                                     <rect key="frame" x="0.0" y="0.0" width="344" height="42"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </textField>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kata Sandi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPq-Ai-jWh">
-                                    <rect key="frame" x="0.0" y="0.0" width="85.5" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                </textField>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ARk-Mt-Bm8">
                                     <rect key="frame" x="0.0" y="41" width="344" height="1"/>
                                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -172,18 +142,29 @@
                                         <constraint firstAttribute="height" constant="1" id="Wjs-Hz-Id7"/>
                                     </constraints>
                                 </view>
+                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78t-KI-OzN">
+                                    <rect key="frame" x="316" y="11" width="20" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="20" id="136-9t-3ob"/>
+                                        <constraint firstAttribute="height" constant="20" id="7JE-IG-4fe"/>
+                                    </constraints>
+                                    <state key="normal" image="icon_eye"/>
+                                    <connections>
+                                        <action selector="eyeTapped:" destination="-1" eventType="touchUpInside" id="uo7-kb-qGu"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <constraints>
                                 <constraint firstItem="dhU-aN-zO8" firstAttribute="leading" secondItem="VPG-9f-HuN" secondAttribute="leading" id="4CY-RF-cd6"/>
-                                <constraint firstItem="zPq-Ai-jWh" firstAttribute="top" secondItem="VPG-9f-HuN" secondAttribute="top" id="9Tj-k5-zJc"/>
+                                <constraint firstAttribute="trailing" secondItem="78t-KI-OzN" secondAttribute="trailing" constant="8" id="Jxk-ci-9bG"/>
                                 <constraint firstAttribute="bottom" secondItem="dhU-aN-zO8" secondAttribute="bottom" id="KSp-4A-6v0"/>
                                 <constraint firstAttribute="trailing" secondItem="ARk-Mt-Bm8" secondAttribute="trailing" id="Q68-Sv-QR5"/>
                                 <constraint firstAttribute="bottom" secondItem="ARk-Mt-Bm8" secondAttribute="bottom" id="cCb-t8-Fsb"/>
-                                <constraint firstItem="zPq-Ai-jWh" firstAttribute="leading" secondItem="VPG-9f-HuN" secondAttribute="leading" id="lbD-fl-iTv"/>
                                 <constraint firstAttribute="height" constant="42" id="lfo-u1-uJM"/>
                                 <constraint firstItem="ARk-Mt-Bm8" firstAttribute="leading" secondItem="VPG-9f-HuN" secondAttribute="leading" id="mWE-sd-kVs"/>
                                 <constraint firstItem="dhU-aN-zO8" firstAttribute="top" secondItem="VPG-9f-HuN" secondAttribute="top" id="ouN-uu-3Mt"/>
                                 <constraint firstAttribute="trailing" secondItem="dhU-aN-zO8" secondAttribute="trailing" id="rMu-K2-xdf"/>
+                                <constraint firstItem="78t-KI-OzN" firstAttribute="centerY" secondItem="dhU-aN-zO8" secondAttribute="centerY" id="v2Z-1J-Zmx"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -215,6 +196,9 @@
                             <rect key="frame" x="68.5" y="0.0" width="37" height="27"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="Masuk"/>
+                            <connections>
+                                <action selector="loginTapped:" destination="-1" eventType="touchUpInside" id="I4L-XD-dBu"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>
@@ -246,5 +230,6 @@
     </objects>
     <resources>
         <image name="Header Register" width="414" height="345"/>
+        <image name="icon_eye" width="32" height="19"/>
     </resources>
 </document>

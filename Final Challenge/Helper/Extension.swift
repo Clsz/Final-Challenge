@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UIView {
+extension UIView{
 
     func dropShadow() {
         self.layer.shadowColor = UIColor.black.cgColor
@@ -15,6 +15,16 @@ extension UIView {
         self.layer.shadowOffset = CGSize.zero
         self.layer.shadowRadius = 1
     }
+
+}
+
+extension UIButton{
+    
+    func loginRound() {
+        self.layer.cornerRadius = 8.0
+        self.clipsToBounds = true
+    }
+    
 }
 
 extension Int{

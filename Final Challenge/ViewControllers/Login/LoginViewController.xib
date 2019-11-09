@@ -52,17 +52,11 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7J1-MK-wAa">
                             <rect key="frame" x="0.0" y="0.0" width="343" height="42"/>
                             <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vKv-6Q-PJF">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vKv-6Q-PJF">
                                     <rect key="frame" x="0.0" y="0.0" width="343" height="42"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mad-tb-I0g">
-                                    <rect key="frame" x="0.0" y="0.0" width="43.5" height="20.5"/>
-                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="46h-iB-BDM">
                                     <rect key="frame" x="0.0" y="41" width="343" height="1"/>
                                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -78,9 +72,7 @@
                                 <constraint firstItem="vKv-6Q-PJF" firstAttribute="leading" secondItem="7J1-MK-wAa" secondAttribute="leading" id="LU8-cq-AEm"/>
                                 <constraint firstAttribute="bottom" secondItem="vKv-6Q-PJF" secondAttribute="bottom" id="N7L-lC-mtZ"/>
                                 <constraint firstAttribute="trailing" secondItem="vKv-6Q-PJF" secondAttribute="trailing" id="XAF-3k-N0B"/>
-                                <constraint firstItem="mad-tb-I0g" firstAttribute="leading" secondItem="7J1-MK-wAa" secondAttribute="leading" id="a9H-nR-Ly2"/>
                                 <constraint firstItem="46h-iB-BDM" firstAttribute="leading" secondItem="7J1-MK-wAa" secondAttribute="leading" id="iTb-H2-iRd"/>
-                                <constraint firstItem="mad-tb-I0g" firstAttribute="top" secondItem="7J1-MK-wAa" secondAttribute="top" id="yET-We-eYh"/>
                                 <constraint firstAttribute="height" constant="42" id="zeT-sU-Oha"/>
                             </constraints>
                         </view>
@@ -93,17 +85,11 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DlE-cT-a5m">
                             <rect key="frame" x="0.0" y="83" width="343" height="42"/>
                             <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GqX-O8-qeV">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GqX-O8-qeV">
                                     <rect key="frame" x="0.0" y="0.0" width="343" height="42"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 </textField>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kata Sandi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uFM-zj-lVL">
-                                    <rect key="frame" x="0.0" y="0.0" width="85.5" height="20.5"/>
-                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mjH-w6-xnE">
                                     <rect key="frame" x="0.0" y="41" width="343" height="1"/>
                                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -111,17 +97,29 @@
                                         <constraint firstAttribute="height" constant="1" id="tHK-3A-AcT"/>
                                     </constraints>
                                 </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y4I-y1-tlP">
+                                    <rect key="frame" x="315" y="11" width="20" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="20" id="Hgs-07-TmE"/>
+                                        <constraint firstAttribute="height" constant="20" id="Jyz-vj-zIH"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                    <state key="normal" image="icon_eye"/>
+                                    <connections>
+                                        <action selector="eyeTapped:" destination="-1" eventType="touchUpInside" id="eXZ-0s-qV4"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="mjH-w6-xnE" secondAttribute="bottom" id="3RX-AV-mM9"/>
                                 <constraint firstAttribute="bottom" secondItem="GqX-O8-qeV" secondAttribute="bottom" id="NbR-ed-bfu"/>
                                 <constraint firstItem="GqX-O8-qeV" firstAttribute="top" secondItem="DlE-cT-a5m" secondAttribute="top" id="XKf-Ti-lFd"/>
                                 <constraint firstAttribute="height" constant="42" id="dnJ-mr-hX7"/>
-                                <constraint firstItem="uFM-zj-lVL" firstAttribute="top" secondItem="DlE-cT-a5m" secondAttribute="top" id="eYP-qO-u8M"/>
                                 <constraint firstItem="GqX-O8-qeV" firstAttribute="leading" secondItem="DlE-cT-a5m" secondAttribute="leading" id="esx-Rf-Xfy"/>
-                                <constraint firstItem="uFM-zj-lVL" firstAttribute="leading" secondItem="DlE-cT-a5m" secondAttribute="leading" id="hAx-xV-4Na"/>
+                                <constraint firstAttribute="trailing" secondItem="y4I-y1-tlP" secondAttribute="trailing" constant="8" id="lSt-zB-Vf0"/>
                                 <constraint firstAttribute="trailing" secondItem="mjH-w6-xnE" secondAttribute="trailing" id="ngy-hO-oXo"/>
                                 <constraint firstItem="mjH-w6-xnE" firstAttribute="leading" secondItem="DlE-cT-a5m" secondAttribute="leading" id="qkB-wS-17G"/>
+                                <constraint firstItem="y4I-y1-tlP" firstAttribute="centerY" secondItem="GqX-O8-qeV" secondAttribute="centerY" id="wMW-Sx-rAd"/>
                                 <constraint firstAttribute="trailing" secondItem="GqX-O8-qeV" secondAttribute="trailing" id="xEW-By-0S9"/>
                             </constraints>
                         </view>
@@ -174,6 +172,9 @@
                             <state key="normal" title="Masuk">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <connections>
+                                <action selector="loginTapped:" destination="-1" eventType="touchUpInside" id="30j-9c-g5f"/>
+                            </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pjv-aB-1RR">
                             <rect key="frame" x="0.0" y="245" width="343" height="40"/>
@@ -250,5 +251,6 @@
     <resources>
         <image name="CheckBox" width="15" height="15"/>
         <image name="Header Register" width="414" height="345"/>
+        <image name="icon_eye" width="32" height="19"/>
     </resources>
 </document>

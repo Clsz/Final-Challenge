@@ -19,7 +19,31 @@ class LoginViewController:BaseViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupView()
+    }
+    
+    @IBAction func eyeTapped(_ sender: Any) {
+        passwordTF.isSecureTextEntry = !passwordTF.isSecureTextEntry
+    }
+    
+    @IBAction func loginTapped(_ sender: Any) {
+        validateFields()
+    }
+    
+    func setupView() {
+        loginButton.loginRound()
+    }
+    
+    func validateFields() {
+        if emailTF.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
+            return self.showAlert(title: "Error", message: "Email belum diisi")
+        }else if emailTF.text?.isValidEmail() == false{
+            return self.showAlert(title: "Error", message: "Format email salah")
+        }else if passwordTF.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
+            return self.showAlert(title: "Error", message: "Password belum diisi")
+        }else {
+            login()
+        }
     }
     
     func login() {
@@ -30,10 +54,17 @@ class LoginViewController:BaseViewController{
         
         Auth.auth().signIn(withEmail: mail, password: pass) { (result, error) in
             if error != nil {
-                self.showAlert(title: "Perhatian", message: error!.localizedDescription)
+                DispatchQueue.main.async {
+                    self.dismiss(animated: false) {
+                        self.showAlert(title: "Error", message: "Email dan Password salah")
+                    }
+                }
             }else {
                 //Dashboard Segue
-                print("Loggedin")
+                DispatchQueue.main.async {
+                    self.dismiss(animated: false, completion: nil)
+                    print("Loggedin")
+                }
             }
         }
     }
