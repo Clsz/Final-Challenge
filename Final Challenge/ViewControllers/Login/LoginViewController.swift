@@ -64,6 +64,8 @@ class LoginViewController:BaseViewController{
                 DispatchQueue.main.async {
                     self.dismiss(animated: false, completion: nil)
                     print("Loggedin")
+                    let destVC = LanguageViewController()
+                    self.navigationController?.pushViewController(destVC, animated: true)
                 }
             }
         }
