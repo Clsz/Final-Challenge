@@ -22,8 +22,13 @@ class LanguageViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        setupView()
+    }
+    
+    func setupView() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.largeTitleDisplayMode = .always
+        self.navigationItem.title = "Language"
     }
     
     func setupData() {
@@ -37,6 +42,7 @@ extension LanguageViewController:UITableViewDataSource,UITableViewDelegate{
     func registerCell() {
         tableView.register(UINib(nibName: "DetailProfileTableViewCell", bundle: nil), forCellReuseIdentifier: "DetailProfileTableViewCell")
         tableView.register(UINib(nibName: "AnotherDetailProfileTableViewCell", bundle: nil), forCellReuseIdentifier: "AnotherDetailProfileTableViewCell")
+        tableView.register(UINib(nibName: "ProfileFooterViewCell", bundle: nil), forHeaderFooterViewReuseIdentifier: "ProfileFooterViewCell")
     }
     
     func cellDelegate() {
@@ -48,13 +54,23 @@ extension LanguageViewController:UITableViewDataSource,UITableViewDelegate{
         return dataArray.count
     }
     
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ProfileFooterViewCell") as! ProfileFooterViewCell
+        footerView.setView(text: "Apply Language")
+        return footerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return indexPath.row == 0 ? 115 : 550
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let keyValue = dataArray[indexPath.row] as? (key:String,value:String,code:Int){
             if keyValue.code == 0{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "DetailProfileTableViewCell", for: indexPath) as! DetailProfileTableViewCell
                 cell.setCell(text: keyValue.key, content: keyValue.value)
                 return cell
-            }else if keyValue.code == 1{
+            }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AnotherDetailProfileTableViewCell", for: indexPath) as! AnotherDetailProfileTableViewCell
                 cell.setCell(text: keyValue.key, content: keyValue.value)
                 return cell
@@ -62,6 +78,5 @@ extension LanguageViewController:UITableViewDataSource,UITableViewDelegate{
         }
         return UITableViewCell()
     }
-    
     
 }

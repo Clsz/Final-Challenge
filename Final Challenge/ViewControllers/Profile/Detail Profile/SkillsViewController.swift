@@ -16,19 +16,19 @@ class SkillsViewController: UIViewController {
     @IBOutlet weak var applyButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView(text: "Skill")
 
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setupView(text: "Skill")
+    }
+    
+    func setupView(text:String) {
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.largeTitleDisplayMode = .always
+        self.navigationItem.title = text
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		14719A5B2379358000F83732 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14719A592379358000F83732 /* HomeViewController.swift */; };
-		14719A5C2379358000F83732 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14719A5A2379358000F83732 /* HomeViewController.xib */; };
+		14719A5F237938C800F83732 /* AchievementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E168479D237903B2001B6319 /* AchievementTableViewCell.swift */; };
 		5D6386B9AFE245C56C6E410A /* Pods_Final_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A47CBDB0434D51766750EEFA /* Pods_Final_Challenge.framework */; };
 		E139B52E2375D20400FEF1F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E139B52D2375D20400FEF1F5 /* GoogleService-Info.plist */; };
 		E139B5362375D6B700FEF1F5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E139B5342375D6B700FEF1F5 /* LoginViewController.swift */; };
@@ -28,6 +27,17 @@
 		E168478523784354001B6319 /* DetailProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E168478323784354001B6319 /* DetailProfileTableViewCell.xib */; };
 		E168478823784463001B6319 /* AnotherDetailProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E168478623784463001B6319 /* AnotherDetailProfileTableViewCell.swift */; };
 		E168478923784463001B6319 /* AnotherDetailProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E168478723784463001B6319 /* AnotherDetailProfileTableViewCell.xib */; };
+		E168478C2378F346001B6319 /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E168478A2378F346001B6319 /* TitleTableViewCell.swift */; };
+		E168478D2378F346001B6319 /* TitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E168478B2378F346001B6319 /* TitleTableViewCell.xib */; };
+		E16847902378F88A001B6319 /* ContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E168478E2378F88A001B6319 /* ContentTableViewCell.swift */; };
+		E16847912378F88A001B6319 /* ContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E168478F2378F88A001B6319 /* ContentTableViewCell.xib */; };
+		E16847942378FB66001B6319 /* AnotherContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16847922378FB66001B6319 /* AnotherContentTableViewCell.swift */; };
+		E16847952378FB66001B6319 /* AnotherContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E16847932378FB66001B6319 /* AnotherContentTableViewCell.xib */; };
+		E16847982378FFCB001B6319 /* ApplyButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16847962378FFCB001B6319 /* ApplyButtonTableViewCell.swift */; };
+		E16847992378FFCB001B6319 /* ApplyButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E16847972378FFCB001B6319 /* ApplyButtonTableViewCell.xib */; };
+		E168479C237901D5001B6319 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = E168479B237901D5001B6319 /* Model.swift */; };
+		E1B553A623792AA400FDBBCE /* ProfileFooterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B553A523792AA400FDBBCE /* ProfileFooterViewCell.swift */; };
+		E1B553A823792AB100FDBBCE /* ProfileFooterViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1B553A723792AB100FDBBCE /* ProfileFooterViewCell.xib */; };
 		E1E3A89B2366CA8800F1571E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E3A89A2366CA8800F1571E /* AppDelegate.swift */; };
 		E1E3A8A42366CA8900F1571E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1E3A8A32366CA8900F1571E /* Assets.xcassets */; };
 		E1E3A8A72366CA8900F1571E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1E3A8A52366CA8900F1571E /* LaunchScreen.storyboard */; };
@@ -35,8 +45,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		14719A592379358000F83732 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		14719A5A2379358000F83732 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		A47CBDB0434D51766750EEFA /* Pods_Final_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Final_Challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5AF935F28FBC591A58065F5 /* Pods-Final Challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Final Challenge.debug.xcconfig"; path = "Target Support Files/Pods-Final Challenge/Pods-Final Challenge.debug.xcconfig"; sourceTree = "<group>"; };
 		C76413075F8403B967F6B41B /* Pods-Final Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Final Challenge.release.xcconfig"; path = "Target Support Files/Pods-Final Challenge/Pods-Final Challenge.release.xcconfig"; sourceTree = "<group>"; };
@@ -58,6 +66,18 @@
 		E168478323784354001B6319 /* DetailProfileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailProfileTableViewCell.xib; sourceTree = "<group>"; };
 		E168478623784463001B6319 /* AnotherDetailProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherDetailProfileTableViewCell.swift; sourceTree = "<group>"; };
 		E168478723784463001B6319 /* AnotherDetailProfileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnotherDetailProfileTableViewCell.xib; sourceTree = "<group>"; };
+		E168478A2378F346001B6319 /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
+		E168478B2378F346001B6319 /* TitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleTableViewCell.xib; sourceTree = "<group>"; };
+		E168478E2378F88A001B6319 /* ContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableViewCell.swift; sourceTree = "<group>"; };
+		E168478F2378F88A001B6319 /* ContentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentTableViewCell.xib; sourceTree = "<group>"; };
+		E16847922378FB66001B6319 /* AnotherContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherContentTableViewCell.swift; sourceTree = "<group>"; };
+		E16847932378FB66001B6319 /* AnotherContentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnotherContentTableViewCell.xib; sourceTree = "<group>"; };
+		E16847962378FFCB001B6319 /* ApplyButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyButtonTableViewCell.swift; sourceTree = "<group>"; };
+		E16847972378FFCB001B6319 /* ApplyButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApplyButtonTableViewCell.xib; sourceTree = "<group>"; };
+		E168479B237901D5001B6319 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		E168479D237903B2001B6319 /* AchievementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementTableViewCell.swift; sourceTree = "<group>"; };
+		E1B553A523792AA400FDBBCE /* ProfileFooterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFooterViewCell.swift; sourceTree = "<group>"; };
+		E1B553A723792AB100FDBBCE /* ProfileFooterViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileFooterViewCell.xib; sourceTree = "<group>"; };
 		E1E3A8972366CA8800F1571E /* Final Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Final Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1E3A89A2366CA8800F1571E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1E3A8A32366CA8900F1571E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -78,15 +98,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		14719A582379356500F83732 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				14719A592379358000F83732 /* HomeViewController.swift */,
-				14719A5A2379358000F83732 /* HomeViewController.xib */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
 		BF9E86A53291C2D22C3179E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,7 +124,6 @@
 		E139B5312375D44D00FEF1F5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				14719A582379356500F83732 /* Home */,
 				E139B5332375D6A300FEF1F5 /* Login */,
 				E139B5322375D68C00FEF1F5 /* Profile */,
 				E139B5402375D73600FEF1F5 /* BaseViewController.swift */,
@@ -158,6 +168,13 @@
 			isa = PBXGroup;
 			children = (
 				E168477D2378416E001B6319 /* Detail Profile */,
+				E168478A2378F346001B6319 /* TitleTableViewCell.swift */,
+				E168478B2378F346001B6319 /* TitleTableViewCell.xib */,
+				E168478E2378F88A001B6319 /* ContentTableViewCell.swift */,
+				E168478F2378F88A001B6319 /* ContentTableViewCell.xib */,
+				E16847922378FB66001B6319 /* AnotherContentTableViewCell.swift */,
+				E16847932378FB66001B6319 /* AnotherContentTableViewCell.xib */,
+				E168479D237903B2001B6319 /* AchievementTableViewCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -169,8 +186,20 @@
 				E168478323784354001B6319 /* DetailProfileTableViewCell.xib */,
 				E168478623784463001B6319 /* AnotherDetailProfileTableViewCell.swift */,
 				E168478723784463001B6319 /* AnotherDetailProfileTableViewCell.xib */,
+				E16847962378FFCB001B6319 /* ApplyButtonTableViewCell.swift */,
+				E16847972378FFCB001B6319 /* ApplyButtonTableViewCell.xib */,
+				E1B553A523792AA400FDBBCE /* ProfileFooterViewCell.swift */,
+				E1B553A723792AB100FDBBCE /* ProfileFooterViewCell.xib */,
 			);
 			path = "Detail Profile";
+			sourceTree = "<group>";
+		};
+		E168479A237901BA001B6319 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E168479B237901D5001B6319 /* Model.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		E1E3A88E2366CA8800F1571E = {
@@ -197,6 +226,7 @@
 				E1E3A8B32366CF2800F1571E /* Supporting Files */,
 				E139B5302375D41C00FEF1F5 /* TableViewCells */,
 				E139B52F2375D3E500FEF1F5 /* CollectionViewCells */,
+				E168479A237901BA001B6319 /* Model */,
 				E139B5312375D44D00FEF1F5 /* ViewControllers */,
 				E1E3A8B42366CFAA00F1571E /* Helper */,
 				E1E3A8A32366CA8900F1571E /* Assets.xcassets */,
@@ -293,17 +323,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E168478D2378F346001B6319 /* TitleTableViewCell.xib in Resources */,
 				E139B53F2375D6E400FEF1F5 /* ProfileViewController.xib in Resources */,
 				E1E3A8A72366CA8900F1571E /* LaunchScreen.storyboard in Resources */,
+				E16847912378F88A001B6319 /* ContentTableViewCell.xib in Resources */,
+				E1B553A823792AB100FDBBCE /* ProfileFooterViewCell.xib in Resources */,
 				E168477723782B0F001B6319 /* SkillsViewController.xib in Resources */,
 				E139B5372375D6B700FEF1F5 /* LoginViewController.xib in Resources */,
+				E16847992378FFCB001B6319 /* ApplyButtonTableViewCell.xib in Resources */,
 				E139B53B2375D6CA00FEF1F5 /* RegisterViewController.xib in Resources */,
+				E16847952378FB66001B6319 /* AnotherContentTableViewCell.xib in Resources */,
 				E168477B237834DD001B6319 /* LanguageViewController.xib in Resources */,
 				E139B52E2375D20400FEF1F5 /* GoogleService-Info.plist in Resources */,
 				E1E3A8A42366CA8900F1571E /* Assets.xcassets in Resources */,
 				E168478523784354001B6319 /* DetailProfileTableViewCell.xib in Resources */,
 				E168478923784463001B6319 /* AnotherDetailProfileTableViewCell.xib in Resources */,
-				14719A5C2379358000F83732 /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,16 +392,22 @@
 			files = (
 				E168478423784354001B6319 /* DetailProfileTableViewCell.swift in Sources */,
 				E139B53E2375D6E400FEF1F5 /* ProfileViewController.swift in Sources */,
+				E1B553A623792AA400FDBBCE /* ProfileFooterViewCell.swift in Sources */,
+				E168478C2378F346001B6319 /* TitleTableViewCell.swift in Sources */,
 				E139B5432375D7C200FEF1F5 /* TabBarController.swift in Sources */,
+				E16847942378FB66001B6319 /* AnotherContentTableViewCell.swift in Sources */,
 				E139B5452375D8B500FEF1F5 /* ConstantManager.swift in Sources */,
 				E1E3A8B62366CFC700F1571E /* Extension.swift in Sources */,
+				14719A5F237938C800F83732 /* AchievementTableViewCell.swift in Sources */,
 				E1E3A89B2366CA8800F1571E /* AppDelegate.swift in Sources */,
 				E139B53A2375D6CA00FEF1F5 /* RegisterViewController.swift in Sources */,
 				E139B5412375D73600FEF1F5 /* BaseViewController.swift in Sources */,
+				E168479C237901D5001B6319 /* Model.swift in Sources */,
 				E168478823784463001B6319 /* AnotherDetailProfileTableViewCell.swift in Sources */,
 				E168477A237834DD001B6319 /* LanguageViewController.swift in Sources */,
+				E16847902378F88A001B6319 /* ContentTableViewCell.swift in Sources */,
 				E168477623782B0F001B6319 /* SkillsViewController.swift in Sources */,
-				14719A5B2379358000F83732 /* HomeViewController.swift in Sources */,
+				E16847982378FFCB001B6319 /* ApplyButtonTableViewCell.swift in Sources */,
 				E139B5362375D6B700FEF1F5 /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

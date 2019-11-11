@@ -25,35 +25,35 @@
                     <rect key="frame" x="0.0" y="141" width="414" height="641"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="H3q-QW-Oha">
-                            <rect key="frame" x="19" y="0.0" width="376" height="765"/>
+                            <rect key="frame" x="19" y="0.0" width="376" height="764"/>
                             <subviews>
                                 <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="atA-rx-xzc">
-                                    <rect key="frame" x="0.0" y="0.0" width="376" height="51"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="376" height="50"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="51" id="nFK-JP-L8F"/>
+                                        <constraint firstAttribute="height" constant="50" id="nFK-JP-L8F"/>
                                     </constraints>
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RDU-NE-KGS">
-                                    <rect key="frame" x="0.0" y="51" width="376" height="29"/>
+                                    <rect key="frame" x="0.0" y="50" width="376" height="29"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="29" id="6fs-08-8dd"/>
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggested Hard Skills" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oaR-uZ-pmx">
-                                    <rect key="frame" x="0.0" y="80" width="376" height="26.5"/>
+                                    <rect key="frame" x="0.0" y="79" width="376" height="26.5"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vL6-8S-pKS">
-                                    <rect key="frame" x="0.0" y="106.5" width="376" height="11"/>
+                                    <rect key="frame" x="0.0" y="105.5" width="376" height="11"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="11" id="ffA-oN-7R7"/>
                                     </constraints>
                                 </view>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="veE-lJ-pNp">
-                                    <rect key="frame" x="0.0" y="117.5" width="376" height="197"/>
+                                    <rect key="frame" x="0.0" y="116.5" width="376" height="197"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="197" id="3v3-Ac-0MR"/>
@@ -66,25 +66,25 @@
                                     </collectionViewFlowLayout>
                                 </collectionView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nst-8o-YDD">
-                                    <rect key="frame" x="0.0" y="314.5" width="376" height="35"/>
+                                    <rect key="frame" x="0.0" y="313.5" width="376" height="35"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="35" id="QAD-qr-4e8"/>
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggested Soft Skills" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAg-fx-Og5">
-                                    <rect key="frame" x="0.0" y="349.5" width="376" height="26.5"/>
+                                    <rect key="frame" x="0.0" y="348.5" width="376" height="26.5"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="znM-9y-e6S">
-                                    <rect key="frame" x="0.0" y="376" width="376" height="11"/>
+                                    <rect key="frame" x="0.0" y="375" width="376" height="11"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="11" id="y20-n3-9px"/>
                                     </constraints>
                                 </view>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="pJV-lF-u14">
-                                    <rect key="frame" x="0.0" y="387" width="376" height="197"/>
+                                    <rect key="frame" x="0.0" y="386" width="376" height="197"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="197" id="1mg-sl-WWW"/>
@@ -97,13 +97,13 @@
                                     </collectionViewFlowLayout>
                                 </collectionView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uXw-no-o3c">
-                                    <rect key="frame" x="0.0" y="584" width="376" height="151"/>
+                                    <rect key="frame" x="0.0" y="583" width="376" height="151"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="151" id="GUC-uP-bl8"/>
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0LT-bA-aaO">
-                                    <rect key="frame" x="0.0" y="735" width="376" height="30"/>
+                                    <rect key="frame" x="0.0" y="734" width="376" height="30"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="TT4-aT-kE5"/>
@@ -113,13 +113,13 @@
                             </subviews>
                             <constraints>
                                 <constraint firstItem="atA-rx-xzc" firstAttribute="leading" secondItem="H3q-QW-Oha" secondAttribute="leading" id="Bek-hN-PvT"/>
+                                <constraint firstAttribute="trailing" secondItem="atA-rx-xzc" secondAttribute="trailing" id="FRq-3U-uq6"/>
                                 <constraint firstAttribute="trailing" secondItem="0LT-bA-aaO" secondAttribute="trailing" id="QTB-KO-IDc"/>
                                 <constraint firstItem="0LT-bA-aaO" firstAttribute="leading" secondItem="H3q-QW-Oha" secondAttribute="leading" id="Tlw-pX-FK3"/>
                                 <constraint firstItem="veE-lJ-pNp" firstAttribute="leading" secondItem="H3q-QW-Oha" secondAttribute="leading" id="dKX-KA-4Ae"/>
                                 <constraint firstAttribute="trailing" secondItem="veE-lJ-pNp" secondAttribute="trailing" id="efH-mQ-JKS"/>
                                 <constraint firstItem="pJV-lF-u14" firstAttribute="leading" secondItem="H3q-QW-Oha" secondAttribute="leading" id="tL7-gN-Fha"/>
                                 <constraint firstAttribute="trailing" secondItem="pJV-lF-u14" secondAttribute="trailing" id="yNl-2Q-XFE"/>
-                                <constraint firstAttribute="trailing" secondItem="atA-rx-xzc" secondAttribute="trailing" id="zqS-XN-uNp"/>
                             </constraints>
                         </stackView>
                     </subviews>
