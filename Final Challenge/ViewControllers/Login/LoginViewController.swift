@@ -22,6 +22,10 @@ class LoginViewController:BaseViewController{
         setupView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        setupView()
+    }
+    
     @IBAction func eyeTapped(_ sender: Any) {
         passwordTF.isSecureTextEntry = !passwordTF.isSecureTextEntry
     }
@@ -32,6 +36,7 @@ class LoginViewController:BaseViewController{
     
     func setupView() {
         loginButton.loginRound()
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     func validateFields() {

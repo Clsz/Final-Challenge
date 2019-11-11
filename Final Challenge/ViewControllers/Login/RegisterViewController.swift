@@ -39,6 +39,7 @@ class RegisterViewController: BaseViewController {
     
     func setupView() {
         registerButton.loginRound()
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     func validateFields() {
