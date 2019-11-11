@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14719A5B2379358000F83732 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14719A592379358000F83732 /* HomeViewController.swift */; };
+		14719A5C2379358000F83732 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14719A5A2379358000F83732 /* HomeViewController.xib */; };
 		5D6386B9AFE245C56C6E410A /* Pods_Final_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A47CBDB0434D51766750EEFA /* Pods_Final_Challenge.framework */; };
 		E139B52E2375D20400FEF1F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E139B52D2375D20400FEF1F5 /* GoogleService-Info.plist */; };
 		E139B5362375D6B700FEF1F5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E139B5342375D6B700FEF1F5 /* LoginViewController.swift */; };
@@ -33,6 +35,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		14719A592379358000F83732 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		14719A5A2379358000F83732 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		A47CBDB0434D51766750EEFA /* Pods_Final_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Final_Challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5AF935F28FBC591A58065F5 /* Pods-Final Challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Final Challenge.debug.xcconfig"; path = "Target Support Files/Pods-Final Challenge/Pods-Final Challenge.debug.xcconfig"; sourceTree = "<group>"; };
 		C76413075F8403B967F6B41B /* Pods-Final Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Final Challenge.release.xcconfig"; path = "Target Support Files/Pods-Final Challenge/Pods-Final Challenge.release.xcconfig"; sourceTree = "<group>"; };
@@ -74,6 +78,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14719A582379356500F83732 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				14719A592379358000F83732 /* HomeViewController.swift */,
+				14719A5A2379358000F83732 /* HomeViewController.xib */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		BF9E86A53291C2D22C3179E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +113,7 @@
 		E139B5312375D44D00FEF1F5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				14719A582379356500F83732 /* Home */,
 				E139B5332375D6A300FEF1F5 /* Login */,
 				E139B5322375D68C00FEF1F5 /* Profile */,
 				E139B5402375D73600FEF1F5 /* BaseViewController.swift */,
@@ -289,6 +303,7 @@
 				E1E3A8A42366CA8900F1571E /* Assets.xcassets in Resources */,
 				E168478523784354001B6319 /* DetailProfileTableViewCell.xib in Resources */,
 				E168478923784463001B6319 /* AnotherDetailProfileTableViewCell.xib in Resources */,
+				14719A5C2379358000F83732 /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +367,7 @@
 				E168478823784463001B6319 /* AnotherDetailProfileTableViewCell.swift in Sources */,
 				E168477A237834DD001B6319 /* LanguageViewController.swift in Sources */,
 				E168477623782B0F001B6319 /* SkillsViewController.swift in Sources */,
+				14719A5B2379358000F83732 /* HomeViewController.swift in Sources */,
 				E139B5362375D6B700FEF1F5 /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
