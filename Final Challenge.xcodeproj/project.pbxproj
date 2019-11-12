@@ -7,7 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		145705D9237A9C130093E944 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145705D7237A9C130093E944 /* FilterViewController.swift */; };
+		145705DA237A9C130093E944 /* FilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 145705D8237A9C130093E944 /* FilterViewController.xib */; };
+		145705DE237AA0320093E944 /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145705DC237AA0320093E944 /* FilterCollectionViewCell.swift */; };
+		145705DF237AA0320093E944 /* FilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 145705DD237AA0320093E944 /* FilterCollectionViewCell.xib */; };
 		14719A5F237938C800F83732 /* AchievementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E168479D237903B2001B6319 /* AchievementTableViewCell.swift */; };
+		14C1018223793DCF0074469D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C1018023793DCF0074469D /* HomeViewController.swift */; };
+		14C1018323793DCF0074469D /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14C1018123793DCF0074469D /* HomeViewController.xib */; };
+		14C10188237943300074469D /* ListJobTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C10186237943300074469D /* ListJobTableViewCell.swift */; };
+		14C10189237943300074469D /* ListJobTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14C10187237943300074469D /* ListJobTableViewCell.xib */; };
 		5D6386B9AFE245C56C6E410A /* Pods_Final_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A47CBDB0434D51766750EEFA /* Pods_Final_Challenge.framework */; };
 		E139B52E2375D20400FEF1F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E139B52D2375D20400FEF1F5 /* GoogleService-Info.plist */; };
 		E139B5362375D6B700FEF1F5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E139B5342375D6B700FEF1F5 /* LoginViewController.swift */; };
@@ -45,6 +53,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		145705D7237A9C130093E944 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		145705D8237A9C130093E944 /* FilterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterViewController.xib; sourceTree = "<group>"; };
+		145705DC237AA0320093E944 /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
+		145705DD237AA0320093E944 /* FilterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCollectionViewCell.xib; sourceTree = "<group>"; };
+		14C1018023793DCF0074469D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		14C1018123793DCF0074469D /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		14C10186237943300074469D /* ListJobTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListJobTableViewCell.swift; sourceTree = "<group>"; };
+		14C10187237943300074469D /* ListJobTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListJobTableViewCell.xib; sourceTree = "<group>"; };
 		A47CBDB0434D51766750EEFA /* Pods_Final_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Final_Challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5AF935F28FBC591A58065F5 /* Pods-Final Challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Final Challenge.debug.xcconfig"; path = "Target Support Files/Pods-Final Challenge/Pods-Final Challenge.debug.xcconfig"; sourceTree = "<group>"; };
 		C76413075F8403B967F6B41B /* Pods-Final Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Final Challenge.release.xcconfig"; path = "Target Support Files/Pods-Final Challenge/Pods-Final Challenge.release.xcconfig"; sourceTree = "<group>"; };
@@ -98,6 +114,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		145705D4237A9BE60093E944 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				145705D7237A9C130093E944 /* FilterViewController.swift */,
+				145705D8237A9C130093E944 /* FilterViewController.xib */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		145705DB237A9FE50093E944 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				145705DC237AA0320093E944 /* FilterCollectionViewCell.swift */,
+				145705DD237AA0320093E944 /* FilterCollectionViewCell.xib */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		14C1018423793DD90074469D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				14C1018023793DCF0074469D /* HomeViewController.swift */,
+				14C1018123793DCF0074469D /* HomeViewController.xib */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		14C10185237943110074469D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				14C10186237943300074469D /* ListJobTableViewCell.swift */,
+				14C10187237943300074469D /* ListJobTableViewCell.xib */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		BF9E86A53291C2D22C3179E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +161,7 @@
 		E139B52F2375D3E500FEF1F5 /* CollectionViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				145705DB237A9FE50093E944 /* Filter */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -116,6 +169,7 @@
 		E139B5302375D41C00FEF1F5 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				14C10185237943110074469D /* Home */,
 				E168477C23784167001B6319 /* Profile */,
 			);
 			path = TableViewCells;
@@ -124,6 +178,8 @@
 		E139B5312375D44D00FEF1F5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				145705D4237A9BE60093E944 /* Filter */,
+				14C1018423793DD90074469D /* Home */,
 				E139B5332375D6A300FEF1F5 /* Login */,
 				E139B5322375D68C00FEF1F5 /* Profile */,
 				E139B5402375D73600FEF1F5 /* BaseViewController.swift */,
@@ -334,10 +390,14 @@
 				E139B53B2375D6CA00FEF1F5 /* RegisterViewController.xib in Resources */,
 				E16847952378FB66001B6319 /* AnotherContentTableViewCell.xib in Resources */,
 				E168477B237834DD001B6319 /* LanguageViewController.xib in Resources */,
+				145705DF237AA0320093E944 /* FilterCollectionViewCell.xib in Resources */,
 				E139B52E2375D20400FEF1F5 /* GoogleService-Info.plist in Resources */,
 				E1E3A8A42366CA8900F1571E /* Assets.xcassets in Resources */,
 				E168478523784354001B6319 /* DetailProfileTableViewCell.xib in Resources */,
+				14C10189237943300074469D /* ListJobTableViewCell.xib in Resources */,
 				E168478923784463001B6319 /* AnotherDetailProfileTableViewCell.xib in Resources */,
+				145705DA237A9C130093E944 /* FilterViewController.xib in Resources */,
+				14C1018323793DCF0074469D /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,8 +463,12 @@
 				E139B53A2375D6CA00FEF1F5 /* RegisterViewController.swift in Sources */,
 				E139B5412375D73600FEF1F5 /* BaseViewController.swift in Sources */,
 				E168479C237901D5001B6319 /* Model.swift in Sources */,
+				145705DE237AA0320093E944 /* FilterCollectionViewCell.swift in Sources */,
 				E168478823784463001B6319 /* AnotherDetailProfileTableViewCell.swift in Sources */,
 				E168477A237834DD001B6319 /* LanguageViewController.swift in Sources */,
+				14C1018223793DCF0074469D /* HomeViewController.swift in Sources */,
+				145705D9237A9C130093E944 /* FilterViewController.swift in Sources */,
+				14C10188237943300074469D /* ListJobTableViewCell.swift in Sources */,
 				E16847902378F88A001B6319 /* ContentTableViewCell.swift in Sources */,
 				E168477623782B0F001B6319 /* SkillsViewController.swift in Sources */,
 				E16847982378FFCB001B6319 /* ApplyButtonTableViewCell.swift in Sources */,
