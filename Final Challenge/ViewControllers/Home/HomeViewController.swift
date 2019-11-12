@@ -19,7 +19,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        cellDelegate()
+//        cellDelegate()
         setView()
 
         
@@ -45,7 +45,7 @@ class HomeViewController: UIViewController {
 //            dataArray.append(("Experience",true))
 //            dataArray.append(("Achievement",1))
 //        }
-//    
+//
 //    var courseID:String
 //      var courseName, courseAddress, courseImage:String
 //      var courseMinFare:Double
@@ -88,24 +88,24 @@ class HomeViewController: UIViewController {
 
   
 
-
-extension HomeViewController:UITableViewDataSource,UITableViewDelegate{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
-    }
-    
-
-    func cellDelegate() {
-        jobTableView.delegate = self
-        jobTableView.dataSource = self
-    }
-
-    
-}
+//
+//extension HomeViewController:UITableViewDataSource,UITableViewDelegate{
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        <#code#>
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        <#code#>
+//    }
+//
+//
+//    func cellDelegate() {
+//        jobTableView.delegate = self
+//        jobTableView.dataSource = self
+//    }
+//
+//
+//}
 
 
 
