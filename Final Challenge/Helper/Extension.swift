@@ -27,6 +27,21 @@ extension UIButton{
     
 }
 
+extension Formatter {
+    static let withSeparator: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.groupingSeparator = "."
+        formatter.numberStyle = .decimal
+        return formatter
+    }()
+}
+
+extension Numeric {
+    var formattedWithSeparator: String {
+        return Formatter.withSeparator.string(for: self) ?? ""
+    }
+}
+
 extension Int{
     func toNumberFormat()->String{
         let myNumber = NSNumber(value:self)

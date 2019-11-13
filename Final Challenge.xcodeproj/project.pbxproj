@@ -13,6 +13,10 @@
 		145705DF237AA0320093E944 /* FilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 145705DD237AA0320093E944 /* FilterCollectionViewCell.xib */; };
 		145705E2237AAE070093E944 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 145705E1237AAE070093E944 /* CloudKit.framework */; };
 		14719A5F237938C800F83732 /* AchievementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E168479D237903B2001B6319 /* AchievementTableViewCell.swift */; };
+		148C4341237C07F900B87174 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148C433F237C07F900B87174 /* LocationViewController.swift */; };
+		148C4342237C07F900B87174 /* LocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 148C4340237C07F900B87174 /* LocationViewController.xib */; };
+		148C4347237C118A00B87174 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148C4345237C118A00B87174 /* LocationTableViewCell.swift */; };
+		148C4348237C118A00B87174 /* LocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 148C4346237C118A00B87174 /* LocationTableViewCell.xib */; };
 		14C1018223793DCF0074469D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C1018023793DCF0074469D /* HomeViewController.swift */; };
 		14C1018323793DCF0074469D /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14C1018123793DCF0074469D /* HomeViewController.xib */; };
 		14C10188237943300074469D /* ListJobTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C10186237943300074469D /* ListJobTableViewCell.swift */; };
@@ -60,6 +64,10 @@
 		145705DD237AA0320093E944 /* FilterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCollectionViewCell.xib; sourceTree = "<group>"; };
 		145705E0237AADFA0093E944 /* Final Challenge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Final Challenge.entitlements"; sourceTree = "<group>"; };
 		145705E1237AAE070093E944 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		148C433F237C07F900B87174 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		148C4340237C07F900B87174 /* LocationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationViewController.xib; sourceTree = "<group>"; };
+		148C4345237C118A00B87174 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
+		148C4346237C118A00B87174 /* LocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationTableViewCell.xib; sourceTree = "<group>"; };
 		14C1018023793DCF0074469D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		14C1018123793DCF0074469D /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		14C10186237943300074469D /* ListJobTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListJobTableViewCell.swift; sourceTree = "<group>"; };
@@ -121,8 +129,8 @@
 		145705D4237A9BE60093E944 /* Filter */ = {
 			isa = PBXGroup;
 			children = (
-				145705D7237A9C130093E944 /* FilterViewController.swift */,
-				145705D8237A9C130093E944 /* FilterViewController.xib */,
+				148C4343237C080500B87174 /* Filter */,
+				148C433E237C07DB00B87174 /* Location */,
 			);
 			path = Filter;
 			sourceTree = "<group>";
@@ -132,6 +140,33 @@
 			children = (
 				145705DC237AA0320093E944 /* FilterCollectionViewCell.swift */,
 				145705DD237AA0320093E944 /* FilterCollectionViewCell.xib */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		148C433E237C07DB00B87174 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				148C433F237C07F900B87174 /* LocationViewController.swift */,
+				148C4340237C07F900B87174 /* LocationViewController.xib */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		148C4343237C080500B87174 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				145705D7237A9C130093E944 /* FilterViewController.swift */,
+				145705D8237A9C130093E944 /* FilterViewController.xib */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		148C4344237C116900B87174 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				148C4345237C118A00B87174 /* LocationTableViewCell.swift */,
+				148C4346237C118A00B87174 /* LocationTableViewCell.xib */,
 			);
 			path = Filter;
 			sourceTree = "<group>";
@@ -175,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				14C10185237943110074469D /* Home */,
+				148C4344237C116900B87174 /* Filter */,
 				E168477C23784167001B6319 /* Profile */,
 			);
 			path = TableViewCells;
@@ -387,7 +423,9 @@
 			files = (
 				E168478D2378F346001B6319 /* TitleTableViewCell.xib in Resources */,
 				E139B53F2375D6E400FEF1F5 /* ProfileViewController.xib in Resources */,
+				148C4348237C118A00B87174 /* LocationTableViewCell.xib in Resources */,
 				E1E3A8A72366CA8900F1571E /* LaunchScreen.storyboard in Resources */,
+				148C4342237C07F900B87174 /* LocationViewController.xib in Resources */,
 				E16847912378F88A001B6319 /* ContentTableViewCell.xib in Resources */,
 				E1B553A823792AB100FDBBCE /* ProfileFooterViewCell.xib in Resources */,
 				E168477723782B0F001B6319 /* SkillsViewController.xib in Resources */,
@@ -471,6 +509,8 @@
 				E168479C237901D5001B6319 /* Model.swift in Sources */,
 				145705DE237AA0320093E944 /* FilterCollectionViewCell.swift in Sources */,
 				E168478823784463001B6319 /* AnotherDetailProfileTableViewCell.swift in Sources */,
+				148C4341237C07F900B87174 /* LocationViewController.swift in Sources */,
+				148C4347237C118A00B87174 /* LocationTableViewCell.swift in Sources */,
 				E168477A237834DD001B6319 /* LanguageViewController.swift in Sources */,
 				14C1018223793DCF0074469D /* HomeViewController.swift in Sources */,
 				145705D9237A9C130093E944 /* FilterViewController.swift in Sources */,
@@ -623,7 +663,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Cls.Final-Challenge";
+				PRODUCT_BUNDLE_IDENTIFIER = "Cls.Final-Challenge-1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -643,7 +683,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Cls.Final-Challenge";
+				PRODUCT_BUNDLE_IDENTIFIER = "Cls.Final-Challenge-1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

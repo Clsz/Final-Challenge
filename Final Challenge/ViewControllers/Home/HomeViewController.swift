@@ -29,6 +29,12 @@ class HomeViewController: UIViewController {
             setView()
         }
     
+    
+    @IBAction func filterTapped(_ sender: UIButton) {
+        let filterVC = FilterViewController()
+        self.navigationController?.pushViewController(filterVC, animated: true)
+    }
+    
         func setView() {
             self.navigationItem.title = "Jobs"
             self.navigationItem.largeTitleDisplayMode = .always
