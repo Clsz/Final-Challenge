@@ -17,6 +17,10 @@
 		148C4342237C07F900B87174 /* LocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 148C4340237C07F900B87174 /* LocationViewController.xib */; };
 		148C4347237C118A00B87174 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148C4345237C118A00B87174 /* LocationTableViewCell.swift */; };
 		148C4348237C118A00B87174 /* LocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 148C4346237C118A00B87174 /* LocationTableViewCell.xib */; };
+		148C434E237C3AC000B87174 /* SubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148C434C237C3AC000B87174 /* SubjectViewController.swift */; };
+		148C434F237C3AC000B87174 /* SubjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 148C434D237C3AC000B87174 /* SubjectViewController.xib */; };
+		148C4355237C3D3300B87174 /* SubjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148C4353237C3D3300B87174 /* SubjectTableViewCell.swift */; };
+		148C4356237C3D3300B87174 /* SubjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 148C4354237C3D3300B87174 /* SubjectTableViewCell.xib */; };
 		14C1018223793DCF0074469D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C1018023793DCF0074469D /* HomeViewController.swift */; };
 		14C1018323793DCF0074469D /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14C1018123793DCF0074469D /* HomeViewController.xib */; };
 		14C10188237943300074469D /* ListJobTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C10186237943300074469D /* ListJobTableViewCell.swift */; };
@@ -68,6 +72,10 @@
 		148C4340237C07F900B87174 /* LocationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationViewController.xib; sourceTree = "<group>"; };
 		148C4345237C118A00B87174 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		148C4346237C118A00B87174 /* LocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationTableViewCell.xib; sourceTree = "<group>"; };
+		148C434C237C3AC000B87174 /* SubjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectViewController.swift; sourceTree = "<group>"; };
+		148C434D237C3AC000B87174 /* SubjectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubjectViewController.xib; sourceTree = "<group>"; };
+		148C4353237C3D3300B87174 /* SubjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectTableViewCell.swift; sourceTree = "<group>"; };
+		148C4354237C3D3300B87174 /* SubjectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubjectTableViewCell.xib; sourceTree = "<group>"; };
 		14C1018023793DCF0074469D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		14C1018123793DCF0074469D /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		14C10186237943300074469D /* ListJobTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListJobTableViewCell.swift; sourceTree = "<group>"; };
@@ -131,6 +139,7 @@
 			children = (
 				148C4343237C080500B87174 /* Filter */,
 				148C433E237C07DB00B87174 /* Location */,
+				148C434B237C3A7100B87174 /* Teaching Subject */,
 			);
 			path = Filter;
 			sourceTree = "<group>";
@@ -165,10 +174,37 @@
 		148C4344237C116900B87174 /* Filter */ = {
 			isa = PBXGroup;
 			children = (
+				148C4351237C3CFA00B87174 /* Location */,
+				148C4352237C3D0B00B87174 /* Subject */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		148C434B237C3A7100B87174 /* Teaching Subject */ = {
+			isa = PBXGroup;
+			children = (
+				148C434C237C3AC000B87174 /* SubjectViewController.swift */,
+				148C434D237C3AC000B87174 /* SubjectViewController.xib */,
+			);
+			path = "Teaching Subject";
+			sourceTree = "<group>";
+		};
+		148C4351237C3CFA00B87174 /* Location */ = {
+			isa = PBXGroup;
+			children = (
 				148C4345237C118A00B87174 /* LocationTableViewCell.swift */,
 				148C4346237C118A00B87174 /* LocationTableViewCell.xib */,
 			);
-			path = Filter;
+			path = Location;
+			sourceTree = "<group>";
+		};
+		148C4352237C3D0B00B87174 /* Subject */ = {
+			isa = PBXGroup;
+			children = (
+				148C4353237C3D3300B87174 /* SubjectTableViewCell.swift */,
+				148C4354237C3D3300B87174 /* SubjectTableViewCell.xib */,
+			);
+			path = Subject;
 			sourceTree = "<group>";
 		};
 		14C1018423793DD90074469D /* Home */ = {
@@ -422,6 +458,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E168478D2378F346001B6319 /* TitleTableViewCell.xib in Resources */,
+				148C434F237C3AC000B87174 /* SubjectViewController.xib in Resources */,
 				E139B53F2375D6E400FEF1F5 /* ProfileViewController.xib in Resources */,
 				148C4348237C118A00B87174 /* LocationTableViewCell.xib in Resources */,
 				E1E3A8A72366CA8900F1571E /* LaunchScreen.storyboard in Resources */,
@@ -439,6 +476,7 @@
 				E1E3A8A42366CA8900F1571E /* Assets.xcassets in Resources */,
 				E168478523784354001B6319 /* DetailProfileTableViewCell.xib in Resources */,
 				14C10189237943300074469D /* ListJobTableViewCell.xib in Resources */,
+				148C4356237C3D3300B87174 /* SubjectTableViewCell.xib in Resources */,
 				E168478923784463001B6319 /* AnotherDetailProfileTableViewCell.xib in Resources */,
 				145705DA237A9C130093E944 /* FilterViewController.xib in Resources */,
 				14C1018323793DCF0074469D /* HomeViewController.xib in Resources */,
@@ -501,8 +539,10 @@
 				E139B5432375D7C200FEF1F5 /* TabBarController.swift in Sources */,
 				E16847942378FB66001B6319 /* AnotherContentTableViewCell.swift in Sources */,
 				E139B5452375D8B500FEF1F5 /* ConstantManager.swift in Sources */,
+				148C434E237C3AC000B87174 /* SubjectViewController.swift in Sources */,
 				E1E3A8B62366CFC700F1571E /* Extension.swift in Sources */,
 				14719A5F237938C800F83732 /* AchievementTableViewCell.swift in Sources */,
+				148C4355237C3D3300B87174 /* SubjectTableViewCell.swift in Sources */,
 				E1E3A89B2366CA8800F1571E /* AppDelegate.swift in Sources */,
 				E139B53A2375D6CA00FEF1F5 /* RegisterViewController.swift in Sources */,
 				E139B5412375D73600FEF1F5 /* BaseViewController.swift in Sources */,

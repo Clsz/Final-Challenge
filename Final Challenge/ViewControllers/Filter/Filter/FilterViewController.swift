@@ -81,6 +81,8 @@ class FilterViewController: BaseViewController {
         self.navigationController?.pushViewController(locationVC, animated: true)
     }
     @IBAction func viewAllSubjectTapped(_ sender: UIButton) {
+        let subjectVC = SubjectViewController()
+        self.navigationController?.pushViewController(subjectVC, animated: true)
     }
     @IBAction func applyTapped(_ sender: UIButton) {
     }
@@ -91,10 +93,10 @@ extension FilterViewController:UICollectionViewDataSource, UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if (collectionView == self.LocationCV) {
             return lokasi.count;
-           }
+        }
         else if (collectionView  == subjectCV) {
             return  subjek.count
-           }
+        }
         else {
             return grade.count
         }
@@ -112,7 +114,7 @@ extension FilterViewController:UICollectionViewDataSource, UICollectionViewDeleg
             cell.labelFilter.text = lokasi[indexPath.row]
             
             return cell
-           }
+        }
         else if (collectionView  == subjectCV) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filterCell", for: indexPath) as! FilterCollectionViewCell
             
@@ -123,7 +125,7 @@ extension FilterViewController:UICollectionViewDataSource, UICollectionViewDeleg
             cell.labelFilter.text = subjek[indexPath.row]
             
             return cell
-           }
+        }
         else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filterCell", for: indexPath) as! FilterCollectionViewCell
             
