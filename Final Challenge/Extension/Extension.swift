@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UIView{
+extension UIView {
 
     func dropShadow() {
         self.layer.shadowColor = UIColor.black.cgColor
@@ -15,31 +15,7 @@ extension UIView{
         self.layer.shadowOffset = CGSize.zero
         self.layer.shadowRadius = 1
     }
-
-}
-
-extension UIButton{
     
-    func loginRound() {
-        self.layer.cornerRadius = 8.0
-        self.clipsToBounds = true
-    }
-    
-}
-
-extension Formatter {
-    static let withSeparator: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.groupingSeparator = "."
-        formatter.numberStyle = .decimal
-        return formatter
-    }()
-}
-
-extension Numeric {
-    var formattedWithSeparator: String {
-        return Formatter.withSeparator.string(for: self) ?? ""
-    }
 }
 
 extension Int{
@@ -97,18 +73,6 @@ extension String{
             return attributedString
         }
         return NSAttributedString()
-    }
-}
-
-extension UIViewController {
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
     }
 }
 
