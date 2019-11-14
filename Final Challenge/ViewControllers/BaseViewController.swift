@@ -18,7 +18,7 @@ class BaseViewController: UIViewController {
     
     func setupView(text:String) {
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.largeTitleDisplayMode = .always
+        self.view.backgroundColor = #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
         self.navigationItem.title = text
     }
     

@@ -9,40 +9,41 @@
 import UIKit
 import Firebase
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var dataArray:[Any?] = []
     var tutor:Tutor!
     
+    let header = "TitleTableViewCellID"
+    let content = "ContentTableViewCellID"
+    let anotherContent = "AnotherContentTableViewCellID"
+    let achievement = "AchievementTableViewCellID"
+    let contentView = "ContentViewTableViewCellID"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getUser()
-        self.setupData()
-        self.registerCell()
-        self.cellDelegate()
-        setView()
+        registerCell()
+        cellDelegate()
+        setupView(text: "Profile")
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setView()
+        setupView(text: "Profile")
     }
     
-    func setView() {
-        self.navigationItem.title = "Profile"
-        self.navigationItem.largeTitleDisplayMode = .always
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-    }
+}
+extension ProfileViewController{
     
     func setupData() {
         dataArray.removeAll()
         dataArray.append(tutor)
-        dataArray.append(("Address",false))
-        dataArray.append(("Skill",true))
-        dataArray.append(("Language",true))
-        dataArray.append(("Education",true))
-        dataArray.append(("Experience",true))
-        dataArray.append(("Achievement",1))
+        dataArray.append(("Skill","Add Skill",0))
+        dataArray.append(("Language","Add Language"))
+        dataArray.append(("Education","Add Education",1))
+        dataArray.append(("Experience","Add Experience"))
+        dataArray.append(("Achievement","Add Achievement",2))
     }
 
     func getUser() {
@@ -66,6 +67,7 @@ class ProfileViewController: UIViewController {
                     let achievement = document["tutorAchievement"] as? [String] ?? []
                     self.tutor = Tutor(userID,educationID,firstName,lastName,image,phoneNumber,address, gender,birthDate,skills,experience,language,achievement)
                     DispatchQueue.main.async {
+                        self.setupData()
                         self.tableView.reloadData()
                     }
                 } else {
@@ -74,51 +76,58 @@ class ProfileViewController: UIViewController {
             }
         }
     }
-
-    
     
 }
+
 extension ProfileViewController:UITableViewDataSource, UITableViewDelegate{
     
     func registerCell() {
-        tableView.register(UINib(nibName: "TitleTableViewCell", bundle: nil), forCellReuseIdentifier: "titleTableHeaderCellID")
-        tableView.register(UINib(nibName: "ContentTableViewCell", bundle: nil), forCellReuseIdentifier: "contentTableViewCellID")
-        tableView.register(UINib(nibName: "AnotherContentTableViewCell", bundle: nil), forCellReuseIdentifier: "anotherContentTableViewCellID")
-        tableView.register(UINib(nibName: "AchievementTableViewCell", bundle: nil), forCellReuseIdentifier: "achievementTableViewCellID")
+        tableView.register(UINib(nibName: "TitleTableViewCell", bundle: nil), forCellReuseIdentifier: header)
+        tableView.register(UINib(nibName: "ContentTableViewCell", bundle: nil), forCellReuseIdentifier: content)
+        tableView.register(UINib(nibName: "AnotherContentTableViewCell", bundle: nil), forCellReuseIdentifier: anotherContent)
+        tableView.register(UINib(nibName: "AchievementTableViewCell", bundle: nil), forCellReuseIdentifier: achievement)
+        tableView.register(UINib(nibName: "ContentViewTableViewCell", bundle: nil), forCellReuseIdentifier: contentView)
     }
     
     func cellDelegate() {
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataArray.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 247
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "titleTableHeaderCellID", for: indexPath) as! TitleTableViewCell
+        if indexPath.row == 0{
+            let cell = tableView.dequeueReusableCell(withIdentifier: header, for: indexPath) as! TitleTableViewCell
             if let tutor = dataArray[indexPath.row] as? Tutor {
                 let fullName = tutor.tutorFirstName + " " + tutor.tutorLastName
-                cell.setView(image: tutor.tutorImage, name: fullName, university: "Bina Nusantara", age: 21)
+                cell.setView(image: tutor.tutorImage, name: "fullName", university: "Bina Nusantara", age: 21)
             }
             return cell
-        }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:Bool){
-            if keyValue.value == false{
-                let cell = tableView.dequeueReusableCell(withIdentifier: "contentTableViewCellID", for: indexPath) as! ContentTableViewCell
-                cell.setView(title: keyValue.key)
+        }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:String, code:Int){
+            if keyValue.code == 0{
+                let cell = tableView.dequeueReusableCell(withIdentifier: content, for: indexPath) as! ContentTableViewCell
+                cell.setView(title: keyValue.key, button: keyValue.value)
                 return cell
-            }else if keyValue.value == true{
-                let cell = tableView.dequeueReusableCell(withIdentifier: "anotherContentTableViewCellID", for: indexPath) as! AnotherContentTableViewCell
-                cell.setView(text: keyValue.key)
+            }else if keyValue.code == 1{
+                let cell = tableView.dequeueReusableCell(withIdentifier: contentView, for: indexPath) as! ContentViewTableViewCell
+                cell.setView(text: keyValue.key, button: keyValue.value)
                 return cell
-            }
-        }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:Int){
-            if keyValue.value == 1{
-                let cell = tableView.dequeueReusableCell(withIdentifier: "achievementTableViewCellID", for: indexPath) as! AchievementTableViewCell
-                
+            }else if keyValue.code == 2{
+                let cell = tableView.dequeueReusableCell(withIdentifier: achievement, for: indexPath) as! AchievementTableViewCell
+                cell.setView(label: keyValue.key, button: keyValue.value)
                 return cell
             }
+        }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:String){
+            let cell = tableView.dequeueReusableCell(withIdentifier: anotherContent, for: indexPath) as! AnotherContentTableViewCell
+            cell.setView(text: keyValue.key, button: keyValue.value)
+            return cell
         }
         return UITableViewCell()
     }

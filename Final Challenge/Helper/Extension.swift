@@ -15,6 +15,11 @@ extension UIView{
         self.layer.shadowOffset = CGSize.zero
         self.layer.shadowRadius = 1
     }
+    
+    func outerRound() {
+        self.layer.cornerRadius = 10
+        self.clipsToBounds = true
+    }
 
 }
 
@@ -22,6 +27,11 @@ extension UIButton{
     
     func loginRound() {
         self.layer.cornerRadius = 8.0
+        self.clipsToBounds = true
+    }
+    
+    func pickerButton() {
+        self.layer.cornerRadius = 10.0
         self.clipsToBounds = true
     }
     

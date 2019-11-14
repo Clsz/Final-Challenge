@@ -14,13 +14,21 @@ class TitleTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var universityLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
+    @IBOutlet weak var pencil: UIButton!
+    @IBOutlet weak var outerProfile: UIView!
     
     func setView(image:String, name:String, university:String, age:Int) {
+        outerProfile.outerRound()
         profileImage.image = UIImage(named: image)
         nameLabel.text = name
         universityLabel.text = university
         ageLabel.text = String(age)
     }
+    
+    @IBAction func pencilTapped(_ sender: Any) {
+        
+    }
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -1,5 +1,5 @@
 //
-//  ContentTableViewCell.swift
+//  AchievementTableViewCell.swift
 //  Final Challenge
 //
 //  Created by Muhammad Reynaldi on 11/11/19.
@@ -8,20 +8,17 @@
 
 import UIKit
 
-class ContentTableViewCell: UITableViewCell {
+class AchievementTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var editButton: UIButton!
-    @IBOutlet weak var textView: UITextView!
-    var delegate:DetailProfileDelegate?
+    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var collectionView: UICollectionView!
+//    var delegate:DetailProfileDelegate?
     var tutor:Tutor!
     
-    func setView(title:String) {
-        titleLabel.text = title
-    }
-    
-    @IBAction func editTapped(_ sender: Any) {
-        delegate?.addDetail(tutor: tutor)
+    func setView(label:String, button:String) {
+        self.label.text = label
+        self.button.setTitle(button, for: .normal)
     }
     
     override func awakeFromNib() {
@@ -29,6 +26,9 @@ class ContentTableViewCell: UITableViewCell {
         // Initialization code
     }
 
+    @IBAction func addTapped(_ sender: Any) {
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

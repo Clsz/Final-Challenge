@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -37,7 +37,6 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="D78-AP-3jC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="LWq-1I-iYI"/>
-                    <constraint firstAttribute="bottom" secondItem="4dT-KO-7Xp" secondAttribute="bottom" constant="12" id="Spg-4A-N0h"/>
                     <constraint firstAttribute="trailing" secondItem="D78-AP-3jC" secondAttribute="trailing" constant="21" id="XkF-fO-VCG"/>
                     <constraint firstItem="D78-AP-3jC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="21" id="hpR-Is-xA8"/>
                     <constraint firstItem="4dT-KO-7Xp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="21" id="sAr-fZ-3Ij"/>
@@ -45,6 +44,7 @@
                     <constraint firstAttribute="trailing" secondItem="4dT-KO-7Xp" secondAttribute="trailing" constant="21" id="wxE-24-2jn"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="label" destination="D78-AP-3jC" id="1Hm-0w-vU9"/>

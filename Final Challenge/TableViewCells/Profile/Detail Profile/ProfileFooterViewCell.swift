@@ -14,5 +14,8 @@ class ProfileFooterViewCell: UITableViewHeaderFooterView {
     
     func setView(text:String) {
         button.titleLabel?.text = text
+        button.loginRound()
+    }
+    @IBAction func applyTapped(_ sender: Any) {
     }
 }

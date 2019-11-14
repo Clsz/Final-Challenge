@@ -11,11 +11,14 @@ import UIKit
 class AnotherDetailProfileTableViewCell: UITableViewCell {
 
     @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var button: UIButton!
     
     func setCell(text:String, content:String) {
         label.text = text
-        textField.placeholder?.append(content)
+        button.setTitle(content, for: .normal)
+    }
+    
+    @IBAction func dropDownTapped(_ sender: Any) {
     }
     
     override func awakeFromNib() {

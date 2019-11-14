@@ -32,13 +32,29 @@
 		E16847912378F88A001B6319 /* ContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E168478F2378F88A001B6319 /* ContentTableViewCell.xib */; };
 		E16847942378FB66001B6319 /* AnotherContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16847922378FB66001B6319 /* AnotherContentTableViewCell.swift */; };
 		E16847952378FB66001B6319 /* AnotherContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E16847932378FB66001B6319 /* AnotherContentTableViewCell.xib */; };
-		E16847982378FFCB001B6319 /* ApplyButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16847962378FFCB001B6319 /* ApplyButtonTableViewCell.swift */; };
-		E16847992378FFCB001B6319 /* ApplyButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E16847972378FFCB001B6319 /* ApplyButtonTableViewCell.xib */; };
 		E168479C237901D5001B6319 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = E168479B237901D5001B6319 /* Model.swift */; };
 		E168479F237903B2001B6319 /* AchievementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E168479D237903B2001B6319 /* AchievementTableViewCell.swift */; };
 		E16847A0237903B2001B6319 /* AchievementTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E168479E237903B2001B6319 /* AchievementTableViewCell.xib */; };
+		E1713A50237AC68C00F6A8A7 /* ContentViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1713A4E237AC68C00F6A8A7 /* ContentViewTableViewCell.swift */; };
+		E1713A51237AC68C00F6A8A7 /* ContentViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1713A4F237AC68C00F6A8A7 /* ContentViewTableViewCell.xib */; };
+		E17F320F23793BFE00AEBCD5 /* EducationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17F320D23793BFE00AEBCD5 /* EducationViewController.swift */; };
+		E17F321023793BFE00AEBCD5 /* EducationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E17F320E23793BFE00AEBCD5 /* EducationViewController.xib */; };
+		E17F32132379446300AEBCD5 /* ExperienceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17F32112379446300AEBCD5 /* ExperienceViewController.swift */; };
+		E17F32142379446300AEBCD5 /* ExperienceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E17F32122379446300AEBCD5 /* ExperienceViewController.xib */; };
+		E17F321B23794A6D00AEBCD5 /* MoreDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17F321923794A6D00AEBCD5 /* MoreDetailTableViewCell.swift */; };
+		E17F321C23794A6D00AEBCD5 /* MoreDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E17F321A23794A6D00AEBCD5 /* MoreDetailTableViewCell.xib */; };
+		E19D1AEB237BF10F003AFFBD /* CustomLanguageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19D1AE9237BF10F003AFFBD /* CustomLanguageTableViewCell.swift */; };
+		E19D1AEC237BF10F003AFFBD /* CustomLanguageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E19D1AEA237BF10F003AFFBD /* CustomLanguageTableViewCell.xib */; };
+		E19D1AF0237BF274003AFFBD /* CustomExperienceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19D1AEE237BF274003AFFBD /* CustomExperienceTableViewCell.swift */; };
+		E19D1AF1237BF274003AFFBD /* CustomExperienceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E19D1AEF237BF274003AFFBD /* CustomExperienceTableViewCell.xib */; };
 		E1B553A623792AA400FDBBCE /* ProfileFooterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B553A523792AA400FDBBCE /* ProfileFooterViewCell.swift */; };
 		E1B553A823792AB100FDBBCE /* ProfileFooterViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1B553A723792AB100FDBBCE /* ProfileFooterViewCell.xib */; };
+		E1CBFEF5237CFB3F00DAC25D /* DetailHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CBFEF3237CFB3F00DAC25D /* DetailHeaderTableViewCell.swift */; };
+		E1CBFEF6237CFB3F00DAC25D /* DetailHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1CBFEF4237CFB3F00DAC25D /* DetailHeaderTableViewCell.xib */; };
+		E1CBFEF9237D009E00DAC25D /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CBFEF7237D009E00DAC25D /* EditProfileViewController.swift */; };
+		E1CBFEFA237D009E00DAC25D /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1CBFEF8237D009E00DAC25D /* EditProfileViewController.xib */; };
+		E1CBFEFD237D00E100DAC25D /* EditPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CBFEFB237D00E100DAC25D /* EditPasswordViewController.swift */; };
+		E1CBFEFE237D00E100DAC25D /* EditPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1CBFEFC237D00E100DAC25D /* EditPasswordViewController.xib */; };
 		E1E3A89B2366CA8800F1571E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E3A89A2366CA8800F1571E /* AppDelegate.swift */; };
 		E1E3A8A42366CA8900F1571E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1E3A8A32366CA8900F1571E /* Assets.xcassets */; };
 		E1E3A8A72366CA8900F1571E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1E3A8A52366CA8900F1571E /* LaunchScreen.storyboard */; };
@@ -73,13 +89,30 @@
 		E168478F2378F88A001B6319 /* ContentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentTableViewCell.xib; sourceTree = "<group>"; };
 		E16847922378FB66001B6319 /* AnotherContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherContentTableViewCell.swift; sourceTree = "<group>"; };
 		E16847932378FB66001B6319 /* AnotherContentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnotherContentTableViewCell.xib; sourceTree = "<group>"; };
-		E16847962378FFCB001B6319 /* ApplyButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyButtonTableViewCell.swift; sourceTree = "<group>"; };
-		E16847972378FFCB001B6319 /* ApplyButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApplyButtonTableViewCell.xib; sourceTree = "<group>"; };
 		E168479B237901D5001B6319 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		E168479D237903B2001B6319 /* AchievementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementTableViewCell.swift; sourceTree = "<group>"; };
 		E168479E237903B2001B6319 /* AchievementTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AchievementTableViewCell.xib; sourceTree = "<group>"; };
+		E1713A4D237AAD7400F6A8A7 /* Final Challenge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Final Challenge.entitlements"; sourceTree = "<group>"; };
+		E1713A4E237AC68C00F6A8A7 /* ContentViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewTableViewCell.swift; sourceTree = "<group>"; };
+		E1713A4F237AC68C00F6A8A7 /* ContentViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentViewTableViewCell.xib; sourceTree = "<group>"; };
+		E17F320D23793BFE00AEBCD5 /* EducationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationViewController.swift; sourceTree = "<group>"; };
+		E17F320E23793BFE00AEBCD5 /* EducationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EducationViewController.xib; sourceTree = "<group>"; };
+		E17F32112379446300AEBCD5 /* ExperienceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceViewController.swift; sourceTree = "<group>"; };
+		E17F32122379446300AEBCD5 /* ExperienceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExperienceViewController.xib; sourceTree = "<group>"; };
+		E17F321923794A6D00AEBCD5 /* MoreDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreDetailTableViewCell.swift; sourceTree = "<group>"; };
+		E17F321A23794A6D00AEBCD5 /* MoreDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreDetailTableViewCell.xib; sourceTree = "<group>"; };
+		E19D1AE9237BF10F003AFFBD /* CustomLanguageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLanguageTableViewCell.swift; sourceTree = "<group>"; };
+		E19D1AEA237BF10F003AFFBD /* CustomLanguageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomLanguageTableViewCell.xib; sourceTree = "<group>"; };
+		E19D1AEE237BF274003AFFBD /* CustomExperienceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomExperienceTableViewCell.swift; sourceTree = "<group>"; };
+		E19D1AEF237BF274003AFFBD /* CustomExperienceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomExperienceTableViewCell.xib; sourceTree = "<group>"; };
 		E1B553A523792AA400FDBBCE /* ProfileFooterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFooterViewCell.swift; sourceTree = "<group>"; };
 		E1B553A723792AB100FDBBCE /* ProfileFooterViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileFooterViewCell.xib; sourceTree = "<group>"; };
+		E1CBFEF3237CFB3F00DAC25D /* DetailHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		E1CBFEF4237CFB3F00DAC25D /* DetailHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		E1CBFEF7237D009E00DAC25D /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		E1CBFEF8237D009E00DAC25D /* EditProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
+		E1CBFEFB237D00E100DAC25D /* EditPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPasswordViewController.swift; sourceTree = "<group>"; };
+		E1CBFEFC237D00E100DAC25D /* EditPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditPasswordViewController.xib; sourceTree = "<group>"; };
 		E1E3A8972366CA8800F1571E /* Final Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Final Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1E3A89A2366CA8800F1571E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1E3A8A32366CA8900F1571E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -162,6 +195,14 @@
 				E168477523782B0F001B6319 /* SkillsViewController.xib */,
 				E1684778237834DD001B6319 /* LanguageViewController.swift */,
 				E1684779237834DD001B6319 /* LanguageViewController.xib */,
+				E17F320D23793BFE00AEBCD5 /* EducationViewController.swift */,
+				E17F320E23793BFE00AEBCD5 /* EducationViewController.xib */,
+				E17F32112379446300AEBCD5 /* ExperienceViewController.swift */,
+				E17F32122379446300AEBCD5 /* ExperienceViewController.xib */,
+				E1CBFEF7237D009E00DAC25D /* EditProfileViewController.swift */,
+				E1CBFEF8237D009E00DAC25D /* EditProfileViewController.xib */,
+				E1CBFEFB237D00E100DAC25D /* EditPasswordViewController.swift */,
+				E1CBFEFC237D00E100DAC25D /* EditPasswordViewController.xib */,
 			);
 			path = "Detail Profile";
 			sourceTree = "<group>";
@@ -170,14 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				E168477D2378416E001B6319 /* Detail Profile */,
-				E168478A2378F346001B6319 /* TitleTableViewCell.swift */,
-				E168478B2378F346001B6319 /* TitleTableViewCell.xib */,
-				E168478E2378F88A001B6319 /* ContentTableViewCell.swift */,
-				E168478F2378F88A001B6319 /* ContentTableViewCell.xib */,
-				E16847922378FB66001B6319 /* AnotherContentTableViewCell.swift */,
-				E16847932378FB66001B6319 /* AnotherContentTableViewCell.xib */,
-				E168479D237903B2001B6319 /* AchievementTableViewCell.swift */,
-				E168479E237903B2001B6319 /* AchievementTableViewCell.xib */,
+				E17F321F23796BBC00AEBCD5 /* Front View */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -185,12 +219,14 @@
 		E168477D2378416E001B6319 /* Detail Profile */ = {
 			isa = PBXGroup;
 			children = (
+				E1CBFEF3237CFB3F00DAC25D /* DetailHeaderTableViewCell.swift */,
+				E1CBFEF4237CFB3F00DAC25D /* DetailHeaderTableViewCell.xib */,
 				E168478223784354001B6319 /* DetailProfileTableViewCell.swift */,
 				E168478323784354001B6319 /* DetailProfileTableViewCell.xib */,
 				E168478623784463001B6319 /* AnotherDetailProfileTableViewCell.swift */,
 				E168478723784463001B6319 /* AnotherDetailProfileTableViewCell.xib */,
-				E16847962378FFCB001B6319 /* ApplyButtonTableViewCell.swift */,
-				E16847972378FFCB001B6319 /* ApplyButtonTableViewCell.xib */,
+				E17F321923794A6D00AEBCD5 /* MoreDetailTableViewCell.swift */,
+				E17F321A23794A6D00AEBCD5 /* MoreDetailTableViewCell.xib */,
 				E1B553A523792AA400FDBBCE /* ProfileFooterViewCell.swift */,
 				E1B553A723792AB100FDBBCE /* ProfileFooterViewCell.xib */,
 			);
@@ -203,6 +239,35 @@
 				E168479B237901D5001B6319 /* Model.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E17F321F23796BBC00AEBCD5 /* Front View */ = {
+			isa = PBXGroup;
+			children = (
+				E19D1AED237BF119003AFFBD /* Custom Front View */,
+				E168478A2378F346001B6319 /* TitleTableViewCell.swift */,
+				E168478B2378F346001B6319 /* TitleTableViewCell.xib */,
+				E168478E2378F88A001B6319 /* ContentTableViewCell.swift */,
+				E168478F2378F88A001B6319 /* ContentTableViewCell.xib */,
+				E16847922378FB66001B6319 /* AnotherContentTableViewCell.swift */,
+				E16847932378FB66001B6319 /* AnotherContentTableViewCell.xib */,
+				E168479D237903B2001B6319 /* AchievementTableViewCell.swift */,
+				E168479E237903B2001B6319 /* AchievementTableViewCell.xib */,
+				E1713A4E237AC68C00F6A8A7 /* ContentViewTableViewCell.swift */,
+				E1713A4F237AC68C00F6A8A7 /* ContentViewTableViewCell.xib */,
+			);
+			path = "Front View";
+			sourceTree = "<group>";
+		};
+		E19D1AED237BF119003AFFBD /* Custom Front View */ = {
+			isa = PBXGroup;
+			children = (
+				E19D1AE9237BF10F003AFFBD /* CustomLanguageTableViewCell.swift */,
+				E19D1AEA237BF10F003AFFBD /* CustomLanguageTableViewCell.xib */,
+				E19D1AEE237BF274003AFFBD /* CustomExperienceTableViewCell.swift */,
+				E19D1AEF237BF274003AFFBD /* CustomExperienceTableViewCell.xib */,
+			);
+			path = "Custom Front View";
 			sourceTree = "<group>";
 		};
 		E1E3A88E2366CA8800F1571E = {
@@ -226,6 +291,7 @@
 		E1E3A8992366CA8800F1571E /* Final Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				E1713A4D237AAD7400F6A8A7 /* Final Challenge.entitlements */,
 				E1E3A8B32366CF2800F1571E /* Supporting Files */,
 				E139B5302375D41C00FEF1F5 /* TableViewCells */,
 				E139B52F2375D3E500FEF1F5 /* CollectionViewCells */,
@@ -330,17 +396,25 @@
 				E139B53F2375D6E400FEF1F5 /* ProfileViewController.xib in Resources */,
 				E1E3A8A72366CA8900F1571E /* LaunchScreen.storyboard in Resources */,
 				E16847A0237903B2001B6319 /* AchievementTableViewCell.xib in Resources */,
+				E19D1AF1237BF274003AFFBD /* CustomExperienceTableViewCell.xib in Resources */,
 				E16847912378F88A001B6319 /* ContentTableViewCell.xib in Resources */,
+				E17F32142379446300AEBCD5 /* ExperienceViewController.xib in Resources */,
+				E1CBFEF6237CFB3F00DAC25D /* DetailHeaderTableViewCell.xib in Resources */,
 				E1B553A823792AB100FDBBCE /* ProfileFooterViewCell.xib in Resources */,
 				E168477723782B0F001B6319 /* SkillsViewController.xib in Resources */,
+				E17F321023793BFE00AEBCD5 /* EducationViewController.xib in Resources */,
+				E17F321C23794A6D00AEBCD5 /* MoreDetailTableViewCell.xib in Resources */,
+				E1CBFEFA237D009E00DAC25D /* EditProfileViewController.xib in Resources */,
 				E139B5372375D6B700FEF1F5 /* LoginViewController.xib in Resources */,
-				E16847992378FFCB001B6319 /* ApplyButtonTableViewCell.xib in Resources */,
 				E139B53B2375D6CA00FEF1F5 /* RegisterViewController.xib in Resources */,
+				E1CBFEFE237D00E100DAC25D /* EditPasswordViewController.xib in Resources */,
 				E16847952378FB66001B6319 /* AnotherContentTableViewCell.xib in Resources */,
 				E168477B237834DD001B6319 /* LanguageViewController.xib in Resources */,
 				E139B52E2375D20400FEF1F5 /* GoogleService-Info.plist in Resources */,
 				E1E3A8A42366CA8900F1571E /* Assets.xcassets in Resources */,
 				E168478523784354001B6319 /* DetailProfileTableViewCell.xib in Resources */,
+				E1713A51237AC68C00F6A8A7 /* ContentViewTableViewCell.xib in Resources */,
+				E19D1AEC237BF10F003AFFBD /* CustomLanguageTableViewCell.xib in Resources */,
 				E168478923784463001B6319 /* AnotherDetailProfileTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,11 +468,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1CBFEF9237D009E00DAC25D /* EditProfileViewController.swift in Sources */,
 				E168478423784354001B6319 /* DetailProfileTableViewCell.swift in Sources */,
 				E139B53E2375D6E400FEF1F5 /* ProfileViewController.swift in Sources */,
 				E1B553A623792AA400FDBBCE /* ProfileFooterViewCell.swift in Sources */,
 				E168478C2378F346001B6319 /* TitleTableViewCell.swift in Sources */,
 				E139B5432375D7C200FEF1F5 /* TabBarController.swift in Sources */,
+				E1CBFEF5237CFB3F00DAC25D /* DetailHeaderTableViewCell.swift in Sources */,
 				E16847942378FB66001B6319 /* AnotherContentTableViewCell.swift in Sources */,
 				E139B5452375D8B500FEF1F5 /* ConstantManager.swift in Sources */,
 				E1E3A8B62366CFC700F1571E /* Extension.swift in Sources */,
@@ -406,12 +482,18 @@
 				E1E3A89B2366CA8800F1571E /* AppDelegate.swift in Sources */,
 				E139B53A2375D6CA00FEF1F5 /* RegisterViewController.swift in Sources */,
 				E139B5412375D73600FEF1F5 /* BaseViewController.swift in Sources */,
+				E19D1AEB237BF10F003AFFBD /* CustomLanguageTableViewCell.swift in Sources */,
+				E17F32132379446300AEBCD5 /* ExperienceViewController.swift in Sources */,
 				E168479C237901D5001B6319 /* Model.swift in Sources */,
 				E168478823784463001B6319 /* AnotherDetailProfileTableViewCell.swift in Sources */,
 				E168477A237834DD001B6319 /* LanguageViewController.swift in Sources */,
+				E17F321B23794A6D00AEBCD5 /* MoreDetailTableViewCell.swift in Sources */,
+				E17F320F23793BFE00AEBCD5 /* EducationViewController.swift in Sources */,
 				E16847902378F88A001B6319 /* ContentTableViewCell.swift in Sources */,
+				E19D1AF0237BF274003AFFBD /* CustomExperienceTableViewCell.swift in Sources */,
 				E168477623782B0F001B6319 /* SkillsViewController.swift in Sources */,
-				E16847982378FFCB001B6319 /* ApplyButtonTableViewCell.swift in Sources */,
+				E1713A50237AC68C00F6A8A7 /* ContentViewTableViewCell.swift in Sources */,
+				E1CBFEFD237D00E100DAC25D /* EditPasswordViewController.swift in Sources */,
 				E139B5362375D6B700FEF1F5 /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -549,14 +631,15 @@
 			baseConfigurationReference = B5AF935F28FBC591A58065F5 /* Pods-Final Challenge.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7858P7ZUST;
+				DEVELOPMENT_TEAM = SK54WQSLHU;
 				INFOPLIST_FILE = "Final Challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Cls.Final-Challenge";
+				PRODUCT_BUNDLE_IDENTIFIER = "Cls.Final-Challenge-1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -568,14 +651,15 @@
 			baseConfigurationReference = C76413075F8403B967F6B41B /* Pods-Final Challenge.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7858P7ZUST;
+				DEVELOPMENT_TEAM = SK54WQSLHU;
 				INFOPLIST_FILE = "Final Challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Cls.Final-Challenge";
+				PRODUCT_BUNDLE_IDENTIFIER = "Cls.Final-Challenge-1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

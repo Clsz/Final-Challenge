@@ -1,42 +1,35 @@
 //
-//  LanguageViewController.swift
+//  EducationViewController.swift
 //  Final Challenge
 //
-//  Created by Muhammad Reynaldi on 10/11/19.
+//  Created by Muhammad Reynaldi on 11/11/19.
 //  Copyright © 2019 12. All rights reserved.
 //
 
 import UIKit
 
-class LanguageViewController: BaseViewController {
+class EducationViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    
     var dataArray:[Any?] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView(text: "Language")
+        setupView(text: "Education")
+        setupData()
         registerCell()
         cellDelegate()
-        setupData()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        setupView(text: "Language")
-    }
-    
-}
-
-extension LanguageViewController{
     func setupData() {
-        dataArray.append(("Language","Enter your Language",0))
-        dataArray.append(("Language Proficiency","Beginner",1))
+        dataArray.append(("School","Enter your School Name",0))
+        dataArray.append(("Education Type","High School",1))
+        dataArray.append(("Field of Study","Enter your Field of Study",0))
+        dataArray.append(("Grade","Enter your Grade",0))
     }
     
 }
-
-extension LanguageViewController:UITableViewDataSource,UITableViewDelegate{
+extension EducationViewController:UITableViewDataSource,UITableViewDelegate{
     func registerCell() {
         tableView.register(UINib(nibName: "DetailProfileTableViewCell", bundle: nil), forCellReuseIdentifier: "DetailProfileTableViewCell")
         tableView.register(UINib(nibName: "AnotherDetailProfileTableViewCell", bundle: nil), forCellReuseIdentifier: "AnotherDetailProfileTableViewCell")
@@ -59,7 +52,7 @@ extension LanguageViewController:UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.row == 0 ? 115 : 550
+        return indexPath.row == 3 ?  300 : 115
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -22,13 +22,6 @@ class DetailProfileTableViewCell: UITableViewCell, UITextFieldDelegate {
         super.awakeFromNib()
         // Initialization code
     }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField.textColor == UIColor.lightGray {
-            textField.text = ""
-            textField.textColor = UIColor.black
-        }
-    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
