@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,15 +20,37 @@
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xsY-Ga-IMZ">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEv-U9-Dcx">
+                    <rect key="frame" x="20" y="718" width="374" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U2F-Sh-Oeo">
+                            <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
+                            <state key="normal" title="Apply Language">
+                                <color key="titleColor" red="0.32549019610000002" green="0.78039215689999997" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="U2F-Sh-Oeo" secondAttribute="bottom" id="3ey-6g-a0B"/>
+                        <constraint firstAttribute="height" constant="44" id="4BG-aI-YJC"/>
+                        <constraint firstAttribute="trailing" secondItem="U2F-Sh-Oeo" secondAttribute="trailing" id="J4o-SA-Wk5"/>
+                        <constraint firstItem="U2F-Sh-Oeo" firstAttribute="top" secondItem="cEv-U9-Dcx" secondAttribute="top" id="U6F-sR-dhQ"/>
+                        <constraint firstItem="U2F-Sh-Oeo" firstAttribute="leading" secondItem="cEv-U9-Dcx" secondAttribute="leading" id="oDb-8Y-Zwk"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="cEv-U9-Dcx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="0Vd-Ly-Oio"/>
                 <constraint firstItem="xsY-Ga-IMZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="BZv-NN-hVx"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cEv-U9-Dcx" secondAttribute="trailing" constant="20" id="h2l-ol-aTq"/>
                 <constraint firstItem="xsY-Ga-IMZ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="jNk-cB-uAB"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="xsY-Ga-IMZ" secondAttribute="bottom" id="kBJ-XK-TBA"/>
                 <constraint firstItem="xsY-Ga-IMZ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="tvu-ny-QwO"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="cEv-U9-Dcx" secondAttribute="bottom" constant="100" id="zwK-NC-2Qx"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="137.68115942028987" y="136.60714285714286"/>

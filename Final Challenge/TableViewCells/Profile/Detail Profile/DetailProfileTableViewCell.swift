@@ -15,19 +15,12 @@ class DetailProfileTableViewCell: UITableViewCell, UITextFieldDelegate {
     var content:String?
     
     func setCell(text:String, content:String) {
-        label.text = text
-        textField.text = content
+        self.label.text = text
+        self.textField.text = content
     }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField.textColor == UIColor.lightGray {
-            textField.text = ""
-            textField.textColor = UIColor.black
-        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

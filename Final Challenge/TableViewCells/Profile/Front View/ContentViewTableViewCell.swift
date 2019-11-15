@@ -1,34 +1,32 @@
 //
-//  ApplyButtonTableViewCell.swift
+//  ContentViewTableViewCell.swift
 //  Final Challenge
 //
-//  Created by Muhammad Reynaldi on 11/11/19.
+//  Created by Muhammad Reynaldi on 12/11/19.
 //  Copyright © 2019 12. All rights reserved.
 //
 
 import UIKit
 
-protocol DetailProfileDelegate{
-    func addDetail(tutor:Tutor)
-}
-
-class ApplyButtonTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var button: UIButton!
+class ContentViewTableViewCell: UITableViewCell {
     
-    var delegate:DetailProfileDelegate?
-    var tutor:Tutor!
+    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var tableView: UITableView!
+    
+    func setView(text:String, button:String) {
+        self.label.text = text
+        self.button.setTitle(button, for: .normal)
+    }
+    
+    @IBAction func editTapped(_ sender: Any) {
+        
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        button.loginRound()
     }
-    
-    @IBAction func applyTapped(_ sender: Any) {
-        delegate?.addDetail(tutor: tutor)
-    }
-    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

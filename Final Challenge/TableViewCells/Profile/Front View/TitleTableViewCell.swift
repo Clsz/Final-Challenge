@@ -14,12 +14,20 @@ class TitleTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var universityLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
+    @IBOutlet weak var pencil: UIButton!
+    @IBOutlet weak var outerProfile: UIView!
+    var delegate:SGProtocol?
     
     func setView(image:String, name:String, university:String, age:Int) {
-        profileImage.image = UIImage(named: image)
-        nameLabel.text = name
-        universityLabel.text = university
-        ageLabel.text = String(age)
+        self.outerProfile.outerRound()
+        self.profileImage.setRounded()
+        self.nameLabel.text = name
+        self.universityLabel.text = university
+        self.ageLabel.text = String(age)
+    }
+    
+    @IBAction func pencilTapped(_ sender: Any) {
+        delegate?.pencilTapped()
     }
     
     override func awakeFromNib() {

@@ -33,7 +33,9 @@ class LoginViewController:BaseViewController{
     @IBAction func loginTapped(_ sender: Any) {
         validateFields()
     }
-    
+}
+
+extension LoginViewController{
     func setupView() {
         loginButton.loginRound()
         self.navigationController?.navigationBar.isHidden = true
@@ -69,11 +71,10 @@ class LoginViewController:BaseViewController{
                 DispatchQueue.main.async {
                     self.dismiss(animated: false, completion: nil)
                     print("Loggedin")
-                    let destVC = LanguageViewController()
+                    let destVC = SkillsViewController()
                     self.navigationController?.pushViewController(destVC, animated: true)
                 }
             }
         }
     }
-    
 }

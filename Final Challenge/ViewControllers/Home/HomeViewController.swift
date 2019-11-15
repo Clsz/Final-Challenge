@@ -16,7 +16,8 @@ class HomeViewController: BaseViewController {
         "Smart Mandarin Bimbel",
         "B Smart Bimbel",
         "Bimbel Salembra Group(SG)",
-        "Yayasan Pendidikan Avicenna Prestasi"
+        "Yayasan Pendidikan Avicenna Prestasi",
+        "Aldy bimbel"
     ]
     
     let bimbelLokasi = [
@@ -24,7 +25,8 @@ class HomeViewController: BaseViewController {
         "Kota Tangerang",
         "Jakarta Barat",
         "Kota Tangerang Selatan",
-        "Jakarta Selatan"
+        "Jakarta Selatan",
+         "Jakarta Selatan"
     ]
     
     let gajiBimbel = [
@@ -32,6 +34,7 @@ class HomeViewController: BaseViewController {
         "2.500.000 - 3.500.0000",
         "1.800.000 - 3.000.0000",
         "1.500.000 - 2.500.0000",
+        "4.000.000 - 5.000.0000",
         "4.000.000 - 5.000.0000"
     ]
     

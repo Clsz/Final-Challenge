@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ContentViewTableViewCellID" id="KGk-i7-Jjw" customClass="ContentViewTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="232"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="232"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Education" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o99-YQ-kmW">
+                        <rect key="frame" x="20" y="30" width="95.5" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="28" id="1t8-tT-pPb"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WBG-D5-IOL">
+                        <rect key="frame" x="284" y="30" width="110" height="28"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <state key="normal" title="Edit Education">
+                            <color key="titleColor" red="0.32549019610000002" green="0.78039215689999997" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="editTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="MAi-mO-mzQ"/>
+                        </connections>
+                    </button>
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ayv-Ty-EMs">
+                        <rect key="frame" x="20" y="66" width="374" height="166"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    </tableView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="WBG-D5-IOL" secondAttribute="trailing" constant="20" id="6EI-7b-xu4"/>
+                    <constraint firstAttribute="bottom" secondItem="Ayv-Ty-EMs" secondAttribute="bottom" id="Chy-7d-05f"/>
+                    <constraint firstAttribute="trailing" secondItem="Ayv-Ty-EMs" secondAttribute="trailing" constant="20" id="Ny9-xh-9QS"/>
+                    <constraint firstItem="Ayv-Ty-EMs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Tdh-XM-oky"/>
+                    <constraint firstItem="WBG-D5-IOL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="b6Z-i4-PBK"/>
+                    <constraint firstItem="o99-YQ-kmW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="bdg-Ca-t0U"/>
+                    <constraint firstItem="WBG-D5-IOL" firstAttribute="centerY" secondItem="o99-YQ-kmW" secondAttribute="centerY" id="c2A-6W-YRf"/>
+                    <constraint firstItem="o99-YQ-kmW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="how-75-oja"/>
+                    <constraint firstItem="WBG-D5-IOL" firstAttribute="height" secondItem="o99-YQ-kmW" secondAttribute="height" id="iwf-VR-kuw"/>
+                    <constraint firstItem="Ayv-Ty-EMs" firstAttribute="top" secondItem="o99-YQ-kmW" secondAttribute="bottom" constant="8" id="vEN-r9-fsa"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="button" destination="WBG-D5-IOL" id="Mxc-po-K8N"/>
+                <outlet property="label" destination="o99-YQ-kmW" id="VQt-rO-bZb"/>
+                <outlet property="tableView" destination="Ayv-Ty-EMs" id="Ox4-NC-kVz"/>
+            </connections>
+            <point key="canvasLocation" x="118.84057971014494" y="113.83928571428571"/>
+        </tableViewCell>
+    </objects>
+</document>

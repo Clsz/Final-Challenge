@@ -1,5 +1,5 @@
 //
-//  ContentTableViewCell.swift
+//  AnotherContentTableViewCell.swift
 //  Final Challenge
 //
 //  Created by Muhammad Reynaldi on 11/11/19.
@@ -8,25 +8,25 @@
 
 import UIKit
 
-class ContentTableViewCell: UITableViewCell {
+class AnotherContentTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var editButton: UIButton!
-    @IBOutlet weak var textView: UITextView!
-    var delegate:DetailProfileDelegate?
+    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var tableView: UITableView!
+    
     var tutor:Tutor!
     
-    func setView(title:String) {
-        titleLabel.text = title
-    }
-    
-    @IBAction func editTapped(_ sender: Any) {
-        delegate?.addDetail(tutor: tutor)
+    func setView(text:String, button:String) {
+        self.label.text = text
+        self.button.setTitle(button, for: .normal)
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    @IBAction func buttonTapped(_ sender: Any) {
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -5,7 +5,6 @@
 //  Created by Muhammad Reynaldi on 28/10/19.
 //  Copyright © 2019 12. All rights reserved.
 //
-
 import UIKit
 import Firebase
 
@@ -21,10 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().tintColor = ConstantManager.mainColor
         //Penting nih
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        
-        let rv = HomeViewController()
-        let navigationController = UINavigationController(rootViewController: rv)
-        window?.rootViewController = navigationController
+        self.tabBarController = TabBarController()
+        window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
         return true
     }
