@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Penting nih
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
-        let rv = FilterViewController()
+        let rv = HomeViewController()
         let navigationController = UINavigationController(rootViewController: rv)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

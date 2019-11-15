@@ -9,25 +9,48 @@
 import UIKit
 import Firebase
 
-class HomeViewController: UIViewController {
-
+class HomeViewController: BaseViewController {
+    
+    let bimbel = [
+        "Next Level Bimbel",
+        "Smart Mandarin Bimbel",
+        "B Smart Bimbel",
+        "Bimbel Salembra Group(SG)",
+        "Yayasan Pendidikan Avicenna Prestasi"
+    ]
+    
+    let bimbelLokasi = [
+        "Kota Tangerang Selatan",
+        "Kota Tangerang",
+        "Jakarta Barat",
+        "Kota Tangerang Selatan",
+        "Jakarta Selatan"
+    ]
+    
+    let gajiBimbel = [
+        "2.000.000 - 3.000.0000",
+        "2.500.000 - 3.500.0000",
+        "1.800.000 - 3.000.0000",
+        "1.500.000 - 2.500.0000",
+        "4.000.000 - 5.000.0000"
+    ]
+    
+    let images = UIImage(named: "school")
+    
     @IBOutlet weak var jobTableView: UITableView!
-      var dataArray:[Any?] = []
-        var course:Course!
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        cellDelegate()
-        setView()
-
+        cellDelegate()
+        registerCell()
         
     }
     
-     override func viewWillAppear(_ animated: Bool) {
-            setView()
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        setupView(text: "Pekerjaan")
+    }
     
     
     @IBAction func filterTapped(_ sender: UIButton) {
@@ -35,182 +58,45 @@ class HomeViewController: UIViewController {
         self.navigationController?.pushViewController(filterVC, animated: true)
     }
     
-        func setView() {
-            self.navigationItem.title = "Jobs"
-            self.navigationItem.largeTitleDisplayMode = .always
-            self.navigationController?.navigationBar.prefersLargeTitles = true
-        }
     
-//      func setupData() {
-//            dataArray.removeAll()
-//            dataArray.append(course)
-//            dataArray.append(("Address",false))
-//            dataArray.append(("Skill",true))
-//            dataArray.append(("Language",true))
-//            dataArray.append(("Education",true))
-//            dataArray.append(("Experience",true))
-//            dataArray.append(("Achievement",1))
-//        }
-//
-//    var courseID:String
-//      var courseName, courseAddress, courseImage:String
-//      var courseMinFare:Double
-//      var courseMaxFare:Double
-//      var courseWorkSchedule, courseCategory, courseGrade:[String]
-//      var courseWorkQualification:String
-//      var courseCreatedAt:String
-//      var teacherQty:Int
-
-//    func getUser() {
-//            let db = Firestore.firestore()
-//
-//            if let userID = Auth.auth().currentUser?.uid{
-//                db.collection("Tutor").document(userID).getDocument { (document, err) in
-//                    if let document = document?.data(){
-//
-//                        let educationID = document["educationID"] as? String ?? ""
-//                        let firstName = document["firstName"] as? String ?? ""
-//                        let lastName = document["lastName"] as? String ?? ""
-//                        let image = document["tutorImage"] as? String ?? ""
-//                        let phoneNumber = document["tutorPhoneNumber"] as? String ?? ""
-//                        let address = document["tutorAddress"] as? String ?? ""
-//                        let gender = document["tutorGender"] as? String ?? ""
-//                        let birthDate = document["tutorBirthDate"] as? String ?? ""
-//                        let skills = document["tutorSkill"] as? [String] ?? []
-//                        let experience = document["tutorExperience"] as? [String] ?? []
-//                        let language = document["tutorLanguage"] as? [String] ?? []
-//                        let achievement = document["tutorAchievement"] as? [String] ?? []
-//                        self.course = Course(userID,educationID,firstName,lastName,image,phoneNumber,address, gender,birthDate,skills,experience,language,achievement)
-//                        DispatchQueue.main.async {
-//                            self.jobTableView.reloadData()
-//                        }
-//                    } else {
-//                        print("Document does not exist")
-//                    }
-//                }
-//            }
-//    }
+    
 }
 
-  
+extension HomeViewController: UITableViewDataSource,UITableViewDelegate{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return bimbel.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "jobCell", for: indexPath) as! ListJobTableViewCell
+        
+        cell.bimbelView.layer.borderWidth = 3
+        cell.bimbelView.layer.borderColor = #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
+        cell.backgroundColor = #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
+        cell.bimbelView.layer.cornerRadius = 15
+        cell.bimbelView.layer.masksToBounds = true
+        cell.bimbelView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        cell.selectionStyle = .none
+        
+        cell.bimbelName.text = bimbel[indexPath.row]
+        cell.bimbelLocation.text = bimbelLokasi[indexPath.row]
+        cell.bimbelSubject.text = gajiBimbel[indexPath.row]
+        cell.bimbelPhoto.image = images
+        
+        return cell
+    }
+    
+    func cellDelegate(){
+        jobTableView.dataSource = self
+        jobTableView.delegate = self
+    }
+    
+    func registerCell() {
+        jobTableView.register(UINib(nibName: "ListJobTableViewCell", bundle: nil), forCellReuseIdentifier: "jobCell")
+    }
+    
+}
 
-//
-//extension HomeViewController:UITableViewDataSource,UITableViewDelegate{
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        <#code#>
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        <#code#>
-//    }
-//
-//
-//    func cellDelegate() {
-//        jobTableView.delegate = self
-//        jobTableView.dataSource = self
-//    }
-//
-//
-//}
 
 
 
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        getUser()
-//        self.setupData()
-//        self.registerCell()
-//        self.cellDelegate()
-
-//    }
-//
-//
-//    func setupData() {
-//        dataArray.removeAll()
-//        dataArray.append(tutor)
-//        dataArray.append(("Address",false))
-//        dataArray.append(("Skill",true))
-//        dataArray.append(("Language",true))
-//        dataArray.append(("Education",true))
-//        dataArray.append(("Experience",true))
-//        dataArray.append(("Achievement",1))
-//    }
-//
-//    func getUser() {
-//        let db = Firestore.firestore()
-//
-//        if let userID = Auth.auth().currentUser?.uid{
-//            db.collection("Tutor").document(userID).getDocument { (document, err) in
-//                if let document = document?.data(){
-//
-//                    let educationID = document["educationID"] as? String ?? ""
-//                    let firstName = document["firstName"] as? String ?? ""
-//                    let lastName = document["lastName"] as? String ?? ""
-//                    let image = document["tutorImage"] as? String ?? ""
-//                    let phoneNumber = document["tutorPhoneNumber"] as? String ?? ""
-//                    let address = document["tutorAddress"] as? String ?? ""
-//                    let gender = document["tutorGender"] as? String ?? ""
-//                    let birthDate = document["tutorBirthDate"] as? String ?? ""
-//                    let skills = document["tutorSkill"] as? [String] ?? []
-//                    let experience = document["tutorExperience"] as? [String] ?? []
-//                    let language = document["tutorLanguage"] as? [String] ?? []
-//                    let achievement = document["tutorAchievement"] as? [String] ?? []
-//                    self.tutor = Tutor(userID,educationID,firstName,lastName,image,phoneNumber,address, gender,birthDate,skills,experience,language,achievement)
-//                    DispatchQueue.main.async {
-//                        self.tableView.reloadData()
-//                    }
-//                } else {
-//                    print("Document does not exist")
-//                }
-//            }
-//        }
-//    }
-//
-//
-//
-//}
-//extension ProfileViewController:UITableViewDataSource, UITableViewDelegate{
-//
-//    func registerCell() {
-//        tableView.register(UINib(nibName: "TitleTableViewCell", bundle: nil), forCellReuseIdentifier: "titleTableHeaderCellID")
-//        tableView.register(UINib(nibName: "ContentTableViewCell", bundle: nil), forCellReuseIdentifier: "contentTableViewCellID")
-//        tableView.register(UINib(nibName: "AnotherContentTableViewCell", bundle: nil), forCellReuseIdentifier: "anotherContentTableViewCellID")
-//        tableView.register(UINib(nibName: "AchievementTableViewCell", bundle: nil), forCellReuseIdentifier: "achievementTableViewCellID")
-//    }
-//
-//    func cellDelegate() {
-//        tableView.delegate = self
-//        tableView.dataSource = self
-//    }
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return dataArray.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        if indexPath.row == 0 {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "titleTableHeaderCellID", for: indexPath) as! TitleTableViewCell
-//            if let tutor = dataArray[indexPath.row] as? Tutor {
-//                let fullName = tutor.tutorFirstName + " " + tutor.tutorLastName
-//                cell.setView(image: tutor.tutorImage, name: fullName, university: "Bina Nusantara", age: 21)
-//            }
-//            return cell
-//        }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:Bool){
-//            if keyValue.value == false{
-//                let cell = tableView.dequeueReusableCell(withIdentifier: "contentTableViewCellID", for: indexPath) as! ContentTableViewCell
-//                cell.setView(title: keyValue.key)
-//                return cell
-//            }else if keyValue.value == true{
-//                let cell = tableView.dequeueReusableCell(withIdentifier: "anotherContentTableViewCellID", for: indexPath) as! AnotherContentTableViewCell
-//                cell.setView(text: keyValue.key)
-//                return cell
-//            }
-//        }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:Int){
-//            if keyValue.value == 1{
-//                let cell = tableView.dequeueReusableCell(withIdentifier: "achievementTableViewCellID", for: indexPath) as! AchievementTableViewCell
-//
-//                return cell
-//            }
-//        }
-//        return UITableViewCell()
-//    }
-//}

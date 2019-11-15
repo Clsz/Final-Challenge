@@ -11,13 +11,7 @@ import UIKit
 class FilterViewController: BaseViewController {
     
     var salaryMin: Double?
-    
-    let lokasi = [
-        "Kota Tangerang",
-        "Jakarta Utara",
-        "Kota Serang",
-        "Jakarta Barat"
-    ]
+    var selectedIndex:[Int]?
     
     let subjek = [
         "Matematika",
@@ -43,6 +37,7 @@ class FilterViewController: BaseViewController {
     @IBOutlet weak var maxLabel: UILabel!
     @IBOutlet weak var minLabel: UILabel!
     @IBOutlet weak var maxSlide: UISlider!
+    
     
     @IBAction func minSlider(_ sender: UISlider) {
         let minSalary = Int((roundf(sender.value)*50000))
@@ -73,6 +68,7 @@ class FilterViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        LocationCV.reloadData()
         setupView(text: "Filter")
     }
     
@@ -88,11 +84,17 @@ class FilterViewController: BaseViewController {
     }
 }
 
+extension FilterViewController:AldiProtocol{
+    func sendIndex(arrIndex: [Int]) {
+        selectedIndex = arrIndex
+    }
+}
+
 extension FilterViewController:UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if (collectionView == self.LocationCV) {
-            return lokasi.count;
+            return ConstantManager.tempArray.count;
         }
         else if (collectionView  == subjectCV) {
             return  subjek.count
@@ -111,7 +113,7 @@ extension FilterViewController:UICollectionViewDataSource, UICollectionViewDeleg
             cell.kotakFilter.layer.borderColor = #colorLiteral(red: 0.2392156863, green: 0.431372549, blue: 0.8, alpha: 1)
             cell.kotakFilter.layer.borderWidth = 1
             
-            cell.labelFilter.text = lokasi[indexPath.row]
+            cell.labelFilter.text = ConstantManager.tempArray[indexPath.row]
             
             return cell
         }
