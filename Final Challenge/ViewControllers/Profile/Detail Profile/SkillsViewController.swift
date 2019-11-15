@@ -14,10 +14,12 @@ class SkillsViewController: BaseViewController {
     @IBOutlet weak var hardSkillsCV: UICollectionView!
     @IBOutlet weak var softSkillsCV: UICollectionView!
     @IBOutlet weak var applyButton: UIButton!
+    var tutor:Tutor!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView(text: "Skill")
+        applyButton.loginRound()
     }
     
     override func viewWillAppear(_ animated: Bool) {

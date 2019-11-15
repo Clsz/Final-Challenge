@@ -13,7 +13,7 @@ class ContentTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
-    var delegate:SGProtocol?
+    var contentDelegate:SGProtocol?
     var tutor:Tutor!
     
     func setView(title:String,button:String) {
@@ -23,6 +23,7 @@ class ContentTableViewCell: UITableViewCell {
     }
     
     @IBAction func editTapped(_ sender: Any) {
+        contentDelegate?.skillTapped()
     }
     
     override func awakeFromNib() {

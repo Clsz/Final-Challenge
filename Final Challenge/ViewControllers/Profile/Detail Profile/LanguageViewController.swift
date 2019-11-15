@@ -11,10 +11,10 @@ import UIKit
 class LanguageViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    
     var dataArray:[Any?] = []
     let content = "DetailProfileTableViewCellID"
     let contentDrop = "AnotherDetailProfileTableViewCellID"
+    var tutor:Tutor!
     
     override func viewDidLoad() {
         super.viewDidLoad()

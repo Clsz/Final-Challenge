@@ -57,27 +57,31 @@ extension ProfileViewController{
 
 extension ProfileViewController:SGProtocol{
     func skillTapped() {
-        print("")
-        
+        let destVC = SkillsViewController()
+        destVC.tutor = self.tutor
+        navigationController?.pushViewController(destVC, animated: true)
     }
     
     func languageTapped() {
-        print("")
-        
+        let destVC = LanguageViewController()
+        destVC.tutor = self.tutor
+        navigationController?.pushViewController(destVC, animated: true)
     }
     
     func educationTapped() {
-        print("")
-        
+        let destVC = EducationViewController()
+        destVC.tutor = self.tutor
+        navigationController?.pushViewController(destVC, animated: true)
     }
     
     func experienceTapped() {
-        print("")
-        
+        let destVC = ExperienceViewController()
+        destVC.tutor = self.tutor
+        navigationController?.pushViewController(destVC, animated: true)
     }
     
     func achievementTapped() {
-        print("")
+        //Picker
     }
     
     func pencilTapped() {
@@ -115,25 +119,30 @@ extension ProfileViewController:UITableViewDataSource, UITableViewDelegate{
                 let fullName = tutor.tutorFirstName + " " + tutor.tutorLastName
                 cell.setView(image: tutor.tutorImage, name: fullName, university: "Bina Nusantara", age: 22)
             }
-            cell.delegate = self
+            cell.contentDelegate = self
             return cell
         }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:String, code:Int){
             if keyValue.code == 0{
                 let cell = tableView.dequeueReusableCell(withIdentifier: content, for: indexPath) as! ContentTableViewCell
                 cell.setView(title: keyValue.key, button: keyValue.value)
+                cell.contentDelegate =  self
                 return cell
             }else if keyValue.code == 1{
                 let cell = tableView.dequeueReusableCell(withIdentifier: contentView, for: indexPath) as! ContentViewTableViewCell
                 cell.setView(text: keyValue.key, button: keyValue.value)
+                cell.contentDelegate = self
                 return cell
             }else if keyValue.code == 2{
                 let cell = tableView.dequeueReusableCell(withIdentifier: achievement, for: indexPath) as! AchievementTableViewCell
                 cell.setView(label: keyValue.key, button: keyValue.value)
+                cell.contentDelegate = self
                 return cell
             }
         }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:String){
             let cell = tableView.dequeueReusableCell(withIdentifier: anotherContent, for: indexPath) as! AnotherContentTableViewCell
             cell.setView(text: keyValue.key, button: keyValue.value)
+            cell.customIndex = indexPath.row
+            cell.contentDelegate = self
             return cell
         }
         return UITableViewCell()

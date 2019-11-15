@@ -14,6 +14,7 @@ class EducationViewController: BaseViewController {
     var dataArray:[Any?] = []
     let content = "DetailProfileTableViewCellID"
     let contentDrop = "AnotherDetailProfileTableViewCellID"
+    var tutor:Tutor!
     
     override func viewDidLoad() {
         super.viewDidLoad()
