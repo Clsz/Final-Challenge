@@ -24,6 +24,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
         return true
+        
+//        let rv = DetailBimbelViewController()
+//        let navigationController = UINavigationController(rootViewController: rv)
+//        window?.rootViewController = navigationController
+//        window?.makeKeyAndVisible()
+//        return true
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
