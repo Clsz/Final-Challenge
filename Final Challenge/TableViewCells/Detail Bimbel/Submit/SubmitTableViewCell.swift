@@ -21,4 +21,6 @@ class SubmitTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func requestTapped(_ sender: UIButton) {
+    }
 }

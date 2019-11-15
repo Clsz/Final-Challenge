@@ -10,6 +10,7 @@ import UIKit
 
 class QualificationTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var kualifikasiLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

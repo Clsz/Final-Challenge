@@ -10,6 +10,7 @@ import UIKit
 
 class SalaryTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var salaryLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

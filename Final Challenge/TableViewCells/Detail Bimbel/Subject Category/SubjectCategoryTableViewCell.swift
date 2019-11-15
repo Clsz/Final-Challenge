@@ -9,7 +9,8 @@
 import UIKit
 
 class SubjectCategoryTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var subjekCV: UICollectionView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

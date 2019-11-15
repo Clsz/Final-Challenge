@@ -8,12 +8,16 @@
 
 import UIKit
 
-class DetailBimbelViewController: UIViewController {
+class DetailBimbelViewController: HomeViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setupView(text: "Detail Pekerjaan")
     }
 
 

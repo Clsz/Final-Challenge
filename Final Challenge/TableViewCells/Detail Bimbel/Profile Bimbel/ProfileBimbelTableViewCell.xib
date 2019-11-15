@@ -45,6 +45,11 @@
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.92157477139999999" green="0.92155748609999999" blue="0.92156922819999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="imageBimbel" destination="yEN-lk-3vZ" id="YBk-Ud-kc6"/>
+                <outlet property="lokasiBimbel" destination="NT3-Tp-nQe" id="Usk-1J-CgA"/>
+                <outlet property="namaBimbel" destination="RyE-j1-bLj" id="9O8-2A-WSA"/>
+            </connections>
             <point key="canvasLocation" x="137.68115942028987" y="109.82142857142857"/>
         </tableViewCell>
     </objects>

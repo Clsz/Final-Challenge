@@ -10,6 +10,9 @@ import UIKit
 
 class ProfileBimbelTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var imageBimbel: UIImageView!
+    @IBOutlet weak var namaBimbel: UILabel!
+    @IBOutlet weak var lokasiBimbel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         

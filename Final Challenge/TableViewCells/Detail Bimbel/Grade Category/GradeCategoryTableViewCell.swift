@@ -10,6 +10,7 @@ import UIKit
 
 class GradeCategoryTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var gradeCV: UICollectionView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

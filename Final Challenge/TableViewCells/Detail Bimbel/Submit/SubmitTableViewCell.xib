@@ -29,6 +29,9 @@
                                 <integer key="value" value="10"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="requestTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="e7x-m3-tYI"/>
+                        </connections>
                     </button>
                 </subviews>
             </tableViewCellContentView>
