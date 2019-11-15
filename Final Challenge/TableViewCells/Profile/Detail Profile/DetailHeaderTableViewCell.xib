@@ -85,6 +85,9 @@
                         <state key="normal" title="   Change Password">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
+                        <connections>
+                            <action selector="changePasswordTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="iQM-3s-AGF"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   You can change your password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uyf-o0-Iri">
                         <rect key="frame" x="20" y="712.5" width="374" height="16"/>
@@ -150,7 +153,7 @@
                 <outlet property="addressTV" destination="znR-Qo-RC0" id="vf2-Yp-kIi"/>
                 <outlet property="ageTF" destination="67V-Q4-d65" id="CAb-eZ-moO"/>
                 <outlet property="applyButton" destination="a4q-zX-dk6" id="BQF-8P-k1O"/>
-                <outlet property="changeButton" destination="EK9-Yt-cCl" id="O9N-hv-UfX"/>
+                <outlet property="changeButton" destination="EK9-Yt-cCl" id="INK-ID-lRJ"/>
                 <outlet property="nameTF" destination="JcV-3b-hUx" id="iAf-p7-lQe"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="103.45982142857143"/>

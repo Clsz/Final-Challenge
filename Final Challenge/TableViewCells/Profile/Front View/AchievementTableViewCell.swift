@@ -13,7 +13,7 @@ class AchievementTableViewCell: UITableViewCell {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
-//    var delegate:DetailProfileDelegate?
+    var contentDelegate:SGProtocol?
     var tutor:Tutor!
     
     func setView(label:String, button:String) {
@@ -28,6 +28,7 @@ class AchievementTableViewCell: UITableViewCell {
     }
 
     @IBAction func addTapped(_ sender: Any) {
+        contentDelegate?.achievementTapped()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

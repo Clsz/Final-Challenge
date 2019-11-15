@@ -32,9 +32,12 @@ class DetailHeaderTableViewCell: UITableViewCell {
         self.addressTV.outerRound()
     }
     
-    @IBAction func applyTapped(_ sender: Any) {
-        print("asd")
+    
+    @IBAction func changePasswordTapped(_ sender: Any) {
         delegate?.changePassword()
+    }
+    
+    @IBAction func applyTapped(_ sender: Any) {
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

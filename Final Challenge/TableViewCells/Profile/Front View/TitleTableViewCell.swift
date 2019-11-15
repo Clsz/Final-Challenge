@@ -16,7 +16,7 @@ class TitleTableViewCell: UITableViewCell {
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var pencil: UIButton!
     @IBOutlet weak var outerProfile: UIView!
-    var delegate:SGProtocol?
+    var contentDelegate:SGProtocol?
     
     func setView(image:String, name:String, university:String, age:Int) {
         self.outerProfile.outerRound()
@@ -27,7 +27,7 @@ class TitleTableViewCell: UITableViewCell {
     }
     
     @IBAction func pencilTapped(_ sender: Any) {
-        delegate?.pencilTapped()
+        contentDelegate?.pencilTapped()
     }
     
     override func awakeFromNib() {

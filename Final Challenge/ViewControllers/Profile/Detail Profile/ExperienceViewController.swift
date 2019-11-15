@@ -15,6 +15,7 @@ class ExperienceViewController: BaseViewController {
     let content = "DetailProfileTableViewCellID"
     let contentDrop = "AnotherDetailProfileTableViewCellID"
     let contentDate = "MoreDetailTableViewCellID"
+    var tutor:Tutor!
     
     override func viewDidLoad() {
         super.viewDidLoad()

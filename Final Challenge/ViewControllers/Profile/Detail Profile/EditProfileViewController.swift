@@ -29,9 +29,8 @@ class EditProfileViewController: BaseViewController {
 
 extension EditProfileViewController:editPassword{
     func changePassword() {
-        print("asd")
         let destVC = EditPasswordViewController()
-        destVC.oldPasswordTF.text = tutor.password
+        destVC.oldPassword = tutor.password
         self.navigationController?.pushViewController(destVC, animated: true)
     }
     
