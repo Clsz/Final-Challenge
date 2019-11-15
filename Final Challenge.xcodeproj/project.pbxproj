@@ -21,6 +21,10 @@
 		148C434F237C3AC000B87174 /* SubjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 148C434D237C3AC000B87174 /* SubjectViewController.xib */; };
 		148C4355237C3D3300B87174 /* SubjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148C4353237C3D3300B87174 /* SubjectTableViewCell.swift */; };
 		148C4356237C3D3300B87174 /* SubjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 148C4354237C3D3300B87174 /* SubjectTableViewCell.xib */; };
+		148C435C237D836100B87174 /* DetailBimbelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148C435A237D836100B87174 /* DetailBimbelViewController.swift */; };
+		148C435D237D836100B87174 /* DetailBimbelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 148C435B237D836100B87174 /* DetailBimbelViewController.xib */; };
+		148C4361237E97FB00B87174 /* ProfileBimbelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148C435F237E97FB00B87174 /* ProfileBimbelTableViewCell.swift */; };
+		148C4362237E97FB00B87174 /* ProfileBimbelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 148C4360237E97FB00B87174 /* ProfileBimbelTableViewCell.xib */; };
 		14C1018223793DCF0074469D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C1018023793DCF0074469D /* HomeViewController.swift */; };
 		14C1018323793DCF0074469D /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14C1018123793DCF0074469D /* HomeViewController.xib */; };
 		14C10188237943300074469D /* ListJobTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C10186237943300074469D /* ListJobTableViewCell.swift */; };
@@ -76,6 +80,10 @@
 		148C434D237C3AC000B87174 /* SubjectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubjectViewController.xib; sourceTree = "<group>"; };
 		148C4353237C3D3300B87174 /* SubjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectTableViewCell.swift; sourceTree = "<group>"; };
 		148C4354237C3D3300B87174 /* SubjectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubjectTableViewCell.xib; sourceTree = "<group>"; };
+		148C435A237D836100B87174 /* DetailBimbelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBimbelViewController.swift; sourceTree = "<group>"; };
+		148C435B237D836100B87174 /* DetailBimbelViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailBimbelViewController.xib; sourceTree = "<group>"; };
+		148C435F237E97FB00B87174 /* ProfileBimbelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBimbelTableViewCell.swift; sourceTree = "<group>"; };
+		148C4360237E97FB00B87174 /* ProfileBimbelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileBimbelTableViewCell.xib; sourceTree = "<group>"; };
 		14C1018023793DCF0074469D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		14C1018123793DCF0074469D /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		14C10186237943300074469D /* ListJobTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListJobTableViewCell.swift; sourceTree = "<group>"; };
@@ -207,6 +215,24 @@
 			path = Subject;
 			sourceTree = "<group>";
 		};
+		148C4357237D7FE100B87174 /* Detail Bimbel */ = {
+			isa = PBXGroup;
+			children = (
+				148C435A237D836100B87174 /* DetailBimbelViewController.swift */,
+				148C435B237D836100B87174 /* DetailBimbelViewController.xib */,
+			);
+			path = "Detail Bimbel";
+			sourceTree = "<group>";
+		};
+		148C435E237E978C00B87174 /* Detail Bimbel */ = {
+			isa = PBXGroup;
+			children = (
+				148C435F237E97FB00B87174 /* ProfileBimbelTableViewCell.swift */,
+				148C4360237E97FB00B87174 /* ProfileBimbelTableViewCell.xib */,
+			);
+			path = "Detail Bimbel";
+			sourceTree = "<group>";
+		};
 		14C1018423793DD90074469D /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +271,7 @@
 		E139B5302375D41C00FEF1F5 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				148C435E237E978C00B87174 /* Detail Bimbel */,
 				14C10185237943110074469D /* Home */,
 				148C4344237C116900B87174 /* Filter */,
 				E168477C23784167001B6319 /* Profile */,
@@ -255,6 +282,7 @@
 		E139B5312375D44D00FEF1F5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				148C4357237D7FE100B87174 /* Detail Bimbel */,
 				145705D4237A9BE60093E944 /* Filter */,
 				14C1018423793DD90074469D /* Home */,
 				E139B5332375D6A300FEF1F5 /* Login */,
@@ -477,6 +505,8 @@
 				E168478523784354001B6319 /* DetailProfileTableViewCell.xib in Resources */,
 				14C10189237943300074469D /* ListJobTableViewCell.xib in Resources */,
 				148C4356237C3D3300B87174 /* SubjectTableViewCell.xib in Resources */,
+				148C4362237E97FB00B87174 /* ProfileBimbelTableViewCell.xib in Resources */,
+				148C435D237D836100B87174 /* DetailBimbelViewController.xib in Resources */,
 				E168478923784463001B6319 /* AnotherDetailProfileTableViewCell.xib in Resources */,
 				145705DA237A9C130093E944 /* FilterViewController.xib in Resources */,
 				14C1018323793DCF0074469D /* HomeViewController.xib in Resources */,
@@ -536,6 +566,7 @@
 				E139B53E2375D6E400FEF1F5 /* ProfileViewController.swift in Sources */,
 				E1B553A623792AA400FDBBCE /* ProfileFooterViewCell.swift in Sources */,
 				E168478C2378F346001B6319 /* TitleTableViewCell.swift in Sources */,
+				148C435C237D836100B87174 /* DetailBimbelViewController.swift in Sources */,
 				E139B5432375D7C200FEF1F5 /* TabBarController.swift in Sources */,
 				E16847942378FB66001B6319 /* AnotherContentTableViewCell.swift in Sources */,
 				E139B5452375D8B500FEF1F5 /* ConstantManager.swift in Sources */,
@@ -551,6 +582,7 @@
 				E168478823784463001B6319 /* AnotherDetailProfileTableViewCell.swift in Sources */,
 				148C4341237C07F900B87174 /* LocationViewController.swift in Sources */,
 				148C4347237C118A00B87174 /* LocationTableViewCell.swift in Sources */,
+				148C4361237E97FB00B87174 /* ProfileBimbelTableViewCell.swift in Sources */,
 				E168477A237834DD001B6319 /* LanguageViewController.swift in Sources */,
 				14C1018223793DCF0074469D /* HomeViewController.swift in Sources */,
 				145705D9237A9C130093E944 /* FilterViewController.swift in Sources */,
