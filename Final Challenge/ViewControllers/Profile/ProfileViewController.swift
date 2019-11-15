@@ -11,11 +11,11 @@ import Firebase
 import FirebaseAuth
 
 class ProfileViewController: BaseViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
+    
     var dataArray:[Any?] = []
     var tutor:Tutor!
-    
     let header = "TitleTableViewCellID"
     let content = "ContentTableViewCellID"
     let anotherContent = "AnotherContentTableViewCellID"
@@ -24,9 +24,10 @@ class ProfileViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getUser()
+        getData()
         registerCell()
         cellDelegate()
+        setupData()
         setupView(text: "Profile")
     }
     
@@ -35,6 +36,7 @@ class ProfileViewController: BaseViewController {
     }
     
 }
+
 extension ProfileViewController{
     
     func setupData() {
@@ -46,36 +48,42 @@ extension ProfileViewController{
         dataArray.append(("Experience","Add Experience"))
         dataArray.append(("Achievement","Add Achievement",2))
     }
+    
+    func getData() {
+        self.tutor  = Tutor("01", "02", "jason@gmail.com", "12345", "Jason Valencius", "Wijaya", "", "082298222301", "Ruko Tol Boulevard Blok E No. 20-22, Jl. Pahlawan Seribu, Serpong, Rw. Buntu, Kec. Serpong, Kota Tangerang Selatan, Banten 15318 ", "Pria", "14/02/1997", ["Mobile Application","Algebra","Communication","Integrity","Geometry"], ["Junior Developer Academy","Teaching Assistant"], ["English","Mandarin"], [])
+    }
+    
+}
 
-    func getUser() {
-        let db = Firestore.firestore()
+extension ProfileViewController:SGProtocol{
+    func skillTapped() {
+        print("")
         
-        if let userID = Auth.auth().currentUser?.uid{
-            db.collection("Tutor").document(userID).getDocument { (document, err) in
-                if let document = document?.data(){
-                    
-                    let educationID = document["educationID"] as? String ?? ""
-                    let firstName = document["firstName"] as? String ?? ""
-                    let lastName = document["lastName"] as? String ?? ""
-                    let image = document["tutorImage"] as? String ?? ""
-                    let phoneNumber = document["tutorPhoneNumber"] as? String ?? ""
-                    let address = document["tutorAddress"] as? String ?? ""
-                    let gender = document["tutorGender"] as? String ?? ""
-                    let birthDate = document["tutorBirthDate"] as? String ?? ""
-                    let skills = document["tutorSkill"] as? [String] ?? []
-                    let experience = document["tutorExperience"] as? [String] ?? []
-                    let language = document["tutorLanguage"] as? [String] ?? []
-                    let achievement = document["tutorAchievement"] as? [String] ?? []
-                    self.tutor = Tutor(userID,educationID,firstName,lastName,image,phoneNumber,address, gender,birthDate,skills,experience,language,achievement)
-                    DispatchQueue.main.async {
-                        self.setupData()
-                        self.tableView.reloadData()
-                    }
-                } else {
-                    print("Document does not exist")
-                }
-            }
-        }
+    }
+    
+    func languageTapped() {
+        print("")
+        
+    }
+    
+    func educationTapped() {
+        print("")
+        
+    }
+    
+    func experienceTapped() {
+        print("")
+        
+    }
+    
+    func achievementTapped() {
+        print("")
+    }
+    
+    func pencilTapped() {
+        let destVC = EditProfileViewController()
+        destVC.tutor = self.tutor
+        navigationController?.pushViewController(destVC, animated: true)
     }
     
 }
@@ -99,17 +107,15 @@ extension ProfileViewController:UITableViewDataSource, UITableViewDelegate{
         return dataArray.count
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 247
-    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: header, for: indexPath) as! TitleTableViewCell
             if let tutor = dataArray[indexPath.row] as? Tutor {
                 let fullName = tutor.tutorFirstName + " " + tutor.tutorLastName
-                cell.setView(image: tutor.tutorImage, name: "fullName", university: "Bina Nusantara", age: 21)
+                cell.setView(image: tutor.tutorImage, name: fullName, university: "Bina Nusantara", age: 22)
             }
+            cell.delegate = self
             return cell
         }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:String, code:Int){
             if keyValue.code == 0{
@@ -133,3 +139,34 @@ extension ProfileViewController:UITableViewDataSource, UITableViewDelegate{
         return UITableViewCell()
     }
 }
+
+//    func getUser() {
+//        let db = Firestore.firestore()
+//
+//        if let userID = Auth.auth().currentUser?.uid{
+//            db.collection("Tutor").document(userID).getDocument { (document, err) in
+//                if let document = document?.data(){
+//
+//                    let educationID = document["educationID"] as? String ?? ""
+//                    let firstName = document["firstName"] as? String ?? ""
+//                    let lastName = document["lastName"] as? String ?? ""
+//                    let image = document["tutorImage"] as? String ?? ""
+//                    let phoneNumber = document["tutorPhoneNumber"] as? String ?? ""
+//                    let address = document["tutorAddress"] as? String ?? ""
+//                    let gender = document["tutorGender"] as? String ?? ""
+//                    let birthDate = document["tutorBirthDate"] as? String ?? ""
+//                    let skills = document["tutorSkill"] as? [String] ?? []
+//                    let experience = document["tutorExperience"] as? [String] ?? []
+//                    let language = document["tutorLanguage"] as? [String] ?? []
+//                    let achievement = document["tutorAchievement"] as? [String] ?? []
+//                    self.tutor = Tutor(userID,educationID,firstName,lastName,image,phoneNumber,address, gender,birthDate,skills,experience,language,achievement)
+//                    DispatchQueue.main.async {
+//                        self.setupData()
+//                        self.tableView.reloadData()
+//                    }
+//                } else {
+//                    print("Document does not exist")
+//                }
+//            }
+//        }
+//    }

@@ -17,6 +17,7 @@ class AchievementTableViewCell: UITableViewCell {
     var tutor:Tutor!
     
     func setView(label:String, button:String) {
+        self.collectionView.outerRound()
         self.label.text = label
         self.button.setTitle(button, for: .normal)
     }

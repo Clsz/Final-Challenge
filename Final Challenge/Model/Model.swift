@@ -28,13 +28,17 @@ struct Activity{
 class Tutor{
     var tutorID:String
     var educationID:String
+    var email:String
+    var password:String
     var tutorFirstName, tutorLastName, tutorImage, tutorPhoneNumber, tutorAddress, tutorGender:String
     var tutorBirthDate:String
     var tutorSkills, tutorExperience, tutorLanguage, tutorAchievement:[String]
     
-    init(_ tutorID:String, _ educationID:String, _ tutorFirstName:String, _ tutorLastName:String, _ tutorImage:String, _ tutorPhoneNumber:String, _ tutorAddress:String, _ tutorGender:String, _ tutorBirthDate:String, _ tutorSkills:[String], _ tutorExperience:[String], _ tutorLanguage:[String], _ tutorAchievement:[String]) {
+    init(_ tutorID:String, _ educationID:String, _ email:String, _ password:String, _ tutorFirstName:String, _ tutorLastName:String, _ tutorImage:String, _ tutorPhoneNumber:String, _ tutorAddress:String, _ tutorGender:String, _ tutorBirthDate:String, _ tutorSkills:[String], _ tutorExperience:[String], _ tutorLanguage:[String], _ tutorAchievement:[String]) {
         self.tutorID = tutorID
         self.educationID = educationID
+        self.email = email
+        self.password = password
         self.tutorFirstName = tutorFirstName
         self.tutorLastName = tutorLastName
         self.tutorImage = tutorImage

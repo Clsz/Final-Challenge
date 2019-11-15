@@ -13,8 +13,8 @@ class ProfileFooterViewCell: UITableViewHeaderFooterView {
     @IBOutlet weak var button: UIButton!
     
     func setView(text:String) {
-        button.titleLabel?.text = text
-        button.loginRound()
+        self.button.titleLabel?.text = text
+        self.button.loginRound()
     }
     @IBAction func applyTapped(_ sender: Any) {
     }

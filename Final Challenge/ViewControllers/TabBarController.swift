@@ -9,13 +9,28 @@
 import UIKit
 
 class TabBarController: UITabBarController {
-
+    
+    var homeNav:UINavigationController!
+    var homeVC: HomeViewController!
+    var profileNav:UINavigationController!
+    var profileVC: ProfileViewController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setTabBar()
     }
     
     func setTabBar() {
+        homeVC = HomeViewController()
+        homeNav = UINavigationController(rootViewController: homeVC)
+        homeNav.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "networking"), selectedImage: UIImage(named: "networking"))
+        
+        profileVC = ProfileViewController()
+        profileNav = UINavigationController(rootViewController: profileVC)
+        profileNav.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "reunion"), selectedImage: UIImage(named: "reunion"))
+
+        let tabBarList:[UIViewController] = [homeNav,profileNav]
+
+        viewControllers = tabBarList
     }
 }

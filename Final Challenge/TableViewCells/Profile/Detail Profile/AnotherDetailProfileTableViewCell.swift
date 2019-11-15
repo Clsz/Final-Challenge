@@ -14,8 +14,8 @@ class AnotherDetailProfileTableViewCell: UITableViewCell {
     @IBOutlet weak var button: UIButton!
     
     func setCell(text:String, content:String) {
-        label.text = text
-        button.setTitle(content, for: .normal)
+        self.label.text = text
+        self.button.setTitle(content, for: .normal)
     }
     
     @IBAction func dropDownTapped(_ sender: Any) {

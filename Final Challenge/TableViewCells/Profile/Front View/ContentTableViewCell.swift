@@ -13,12 +13,13 @@ class ContentTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
-    //    var delegate:DetailProfileDelegate?
+    var delegate:SGProtocol?
     var tutor:Tutor!
     
     func setView(title:String,button:String) {
-        titleLabel.text = title
-        editButton.setTitle(button, for: .normal)
+        self.collectionView.outerRound()
+        self.titleLabel.text = title
+        self.editButton.setTitle(button, for: .normal)
     }
     
     @IBAction func editTapped(_ sender: Any) {

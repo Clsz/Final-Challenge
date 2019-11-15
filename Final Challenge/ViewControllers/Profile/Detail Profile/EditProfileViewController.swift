@@ -13,13 +13,12 @@ class EditProfileViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     
     let detailProfile = "DetailHeaderTableViewCellID"
+    var tutor:Tutor!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         cellDelegate()
         registerCell()
-        setupView(text: "Personal")
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,14 +27,26 @@ class EditProfileViewController: BaseViewController {
 
 }
 
+extension EditProfileViewController:editPassword{
+    func changePassword() {
+        print("asd")
+        let destVC = EditPasswordViewController()
+        destVC.oldPasswordTF.text = tutor.password
+        self.navigationController?.pushViewController(destVC, animated: true)
+    }
+    
+}
+
 extension EditProfileViewController:UITableViewDataSource, UITableViewDelegate{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: detailProfile, for: indexPath) as! DetailHeaderTableViewCell
-        cell.setView()
+        let fullName = tutor.tutorFirstName + " " + tutor.tutorLastName
+        cell.setView(name: fullName, age: tutor.tutorBirthDate, address: tutor.tutorAddress)
+        cell.delegate = self
         return cell
     }
     

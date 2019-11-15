@@ -13,14 +13,14 @@ class ContentViewTableViewCell: UITableViewCell {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var editTapped: UIButton!
     
     func setView(text:String, button:String) {
         self.label.text = text
         self.button.setTitle(button, for: .normal)
     }
     
-    @IBAction func addTapped(_ sender: Any) {
+    @IBAction func editTapped(_ sender: Any) {
+        
     }
     
     override func awakeFromNib() {

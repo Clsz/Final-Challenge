@@ -21,11 +21,12 @@ class AnotherContentTableViewCell: UITableViewCell {
         self.button.setTitle(button, for: .normal)
     }
     
-    @IBAction func addTapped(_ sender: Any) {
-    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    @IBAction func buttonTapped(_ sender: Any) {
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

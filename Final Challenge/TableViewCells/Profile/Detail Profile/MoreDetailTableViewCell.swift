@@ -16,11 +16,10 @@ class MoreDetailTableViewCell: UITableViewCell {
     @IBOutlet weak var endButton: UIButton!
     
     func setView(startText:String, endText:String, buttStart:String, buttEnd:String) {
-        
-        startLabel.text = startText
-        endLabel.text = endText
-        startButton.setTitle(buttStart, for: .normal)
-        endButton.setTitle(buttEnd, for: .normal)
+        self.startLabel.text = startText
+        self.endLabel.text = endText
+        self.startButton.setTitle(buttStart, for: .normal)
+        self.endButton.setTitle(buttEnd, for: .normal)
     }
     
     @IBAction func startTapped(_ sender: Any) {

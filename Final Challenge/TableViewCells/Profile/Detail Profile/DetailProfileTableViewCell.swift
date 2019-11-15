@@ -15,8 +15,8 @@ class DetailProfileTableViewCell: UITableViewCell, UITextFieldDelegate {
     var content:String?
     
     func setCell(text:String, content:String) {
-        label.text = text
-        textField.text = content
+        self.label.text = text
+        self.textField.text = content
     }
     override func awakeFromNib() {
         super.awakeFromNib()

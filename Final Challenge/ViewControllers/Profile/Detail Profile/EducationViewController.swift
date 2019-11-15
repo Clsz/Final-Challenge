@@ -12,6 +12,8 @@ class EducationViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var dataArray:[Any?] = []
+    let content = "DetailProfileTableViewCellID"
+    let contentDrop = "AnotherDetailProfileTableViewCellID"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +25,7 @@ class EducationViewController: BaseViewController {
     
     func setupData() {
         dataArray.append(("School","Enter your School Name",0))
-        dataArray.append(("Education Type","High School",1))
+        dataArray.append(("Education Type","",1))
         dataArray.append(("Field of Study","Enter your Field of Study",0))
         dataArray.append(("Grade","Enter your Grade",0))
     }
@@ -31,9 +33,8 @@ class EducationViewController: BaseViewController {
 }
 extension EducationViewController:UITableViewDataSource,UITableViewDelegate{
     func registerCell() {
-        tableView.register(UINib(nibName: "DetailProfileTableViewCell", bundle: nil), forCellReuseIdentifier: "DetailProfileTableViewCell")
-        tableView.register(UINib(nibName: "AnotherDetailProfileTableViewCell", bundle: nil), forCellReuseIdentifier: "AnotherDetailProfileTableViewCell")
-        tableView.register(UINib(nibName: "ProfileFooterViewCell", bundle: nil), forHeaderFooterViewReuseIdentifier: "ProfileFooterViewCell")
+        tableView.register(UINib(nibName: "DetailProfileTableViewCell", bundle: nil), forCellReuseIdentifier: content)
+        tableView.register(UINib(nibName: "AnotherDetailProfileTableViewCell", bundle: nil), forCellReuseIdentifier: contentDrop)
     }
     
     func cellDelegate() {
@@ -45,24 +46,15 @@ extension EducationViewController:UITableViewDataSource,UITableViewDelegate{
         return dataArray.count
     }
     
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ProfileFooterViewCell") as! ProfileFooterViewCell
-        footerView.setView(text: "Apply Language")
-        return footerView
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.row == 3 ?  300 : 115
-    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let keyValue = dataArray[indexPath.row] as? (key:String,value:String,code:Int){
             if keyValue.code == 0{
-                let cell = tableView.dequeueReusableCell(withIdentifier: "DetailProfileTableViewCell", for: indexPath) as! DetailProfileTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: content, for: indexPath) as! DetailProfileTableViewCell
                 cell.setCell(text: keyValue.key, content: keyValue.value)
                 return cell
             }else{
-                let cell = tableView.dequeueReusableCell(withIdentifier: "AnotherDetailProfileTableViewCell", for: indexPath) as! AnotherDetailProfileTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: contentDrop, for: indexPath) as! AnotherDetailProfileTableViewCell
                 cell.setCell(text: keyValue.key, content: keyValue.value)
                 return cell
             }

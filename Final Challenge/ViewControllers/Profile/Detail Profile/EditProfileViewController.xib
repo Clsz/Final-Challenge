@@ -25,10 +25,10 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="cOD-o2-7sD" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="3AC-QZ-A0F"/>
-                <constraint firstItem="cOD-o2-7sD" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="BuP-cc-5D5"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cOD-o2-7sD" secondAttribute="trailing" id="Z9j-GP-DuF"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="cOD-o2-7sD" secondAttribute="bottom" id="eYu-C9-aBP"/>
+                <constraint firstItem="cOD-o2-7sD" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="1xI-S5-yFR"/>
+                <constraint firstItem="cOD-o2-7sD" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ET1-WX-K2x"/>
+                <constraint firstItem="cOD-o2-7sD" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="HdB-bz-p4h"/>
+                <constraint firstItem="cOD-o2-7sD" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="yBF-UR-s5X"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="137.68115942028987" y="103.79464285714285"/>

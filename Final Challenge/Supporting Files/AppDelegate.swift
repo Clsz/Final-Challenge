@@ -21,10 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().tintColor = ConstantManager.mainColor
         //Penting nih
         self.window = UIWindow(frame: UIScreen.main.bounds)
-
-        let rv = ProfileViewController()
-        let navigationController = UINavigationController(rootViewController: rv)
-        window?.rootViewController = navigationController
+        self.tabBarController = TabBarController()
+        window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
         return true
     }
