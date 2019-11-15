@@ -51,6 +51,9 @@ class SubjectViewController: BaseViewController {
         searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     }
     
+    @IBAction func subjectAppliedTapped(_ sender: UIButton) {
+    }
+    
     
     
 }
