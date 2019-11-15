@@ -8,11 +8,17 @@
 
 import UIKit
 
+protocol AldiProtocol {
+    func sendIndex(arrIndex:[Int])
+}
+
 class LocationViewController: BaseViewController {
     
     @IBOutlet weak var locationTV: UITableView!
-    
     @IBOutlet weak var searchBar: UISearchBar!
+    
+    
+    let destVC = FilterViewController()
     
     let lokasi = [
         "Kab. Lebak",
@@ -31,8 +37,12 @@ class LocationViewController: BaseViewController {
         "Jakarta Selatan"
     ]
     
+    var selected : [Int] = []
+    
     var searchLocation = [String]()
     var searching = false
+    
+    var aldiDelegate:AldiProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +51,7 @@ class LocationViewController: BaseViewController {
         searchCellDelegate()
         self.hideKeyboardWhenTappedAround()
         setUpSearchBar()
+        locationTV.allowsMultipleSelection = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,6 +63,12 @@ class LocationViewController: BaseViewController {
         searchBar.layer.borderColor = #colorLiteral(red: 0.9214878678, green: 0.9216204286, blue: 0.9214589, alpha: 1)
         searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     }
+    
+    @IBAction func lokasiAplliedTapped(_ sender: UIButton) {
+        self.aldiDelegate?.sendIndex(arrIndex: selected)
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
 }
 
 extension LocationViewController: UITableViewDataSource,UITableViewDelegate{
@@ -66,12 +83,16 @@ extension LocationViewController: UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "locationCell", for: indexPath) as! LocationTableViewCell
         
+        cell.selectionStyle = .none
+        
         if searching  {
             cell.lokasiLabel.text = searchLocation[indexPath.row]
         } else {
             cell.lokasiLabel.text = lokasi[indexPath.row]
         }
+        
         return cell
+        
         
     }
     
@@ -79,10 +100,21 @@ extension LocationViewController: UITableViewDataSource,UITableViewDelegate{
         if tableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCell.AccessoryType.checkmark
         {
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.none
+            
         }
         else
         {
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.checkmark
+            selected.append(indexPath.row)
+            ConstantManager.tempArray.insert(lokasi[indexPath.row], at: 0)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.none
+        
+        if let index = ConstantManager.tempArray.firstIndex(of: lokasi[indexPath.row]) {
+            ConstantManager.tempArray.remove(at: index)
         }
     }
     

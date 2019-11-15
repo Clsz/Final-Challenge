@@ -15,6 +15,7 @@ class ListJobTableViewCell: UITableViewCell {
     @IBOutlet weak var bimbelName: UILabel!
     @IBOutlet weak var bimbelLocation: UILabel!
     @IBOutlet weak var bimbelSubject: UILabel!
+    @IBOutlet weak var bimbelView: UIView!
     
     func setView(image:String, name:String, location:String, subject:String) {
         bimbelPhoto.image = UIImage(named: image)
@@ -25,6 +26,7 @@ class ListJobTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+//        layoutMargins = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         // Initialization code
     }
 

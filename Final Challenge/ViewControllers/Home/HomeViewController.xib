@@ -18,9 +18,8 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e5b-a8-Ril">
-                    <rect key="frame" x="20" y="179" width="374" height="42"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e5b-a8-Ril">
+                    <rect key="frame" x="20" y="74" width="374" height="42"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edit Filters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppD-8U-Nx2">
                             <rect key="frame" x="8" y="10" width="85" height="22"/>
@@ -39,28 +38,44 @@
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="1" green="0.99998801950000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="42" id="1nc-qS-mSi"/>
+                    </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You can change your filters based on your preference." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g62-cE-uIB">
-                    <rect key="frame" x="20" y="234" width="328" height="16"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can change your filters based on your preference." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g62-cE-uIB">
+                    <rect key="frame" x="20" y="129" width="328" height="16"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" red="0.53725490196078429" green="0.53725490196078429" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Available Jobs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rhb-ha-pgj">
-                    <rect key="frame" x="20" y="300" width="150" height="27"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Jobs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rhb-ha-pgj">
+                    <rect key="frame" x="20" y="195" width="194" height="27"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yE2-nx-vdp">
-                    <rect key="frame" x="20" y="335" width="380" height="561"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yE2-nx-vdp">
+                    <rect key="frame" x="0.0" y="230" width="414" height="632"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" red="0.92157477139999999" green="0.92155748609999999" blue="0.92156922819999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yE2-nx-vdp" secondAttribute="trailing" id="0Ew-bo-dhN"/>
+                <constraint firstItem="e5b-a8-Ril" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="8Fc-gv-dSQ"/>
+                <constraint firstItem="e5b-a8-Ril" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="B7l-8t-baf"/>
+                <constraint firstItem="yE2-nx-vdp" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="BiS-Ma-iHy"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="g62-cE-uIB" secondAttribute="trailing" constant="66" id="H7T-LP-UGB"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="e5b-a8-Ril" secondAttribute="trailing" constant="20" id="T58-Fj-kRF"/>
+                <constraint firstItem="yE2-nx-vdp" firstAttribute="top" secondItem="Rhb-ha-pgj" secondAttribute="bottom" constant="8" id="Ttj-Nz-Gxl"/>
+                <constraint firstItem="Rhb-ha-pgj" firstAttribute="top" secondItem="g62-cE-uIB" secondAttribute="bottom" constant="50" id="Vpu-ac-a0b"/>
+                <constraint firstItem="g62-cE-uIB" firstAttribute="top" secondItem="e5b-a8-Ril" secondAttribute="bottom" constant="13" id="YK5-Nw-uFc"/>
+                <constraint firstItem="Rhb-ha-pgj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="c6j-e5-b9o"/>
+                <constraint firstItem="yE2-nx-vdp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="fWp-LG-7zZ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Rhb-ha-pgj" secondAttribute="trailing" constant="200" id="fmm-zw-zyj"/>
+                <constraint firstItem="g62-cE-uIB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="n3p-CZ-jJk"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="57.971014492753625" y="122.54464285714285"/>
         </view>

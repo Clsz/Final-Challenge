@@ -11,4 +11,8 @@ import UIKit
 class ConstantManager{
     
     static let mainColor = #colorLiteral(red: 0.3254901961, green: 0.7803921569, blue: 0.9411764706, alpha: 1)
+    static var tempArray = ["Kota Tangerang",
+    "Jakarta Utara",
+    "Kota Serang",
+    "Jakarta Barat"]
 }
