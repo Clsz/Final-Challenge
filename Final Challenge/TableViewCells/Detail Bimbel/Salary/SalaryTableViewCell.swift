@@ -10,7 +10,16 @@ import UIKit
 
 class SalaryTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var salaryTitle: UILabel!
     @IBOutlet weak var salaryLabel: UILabel!
+    
+    var course:Course!
+    
+    func setView(title:String, salary:String) {
+        self.salaryTitle.text = title
+        self.salaryLabel.text = salary
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

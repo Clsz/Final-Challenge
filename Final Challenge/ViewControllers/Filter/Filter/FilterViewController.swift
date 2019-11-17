@@ -11,7 +11,8 @@ import UIKit
 class FilterViewController: BaseViewController {
     
     var salaryMin: Double?
-    var selectedIndex:[Int]?
+    var selectedIndex:[Int] = []
+    var contentDelegate:AldiProtocol?
     
     let subjek = [
         "Matematika",
@@ -59,8 +60,11 @@ class FilterViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        LocationCV.delegate = self
         registerCell()
         cellDelegate()
+        
         LocationCV.reloadData()
         self.LocationCV.allowsMultipleSelection = true
         self.subjectCV.allowsMultipleSelection = true
@@ -68,16 +72,28 @@ class FilterViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        let vc = LocationViewController()
+        vc.aldiDelegate = self
+        
         LocationCV.reloadData()
         setupView(text: "Filter")
+        print(selectedIndex,"##")
+//        for i in 0..<selectedIndex.count {
+//            let index = IndexPath(row: i, section: 0)
+//            let cell = LocationCV.cellForItem(at: index)
+//            cell?.isSelected = true
+//        }
+
     }
     
     @IBAction func viewAllLocationTapped(_ sender: UIButton) {
         let locationVC = LocationViewController()
+        locationVC.aldiDelegate =  self
         self.navigationController?.pushViewController(locationVC, animated: true)
     }
+    
     @IBAction func viewAllSubjectTapped(_ sender: UIButton) {
-        let subjectVC = SubjectViewController()
+        let subjectVC = DetailBimbelViewController()
         self.navigationController?.pushViewController(subjectVC, animated: true)
     }
     @IBAction func applyTapped(_ sender: UIButton) {
@@ -87,6 +103,7 @@ class FilterViewController: BaseViewController {
 extension FilterViewController:AldiProtocol{
     func sendIndex(arrIndex: [Int]) {
         selectedIndex = arrIndex
+        print(selectedIndex,"&")
     }
 }
 
@@ -113,6 +130,9 @@ extension FilterViewController:UICollectionViewDataSource, UICollectionViewDeleg
             cell.kotakFilter.layer.borderColor = #colorLiteral(red: 0.2392156863, green: 0.431372549, blue: 0.8, alpha: 1)
             cell.kotakFilter.layer.borderWidth = 1
             
+            if selectedIndex.contains(indexPath.row) {
+                cell.isSelected = true
+            }
             cell.labelFilter.text = ConstantManager.tempArray[indexPath.row]
             
             return cell

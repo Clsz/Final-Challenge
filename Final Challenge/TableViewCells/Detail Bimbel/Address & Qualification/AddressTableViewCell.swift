@@ -1,5 +1,5 @@
 //
-//  SubjectCategoryTableViewCell.swift
+//  AddressTableViewCell.swift
 //  Final Challenge
 //
 //  Created by Steven Gunawan on 15/11/19.
@@ -8,12 +8,21 @@
 
 import UIKit
 
-class SubjectCategoryTableViewCell: UITableViewCell {
-    @IBOutlet weak var subjekCV: UICollectionView!
+class AddressTableViewCell: UITableViewCell {
+
+    @IBOutlet weak var addressTitle: UILabel!
+    @IBOutlet weak var addressView: UIView!
+    @IBOutlet weak var addressLabel: UILabel!
+    
+    var course:Course!
+    
+    func setView(title:String, description:String) {
+        self.addressTitle.text = title
+        self.addressLabel.text = description
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

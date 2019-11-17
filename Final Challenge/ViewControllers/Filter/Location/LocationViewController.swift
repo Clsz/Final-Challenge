@@ -65,8 +65,9 @@ class LocationViewController: BaseViewController {
     }
     
     @IBAction func lokasiAplliedTapped(_ sender: UIButton) {
+        print(selected,"#")
         self.aldiDelegate?.sendIndex(arrIndex: selected)
-        self.navigationController?.popToRootViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
 }

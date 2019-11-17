@@ -9,49 +9,27 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailBimbelViewController" customModule="Final_Challenge" customModuleProvider="target">
             <connections>
+                <outlet property="detailBimbelTV" destination="yCg-1K-M1I" id="kP6-YJ-K8f"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ks-q6-RKv">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R1j-Tu-Z5f">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
-                            <subviews>
-                                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yCg-1K-M1I">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                </tableView>
-                            </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        </view>
-                    </subviews>
-                    <constraints>
-                        <constraint firstItem="R1j-Tu-Z5f" firstAttribute="leading" secondItem="0Ks-q6-RKv" secondAttribute="leading" id="LbO-Iv-6Ct"/>
-                        <constraint firstItem="R1j-Tu-Z5f" firstAttribute="height" secondItem="0Ks-q6-RKv" secondAttribute="height" priority="250" id="LlX-db-HwD"/>
-                        <constraint firstItem="R1j-Tu-Z5f" firstAttribute="width" secondItem="0Ks-q6-RKv" secondAttribute="width" id="MHR-X7-Luf"/>
-                        <constraint firstAttribute="bottom" secondItem="R1j-Tu-Z5f" secondAttribute="bottom" id="X3t-SP-Nam"/>
-                        <constraint firstItem="R1j-Tu-Z5f" firstAttribute="top" secondItem="0Ks-q6-RKv" secondAttribute="top" id="b70-a3-Wxg"/>
-                        <constraint firstAttribute="trailing" secondItem="R1j-Tu-Z5f" secondAttribute="trailing" id="lEv-xN-K69"/>
-                    </constraints>
-                    <viewLayoutGuide key="contentLayoutGuide" id="0IU-m2-wcz"/>
-                    <viewLayoutGuide key="frameLayoutGuide" id="bXm-T0-O6O"/>
-                </scrollView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="250" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yCg-1K-M1I">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0Ks-q6-RKv" secondAttribute="trailing" id="AdA-cm-nWC"/>
-                <constraint firstItem="0Ks-q6-RKv" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" constant="34" id="N5U-hh-4VJ"/>
-                <constraint firstItem="0Ks-q6-RKv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="NTu-yv-6AH"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="0Ks-q6-RKv" secondAttribute="top" constant="44" id="fbt-Y9-OlF"/>
+                <constraint firstAttribute="bottom" secondItem="yCg-1K-M1I" secondAttribute="bottom" id="kr4-Fd-oJN"/>
+                <constraint firstItem="yCg-1K-M1I" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="z8t-FQ-01q"/>
+                <constraint firstItem="yCg-1K-M1I" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="zmT-zg-VGG"/>
+                <constraint firstItem="yCg-1K-M1I" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="ztc-cP-LvC"/>
             </constraints>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="137.68115942028987" y="109.82142857142857"/>
         </view>

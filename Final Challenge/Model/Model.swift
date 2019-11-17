@@ -8,15 +8,27 @@
 
 import Foundation
 
-struct Course{
+class Course{
     var courseID:String
     var courseName, courseAddress, courseImage:String
-    var courseMinFare:Double
-    var courseMaxFare:Double
-    var courseWorkSchedule, courseCategory, courseGrade:[String]
-    var courseWorkQualification:String
-    var courseCreatedAt:String
-    var teacherQty:Int
+    var courseMinFare:[String]
+    var courseMaxFare:[String]
+    var courseWorkSchedule, courseCategory, courseWorkQualification, courseGrade:[String]
+//    var courseCreatedAt:String
+//    var teacherQty:Int
+    
+    init(_ courseID:String, _ courseName:String, _  courseAddress:String, _ courseImage:String, _ courseMinFare:[String], _ courseCategory:[String], _ courseGrade:[String], _ courseMaxFare:[String], _ courseWorkSchedule:[String], _ courseWorkQualification:[String]) {
+        self.courseID = courseID
+        self.courseName = courseName
+        self.courseAddress = courseAddress
+        self.courseImage = courseImage
+        self.courseMinFare = courseMinFare
+        self.courseMaxFare = courseMaxFare
+        self.courseWorkSchedule = courseWorkSchedule
+        self.courseWorkQualification = courseWorkQualification
+        self.courseCategory = courseCategory
+        self.courseGrade = courseGrade
+    }
 }
 
 struct Activity{
@@ -52,6 +64,7 @@ class Tutor{
         self.tutorAchievement = tutorAchievement
     }
 }
+
 
 struct Education{
     var educationID:String

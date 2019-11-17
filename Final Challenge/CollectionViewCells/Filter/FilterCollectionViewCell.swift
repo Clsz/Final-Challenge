@@ -22,10 +22,13 @@ class FilterCollectionViewCell: UICollectionViewCell {
     
     override var isSelected: Bool {
         didSet {
-            kotakFilter.layer.borderWidth = isSelected ? 0 : 1
-            kotakFilter.backgroundColor = isSelected ? #colorLiteral(red: 0.3254901961, green: 0.7803921569, blue: 0.9411764706, alpha: 1) : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-            imageFilter.image = isSelected ? images:images1
+            DispatchQueue.main.async {
+                self.kotakFilter.layer.borderWidth = self.isSelected ? 0 : 1
+                self.kotakFilter.backgroundColor = self.isSelected ? #colorLiteral(red: 0.3254901961, green: 0.7803921569, blue: 0.9411764706, alpha: 1) : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                self.imageFilter.image = self.isSelected ? self.images:self.images1
+            }
         }
     }
     
 }
+

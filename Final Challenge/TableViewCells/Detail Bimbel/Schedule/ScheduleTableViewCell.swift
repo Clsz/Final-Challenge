@@ -10,7 +10,15 @@ import UIKit
 
 class ScheduleTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var scheduleTitle: UILabel!
     @IBOutlet weak var scheduleTV: UITableView!
+    
+    var course:Course!
+    
+    func setView(title:String) {
+        self.scheduleTitle.text = title
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
