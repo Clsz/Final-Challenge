@@ -474,6 +474,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E106615F23812A6C0098AE11 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E139B5302375D41C00FEF1F5 /* TableViewCells */,
+				E139B52F2375D3E500FEF1F5 /* CollectionViewCells */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		E139B52F2375D3E500FEF1F5 /* CollectionViewCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -494,7 +503,7 @@
 			path = TableViewCells;
 			sourceTree = "<group>";
 		};
-		E139B5312375D44D00FEF1F5 /* ViewControllers */ = {
+		E139B5312375D44D00FEF1F5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				E13EE5EF2380E844005016A0 /* Setup Profile */,
@@ -506,7 +515,7 @@
 				E139B5402375D73600FEF1F5 /* BaseViewController.swift */,
 				E139B5422375D7C200FEF1F5 /* TabBarController.swift */,
 			);
-			path = ViewControllers;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		E139B5322375D68C00FEF1F5 /* Profile */ = {
@@ -741,10 +750,9 @@
 			children = (
 				E1713A4D237AAD7400F6A8A7 /* Final Challenge.entitlements */,
 				E1E3A8B32366CF2800F1571E /* Supporting Files */,
-				E139B5302375D41C00FEF1F5 /* TableViewCells */,
-				E139B52F2375D3E500FEF1F5 /* CollectionViewCells */,
 				E168479A237901BA001B6319 /* Model */,
-				E139B5312375D44D00FEF1F5 /* ViewControllers */,
+				E106615F23812A6C0098AE11 /* View */,
+				E139B5312375D44D00FEF1F5 /* Controller */,
 				E1E3A8B42366CFAA00F1571E /* Helper */,
 				E1E3A8A32366CA8900F1571E /* Assets.xcassets */,
 				E1E3A8A82366CA8900F1571E /* Info.plist */,
