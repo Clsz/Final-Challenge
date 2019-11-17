@@ -16,10 +16,10 @@ class SetupPersonalTableViewCell: UITableViewCell {
     @IBOutlet weak var ageTF: UITextField!
     @IBOutlet weak var addressTF: UITextField!
     @IBOutlet weak var applyButton: UIButton!
+    var contentDelegate:ProfileDetailProtocol?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -29,9 +29,11 @@ class SetupPersonalTableViewCell: UITableViewCell {
     }
     
     @IBAction func applyTapped(_ sender: Any) {
+        contentDelegate?.applyProfile()
     }
     
     @IBAction func skipTapped(_ sender: Any) {
+        
     }
 }
 extension SetupPersonalTableViewCell{
@@ -52,6 +54,7 @@ extension SetupPersonalTableViewCell{
         self.nameTF.setLeftPaddingPoints(10.0)
         self.ageTF.setLeftPaddingPoints(10.0)
         self.addressTF.setLeftPaddingPoints(10.0)
+        self.addressTF.contentVerticalAlignment = .top
     }
     
 }

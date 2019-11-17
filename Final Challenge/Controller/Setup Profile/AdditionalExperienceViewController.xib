@@ -26,7 +26,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="8e9-nn-3j3"/>
                     </constraints>
-                    <state key="normal" title="Apply Language">
+                    <state key="normal" title="Apply Experience">
                         <color key="titleColor" red="0.32549019610000002" green="0.78039215689999997" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
@@ -39,7 +39,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="LiI-M3-OMW"/>
                     </constraints>
-                    <state key="normal" title="Add Additional Language">
+                    <state key="normal" title="Add Additional Experience">
                         <color key="titleColor" red="0.32549019610000002" green="0.78039215689999997" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>

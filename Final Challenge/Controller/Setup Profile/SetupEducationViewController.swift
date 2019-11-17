@@ -33,7 +33,7 @@ class SetupEducationViewController: BaseViewController {
     }
     
     @IBAction func applyTapped(_ sender: Any) {
-        
+        getDataCustomCell()
     }
     
     @IBAction func skipTapped(_ sender: Any) {
@@ -48,12 +48,25 @@ extension SetupEducationViewController{
         setupView(text: "Education Setup")
     }
     
-    func setupData() {
+    private func setupData() {
         dataArray.removeAll()
         dataArray.append(("School","Enter your School Name",0))
         dataArray.append(("Education Type","Senior High School",1))
         dataArray.append(("Field of Study","Enter your Field of Study",0))
         dataArray.append(("Grade","Enter your Grade",0))
+    }
+    
+    private func getDataCustomCell() {
+        let index = IndexPath(row: 1, section: 0)
+        let cell = tableView.cellForRow(at: index) as! DetailProfileTableViewCell
+        let index1 = IndexPath(row: 2, section: 0)
+        let cell1 = tableView.cellForRow(at: index1) as! AnotherDetailProfileTableViewCell
+        let index2 = IndexPath(row: 3, section: 0)
+        let cell2 = tableView.cellForRow(at: index2) as! DetailProfileTableViewCell
+        let index3 = IndexPath(row: 4, section: 0)
+        let cell3 = tableView.cellForRow(at: index3) as! DetailProfileTableViewCell
+        
+        //Getdata
     }
 }
 extension SetupEducationViewController:EducationProtocol{

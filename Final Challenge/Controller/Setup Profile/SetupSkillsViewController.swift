@@ -26,9 +26,11 @@ class SetupSkillsViewController: BaseViewController {
     }
 
     @IBAction func applyTapped(_ sender: Any) {
+        
     }
     
     @IBAction func skipTapped(_ sender: Any) {
+        
     }
 
 }

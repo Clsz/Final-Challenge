@@ -10,10 +10,13 @@ import UIKit
 
 class SetupPersonalViewController: BaseViewController {
 
-@IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     let hint = "HintTableViewCellID"
     let detailProfile = "SetupPersonalTableViewCellID"
     var tutor:Tutor!
+    var name:String?
+    var age:String?
+    var address:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +28,22 @@ class SetupPersonalViewController: BaseViewController {
         self.tableView.contentInsetAdjustmentBehavior = .never
         setupView(text: "Personal Setup")
     }
+}
+extension SetupPersonalViewController{
+    private func getDataCustomCell() {
+        let index = IndexPath(row: 1, section: 0)
+        let cell = tableView.cellForRow(at: index) as! SetupPersonalTableViewCell
+        self.name = cell.nameTF.text ?? ""
+        self.age = cell.ageTF.text ?? ""
+        self.address = cell.addressTF.text ?? ""
+    }
+}
 
+extension SetupPersonalViewController:ProfileDetailProtocol{
+    func applyProfile() {
+        getDataCustomCell()
+    }
+    
 }
 extension SetupPersonalViewController:UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -40,6 +58,7 @@ extension SetupPersonalViewController:UITableViewDataSource, UITableViewDelegate
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: detailProfile, for: indexPath) as! SetupPersonalTableViewCell
             cell.setCell(name: "Enter your name here", age: "Enter your age here", address: "Enter your address here")
+            cell.contentDelegate = self
             return cell
         }
     }

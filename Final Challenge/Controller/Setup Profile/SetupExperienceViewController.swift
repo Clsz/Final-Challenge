@@ -54,13 +54,28 @@ class SetupExperienceViewController: BaseViewController {
             self.applyButton.loginRound()
         }
         
-        func setupData() {
+        private func setupData() {
             dataArray.removeAll()
             dataArray.append(("Title","Example: iOS Developer",0))
             dataArray.append(("Experience Type","PartTime",1))
             dataArray.append(("Company","Example: Apple Developer Academy",0))
             dataArray.append(("Location","Enter your Location",0))
             dataArray.append(true)
+        }
+        
+        private func getDataCustomCell() {
+            let index = IndexPath(row: 1, section: 0)
+            let cell = tableView.cellForRow(at: index) as! DetailProfileTableViewCell
+            let index1 = IndexPath(row: 2, section: 0)
+            let cell1 = tableView.cellForRow(at: index1) as! AnotherDetailProfileTableViewCell
+            let index2 = IndexPath(row: 3, section: 0)
+            let cell2 = tableView.cellForRow(at: index2) as! DetailProfileTableViewCell
+            let index3 = IndexPath(row: 4, section: 0)
+            let cell3 = tableView.cellForRow(at: index3) as! DetailProfileTableViewCell
+            let index4 = IndexPath(row: 5, section: 0)
+            let cell4 = tableView.cellForRow(at: index3) as! DetailProfileTableViewCell
+            
+            //Getdata
         }
         
     }

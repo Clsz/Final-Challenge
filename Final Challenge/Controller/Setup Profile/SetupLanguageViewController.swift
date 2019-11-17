@@ -35,7 +35,7 @@ class SetupLanguageViewController: BaseViewController {
     }
     
     @IBAction func applyTapped(_ sender: Any) {
-        
+        getDataCustomCell()
     }
     
     @IBAction func skipTapped(_ sender: Any) {
@@ -49,11 +49,20 @@ extension SetupLanguageViewController{
        
     }
     
-    func setupData() {
+    private func setupData() {
         dataArray.removeAll()
         dataArray.append("PLEASE ADD YOUR LANGUAGE")
         dataArray.append(("Language","Enter your Language",0))
         dataArray.append(("Language Proficiency","Beginner",1))
+    }
+    
+    private func getDataCustomCell() {
+        let index = IndexPath(row: 1, section: 0)
+        let cell = tableView.cellForRow(at: index) as! DetailProfileTableViewCell
+        let index1 = IndexPath(row: 2, section: 0)
+        let cell1 = tableView.cellForRow(at: index1) as! AnotherDetailProfileTableViewCell
+        
+        //Getdata
     }
     
 }

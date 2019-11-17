@@ -56,6 +56,7 @@ extension DetailHeaderTableViewCell{
         self.nameTF.setLeftPaddingPoints(10.0)
         self.ageTF.setLeftPaddingPoints(10.0)
         self.addressTF.setLeftPaddingPoints(10.0)
+        self.addressTF.contentVerticalAlignment = .top
     }
     
 }
