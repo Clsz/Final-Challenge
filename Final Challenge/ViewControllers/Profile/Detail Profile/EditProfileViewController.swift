@@ -11,7 +11,6 @@ import UIKit
 class EditProfileViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    
     let detailProfile = "DetailHeaderTableViewCellID"
     var tutor:Tutor!
     
@@ -22,12 +21,13 @@ class EditProfileViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.tableView.contentInsetAdjustmentBehavior = .never
         setupView(text: "Personal")
     }
 
 }
 
-extension EditProfileViewController:editPassword{
+extension EditProfileViewController:PasswordProtocol{
     func changePassword() {
         let destVC = EditPasswordViewController()
         destVC.oldPassword = tutor.password
@@ -44,7 +44,7 @@ extension EditProfileViewController:UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: detailProfile, for: indexPath) as! DetailHeaderTableViewCell
         let fullName = tutor.tutorFirstName + " " + tutor.tutorLastName
-        cell.setView(name: fullName, age: tutor.tutorBirthDate, address: tutor.tutorAddress)
+        cell.setCell(name: fullName, age: tutor.tutorBirthDate, address: tutor.tutorAddress)
         cell.delegate = self
         return cell
     }
@@ -58,6 +58,5 @@ extension EditProfileViewController:UITableViewDataSource, UITableViewDelegate{
     func registerCell() {
         tableView.register(UINib(nibName: "DetailHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: detailProfile)
     }
-    
-    
+
 }

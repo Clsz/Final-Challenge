@@ -18,10 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         UITabBar.appearance().tintColor = ConstantManager.mainColor
-        //Penting nih
+//        //Penting nih
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.tabBarController = TabBarController()
-        window?.rootViewController = tabBarController
+//        self.tabBarController = TabBarController()
+//        window?.rootViewController = tabBarController
+//        window?.makeKeyAndVisible()
+        let rv = AdditionalLanguageViewController()
+        let navigationController = UINavigationController(rootViewController: rv)
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         
         return true

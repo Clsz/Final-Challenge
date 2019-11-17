@@ -16,12 +16,6 @@ class CustomLanguageTableViewCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var level: UILabel!
     
-    func setView(name:String, level:String) {
-        self.outerView.outerRound()
-        self.name.text = name
-        self.level.text = level
-    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -33,4 +27,11 @@ class CustomLanguageTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+}
+extension CustomLanguageTableViewCell{
+    func setCell(name:String, level:String) {
+        self.outerView.outerRound()
+        self.name.text = name
+        self.level.text = level
+    }
 }

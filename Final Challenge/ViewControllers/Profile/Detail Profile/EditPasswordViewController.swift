@@ -17,11 +17,11 @@ class EditPasswordViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTerm()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationItem.title = "Change Password"
+        setMainInterface()
+        setupView(text: "Change Password")
     }
 
     @IBAction func applyTapped(_ sender: Any) {
@@ -30,9 +30,9 @@ class EditPasswordViewController: BaseViewController {
 }
 
 extension EditPasswordViewController{
-    func setTerm() {
+    private func setMainInterface() {
+        self.navigationController?.navigationBar.prefersLargeTitles = false
         oldPasswordTF.text = oldPassword
-        
         oldPasswordTF.outerRound()
         newPasswordTF.outerRound()
     }

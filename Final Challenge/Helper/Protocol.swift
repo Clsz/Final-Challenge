@@ -8,15 +8,42 @@
 
 import Foundation
 
-protocol SGProtocol{
+protocol ProfileProtocol{
     func pencilTapped()
     func skillTapped()
     func languageTapped()
     func educationTapped()
     func experienceTapped()
-    func achievementTapped() 
+    func achievementTapped()
+    func logout()
 }
 
-protocol editPassword{
+protocol PasswordProtocol{
     func changePassword()
+}
+
+protocol ProfileDetailProtocol{
+    func applyProfile()
+}
+
+protocol LanguageProtocol {
+    func dropLanguage()
+}
+
+protocol EducationProtocol {
+    func dropEducation()
+}
+
+protocol ExperienceProtocol {
+    func startTapped()
+    func endTapped()
+    func dropExperience()
+}
+
+protocol showMoreLanguage{
+    func showLanguage()
+}
+
+protocol showMoreExperience{
+    func showExperience()
 }
