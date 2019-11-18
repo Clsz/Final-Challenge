@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AdditionalLanguageViewController" customModule="Final_Challenge" customModuleProvider="target">
+            <connections>
+                <outlet property="addAdditional" destination="FfB-FB-a47" id="1F6-bv-AhM"/>
+                <outlet property="applyButton" destination="60Y-jf-gAt" id="ewC-x0-74N"/>
+                <outlet property="tableView" destination="fDl-3m-zac" id="6Za-nq-fYM"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fDl-3m-zac">
+                    <rect key="frame" x="0.0" y="44" width="414" height="712"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FfB-FB-a47">
+                    <rect key="frame" x="20" y="756" width="374" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="S3C-7Y-Nqw"/>
+                    </constraints>
+                    <state key="normal" title="Add Additional Language">
+                        <color key="titleColor" red="0.32549019610000002" green="0.78039215689999997" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="addAdditionalTapped:" destination="-1" eventType="touchUpInside" id="879-BJ-12I"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60Y-jf-gAt">
+                    <rect key="frame" x="20" y="808" width="374" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="PDY-3J-jSJ"/>
+                    </constraints>
+                    <state key="normal" title="Apply Language">
+                        <color key="titleColor" red="0.32549019610000002" green="0.78039215689999997" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="applyTapped:" destination="-1" eventType="touchUpInside" id="283-7U-Nrh"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fDl-3m-zac" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="5Me-n4-Cxv"/>
+                <constraint firstItem="FfB-FB-a47" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="6oJ-83-1Ey"/>
+                <constraint firstItem="FfB-FB-a47" firstAttribute="top" secondItem="fDl-3m-zac" secondAttribute="bottom" id="X9L-wK-GvT"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="60Y-jf-gAt" secondAttribute="bottom" constant="10" id="Yud-EC-JcJ"/>
+                <constraint firstItem="fDl-3m-zac" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="ZPk-ib-shx"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="60Y-jf-gAt" secondAttribute="trailing" constant="20" id="b94-Nl-lIP"/>
+                <constraint firstItem="fDl-3m-zac" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="cS0-iD-2S9"/>
+                <constraint firstItem="60Y-jf-gAt" firstAttribute="top" secondItem="FfB-FB-a47" secondAttribute="bottom" constant="8" id="f4n-7p-iFd"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="FfB-FB-a47" secondAttribute="trailing" constant="20" id="jvB-Pt-0jX"/>
+                <constraint firstItem="60Y-jf-gAt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="zQq-gA-kDN"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="137.68115942028987" y="103.79464285714285"/>
+        </view>
+    </objects>
+</document>
