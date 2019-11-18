@@ -34,8 +34,18 @@ protocol HomeProtocol {
     func bimbelTapped()
 }
 
+protocol DetailBimbel{
+    func requestTapped()
+}
+
+
 protocol EducationProtocol {
     func dropEducation()
+}
+
+protocol ActivityProcess {
+    func accept()
+    func reject()
 }
 
 protocol ExperienceProtocol {

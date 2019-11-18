@@ -10,11 +10,11 @@ import Foundation
 
 class Courses{
     var courseID, courseName, courseAddress, courseWorkQualification,  courseLocation, courseImage:String!
-       var courseMinFare, courseMaxFare:Int!
-       var courseWorkSchedule, courseCategory, courseWorkTime, courseGrade:[String]!
-//    var courseCreatedAt:String
-//    var teacherQty:Int
-
+    var courseMinFare, courseMaxFare:Int!
+    var courseWorkSchedule, courseCategory, courseWorkTime, courseGrade:[String]!
+    //    var courseCreatedAt:String
+    //    var teacherQty:Int
+    
     init(_ courseID:String, _ courseName:String, _  courseAddress:String,_ courseLocation:String, _ courseImage:String, _ courseMinFare:Int, _ courseMaxFare:Int,  _ courseWorkSchedule:[String], _ courseWorkTime:[String], _ courseCategory:[String], _ courseWorkQualification:String, _ courseGrade:[String]) {
         self.courseID = courseID
         self.courseName = courseName
@@ -31,10 +31,35 @@ class Courses{
     }
 }
 
-struct Activity{
+class Activity{
     var activityID:String
-    var courseID:String
     var activityStatus:String
+    var interviewSchedule, interviewTime:[String]
+    var testEquipment:String
+    var courseID, courseName, courseAddress, courseWorkQualification,  courseLocation, courseImage:String!
+    var courseMinFare, courseMaxFare:Int!
+    var courseWorkSchedule, courseCategory, courseWorkTime, courseGrade:[String]!
+    
+    init(_ activityID:String, _ activityStatus:String, _ interviewSchedule:[String], _ interviewTime:[String], _ testEquipment:String, _ courseID:String, _ courseName:String, _  courseAddress:String,_ courseLocation:String, _ courseImage:String, _ courseMinFare:Int, _ courseMaxFare:Int,  _ courseWorkSchedule:[String], _ courseWorkTime:[String], _ courseCategory:[String], _ courseWorkQualification:String, _ courseGrade:[String]) {
+        self.activityID = activityID
+        self.activityStatus = activityStatus
+        self.interviewSchedule = interviewSchedule
+        self.interviewTime = interviewTime
+        self.testEquipment = testEquipment
+        self.courseID = courseID
+        self.courseName = courseName
+        self.courseAddress = courseAddress
+        self.courseLocation = courseLocation
+        self.courseImage = courseImage
+        self.courseMinFare = courseMinFare
+        self.courseMaxFare = courseMaxFare
+        self.courseWorkSchedule = courseWorkSchedule
+        self.courseWorkTime = courseWorkTime
+        self.courseWorkQualification = courseWorkQualification
+        self.courseCategory = courseCategory
+        self.courseGrade = courseGrade
+    }
+    
 }
 
 class Tutor{

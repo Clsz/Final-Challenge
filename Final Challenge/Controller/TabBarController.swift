@@ -13,7 +13,7 @@ class TabBarController: UITabBarController {
     var homeNav:UINavigationController!
     var homeVC: HomeViewController!
     var detailNav:UINavigationController!
-    var detailVC: DetailBimbelTabFirstViewController!
+    var detailVC: DetailTestViewController!
     var profileNav:UINavigationController!
     var profileVC: ProfileViewController!
     
@@ -27,7 +27,7 @@ class TabBarController: UITabBarController {
         homeNav = UINavigationController(rootViewController: homeVC)
         homeNav.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "icon_job"), selectedImage: UIImage(named: "icon_job"))
         
-        detailVC = DetailBimbelTabFirstViewController()
+        detailVC = DetailTestViewController()
         detailNav = UINavigationController(rootViewController: detailVC)
         detailNav.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "icon_activity"), selectedImage: UIImage(named: "icon_activity"))
         
@@ -35,7 +35,7 @@ class TabBarController: UITabBarController {
         profileNav = UINavigationController(rootViewController: profileVC)
         profileNav.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "icon_profile"), selectedImage: UIImage(named: "icon_profile"))
 
-        let tabBarList:[UIViewController] = [homeNav,profileNav]
+        let tabBarList:[UIViewController] = [homeNav,detailNav,profileNav]
 
         viewControllers = tabBarList
     }
