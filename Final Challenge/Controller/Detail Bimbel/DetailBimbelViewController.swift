@@ -13,16 +13,15 @@ class DetailBimbelViewController: BaseViewController {
     
     var dataArray:[Any?] = []
     var course:Courses!
-    var homeDelegate:HomeProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         cellDelegate()
         registerCell()
         setupData()
-//        getData()
-//        detailBimbelTV.reloadData()
-       
+        //        getData()
+        //        detailBimbelTV.reloadData()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,17 +35,15 @@ extension DetailBimbelViewController{
     func setupData() {
         dataArray.removeAll()
         dataArray.append(course)
-        dataArray.append(("Address","tes",0))
-        dataArray.append(("Qualification","tes",0))
-        dataArray.append(("Subject Category","tes",1))
-        dataArray.append(("Grade","tes",1))
-        dataArray.append(("Range Salary","tes",2))
-        dataArray.append(("Schedule","tes",3))
+        dataArray.append(("Address",course.courseAddress,0))
+        dataArray.append(("Subject Category",course.courseCategory))
+        dataArray.append(("Grade",course.courseGrade))
+        dataArray.append(("Range Salary","Rp \(String(describing: course.courseMinFare!)) - Rp \(String(describing: course.courseMaxFare!))",1))
+        dataArray.append(("Schedule",course.courseWorkTime,course.courseWorkSchedule))
+        dataArray.append(("Qualification",course.courseWorkQualification,0))
     }
     
 }
-
-
 
 extension DetailBimbelViewController: UITableViewDataSource,UITableViewDelegate{
     func cellDelegate(){
@@ -60,7 +57,7 @@ extension DetailBimbelViewController: UITableViewDataSource,UITableViewDelegate{
         detailBimbelTV.register(UINib(nibName: "SubjectCategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "subjekCell")
         detailBimbelTV.register(UINib(nibName: "SalaryTableViewCell", bundle: nil), forCellReuseIdentifier: "salaryCell")
         detailBimbelTV.register(UINib(nibName: "ScheduleTableViewCell", bundle: nil), forCellReuseIdentifier: "scheduleCell")
-//        detailBimbelTV.register(UINib(nibName: "SubmitTableViewCell", bundle: nil), forCellReuseIdentifier: "submitCell")
+        detailBimbelTV.register(UINib(nibName: "SubmitTableViewCell", bundle: nil), forCellReuseIdentifier: "submitCell")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -69,11 +66,11 @@ extension DetailBimbelViewController: UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
         
         if indexPath.row == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "profileBimbelCell", for: indexPath) as! ProfileBimbelTableViewCell
             if let course = dataArray[indexPath.row] as? Courses {
+                print(indexPath.row)
                 cell.setView(image: course.courseImage, name: course.courseName, lokasi: course.courseLocation)
             }
             return cell
@@ -83,29 +80,27 @@ extension DetailBimbelViewController: UITableViewDataSource,UITableViewDelegate{
             
             if keyValue.code == 0{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "addressCell", for: indexPath) as! AddressTableViewCell
-                cell.setView(title: keyValue.key, description: keyValue.key)
+                print("keyVAlue\(keyValue.value)")
+                cell.setView(title: keyValue.key, description: keyValue.value)
                 return cell
             }
             else if keyValue.code == 1{
-                let cell = tableView.dequeueReusableCell(withIdentifier: "subjekCell", for: indexPath) as! SubjectCategoryTableViewCell
-                cell.setView(title: keyValue.key)
-                return cell
-            }
-            else if keyValue.code == 2{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "salaryCell", for: indexPath) as! SalaryTableViewCell
-                cell.setView(title: keyValue.key, salary: keyValue.key)
+                cell.setView(title: keyValue.key, salary: keyValue.value)
                 return cell
             }
-            else if keyValue.code == 3{
-                let cell = tableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath) as! ScheduleTableViewCell
-                cell.setView(title: keyValue.key)
-                return cell
-            }
+        }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:[String]){
+            let cell = tableView.dequeueReusableCell(withIdentifier: "subjekCell", for: indexPath) as! SubjectCategoryTableViewCell
+            cell.setView(title: keyValue.key)
+            cell.subject = keyValue.value
+            return cell
+        }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:[String], desc:[String]){
+            let cell = tableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath) as! ScheduleTableViewCell
+            cell.setView(title: keyValue.key)
+            cell.day = keyValue.value
+            cell.schedule = keyValue.desc
+            return cell
         }
         return UITableViewCell()
     }
-    
-    
 }
-
-

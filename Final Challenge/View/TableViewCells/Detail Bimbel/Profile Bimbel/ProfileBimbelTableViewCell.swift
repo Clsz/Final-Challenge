@@ -9,26 +9,28 @@
 import UIKit
 
 class ProfileBimbelTableViewCell: UITableViewCell {
-
+    
+    
     @IBOutlet weak var imageBimbel: UIImageView!
     @IBOutlet weak var namaBimbel: UILabel!
     @IBOutlet weak var lokasiBimbel: UILabel!
     var homeDelegate:HomeProtocol?
     
     func setView(image:String, name:String, lokasi:String) {
-           self.namaBimbel.text = name
-           self.lokasiBimbel.text = lokasi
-        self.imageBimbel.setRounded()
-       }
+        self.namaBimbel.text = name
+        self.lokasiBimbel.text = lokasi
+        self.imageBimbel.setRoundedBorder()
+        self.imageBimbel.dropShadow()
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         
     }
     

@@ -14,6 +14,8 @@ class ScheduleTableViewCell: UITableViewCell {
     @IBOutlet weak var scheduleTV: UITableView!
     var homeDelegate:HomeProtocol?
     var course:Courses!
+    var schedule:[String] = []
+    var day:[String] = []
     
     func setView(title:String) {
         self.scheduleTitle.text = title
@@ -21,7 +23,9 @@ class ScheduleTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        registerCell()
+        cellDelegate()
+        scheduleTV.reloadData()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -29,5 +33,28 @@ class ScheduleTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+}
+
+extension ScheduleTableViewCell: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        schedule.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "dsCell", for: indexPath) as! DetailScheduleTableViewCell
+        cell.setView(day: day[indexPath.row], time: schedule[indexPath.row])
+        return cell
+    }
+    
+    private func cellDelegate() {
+        scheduleTV.dataSource = self
+        scheduleTV.delegate = self
+    }
+    
+    private func registerCell() {
+        scheduleTV.register(UINib(nibName: "DetailScheduleTableViewCell", bundle: nil), forCellReuseIdentifier: "dsCell")
+    }
+    
     
 }

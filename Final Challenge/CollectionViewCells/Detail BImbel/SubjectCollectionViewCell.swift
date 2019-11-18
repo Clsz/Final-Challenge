@@ -11,10 +11,10 @@ import UIKit
 class SubjectCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var labelSubjek: UILabel!
     
-//    func setView(subject:String){
-//        self.labelSubjek.text = subject
-//        
-//    }
+    func setView(subject:String){
+        self.labelSubjek.text = subject
+        
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

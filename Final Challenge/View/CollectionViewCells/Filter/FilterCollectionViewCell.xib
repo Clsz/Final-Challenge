@@ -19,19 +19,30 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xCg-3M-CVs">
                         <rect key="frame" x="0.0" y="0.0" width="185" height="44"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kA2-Cw-De5">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kA2-Cw-De5">
                                 <rect key="frame" x="41" y="0.0" width="144" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Add" translatesAutoresizingMaskIntoConstraints="NO" id="wGu-1L-Cdx">
-                                <rect key="frame" x="8" y="11" width="23" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Add" translatesAutoresizingMaskIntoConstraints="NO" id="wGu-1L-Cdx">
+                                <rect key="frame" x="8" y="10" width="23" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="a8E-Ya-BBP"/>
+                                    <constraint firstAttribute="width" constant="23" id="n9L-kl-HyQ"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="kA2-Cw-De5" secondAttribute="bottom" id="Ii5-BZ-0VW"/>
+                            <constraint firstItem="wGu-1L-Cdx" firstAttribute="leading" secondItem="xCg-3M-CVs" secondAttribute="leading" constant="8" id="Nw5-Z8-07d"/>
+                            <constraint firstItem="kA2-Cw-De5" firstAttribute="top" secondItem="xCg-3M-CVs" secondAttribute="top" id="SDH-YY-sba"/>
+                            <constraint firstAttribute="trailing" secondItem="kA2-Cw-De5" secondAttribute="trailing" id="V96-4F-S5R"/>
+                            <constraint firstAttribute="bottom" secondItem="wGu-1L-Cdx" secondAttribute="bottom" constant="11" id="d3F-A1-o5b"/>
+                            <constraint firstItem="kA2-Cw-De5" firstAttribute="leading" secondItem="wGu-1L-Cdx" secondAttribute="trailing" constant="10" id="eb7-e0-3oo"/>
+                            <constraint firstItem="wGu-1L-Cdx" firstAttribute="top" secondItem="xCg-3M-CVs" secondAttribute="top" constant="10" id="snl-T4-qqF"/>
+                        </constraints>
                     </view>
                 </subviews>
             </view>

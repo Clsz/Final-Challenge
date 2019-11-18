@@ -10,23 +10,29 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="profileBimbelCell" id="KGk-i7-Jjw" customClass="ProfileBimbelTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="220"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="214"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="414" height="220"/>
+                <rect key="frame" x="0.0" y="0.0" width="414" height="214"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vxJ-zc-7TB">
-                        <rect key="frame" x="19" y="100" width="376" height="114"/>
+                        <rect key="frame" x="20" y="100" width="374" height="114"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NT3-Tp-nQe">
-                                <rect key="frame" x="0.0" y="85" width="376" height="16"/>
+                                <rect key="frame" x="0.0" y="86" width="374" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="FGA-o8-AwD"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                 <color key="textColor" red="0.53725490196078429" green="0.53725490196078429" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RyE-j1-bLj">
-                                <rect key="frame" x="0.0" y="58" width="376" height="22"/>
+                                <rect key="frame" x="0.0" y="58" width="374" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="Rji-Vw-4d5"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -36,6 +42,7 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="114" id="2d5-Sh-kov"/>
                             <constraint firstAttribute="trailing" secondItem="RyE-j1-bLj" secondAttribute="trailing" id="4kc-Zx-PcI"/>
+                            <constraint firstAttribute="bottom" secondItem="NT3-Tp-nQe" secondAttribute="bottom" constant="12" id="Hm2-8I-eUU"/>
                             <constraint firstAttribute="trailing" secondItem="NT3-Tp-nQe" secondAttribute="trailing" id="L0n-2F-C2e"/>
                             <constraint firstItem="RyE-j1-bLj" firstAttribute="top" secondItem="vxJ-zc-7TB" secondAttribute="top" constant="58" id="P16-e5-RAb"/>
                             <constraint firstItem="NT3-Tp-nQe" firstAttribute="leading" secondItem="vxJ-zc-7TB" secondAttribute="leading" id="XBy-al-oTn"/>
@@ -43,21 +50,28 @@
                             <constraint firstItem="RyE-j1-bLj" firstAttribute="leading" secondItem="vxJ-zc-7TB" secondAttribute="leading" id="rj3-x7-2Lj"/>
                         </constraints>
                     </view>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Oval" id="yEN-lk-3vZ">
-                        <rect key="frame" x="157" y="50" width="100" height="100"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="school" translatesAutoresizingMaskIntoConstraints="NO" id="o3N-TY-ScP">
+                        <rect key="frame" x="157" y="37" width="100" height="100"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="MVA-T2-d8f"/>
+                            <constraint firstAttribute="height" constant="100" id="Zhk-5S-eKZ"/>
+                            <constraint firstAttribute="width" secondItem="o3N-TY-ScP" secondAttribute="height" multiplier="1:1" id="dME-45-3WJ"/>
+                        </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="o3N-TY-ScP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="37" id="0c6-So-wmB"/>
+                    <constraint firstItem="o3N-TY-ScP" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="5eE-74-Wti"/>
                     <constraint firstItem="vxJ-zc-7TB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="100" id="5oN-hY-AML"/>
-                    <constraint firstAttribute="trailing" secondItem="vxJ-zc-7TB" secondAttribute="trailing" constant="19" id="NQm-1o-P9a"/>
-                    <constraint firstItem="vxJ-zc-7TB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="19" id="qut-hq-U6I"/>
+                    <constraint firstAttribute="trailing" secondItem="vxJ-zc-7TB" secondAttribute="trailing" constant="20" id="NQm-1o-P9a"/>
+                    <constraint firstItem="vxJ-zc-7TB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="qut-hq-U6I"/>
+                    <constraint firstAttribute="bottom" secondItem="vxJ-zc-7TB" secondAttribute="bottom" id="sMF-zi-1nk"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.92157477139999999" green="0.92155748609999999" blue="0.92156922819999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="imageBimbel" destination="yEN-lk-3vZ" id="YBk-Ud-kc6"/>
+                <outlet property="imageBimbel" destination="o3N-TY-ScP" id="vnk-wC-HdW"/>
                 <outlet property="lokasiBimbel" destination="NT3-Tp-nQe" id="Usk-1J-CgA"/>
                 <outlet property="namaBimbel" destination="RyE-j1-bLj" id="9O8-2A-WSA"/>
             </connections>
@@ -65,6 +79,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Oval" width="40" height="40"/>
+        <image name="school" width="50" height="50"/>
     </resources>
 </document>
