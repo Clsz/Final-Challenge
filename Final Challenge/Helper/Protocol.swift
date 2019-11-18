@@ -30,6 +30,10 @@ protocol LanguageProtocol {
     func dropLanguage()
 }
 
+protocol HomeProtocol {
+    func bimbelTapped()
+}
+
 protocol EducationProtocol {
     func dropEducation()
 }

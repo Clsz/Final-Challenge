@@ -9,33 +9,40 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="SalaryTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="salaryCell" rowHeight="338" id="KGk-i7-Jjw" customClass="SalaryTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="112"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                <rect key="frame" x="0.0" y="0.0" width="414" height="112"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Range Salary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a1E-Zk-DSn">
-                        <rect key="frame" x="20" y="0.0" width="136" height="27"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Range Salary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a1E-Zk-DSn">
+                        <rect key="frame" x="20" y="32" width="374" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="27" id="yQp-IA-IeU"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mCM-ct-x6w">
-                        <rect key="frame" x="20" y="30" width="374" height="50"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mCM-ct-x6w">
+                        <rect key="frame" x="20" y="67" width="374" height="45"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rp. 1.000.000 - Rp. 2.000.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="it6-gG-AnR">
-                                <rect key="frame" x="13" y="12" width="361" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rp. 1.000.000 - Rp. 2.000.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="it6-gG-AnR">
+                                <rect key="frame" x="12" y="12" width="350" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="it6-gG-AnR" firstAttribute="top" secondItem="mCM-ct-x6w" secondAttribute="top" constant="12" id="Fbn-EO-0d9"/>
+                            <constraint firstAttribute="trailing" secondItem="it6-gG-AnR" secondAttribute="trailing" constant="12" id="IW4-5e-2r3"/>
+                            <constraint firstAttribute="bottom" secondItem="it6-gG-AnR" secondAttribute="bottom" constant="12" id="QTR-Al-QwM"/>
+                            <constraint firstItem="it6-gG-AnR" firstAttribute="leading" secondItem="mCM-ct-x6w" secondAttribute="leading" constant="12" id="bdv-Yb-y8k"/>
+                            <constraint firstAttribute="height" constant="45" id="mgF-sN-g8J"/>
+                        </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                 <integer key="value" value="10"/>
@@ -43,13 +50,23 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="mCM-ct-x6w" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Dkj-iu-Vp2"/>
+                    <constraint firstAttribute="trailing" secondItem="a1E-Zk-DSn" secondAttribute="trailing" constant="20" id="Jwx-nN-0eo"/>
+                    <constraint firstItem="a1E-Zk-DSn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="P59-du-mlv"/>
+                    <constraint firstAttribute="bottom" secondItem="mCM-ct-x6w" secondAttribute="bottom" id="T5T-MP-XhI"/>
+                    <constraint firstAttribute="trailing" secondItem="mCM-ct-x6w" secondAttribute="trailing" constant="20" id="jkp-7l-vbq"/>
+                    <constraint firstItem="a1E-Zk-DSn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="32" id="p5p-FV-BkL"/>
+                    <constraint firstItem="mCM-ct-x6w" firstAttribute="top" secondItem="a1E-Zk-DSn" secondAttribute="bottom" constant="8" id="yP8-kq-sJf"/>
+                </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.92157477139999999" green="0.92155748609999999" blue="0.92156922819999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="salaryLabel" destination="it6-gG-AnR" id="x5y-Ol-13L"/>
+                <outlet property="salaryTitle" destination="a1E-Zk-DSn" id="Feq-Ap-tOS"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="144.64285714285714"/>
+            <point key="canvasLocation" x="137.68115942028987" y="230.35714285714283"/>
         </tableViewCell>
     </objects>
 </document>

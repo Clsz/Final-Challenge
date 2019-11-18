@@ -8,15 +8,27 @@
 
 import Foundation
 
-struct Course{
-    var courseID:String
-    var courseName, courseAddress, courseImage:String
-    var courseMinFare:Double
-    var courseMaxFare:Double
-    var courseWorkSchedule, courseCategory, courseGrade:[String]
-    var courseWorkQualification:String
-    var courseCreatedAt:String
-    var teacherQty:Int
+class Courses{
+    var courseID, courseName, courseAddress, courseWorkQualification,  courseLocation, courseImage:String!
+       var courseMinFare, courseMaxFare:Int!
+       var courseWorkSchedule, courseCategory, courseWorkTime, courseGrade:[String]!
+//    var courseCreatedAt:String
+//    var teacherQty:Int
+
+    init(_ courseID:String, _ courseName:String, _  courseAddress:String,_ courseLocation:String, _ courseImage:String, _ courseMinFare:Int, _ courseMaxFare:Int,  _ courseWorkSchedule:[String], _ courseWorkTime:[String], _ courseCategory:[String], _ courseWorkQualification:String, _ courseGrade:[String]) {
+        self.courseID = courseID
+        self.courseName = courseName
+        self.courseAddress = courseAddress
+        self.courseLocation = courseLocation
+        self.courseImage = courseImage
+        self.courseMinFare = courseMinFare
+        self.courseMaxFare = courseMaxFare
+        self.courseWorkSchedule = courseWorkSchedule
+        self.courseWorkTime = courseWorkTime
+        self.courseWorkQualification = courseWorkQualification
+        self.courseCategory = courseCategory
+        self.courseGrade = courseGrade
+    }
 }
 
 struct Activity{
@@ -53,9 +65,19 @@ class Tutor{
     }
 }
 
+
 struct Education{
     var educationID:String
     var universityName, fieldOfStudy, grade:String
     var startYear:String
     var endYear:String
 }
+
+struct Course {
+    var courseID, courseName, courseAddress, courseLocation, courseImage:String!
+    var courseMinFare, courseMaxFare:Int!
+    var courseWorkSchedule, courseCategory, courseWorkQualification, courseGrade:[String]!
+}
+
+
+
