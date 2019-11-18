@@ -188,9 +188,10 @@ extension HomeViewController: UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let destVC = DetailBimbelViewController()
+        let destVC = DetailBimbelTabFirstViewController()
         print(bimbel[indexPath.row])
         destVC.course = bimbel[indexPath.row]
+        
         navigationController?.pushViewController(destVC, animated: true)
     }
     

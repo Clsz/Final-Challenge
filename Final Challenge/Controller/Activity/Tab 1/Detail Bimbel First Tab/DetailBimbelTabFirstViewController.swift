@@ -1,36 +1,36 @@
 //
-//  DetailBimbelViewController.swift
+//  DetailBimbelTabFirstViewController.swift
 //  Final Challenge
 //
-//  Created by Steven Gunawan on 14/11/19.
+//  Created by Steven Gunawan on 18/11/19.
 //  Copyright © 2019 12. All rights reserved.
 //
 
 import UIKit
 
-class DetailBimbelViewController: BaseViewController {
-    @IBOutlet weak var detailBimbelTV: UITableView!
+class DetailBimbelTabFirstViewController: BaseViewController {
+    @IBOutlet weak var detailBimbelFirst: UITableView!
     
     var dataArray:[Any?] = []
-    var course:Courses!
+       var course:Courses!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         cellDelegate()
         registerCell()
         setupData()
-        //        getData()
-        //        detailBimbelTV.reloadData()
-        
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
-        setupView(text: "Detail Pekerjaan")
-    }
-    
+           setupView(text: "Detail Pekerjaan")
+       }
+       
+  
+
 }
 
-extension DetailBimbelViewController{
+extension DetailBimbelTabFirstViewController{
     
     func setupData() {
         dataArray.removeAll()
@@ -46,19 +46,19 @@ extension DetailBimbelViewController{
     
 }
 
-extension DetailBimbelViewController: UITableViewDataSource,UITableViewDelegate{
+extension DetailBimbelTabFirstViewController: UITableViewDataSource,UITableViewDelegate{
     func cellDelegate(){
-        detailBimbelTV.dataSource = self
-        detailBimbelTV.delegate = self
+        detailBimbelFirst.dataSource = self
+        detailBimbelFirst.delegate = self
     }
     
     func registerCell() {
-        detailBimbelTV.register(UINib(nibName: "ProfileBimbelTableViewCell", bundle: nil), forCellReuseIdentifier: "profileBimbelCell")
-        detailBimbelTV.register(UINib(nibName: "AddressTableViewCell", bundle: nil), forCellReuseIdentifier: "addressCell")
-        detailBimbelTV.register(UINib(nibName: "SubjectCategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "subjekCell")
-        detailBimbelTV.register(UINib(nibName: "SalaryTableViewCell", bundle: nil), forCellReuseIdentifier: "salaryCell")
-        detailBimbelTV.register(UINib(nibName: "ScheduleTableViewCell", bundle: nil), forCellReuseIdentifier: "scheduleCell")
-        detailBimbelTV.register(UINib(nibName: "SubmitTableViewCell", bundle: nil), forCellReuseIdentifier: "submitCell")
+        detailBimbelFirst.register(UINib(nibName: "ProfileBimbelTableViewCell", bundle: nil), forCellReuseIdentifier: "profileBimbelCell")
+        detailBimbelFirst.register(UINib(nibName: "AddressTableViewCell", bundle: nil), forCellReuseIdentifier: "addressCell")
+        detailBimbelFirst.register(UINib(nibName: "SubjectCategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "subjekCell")
+        detailBimbelFirst.register(UINib(nibName: "SalaryTableViewCell", bundle: nil), forCellReuseIdentifier: "salaryCell")
+        detailBimbelFirst.register(UINib(nibName: "ScheduleTableViewCell", bundle: nil), forCellReuseIdentifier: "scheduleCell")
+        detailBimbelFirst.register(UINib(nibName: "SubmitTableViewCell", bundle: nil), forCellReuseIdentifier: "submitCell")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -109,3 +109,4 @@ extension DetailBimbelViewController: UITableViewDataSource,UITableViewDelegate{
         return UITableViewCell()
     }
 }
+

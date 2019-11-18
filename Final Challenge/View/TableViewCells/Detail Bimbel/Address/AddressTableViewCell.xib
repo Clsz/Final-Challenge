@@ -62,7 +62,7 @@
                 <outlet property="addressView" destination="LyM-ut-bfa" id="zPD-ha-a0P"/>
                 <outlet property="titleLabel" destination="1nU-gd-8xx" id="FlY-mP-xAN"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="130.91517857142856"/>
+            <point key="canvasLocation" x="137.68115942028987" y="130.58035714285714"/>
         </tableViewCell>
     </objects>
 </document>

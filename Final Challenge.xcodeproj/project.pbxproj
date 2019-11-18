@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		142223802382916C004F2625 /* DetailScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1422237E2382916C004F2625 /* DetailScheduleTableViewCell.swift */; };
 		142223812382916C004F2625 /* DetailScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1422237F2382916C004F2625 /* DetailScheduleTableViewCell.xib */; };
+		147E1ECF2382B1DD003CAF5D /* DetailBimbelTabFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147E1ECD2382B1DD003CAF5D /* DetailBimbelTabFirstViewController.swift */; };
+		147E1ED02382B1DD003CAF5D /* DetailBimbelTabFirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147E1ECE2382B1DD003CAF5D /* DetailBimbelTabFirstViewController.xib */; };
 		148C4341237C07F900B87174 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148C433F237C07F900B87174 /* LocationViewController.swift */; };
 		148C4347237C118A00B87174 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148C4345237C118A00B87174 /* LocationTableViewCell.swift */; };
 		148C4356237C3D3300B87174 /* SubjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 148C4354237C3D3300B87174 /* SubjectTableViewCell.xib */; };
@@ -122,6 +124,8 @@
 		1422237F2382916C004F2625 /* DetailScheduleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailScheduleTableViewCell.xib; sourceTree = "<group>"; };
 		145705D7237A9C130093E944 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		145705D8237A9C130093E944 /* FilterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterViewController.xib; sourceTree = "<group>"; };
+		147E1ECD2382B1DD003CAF5D /* DetailBimbelTabFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBimbelTabFirstViewController.swift; sourceTree = "<group>"; };
+		147E1ECE2382B1DD003CAF5D /* DetailBimbelTabFirstViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailBimbelTabFirstViewController.xib; sourceTree = "<group>"; };
 		148C433F237C07F900B87174 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		148C4340237C07F900B87174 /* LocationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationViewController.xib; sourceTree = "<group>"; };
 		148C4345237C118A00B87174 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
@@ -277,6 +281,31 @@
 				148C434B237C3A7100B87174 /* Teaching Subject */,
 			);
 			path = Filter;
+			sourceTree = "<group>";
+		};
+		147E1ECB2382B1AA003CAF5D /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				147E1ECC2382B1B6003CAF5D /* Tab 1 */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
+		147E1ECC2382B1B6003CAF5D /* Tab 1 */ = {
+			isa = PBXGroup;
+			children = (
+				147E1ED12382B344003CAF5D /* Detail Bimbel First Tab */,
+			);
+			path = "Tab 1";
+			sourceTree = "<group>";
+		};
+		147E1ED12382B344003CAF5D /* Detail Bimbel First Tab */ = {
+			isa = PBXGroup;
+			children = (
+				147E1ECD2382B1DD003CAF5D /* DetailBimbelTabFirstViewController.swift */,
+				147E1ECE2382B1DD003CAF5D /* DetailBimbelTabFirstViewController.xib */,
+			);
+			path = "Detail Bimbel First Tab";
 			sourceTree = "<group>";
 		};
 		148C433E237C07DB00B87174 /* Location */ = {
@@ -499,6 +528,7 @@
 		E139B5312375D44D00FEF1F5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				147E1ECB2382B1AA003CAF5D /* Activity */,
 				14C1018423793DD90074469D /* Home */,
 				148C4357237D7FE100B87174 /* Detail Bimbel */,
 				145705D4237A9BE60093E944 /* Filter */,
@@ -845,6 +875,7 @@
 				E16847A0237903B2001B6319 /* AchievementTableViewCell.xib in Resources */,
 				148C4392237EC18200B87174 /* LocationViewController.xib in Resources */,
 				E19D1AF1237BF274003AFFBD /* CustomExperienceTableViewCell.xib in Resources */,
+				147E1ED02382B1DD003CAF5D /* DetailBimbelTabFirstViewController.xib in Resources */,
 				E16847912378F88A001B6319 /* ContentTableViewCell.xib in Resources */,
 				E17F32142379446300AEBCD5 /* ExperienceViewController.xib in Resources */,
 				E1066156238125020098AE11 /* HintWithTableTableViewCell.xib in Resources */,
@@ -945,6 +976,7 @@
 				E13EE5F22380E86A005016A0 /* SetupPersonalViewController.swift in Sources */,
 				E1CBFEF9237D009E00DAC25D /* EditProfileViewController.swift in Sources */,
 				148C437E237EA96600B87174 /* SalaryTableViewCell.swift in Sources */,
+				147E1ECF2382B1DD003CAF5D /* DetailBimbelTabFirstViewController.swift in Sources */,
 				148C4382237EA97D00B87174 /* ScheduleTableViewCell.swift in Sources */,
 				E168478423784354001B6319 /* DetailProfileTableViewCell.swift in Sources */,
 				148C43A123824DCF00B87174 /* AddressTableViewCell.swift in Sources */,
