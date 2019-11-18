@@ -13,8 +13,8 @@ class AddressTableViewCell: UITableViewCell {
     @IBOutlet weak var addressTitle: UILabel!
     @IBOutlet weak var addressView: UIView!
     @IBOutlet weak var addressLabel: UILabel!
-    
-    var course:Course!
+    var homeDelegate:HomeProtocol?
+    var course:Courses!
     
     func setView(title:String, description:String) {
         self.addressTitle.text = title

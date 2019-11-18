@@ -8,10 +8,16 @@
 
 import UIKit
 
+protocol SubjectProtocol {
+    func sendIndexs(arrIndex:[Int])
+}
+
 class SubjectViewController: BaseViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var subjekTV: UITableView!
+    
+    let destVC = FilterViewController()
     
     let subjek = [
         "Matematika",
@@ -32,6 +38,10 @@ class SubjectViewController: BaseViewController {
     var searchSubjek = [String]()
     var searching = false
     
+    var selected : [Int] = []
+    
+    var subjekDelegate:SubjectProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         cellDelegate()
@@ -39,6 +49,7 @@ class SubjectViewController: BaseViewController {
         searchCellDelegate()
         self.hideKeyboardWhenTappedAround()
         setUpSearchBar()
+        subjekTV.allowsMultipleSelection = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,6 +63,8 @@ class SubjectViewController: BaseViewController {
     }
     
     @IBAction func subjectAppliedTapped(_ sender: UIButton) {
+        self.subjekDelegate?.sendIndexs(arrIndex: selected)
+               self.navigationController?.popViewController(animated: true)
     }
     
     
@@ -71,6 +84,7 @@ extension SubjectViewController: UITableViewDataSource,UITableViewDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: "subjekCell", for: indexPath) as! SubjectTableViewCell
         
         cell.gambarSubjek.image = images
+        cell.selectionStyle = .none
         
         if searching  {
             cell.namaSubjek.text = searchSubjek[indexPath.row]
@@ -89,8 +103,18 @@ extension SubjectViewController: UITableViewDataSource,UITableViewDelegate{
            else
            {
                tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.checkmark
+            selected.append(indexPath.row)
+            ConstantManager.tempArraySubject.insert(subjek[indexPath.row], at: 0)
            }
        }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+          tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.none
+          
+          if let index = ConstantManager.tempArraySubject.firstIndex(of: subjek[indexPath.row]) {
+              ConstantManager.tempArraySubject.remove(at: index)
+          }
+      }
     
     func cellDelegate(){
         subjekTV.dataSource = self

@@ -12,8 +12,8 @@ class SalaryTableViewCell: UITableViewCell {
 
     @IBOutlet weak var salaryTitle: UILabel!
     @IBOutlet weak var salaryLabel: UILabel!
-    
-    var course:Course!
+    var homeDelegate:HomeProtocol?
+    var course:Courses!
     
     func setView(title:String, salary:String) {
         self.salaryTitle.text = title

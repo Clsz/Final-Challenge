@@ -17,6 +17,10 @@ protocol SGProtocol{
     func achievementTapped() 
 }
 
+protocol HomeProtocol {
+    func bimbelTapped()
+}
+
 protocol editPassword{
     func changePassword()
 }

@@ -12,7 +12,8 @@ class SubjectCategoryTableViewCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subjectCV: UICollectionView!
-    var course:Course!
+    var course:Courses!
+    var homeDelegate:HomeProtocol?
      var dataArray:[Any?] = []
     
     func setView(title:String) {
@@ -41,7 +42,7 @@ extension SubjectCategoryTableViewCell: UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "subjekCell", for: indexPath) as! SubjectCollectionViewCell
-                   if let course = dataArray[indexPath.row] as? Course {
+                   if let course = dataArray[indexPath.row] as? Courses {
                     cell.labelSubjek.text = course.courseCategory[indexPath.row]
                    }
                    return cell

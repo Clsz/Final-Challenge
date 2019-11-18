@@ -17,6 +17,8 @@ class ListJobTableViewCell: UITableViewCell {
     @IBOutlet weak var bimbelSubject: UILabel!
     @IBOutlet weak var bimbelView: UIView!
     
+    var course:Courses!
+    
     func setView(image:String, name:String, location:String, subject:String) {
         bimbelPhoto.image = UIImage(named: image)
         bimbelName.text = name

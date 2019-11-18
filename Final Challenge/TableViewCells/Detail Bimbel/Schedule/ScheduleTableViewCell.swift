@@ -12,8 +12,8 @@ class ScheduleTableViewCell: UITableViewCell {
 
     @IBOutlet weak var scheduleTitle: UILabel!
     @IBOutlet weak var scheduleTV: UITableView!
-    
-    var course:Course!
+    var homeDelegate:HomeProtocol?
+    var course:Courses!
     
     func setView(title:String) {
         self.scheduleTitle.text = title

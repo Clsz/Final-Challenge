@@ -15,4 +15,9 @@ class ConstantManager{
     "Jakarta Utara",
     "Kota Serang",
     "Jakarta Barat"]
+    static var tempArraySubject = ["Matematika",
+          "IPA",
+          "Bahasa Inggris",
+          "Bahasa Indonesia"
+      ]
 }

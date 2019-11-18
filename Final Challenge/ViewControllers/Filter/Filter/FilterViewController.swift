@@ -13,15 +13,10 @@ class FilterViewController: BaseViewController {
     var salaryMin: Double?
     var selectedIndex:[Int] = []
     var contentDelegate:AldiProtocol?
-    
-    let subjek = [
-        "Matematika",
-        "IPA",
-        "Bahasa Inggris",
-        "Bahasa Indonesia",
-    ]
+    var contDelegate:SubjectProtocol?
     
     let grade = [
+        "PAUD",
         "TK",
         "SD",
         "SMP",
@@ -66,6 +61,7 @@ class FilterViewController: BaseViewController {
         cellDelegate()
         
         LocationCV.reloadData()
+        subjectCV.reloadData()
         self.LocationCV.allowsMultipleSelection = true
         self.subjectCV.allowsMultipleSelection = true
         self.gradeCV.allowsMultipleSelection = true
@@ -75,7 +71,11 @@ class FilterViewController: BaseViewController {
         let vc = LocationViewController()
         vc.aldiDelegate = self
         
+//        let vc2 = SubjectViewController()
+//        vc2.subjekDelegate = self
+        
         LocationCV.reloadData()
+        subjectCV.reloadData()
         setupView(text: "Filter")
         print(selectedIndex,"##")
 //        for i in 0..<selectedIndex.count {
@@ -93,15 +93,24 @@ class FilterViewController: BaseViewController {
     }
     
     @IBAction func viewAllSubjectTapped(_ sender: UIButton) {
-        let subjectVC = DetailBimbelViewController()
+        let subjectVC = SubjectViewController()
+        subjectVC.subjekDelegate = self
         self.navigationController?.pushViewController(subjectVC, animated: true)
     }
     @IBAction func applyTapped(_ sender: UIButton) {
+        
     }
 }
 
 extension FilterViewController:AldiProtocol{
     func sendIndex(arrIndex: [Int]) {
+        selectedIndex = arrIndex
+        print(selectedIndex,"&")
+    }
+}
+
+extension FilterViewController:SubjectProtocol{
+    func sendIndexs(arrIndex: [Int]) {
         selectedIndex = arrIndex
         print(selectedIndex,"&")
     }
@@ -114,7 +123,7 @@ extension FilterViewController:UICollectionViewDataSource, UICollectionViewDeleg
             return ConstantManager.tempArray.count;
         }
         else if (collectionView  == subjectCV) {
-            return  subjek.count
+            return  ConstantManager.tempArraySubject.count
         }
         else {
             return grade.count
@@ -135,6 +144,7 @@ extension FilterViewController:UICollectionViewDataSource, UICollectionViewDeleg
             }
             cell.labelFilter.text = ConstantManager.tempArray[indexPath.row]
             
+            
             return cell
         }
         else if (collectionView  == subjectCV) {
@@ -144,7 +154,10 @@ extension FilterViewController:UICollectionViewDataSource, UICollectionViewDeleg
             cell.kotakFilter.layer.borderColor = #colorLiteral(red: 0.2392156863, green: 0.431372549, blue: 0.8, alpha: 1)
             cell.kotakFilter.layer.borderWidth = 1
             
-            cell.labelFilter.text = subjek[indexPath.row]
+            if selectedIndex.contains(indexPath.row) {
+                           cell.isSelected = true
+                       }
+            cell.labelFilter.text = ConstantManager.tempArraySubject[indexPath.row]
             
             return cell
         }

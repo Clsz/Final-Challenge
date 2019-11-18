@@ -13,6 +13,7 @@ class ProfileBimbelTableViewCell: UITableViewCell {
     @IBOutlet weak var imageBimbel: UIImageView!
     @IBOutlet weak var namaBimbel: UILabel!
     @IBOutlet weak var lokasiBimbel: UILabel!
+    var homeDelegate:HomeProtocol?
     
     func setView(image:String, name:String, lokasi:String) {
            self.namaBimbel.text = name
