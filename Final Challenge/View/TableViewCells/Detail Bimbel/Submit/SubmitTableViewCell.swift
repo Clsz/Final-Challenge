@@ -10,6 +10,9 @@ import UIKit
 
 class SubmitTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var requestButton: UIButton!
+    var contentDelegate:DetailBimbel?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,5 +25,7 @@ class SubmitTableViewCell: UITableViewCell {
     }
     
     @IBAction func requestTapped(_ sender: UIButton) {
+        contentDelegate?.requestTapped()
     }
+    
 }

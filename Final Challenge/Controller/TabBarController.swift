@@ -12,6 +12,8 @@ class TabBarController: UITabBarController {
     
     var homeNav:UINavigationController!
     var homeVC: HomeViewController!
+    var detailNav:UINavigationController!
+    var detailVC: DetailTestViewController!
     var profileNav:UINavigationController!
     var profileVC: ProfileViewController!
     
@@ -23,13 +25,17 @@ class TabBarController: UITabBarController {
     func setTabBar() {
         homeVC = HomeViewController()
         homeNav = UINavigationController(rootViewController: homeVC)
-        homeNav.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "networking"), selectedImage: UIImage(named: "networking"))
+        homeNav.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "icon_job"), selectedImage: UIImage(named: "icon_job"))
+        
+        detailVC = DetailTestViewController()
+        detailNav = UINavigationController(rootViewController: detailVC)
+        detailNav.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "icon_activity"), selectedImage: UIImage(named: "icon_activity"))
         
         profileVC = ProfileViewController()
         profileNav = UINavigationController(rootViewController: profileVC)
-        profileNav.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "reunion"), selectedImage: UIImage(named: "reunion"))
+        profileNav.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "icon_profile"), selectedImage: UIImage(named: "icon_profile"))
 
-        let tabBarList:[UIViewController] = [homeNav,profileNav]
+        let tabBarList:[UIViewController] = [homeNav,detailNav,profileNav]
 
         viewControllers = tabBarList
     }

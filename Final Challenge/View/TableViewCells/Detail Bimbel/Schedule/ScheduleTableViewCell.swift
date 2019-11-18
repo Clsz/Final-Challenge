@@ -38,7 +38,7 @@ class ScheduleTableViewCell: UITableViewCell {
 
 extension ScheduleTableViewCell: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        schedule.count
+        return schedule.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -31,7 +31,6 @@ class DetailBimbelViewController: BaseViewController {
 }
 
 extension DetailBimbelViewController{
-    
     func setupData() {
         dataArray.removeAll()
         dataArray.append(course)
@@ -42,6 +41,14 @@ extension DetailBimbelViewController{
         dataArray.append(("Schedule",course.courseWorkTime,course.courseWorkSchedule))
         dataArray.append(("Qualification",course.courseWorkQualification,0))
         dataArray.append(true)
+    }
+    
+}
+extension DetailBimbelViewController:DetailBimbel{
+    func requestTapped() {
+        let destVC = DetailTestViewController()
+        destVC.course = self.course
+        self.navigationController?.pushViewController(destVC, animated: true)
     }
     
 }
@@ -103,8 +110,8 @@ extension DetailBimbelViewController: UITableViewDataSource,UITableViewDelegate{
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "submitCell", for: indexPath) as! SubmitTableViewCell
+            cell.contentDelegate = self
             return cell
-            
         }
         return UITableViewCell()
     }
