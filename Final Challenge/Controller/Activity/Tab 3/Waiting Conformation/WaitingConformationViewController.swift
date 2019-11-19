@@ -40,7 +40,7 @@ extension WaitingConformationViewController{
         dataArray.append(("Address",activity.courseAddress,0))
         dataArray.append(("Subject Category",activity.courseCategory))
         dataArray.append(("Grade",activity.courseGrade))
-        dataArray.append(("Range Salary","Rp \(String(describing: activity.courseMinFare!)) - Rp \(String(describing: activity.courseMaxFare!))",1))
+        dataArray.append(("Range Salary","Rp \(String(describing: activity.courseMinFare!.formattedWithSeparator)) - Rp \(String(describing: activity.courseMaxFare!.formattedWithSeparator))",1))
         dataArray.append(("Schedule",activity.courseWorkTime,activity.courseWorkSchedule))
         dataArray.append(("Qualification",activity.courseWorkQualification,0))
         dataArray.append(("Terima Lowongan Kerja","Tolak Lowongan Kerja",true))
