@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FirstTabViewController" customModule="Final_Challenge" customModuleProvider="target">
             <connections>
+                <outlet property="firstTabTV" destination="KDC-YT-b5f" id="F95-cD-Mtk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,19 +18,19 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KDC-YT-b5f">
-                    <rect key="frame" x="0.0" y="150" width="414" height="348"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KDC-YT-b5f">
+                    <rect key="frame" x="0.0" y="44" width="414" height="348"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="348" id="XIi-wK-vNU"/>
                     </constraints>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="KDC-YT-b5f" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="7Kh-b0-xTV"/>
-                <constraint firstItem="KDC-YT-b5f" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="106" id="iP0-mq-ixc"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="KDC-YT-b5f" secondAttribute="bottom" constant="364" id="j2O-nb-xNd"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="KDC-YT-b5f" secondAttribute="bottom" constant="470" id="eUK-am-duQ"/>
+                <constraint firstItem="KDC-YT-b5f" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="iP0-mq-ixc"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="KDC-YT-b5f" secondAttribute="trailing" id="y5q-MV-aQL"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

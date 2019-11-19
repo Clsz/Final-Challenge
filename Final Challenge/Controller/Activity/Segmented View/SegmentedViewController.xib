@@ -10,6 +10,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SegmentedViewController" customModule="Final_Challenge" customModuleProvider="target">
             <connections>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewContainer" destination="yaM-6J-RPY" id="5gq-Ab-4f1"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -29,9 +30,12 @@
                         <segment title="Hasil"/>
                     </segments>
                     <color key="selectedSegmentTintColor" red="0.32549019610000002" green="0.78039215689999997" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <action selector="switchViewAction:" destination="-1" eventType="valueChanged" id="24u-dL-029"/>
+                    </connections>
                 </segmentedControl>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yaM-6J-RPY">
-                    <rect key="frame" x="0.0" y="92" width="414" height="804"/>
+                    <rect key="frame" x="0.0" y="152" width="414" height="744"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </view>
             </subviews>
@@ -43,7 +47,7 @@
                 <constraint firstItem="wHR-0b-IMB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="NQt-yk-cRr"/>
                 <constraint firstItem="wHR-0b-IMB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="OrO-hQ-bC9"/>
                 <constraint firstItem="yaM-6J-RPY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Tic-ql-Ib2"/>
-                <constraint firstItem="yaM-6J-RPY" firstAttribute="top" secondItem="wHR-0b-IMB" secondAttribute="bottom" constant="8" id="cKR-9D-jxn"/>
+                <constraint firstItem="yaM-6J-RPY" firstAttribute="top" secondItem="wHR-0b-IMB" secondAttribute="bottom" constant="68" id="cKR-9D-jxn"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="137.68115942028987" y="140.625"/>

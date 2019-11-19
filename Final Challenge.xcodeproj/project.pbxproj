@@ -21,6 +21,10 @@
 		147E1EE723839EAE003CAF5D /* SecondTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147E1EE523839EAE003CAF5D /* SecondTabViewController.xib */; };
 		147E1EEA23839EBD003CAF5D /* ThirdTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147E1EE823839EBD003CAF5D /* ThirdTabViewController.swift */; };
 		147E1EEB23839EBD003CAF5D /* ThirdTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147E1EE923839EBD003CAF5D /* ThirdTabViewController.xib */; };
+		147E1EEF2383C261003CAF5D /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147E1EED2383C261003CAF5D /* ResultViewController.swift */; };
+		147E1EF02383C261003CAF5D /* ResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147E1EEE2383C261003CAF5D /* ResultViewController.xib */; };
+		147E1EF62383C319003CAF5D /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147E1EF42383C319003CAF5D /* ResultTableViewCell.swift */; };
+		147E1EF72383C319003CAF5D /* ResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147E1EF52383C319003CAF5D /* ResultTableViewCell.xib */; };
 		148C4341237C07F900B87174 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148C433F237C07F900B87174 /* LocationViewController.swift */; };
 		148C4347237C118A00B87174 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148C4345237C118A00B87174 /* LocationTableViewCell.swift */; };
 		148C4356237C3D3300B87174 /* SubjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 148C4354237C3D3300B87174 /* SubjectTableViewCell.xib */; };
@@ -152,6 +156,10 @@
 		147E1EE523839EAE003CAF5D /* SecondTabViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondTabViewController.xib; sourceTree = "<group>"; };
 		147E1EE823839EBD003CAF5D /* ThirdTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdTabViewController.swift; sourceTree = "<group>"; };
 		147E1EE923839EBD003CAF5D /* ThirdTabViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThirdTabViewController.xib; sourceTree = "<group>"; };
+		147E1EED2383C261003CAF5D /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		147E1EEE2383C261003CAF5D /* ResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultViewController.xib; sourceTree = "<group>"; };
+		147E1EF42383C319003CAF5D /* ResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
+		147E1EF52383C319003CAF5D /* ResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultTableViewCell.xib; sourceTree = "<group>"; };
 		148C433F237C07F900B87174 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		148C4340237C07F900B87174 /* LocationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationViewController.xib; sourceTree = "<group>"; };
 		148C4345237C118A00B87174 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
@@ -318,6 +326,7 @@
 		147E1ECB2382B1AA003CAF5D /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				147E1EEC2383C245003CAF5D /* Result */,
 				147E1ED223831540003CAF5D /* Segmented View */,
 				147E1ECC2382B1B6003CAF5D /* Tab 1 */,
 				E1F5BB552382D22600BC9CFE /* Tab 2 */,
@@ -395,6 +404,51 @@
 				147E1EE923839EBD003CAF5D /* ThirdTabViewController.xib */,
 			);
 			path = "View Third Tab";
+			sourceTree = "<group>";
+		};
+		147E1EEC2383C245003CAF5D /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				147E1EED2383C261003CAF5D /* ResultViewController.swift */,
+				147E1EEE2383C261003CAF5D /* ResultViewController.xib */,
+			);
+			path = Result;
+			sourceTree = "<group>";
+		};
+		147E1EF12383C2B5003CAF5D /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				E1F5BB4D2382C75A00BC9CFE /* ActivityTableViewCell.swift */,
+				E1F5BB4E2382C75A00BC9CFE /* ActivityTableViewCell.xib */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
+		147E1EF22383C2BF003CAF5D /* Footer Activity */ = {
+			isa = PBXGroup;
+			children = (
+				E1F5BB512382CDFD00BC9CFE /* FooterActivityTableViewCell.swift */,
+				E1F5BB522382CDFD00BC9CFE /* FooterActivityTableViewCell.xib */,
+			);
+			path = "Footer Activity";
+			sourceTree = "<group>";
+		};
+		147E1EF32383C2CC003CAF5D /* Progress */ = {
+			isa = PBXGroup;
+			children = (
+				147E1ED723839AE3003CAF5D /* ProgressTableViewCell.swift */,
+				147E1ED823839AE3003CAF5D /* ProgressTableViewCell.xib */,
+			);
+			path = Progress;
+			sourceTree = "<group>";
+		};
+		147E1EF82383C328003CAF5D /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				147E1EF42383C319003CAF5D /* ResultTableViewCell.swift */,
+				147E1EF52383C319003CAF5D /* ResultTableViewCell.xib */,
+			);
+			path = Result;
 			sourceTree = "<group>";
 		};
 		148C433E237C07DB00B87174 /* Location */ = {
@@ -892,12 +946,10 @@
 		E1F5BB4C2382C65000BC9CFE /* Activity */ = {
 			isa = PBXGroup;
 			children = (
-				E1F5BB4D2382C75A00BC9CFE /* ActivityTableViewCell.swift */,
-				E1F5BB4E2382C75A00BC9CFE /* ActivityTableViewCell.xib */,
-				E1F5BB512382CDFD00BC9CFE /* FooterActivityTableViewCell.swift */,
-				E1F5BB522382CDFD00BC9CFE /* FooterActivityTableViewCell.xib */,
-				147E1ED723839AE3003CAF5D /* ProgressTableViewCell.swift */,
-				147E1ED823839AE3003CAF5D /* ProgressTableViewCell.xib */,
+				147E1EF82383C328003CAF5D /* Result */,
+				147E1EF12383C2B5003CAF5D /* Activity */,
+				147E1EF22383C2BF003CAF5D /* Footer Activity */,
+				147E1EF32383C2CC003CAF5D /* Progress */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -999,6 +1051,7 @@
 				E106615A2381278D0098AE11 /* AdditionalEducationViewController.xib in Resources */,
 				E168477723782B0F001B6319 /* SkillsViewController.xib in Resources */,
 				E13EE5FF2380F67D005016A0 /* HintTableViewCell.xib in Resources */,
+				147E1EF02383C261003CAF5D /* ResultViewController.xib in Resources */,
 				E17F321023793BFE00AEBCD5 /* EducationViewController.xib in Resources */,
 				E13EE61323811320005016A0 /* SetupExperienceViewController.xib in Resources */,
 				148C4368237E9D6C00B87174 /* FilterViewController.xib in Resources */,
@@ -1023,6 +1076,7 @@
 				E18CAE8E237D4C9800DEAC83 /* FilterCollectionViewCell.xib in Resources */,
 				E106615223811A4A0098AE11 /* AdditionalLanguageViewController.xib in Resources */,
 				148C43A223824DCF00B87174 /* AddressTableViewCell.xib in Resources */,
+				147E1EF72383C319003CAF5D /* ResultTableViewCell.xib in Resources */,
 				148C436B237E9E0800B87174 /* SubjectViewController.xib in Resources */,
 				E1F5BB542382CDFD00BC9CFE /* FooterActivityTableViewCell.xib in Resources */,
 				148C438B237EAA0000B87174 /* SubmitTableViewCell.xib in Resources */,
@@ -1156,7 +1210,9 @@
 				E13EE61223811320005016A0 /* SetupExperienceViewController.swift in Sources */,
 				E1713A50237AC68C00F6A8A7 /* ContentViewTableViewCell.swift in Sources */,
 				E1CBFEFD237D00E100DAC25D /* EditPasswordViewController.swift in Sources */,
+				147E1EF62383C319003CAF5D /* ResultTableViewCell.swift in Sources */,
 				E139B5362375D6B700FEF1F5 /* LoginViewController.swift in Sources */,
+				147E1EEF2383C261003CAF5D /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

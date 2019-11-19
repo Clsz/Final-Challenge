@@ -1,5 +1,5 @@
 //
-//  FirstTabViewController.swift
+//  ResultViewController.swift
 //  Final Challenge
 //
 //  Created by Steven Gunawan on 19/11/19.
@@ -8,15 +8,14 @@
 
 import UIKit
 
-class FirstTabViewController: UIViewController {
+class ResultViewController: UIViewController {
 
-    @IBOutlet weak var firstTabTV: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
 
 
- 
+
 
 }

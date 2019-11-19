@@ -1,5 +1,5 @@
 //
-//  ProgressTableViewCell.swift
+//  ResultTableViewCell.swift
 //  Final Challenge
 //
 //  Created by Steven Gunawan on 19/11/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProgressTableViewCell: UITableViewCell {
+class ResultTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
