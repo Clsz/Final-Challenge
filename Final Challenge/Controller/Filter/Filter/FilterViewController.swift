@@ -147,7 +147,7 @@ extension FilterViewController:UICollectionViewDataSource, UICollectionViewDeleg
             
             return cell
         }
-        else if (collectionView  == subjectCV) {
+        else if (collectionView == self.subjectCV) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filterCell", for: indexPath) as! FilterCollectionViewCell
             
             cell.kotakFilter.layer.cornerRadius = 10

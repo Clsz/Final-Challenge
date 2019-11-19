@@ -35,7 +35,6 @@ class ProfileViewController: BaseViewController {
     }
     
 }
-
 extension ProfileViewController{
     
     private func setupData() {
@@ -56,9 +55,7 @@ extension ProfileViewController{
     private func addAchievement() {
         
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
         let cancel = UIAlertAction(title: "Batal", style: .cancel, handler: nil)
-        
         let file = UIAlertAction(title: "Pilih Dari File", style: .default) { action in
             
             //Select from file
@@ -69,8 +66,8 @@ extension ProfileViewController{
         
         present(actionSheet, animated: true, completion: nil)
     }
+    
 }
-
 extension ProfileViewController:ProfileProtocol{
     func pencilTapped() {
         let destVC = EditProfileViewController()
@@ -110,7 +107,6 @@ extension ProfileViewController:ProfileProtocol{
         //Back to Login as Bimbel or Pengajar
     }
 }
-
 extension ProfileViewController:UITableViewDataSource, UITableViewDelegate{
     
     private func registerCell() {
