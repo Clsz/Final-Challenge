@@ -36,15 +36,14 @@ class ProfileViewController: BaseViewController {
     
 }
 extension ProfileViewController{
-    
     private func setupData() {
         dataArray.removeAll()
         dataArray.append(tutor)
-        dataArray.append(("Skill","Add Skill",0))
-        dataArray.append(("Language","Add Language"))
-        dataArray.append(("Education","Add Education",1))
-        dataArray.append(("Experience","Add Experience"))
-        dataArray.append(("Achievement","Add Achievement",2))
+        dataArray.append(("Keterampilan","Tambah Keterampilan",0))
+        dataArray.append(("Bahasa","Tambah Bahasa"))
+        dataArray.append(("Pendidikan","Edit Pendidikan",1))
+        dataArray.append(("Pengalaman","Tambah Pengalaman"))
+        dataArray.append(("Pencapaian","Tambah Pencapain",2))
         dataArray.append(false)
     }
     
@@ -53,7 +52,6 @@ extension ProfileViewController{
     }
     
     private func addAchievement() {
-        
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let cancel = UIAlertAction(title: "Batal", style: .cancel, handler: nil)
         let file = UIAlertAction(title: "Pilih Dari File", style: .default) { action in
@@ -106,9 +104,9 @@ extension ProfileViewController:ProfileProtocol{
     func logout() {
         //Back to Login as Bimbel or Pengajar
     }
+    
 }
 extension ProfileViewController:UITableViewDataSource, UITableViewDelegate{
-    
     private func registerCell() {
         tableView.register(UINib(nibName: "TitleTableViewCell", bundle: nil), forCellReuseIdentifier: header)
         tableView.register(UINib(nibName: "ContentTableViewCell", bundle: nil), forCellReuseIdentifier: content)
@@ -168,4 +166,5 @@ extension ProfileViewController:UITableViewDataSource, UITableViewDelegate{
         }
         return UITableViewCell()
     }
+    
 }

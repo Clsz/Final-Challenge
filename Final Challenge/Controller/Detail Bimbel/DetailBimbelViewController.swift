@@ -20,13 +20,12 @@ class DetailBimbelViewController: BaseViewController {
         cellDelegate()
         registerCell()
         setupData()
-        //        getData()
-        //        detailBimbelTV.reloadData()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Detail Pekerjaan")
+        self.detailBimbelTV.reloadData()
     }
     
 }
@@ -48,8 +47,6 @@ extension DetailBimbelViewController{
 extension DetailBimbelViewController:DetailBimbel{
     func requestTapped() {
         let destVC = SegmentedViewController()
-        //        let destVC2 = ResultViewController()
-        //        destVC2.fromID = 1
         
         dataTab1 = Activity("01", "MENGAJUKAN", ["10.00 A.M - 12.00 AM", "11.20 A.M - 13.20 PM", "09.00 A.M - 11.00 PM"], ["Rabu, 27 Desember 2019", "Kamis, 28 Desember 2019", "Jumat, 29 Desember 2019"],
                             """
