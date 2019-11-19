@@ -9,17 +9,16 @@
 import UIKit
 
 class SegmentedViewController: BaseViewController {
+    
     @IBOutlet weak var segmentView: UISegmentedControl!
-    
-    
     @IBOutlet weak var tableView: UITableView!
+    
     var activity:[[Activity]]?
     var detailActivity1:[Activity] = []
     var detailActivity2:[Activity]?
     var detailActivity3:[Activity]?
     var currentTableView:Int!
     var define:Activity!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +27,6 @@ class SegmentedViewController: BaseViewController {
         registerCell()
         cellDelegate()
         setColor()
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {

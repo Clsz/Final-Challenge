@@ -67,7 +67,6 @@ extension DetailBimbelTabFirstViewController: UITableViewDataSource,UITableViewD
         if indexPath.row == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "profileBimbelCell", for: indexPath) as! ProfileBimbelTableViewCell
             if let activity = dataArray[indexPath.row] as? Activity {
-                print(indexPath.row)
                 cell.setView(image: activity.courseImage, name: activity.courseName, lokasi: activity.activityStatus)
             }
             return cell
@@ -77,7 +76,6 @@ extension DetailBimbelTabFirstViewController: UITableViewDataSource,UITableViewD
             
             if keyValue.code == 0{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "addressCell", for: indexPath) as! AddressTableViewCell
-                print("keyVAlue\(keyValue.value)")
                 cell.setView(title: keyValue.key, description: keyValue.value)
                 return cell
             }

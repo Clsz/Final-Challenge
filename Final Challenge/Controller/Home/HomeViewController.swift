@@ -182,7 +182,7 @@ extension HomeViewController: UITableViewDataSource,UITableViewDelegate{
             cell.bimbelLocation.text = lokasiBimbel
         }
         
-        let gajiBimbel =  "Rp \(String(describing: data.courseMinFare!)) - Rp \(String(describing: data.courseMaxFare!))"
+        let gajiBimbel =  "Rp \(String(describing: data.courseMinFare!.formattedWithSeparator)) - Rp \(String(describing: data.courseMaxFare!.formattedWithSeparator))"
         cell.bimbelSubject.text = gajiBimbel
         return cell
     }
