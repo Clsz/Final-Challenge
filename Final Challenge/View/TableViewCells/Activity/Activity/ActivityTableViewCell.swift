@@ -37,6 +37,9 @@ class ActivityTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func mintaJadwalTapped(_ sender: UIButton) {
+        // push view controller ke resultviewcontroller dengan fromID 2
+    }
 }
 
 extension ActivityTableViewCell{

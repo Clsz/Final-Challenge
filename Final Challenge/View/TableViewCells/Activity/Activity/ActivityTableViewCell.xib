@@ -27,6 +27,9 @@
                         <state key="normal" title="Minta Jadwal Baru">
                             <color key="titleColor" red="0.32549019610000002" green="0.78039215689999997" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
+                        <connections>
+                            <action selector="mintaJadwalTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="tau-Xd-GYc"/>
+                        </connections>
                     </button>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QsL-e6-Sfe">
                         <rect key="frame" x="20" y="63" width="374" height="288"/>
