@@ -9,7 +9,9 @@
 import UIKit
 
 class ResultTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var imageResult: UIImageView!
+    
+    @IBOutlet weak var labelResult: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +21,8 @@ class ResultTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    @IBAction func buttonTapped(_ sender: Any) {
     }
     
 }

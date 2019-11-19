@@ -1,32 +1,35 @@
 //
-//  DetailTestViewController.swift
+//  DetailWaitingConformationViewController.swift
 //  Final Challenge
 //
-//  Created by Muhammad Reynaldi on 18/11/19.
+//  Created by Steven Gunawan on 19/11/19.
 //  Copyright © 2019 12. All rights reserved.
 //
 
 import UIKit
 
-class DetailTestViewController: BaseViewController {
-    @IBOutlet weak var detailTestTableView: UITableView!
-    
+class DetailWaitingConformationViewController: BaseViewController {
+
     var dataArray:[Any?] = []
-    var course:Courses!
+       var course:Courses!
     
+    @IBOutlet weak var detailWaitTV: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         cellDelegate()
         registerCell()
         setupData()
+        
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
-        setupView(text: "Detail Tes")
-    }
+          setupView(text: "Detail Pekerjaan")
+      }
+
+
 }
 
-extension DetailTestViewController{
+extension DetailWaitingConformationViewController{
     func setupData() {
         dataArray.removeAll()
         dataArray.append(course)
@@ -41,15 +44,14 @@ extension DetailTestViewController{
     }
     
 }
-extension DetailTestViewController:ActivityProcess{
+extension DetailWaitingConformationViewController:ActivityProcess{
     func accept() {
         let refreshAlert = UIAlertController(title: "Terima Lowongan kerja", message: "Apakah Anda Yakin Untuk Menerima Lowongan Kerja Ini", preferredStyle: UIAlertController.Style.alert)
 
         refreshAlert.addAction(UIAlertAction(title: "Ya", style: .default, handler: { (action: UIAlertAction!) in
           print("Handle Ok logic here")
             let destVC = ResultViewController()
-            destVC.fromID = 0
-            self.navigationController?.pushViewController(destVC, animated: true)
+            self.navigationController?.popToViewController(destVC, animated: true)
           }))
 
         refreshAlert.addAction(UIAlertAction(title: "Tidak", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -75,21 +77,21 @@ extension DetailTestViewController:ActivityProcess{
         present(refreshAlert, animated: true, completion: nil)
     }
 }
-extension DetailTestViewController: UITableViewDataSource,UITableViewDelegate{
+extension DetailWaitingConformationViewController: UITableViewDataSource,UITableViewDelegate{
     func cellDelegate(){
-        detailTestTableView.dataSource = self
-        detailTestTableView.delegate = self
+        detailWaitTV.dataSource = self
+        detailWaitTV.delegate = self
     }
     
     func registerCell() {
-        detailTestTableView.register(UINib(nibName: "ProfileBimbelTableViewCell", bundle: nil), forCellReuseIdentifier: "profileBimbelCell")
-        detailTestTableView.register(UINib(nibName: "AddressTableViewCell", bundle: nil), forCellReuseIdentifier: "addressCell")
-        detailTestTableView.register(UINib(nibName: "ActivityTableViewCell", bundle: nil), forCellReuseIdentifier: "ActivityTableViewCellID")
-        detailTestTableView.register(UINib(nibName: "SubjectCategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "subjekCell")
-        detailTestTableView.register(UINib(nibName: "SalaryTableViewCell", bundle: nil), forCellReuseIdentifier: "salaryCell")
-        detailTestTableView.register(UINib(nibName: "ScheduleTableViewCell", bundle: nil), forCellReuseIdentifier: "scheduleCell")
-        detailTestTableView.register(UINib(nibName: "SubmitTableViewCell", bundle: nil), forCellReuseIdentifier: "submitCell")
-        detailTestTableView.register(UINib(nibName: "FooterActivityTableViewCell", bundle: nil), forCellReuseIdentifier: "FooterActivityTableViewCellID")
+        detailWaitTV.register(UINib(nibName: "ProfileBimbelTableViewCell", bundle: nil), forCellReuseIdentifier: "profileBimbelCell")
+        detailWaitTV.register(UINib(nibName: "AddressTableViewCell", bundle: nil), forCellReuseIdentifier: "addressCell")
+        detailWaitTV.register(UINib(nibName: "ActivityTableViewCell", bundle: nil), forCellReuseIdentifier: "ActivityTableViewCellID")
+        detailWaitTV.register(UINib(nibName: "SubjectCategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "subjekCell")
+        detailWaitTV.register(UINib(nibName: "SalaryTableViewCell", bundle: nil), forCellReuseIdentifier: "salaryCell")
+        detailWaitTV.register(UINib(nibName: "ScheduleTableViewCell", bundle: nil), forCellReuseIdentifier: "scheduleCell")
+        detailWaitTV.register(UINib(nibName: "SubmitTableViewCell", bundle: nil), forCellReuseIdentifier: "submitCell")
+        detailWaitTV.register(UINib(nibName: "FooterActivityTableViewCell", bundle: nil), forCellReuseIdentifier: "FooterActivityTableViewCellID")
         
     }
     
