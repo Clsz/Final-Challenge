@@ -33,6 +33,11 @@ extension UIView{
         self.layer.shadowRadius = 1
     }
     
+    func setBorder() {
+        self.layer.borderWidth = 3
+          self.layer.borderColor = #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
+    }
+    
     func outerRound() {
         self.layer.cornerRadius = 10
         self.clipsToBounds = true
