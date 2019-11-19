@@ -11,6 +11,7 @@ import UIKit
 class ProfileBimbelTableViewCell: UITableViewCell {
     
     
+    @IBOutlet weak var viewBimbel: UIView!
     @IBOutlet weak var imageBimbel: UIImageView!
     @IBOutlet weak var namaBimbel: UILabel!
     @IBOutlet weak var lokasiBimbel: UILabel!
@@ -19,8 +20,9 @@ class ProfileBimbelTableViewCell: UITableViewCell {
     func setView(image:String, name:String, lokasi:String) {
         self.namaBimbel.text = name
         self.lokasiBimbel.text = lokasi
-        self.imageBimbel.setRoundedBorder()
+        self.imageBimbel.setRounded()
         self.imageBimbel.dropShadow()
+        viewBimbel.outerRound()
     }
     
     override func awakeFromNib() {

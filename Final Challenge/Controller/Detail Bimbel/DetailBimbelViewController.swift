@@ -13,7 +13,7 @@ class DetailBimbelViewController: BaseViewController {
     
     var dataArray:[Any?] = []
     var course:Courses!
-    var detailActivity1:Activity!
+    var dataTab1:Activity!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,8 +48,17 @@ extension DetailBimbelViewController{
 extension DetailBimbelViewController:DetailBimbel{
     func requestTapped() {
         let destVC = SegmentedViewController()
+//        let destVC2 = ResultViewController()
+//        destVC2.fromID = 1
         
-        destVC.activity?[0].append(detailActivity1)
+        dataTab1 = Activity("01", "MENGAJUKAN", ["10.00 A.M - 12.00 AM", "11.20 A.M - 13.20 PM", "09.00 A.M - 11.00 PM"], ["Rabu, 27 Desember 2019", "Kamis, 28 Desember 2019", "Jumat, 29 Desember 2019"],
+                                                 """
+        - Harap Membawa KTP
+        - Lampirkan CV
+        - Kenakan Baju Kemeja Putih
+        """, course.courseID, course.courseName, course.courseAddress, course.courseLocation, course.courseImage, course.courseMinFare, course.courseMaxFare, course.courseWorkSchedule, course.courseWorkTime, course.courseCategory, course.courseWorkQualification, course.courseGrade)
+        destVC.detailActivity1.append(dataTab1)
+        
         self.navigationController?.pushViewController(destVC, animated: true)
     }
     

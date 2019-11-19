@@ -9,27 +9,33 @@
 import UIKit
 
 class SegmentedViewController: BaseViewController {
+    @IBOutlet weak var segmentView: UISegmentedControl!
     
     
     @IBOutlet weak var tableView: UITableView!
     var activity:[[Activity]]?
-    var detailActivity1:[Activity]?
+    var detailActivity1:[Activity] = []
     var detailActivity2:[Activity]?
     var detailActivity3:[Activity]?
     var currentTableView:Int!
-
+    var define:Activity!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         currentTableView = 0
         initializeData()
         registerCell()
         cellDelegate()
+        setColor()
+        
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Progres")
         tableView.reloadData()
+        self.navigationItem.setHidesBackButton(true, animated:true);
     }
     
     
@@ -38,7 +44,22 @@ class SegmentedViewController: BaseViewController {
         tableView.reloadData()
     }
     
+    func setColor() {
+        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        segmentView.setTitleTextAttributes(titleTextAttributes, for: .selected)
+        
+        let title = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        segmentView.setTitleTextAttributes(title, for: .normal)
+        
+     
+        segmentView.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        segmentView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+        segmentView.selectedSegmentTintColor = #colorLiteral(red: 0.3254901961, green: 0.7803921569, blue: 0.9411764706, alpha: 1)
+    }
+    
 }
+
+
 
 extension SegmentedViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,7 +68,10 @@ extension SegmentedViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "progressCell", for: indexPath) as! ProgressTableViewCell
-        cell.setView(image: "", nama: activity![currentTableView][indexPath.row].courseName, status: activity![currentTableView][indexPath.row].activityStatus)
+        cell.backgroundColor = #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
+        cell.selectionStyle = .none
+        
+        cell.setView(nama: activity![currentTableView][indexPath.row].courseName, status: activity![currentTableView][indexPath.row].activityStatus)
         return cell
     }
     
@@ -58,9 +82,13 @@ extension SegmentedViewController: UITableViewDelegate, UITableViewDataSource{
             destVC.activity = activity![currentTableView][indexPath.row]
             self.navigationController?.pushViewController(destVC, animated: true)
         }else if currentTableView == 1{
-            //Send data informasi ke VC Segmented 2
+            let destVC = DetailTestViewController()
+            destVC.activity = activity![currentTableView][indexPath.row]
+            self.navigationController?.pushViewController(destVC, animated: true)
         }else{
-            //Send data informasi ke VC Segmented 3
+            let destVC = DetailFinalThirdViewController()
+            destVC.activity = activity![currentTableView][indexPath.row]
+            self.navigationController?.pushViewController(destVC, animated: true)
         }
     }
     
@@ -77,7 +105,7 @@ extension SegmentedViewController: UITableViewDelegate, UITableViewDataSource{
 }
 extension SegmentedViewController {
     func initializeData() {
-        let dataTab2Pertama: Activity = Activity("01", "STATUS: TES DIBATALKAN", ["10.00 A.M - 12.00 AM", "11.20 A.M - 13.20 PM", "09.00 A.M - 11.00 PM"], ["Rabu, 27 Desember 2019", "Kamis, 28 Desember 2019", "Jumat, 29 Desember 2019"],
+        let dataTab2Pertama: Activity = Activity("01", "TES DIBATALKAN", ["10.00 A.M - 12.00 AM", "11.20 A.M - 13.20 PM", "09.00 A.M - 11.00 PM"], ["Rabu, 27 Desember 2019", "Kamis, 28 Desember 2019", "Jumat, 29 Desember 2019"],
                                                  """
         - Harap Membawa KTP
         - Lampirkan CV
@@ -91,7 +119,7 @@ extension SegmentedViewController {
         - Memiliki kesabaran terhadap anak-anak
         """, ["SD"])
         
-        let dataTab2Kedua: Activity = Activity("02", "STATUS: MENUNGGU TES", ["10.00 A.M - 12.00 AM", "11.20 A.M - 13.20 PM", "09.00 A.M - 11.00 PM"], ["Rabu, 27 Desember 2019", "Kamis, 28 Desember 2019", "Jumat, 29 Desember 2019"],
+        let dataTab2Kedua: Activity = Activity("02", "MENUNGGU TES", ["10.00 A.M - 12.00 AM", "11.20 A.M - 13.20 PM", "09.00 A.M - 11.00 PM"], ["Rabu, 27 Desember 2019", "Kamis, 28 Desember 2019", "Jumat, 29 Desember 2019"],
                                                """
         - Harap Membawa KTP
         - Lampirkan CV
@@ -105,7 +133,7 @@ extension SegmentedViewController {
         - Rajin, jujur dan tanggung jawab
         """, ["SD", "SMP"])
         
-        let dataTab2Ketiga: Activity = Activity("03", "STATUS: MEMINTA JADWAL TES BARU", ["10.00 A.M - 12.00 AM", "11.20 A.M - 13.20 PM", "09.00 A.M - 11.00 PM"], ["Rabu, 27 Desember 2019", "Kamis, 28 Desember 2019", "Jumat, 29 Desember 2019"],
+        let dataTab2Ketiga: Activity = Activity("03", "MEMINTA JADWAL TES BARU", ["10.00 A.M - 12.00 AM", "11.20 A.M - 13.20 PM", "09.00 A.M - 11.00 PM"], ["Rabu, 27 Desember 2019", "Kamis, 28 Desember 2019", "Jumat, 29 Desember 2019"],
                                                 """
         - Harap Membawa KTP
         - Lampirkan CV
@@ -118,8 +146,8 @@ extension SegmentedViewController {
         - Mencintai dunia pendidikan
         """, ["SD", "SMP", "SMA"])
         
-        let dataTab3Pertama: Activity = Activity("01", "STATUS: DITERIMA", ["10.00 A.M - 12.00 AM", "11.20 A.M - 13.20 PM", "09.00 A.M - 11.00 PM"], ["Rabu, 27 Desember 2019", "Kamis, 28 Desember 2019", "Jumat, 29 Desember 2019"],
-                                                    """
+        let dataTab3Pertama: Activity = Activity("01", "DITERIMA", ["10.00 A.M - 12.00 AM", "11.20 A.M - 13.20 PM", "09.00 A.M - 11.00 PM"], ["Rabu, 27 Desember 2019", "Kamis, 28 Desember 2019", "Jumat, 29 Desember 2019"],
+                                                 """
                 - Harap Membawa KTP
                 - Lampirkan CV
                 - Kenakan Baju Kemeja Putih
@@ -130,28 +158,28 @@ extension SegmentedViewController {
                 - Professional
                 - Mencintai dunia pendidikan
                 """, ["SD", "SMP", "SMA"])
-
-        let dataTab3Kedua: Activity = Activity("02", "STATUS: DITERIMA", ["10.00 A.M - 12.00 AM", "11.20 A.M - 13.20 PM", "09.00 A.M - 11.00 PM"], ["Rabu, 27 Desember 2019", "Kamis, 28 Desember 2019", "Jumat, 29 Desember 2019"],
-                                                """
+        
+        let dataTab3Kedua: Activity = Activity("02", "DITERIMA", ["10.00 A.M - 12.00 AM", "11.20 A.M - 13.20 PM", "09.00 A.M - 11.00 PM"], ["Rabu, 27 Desember 2019", "Kamis, 28 Desember 2019", "Jumat, 29 Desember 2019"],
+                                               """
             - Harap Membawa KTP
             - Lampirkan CV
             - Kenakan Baju Kemeja Putih
             ""","06", "Level One Bimbel", "Jl. Bangun Nusa Raya No.9, RT.9/RW.2, Cengkareng Tim., Kecamatan Cengkareng, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11730", "Jakarta Barat", "", 2000000, 4000000, ["07.00 A.M - 12.00 PM", "07.00 A.M - 12.00 PM"], ["Senin", "Selasa"], ["Matematika"],
-            """
+                """
             - Pendidikan minimal SMA/sederajat
             - Lebih disukai yang memiliki pengalaman mengajar sebelumnya
             - Jujur, pekerja keras, rajin dan tanggung jawab
             - Komitmen mengajar selama minimal 6 bulan
             - Memiliki kesabaran terhadap anak-anak
             """, ["SMP"])
-
-        let dataTab3Ketiga: Activity = Activity("03", "STATUS: DITOLAK", ["10.00 A.M - 12.00 AM", "11.20 A.M - 13.20 PM", "09.00 A.M - 11.00 PM"], ["Rabu, 27 Desember 2019", "Kamis, 28 Desember 2019", "Jumat, 29 Desember 2019"],
+        
+        let dataTab3Ketiga: Activity = Activity("03", "DITOLAK", ["10.00 A.M - 12.00 AM", "11.20 A.M - 13.20 PM", "09.00 A.M - 11.00 PM"], ["Rabu, 27 Desember 2019", "Kamis, 28 Desember 2019", "Jumat, 29 Desember 2019"],
                                                 """
             - Harap Membawa KTP
             - Lampirkan CV
             - Kenakan Baju Kemeja Putih
             ""","07", "One Two Bimbel", "Rusun Cengkareng, Blok Seruni 6 Lt. Dasar, Jl. Kamal Raya, RT.14/RW.10, Cengkareng Barat, Cengkareng, RT.10/RW.10, Cengkareng Tim., Kecamatan Cengkareng, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11730", "Jakarta Barat", "", 2000000, 3500000, ["02.00 P.M - 06.00 PM", "03.00 P.M - 07.00 PM"], ["Senin", "Rabu"], ["IPA"],
-            """
+                """
             - Lebih disukai yang memiliki pengalaman mengajar sebelumnya
             - Jujur, pekerja keras, rajin dan tanggung jawab
             - Komitmen mengajar selama minimal 1 tahun
@@ -159,18 +187,18 @@ extension SegmentedViewController {
             """, ["SD"])
         
         
-        detailActivity1?.append(dataTab2Pertama)
-        detailActivity1?.append(dataTab2Kedua)
-        detailActivity1?.append(dataTab2Ketiga)
-        detailActivity1 = [dataTab2Pertama,dataTab2Kedua,dataTab3Ketiga]
+        detailActivity2?.append(dataTab2Pertama)
+        detailActivity2?.append(dataTab2Kedua)
+        detailActivity2?.append(dataTab2Ketiga)
+        detailActivity2 = [dataTab2Pertama,dataTab2Kedua,dataTab3Ketiga]
         
-        detailActivity2?.append(dataTab3Pertama)
-        detailActivity2?.append(dataTab3Kedua)
-        detailActivity2?.append(dataTab3Ketiga)
-        detailActivity2 = [dataTab3Pertama,dataTab3Kedua,dataTab3Ketiga]
+        detailActivity3?.append(dataTab3Pertama)
+        detailActivity3?.append(dataTab3Kedua)
+        detailActivity3?.append(dataTab3Ketiga)
+        detailActivity3 = [dataTab3Pertama,dataTab3Kedua,dataTab3Ketiga]
         
         
-        activity = [[],detailActivity1!,detailActivity2!]
+        activity = [detailActivity1 ?? [],detailActivity2 ?? [],detailActivity3 ?? []]
     }
-
+    
 }

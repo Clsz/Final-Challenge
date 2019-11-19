@@ -12,8 +12,6 @@ class ScheduleTableViewCell: UITableViewCell {
 
     @IBOutlet weak var scheduleTitle: UILabel!
     @IBOutlet weak var scheduleTV: UITableView!
-    var homeDelegate:HomeProtocol?
-    var course:Courses!
     var schedule:[String] = []
     var day:[String] = []
     

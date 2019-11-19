@@ -1,57 +1,59 @@
 //
-//  DetailTestViewController.swift
+//  WaitingConformationViewController.swift
 //  Final Challenge
 //
-//  Created by Muhammad Reynaldi on 18/11/19.
+//  Created by Steven Gunawan on 19/11/19.
 //  Copyright © 2019 12. All rights reserved.
 //
 
 import UIKit
 
-class DetailTestViewController: BaseViewController {
-    @IBOutlet weak var detailTestTableView: UITableView!
+class WaitingConformationViewController: BaseViewController {
+    @IBOutlet weak var waitingTV: UITableView!
     
     var dataArray:[Any?] = []
-    var activity:Activity!
+       var activity:Activity!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         cellDelegate()
-        registerCell()
-        setupData()
-        setupView(text: "Detail Tes")
-        detailTestTableView.reloadData()
+           registerCell()
+           setupData()
+           setupView(text: "Detail Pekerjaan")
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setupView(text: "Detail Tes")
-        detailTestTableView.reloadData()
+        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: {})
     }
+
+
+   
+
 }
 
-extension DetailTestViewController{
+extension WaitingConformationViewController{
     func setupData() {
         dataArray.removeAll()
         dataArray.append(activity)
         dataArray.append(("Address",activity.courseAddress,0))
-        dataArray.append(("Jadwal Test", activity.interviewSchedule, activity.interviewTime, "Silakan pilih salah satu jadwal test diatas", "Perlengkapan Test", activity.testEquipment, "Minta Jadwal Baru"))
         dataArray.append(("Subject Category",activity.courseCategory))
         dataArray.append(("Grade",activity.courseGrade))
         dataArray.append(("Range Salary","Rp \(String(describing: activity.courseMinFare!)) - Rp \(String(describing: activity.courseMaxFare!))",1))
         dataArray.append(("Schedule",activity.courseWorkTime,activity.courseWorkSchedule))
         dataArray.append(("Qualification",activity.courseWorkQualification,0))
-        dataArray.append(("Terima Tes","Tolak Tes",true))
+        dataArray.append(("Terima Lowongan Kerja","Tolak Lowongan Kerja",true))
     }
     
 }
-extension DetailTestViewController:ActivityProcess{
+extension WaitingConformationViewController:ActivityProcess{
     func accept() {
-        let refreshAlert = UIAlertController(title: "Terima Tes", message: "Apakah Anda Yakin Untuk Menerima Tes Ini", preferredStyle: UIAlertController.Style.alert)
+        let refreshAlert = UIAlertController(title: "Terima Lowongan Kerja", message: "Apakah Anda Yakin Untuk Menerima Lowongan Kerja Ini", preferredStyle: UIAlertController.Style.alert)
 
         refreshAlert.addAction(UIAlertAction(title: "Ya", style: .default, handler: { (action: UIAlertAction!) in
           print("Handle Ok logic here")
             let destVC = ResultViewController()
-            destVC.fromID = 1
+            destVC.fromID = 3
             self.navigationController?.pushViewController(destVC, animated: true)
           }))
 
@@ -65,13 +67,13 @@ extension DetailTestViewController:ActivityProcess{
     }
     
     func reject() {
-       let refreshAlert = UIAlertController(title: "Tolak Tes", message: "Apakah Anda Yakin Untuk Menolak Tes Ini", preferredStyle: UIAlertController.Style.alert)
+       let refreshAlert = UIAlertController(title: "Tolak Lowongan Kerja", message: "Apakah Anda Yakin Untuk Menolak Lowongan Kerja Ini", preferredStyle: UIAlertController.Style.alert)
 
         refreshAlert.addAction(UIAlertAction(title: "Ya", style: .default, handler: { (action: UIAlertAction!) in
           print("Handle Ok logic here")
             let destVC = ResultViewController()
-                      destVC.fromID = 4
-                      self.navigationController?.pushViewController(destVC, animated: true)
+                       destVC.fromID = 5
+                       self.navigationController?.pushViewController(destVC, animated: true)
           }))
 
         refreshAlert.addAction(UIAlertAction(title: "Tidak", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -81,21 +83,20 @@ extension DetailTestViewController:ActivityProcess{
         present(refreshAlert, animated: true, completion: nil)
     }
 }
-extension DetailTestViewController: UITableViewDataSource,UITableViewDelegate{
+extension WaitingConformationViewController: UITableViewDataSource,UITableViewDelegate{
     func cellDelegate(){
-        detailTestTableView.dataSource = self
-        detailTestTableView.delegate = self
+        waitingTV.dataSource = self
+        waitingTV.delegate = self
     }
     
     func registerCell() {
-        detailTestTableView.register(UINib(nibName: "ProfileBimbelTableViewCell", bundle: nil), forCellReuseIdentifier: "profileBimbelCell")
-        detailTestTableView.register(UINib(nibName: "AddressTableViewCell", bundle: nil), forCellReuseIdentifier: "addressCell")
-        detailTestTableView.register(UINib(nibName: "ActivityTableViewCell", bundle: nil), forCellReuseIdentifier: "ActivityTableViewCellID")
-        detailTestTableView.register(UINib(nibName: "SubjectCategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "subjekCell")
-        detailTestTableView.register(UINib(nibName: "SalaryTableViewCell", bundle: nil), forCellReuseIdentifier: "salaryCell")
-        detailTestTableView.register(UINib(nibName: "ScheduleTableViewCell", bundle: nil), forCellReuseIdentifier: "scheduleCell")
-        detailTestTableView.register(UINib(nibName: "SubmitTableViewCell", bundle: nil), forCellReuseIdentifier: "submitCell")
-        detailTestTableView.register(UINib(nibName: "FooterActivityTableViewCell", bundle: nil), forCellReuseIdentifier: "FooterActivityTableViewCellID")
+        waitingTV.register(UINib(nibName: "ProfileBimbelTableViewCell", bundle: nil), forCellReuseIdentifier: "profileBimbelCell")
+        waitingTV.register(UINib(nibName: "AddressTableViewCell", bundle: nil), forCellReuseIdentifier: "addressCell")
+        waitingTV.register(UINib(nibName: "SubjectCategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "subjekCell")
+        waitingTV.register(UINib(nibName: "SalaryTableViewCell", bundle: nil), forCellReuseIdentifier: "salaryCell")
+        waitingTV.register(UINib(nibName: "ScheduleTableViewCell", bundle: nil), forCellReuseIdentifier: "scheduleCell")
+        waitingTV.register(UINib(nibName: "SubmitTableViewCell", bundle: nil), forCellReuseIdentifier: "submitCell")
+        waitingTV.register(UINib(nibName: "FooterActivityTableViewCell", bundle: nil), forCellReuseIdentifier: "FooterActivityTableViewCellID")
         
     }
     
@@ -110,14 +111,9 @@ extension DetailTestViewController: UITableViewDataSource,UITableViewDelegate{
             let cell = tableView.dequeueReusableCell(withIdentifier: "profileBimbelCell", for: indexPath) as! ProfileBimbelTableViewCell
             if let course = dataArray[indexPath.row] as? Activity {
                 print(indexPath.row)
-                cell.setView(image: course.courseImage, name: course.courseName, lokasi: "")
+                cell.setView(image: course.courseImage, name: course.courseName, lokasi: course.activityStatus)
+                cell.lokasiBimbel.textColor = #colorLiteral(red: 0, green: 0.8650887609, blue: 0.320767343, alpha: 1)
             }
-            return cell
-        }else if let keyValue = dataArray[indexPath.row] as? (key:String, day:[String], time:[String], hint:String, value:String, equipment:String,  button:String){
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityTableViewCellID", for: indexPath) as! ActivityTableViewCell
-            cell.interviewSchedule = keyValue.day
-            cell.interviewTime = keyValue.time
-            cell.setCell(text: keyValue.key, hint: keyValue.hint, anotherText: keyValue.value, equipment:keyValue.equipment, button: keyValue.button)
             return cell
         }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:String, code:Int){
             
@@ -152,3 +148,4 @@ extension DetailTestViewController: UITableViewDataSource,UITableViewDelegate{
         return UITableViewCell()
     }
 }
+
