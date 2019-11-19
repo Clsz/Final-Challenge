@@ -70,7 +70,11 @@ extension DetailFinalThirdViewController: UITableViewDataSource,UITableViewDeleg
             if let course = dataArray[indexPath.row] as? Activity {
                 print(indexPath.row)
                 cell.setView(image: course.courseImage, name: course.courseName, lokasi: course.activityStatus)
-                cell.lokasiBimbel.textColor = #colorLiteral(red: 0, green: 0.8650887609, blue: 0.320767343, alpha: 1)
+                if course.activityStatus == "DITERIMA"{
+                    cell.lokasiBimbel.textColor = .green
+                }else{
+                    cell.lokasiBimbel.textColor = .red
+                }
             }
             return cell
         }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:String, code:Int){
