@@ -13,6 +13,7 @@ class DetailBimbelViewController: BaseViewController {
     
     var dataArray:[Any?] = []
     var course:Courses!
+    var detailActivity1:Activity!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,8 +47,9 @@ extension DetailBimbelViewController{
 }
 extension DetailBimbelViewController:DetailBimbel{
     func requestTapped() {
-        let destVC = DetailTestViewController()
-        destVC.course = self.course
+        let destVC = SegmentedViewController()
+        
+        destVC.activity?[0].append(detailActivity1)
         self.navigationController?.pushViewController(destVC, animated: true)
     }
     
