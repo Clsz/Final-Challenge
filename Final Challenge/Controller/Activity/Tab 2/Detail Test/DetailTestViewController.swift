@@ -19,11 +19,10 @@ class DetailTestViewController: BaseViewController {
         cellDelegate()
         registerCell()
         setupData()
-        setupView(text: "Detail Tes")
-        detailTestTableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.detailTestTableView.contentInsetAdjustmentBehavior = .never
         setupView(text: "Detail Tes")
         detailTestTableView.reloadData()
     }
@@ -43,42 +42,53 @@ extension DetailTestViewController{
         dataArray.append(("Terima Tes","Tolak Tes",true))
     }
     
-}
-extension DetailTestViewController:ActivityProcess{
-    func accept() {
+    private func acceptTest() {
         let refreshAlert = UIAlertController(title: "Terima Tes", message: "Apakah Anda Yakin Untuk Menerima Tes Ini", preferredStyle: UIAlertController.Style.alert)
-
+        
         refreshAlert.addAction(UIAlertAction(title: "Ya", style: .default, handler: { (action: UIAlertAction!) in
-          print("Handle Ok logic here")
+            print("Handle Ok logic here")
             let destVC = ResultViewController()
             destVC.fromID = 1
             self.navigationController?.pushViewController(destVC, animated: true)
-          }))
-
+        }))
+        
         refreshAlert.addAction(UIAlertAction(title: "Tidak", style: .cancel, handler: { (action: UIAlertAction!) in
-          print("Handle Cancel Logic here")
-          }))
+            print("Handle Cancel Logic here")
+        }))
         
-        
-
         present(refreshAlert, animated: true, completion: nil)
     }
     
-    func reject() {
-       let refreshAlert = UIAlertController(title: "Tolak Tes", message: "Apakah Anda Yakin Untuk Menolak Tes Ini", preferredStyle: UIAlertController.Style.alert)
-
+    private func rejectTest() {
+        let refreshAlert = UIAlertController(title: "Tolak Tes", message: "Apakah Anda Yakin Untuk Menolak Tes Ini", preferredStyle: UIAlertController.Style.alert)
+        
         refreshAlert.addAction(UIAlertAction(title: "Ya", style: .default, handler: { (action: UIAlertAction!) in
-          print("Handle Ok logic here")
+            print("Handle Ok logic here")
             let destVC = ResultViewController()
-                      destVC.fromID = 4
-                      self.navigationController?.pushViewController(destVC, animated: true)
-          }))
-
+            destVC.fromID = 4
+            self.navigationController?.pushViewController(destVC, animated: true)
+        }))
+        
         refreshAlert.addAction(UIAlertAction(title: "Tidak", style: .cancel, handler: { (action: UIAlertAction!) in
-          print("Handle Cancel Logic here")
-          }))
-
+            print("Handle Cancel Logic here")
+        }))
+        
         present(refreshAlert, animated: true, completion: nil)
+    }
+}
+extension DetailTestViewController:ActivityProcess, ActivityProtocol{
+    func requestNewSchedule() {
+        let destVC = ResultViewController()
+        destVC.fromID = 2
+        self.navigationController?.pushViewController(destVC, animated: true)
+    }
+    
+    func accept() {
+        acceptTest()
+    }
+    
+    func reject() {
+        rejectTest()
     }
 }
 extension DetailTestViewController: UITableViewDataSource,UITableViewDelegate{

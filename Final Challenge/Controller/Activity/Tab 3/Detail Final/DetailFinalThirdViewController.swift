@@ -18,9 +18,13 @@ class DetailFinalThirdViewController: BaseViewController {
         cellDelegate()
         registerCell()
         setupData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.detailFinalTV.contentInsetAdjustmentBehavior = .never
         setupView(text: "Detail Pekerjaan")
     }
-
+    
 }
 
 extension DetailFinalThirdViewController{

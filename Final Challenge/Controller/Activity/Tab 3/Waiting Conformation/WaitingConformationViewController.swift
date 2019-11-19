@@ -12,24 +12,25 @@ class WaitingConformationViewController: BaseViewController {
     @IBOutlet weak var waitingTV: UITableView!
     
     var dataArray:[Any?] = []
-       var activity:Activity!
+    var activity:Activity!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         cellDelegate()
-           registerCell()
-           setupData()
-           setupView(text: "Detail Pekerjaan")
+        registerCell()
+        setupData()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.waitingTV.contentInsetAdjustmentBehavior = .never
         self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: {})
+        setupView(text: "Detail Pekerjaan")
     }
-
-
-   
-
+    
+    
+    
+    
 }
 
 extension WaitingConformationViewController{
@@ -49,37 +50,37 @@ extension WaitingConformationViewController{
 extension WaitingConformationViewController:ActivityProcess{
     func accept() {
         let refreshAlert = UIAlertController(title: "Terima Lowongan Kerja", message: "Apakah Anda Yakin Untuk Menerima Lowongan Kerja Ini", preferredStyle: UIAlertController.Style.alert)
-
+        
         refreshAlert.addAction(UIAlertAction(title: "Ya", style: .default, handler: { (action: UIAlertAction!) in
-          print("Handle Ok logic here")
+            print("Handle Ok logic here")
             let destVC = ResultViewController()
             destVC.fromID = 3
             self.navigationController?.pushViewController(destVC, animated: true)
-          }))
-
+        }))
+        
         refreshAlert.addAction(UIAlertAction(title: "Tidak", style: .cancel, handler: { (action: UIAlertAction!) in
-          print("Handle Cancel Logic here")
-          }))
+            print("Handle Cancel Logic here")
+        }))
         
         
-
+        
         present(refreshAlert, animated: true, completion: nil)
     }
     
     func reject() {
-       let refreshAlert = UIAlertController(title: "Tolak Lowongan Kerja", message: "Apakah Anda Yakin Untuk Menolak Lowongan Kerja Ini", preferredStyle: UIAlertController.Style.alert)
-
+        let refreshAlert = UIAlertController(title: "Tolak Lowongan Kerja", message: "Apakah Anda Yakin Untuk Menolak Lowongan Kerja Ini", preferredStyle: UIAlertController.Style.alert)
+        
         refreshAlert.addAction(UIAlertAction(title: "Ya", style: .default, handler: { (action: UIAlertAction!) in
-          print("Handle Ok logic here")
+            print("Handle Ok logic here")
             let destVC = ResultViewController()
-                       destVC.fromID = 5
-                       self.navigationController?.pushViewController(destVC, animated: true)
-          }))
-
+            destVC.fromID = 5
+            self.navigationController?.pushViewController(destVC, animated: true)
+        }))
+        
         refreshAlert.addAction(UIAlertAction(title: "Tidak", style: .cancel, handler: { (action: UIAlertAction!) in
-          print("Handle Cancel Logic here")
-          }))
-
+            print("Handle Cancel Logic here")
+        }))
+        
         present(refreshAlert, animated: true, completion: nil)
     }
 }

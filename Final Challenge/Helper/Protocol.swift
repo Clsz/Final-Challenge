@@ -48,6 +48,10 @@ protocol ActivityProcess {
     func reject()
 }
 
+protocol ActivityProtocol {
+    func requestNewSchedule()
+}
+
 protocol ExperienceProtocol {
     func startTapped()
     func endTapped()

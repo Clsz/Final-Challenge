@@ -20,10 +20,11 @@ class DetailBimbelTabFirstViewController: BaseViewController {
         registerCell()
         setupData()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
-           setupView(text: "Detail Pekerjaan")
-       }
+        self.detailBimbelFirst.contentInsetAdjustmentBehavior = .never
+        setupView(text: "Detail Pekerjaan")
+    }
 }
 
 extension DetailBimbelTabFirstViewController{
