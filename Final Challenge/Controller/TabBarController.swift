@@ -13,7 +13,7 @@ class TabBarController: UITabBarController {
     var homeNav:UINavigationController!
     var homeVC: HomeViewController!
     var detailNav:UINavigationController!
-    var detailVC: DetailTestViewController!
+    var detailVC: SegmentedViewController!
     var profileNav:UINavigationController!
     var profileVC: ProfileViewController!
     
@@ -27,7 +27,7 @@ class TabBarController: UITabBarController {
         homeNav = UINavigationController(rootViewController: homeVC)
         homeNav.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "icon_job"), selectedImage: UIImage(named: "icon_job"))
         
-        detailVC = DetailTestViewController()
+        detailVC = SegmentedViewController()
         detailNav = UINavigationController(rootViewController: detailVC)
         detailNav.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "icon_activity"), selectedImage: UIImage(named: "icon_activity"))
         

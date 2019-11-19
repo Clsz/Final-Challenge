@@ -43,11 +43,35 @@ extension DetailTestViewController{
 }
 extension DetailTestViewController:ActivityProcess{
     func accept() {
-        //go to accept screen
+        let refreshAlert = UIAlertController(title: "Terima Lowongan kerja", message: "Apakah Anda Yakin Untuk Menerima Lowongan Kerja Ini", preferredStyle: UIAlertController.Style.alert)
+
+        refreshAlert.addAction(UIAlertAction(title: "Ya", style: .default, handler: { (action: UIAlertAction!) in
+          print("Handle Ok logic here")
+            let destVC = HomeViewController()
+            self.navigationController?.popToViewController(destVC, animated: true)
+          }))
+
+        refreshAlert.addAction(UIAlertAction(title: "Tidak", style: .cancel, handler: { (action: UIAlertAction!) in
+          print("Handle Cancel Logic here")
+          }))
+        
+        
+
+        present(refreshAlert, animated: true, completion: nil)
     }
     
     func reject() {
-        //go to decline screen
+       let refreshAlert = UIAlertController(title: "Tolak Lowongan kerja", message: "Apakah Anda Yakin Untuk Menolak Lowongan Kerja Ini", preferredStyle: UIAlertController.Style.alert)
+
+        refreshAlert.addAction(UIAlertAction(title: "Ya", style: .default, handler: { (action: UIAlertAction!) in
+          print("Handle Ok logic here")
+          }))
+
+        refreshAlert.addAction(UIAlertAction(title: "Tidak", style: .cancel, handler: { (action: UIAlertAction!) in
+          print("Handle Cancel Logic here")
+          }))
+
+        present(refreshAlert, animated: true, completion: nil)
     }
 }
 extension DetailTestViewController: UITableViewDataSource,UITableViewDelegate{
