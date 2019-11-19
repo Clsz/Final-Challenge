@@ -12,8 +12,7 @@ class DetailBimbelTabFirstViewController: BaseViewController {
     @IBOutlet weak var detailBimbelFirst: UITableView!
     
     var dataArray:[Any?] = []
-    var course:Courses!
-    
+    var activity:Activity!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,13 +30,13 @@ extension DetailBimbelTabFirstViewController{
     
     func setupData() {
         dataArray.removeAll()
-        dataArray.append(course)
-        dataArray.append(("Address",course.courseAddress,0))
-        dataArray.append(("Subject Category",course.courseCategory))
-        dataArray.append(("Grade",course.courseGrade))
-        dataArray.append(("Range Salary","Rp \(String(describing: course.courseMinFare!)) - Rp \(String(describing: course.courseMaxFare!))",1))
-        dataArray.append(("Schedule",course.courseWorkTime,course.courseWorkSchedule))
-        dataArray.append(("Qualification",course.courseWorkQualification,0))
+        dataArray.append(activity)
+        dataArray.append(("Address",activity.courseAddress,0))
+        dataArray.append(("Subject Category",activity.courseCategory))
+        dataArray.append(("Grade",activity.courseGrade))
+        dataArray.append(("Range Salary","Rp \(String(describing: activity.courseMinFare!)) - Rp \(String(describing: activity.courseMaxFare!))",1))
+        dataArray.append(("Schedule",activity.courseWorkSchedule,activity.courseWorkTime))
+        dataArray.append(("Qualification",activity.courseWorkQualification,0))
     }
     
 }

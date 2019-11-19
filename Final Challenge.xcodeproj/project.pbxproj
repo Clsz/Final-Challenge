@@ -15,12 +15,6 @@
 		147E1ED62383155A003CAF5D /* SegmentedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147E1ED42383155A003CAF5D /* SegmentedViewController.xib */; };
 		147E1ED923839AE3003CAF5D /* ProgressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147E1ED723839AE3003CAF5D /* ProgressTableViewCell.swift */; };
 		147E1EDA23839AE3003CAF5D /* ProgressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147E1ED823839AE3003CAF5D /* ProgressTableViewCell.xib */; };
-		147E1EDF23839E66003CAF5D /* FirstTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147E1EDD23839E66003CAF5D /* FirstTabViewController.swift */; };
-		147E1EE023839E66003CAF5D /* FirstTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147E1EDE23839E66003CAF5D /* FirstTabViewController.xib */; };
-		147E1EE623839EAE003CAF5D /* SecondTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147E1EE423839EAE003CAF5D /* SecondTabViewController.swift */; };
-		147E1EE723839EAE003CAF5D /* SecondTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147E1EE523839EAE003CAF5D /* SecondTabViewController.xib */; };
-		147E1EEA23839EBD003CAF5D /* ThirdTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147E1EE823839EBD003CAF5D /* ThirdTabViewController.swift */; };
-		147E1EEB23839EBD003CAF5D /* ThirdTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147E1EE923839EBD003CAF5D /* ThirdTabViewController.xib */; };
 		147E1EEF2383C261003CAF5D /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147E1EED2383C261003CAF5D /* ResultViewController.swift */; };
 		147E1EF02383C261003CAF5D /* ResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147E1EEE2383C261003CAF5D /* ResultViewController.xib */; };
 		147E1EF62383C319003CAF5D /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147E1EF42383C319003CAF5D /* ResultTableViewCell.swift */; };
@@ -156,12 +150,6 @@
 		147E1ED42383155A003CAF5D /* SegmentedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SegmentedViewController.xib; sourceTree = "<group>"; };
 		147E1ED723839AE3003CAF5D /* ProgressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTableViewCell.swift; sourceTree = "<group>"; };
 		147E1ED823839AE3003CAF5D /* ProgressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressTableViewCell.xib; sourceTree = "<group>"; };
-		147E1EDD23839E66003CAF5D /* FirstTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTabViewController.swift; sourceTree = "<group>"; };
-		147E1EDE23839E66003CAF5D /* FirstTabViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstTabViewController.xib; sourceTree = "<group>"; };
-		147E1EE423839EAE003CAF5D /* SecondTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTabViewController.swift; sourceTree = "<group>"; };
-		147E1EE523839EAE003CAF5D /* SecondTabViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondTabViewController.xib; sourceTree = "<group>"; };
-		147E1EE823839EBD003CAF5D /* ThirdTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdTabViewController.swift; sourceTree = "<group>"; };
-		147E1EE923839EBD003CAF5D /* ThirdTabViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThirdTabViewController.xib; sourceTree = "<group>"; };
 		147E1EED2383C261003CAF5D /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		147E1EEE2383C261003CAF5D /* ResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultViewController.xib; sourceTree = "<group>"; };
 		147E1EF42383C319003CAF5D /* ResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
@@ -350,7 +338,6 @@
 		147E1ECC2382B1B6003CAF5D /* Tab 1 */ = {
 			isa = PBXGroup;
 			children = (
-				147E1EDC23839E4A003CAF5D /* View First Tab */,
 				147E1ED12382B344003CAF5D /* Detail Bimbel First Tab */,
 			);
 			path = "Tab 1";
@@ -377,27 +364,8 @@
 		147E1EDB23839E2A003CAF5D /* Tab 3 */ = {
 			isa = PBXGroup;
 			children = (
-				147E1EE323839E89003CAF5D /* View Third Tab */,
 			);
 			path = "Tab 3";
-			sourceTree = "<group>";
-		};
-		147E1EDC23839E4A003CAF5D /* View First Tab */ = {
-			isa = PBXGroup;
-			children = (
-				147E1EDD23839E66003CAF5D /* FirstTabViewController.swift */,
-				147E1EDE23839E66003CAF5D /* FirstTabViewController.xib */,
-			);
-			path = "View First Tab";
-			sourceTree = "<group>";
-		};
-		147E1EE123839E6D003CAF5D /* View Second Tab */ = {
-			isa = PBXGroup;
-			children = (
-				147E1EE423839EAE003CAF5D /* SecondTabViewController.swift */,
-				147E1EE523839EAE003CAF5D /* SecondTabViewController.xib */,
-			);
-			path = "View Second Tab";
 			sourceTree = "<group>";
 		};
 		147E1EE223839E7B003CAF5D /* Detail Test */ = {
@@ -999,7 +967,6 @@
 		E1F5BB552382D22600BC9CFE /* Tab 2 */ = {
 			isa = PBXGroup;
 			children = (
-				147E1EE123839E6D003CAF5D /* View Second Tab */,
 				147E1EE223839E7B003CAF5D /* Detail Test */,
 			);
 			path = "Tab 2";
@@ -1099,13 +1066,11 @@
 				E13EE61323811320005016A0 /* SetupExperienceViewController.xib in Resources */,
 				148C4368237E9D6C00B87174 /* FilterViewController.xib in Resources */,
 				E13EE60B2381040E005016A0 /* SetupEducationViewController.xib in Resources */,
-				147E1EE023839E66003CAF5D /* FirstTabViewController.xib in Resources */,
 				E17F321C23794A6D00AEBCD5 /* MoreDetailTableViewCell.xib in Resources */,
 				147E1EDA23839AE3003CAF5D /* ProgressTableViewCell.xib in Resources */,
 				E1CBFEFA237D009E00DAC25D /* EditProfileViewController.xib in Resources */,
 				148C439D23824D8600B87174 /* SubjectCollectionViewCell.xib in Resources */,
 				E139B5372375D6B700FEF1F5 /* LoginViewController.xib in Resources */,
-				147E1EE723839EAE003CAF5D /* SecondTabViewController.xib in Resources */,
 				E139B53B2375D6CA00FEF1F5 /* RegisterViewController.xib in Resources */,
 				E1CBFEFE237D00E100DAC25D /* EditPasswordViewController.xib in Resources */,
 				E16847952378FB66001B6319 /* AnotherContentTableViewCell.xib in Resources */,
@@ -1113,7 +1078,6 @@
 				147E1EFC2383D983003CAF5D /* DetailWaitingConformationViewController.xib in Resources */,
 				E106615E2381294D0098AE11 /* AdditionalExperienceViewController.xib in Resources */,
 				E168477B237834DD001B6319 /* LanguageViewController.xib in Resources */,
-				147E1EEB23839EBD003CAF5D /* ThirdTabViewController.xib in Resources */,
 				E139B52E2375D20400FEF1F5 /* GoogleService-Info.plist in Resources */,
 				E1E3A8A42366CA8900F1571E /* Assets.xcassets in Resources */,
 				E13EE60F23810475005016A0 /* SetupLanguageViewController.xib in Resources */,
@@ -1197,7 +1161,6 @@
 				148C437E237EA96600B87174 /* SalaryTableViewCell.swift in Sources */,
 				E1F5BB4F2382C75A00BC9CFE /* ActivityTableViewCell.swift in Sources */,
 				147E1ECF2382B1DD003CAF5D /* DetailBimbelTabFirstViewController.swift in Sources */,
-				147E1EEA23839EBD003CAF5D /* ThirdTabViewController.swift in Sources */,
 				148C4382237EA97D00B87174 /* ScheduleTableViewCell.swift in Sources */,
 				E1F5BB582382D2B500BC9CFE /* DetailTestViewController.swift in Sources */,
 				E168478423784354001B6319 /* DetailProfileTableViewCell.swift in Sources */,
@@ -1235,7 +1198,6 @@
 				E18CAE8D237D4C9800DEAC83 /* FilterCollectionViewCell.swift in Sources */,
 				E168478823784463001B6319 /* AnotherDetailProfileTableViewCell.swift in Sources */,
 				148C4341237C07F900B87174 /* LocationViewController.swift in Sources */,
-				147E1EE623839EAE003CAF5D /* SecondTabViewController.swift in Sources */,
 				148C4347237C118A00B87174 /* LocationTableViewCell.swift in Sources */,
 				147E1EFF2383D993003CAF5D /* DetailRejectedViewController.swift in Sources */,
 				142223802382916C004F2625 /* DetailScheduleTableViewCell.swift in Sources */,
@@ -1250,7 +1212,6 @@
 				E17F321B23794A6D00AEBCD5 /* MoreDetailTableViewCell.swift in Sources */,
 				E17F320F23793BFE00AEBCD5 /* EducationViewController.swift in Sources */,
 				E16847902378F88A001B6319 /* ContentTableViewCell.swift in Sources */,
-				147E1EDF23839E66003CAF5D /* FirstTabViewController.swift in Sources */,
 				E19D1AF0237BF274003AFFBD /* CustomExperienceTableViewCell.swift in Sources */,
 				148C4369237E9DED00B87174 /* ListJobTableViewCell.swift in Sources */,
 				E168477623782B0F001B6319 /* SkillsViewController.swift in Sources */,
