@@ -1,16 +1,15 @@
 //
-//  DetailBimbelTabFirstViewController.swift
+//  DetailFinalThirdViewController.swift
 //  Final Challenge
 //
-//  Created by Steven Gunawan on 18/11/19.
+//  Created by Steven Gunawan on 19/11/19.
 //  Copyright © 2019 12. All rights reserved.
 //
 
 import UIKit
 
-class DetailBimbelTabFirstViewController: BaseViewController {
-    @IBOutlet weak var detailBimbelFirst: UITableView!
-    
+class DetailFinalThirdViewController: BaseViewController {
+    @IBOutlet weak var detailFinalTV: UITableView!
     var dataArray:[Any?] = []
     var activity:Activity!
     
@@ -19,15 +18,12 @@ class DetailBimbelTabFirstViewController: BaseViewController {
         cellDelegate()
         registerCell()
         setupData()
+        setupView(text: "Detail Pekerjaan")
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-           setupView(text: "Detail Pekerjaan")
-       }
 }
 
-extension DetailBimbelTabFirstViewController{
-    
+extension DetailFinalThirdViewController{
     func setupData() {
         dataArray.removeAll()
         dataArray.append(activity)
@@ -35,25 +31,27 @@ extension DetailBimbelTabFirstViewController{
         dataArray.append(("Subject Category",activity.courseCategory))
         dataArray.append(("Grade",activity.courseGrade))
         dataArray.append(("Range Salary","Rp \(String(describing: activity.courseMinFare!)) - Rp \(String(describing: activity.courseMaxFare!))",1))
-        dataArray.append(("Schedule",activity.courseWorkSchedule,activity.courseWorkTime))
+        dataArray.append(("Schedule",activity.courseWorkTime,activity.courseWorkSchedule))
         dataArray.append(("Qualification",activity.courseWorkQualification,0))
     }
     
 }
 
-extension DetailBimbelTabFirstViewController: UITableViewDataSource,UITableViewDelegate{
+extension DetailFinalThirdViewController: UITableViewDataSource,UITableViewDelegate{
     func cellDelegate(){
-        detailBimbelFirst.dataSource = self
-        detailBimbelFirst.delegate = self
+        detailFinalTV.dataSource = self
+        detailFinalTV.delegate = self
     }
     
     func registerCell() {
-        detailBimbelFirst.register(UINib(nibName: "ProfileBimbelTableViewCell", bundle: nil), forCellReuseIdentifier: "profileBimbelCell")
-        detailBimbelFirst.register(UINib(nibName: "AddressTableViewCell", bundle: nil), forCellReuseIdentifier: "addressCell")
-        detailBimbelFirst.register(UINib(nibName: "SubjectCategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "subjekCell")
-        detailBimbelFirst.register(UINib(nibName: "SalaryTableViewCell", bundle: nil), forCellReuseIdentifier: "salaryCell")
-        detailBimbelFirst.register(UINib(nibName: "ScheduleTableViewCell", bundle: nil), forCellReuseIdentifier: "scheduleCell")
-        detailBimbelFirst.register(UINib(nibName: "SubmitTableViewCell", bundle: nil), forCellReuseIdentifier: "submitCell")
+        detailFinalTV.register(UINib(nibName: "ProfileBimbelTableViewCell", bundle: nil), forCellReuseIdentifier: "profileBimbelCell")
+        detailFinalTV.register(UINib(nibName: "AddressTableViewCell", bundle: nil), forCellReuseIdentifier: "addressCell")
+        detailFinalTV.register(UINib(nibName: "SubjectCategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "subjekCell")
+        detailFinalTV.register(UINib(nibName: "SalaryTableViewCell", bundle: nil), forCellReuseIdentifier: "salaryCell")
+        detailFinalTV.register(UINib(nibName: "ScheduleTableViewCell", bundle: nil), forCellReuseIdentifier: "scheduleCell")
+        detailFinalTV.register(UINib(nibName: "SubmitTableViewCell", bundle: nil), forCellReuseIdentifier: "submitCell")
+        detailFinalTV.register(UINib(nibName: "FooterActivityTableViewCell", bundle: nil), forCellReuseIdentifier: "FooterActivityTableViewCellID")
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -65,14 +63,13 @@ extension DetailBimbelTabFirstViewController: UITableViewDataSource,UITableViewD
         
         if indexPath.row == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "profileBimbelCell", for: indexPath) as! ProfileBimbelTableViewCell
-            if let activity = dataArray[indexPath.row] as? Activity {
+            if let course = dataArray[indexPath.row] as? Activity {
                 print(indexPath.row)
-                cell.setView(image: activity.courseImage, name: activity.courseName, lokasi: activity.activityStatus)
+                cell.setView(image: course.courseImage, name: course.courseName, lokasi: course.activityStatus)
+                cell.lokasiBimbel.textColor = #colorLiteral(red: 0, green: 0.8650887609, blue: 0.320767343, alpha: 1)
             }
             return cell
-        }
-            
-        else if let keyValue = dataArray[indexPath.row] as? (key:String, value:String, code:Int){
+        }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:String, code:Int){
             
             if keyValue.code == 0{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "addressCell", for: indexPath) as! AddressTableViewCell

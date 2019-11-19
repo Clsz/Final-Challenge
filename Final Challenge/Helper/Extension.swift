@@ -18,7 +18,7 @@ extension UIImageView{
     func setRoundedBorder() {
            self.layer.masksToBounds = false
            self.layer.cornerRadius = self.frame.height/2
-        self.layer.borderColor = #colorLiteral(red: 0.3254901961, green: 0.7803921569, blue: 0.9411764706, alpha: 1)
+        self.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
             self.layer.borderWidth = 1
            self.clipsToBounds = true
        }
@@ -38,8 +38,18 @@ extension UIView{
           self.layer.borderColor = #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
     }
     
+    func setBorderBlue() {
+           self.layer.borderWidth = 3
+             self.layer.borderColor = #colorLiteral(red: 0.3254901961, green: 0.7803921569, blue: 0.9411764706, alpha: 1)
+       }
+    
     func outerRound() {
         self.layer.cornerRadius = 10
+        self.clipsToBounds = true
+    }
+    
+    func outerRound2() {
+        self.layer.cornerRadius = 15
         self.clipsToBounds = true
     }
 

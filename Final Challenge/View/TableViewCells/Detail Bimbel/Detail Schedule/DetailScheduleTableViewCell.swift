@@ -15,6 +15,7 @@ class DetailScheduleTableViewCell: UITableViewCell {
     func setView(day:String, time:String) {
         self.dayLabel.text = day
         self.scheduleLabel.text = time
+        
     }
     
     override func awakeFromNib() {

@@ -14,15 +14,17 @@ class ProgressTableViewCell: UITableViewCell {
     @IBOutlet weak var statusView: UIView!
     @IBOutlet weak var statusBimbel: UILabel!
     @IBOutlet weak var viewBimbel: UIView!
+    let images = UIImage(named: "school")
     
-    func setView(image:String, nama:String, status:String) {
+    func setView(nama:String, status:String) {
         self.imageBimbel.setRounded()
         self.namaBimbel.text = nama
         self.statusBimbel.text = status
         self.viewBimbel.dropShadow()
-        self.viewBimbel.outerRound()
+        self.viewBimbel.outerRound2()
         self.viewBimbel.setBorder()
         self.viewBimbel.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        self.imageBimbel.image = images
     }
     
     

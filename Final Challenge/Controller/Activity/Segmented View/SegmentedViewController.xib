@@ -2,13 +2,14 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SegmentedViewController" customModule="Final_Challenge" customModuleProvider="target">
             <connections>
+                <outlet property="segmentView" destination="wHR-0b-IMB" id="DDH-ea-hGV"/>
                 <outlet property="tableView" destination="wIK-KZ-K2v" id="RiL-Zr-RSb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -20,7 +21,6 @@
             <subviews>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="wHR-0b-IMB">
                     <rect key="frame" x="20" y="44" width="374" height="41"/>
-                    <color key="backgroundColor" red="1" green="0.99998801950000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="qbJ-zq-hcv"/>
                     </constraints>
@@ -29,19 +29,20 @@
                         <segment title="Tes"/>
                         <segment title="Hasil"/>
                     </segments>
+                    <color key="tintColor" red="0.32549019610000002" green="0.78039215689999997" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="selectedSegmentTintColor" red="0.32549019610000002" green="0.78039215689999997" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
                         <action selector="switchViewAction:" destination="-1" eventType="valueChanged" id="24u-dL-029"/>
                     </connections>
                 </segmentedControl>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wIK-KZ-K2v">
-                    <rect key="frame" x="0.0" y="152" width="414" height="710"/>
+                    <rect key="frame" x="0.0" y="130" width="414" height="732"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="wIK-KZ-K2v" firstAttribute="top" secondItem="wHR-0b-IMB" secondAttribute="bottom" constant="68" id="BPg-Ha-MN5"/>
+                <constraint firstItem="wIK-KZ-K2v" firstAttribute="top" secondItem="wHR-0b-IMB" secondAttribute="bottom" constant="46" id="BPg-Ha-MN5"/>
                 <constraint firstItem="wIK-KZ-K2v" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Czl-ag-SaQ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wHR-0b-IMB" secondAttribute="trailing" constant="20" id="L6x-Md-lQx"/>
                 <constraint firstItem="wHR-0b-IMB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="NQt-yk-cRr"/>

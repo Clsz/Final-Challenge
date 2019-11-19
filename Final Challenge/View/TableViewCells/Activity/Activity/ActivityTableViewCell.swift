@@ -13,9 +13,14 @@ class ActivityTableViewCell: UITableViewCell {
     @IBOutlet weak var label1: UILabel!
     @IBOutlet weak var label2: UILabel!
     @IBOutlet weak var label3: UILabel!
+    
+    @IBOutlet weak var labelEquipment: UILabel!
+    
     @IBOutlet weak var requestScheduleButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var additionTF: UITextField!
+    
+    @IBOutlet weak var viewEquipment: UIView!
+    
     var interviewSchedule:[String] = []
     var interviewTime:[String] = []
     
@@ -23,7 +28,7 @@ class ActivityTableViewCell: UITableViewCell {
         super.awakeFromNib()
         registerCell()
         cellDelegate()
-        
+        tableView.reloadData()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -33,20 +38,15 @@ class ActivityTableViewCell: UITableViewCell {
     }
     
 }
+
 extension ActivityTableViewCell{
-    func setCell(text:String, hint:String, anotherText:String, button:String) {
+    func setCell(text:String, hint:String, anotherText:String, equipment:String, button:String) {
         self.label1.text = text
         self.label2.text = hint
         self.label3.text = anotherText
+        self.labelEquipment.text = equipment
         self.requestScheduleButton.setTitle(button, for: .normal)
-        
-        setInterface()
-    }
-    
-    private func setInterface() {
-        self.additionTF.outerRound()
-        self.additionTF.setLeftPaddingPoints(10.0)
-        self.additionTF.contentVerticalAlignment = .top
+         self.viewEquipment.outerRound()
     }
 }
 extension ActivityTableViewCell:UITableViewDataSource, UITableViewDelegate{
@@ -59,6 +59,27 @@ extension ActivityTableViewCell:UITableViewDataSource, UITableViewDelegate{
         cell.setView(day: interviewSchedule[indexPath.row], time: interviewTime[indexPath.row])
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+               if let cell = tableView.cellForRow(at: indexPath) {
+                   UIView.animate(withDuration: 0.3, animations: {
+                       cell.contentView.backgroundColor = #colorLiteral(red: 0.3812787533, green: 0.8201360106, blue: 0.9539147019, alpha: 1)
+                   })
+        } else if let cell = tableView.cellForRow(at: indexPath) {
+        UIView.animate(withDuration: 0.3, animations: {
+            cell.contentView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+    })
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) {
+        UIView.animate(withDuration: 0.3, animations: {
+            cell.contentView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        })
+    }
+    }
+    
     
     private func cellDelegate() {
         tableView.dataSource = self

@@ -74,6 +74,7 @@
                 <outlet property="imageBimbel" destination="o3N-TY-ScP" id="vnk-wC-HdW"/>
                 <outlet property="lokasiBimbel" destination="NT3-Tp-nQe" id="Usk-1J-CgA"/>
                 <outlet property="namaBimbel" destination="RyE-j1-bLj" id="9O8-2A-WSA"/>
+                <outlet property="viewBimbel" destination="vxJ-zc-7TB" id="mqw-1u-NsV"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="109.82142857142857"/>
         </tableViewCell>

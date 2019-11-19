@@ -31,6 +31,11 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="267" id="a0h-RX-KWj"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tableView>
                 </subviews>
                 <constraints>
