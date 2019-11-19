@@ -70,8 +70,20 @@ extension SegmentedViewController: UITableViewDelegate, UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "progressCell", for: indexPath) as! ProgressTableViewCell
         cell.backgroundColor = #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
         cell.selectionStyle = .none
-        
         cell.setView(nama: activity![currentTableView][indexPath.row].courseName, status: activity![currentTableView][indexPath.row].activityStatus)
+        
+        if activity![currentTableView][indexPath.row].activityStatus == "TES DIBATALKAN"{
+            cell.statusBimbel.textColor = .red
+        }else if activity![currentTableView][indexPath.row].activityStatus == "MENUNGGU HASIL TES"{
+            cell.statusBimbel.textColor = .darkGray
+        }else if activity![currentTableView][indexPath.row].activityStatus == "MEMINTA JADWAL TES BARU"{
+            cell.statusBimbel.textColor = .orange
+        }else if activity![currentTableView][indexPath.row].activityStatus == "DITERIMA"{
+            cell.statusBimbel.textColor = .green
+        }else{
+            cell.statusBimbel.textColor = .red
+        }
+        
         return cell
     }
     
@@ -86,9 +98,15 @@ extension SegmentedViewController: UITableViewDelegate, UITableViewDataSource{
             destVC.activity = activity![currentTableView][indexPath.row]
             self.navigationController?.pushViewController(destVC, animated: true)
         }else{
-            let destVC = DetailFinalThirdViewController()
-            destVC.activity = activity![currentTableView][indexPath.row]
-            self.navigationController?.pushViewController(destVC, animated: true)
+            if activity![currentTableView][indexPath.row].activityStatus == "DITERIMA"{
+                let destVC = WaitingConformationViewController()
+                destVC.activity = activity![currentTableView][indexPath.row]
+                self.navigationController?.pushViewController(destVC, animated: true)
+            }else{
+                let destVC = DetailFinalThirdViewController()
+                destVC.activity = activity![currentTableView][indexPath.row]
+                self.navigationController?.pushViewController(destVC, animated: true)
+            }
         }
     }
     
@@ -119,7 +137,7 @@ extension SegmentedViewController {
         - Memiliki kesabaran terhadap anak-anak
         """, ["SD"])
         
-        let dataTab2Kedua: Activity = Activity("02", "MENUNGGU TES", ["10.00 A.M - 12.00 AM", "11.20 A.M - 13.20 PM", "09.00 A.M - 11.00 PM"], ["Rabu, 27 Desember 2019", "Kamis, 28 Desember 2019", "Jumat, 29 Desember 2019"],
+        let dataTab2Kedua: Activity = Activity("02", "MENUNGGU HASIL TES", ["10.00 A.M - 12.00 AM", "11.20 A.M - 13.20 PM", "09.00 A.M - 11.00 PM"], ["Rabu, 27 Desember 2019", "Kamis, 28 Desember 2019", "Jumat, 29 Desember 2019"],
                                                """
         - Harap Membawa KTP
         - Lampirkan CV
@@ -190,7 +208,7 @@ extension SegmentedViewController {
         detailActivity2?.append(dataTab2Pertama)
         detailActivity2?.append(dataTab2Kedua)
         detailActivity2?.append(dataTab2Ketiga)
-        detailActivity2 = [dataTab2Pertama,dataTab2Kedua,dataTab3Ketiga]
+        detailActivity2 = [dataTab2Pertama,dataTab2Kedua,dataTab2Ketiga]
         
         detailActivity3?.append(dataTab3Pertama)
         detailActivity3?.append(dataTab3Kedua)

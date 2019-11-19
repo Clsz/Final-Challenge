@@ -13,14 +13,12 @@ class ActivityTableViewCell: UITableViewCell {
     @IBOutlet weak var label1: UILabel!
     @IBOutlet weak var label2: UILabel!
     @IBOutlet weak var label3: UILabel!
-    
     @IBOutlet weak var labelEquipment: UILabel!
-    
     @IBOutlet weak var requestScheduleButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var viewEquipment: UIView!
-    
+
+    var activityDelegate:ActivityProtocol?
     var interviewSchedule:[String] = []
     var interviewTime:[String] = []
     
@@ -38,7 +36,7 @@ class ActivityTableViewCell: UITableViewCell {
     }
     
     @IBAction func mintaJadwalTapped(_ sender: UIButton) {
-        // push view controller ke resultviewcontroller dengan fromID 2
+        activityDelegate?.requestNewSchedule()
     }
 }
 
