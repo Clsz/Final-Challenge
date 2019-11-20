@@ -12,6 +12,7 @@ class FilterViewController: BaseViewController {
     
     var salaryMin: Double?
     var selectedIndex:[Int] = []
+    var kirimIndex:[Int] = []
     var contentDelegate:AldiProtocol?
     var contDelegate:SubjectProtocol?
     
@@ -70,18 +71,9 @@ class FilterViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         let vc = LocationViewController()
         vc.aldiDelegate = self
-        
-//        let vc2 = SubjectViewController()
-//        vc2.subjekDelegate = self
-        
         LocationCV.reloadData()
         subjectCV.reloadData()
         setupView(text: "Filter")
-//        for i in 0..<selectedIndex.count {
-//            let index = IndexPath(row: i, section: 0)
-//            let cell = LocationCV.cellForItem(at: index)
-//            cell?.isSelected = true
-//        }
 
     }
     
@@ -105,12 +97,14 @@ extension FilterViewController:AldiProtocol{
     func sendIndex(arrIndex: [Int]) {
         selectedIndex = arrIndex
     }
+    
 }
 
 extension FilterViewController:SubjectProtocol{
-    func sendIndexs(arrIndex: [Int]) {
-        selectedIndex = arrIndex
+    func kirimIndex(arrayIndex: [Int]) {
+        kirimIndex = arrayIndex
     }
+    
 }
 
 extension FilterViewController:UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
@@ -132,6 +126,10 @@ extension FilterViewController:UICollectionViewDataSource, UICollectionViewDeleg
         if (collectionView == self.LocationCV) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filterCell", for: indexPath) as! FilterCollectionViewCell
             
+            cell.kotakFilter.layer.cornerRadius = 10
+            cell.kotakFilter.layer.borderColor = #colorLiteral(red: 0.2392156863, green: 0.431372549, blue: 0.8, alpha: 1)
+            cell.kotakFilter.layer.borderWidth = 1
+            
             if selectedIndex.contains(indexPath.row) {
                 cell.isSelected = true
             }
@@ -140,20 +138,29 @@ extension FilterViewController:UICollectionViewDataSource, UICollectionViewDeleg
             
             return cell
         }
-        else if (collectionView  == subjectCV) {
+        else if (collectionView == self.subjectCV) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filterCell", for: indexPath) as! FilterCollectionViewCell
             
-            if selectedIndex.contains(indexPath.row) {
-                           cell.isSelected = true
-                       }
+            cell.kotakFilter.layer.cornerRadius = 10
+            cell.kotakFilter.layer.borderColor = #colorLiteral(red: 0.2392156863, green: 0.431372549, blue: 0.8, alpha: 1)
+            cell.kotakFilter.layer.borderWidth = 1
             cell.labelFilter.text = ConstantManager.tempArraySubject[indexPath.row]
             
+            if kirimIndex.contains(indexPath.row)
+            {
+                cell.isSelected = true
+            }
+         
             return cell
+            
         }
         else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filterCell", for: indexPath) as! FilterCollectionViewCell
             
-            cell.setView()
+            cell.kotakFilter.layer.cornerRadius = 10
+            cell.kotakFilter.layer.borderColor = #colorLiteral(red: 0.2392156863, green: 0.431372549, blue: 0.8, alpha: 1)
+            cell.kotakFilter.layer.borderWidth = 1
+            
             cell.labelFilter.text = grade[indexPath.row]
             
             return cell

@@ -126,5 +126,3 @@ extension SubjectViewController: UISearchBarDelegate {
     }
     
 }
-
-
