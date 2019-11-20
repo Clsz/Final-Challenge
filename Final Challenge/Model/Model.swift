@@ -11,7 +11,7 @@ import Foundation
 class Courses{
     var courseID, courseName, courseAddress, courseWorkQualification,  courseLocation, courseImage:String!
     var courseMinFare, courseMaxFare:Int!
-    var courseWorkSchedule, courseCategory, courseWorkTime, courseGrade:[String]!
+    var courseWorkSchedule, courseCategory, courseWorkTime, courseGrade:[String]
     //    var courseCreatedAt:String
     //    var teacherQty:Int
     
