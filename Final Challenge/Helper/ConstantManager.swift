@@ -17,4 +17,6 @@ class ConstantManager{
     static let educationType = ["Junior High School","Senior High School","Undergraduate"]
     static let experienceType = ["Teaching Assistant","Junior Developer","Senior Developer","Part Time","Freelance"]
     static let year = ["2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025"]
+    static let hardSkill = ["Pecahan","Alajabar","Geometri","Algoritma","Microsoft Word","Calculus","Microsoft Excel","Perkalian"]
+    static let softSkill = ["Komunikasi","Integritas","Pemecahan Masalah","Kerja Sama"]
 }

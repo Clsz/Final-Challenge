@@ -29,7 +29,7 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U2F-Sh-Oeo">
                             <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
-                            <state key="normal" title="Apply Language">
+                            <state key="normal" title="Terapkan Bahasa">
                                 <color key="titleColor" red="0.32549019610000002" green="0.78039215689999997" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>

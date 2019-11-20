@@ -13,14 +13,13 @@ class LanguageViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var applyButton: UIButton!
     @IBOutlet weak var outerView: UIView!
-    var selectedMonth: String!
+    var selectedLanguage: String?
     var toolBar = UIToolbar()
     var picker  = UIPickerView()
     var dataArray:[Any?] = []
     let content = "DetailProfileTableViewCellID"
     let contentDrop = "AnotherDetailProfileTableViewCellID"
-    var tutor:Tutor!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()
@@ -30,11 +29,11 @@ class LanguageViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setMainInterface()
-        setupView(text: "Language")
+        setupView(text: "Bahasa")
     }
     
     @IBAction func applyTapped(_ sender: Any) {
-        
+        getData()
     }
     
 }
@@ -45,19 +44,28 @@ extension LanguageViewController{
         self.outerView.outerRound()
     }
     
-    func setupData() {
+    private func setupData() {
         dataArray.removeAll()
-        dataArray.append(("Language","Enter your Language",0))
-        dataArray.append(("Language Proficiency","Beginner",1))
+        dataArray.append(("Bahasa","Masukkan bahasa Anda",0))
+        dataArray.append(("Keahlian Bahasa","Pemula",1))
     }
     
+    private func getData() {
+        let index = IndexPath(row: 0, section: 0)
+        let cell = tableView.cellForRow(at: index) as! DetailProfileTableViewCell
+        let index1 = IndexPath(row: 1, section: 0)
+        let cell1 = tableView.cellForRow(at: index1) as! AnotherDetailProfileTableViewCell
+        language = Language(cell.textField.text ?? "", cell1.textField.text ?? "")
+        tutor.tutorLanguage.append(language!)
+        showAlert(title: "Berhasil", message: "Profil anda telah diperbaruhi")
+    }
 }
 
 extension LanguageViewController:LanguageProtocol{
     func dropLanguage() {
         self.createLanguagePicker()
     }
-    
+
 }
 extension LanguageViewController:UITableViewDataSource,UITableViewDelegate{
     func registerCell() {
@@ -106,12 +114,21 @@ extension LanguageViewController:UIPickerViewDelegate, UIPickerViewDataSource{
         picker.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
         self.view.addSubview(picker)
         
+        self.createToolbar()
+    }
+    
+    func createToolbar() {
         toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
-        toolBar.items = [UIBarButtonItem.init(title: "Done", style: .plain, target: self, action: #selector(onDoneButtonTapped))]
+        toolBar.items = [UIBarButtonItem.init(title: "Selesai", style: .plain, target: self, action: #selector(onDoneButtonTapped))]
+            
         self.view.addSubview(toolBar)
     }
     
     @objc func onDoneButtonTapped() {
+        let index = IndexPath(row: 1, section: 0)
+        let cell = tableView.cellForRow(at: index) as! AnotherDetailProfileTableViewCell
+        
+        cell.textField.text = selectedLanguage
         toolBar.removeFromSuperview()
         picker.removeFromSuperview()
     }
@@ -133,6 +150,6 @@ extension LanguageViewController:UIPickerViewDelegate, UIPickerViewDataSource{
     
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedMonth = ConstantManager.proficiency[row]
+        selectedLanguage = ConstantManager.proficiency[row]
     }
 }

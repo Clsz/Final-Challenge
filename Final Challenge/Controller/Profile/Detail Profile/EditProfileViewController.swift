@@ -9,10 +9,9 @@
 import UIKit
 
 class EditProfileViewController: BaseViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     let detailProfile = "DetailHeaderTableViewCellID"
-    var tutor:Tutor!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,12 +21,23 @@ class EditProfileViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.tableView.contentInsetAdjustmentBehavior = .never
-        setupView(text: "Personal")
+        setupView(text: "Profil")
     }
-
+    
 }
-
-extension EditProfileViewController:PasswordProtocol{
+extension EditProfileViewController{
+    private func getData() {
+        let index = IndexPath(row: 0, section: 0)
+        let cell = tableView.cellForRow(at: index) as! DetailHeaderTableViewCell
+        tutor = Tutor("01", [], "unknown@gmail.com", "rahasia", cell.nameTF.text ?? "","", "", "", cell.addressTF.text ?? "", "", cell.ageTF.text ?? "", [], [], [], [])
+        showAlert(title: "Berhasil", message: "Profil anda telah diperbaruhi")
+    }
+}
+extension EditProfileViewController:ProfileDetailProtocol,PasswordProtocol{
+    func applyProfile() {
+        getData()
+    }
+    
     func changePassword() {
         let destVC = EditPasswordViewController()
         destVC.oldPassword = tutor.password
@@ -45,6 +55,7 @@ extension EditProfileViewController:UITableViewDataSource, UITableViewDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: detailProfile, for: indexPath) as! DetailHeaderTableViewCell
         let fullName = tutor.tutorFirstName + " " + tutor.tutorLastName
         cell.setCell(name: fullName, age: tutor.tutorBirthDate, address: tutor.tutorAddress)
+        cell.passwordDelegate = self
         cell.delegate = self
         return cell
     }
@@ -58,5 +69,5 @@ extension EditProfileViewController:UITableViewDataSource, UITableViewDelegate{
     func registerCell() {
         tableView.register(UINib(nibName: "DetailHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: detailProfile)
     }
-
+    
 }

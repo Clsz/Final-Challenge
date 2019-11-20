@@ -22,7 +22,7 @@ class SetupSkillsViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setMainInterface()
-        setupView(text: "Skill Setup")
+        setupView(text: "Pengaturan Keterampilan")
     }
 
     @IBAction func applyTapped(_ sender: Any) {

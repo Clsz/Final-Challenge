@@ -26,7 +26,7 @@ class SetupPersonalViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.tableView.contentInsetAdjustmentBehavior = .never
-        setupView(text: "Personal Setup")
+        setupView(text: "Pengaturan Profil")
     }
 }
 extension SetupPersonalViewController{
@@ -53,11 +53,11 @@ extension SetupPersonalViewController:UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: hint, for: indexPath) as! HintTableViewCell
-            cell.setCell(text: "PLEASE SET YOUR PROFILE")
+            cell.setCell(text: "HARAP ATUR PROFIL ANDA")
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: detailProfile, for: indexPath) as! SetupPersonalTableViewCell
-            cell.setCell(name: "Enter your name here", age: "Enter your age here", address: "Enter your address here")
+            cell.setCell(name: "Masukkan nama kamu", age: "Masukkan umur kamu", address: "Masukkan alamat kamu")
             cell.contentDelegate = self
             return cell
         }

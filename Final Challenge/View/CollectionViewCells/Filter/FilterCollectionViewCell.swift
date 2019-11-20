@@ -17,6 +17,7 @@ class FilterCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        setView()
         // Initialization code
     }
     
@@ -30,5 +31,12 @@ class FilterCollectionViewCell: UICollectionViewCell {
         }
     }
     
+}
+extension FilterCollectionViewCell{
+    func setView() {
+        kotakFilter.layer.cornerRadius = 10
+        kotakFilter.layer.borderColor = #colorLiteral(red: 0.2392156863, green: 0.431372549, blue: 0.8, alpha: 1)
+        kotakFilter.layer.borderWidth = 1
+    }
 }
 

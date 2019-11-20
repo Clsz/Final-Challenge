@@ -679,8 +679,8 @@
 				E168477323782AF6001B6319 /* Detail Profile */,
 				E13EE5E423805F41005016A0 /* Skill */,
 				E13EE5E323805F32005016A0 /* Language */,
-				E13EE5E623805F63005016A0 /* Experience */,
 				E13EE5E523805F4D005016A0 /* Education */,
+				E13EE5E623805F63005016A0 /* Experience */,
 			);
 			path = Profile;
 			sourceTree = "<group>";

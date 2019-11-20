@@ -27,7 +27,7 @@
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ZWh-Np-Dxx">
                             <rect key="frame" x="19" y="0.0" width="337" height="837"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLEASE ADD YOUR SKILL SET" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCl-cq-IQa">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HARAP TAMBAHKAN KETERAMPILAN ANDA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCl-cq-IQa">
                                     <rect key="frame" x="0.0" y="0.0" width="337" height="16"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <color key="textColor" red="0.53725490200000003" green="0.53725490200000003" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -54,7 +54,7 @@
                                         <constraint firstAttribute="height" constant="29" id="vn8-HR-h6p"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggested Hard Skills" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3J-wF-k1S">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keterampilan Teknis" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3J-wF-k1S">
                                     <rect key="frame" x="0.0" y="119" width="337" height="26.5"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                     <nil key="textColor"/>
@@ -85,7 +85,7 @@
                                         <constraint firstAttribute="height" constant="35" id="BXv-kq-6nr"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggested Soft Skills" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOx-jm-9Xk">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keterampilan Non Teknis" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOx-jm-9Xk">
                                     <rect key="frame" x="0.0" y="388.5" width="337" height="26.5"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                     <nil key="textColor"/>
@@ -122,7 +122,7 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="44" id="3YZ-t7-zDd"/>
                                     </constraints>
-                                    <state key="normal" title="Apply Skill">
+                                    <state key="normal" title="Terapkan Keterampilan">
                                         <color key="titleColor" red="0.32549019610000002" green="0.78039215689999997" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                     <connections>
@@ -140,9 +140,9 @@
                                     <rect key="frame" x="0.0" y="817" width="337" height="20"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="As3-WZ-g0l">
-                                            <rect key="frame" x="153" y="0.0" width="32" height="20"/>
+                                            <rect key="frame" x="100" y="0.0" width="137" height="20"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <state key="normal" title="Skip">
+                                            <state key="normal" title="Lewatkan">
                                                 <color key="titleColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                             <connections>
@@ -153,9 +153,9 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="EjA-wd-7LG"/>
-                                        <constraint firstItem="As3-WZ-g0l" firstAttribute="leading" secondItem="fIX-E5-cAc" secondAttribute="leading" constant="153" id="G9e-vb-Jed"/>
+                                        <constraint firstItem="As3-WZ-g0l" firstAttribute="leading" secondItem="fIX-E5-cAc" secondAttribute="leading" constant="100" id="G9e-vb-Jed"/>
                                         <constraint firstAttribute="bottom" secondItem="As3-WZ-g0l" secondAttribute="bottom" id="NF2-Hm-dHG"/>
-                                        <constraint firstAttribute="trailing" secondItem="As3-WZ-g0l" secondAttribute="trailing" constant="152" id="fyC-Qs-Nno"/>
+                                        <constraint firstAttribute="trailing" secondItem="As3-WZ-g0l" secondAttribute="trailing" constant="100" id="fyC-Qs-Nno"/>
                                         <constraint firstItem="As3-WZ-g0l" firstAttribute="top" secondItem="fIX-E5-cAc" secondAttribute="top" id="rab-LN-z5j"/>
                                     </constraints>
                                 </view>

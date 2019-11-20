@@ -13,7 +13,7 @@ class AdditionalEducationViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addAdditional: UIButton!
     @IBOutlet weak var applyButton: UIButton!
-    let additional = "HintWithTableTableViewCellID"
+    let hint = "HintWithTableTableViewCellID"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,7 @@ class AdditionalEducationViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setMainInterface()
-        setupView(text: "Education Setup")
+        setupView(text: "Pengaturan Pendidikan")
     }
     
     @IBAction func addAddtionalTapped(_ sender: Any) {
@@ -42,7 +42,7 @@ extension AdditionalEducationViewController{
 }
 extension AdditionalEducationViewController:UITableViewDataSource,UITableViewDelegate{
     func registerCell() {
-        tableView.register(UINib(nibName: "HintWithTableTableViewCell", bundle: nil), forCellReuseIdentifier: additional)
+        tableView.register(UINib(nibName: "HintWithTableTableViewCell", bundle: nil), forCellReuseIdentifier: hint)
     }
     
     func cellDelegate() {
@@ -55,8 +55,8 @@ extension AdditionalEducationViewController:UITableViewDataSource,UITableViewDel
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: additional, for: indexPath) as! HintWithTableTableViewCell
-        cell.setCell(text: "PLEASE ADD YOUR EDUCATION INFORMATION")
+        let cell = tableView.dequeueReusableCell(withIdentifier: hint, for: indexPath) as! HintWithTableTableViewCell
+        cell.setCell(text: "HARAP TAMBAHKAN INFORMASI PENDIDIKAN ANDA")
         return cell
     }
     

@@ -26,7 +26,7 @@
                         <constraint firstAttribute="height" constant="44" id="dEK-xe-KYs"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="Apply Education">
+                    <state key="normal" title="Terapkan Edukasi">
                         <color key="titleColor" red="0.32549019610000002" green="0.78039215689999997" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
@@ -34,12 +34,12 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNU-7k-YFI">
-                    <rect key="frame" x="180" y="829" width="54" height="33"/>
+                    <rect key="frame" x="100" y="829" width="214" height="33"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="33" id="xpG-kr-Zzm"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="Skip">
+                    <state key="normal" title="Lewatkan">
                         <color key="titleColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
@@ -55,8 +55,8 @@
             <constraints>
                 <constraint firstItem="QQM-rR-MLj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="5Ao-6V-Xwk"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Zsz-42-ELH" secondAttribute="trailing" id="Bc3-cy-She"/>
-                <constraint firstItem="eNU-7k-YFI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="180" id="HYW-WI-1iN"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="eNU-7k-YFI" secondAttribute="trailing" constant="180" id="PxX-TV-D1b"/>
+                <constraint firstItem="eNU-7k-YFI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="100" id="HYW-WI-1iN"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="eNU-7k-YFI" secondAttribute="trailing" constant="100" id="PxX-TV-D1b"/>
                 <constraint firstItem="Zsz-42-ELH" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="SMx-1Z-Y2F"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="QQM-rR-MLj" secondAttribute="trailing" constant="20" id="eFw-PZ-qIj"/>
                 <constraint firstItem="eNU-7k-YFI" firstAttribute="top" secondItem="QQM-rR-MLj" secondAttribute="bottom" constant="20" id="ftH-T6-97k"/>

@@ -21,12 +21,12 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XbB-mA-KbF">
-                    <rect key="frame" x="180" y="829" width="54" height="33"/>
+                    <rect key="frame" x="100" y="829" width="214" height="33"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="33" id="KGn-tu-14l"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="Skip">
+                    <state key="normal" title="Lewatkan">
                         <color key="titleColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
@@ -44,7 +44,7 @@
                         <constraint firstAttribute="height" constant="44" id="twk-Hs-2fL"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="Apply Experience">
+                    <state key="normal" title="Terapkan Edukasi">
                         <color key="titleColor" red="0.32549019610000002" green="0.78039215689999997" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
@@ -54,8 +54,8 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="XbB-mA-KbF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="180" id="6DO-tB-G5N"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="XbB-mA-KbF" secondAttribute="trailing" constant="180" id="CUa-eX-Fc8"/>
+                <constraint firstItem="XbB-mA-KbF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="100" id="6DO-tB-G5N"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="XbB-mA-KbF" secondAttribute="trailing" constant="100" id="CUa-eX-Fc8"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="OEh-Nd-nrw" secondAttribute="trailing" id="Pil-NW-q7t"/>
                 <constraint firstItem="XbB-mA-KbF" firstAttribute="top" secondItem="uae-t1-fO4" secondAttribute="bottom" constant="20" id="Sip-tk-WM6"/>
                 <constraint firstItem="uae-t1-fO4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="cBI-x3-4Jq"/>

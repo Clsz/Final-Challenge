@@ -30,7 +30,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="S3C-7Y-Nqw"/>
                     </constraints>
-                    <state key="normal" title="Add Additional Language">
+                    <state key="normal" title="Tambahkan Bahasa Lainnya">
                         <color key="titleColor" red="0.32549019610000002" green="0.78039215689999997" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
@@ -43,7 +43,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="PDY-3J-jSJ"/>
                     </constraints>
-                    <state key="normal" title="Apply Language">
+                    <state key="normal" title="Tambahkan Bahasa">
                         <color key="titleColor" red="0.32549019610000002" green="0.78039215689999997" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>

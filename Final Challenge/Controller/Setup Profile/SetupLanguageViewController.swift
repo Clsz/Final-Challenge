@@ -13,7 +13,7 @@ class SetupLanguageViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var applyButton: UIButton!
     @IBOutlet weak var skipButton: UIButton!
-    var selectedMonth: String!
+    var selectedLanguage: String!
     var toolBar = UIToolbar()
     var picker  = UIPickerView()
     var dataArray:[Any?] = []
@@ -31,7 +31,7 @@ class SetupLanguageViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setMainInterface()
-        setupView(text: "Language Setup")
+        setupView(text: "Pengaturan Bahasa")
     }
     
     @IBAction func applyTapped(_ sender: Any) {
@@ -46,22 +46,17 @@ extension SetupLanguageViewController{
     private func setMainInterface() {
         self.tableView.contentInsetAdjustmentBehavior = .never
         self.applyButton.loginRound()
-       
+        
     }
     
     private func setupData() {
         dataArray.removeAll()
-        dataArray.append("PLEASE ADD YOUR LANGUAGE")
-        dataArray.append(("Language","Enter your Language",0))
-        dataArray.append(("Language Proficiency","Beginner",1))
+        dataArray.append("HARAP TAMBAHKAN KEMAMPUAN ANDA")
+        dataArray.append(("Bahasa","Masukkan bahasa Anda",0))
+        dataArray.append(("Kemahiran Bahasa","Pemula",1))
     }
     
     private func getDataCustomCell() {
-        let index = IndexPath(row: 1, section: 0)
-        let cell = tableView.cellForRow(at: index) as! DetailProfileTableViewCell
-        let index1 = IndexPath(row: 2, section: 0)
-        let cell1 = tableView.cellForRow(at: index1) as! AnotherDetailProfileTableViewCell
-        
         //Getdata
     }
     
@@ -117,7 +112,7 @@ extension SetupLanguageViewController:UIPickerViewDelegate, UIPickerViewDataSour
         picker = UIPickerView.init()
         picker.delegate = self
         picker.selectRow(5, inComponent:0, animated:true)
-
+        
         picker.backgroundColor = UIColor.white
         picker.autoresizingMask = .flexibleWidth
         picker.contentMode = .center
@@ -131,7 +126,7 @@ extension SetupLanguageViewController:UIPickerViewDelegate, UIPickerViewDataSour
     
     private func createToolbar() {
         toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
-        toolBar.items = [UIBarButtonItem.init(title: "Done", style: .plain, target: self, action: #selector(onDoneButtonTapped))]
+        toolBar.items = [UIBarButtonItem.init(title: "Selesai", style: .plain, target: self, action: #selector(onDoneButtonTapped))]
         self.view.addSubview(toolBar)
         
     }
@@ -158,6 +153,6 @@ extension SetupLanguageViewController:UIPickerViewDelegate, UIPickerViewDataSour
     
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedMonth = ConstantManager.proficiency[row]
+        selectedLanguage = ConstantManager.proficiency[row]
     }
 }

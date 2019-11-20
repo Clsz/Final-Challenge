@@ -9,7 +9,7 @@
 import UIKit
 
 class SetupEducationViewController: BaseViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var applyButton: UIButton!
     @IBOutlet weak var skipButton: UIButton!
@@ -45,31 +45,26 @@ extension SetupEducationViewController{
     private func setMainInterface() {
         self.tableView.contentInsetAdjustmentBehavior = .never
         self.applyButton.loginRound()
-        setupView(text: "Education Setup")
+        setupView(text: "Pengaturan Pendidikan")
     }
     
     private func setupData() {
         dataArray.removeAll()
-        dataArray.append(("School","Enter your School Name",0))
-        dataArray.append(("Education Type","Senior High School",1))
-        dataArray.append(("Field of Study","Enter your Field of Study",0))
-        dataArray.append(("Grade","Enter your Grade",0))
+        dataArray.append(("Sekolah","Masukkan nama sekolah Anda",0))
+        dataArray.append(("Tingkat Pendidikan","Sekolah Menengah Atas",1))
+        dataArray.append(("Jurusan","Masukkan jurusan Anda",0))
+        dataArray.append(("Semester","Masukkan semester Anda",0))
     }
     
     private func getDataCustomCell() {
-        let index = IndexPath(row: 1, section: 0)
-        let cell = tableView.cellForRow(at: index) as! DetailProfileTableViewCell
-        let index1 = IndexPath(row: 2, section: 0)
-        let cell1 = tableView.cellForRow(at: index1) as! AnotherDetailProfileTableViewCell
-        let index2 = IndexPath(row: 3, section: 0)
-        let cell2 = tableView.cellForRow(at: index2) as! DetailProfileTableViewCell
-        let index3 = IndexPath(row: 4, section: 0)
-        let cell3 = tableView.cellForRow(at: index3) as! DetailProfileTableViewCell
-        
         //Getdata
     }
 }
 extension SetupEducationViewController:EducationProtocol{
+    func dropEducation(text: UITextField) {
+        print("")
+    }
+    
     func dropEducation() {
         self.createSchoolPicker()
     }
@@ -114,7 +109,7 @@ extension SetupEducationViewController:UIPickerViewDelegate, UIPickerViewDataSou
         picker = UIPickerView.init()
         picker.delegate = self
         picker.selectRow(5, inComponent:0, animated:true)
-
+        
         picker.backgroundColor = UIColor.white
         picker.autoresizingMask = .flexibleWidth
         picker.contentMode = .center
@@ -123,11 +118,12 @@ extension SetupEducationViewController:UIPickerViewDelegate, UIPickerViewDataSou
         self.view.addSubview(picker)
         
         toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
-        toolBar.items = [UIBarButtonItem.init(title: "Done", style: .plain, target: self, action: #selector(onDoneButtonTapped))]
+        toolBar.items = [UIBarButtonItem.init(title: "Selesai", style: .plain, target: self, action: #selector(onDoneButtonTapped))]
         self.view.addSubview(toolBar)
     }
     
     @objc func onDoneButtonTapped() {
+        
         toolBar.removeFromSuperview()
         picker.removeFromSuperview()
     }
