@@ -23,16 +23,12 @@ class LocationViewController: BaseViewController {
     let lokasi = [
         "Kab. Lebak",
         "Kab. Pandeglang",
-        "Kab. Serang",
         "Kab. Tangerang",
         "Kota Cilegon",
         "Kota Serang",
-        "Kota Tangerang",
         "Kota Tangerang Selatan",
         "Kepulauan Seribu",
-        "Jakarta Pusat",
         "Jakarta Utara",
-        "Jakarta Barat",
         "Jakarta Timur",
         "Jakarta Selatan"
     ]

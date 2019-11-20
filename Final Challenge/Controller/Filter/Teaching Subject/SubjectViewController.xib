@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SubjectViewController" customModule="Final_Challenge" customModuleProvider="target">
             <connections>
-                <outlet property="searchBar" destination="IJh-pi-dcR" id="etS-xV-bAW"/>
+                <outlet property="searchSubjectBar" destination="IJh-pi-dcR" id="etS-xV-bAW"/>
                 <outlet property="subjekTV" destination="psg-Lh-dSW" id="IH7-Dl-PrJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

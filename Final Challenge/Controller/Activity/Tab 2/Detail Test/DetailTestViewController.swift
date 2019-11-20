@@ -36,7 +36,7 @@ extension DetailTestViewController{
         dataArray.append(("Jadwal Test", activity.interviewSchedule, activity.interviewTime, "Silakan pilih salah satu jadwal test diatas", "Perlengkapan Test", activity.testEquipment, "Minta Jadwal Baru"))
         dataArray.append(("Subject Category",activity.courseCategory))
         dataArray.append(("Grade",activity.courseGrade))
-        dataArray.append(("Range Salary","Rp \(String(describing: activity.courseMinFare!)) - Rp \(String(describing: activity.courseMaxFare!))",1))
+        dataArray.append(("Range Salary","Rp \(String(describing: activity.courseMinFare!.formattedWithSeparator)) - Rp \(String(describing: activity.courseMaxFare!.formattedWithSeparator))",1))
         dataArray.append(("Schedule",activity.courseWorkTime,activity.courseWorkSchedule))
         dataArray.append(("Qualification",activity.courseWorkQualification,0))
         dataArray.append(("Terima Tes","Tolak Tes",true))

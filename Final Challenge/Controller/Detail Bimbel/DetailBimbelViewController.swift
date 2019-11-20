@@ -37,7 +37,7 @@ extension DetailBimbelViewController{
         dataArray.append(("Address",course.courseAddress,0))
         dataArray.append(("Subject Category",course.courseCategory))
         dataArray.append(("Grade",course.courseGrade))
-        dataArray.append(("Range Salary","Rp \(String(describing: course.courseMinFare!)) - Rp \(String(describing: course.courseMaxFare!))",1))
+        dataArray.append(("Range Salary","Rp \(String(describing: course.courseMinFare!.formattedWithSeparator)) - Rp \(String(describing: course.courseMaxFare!.formattedWithSeparator))",1))
         dataArray.append(("Schedule",course.courseWorkTime,course.courseWorkSchedule))
         dataArray.append(("Qualification",course.courseWorkQualification,0))
         dataArray.append(true)
