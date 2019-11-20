@@ -27,7 +27,7 @@
                         <constraint firstAttribute="height" constant="44" id="0NT-Z8-nup"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="Apply Language">
+                    <state key="normal" title="Terapkan Bahasa">
                         <color key="titleColor" red="0.32549019610000002" green="0.78039215689999997" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
@@ -35,12 +35,12 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbr-6G-Rmr">
-                    <rect key="frame" x="180" y="829" width="54" height="33"/>
+                    <rect key="frame" x="100" y="829" width="214" height="33"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="33" id="FA7-h8-Ev3"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="Skip">
+                    <state key="normal" title="Lewatkan">
                         <color key="titleColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
@@ -54,14 +54,14 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="dbr-6G-Rmr" secondAttribute="trailing" constant="180" id="1SJ-Jo-W9D"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="dbr-6G-Rmr" secondAttribute="trailing" constant="100" id="1SJ-Jo-W9D"/>
                 <constraint firstItem="dbr-6G-Rmr" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="8Bj-SD-uW6"/>
                 <constraint firstItem="b5Z-c8-dwh" firstAttribute="top" secondItem="lUl-mN-Ktf" secondAttribute="bottom" id="ENa-O1-g4i"/>
                 <constraint firstItem="lUl-mN-Ktf" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="KEG-if-amH"/>
                 <constraint firstItem="dbr-6G-Rmr" firstAttribute="top" secondItem="b5Z-c8-dwh" secondAttribute="bottom" constant="20" id="Krq-fS-cq9"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lUl-mN-Ktf" secondAttribute="trailing" id="RUo-0e-Prj"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="b5Z-c8-dwh" secondAttribute="trailing" constant="20" id="fUQ-e8-yfH"/>
-                <constraint firstItem="dbr-6G-Rmr" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="180" id="i6U-HI-k6h"/>
+                <constraint firstItem="dbr-6G-Rmr" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="100" id="i6U-HI-k6h"/>
                 <constraint firstItem="lUl-mN-Ktf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="uCh-hc-d9c"/>
                 <constraint firstItem="b5Z-c8-dwh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="v4Q-Hy-mwX"/>
             </constraints>

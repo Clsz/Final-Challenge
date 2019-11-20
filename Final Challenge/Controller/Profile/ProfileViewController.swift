@@ -14,7 +14,6 @@ class ProfileViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var dataArray:[Any?] = []
-    var tutor:Tutor!
     let header = "TitleTableViewCellID"
     let content = "ContentTableViewCellID"
     let anotherContent = "AnotherContentTableViewCellID"
@@ -24,14 +23,14 @@ class ProfileViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getData()
         registerCell()
         cellDelegate()
-        setupData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setupView(text: "Profile")
+        setupView(text: "Profil")
+        setupData()
+        tableView.reloadData()
     }
     
 }
@@ -45,10 +44,6 @@ extension ProfileViewController{
         dataArray.append(("Pengalaman","Tambah Pengalaman"))
         dataArray.append(("Pencapaian","Tambah Pencapain",2))
         dataArray.append(false)
-    }
-    
-    private func getData() {
-        self.tutor  = Tutor("01", "02", "jason@gmail.com", "12345", "Jason Valencius", "Wijaya", "", "082298222301", "Ruko Tol Boulevard Blok E No. 20-22, Jl. Pahlawan Seribu, Serpong, Rw. Buntu, Kec. Serpong, Kota Tangerang Selatan, Banten 15318 ", "Pria", "14/02/1997", ["Mobile Application","Algebra","Communication","Integrity","Geometry"], ["Junior Developer Academy","Teaching Assistant"], ["English","Mandarin"], [])
     }
     
     private func addAchievement() {
@@ -69,31 +64,26 @@ extension ProfileViewController{
 extension ProfileViewController:ProfileProtocol{
     func pencilTapped() {
         let destVC = EditProfileViewController()
-        destVC.tutor = self.tutor
         navigationController?.pushViewController(destVC, animated: true)
     }
     
     func skillTapped() {
         let destVC = SkillsViewController()
-        destVC.tutor = self.tutor
         navigationController?.pushViewController(destVC, animated: true)
     }
     
     func languageTapped() {
         let destVC = LanguageViewController()
-        destVC.tutor = self.tutor
         navigationController?.pushViewController(destVC, animated: true)
     }
     
     func educationTapped() {
         let destVC = EducationViewController()
-        destVC.tutor = self.tutor
         navigationController?.pushViewController(destVC, animated: true)
     }
     
     func experienceTapped() {
         let destVC = ExperienceViewController()
-        destVC.tutor = self.tutor
         navigationController?.pushViewController(destVC, animated: true)
     }
     
@@ -132,6 +122,7 @@ extension ProfileViewController:UITableViewDataSource, UITableViewDelegate{
             if let tutor = dataArray[indexPath.row] as? Tutor {
                 let fullName = tutor.tutorFirstName + " " + tutor.tutorLastName
                 cell.setCell(image: tutor.tutorImage, name: fullName, university: "Bina Nusantara", age: 22)
+                print(fullName)
             }
             cell.contentDelegate = self
             return cell

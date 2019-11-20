@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol ProfileProtocol{
     func pencilTapped()
@@ -30,17 +31,22 @@ protocol LanguageProtocol {
     func dropLanguage()
 }
 
+protocol EducationProtocol {
+    func dropEducation()
+}
+
+protocol ExperienceProtocol {
+    func startTapped()
+    func endTapped()
+    func dropExperience()
+}
+
 protocol HomeProtocol {
     func bimbelTapped()
 }
 
 protocol DetailBimbel{
     func requestTapped()
-}
-
-
-protocol EducationProtocol {
-    func dropEducation()
 }
 
 protocol ActivityProcess {
@@ -50,12 +56,6 @@ protocol ActivityProcess {
 
 protocol ActivityProtocol {
     func requestNewSchedule()
-}
-
-protocol ExperienceProtocol {
-    func startTapped()
-    func endTapped()
-    func dropExperience()
 }
 
 protocol showMoreLanguage{

@@ -9,7 +9,7 @@
 import UIKit
 
 class EducationViewController: BaseViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var outerView: UIView!
     @IBOutlet weak var applyButton: UIButton!
@@ -19,7 +19,6 @@ class EducationViewController: BaseViewController {
     var dataArray:[Any?] = []
     let content = "DetailProfileTableViewCellID"
     let contentDrop = "AnotherDetailProfileTableViewCellID"
-    var tutor:Tutor!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +32,7 @@ class EducationViewController: BaseViewController {
     }
     
     @IBAction func applyTapped(_ sender: Any) {
-        
+        getData()
     }
     
 }
@@ -42,16 +41,32 @@ extension EducationViewController{
         self.tableView.contentInsetAdjustmentBehavior = .never
         self.applyButton.loginRound()
         self.outerView.outerRound()
-        setupView(text: "Education")
+        setupView(text: "Pendidikan")
     }
     
     func setupData() {
         dataArray.removeAll()
-        dataArray.append(("School","Enter your School Name",0))
-        dataArray.append(("Education Type","Senior High School",1))
-        dataArray.append(("Field of Study","Enter your Field of Study",0))
-        dataArray.append(("Grade","Enter your Grade",0))
+        dataArray.append(("Sekolah","Masukkan nama sekolah kamu",0))
+        dataArray.append(("Tingkat Pendidikan","Sekolah Menengah Atas",1))
+        dataArray.append(("Jurusan","Masukkan jurusan kamu",0))
+        dataArray.append(("Semester","Masukkan semester kamu",0))
     }
+    
+    private func getData() {
+        let index = IndexPath(row: 0, section: 0)
+        let cell = tableView.cellForRow(at: index) as! DetailProfileTableViewCell
+        let index1 = IndexPath(row: 1, section: 0)
+        let cell1 = tableView.cellForRow(at: index1) as! AnotherDetailProfileTableViewCell
+        let index2 = IndexPath(row: 2, section: 0)
+        let cell2 = tableView.cellForRow(at: index2) as! DetailProfileTableViewCell
+        let index3 = IndexPath(row: 3, section: 0)
+        let cell3 = tableView.cellForRow(at: index3) as! DetailProfileTableViewCell
+        
+        
+        education = Education("01", cell.textField.text ?? "", cell1.textField.text ?? "", cell2.textField.text ?? "", cell3.textField.text ?? "", "2016", "2020")
+        showAlert(title: "Berhasil", message: "Pengalaman anda telah diperbaruhi")
+    }
+    
 }
 extension EducationViewController:EducationProtocol{
     func dropEducation() {
@@ -98,7 +113,7 @@ extension EducationViewController:UIPickerViewDelegate, UIPickerViewDataSource{
         picker = UIPickerView.init()
         picker.delegate = self
         picker.selectRow(5, inComponent:0, animated:true)
-
+        
         picker.backgroundColor = UIColor.white
         picker.autoresizingMask = .flexibleWidth
         picker.contentMode = .center
@@ -107,11 +122,15 @@ extension EducationViewController:UIPickerViewDelegate, UIPickerViewDataSource{
         self.view.addSubview(picker)
         
         toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
-        toolBar.items = [UIBarButtonItem.init(title: "Done", style: .plain, target: self, action: #selector(onDoneButtonTapped))]
+        toolBar.items = [UIBarButtonItem.init(title: "Selesai", style: .plain, target: self, action: #selector(onDoneButtonTapped))]
         self.view.addSubview(toolBar)
     }
     
     @objc func onDoneButtonTapped() {
+        let index = IndexPath(row: 1, section: 0)
+        let cell = tableView.cellForRow(at: index) as! AnotherDetailProfileTableViewCell
+        
+        cell.textField.text = selectedEducation
         toolBar.removeFromSuperview()
         picker.removeFromSuperview()
     }

@@ -213,7 +213,7 @@ extension SegmentedViewController {
         detailActivity3 = [dataTab3Pertama,dataTab3Kedua,dataTab3Ketiga]
         
         
-        activity = [detailActivity1 ?? [],detailActivity2 ?? [],detailActivity3 ?? []]
+        activity = [detailActivity1 ,detailActivity2 ?? [],detailActivity3 ?? []]
     }
     
 }

@@ -15,7 +15,8 @@ class DetailHeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var addressTF: UITextField!
     @IBOutlet weak var changeButton: UIButton!
     @IBOutlet weak var applyButton: UIButton!
-    var delegate:PasswordProtocol?
+    var passwordDelegate:PasswordProtocol?
+    var delegate:ProfileDetailProtocol?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,11 +30,11 @@ class DetailHeaderTableViewCell: UITableViewCell {
     }
     
     @IBAction func changePasswordTapped(_ sender: Any) {
-        delegate?.changePassword()
+        passwordDelegate?.changePassword()
     }
     
     @IBAction func applyTapped(_ sender: Any) {
-        
+        delegate?.applyProfile()
     }
     
 }

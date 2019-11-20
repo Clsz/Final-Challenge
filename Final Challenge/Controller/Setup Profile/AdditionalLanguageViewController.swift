@@ -13,7 +13,7 @@ class AdditionalLanguageViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addAdditional: UIButton!
     @IBOutlet weak var applyButton: UIButton!
-    let additional = "HintWithTableTableViewCellID"
+    let hint = "HintWithTableTableViewCellID"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,7 @@ class AdditionalLanguageViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setMainInterface()
-        setupView(text: "Language Setup")
+        setupView(text: "Pengaturan Bahasa")
     }
     
     @IBAction func addAdditionalTapped(_ sender: Any) {
@@ -44,7 +44,7 @@ extension AdditionalLanguageViewController{
 }
 extension AdditionalLanguageViewController:UITableViewDataSource,UITableViewDelegate{
     func registerCell() {
-        tableView.register(UINib(nibName: "HintWithTableTableViewCell", bundle: nil), forCellReuseIdentifier: additional)
+        tableView.register(UINib(nibName: "HintWithTableTableViewCell", bundle: nil), forCellReuseIdentifier: hint)
     }
     
     func cellDelegate() {
@@ -57,8 +57,8 @@ extension AdditionalLanguageViewController:UITableViewDataSource,UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: additional, for: indexPath) as! HintWithTableTableViewCell
-        cell.setCell(text: "PLEASE ADD YOUR LANGUAGE")
+        let cell = tableView.dequeueReusableCell(withIdentifier: hint, for: indexPath) as! HintWithTableTableViewCell
+        cell.setCell(text: "HARAP TAMBAHKAN KEMAMPUAN BERBAHASA ANDA")
         return cell
     }
     

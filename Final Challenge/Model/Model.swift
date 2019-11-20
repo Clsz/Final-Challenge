@@ -8,12 +8,16 @@
 
 import Foundation
 
+var tutor = Tutor("01", [], "unknown@gmail.com", "rahasia", "", "", "", "", "", "", "", [], [], [], [])
+var education:Education?
+var language:Language?
+var experience:Experience?
+
 class Courses{
+    
     var courseID, courseName, courseAddress, courseWorkQualification,  courseLocation, courseImage:String!
     var courseMinFare, courseMaxFare:Int!
     var courseWorkSchedule, courseCategory, courseWorkTime, courseGrade:[String]!
-    //    var courseCreatedAt:String
-    //    var teacherQty:Int
     
     init(_ courseID:String, _ courseName:String, _  courseAddress:String,_ courseLocation:String, _ courseImage:String, _ courseMinFare:Int, _ courseMaxFare:Int,  _ courseWorkSchedule:[String], _ courseWorkTime:[String], _ courseCategory:[String], _ courseWorkQualification:String, _ courseGrade:[String]) {
         self.courseID = courseID
@@ -64,16 +68,19 @@ class Activity{
 
 class Tutor{
     var tutorID:String
-    var educationID:String
+    var tutorEducation:[Education]
     var email:String
     var password:String
     var tutorFirstName, tutorLastName, tutorImage, tutorPhoneNumber, tutorAddress, tutorGender:String
     var tutorBirthDate:String
-    var tutorSkills, tutorExperience, tutorLanguage, tutorAchievement:[String]
+    var tutorSkills:[String]
+    var tutorExperience:[Experience]
+    var tutorLanguage:[Language]
+    var tutorAchievement:[Any]
     
-    init(_ tutorID:String, _ educationID:String, _ email:String, _ password:String, _ tutorFirstName:String, _ tutorLastName:String, _ tutorImage:String, _ tutorPhoneNumber:String, _ tutorAddress:String, _ tutorGender:String, _ tutorBirthDate:String, _ tutorSkills:[String], _ tutorExperience:[String], _ tutorLanguage:[String], _ tutorAchievement:[String]) {
+    init(_ tutorID:String, _ tutorEducation:[Education], _ email:String, _ password:String, _ tutorFirstName:String, _ tutorLastName:String, _ tutorImage:String, _ tutorPhoneNumber:String, _ tutorAddress:String, _ tutorGender:String, _ tutorBirthDate:String, _ tutorSkills:[String], _ tutorExperience:[Experience], _ tutorLanguage:[Language], _ tutorAchievement:[Any]) {
         self.tutorID = tutorID
-        self.educationID = educationID
+        self.tutorEducation = tutorEducation
         self.email = email
         self.password = password
         self.tutorFirstName = tutorFirstName
@@ -90,19 +97,46 @@ class Tutor{
     }
 }
 
-
-struct Education{
+class Education{
     var educationID:String
-    var universityName, fieldOfStudy, grade:String
+    var universityName, educationLevel, fieldOfStudy, grade:String
     var startYear:String
     var endYear:String
+    
+    init(_ educationID:String, _ universityName:String, _ educationLevel:String, _ fieldOfStudy:String, _ grade:String, _ startYear:String, _ endYear:String) {
+        self.educationID = educationID
+        self.universityName = universityName
+        self.educationLevel = educationLevel
+        self.fieldOfStudy = fieldOfStudy
+        self.grade = grade
+        self.startYear = startYear
+        self.endYear = endYear
+    }
 }
 
-struct Course {
-    var courseID, courseName, courseAddress, courseLocation, courseImage:String!
-    var courseMinFare, courseMaxFare:Int!
-    var courseWorkSchedule, courseCategory, courseWorkQualification, courseGrade:[String]!
+class Language{
+    var languageName:String
+    var languageProficiency:String
+    
+    init(_ languageName:String, _ languageProficiency:String) {
+        self.languageName = languageName
+        self.languageProficiency = languageProficiency
+    }
 }
+
+class Experience{
+    var title, experienceType, company, location, startDate, endDate:String
+    
+    init(_ title:String, _ experienceType:String, _ company:String, _ location:String, _ startDate:String, _ endDate:String) {
+        self.title = title
+        self.experienceType = experienceType
+        self.company = company
+        self.location = location
+        self.startDate = startDate
+        self.endDate = endDate
+    }
+}
+
 
 
 

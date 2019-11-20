@@ -25,7 +25,6 @@ class ExperienceViewController: BaseViewController {
     let contentDrop = "AnotherDetailProfileTableViewCellID"
     let contentDate = "MoreDetailTableViewCellID"
     let footer = "FooterTableViewCellID"
-    var tutor:Tutor!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,11 +35,11 @@ class ExperienceViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setMainInterface()
-        setupView(text: "Experience")
+        setupView(text: "Pengalaman")
     }
     
     @IBAction func applyTapped(_ sender: Any) {
-        
+        getData()
     }
 }
 extension ExperienceViewController{
@@ -52,11 +51,28 @@ extension ExperienceViewController{
     
     func setupData() {
         dataArray.removeAll()
-        dataArray.append(("Title","Example: iOS Developer",0))
-        dataArray.append(("Experience Type","PartTime",1))
-        dataArray.append(("Company","Example: Apple Developer Academy",0))
-        dataArray.append(("Location","Enter your Location",0))
+        dataArray.append(("Judul","Contoh: iOS Developer",0))
+        dataArray.append(("Tipe Pengalaman","PartTime",1))
+        dataArray.append(("Perusahaan","Contoh: Apple Developer Academy",0))
+        dataArray.append(("Lokasi","Masukkan lokasi kamu bekerja",0))
         dataArray.append(true)
+    }
+    
+    private func getData() {
+        let index = IndexPath(row: 0, section: 0)
+        let cell = tableView.cellForRow(at: index) as! DetailProfileTableViewCell
+        let index1 = IndexPath(row: 1, section: 0)
+        let cell1 = tableView.cellForRow(at: index1) as! AnotherDetailProfileTableViewCell
+        let index2 = IndexPath(row: 2, section: 0)
+        let cell2 = tableView.cellForRow(at: index2) as! DetailProfileTableViewCell
+        let index3 = IndexPath(row: 3, section: 0)
+        let cell3 = tableView.cellForRow(at: index3) as! DetailProfileTableViewCell
+        let index4 = IndexPath(row: 4, section: 0)
+        let cell4 = tableView.cellForRow(at: index4) as! MoreDetailTableViewCell
+        
+        experience = Experience(cell.textField.text ?? "", cell1.textField.text ?? "", cell2.textField.text ?? "", cell3.textField.text ?? "",cell4.startTF.text ?? "" , cell4.endTF.text ?? "")
+        tutor.tutorExperience.append(experience!)
+        showAlert(title: "Berhasil", message: "Pengalaman anda telah diperbaruhi")
     }
     
 }
@@ -81,7 +97,7 @@ extension ExperienceViewController:UIPickerViewDelegate, UIPickerViewDataSource{
         pickerExperience.tag = 0
         pickerExperience.delegate = self
         pickerExperience.selectRow(5, inComponent:0, animated:true)
-
+        
         pickerExperience.backgroundColor = UIColor.white
         pickerExperience.autoresizingMask = .flexibleWidth
         pickerExperience.contentMode = .center
@@ -97,7 +113,7 @@ extension ExperienceViewController:UIPickerViewDelegate, UIPickerViewDataSource{
         pickerStart.tag = 1
         pickerStart.delegate = self
         pickerStart.selectRow(5, inComponent:0, animated:true)
-
+        
         pickerStart.backgroundColor = UIColor.white
         pickerStart.autoresizingMask = .flexibleWidth
         pickerStart.contentMode = .center
@@ -113,7 +129,7 @@ extension ExperienceViewController:UIPickerViewDelegate, UIPickerViewDataSource{
         pickerEnd.tag = 2
         pickerEnd.delegate = self
         pickerEnd.selectRow(5, inComponent:0, animated:true)
-
+        
         pickerEnd.backgroundColor = UIColor.white
         pickerEnd.autoresizingMask = .flexibleWidth
         pickerEnd.contentMode = .center
@@ -126,11 +142,19 @@ extension ExperienceViewController:UIPickerViewDelegate, UIPickerViewDataSource{
     
     private func createToolbar() {
         toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
-        toolBar.items = [UIBarButtonItem.init(title: "Done", style: .plain, target: self, action: #selector(onDoneButtonTapped))]
+        toolBar.items = [UIBarButtonItem.init(title: "Selesai", style: .plain, target: self, action: #selector(onDoneButtonTapped))]
         self.view.addSubview(toolBar)
     }
     
     @objc func onDoneButtonTapped() {
+        let index = IndexPath(row: 1, section: 0)
+        let cell = tableView.cellForRow(at: index) as! AnotherDetailProfileTableViewCell
+        let index4 = IndexPath(row: 4, section: 0)
+        let cell4 = tableView.cellForRow(at: index4) as! MoreDetailTableViewCell
+        
+        cell.textField.text = selectedExperience
+        cell4.startTF.text = selectedStartYear
+        cell4.endTF.text = selectedEndYear
         toolBar.removeFromSuperview()
         pickerExperience.removeFromSuperview()
         pickerStart.removeFromSuperview()
@@ -207,7 +231,7 @@ extension ExperienceViewController:UITableViewDataSource,UITableViewDelegate{
             }
         }else if let _ = dataArray[indexPath.row] as? Bool{
             let cell = tableView.dequeueReusableCell(withIdentifier: contentDate, for: indexPath) as! MoreDetailTableViewCell
-            cell.setCell(startText: "Start Date", endText: "End Date", buttStart: "", buttEnd: "")
+            cell.setCell(startText: "Tahun Mulai", endText: "Tahun Selesai", buttStart: "", buttEnd: "")
             cell.dateDelegate = self
             return cell
         }

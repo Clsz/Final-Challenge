@@ -9,21 +9,23 @@
 import UIKit
 
 class ContentTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
+    let filterCell = "filterCell"
     var contentDelegate:ProfileProtocol?
-    var tutor:Tutor!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        registerCell()
+        cellDelegate()
+        collectionView.reloadData()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -41,4 +43,25 @@ extension ContentTableViewCell{
     private func setInterface() {
         self.collectionView.outerRound()
     }
+}
+extension ContentTableViewCell:UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+    private func registerCell() {
+        collectionView.register(UINib(nibName: "FilterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: filterCell)
+    }
+    
+    private func cellDelegate() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return tutor.tutorSkills.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: filterCell, for: indexPath) as! FilterCollectionViewCell
+        cell.labelFilter.text = tutor.tutorSkills[indexPath.row]
+        return cell
+    }
+    
 }
