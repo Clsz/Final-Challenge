@@ -25,6 +25,10 @@ class ExperienceViewController: BaseViewController {
     let contentDrop = "AnotherDetailProfileTableViewCellID"
     let contentDate = "MoreDetailTableViewCellID"
     let footer = "FooterTableViewCellID"
+    var tutor:Tutor!
+    var experience:Experience?
+    weak var delegate: LanguageViewControllerDelegate?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +40,11 @@ class ExperienceViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         setMainInterface()
         setupView(text: "Pengalaman")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.delegate?.refreshData(withTutorModel: tutor)
     }
     
     @IBAction func applyTapped(_ sender: Any) {

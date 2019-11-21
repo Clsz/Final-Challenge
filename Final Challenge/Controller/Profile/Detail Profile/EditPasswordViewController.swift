@@ -14,6 +14,7 @@ class EditPasswordViewController: BaseViewController {
     @IBOutlet weak var newPasswordTF: UITextField!
     @IBOutlet weak var applyButton: UIButton!
     var oldPassword:String?
+    var tutor:Tutor!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,14 +36,13 @@ extension EditPasswordViewController{
         self.oldPasswordTF.setLeftPaddingPoints(10.0)
         self.newPasswordTF.setLeftPaddingPoints(10.0)
 
-        self.oldPasswordTF.text = oldPassword
         self.oldPasswordTF.outerRound()
         self.newPasswordTF.outerRound()
         self.applyButton.loginRound()
     }
     
     private func getData() {
-        tutor = Tutor("01", [], "unknown@gmail.com", newPasswordTF.text ?? "", tutor.tutorFirstName,tutor.tutorLastName, tutor.tutorImage, tutor.tutorPhoneNumber, tutor.tutorAddress, tutor.tutorGender, tutor.tutorBirthDate, [], [], [], [])
+        tutor = Tutor(tutorID: "01", tutorEducation: [], email: "unknown@gmail.com", password: newPasswordTF.text ?? "", tutorFirstName: tutor.tutorFirstName,tutorLastName: tutor!.tutorLastName, tutorImage: tutor.tutorImage, tutorPhoneNumber: tutor!.tutorPhoneNumber, tutorAddress: tutor.tutorAddress, tutorGender: tutor.tutorGender, tutorBirthDate: tutor.tutorBirthDate, tutorSkills: [], tutorExperience: [], tutorLanguage: [], tutorAchievement: [])
         showAlert(title: "Berhasil", message: "Profil anda telah diperbaruhi")
     }
     

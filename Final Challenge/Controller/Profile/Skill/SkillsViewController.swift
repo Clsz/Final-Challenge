@@ -15,6 +15,8 @@ class SkillsViewController: BaseViewController {
     @IBOutlet weak var softSkillsCV: UICollectionView!
     @IBOutlet weak var applyButton: UIButton!
     let filterCell = "filterCell"
+    var tutor:Tutor!
+    weak var delegate: LanguageViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +31,13 @@ class SkillsViewController: BaseViewController {
         hardSkillsCV.reloadData()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.delegate?.refreshData(withTutorModel: tutor)
+    }
+    
     @IBAction func applyTapped(_ sender: Any) {
-        let destVC = ProfileViewController()
-        self.navigationController?.pushViewController(destVC, animated: true)
+        showAlert(title: "Berhasil", message: "Kamu telah menambahkan skill")
     }
     
 }
@@ -82,11 +88,11 @@ extension SkillsViewController:UICollectionViewDataSource, UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == hardSkillsCV{
             if collectionView.cellForItem(at: indexPath)?.isSelected == true{
-                tutor.tutorSkills.insert(ConstantManager.hardSkill[indexPath.row], at: 0)
+                tutor!.tutorSkills.insert(ConstantManager.hardSkill[indexPath.row], at: 0)
             }
         }else{
             if collectionView.cellForItem(at: indexPath)?.isSelected == true{
-                tutor.tutorSkills.insert(ConstantManager.softSkill[indexPath.row], at: 0)
+                tutor!.tutorSkills.insert(ConstantManager.softSkill[indexPath.row], at: 0)
             }
         }
         

@@ -15,6 +15,7 @@ class ContentTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     let filterCell = "filterCell"
     var contentDelegate:ProfileProtocol?
+    var tutorCustom:Tutor!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,6 +45,11 @@ extension ContentTableViewCell{
         self.collectionView.outerRound()
     }
 }
+extension ContentTableViewCell:SendTutorToCustom{
+    func sendTutor(tutor: Tutor) {
+        self.tutorCustom = tutor
+    }
+}
 extension ContentTableViewCell:UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     private func registerCell() {
         collectionView.register(UINib(nibName: "FilterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: filterCell)
@@ -55,12 +61,12 @@ extension ContentTableViewCell:UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tutor.tutorSkills.count
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: filterCell, for: indexPath) as! FilterCollectionViewCell
-        cell.labelFilter.text = tutor.tutorSkills[indexPath.row]
+        cell.labelFilter.text = tutorCustom.tutorSkills[indexPath.row]
         return cell
     }
     

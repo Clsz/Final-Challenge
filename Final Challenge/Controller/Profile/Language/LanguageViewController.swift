@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol LanguageViewControllerDelegate: class {
+    func refreshData(withTutorModel: Tutor)
+}
+
 class LanguageViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
@@ -19,6 +23,8 @@ class LanguageViewController: BaseViewController {
     var dataArray:[Any?] = []
     let content = "DetailProfileTableViewCellID"
     let contentDrop = "AnotherDetailProfileTableViewCellID"
+    var tutor:Tutor!
+    weak var delegate: LanguageViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +40,11 @@ class LanguageViewController: BaseViewController {
     
     @IBAction func applyTapped(_ sender: Any) {
         getData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.delegate?.refreshData(withTutorModel: tutor)
     }
     
 }
@@ -55,8 +66,9 @@ extension LanguageViewController{
         let cell = tableView.cellForRow(at: index) as! DetailProfileTableViewCell
         let index1 = IndexPath(row: 1, section: 0)
         let cell1 = tableView.cellForRow(at: index1) as! AnotherDetailProfileTableViewCell
-        language = Language(cell.textField.text ?? "", cell1.textField.text ?? "")
-        tutor.tutorLanguage.append(language!)
+        
+        tutor?.tutorLanguage.append(Language(cell.textField.text ?? "", cell1.textField.text ?? ""))
+
         showAlert(title: "Berhasil", message: "Profil anda telah diperbaruhi")
     }
 }

@@ -8,11 +8,6 @@
 
 import Foundation
 
-var tutor = Tutor("01", [], "unknown@gmail.com", "rahasia", "", "", "", "", "", "", "", [], [], [], [])
-var education:Education?
-var language:Language?
-var experience:Experience?
-
 class Courses{
     
     var courseID, courseName, courseAddress, courseWorkQualification,  courseLocation, courseImage:String!
@@ -68,17 +63,17 @@ class Activity{
 
 class Tutor{
     var tutorID:String
-    var tutorEducation:[Education]
+    var tutorEducation = [Education]()
     var email:String
     var password:String
     var tutorFirstName, tutorLastName, tutorImage, tutorPhoneNumber, tutorAddress, tutorGender:String
     var tutorBirthDate:String
     var tutorSkills:[String]
-    var tutorExperience:[Experience]
-    var tutorLanguage:[Language]
+    var tutorExperience = [Experience]()
+    var tutorLanguage = [Language]()
     var tutorAchievement:[Any]
     
-    init(_ tutorID:String, _ tutorEducation:[Education], _ email:String, _ password:String, _ tutorFirstName:String, _ tutorLastName:String, _ tutorImage:String, _ tutorPhoneNumber:String, _ tutorAddress:String, _ tutorGender:String, _ tutorBirthDate:String, _ tutorSkills:[String], _ tutorExperience:[Experience], _ tutorLanguage:[Language], _ tutorAchievement:[Any]) {
+    init(tutorID:String, tutorEducation:[Education], email:String, password:String, tutorFirstName:String, tutorLastName:String, tutorImage:String, tutorPhoneNumber:String, tutorAddress:String, tutorGender:String, tutorBirthDate:String, tutorSkills:[String], tutorExperience:[Experience], tutorLanguage:[Language], tutorAchievement:[Any]) {
         self.tutorID = tutorID
         self.tutorEducation = tutorEducation
         self.email = email
