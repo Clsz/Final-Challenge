@@ -101,6 +101,7 @@ extension EducationViewController:UITableViewDataSource,UITableViewDelegate{
             if keyValue.code == 0{
                 let cell = tableView.dequeueReusableCell(withIdentifier: content, for: indexPath) as! DetailProfileTableViewCell
                 cell.setCell(text: keyValue.key, content: keyValue.value)
+                cell.view = self.view
                 return cell
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: contentDrop, for: indexPath) as! AnotherDetailProfileTableViewCell

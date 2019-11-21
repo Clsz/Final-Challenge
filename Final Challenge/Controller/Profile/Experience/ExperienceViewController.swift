@@ -60,7 +60,7 @@ extension ExperienceViewController{
     
     func setupData() {
         dataArray.removeAll()
-        dataArray.append(("Judul","Contoh: iOS Developer",0))
+        dataArray.append(("Posisi","Contoh: iOS Developer",0))
         dataArray.append(("Tipe Pengalaman","PartTime",1))
         dataArray.append(("Perusahaan","Contoh: Apple Developer Academy",0))
         dataArray.append(("Lokasi","Masukkan lokasi kamu bekerja",0))
@@ -230,6 +230,7 @@ extension ExperienceViewController:UITableViewDataSource,UITableViewDelegate{
             if keyValue.code == 0{
                 let cell = tableView.dequeueReusableCell(withIdentifier: content, for: indexPath) as! DetailProfileTableViewCell
                 cell.setCell(text: keyValue.key, content: keyValue.value)
+                cell.view = self.view
                 return cell
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: contentDrop, for: indexPath) as! AnotherDetailProfileTableViewCell

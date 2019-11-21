@@ -29,7 +29,7 @@ class TabBarController: UITabBarController {
         
         detailVC = SegmentedViewController()
         detailNav = UINavigationController(rootViewController: detailVC)
-        detailNav.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "icon_activity"), selectedImage: UIImage(named: "icon_activity"))
+        detailNav.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "tab_progres"), selectedImage: UIImage(named: "tab_progres"))
         
         profileVC = ProfileViewController()
         profileNav = UINavigationController(rootViewController: profileVC)

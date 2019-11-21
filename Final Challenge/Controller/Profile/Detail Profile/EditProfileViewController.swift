@@ -28,7 +28,7 @@ class EditProfileViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.delegate?.refreshData(withTutorModel: tutor)
+        self.delegate?.refreshData(withTutorModel: self.tutor)
     }
     
 }
@@ -62,6 +62,7 @@ extension EditProfileViewController:UITableViewDataSource, UITableViewDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: detailProfile, for: indexPath) as! DetailHeaderTableViewCell
         let fullName = tutor!.tutorFirstName + " " + tutor!.tutorLastName
         cell.setCell(name: fullName, age: tutor!.tutorBirthDate, address: tutor!.tutorAddress)
+        cell.view = self.view
         cell.passwordDelegate = self
         cell.delegate = self
         return cell

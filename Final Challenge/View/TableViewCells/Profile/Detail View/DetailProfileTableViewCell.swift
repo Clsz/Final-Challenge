@@ -8,20 +8,25 @@
 
 import UIKit
 
-class DetailProfileTableViewCell: UITableViewCell, UITextFieldDelegate {
-
+class DetailProfileTableViewCell: UITableViewCell{
+    
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var textField: UITextField!
+    var accessoryDoneButton: UIBarButtonItem!
+    let accessoryToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
+    let flexiblea = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+    var view: UIView!
     var content:String?
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        doneButton()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -40,3 +45,22 @@ extension DetailProfileTableViewCell{
     }
     
 }
+extension DetailProfileTableViewCell:UITextFieldDelegate{
+    private func doneButton() {
+        self.accessoryDoneButton = UIBarButtonItem(title: "Selesai", style: .done, target: self, action: #selector(self.donePressed))
+        
+        
+        self.accessoryToolBar.items = [self.accessoryDoneButton]
+        
+        
+        accessoryToolBar.setItems([flexiblea, accessoryDoneButton], animated: false)
+        
+        self.textField.inputAccessoryView = accessoryToolBar
+        
+    }
+    
+    @objc func donePressed() {
+        view.endEditing(true)
+    }
+}
+

@@ -9,10 +9,15 @@
 import UIKit
 
 class EditPasswordViewController: BaseViewController {
-
+    
     @IBOutlet weak var oldPasswordTF: UITextField!
     @IBOutlet weak var newPasswordTF: UITextField!
     @IBOutlet weak var applyButton: UIButton!
+    var passwordDelegate:PasswordProtocol?
+    var delegate:ProfileDetailProtocol?
+    var accessoryDoneButton: UIBarButtonItem!
+    let accessoryToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
+    let flexiblea = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
     var oldPassword:String?
     var tutor:Tutor!
     
@@ -24,7 +29,7 @@ class EditPasswordViewController: BaseViewController {
         setupView(text: "Ubah Kata Sandi")
         setMainInterface()
     }
-
+    
     @IBAction func applyTapped(_ sender: Any) {
         validatePassword()
     }
@@ -35,7 +40,7 @@ extension EditPasswordViewController{
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.oldPasswordTF.setLeftPaddingPoints(10.0)
         self.newPasswordTF.setLeftPaddingPoints(10.0)
-
+        
         self.oldPasswordTF.outerRound()
         self.newPasswordTF.outerRound()
         self.applyButton.loginRound()
@@ -55,5 +60,24 @@ extension EditPasswordViewController{
             showAlert(title: "Berhasil", message: "Password berhasil diganti")
             getData()
         }
+    }
+}
+extension EditPasswordViewController:UITextFieldDelegate{
+    private func doneButton() {
+        self.accessoryDoneButton = UIBarButtonItem(title: "Selesai", style: .done, target: self, action: #selector(self.donePressed))
+        
+        
+        self.accessoryToolBar.items = [self.accessoryDoneButton]
+        
+        
+        accessoryToolBar.setItems([flexiblea, accessoryDoneButton], animated: false)
+        
+        self.oldPasswordTF.inputAccessoryView = accessoryToolBar
+        self.newPasswordTF.inputAccessoryView = accessoryToolBar
+        
+    }
+    
+    @objc func donePressed() {
+        view.endEditing(true)
     }
 }
