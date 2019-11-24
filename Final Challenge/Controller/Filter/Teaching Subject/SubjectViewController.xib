@@ -19,9 +19,8 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="74" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="psg-Lh-dSW">
-                    <rect key="frame" x="17" y="251" width="374" height="444"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="74" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="psg-Lh-dSW">
+                    <rect key="frame" x="20" y="161" width="374" height="548"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <color key="tintColor" red="0.32549019610000002" green="0.78039215689999997" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                     <inset key="separatorInset" minX="18" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -31,10 +30,12 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BH7-Sv-LOx">
-                    <rect key="frame" x="17" y="782" width="374" height="44"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BH7-Sv-LOx">
+                    <rect key="frame" x="20" y="796" width="374" height="44"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="CvC-M2-Xj7"/>
+                    </constraints>
                     <state key="normal" title="Terapkan Subjek">
                         <color key="titleColor" red="0.32549019610000002" green="0.78039215689999997" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
@@ -47,21 +48,34 @@
                         <action selector="subjectAppliedTapped:" destination="-1" eventType="touchUpInside" id="dyb-TR-GGS"/>
                     </connections>
                 </button>
-                <searchBar contentMode="redraw" fixedFrame="YES" searchBarStyle="prominent" text="" placeholder="Cari" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IJh-pi-dcR">
-                    <rect key="frame" x="-3" y="134" width="414" height="56"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                <searchBar contentMode="redraw" searchBarStyle="prominent" text="" placeholder="Cari" translatesAutoresizingMaskIntoConstraints="NO" id="IJh-pi-dcR">
+                    <rect key="frame" x="20" y="44" width="374" height="56"/>
                     <color key="barTintColor" red="0.92157477139999999" green="0.92155748609999999" blue="0.92156922819999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lokasi Mengajar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGJ-cp-pyh">
-                    <rect key="frame" x="17" y="219" width="169" height="27"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lokasi Mengajar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGJ-cp-pyh">
+                    <rect key="frame" x="20" y="129" width="374" height="27"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="psg-Lh-dSW" secondAttribute="trailing" constant="20" id="2LH-eG-jZ9"/>
+                <constraint firstItem="IJh-pi-dcR" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="2bh-rL-7Gd"/>
+                <constraint firstItem="dGJ-cp-pyh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="DNc-1v-Vrk"/>
+                <constraint firstItem="BH7-Sv-LOx" firstAttribute="top" secondItem="psg-Lh-dSW" secondAttribute="bottom" constant="87" id="GZH-GZ-JaY"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="BH7-Sv-LOx" secondAttribute="bottom" constant="22" id="IXr-iU-a7P"/>
+                <constraint firstItem="IJh-pi-dcR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="N14-9Q-2FU"/>
+                <constraint firstItem="psg-Lh-dSW" firstAttribute="top" secondItem="dGJ-cp-pyh" secondAttribute="bottom" constant="5" id="RWD-jZ-RZR"/>
+                <constraint firstItem="dGJ-cp-pyh" firstAttribute="top" secondItem="IJh-pi-dcR" secondAttribute="bottom" constant="29" id="UVZ-Ja-NH3"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="BH7-Sv-LOx" secondAttribute="trailing" constant="20" id="aWW-aI-XMW"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="IJh-pi-dcR" secondAttribute="trailing" constant="20" id="b4X-lk-cKX"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="dGJ-cp-pyh" secondAttribute="trailing" constant="20" id="mOF-Gd-C06"/>
+                <constraint firstItem="psg-Lh-dSW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="p7I-yZ-BSK"/>
+                <constraint firstItem="BH7-Sv-LOx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="xbb-Od-ZXt"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="139" y="110"/>
         </view>

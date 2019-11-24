@@ -127,6 +127,15 @@ extension LocationViewController: UITableViewDataSource,UITableViewDelegate{
 }
 
 extension LocationViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: false)
+        searchBar.showsCancelButton = false
+    }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchLocation = lokasi.filter({$0.lowercased().prefix(searchText.count) == searchText.lowercased()})
