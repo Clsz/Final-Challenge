@@ -1331,6 +1331,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 34;
 				DEVELOPMENT_TEAM = SK54WQSLHU;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1376,6 +1377,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 34;
 				DEVELOPMENT_TEAM = SK54WQSLHU;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
