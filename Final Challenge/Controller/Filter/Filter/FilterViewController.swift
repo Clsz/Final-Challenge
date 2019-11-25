@@ -88,8 +88,9 @@ class FilterViewController: BaseViewController {
         subjectVC.subjekDelegate = self
         self.navigationController?.pushViewController(subjectVC, animated: true)
     }
+    
     @IBAction func applyTapped(_ sender: UIButton) {
-        
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

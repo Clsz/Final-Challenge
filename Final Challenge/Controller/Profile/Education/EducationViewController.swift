@@ -19,6 +19,8 @@ class EducationViewController: BaseViewController {
     var dataArray:[Any?] = []
     let content = "DetailProfileTableViewCellID"
     let contentDrop = "AnotherDetailProfileTableViewCellID"
+    var tutor:Tutor!
+    weak var delegate: LanguageViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +31,11 @@ class EducationViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setMainInterface()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.delegate?.refreshData(withTutorModel: tutor)
     }
     
     @IBAction func applyTapped(_ sender: Any) {
@@ -63,7 +70,7 @@ extension EducationViewController{
         let cell3 = tableView.cellForRow(at: index3) as! DetailProfileTableViewCell
         
         
-        education = Education("01", cell.textField.text ?? "", cell1.textField.text ?? "", cell2.textField.text ?? "", cell3.textField.text ?? "", "2016", "2020")
+        tutor = Tutor(tutorID: tutor.tutorID, tutorEducation: [Education("01", cell.textField.text ?? "", cell1.textField.text ?? "", cell2.textField.text ?? "", cell3.textField.text ?? "", "2016", "2020")], email: tutor.email, password: tutor.password, tutorFirstName: tutor.tutorFirstName, tutorLastName: tutor.tutorLastName, tutorImage: tutor.tutorImage, tutorPhoneNumber: tutor.tutorPhoneNumber, tutorAddress: tutor.tutorAddress, tutorGender: tutor.tutorGender, tutorBirthDate: tutor.tutorBirthDate, tutorSkills: tutor.tutorSkills, tutorExperience: tutor.tutorExperience, tutorLanguage: tutor.tutorLanguage, tutorAchievement: tutor.tutorAchievement)
         showAlert(title: "Berhasil", message: "Pengalaman anda telah diperbaruhi")
     }
     
@@ -94,6 +101,7 @@ extension EducationViewController:UITableViewDataSource,UITableViewDelegate{
             if keyValue.code == 0{
                 let cell = tableView.dequeueReusableCell(withIdentifier: content, for: indexPath) as! DetailProfileTableViewCell
                 cell.setCell(text: keyValue.key, content: keyValue.value)
+                cell.view = self.view
                 return cell
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: contentDrop, for: indexPath) as! AnotherDetailProfileTableViewCell

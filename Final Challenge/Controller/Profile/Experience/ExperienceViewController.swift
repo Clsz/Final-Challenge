@@ -25,6 +25,10 @@ class ExperienceViewController: BaseViewController {
     let contentDrop = "AnotherDetailProfileTableViewCellID"
     let contentDate = "MoreDetailTableViewCellID"
     let footer = "FooterTableViewCellID"
+    var tutor:Tutor!
+    var experience:Experience?
+    weak var delegate: LanguageViewControllerDelegate?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +40,11 @@ class ExperienceViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         setMainInterface()
         setupView(text: "Pengalaman")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.delegate?.refreshData(withTutorModel: tutor)
     }
     
     @IBAction func applyTapped(_ sender: Any) {
@@ -51,7 +60,7 @@ extension ExperienceViewController{
     
     func setupData() {
         dataArray.removeAll()
-        dataArray.append(("Judul","Contoh: iOS Developer",0))
+        dataArray.append(("Posisi","Contoh: iOS Developer",0))
         dataArray.append(("Tipe Pengalaman","PartTime",1))
         dataArray.append(("Perusahaan","Contoh: Apple Developer Academy",0))
         dataArray.append(("Lokasi","Masukkan lokasi kamu bekerja",0))
@@ -221,6 +230,7 @@ extension ExperienceViewController:UITableViewDataSource,UITableViewDelegate{
             if keyValue.code == 0{
                 let cell = tableView.dequeueReusableCell(withIdentifier: content, for: indexPath) as! DetailProfileTableViewCell
                 cell.setCell(text: keyValue.key, content: keyValue.value)
+                cell.view = self.view
                 return cell
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: contentDrop, for: indexPath) as! AnotherDetailProfileTableViewCell

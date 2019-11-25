@@ -17,16 +17,19 @@ class DetailHeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var applyButton: UIButton!
     var passwordDelegate:PasswordProtocol?
     var delegate:ProfileDetailProtocol?
+    var accessoryDoneButton: UIBarButtonItem!
+    let accessoryToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
+    let flexiblea = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+    var view: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        doneButton()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        // Configure the view for the selected state
     }
     
     @IBAction func changePasswordTapped(_ sender: Any) {
@@ -60,4 +63,24 @@ extension DetailHeaderTableViewCell{
         self.addressTF.contentVerticalAlignment = .top
     }
     
+}
+extension DetailHeaderTableViewCell:UITextFieldDelegate{
+    private func doneButton() {
+        self.accessoryDoneButton = UIBarButtonItem(title: "Selesai", style: .done, target: self, action: #selector(self.donePressed))
+        
+        
+        self.accessoryToolBar.items = [self.accessoryDoneButton]
+
+        
+        accessoryToolBar.setItems([flexiblea, accessoryDoneButton], animated: false)
+        
+        self.nameTF.inputAccessoryView = accessoryToolBar
+        self.ageTF.inputAccessoryView = accessoryToolBar
+        self.addressTF.inputAccessoryView = accessoryToolBar
+       
+    }
+    
+    @objc func donePressed() {
+        view.endEditing(true)
+    }
 }

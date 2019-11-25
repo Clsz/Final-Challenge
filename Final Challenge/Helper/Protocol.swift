@@ -58,10 +58,15 @@ protocol ActivityProtocol {
     func requestNewSchedule()
 }
 
-protocol showMoreLanguage{
+protocol ShowMoreLanguage{
     func showLanguage()
 }
 
-protocol showMoreExperience{
+protocol ShowMoreExperience{
     func showExperience()
 }
+
+protocol SendTutorToCustom {
+    func sendTutor(tutor:Tutor)
+}
+

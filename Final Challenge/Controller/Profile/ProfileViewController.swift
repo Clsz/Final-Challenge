@@ -20,24 +20,32 @@ class ProfileViewController: BaseViewController {
     let achievement = "AchievementTableViewCellID"
     let contentView = "ContentViewTableViewCellID"
     let logoutView = "LogoutTableViewCellID"
+    var tutorModel = Tutor(tutorID: "01", tutorEducation: [], email: "unknown@gmail.com", password: "rahasia", tutorFirstName: "", tutorLastName: "", tutorImage: "", tutorPhoneNumber: "", tutorAddress: "", tutorGender: "", tutorBirthDate: "", tutorSkills: ["Algebra","Microsoft Word"], tutorExperience: [], tutorLanguage: [], tutorAchievement: [])
+    var sendToCustom:SendTutorToCustom?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        sendToCustom?.sendTutor(tutor: self.tutorModel)
+        setupView(text: "Profil")
+        setupData()
         registerCell()
         cellDelegate()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print("skills : \(tutorModel.tutorSkills)")
+        sendToCustom?.sendTutor(tutor: self.tutorModel)
         setupView(text: "Profil")
         setupData()
-        tableView.reloadData()
+        registerCell()
+        cellDelegate()
     }
     
 }
 extension ProfileViewController{
     private func setupData() {
         dataArray.removeAll()
-        dataArray.append(tutor)
+        dataArray.append(tutorModel)
         dataArray.append(("Keterampilan","Tambah Keterampilan",0))
         dataArray.append(("Bahasa","Tambah Bahasa"))
         dataArray.append(("Pendidikan","Edit Pendidikan",1))
@@ -61,29 +69,46 @@ extension ProfileViewController{
     }
     
 }
-extension ProfileViewController:ProfileProtocol{
+extension ProfileViewController:ProfileProtocol, LanguageViewControllerDelegate{
+    
+    func refreshData(withTutorModel: Tutor) {
+        self.tutorModel = withTutorModel
+        setupData()
+        tableView.reloadData()
+    }
+    
     func pencilTapped() {
         let destVC = EditProfileViewController()
+        destVC.tutor = self.tutorModel
+        destVC.delegate = self
         navigationController?.pushViewController(destVC, animated: true)
     }
     
     func skillTapped() {
         let destVC = SkillsViewController()
+        destVC.tutor = self.tutorModel
+        destVC.delegate = self
         navigationController?.pushViewController(destVC, animated: true)
     }
     
     func languageTapped() {
         let destVC = LanguageViewController()
+        destVC.tutor = self.tutorModel
+        destVC.delegate = self
         navigationController?.pushViewController(destVC, animated: true)
     }
     
     func educationTapped() {
         let destVC = EducationViewController()
+        destVC.tutor = self.tutorModel
+        destVC.delegate = self
         navigationController?.pushViewController(destVC, animated: true)
     }
     
     func experienceTapped() {
         let destVC = ExperienceViewController()
+        destVC.tutor = self.tutorModel
+        destVC.delegate = self
         navigationController?.pushViewController(destVC, animated: true)
     }
     
@@ -147,6 +172,7 @@ extension ProfileViewController:UITableViewDataSource, UITableViewDelegate{
             let cell = tableView.dequeueReusableCell(withIdentifier: anotherContent, for: indexPath) as! AnotherContentTableViewCell
             cell.setCell(text: keyValue.key, button: keyValue.value)
             cell.customIndex = indexPath.row
+            print(indexPath.row)
             cell.contentDelegate = self
             return cell
         }else{

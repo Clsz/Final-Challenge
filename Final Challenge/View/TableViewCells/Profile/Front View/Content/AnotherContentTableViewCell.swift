@@ -16,12 +16,14 @@ class AnotherContentTableViewCell: UITableViewCell {
     @IBOutlet weak var showMoreButton: UIButton!
     var contentDelegate:ProfileProtocol?
     var customIndex:Int!
-    var tutor:Tutor!
+    var tutorCustom:Tutor!
     let customLanguageTableViewCell = "CustomLanguageTableViewCellID"
     let customExperieneTableViewCell = "CustomExperienceTableViewCellID"
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        registerCell()
+        cellDelegate()
         tableView.reloadData()
     }
 
@@ -52,14 +54,17 @@ extension AnotherContentTableViewCell{
         self.showMoreButton.loginRound()
     }
 }
-
-
+extension AnotherContentTableViewCell:SendTutorToCustom{
+    func sendTutor(tutor: Tutor) {
+        self.tutorCustom = tutor
+    }
+}
 extension AnotherContentTableViewCell:UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if customIndex == 2{
-            return tutor.tutorLanguage.count
+            return 1
         }else{
-            return tutor.tutorExperience.count
+            return 1
         }
         
     }
@@ -67,13 +72,13 @@ extension AnotherContentTableViewCell:UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if customIndex == 2{
             let cell = tableView.dequeueReusableCell(withIdentifier: customLanguageTableViewCell, for: indexPath) as! CustomLanguageTableViewCell
-            cell.setCell(name: tutor.tutorLanguage[indexPath.row].languageName, level: tutor.tutorLanguage[indexPath.row].languageProficiency)
+            cell.setCell(name: tutorCustom.tutorLanguage[indexPath.row].languageName, level: tutorCustom.tutorLanguage[indexPath.row].languageProficiency)
             return cell
         }else{
-            let date = tutor.tutorExperience[indexPath.row].startDate + " " + tutor.tutorExperience[indexPath.row].endDate
+            let date = tutorCustom.tutorExperience[indexPath.row].startDate + " " + tutorCustom.tutorExperience[indexPath.row].endDate
             
             let cell = tableView.dequeueReusableCell(withIdentifier: customExperieneTableViewCell, for: indexPath) as! CustomExperienceTableViewCell
-            cell.setCell(name: tutor.tutorExperience[indexPath.row].title, place: tutor.tutorExperience[indexPath.row].location, date: date)
+            cell.setCell(name: tutorCustom.tutorExperience[indexPath.row].title, place: tutorCustom.tutorExperience[indexPath.row].location, date: date)
             return cell
         }
         

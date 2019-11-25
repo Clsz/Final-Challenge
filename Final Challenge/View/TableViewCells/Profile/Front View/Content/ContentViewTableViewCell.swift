@@ -15,10 +15,14 @@ class ContentViewTableViewCell: UITableViewCell {
     @IBOutlet weak var tableView: UITableView!
     var contentDelegate:ProfileProtocol?
     let customExperieneTableViewCell = "CustomExperienceTableViewCellID"
+    var tutorCustom:Tutor!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        registerCell()
+        cellDelegate()
+        tableView.reloadData()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -38,15 +42,20 @@ extension ContentViewTableViewCell{
         self.button.setTitle(button, for: .normal)
     }
 }
+extension ContentViewTableViewCell:SendTutorToCustom{
+    func sendTutor(tutor: Tutor) {
+        self.tutorCustom = tutor
+    }
+}
 extension ContentViewTableViewCell:UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tutor.tutorEducation.count
+        return 1
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: customExperieneTableViewCell, for: indexPath) as! CustomExperienceTableViewCell
-        cell.setCell(name: tutor.tutorEducation[indexPath.row].universityName, place: tutor.tutorEducation[indexPath.row].grade, date: "Jurusan : \(tutor.tutorEducation[indexPath.row].fieldOfStudy)")
+        cell.setCell(name: tutorCustom.tutorEducation[indexPath.row].universityName, place: tutorCustom.tutorEducation[indexPath.row].grade, date: "Jurusan : \(tutorCustom.tutorEducation[indexPath.row].fieldOfStudy)")
         return cell
     }
     
