@@ -19,9 +19,9 @@ class ContentTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        registerCell()
         cellDelegate()
-        collectionView.reloadData()
+        registerCell()
+//        collectionView.reloadData()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -61,12 +61,13 @@ extension ContentTableViewCell:UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: filterCell, for: indexPath) as! FilterCollectionViewCell
         cell.labelFilter.text = tutorCustom.tutorSkills[indexPath.row]
+        print("Skill cell = \(tutorCustom.tutorSkills[indexPath.row])")
         return cell
     }
     

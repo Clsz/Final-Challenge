@@ -33,7 +33,7 @@ class ProfileViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("asd : \(tutorModel.tutorExperience.count)")
+        print("skills : \(tutorModel.tutorSkills)")
         sendToCustom?.sendTutor(tutor: self.tutorModel)
         setupView(text: "Profil")
         setupData()

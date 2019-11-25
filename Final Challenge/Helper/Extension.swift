@@ -16,16 +16,16 @@ extension UIImageView{
     }
     
     func setRoundedBorder() {
-           self.layer.masksToBounds = false
-           self.layer.cornerRadius = self.frame.height/2
+        self.layer.masksToBounds = false
+        self.layer.cornerRadius = self.frame.height/2
         self.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-            self.layer.borderWidth = 1
-           self.clipsToBounds = true
-       }
+        self.layer.borderWidth = 1
+        self.clipsToBounds = true
+    }
 }
 
 extension UIView{
-
+    
     func dropShadow() {
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.5
@@ -35,13 +35,13 @@ extension UIView{
     
     func setBorder() {
         self.layer.borderWidth = 3
-          self.layer.borderColor = #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
+        self.layer.borderColor = #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
     }
     
     func setBorderBlue() {
-           self.layer.borderWidth = 3
-             self.layer.borderColor = #colorLiteral(red: 0.3254901961, green: 0.7803921569, blue: 0.9411764706, alpha: 1)
-       }
+        self.layer.borderWidth = 3
+        self.layer.borderColor = #colorLiteral(red: 0.3254901961, green: 0.7803921569, blue: 0.9411764706, alpha: 1)
+    }
     
     func outerRound() {
         self.layer.cornerRadius = 10
@@ -52,7 +52,7 @@ extension UIView{
         self.layer.cornerRadius = 15
         self.clipsToBounds = true
     }
-
+    
 }
 
 extension UITextField {
@@ -134,7 +134,7 @@ extension String{
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter.date(from: self)
     }
-
+    
     func toNumberFormat()->String{
         if let myInteger = Int(self) {
             let myNumber = NSNumber(value:myInteger)
@@ -161,7 +161,7 @@ extension UIViewController {
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
-
+    
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
