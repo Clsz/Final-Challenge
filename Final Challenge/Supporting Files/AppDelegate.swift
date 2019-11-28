@@ -4,9 +4,8 @@
 //
 //  Created by Muhammad Reynaldi on 28/10/19.
 //  Copyright © 2019 12. All rights reserved.
-//
+//Unable to load contents of file list: '/Target Support Files/Pods-Final Challenge/Pods-Final Challenge-frameworks-Debug-input-files.xcfilelist'
 import UIKit
-import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        FirebaseApp.configure()
         UITabBar.appearance().tintColor = ConstantManager.mainColor
 //        //Penting nih
         self.window = UIWindow(frame: UIScreen.main.bounds)

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
 
 class LoginViewController:BaseViewController{
     @IBOutlet weak var emailTF: UITextField!
@@ -49,32 +48,32 @@ extension LoginViewController{
         }else if passwordTF.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
             return self.showAlert(title: "Error", message: "Password belum diisi")
         }else {
-            login()
+//            login()
         }
     }
     
-    func login() {
-        self.showLoading()
-        
-        let mail = emailTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        let pass = passwordTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        Auth.auth().signIn(withEmail: mail, password: pass) { (result, error) in
-            if error != nil {
-                DispatchQueue.main.async {
-                    self.dismiss(animated: false) {
-                        self.showAlert(title: "Error", message: "Email dan Password salah")
-                    }
-                }
-            }else {
-                //Dashboard Segue
-                DispatchQueue.main.async {
-                    self.dismiss(animated: false, completion: nil)
-                    print("Loggedin")
-                    let destVC = SkillsViewController()
-                    self.navigationController?.pushViewController(destVC, animated: true)
-                }
-            }
-        }
-    }
+//    func login() {
+//        self.showLoading()
+//        
+//        let mail = emailTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+//        let pass = passwordTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+//        
+//        Auth.auth().signIn(withEmail: mail, password: pass) { (result, error) in
+//            if error != nil {
+//                DispatchQueue.main.async {
+//                    self.dismiss(animated: false) {
+//                        self.showAlert(title: "Error", message: "Email dan Password salah")
+//                    }
+//                }
+//            }else {
+//                //Dashboard Segue
+//                DispatchQueue.main.async {
+//                    self.dismiss(animated: false, completion: nil)
+//                    print("Loggedin")
+//                    let destVC = SkillsViewController()
+//                    self.navigationController?.pushViewController(destVC, animated: true)
+//                }
+//            }
+//        }
+//    }
 }
