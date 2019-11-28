@@ -10,18 +10,20 @@ import Foundation
 
 class Courses{
     
-    var courseID, courseName, courseAddress, courseWorkQualification,  courseLocation, courseImage:String!
-    var courseMinFare, courseMaxFare:Int!
-    var courseWorkSchedule, courseCategory, courseWorkTime, courseGrade:[String]!
+    var courseID, scheduleID, courseName, courseAddress, courseWorkQualification,  courseLocation, courseImage:String
+    var courseMinFare, courseMaxFare:Int, courseTeacherQty:Int
+    var courseWorkSchedule, courseCategory, courseWorkTime, courseGrade:[String]
     
-    init(_ courseID:String, _ courseName:String, _  courseAddress:String,_ courseLocation:String, _ courseImage:String, _ courseMinFare:Int, _ courseMaxFare:Int,  _ courseWorkSchedule:[String], _ courseWorkTime:[String], _ courseCategory:[String], _ courseWorkQualification:String, _ courseGrade:[String]) {
+    init(_ courseID:String, _ scheduleID:String, _ courseName:String, _  courseAddress:String,_ courseLocation:String, _ courseImage:String, _ courseMinFare:Int, _ courseMaxFare:Int, _ courseTeacherQty:Int,  _ courseWorkSchedule:[String], _ courseWorkTime:[String], _ courseCategory:[String], _ courseWorkQualification:String, _ courseGrade:[String]) {
         self.courseID = courseID
+        self.scheduleID = scheduleID
         self.courseName = courseName
         self.courseAddress = courseAddress
         self.courseLocation = courseLocation
         self.courseImage = courseImage
         self.courseMinFare = courseMinFare
         self.courseMaxFare = courseMaxFare
+        self.courseTeacherQty = courseTeacherQty
         self.courseWorkSchedule = courseWorkSchedule
         self.courseWorkTime = courseWorkTime
         self.courseWorkQualification = courseWorkQualification
