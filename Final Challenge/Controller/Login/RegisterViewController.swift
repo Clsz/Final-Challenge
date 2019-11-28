@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
-import Firebase
 
 class RegisterViewController: BaseViewController {
     
@@ -68,27 +66,27 @@ class RegisterViewController: BaseViewController {
         let email = emailTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let password = passwordTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
-            if err != nil {
-                DispatchQueue.main.async {
-                    self.showAlert(title: "Error", message: "Error Creating User!!")
-                    self.hideLoading()
-                }
-            } else {
-                let db = Firestore.firestore()
-                db.collection("Tutor").document(result!.user.uid).setData(["firstName":firstName, "lastName":lastName]) { (error) in
-                    
-                    if error != nil {
-                        print("Error Saving User!!")
-                    }
-                    
-                    DispatchQueue.main.async {
-                        self.dismiss(animated: false, completion: nil)
-                        //Dashboard segue
-                    }
-                }
-            }
-        }
+//        Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
+//            if err != nil {
+//                DispatchQueue.main.async {
+//                    self.showAlert(title: "Error", message: "Error Creating User!!")
+//                    self.hideLoading()
+//                }
+//            } else {
+//                let db = Firestore.firestore()
+//                db.collection("Tutor").document(result!.user.uid).setData(["firstName":firstName, "lastName":lastName]) { (error) in
+//                    
+//                    if error != nil {
+//                        print("Error Saving User!!")
+//                    }
+//                    
+//                    DispatchQueue.main.async {
+//                        self.dismiss(animated: false, completion: nil)
+//                        //Dashboard segue
+//                    }
+//                }
+//            }
+//        }
     }
     
 }
