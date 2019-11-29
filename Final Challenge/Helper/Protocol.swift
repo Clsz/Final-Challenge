@@ -70,3 +70,6 @@ protocol SendTutorToCustom {
     func sendTutor(tutor:Tutor)
 }
 
+protocol refreshTableProtocol {
+    func refreshTableView()
+}

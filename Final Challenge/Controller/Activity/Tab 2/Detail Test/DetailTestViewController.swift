@@ -151,7 +151,7 @@ extension DetailTestViewController: UITableViewDataSource,UITableViewDelegate{
             let cell = tableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath) as! ScheduleTableViewCell
             cell.setView(title: keyValue.key)
             cell.day = keyValue.value
-            cell.schedule = keyValue.desc
+//            cell.schedule = keyValue.desc
             return cell
         }else if let keyValue = dataArray[indexPath.row] as? (acc:String, rej:String, _ :Bool){
             let cell = tableView.dequeueReusableCell(withIdentifier: "FooterActivityTableViewCellID", for: indexPath) as! FooterActivityTableViewCell

@@ -99,7 +99,7 @@ extension DetailFinalThirdViewController: UITableViewDataSource,UITableViewDeleg
             let cell = tableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath) as! ScheduleTableViewCell
             cell.setView(title: keyValue.key)
             cell.day = keyValue.value
-            cell.schedule = keyValue.desc
+//            cell.schedule = keyValue.desc
             return cell
         }
         return UITableViewCell()

@@ -10,7 +10,7 @@ import UIKit
 
 class ConstantManager{
     
-    static let mainColor = #colorLiteral(red: 0.3254901961, green: 0.7803921569, blue: 0.9411764706, alpha: 1)
+    static let mainColor = #colorLiteral(red: 0.09411764706, green: 0.3529411765, blue: 0.6, alpha: 1)
     static var gender = ["Pria", "Wanita"]
     static var tempArray = ["Kota Tangerang","Jakarta Barat","Kota Serang","Jakarta Pusat"]
     static var tempArraySubject = ["Matematika", "Fisika", "Kimia", "Bahasa Inggris"]

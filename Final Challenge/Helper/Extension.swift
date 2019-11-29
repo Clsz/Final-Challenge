@@ -6,6 +6,7 @@
 //  Copyright © 2019 12. All rights reserved.
 
 import UIKit
+import CloudKit
 
 extension UIImageView{
     
@@ -202,5 +203,14 @@ extension Date{
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM"
         return formatter.string(from: self)
+    }
+}
+
+extension CKRecord.ID {
+    public static func fromUntrusted(_ string: String?) -> CKRecord.ID? {
+        guard let string = string else { return nil }
+        guard let _ = string.data(using: .ascii, allowLossyConversion: false) else { return nil }
+        guard string.count > 0 && string.count < 255 else { return nil }
+        return CKRecord.ID(recordName: string)
     }
 }

@@ -12,8 +12,10 @@ class ScheduleTableViewCell: UITableViewCell {
 
     @IBOutlet weak var scheduleTitle: UILabel!
     @IBOutlet weak var scheduleTV: UITableView!
-    var schedule:[String] = []
     var day:[String] = []
+    var scheduleStart:[String] = []
+    var scheduleEnd:[String] = []
+    var refreshProtocol:refreshTableProtocol?
     
     func setView(title:String) {
         self.scheduleTitle.text = title
@@ -23,6 +25,7 @@ class ScheduleTableViewCell: UITableViewCell {
         super.awakeFromNib()
         registerCell()
         cellDelegate()
+        refreshProtocol?.refreshTableView()
         scheduleTV.reloadData()
     }
 
@@ -36,12 +39,13 @@ class ScheduleTableViewCell: UITableViewCell {
 
 extension ScheduleTableViewCell: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return schedule.count
+        return day.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "dsCell", for: indexPath) as! DetailScheduleTableViewCell
-        cell.setView(day: day[indexPath.row], time: schedule[indexPath.row])
+        let schedule = "\(scheduleStart[indexPath.row]) AM" + " - " + "\(scheduleEnd[indexPath.row]) PM"
+        cell.setView(day: day[indexPath.row], time: schedule)
         return cell
     }
     

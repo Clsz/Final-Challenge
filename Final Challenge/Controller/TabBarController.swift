@@ -25,15 +25,15 @@ class TabBarController: UITabBarController {
     func setTabBar() {
         homeVC = HomeViewController()
         homeNav = UINavigationController(rootViewController: homeVC)
-        homeNav.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "icon_job"), selectedImage: UIImage(named: "icon_job"))
+        homeNav.tabBarItem = UITabBarItem(title: "Job", image: UIImage(named: "icon_job"), selectedImage: UIImage(named: "icon_job"))
         
         detailVC = SegmentedViewController()
         detailNav = UINavigationController(rootViewController: detailVC)
-        detailNav.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "tab_progres"), selectedImage: UIImage(named: "tab_progres"))
+        detailNav.tabBarItem = UITabBarItem(title: "Progress", image: UIImage(named: "tab_progres"), selectedImage: UIImage(named: "tab_progres"))
         
         profileVC = ProfileViewController()
         profileNav = UINavigationController(rootViewController: profileVC)
-        profileNav.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "icon_profile"), selectedImage: UIImage(named: "icon_profile"))
+        profileNav.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "icon_profile"), selectedImage: UIImage(named: "icon_profile"))
 
         let tabBarList:[UIViewController] = [homeNav,detailNav,profileNav]
 
