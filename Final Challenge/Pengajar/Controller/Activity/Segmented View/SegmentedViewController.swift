@@ -14,10 +14,8 @@ class SegmentedViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
     var activity:[[CKRecord]]?
-    
-    
     var detailActivity1 = [[CKRecord]:[CKRecord]]() // tab1
-    var detailActivity2 = [[CKRecord]:[CKRecord]]() //tab2
+    var detailActivity2 = [[CKRecord]:[CKRecord]]() // tab2
     var detailActivity3 = [[CKRecord]:[CKRecord]]() // tab3
     var tempActivity:[CKRecord]?
     var tempCourse:[CKRecord]?
@@ -75,9 +73,6 @@ extension SegmentedViewController{
                         self.tempCourse?.append(res)
                     })
                 }
-                for i in self.tempActivity!{
-                    
-                }
             }
         }
     }
@@ -97,6 +92,10 @@ extension SegmentedViewController{
         
     }
 }
+extension SegmentedViewController {
+    
+}
+
 //extension SegmentedViewController: UITableViewDelegate, UITableViewDataSource{
 //    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        return activity![currentTableView].count
@@ -157,9 +156,6 @@ extension SegmentedViewController{
 //
 //
 //}
-extension SegmentedViewController {
-    
-}
 
 //func initializeData() {
 //    let dataTab2Pertama: Activity = Activity("01", "TES DIBATALKAN", ["10.00 A.M - 12.00 AM", "11.20 A.M - 13.20 PM", "09.00 A.M - 11.00 PM"], ["Rabu, 27 Desember 2019", "Kamis, 28 Desember 2019", "Jumat, 29 Desember 2019"],
