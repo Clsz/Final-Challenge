@@ -13,6 +13,7 @@ class ConstantManager{
     static let mainColor = #colorLiteral(red: 0.09411764706, green: 0.3529411765, blue: 0.6, alpha: 1)
     static var gender = ["Pria", "Wanita"]
     static var tempArray = ["Kota Tangerang","Jakarta Barat","Kota Serang","Jakarta Pusat"]
+    static let grade = ["Elementary School","Junior Highschool","Senior Highschool"]
     static var tempArraySubject = ["Matematika", "Fisika", "Kimia", "Bahasa Inggris"]
     static let proficiency = ["Pemula","Menengah","Mahir"]
     static let educationType = ["Sekolah Menengah Pertama","Sekolah Menengah Atas","Kuliah"]

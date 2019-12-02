@@ -19,6 +19,10 @@ protocol ProfileProtocol{
     func logout()
 }
 
+protocol sendLocation {
+    func sendIndex(arrIndex:[Int])
+}
+
 protocol PasswordProtocol{
     func changePassword()
 }

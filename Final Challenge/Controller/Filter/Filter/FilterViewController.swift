@@ -10,31 +10,44 @@ import UIKit
 
 class FilterViewController: BaseViewController {
     
-    var salaryMin: Double?
-    var selectedIndex:[Int] = []
-    var kirimIndex:[Int] = []
-    var contentDelegate:AldiProtocol?
-    var contDelegate:SubjectProtocol?
-    
-    let grade = [
-        "PAUD",
-        "TK",
-        "SD",
-        "SMP",
-        "SMA",
-        "Kuliah"
-    ]
-    
-    
     @IBOutlet weak var LocationCV: UICollectionView!
     @IBOutlet weak var subjectCV: UICollectionView!
     @IBOutlet weak var gradeCV: UICollectionView!
-    
     @IBOutlet weak var minSliders: UIView!
     @IBOutlet weak var maxLabel: UILabel!
     @IBOutlet weak var minLabel: UILabel!
     @IBOutlet weak var maxSlide: UISlider!
+    var contentDelegate:sendLocation?
+    var contDelegate:SubjectProtocol?
+    var salaryMin: Double?
+    var selectedIndex:[Int] = []
+    var kirimIndex:[Int] = []
+    var selectedLocation:[String] = []
+    var selectedGrade:[String] = []
+    var selectedSubject:[String] = []
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        LocationCV.delegate = self
+        registerCell()
+        cellDelegate()
+        
+        LocationCV.reloadData()
+        subjectCV.reloadData()
+        self.LocationCV.allowsMultipleSelection = true
+        self.subjectCV.allowsMultipleSelection = true
+        self.gradeCV.allowsMultipleSelection = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        flushArray()
+        LocationCV.reloadData()
+        subjectCV.reloadData()
+        setupView(text: "Filter")
+        
+        let vc = LocationViewController()
+        vc.aldiDelegate = self
+    }
     
     @IBAction func minSlider(_ sender: UISlider) {
         let minSalary = Int((roundf(sender.value)*50000))
@@ -53,30 +66,6 @@ class FilterViewController: BaseViewController {
         maxLabel.text = "Rp \(myMaxSalary)"
     }
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        LocationCV.delegate = self
-        registerCell()
-        cellDelegate()
-        
-        LocationCV.reloadData()
-        subjectCV.reloadData()
-        self.LocationCV.allowsMultipleSelection = true
-        self.subjectCV.allowsMultipleSelection = true
-        self.gradeCV.allowsMultipleSelection = true
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        let vc = LocationViewController()
-        vc.aldiDelegate = self
-        LocationCV.reloadData()
-        subjectCV.reloadData()
-        setupView(text: "Filter")
-
-    }
-    
     @IBAction func viewAllLocationTapped(_ sender: UIButton) {
         let locationVC = LocationViewController()
         locationVC.aldiDelegate =  self
@@ -90,11 +79,21 @@ class FilterViewController: BaseViewController {
     }
     
     @IBAction func applyTapped(_ sender: UIButton) {
+        //        minLabel.text
+        //        maxLabel.text
         self.navigationController?.popViewController(animated: true)
     }
 }
-
-extension FilterViewController:AldiProtocol{
+extension FilterViewController{
+    private func flushArray() {
+        selectedIndex.removeAll()
+        kirimIndex.removeAll()
+        selectedLocation.removeAll()
+        selectedGrade.removeAll()
+        selectedSubject.removeAll()
+    }
+}
+extension FilterViewController:sendLocation{
     func sendIndex(arrIndex: [Int]) {
         selectedIndex = arrIndex
     }
@@ -109,7 +108,6 @@ extension FilterViewController:SubjectProtocol{
 }
 
 extension FilterViewController:UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if (collectionView == self.LocationCV) {
             return ConstantManager.tempArray.count;
@@ -118,7 +116,7 @@ extension FilterViewController:UICollectionViewDataSource, UICollectionViewDeleg
             return  ConstantManager.tempArraySubject.count
         }
         else {
-            return grade.count
+            return ConstantManager.grade.count
         }
     }
     
@@ -130,12 +128,11 @@ extension FilterViewController:UICollectionViewDataSource, UICollectionViewDeleg
             cell.kotakFilter.layer.cornerRadius = 10
             cell.kotakFilter.layer.borderColor = #colorLiteral(red: 0.2392156863, green: 0.431372549, blue: 0.8, alpha: 1)
             cell.kotakFilter.layer.borderWidth = 1
-            
             if selectedIndex.contains(indexPath.row) {
+                selectedLocation.insert(ConstantManager.tempArray[indexPath.row], at: 0)
                 cell.isSelected = true
             }
             cell.labelFilter.text = ConstantManager.tempArray[indexPath.row]
-            
             
             return cell
         }
@@ -147,22 +144,20 @@ extension FilterViewController:UICollectionViewDataSource, UICollectionViewDeleg
             cell.kotakFilter.layer.borderWidth = 1
             cell.labelFilter.text = ConstantManager.tempArraySubject[indexPath.row]
             
-            if kirimIndex.contains(indexPath.row)
-            {
+            if kirimIndex.contains(indexPath.row){
                 cell.isSelected = true
+                selectedLocation.insert(ConstantManager.tempArraySubject[indexPath.row], at: 0)
             }
-         
+            
             return cell
             
         }
         else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filterCell", for: indexPath) as! FilterCollectionViewCell
-            
             cell.kotakFilter.layer.cornerRadius = 10
             cell.kotakFilter.layer.borderColor = #colorLiteral(red: 0.2392156863, green: 0.431372549, blue: 0.8, alpha: 1)
             cell.kotakFilter.layer.borderWidth = 1
-            
-            cell.labelFilter.text = grade[indexPath.row]
+            cell.labelFilter.text = ConstantManager.grade[indexPath.row]
             
             return cell
         }
@@ -187,6 +182,15 @@ extension FilterViewController:UICollectionViewDataSource, UICollectionViewDeleg
         gradeCV.register(UINib(nibName: "FilterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "filterCell")
     }
     
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if collectionView == LocationCV{
+            
+        }else if collectionView == subjectCV{
+            
+        }else{
+            
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
         if let selectedItems = collectionView.indexPathsForSelectedItems {
