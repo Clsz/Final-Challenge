@@ -631,6 +631,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E13441BB239500980077E7D3 /* Pengajar */ = {
+			isa = PBXGroup;
+			children = (
+				E168479A237901BA001B6319 /* Model */,
+				E106615F23812A6C0098AE11 /* View */,
+				E139B5312375D44D00FEF1F5 /* Controller */,
+			);
+			path = Pengajar;
+			sourceTree = "<group>";
+		};
+		E13441BC239500B20077E7D3 /* Bimbel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Bimbel;
+			sourceTree = "<group>";
+		};
 		E139B52F2375D3E500FEF1F5 /* CollectionViewCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -894,11 +911,10 @@
 		E1E3A8992366CA8800F1571E /* Final Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				E13441BC239500B20077E7D3 /* Bimbel */,
+				E13441BB239500980077E7D3 /* Pengajar */,
 				E13441B8238FEDC20077E7D3 /* Final Challenge.entitlements */,
 				E1E3A8B32366CF2800F1571E /* Supporting Files */,
-				E168479A237901BA001B6319 /* Model */,
-				E106615F23812A6C0098AE11 /* View */,
-				E139B5312375D44D00FEF1F5 /* Controller */,
 				E1E3A8B42366CFAA00F1571E /* Helper */,
 				E1E3A8A32366CA8900F1571E /* Assets.xcassets */,
 				E1E3A8A82366CA8900F1571E /* Info.plist */,
