@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -51,7 +51,6 @@
 		148C43A523824DF500B87174 /* SubjectCategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 148C43A323824DF500B87174 /* SubjectCategoryTableViewCell.xib */; };
 		148C43A623824DF500B87174 /* SubjectCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148C43A423824DF500B87174 /* SubjectCategoryTableViewCell.swift */; };
 		14C10189237943300074469D /* ListJobTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14C10187237943300074469D /* ListJobTableViewCell.xib */; };
-		5D6386B9AFE245C56C6E410A /* Pods_Final_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A47CBDB0434D51766750EEFA /* Pods_Final_Challenge.framework */; };
 		E106615123811A4A0098AE11 /* AdditionalLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E106614F23811A4A0098AE11 /* AdditionalLanguageViewController.swift */; };
 		E106615223811A4A0098AE11 /* AdditionalLanguageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E106615023811A4A0098AE11 /* AdditionalLanguageViewController.xib */; };
 		E1066155238125020098AE11 /* HintWithTableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1066153238125020098AE11 /* HintWithTableTableViewCell.swift */; };
@@ -61,6 +60,11 @@
 		E106615D2381294D0098AE11 /* AdditionalExperienceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E106615B2381294D0098AE11 /* AdditionalExperienceViewController.swift */; };
 		E106615E2381294D0098AE11 /* AdditionalExperienceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E106615C2381294D0098AE11 /* AdditionalExperienceViewController.xib */; };
 		E11BB7F0237D5BA600B3B5E7 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11BB7EF237D5BA600B3B5E7 /* Protocol.swift */; };
+		E13441B4238FEC580077E7D3 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E13441B3238FEC580077E7D3 /* CloudKit.framework */; };
+		E13441C3239509310077E7D3 /* DetailAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13441C1239509310077E7D3 /* DetailAddressTableViewCell.swift */; };
+		E13441C4239509310077E7D3 /* DetailAddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E13441C2239509310077E7D3 /* DetailAddressTableViewCell.xib */; };
+		E13441C8239513510077E7D3 /* BimbelProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13441C6239513510077E7D3 /* BimbelProfileViewController.swift */; };
+		E13441C9239513510077E7D3 /* BimbelProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E13441C7239513510077E7D3 /* BimbelProfileViewController.xib */; };
 		E139B52E2375D20400FEF1F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E139B52D2375D20400FEF1F5 /* GoogleService-Info.plist */; };
 		E139B5362375D6B700FEF1F5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E139B5342375D6B700FEF1F5 /* LoginViewController.swift */; };
 		E139B5372375D6B700FEF1F5 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E139B5352375D6B700FEF1F5 /* LoginViewController.xib */; };
@@ -186,9 +190,6 @@
 		14C1018123793DCF0074469D /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		14C10186237943300074469D /* ListJobTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListJobTableViewCell.swift; sourceTree = "<group>"; };
 		14C10187237943300074469D /* ListJobTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListJobTableViewCell.xib; sourceTree = "<group>"; };
-		A47CBDB0434D51766750EEFA /* Pods_Final_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Final_Challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B5AF935F28FBC591A58065F5 /* Pods-Final Challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Final Challenge.debug.xcconfig"; path = "Target Support Files/Pods-Final Challenge/Pods-Final Challenge.debug.xcconfig"; sourceTree = "<group>"; };
-		C76413075F8403B967F6B41B /* Pods-Final Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Final Challenge.release.xcconfig"; path = "Target Support Files/Pods-Final Challenge/Pods-Final Challenge.release.xcconfig"; sourceTree = "<group>"; };
 		E106614F23811A4A0098AE11 /* AdditionalLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalLanguageViewController.swift; sourceTree = "<group>"; };
 		E106615023811A4A0098AE11 /* AdditionalLanguageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdditionalLanguageViewController.xib; sourceTree = "<group>"; };
 		E1066153238125020098AE11 /* HintWithTableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintWithTableTableViewCell.swift; sourceTree = "<group>"; };
@@ -198,6 +199,12 @@
 		E106615B2381294D0098AE11 /* AdditionalExperienceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalExperienceViewController.swift; sourceTree = "<group>"; };
 		E106615C2381294D0098AE11 /* AdditionalExperienceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdditionalExperienceViewController.xib; sourceTree = "<group>"; };
 		E11BB7EF237D5BA600B3B5E7 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
+		E13441B3238FEC580077E7D3 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		E13441B8238FEDC20077E7D3 /* Final Challenge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Final Challenge.entitlements"; sourceTree = "<group>"; };
+		E13441C1239509310077E7D3 /* DetailAddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAddressTableViewCell.swift; sourceTree = "<group>"; };
+		E13441C2239509310077E7D3 /* DetailAddressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailAddressTableViewCell.xib; sourceTree = "<group>"; };
+		E13441C6239513510077E7D3 /* BimbelProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BimbelProfileViewController.swift; sourceTree = "<group>"; };
+		E13441C7239513510077E7D3 /* BimbelProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BimbelProfileViewController.xib; sourceTree = "<group>"; };
 		E139B52D2375D20400FEF1F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E139B5342375D6B700FEF1F5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E139B5352375D6B700FEF1F5 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -239,7 +246,6 @@
 		E168479B237901D5001B6319 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		E168479D237903B2001B6319 /* AchievementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementTableViewCell.swift; sourceTree = "<group>"; };
 		E168479E237903B2001B6319 /* AchievementTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AchievementTableViewCell.xib; sourceTree = "<group>"; };
-		E1713A4D237AAD7400F6A8A7 /* Final Challenge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Final Challenge.entitlements"; sourceTree = "<group>"; };
 		E1713A4E237AC68C00F6A8A7 /* ContentViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewTableViewCell.swift; sourceTree = "<group>"; };
 		E1713A4F237AC68C00F6A8A7 /* ContentViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentViewTableViewCell.xib; sourceTree = "<group>"; };
 		E17F320D23793BFE00AEBCD5 /* EducationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationViewController.swift; sourceTree = "<group>"; };
@@ -295,7 +301,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D6386B9AFE245C56C6E410A /* Pods_Final_Challenge.framework in Frameworks */,
+				E13441B4238FEC580077E7D3 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +315,27 @@
 				1422237F2382916C004F2625 /* DetailScheduleTableViewCell.xib */,
 			);
 			path = "Detail Schedule";
+			sourceTree = "<group>";
+		};
+		144B4311239510A700F1ACE1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		144B4312239510B500F1ACE1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		144B4313239510CE00F1ACE1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		145705D4237A9BE60093E944 /* Filter */ = {
@@ -616,14 +643,6 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		BF9E86A53291C2D22C3179E9 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				A47CBDB0434D51766750EEFA /* Pods_Final_Challenge.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		E106615F23812A6C0098AE11 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -631,6 +650,53 @@
 				E139B52F2375D3E500FEF1F5 /* CollectionViewCells */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		E13441B2238FEC580077E7D3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E13441B3238FEC580077E7D3 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E13441BB239500980077E7D3 /* Pengajar */ = {
+			isa = PBXGroup;
+			children = (
+				E139B5312375D44D00FEF1F5 /* Controller */,
+			);
+			path = Pengajar;
+			sourceTree = "<group>";
+		};
+		E13441BC239500B20077E7D3 /* Bimbel */ = {
+			isa = PBXGroup;
+			children = (
+<<<<<<< HEAD
+				E13441BF239501280077E7D3 /* Controller */,
+=======
+				144B4311239510A700F1ACE1 /* Model */,
+				144B4312239510B500F1ACE1 /* View */,
+				144B4313239510CE00F1ACE1 /* Controller */,
+>>>>>>> 64443d9f0edf9658df17c54e55d7a6b8088c05d0
+			);
+			path = Bimbel;
+			sourceTree = "<group>";
+		};
+		E13441BF239501280077E7D3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E13441C5239513300077E7D3 /* Profile */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E13441C5239513300077E7D3 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				E13441C6239513510077E7D3 /* BimbelProfileViewController.swift */,
+				E13441C7239513510077E7D3 /* BimbelProfileViewController.xib */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		E139B52F2375D3E500FEF1F5 /* CollectionViewCells */ = {
@@ -832,6 +898,8 @@
 				E168478723784463001B6319 /* AnotherDetailProfileTableViewCell.xib */,
 				E17F321923794A6D00AEBCD5 /* MoreDetailTableViewCell.swift */,
 				E17F321A23794A6D00AEBCD5 /* MoreDetailTableViewCell.xib */,
+				E13441C1239509310077E7D3 /* DetailAddressTableViewCell.swift */,
+				E13441C2239509310077E7D3 /* DetailAddressTableViewCell.xib */,
 			);
 			path = "Detail View";
 			sourceTree = "<group>";
@@ -880,9 +948,8 @@
 			children = (
 				E1E3A8992366CA8800F1571E /* Final Challenge */,
 				E1E3A8982366CA8800F1571E /* Products */,
-				F7074A34A5950D042801A1AF /* Pods */,
-				BF9E86A53291C2D22C3179E9 /* Frameworks */,
 				148C4364237E9C2D00B87174 /* Recovered References */,
+				E13441B2238FEC580077E7D3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -897,11 +964,12 @@
 		E1E3A8992366CA8800F1571E /* Final Challenge */ = {
 			isa = PBXGroup;
 			children = (
-				E1713A4D237AAD7400F6A8A7 /* Final Challenge.entitlements */,
-				E1E3A8B32366CF2800F1571E /* Supporting Files */,
 				E168479A237901BA001B6319 /* Model */,
 				E106615F23812A6C0098AE11 /* View */,
-				E139B5312375D44D00FEF1F5 /* Controller */,
+				E13441BC239500B20077E7D3 /* Bimbel */,
+				E13441BB239500980077E7D3 /* Pengajar */,
+				E13441B8238FEDC20077E7D3 /* Final Challenge.entitlements */,
+				E1E3A8B32366CF2800F1571E /* Supporting Files */,
 				E1E3A8B42366CFAA00F1571E /* Helper */,
 				E1E3A8A32366CA8900F1571E /* Assets.xcassets */,
 				E1E3A8A82366CA8900F1571E /* Info.plist */,
@@ -947,15 +1015,6 @@
 			path = "Tab 2";
 			sourceTree = "<group>";
 		};
-		F7074A34A5950D042801A1AF /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				B5AF935F28FBC591A58065F5 /* Pods-Final Challenge.debug.xcconfig */,
-				C76413075F8403B967F6B41B /* Pods-Final Challenge.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -963,11 +1022,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E1E3A8AB2366CA8900F1571E /* Build configuration list for PBXNativeTarget "Final Challenge" */;
 			buildPhases = (
-				C9657B9C3D7FA8BEB19B4FD5 /* [CP] Check Pods Manifest.lock */,
 				E1E3A8932366CA8800F1571E /* Sources */,
 				E1E3A8942366CA8800F1571E /* Frameworks */,
 				E1E3A8952366CA8800F1571E /* Resources */,
-				3B79F204EFDDA90E19179DAE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1062,8 +1119,10 @@
 				148C438B237EAA0000B87174 /* SubmitTableViewCell.xib in Resources */,
 				148C4366237E9D5800B87174 /* HomeViewController.xib in Resources */,
 				148C4383237EA97D00B87174 /* ScheduleTableViewCell.xib in Resources */,
+				E13441C4239509310077E7D3 /* DetailAddressTableViewCell.xib in Resources */,
 				E168478523784354001B6319 /* DetailProfileTableViewCell.xib in Resources */,
 				14C10189237943300074469D /* ListJobTableViewCell.xib in Resources */,
+				E13441C9239513510077E7D3 /* BimbelProfileViewController.xib in Resources */,
 				E13EE6032380F759005016A0 /* SetupPersonalTableViewCell.xib in Resources */,
 				148C4356237C3D3300B87174 /* SubjectTableViewCell.xib in Resources */,
 				148C4362237E97FB00B87174 /* ProfileBimbelTableViewCell.xib in Resources */,
@@ -1081,48 +1140,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		3B79F204EFDDA90E19179DAE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Final Challenge/Pods-Final Challenge-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Final Challenge/Pods-Final Challenge-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Final Challenge/Pods-Final Challenge-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C9657B9C3D7FA8BEB19B4FD5 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Final Challenge-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		E1E3A8932366CA8800F1571E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1138,6 +1155,7 @@
 				148C4382237EA97D00B87174 /* ScheduleTableViewCell.swift in Sources */,
 				E1F5BB582382D2B500BC9CFE /* DetailTestViewController.swift in Sources */,
 				E168478423784354001B6319 /* DetailProfileTableViewCell.swift in Sources */,
+				E13441C3239509310077E7D3 /* DetailAddressTableViewCell.swift in Sources */,
 				148C43A123824DCF00B87174 /* AddressTableViewCell.swift in Sources */,
 				E139B53E2375D6E400FEF1F5 /* ProfileViewController.swift in Sources */,
 				148C4365237E9D5300B87174 /* HomeViewController.swift in Sources */,
@@ -1171,6 +1189,7 @@
 				E18CAE8D237D4C9800DEAC83 /* FilterCollectionViewCell.swift in Sources */,
 				E168478823784463001B6319 /* AnotherDetailProfileTableViewCell.swift in Sources */,
 				148C4341237C07F900B87174 /* LocationViewController.swift in Sources */,
+				E13441C8239513510077E7D3 /* BimbelProfileViewController.swift in Sources */,
 				148C4347237C118A00B87174 /* LocationTableViewCell.swift in Sources */,
 				142223802382916C004F2625 /* DetailScheduleTableViewCell.swift in Sources */,
 				148C436A237E9E0500B87174 /* SubjectViewController.swift in Sources */,
@@ -1326,41 +1345,12 @@
 		};
 		E1E3A8AC2366CA8900F1571E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B5AF935F28FBC591A58065F5 /* Pods-Final Challenge.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 34;
-<<<<<<< HEAD
 				DEVELOPMENT_TEAM = SK54WQSLHU;
-=======
-				DEVELOPMENT_TEAM = 7858P7ZUST;
->>>>>>> e1eac8ff4c5f2e98cfc0563a16abc12d8ebcde59
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/BoringSSL-GRPC/openssl_grpc.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuth/FirebaseAuth.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore/FirebaseCore.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/FirebaseFirestore.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstanceID/FirebaseInstanceID.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleDataTransport/GoogleDataTransport.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleDataTransportCCTSupport/GoogleDataTransportCCTSupport.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/Protobuf/protobuf.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-C++/grpcpp.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-Core/grpc.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/leveldb-library/leveldb.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
-					"\"${PODS_ROOT}/Headers/Public/FirebaseAuthInterop\"",
-					"\"${PODS_ROOT}/Headers/Public/FirebaseCoreDiagnosticsInterop\"",
-					"$(inherited)",
-					"${PODS_ROOT}/Firebase/CoreOnly/Sources",
-				);
 				INFOPLIST_FILE = "Final Challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1376,41 +1366,12 @@
 		};
 		E1E3A8AD2366CA8900F1571E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C76413075F8403B967F6B41B /* Pods-Final Challenge.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 34;
-<<<<<<< HEAD
 				DEVELOPMENT_TEAM = SK54WQSLHU;
-=======
-				DEVELOPMENT_TEAM = 7858P7ZUST;
->>>>>>> e1eac8ff4c5f2e98cfc0563a16abc12d8ebcde59
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/BoringSSL-GRPC/openssl_grpc.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuth/FirebaseAuth.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore/FirebaseCore.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/FirebaseFirestore.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstanceID/FirebaseInstanceID.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleDataTransport/GoogleDataTransport.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleDataTransportCCTSupport/GoogleDataTransportCCTSupport.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/Protobuf/protobuf.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-C++/grpcpp.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-Core/grpc.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/leveldb-library/leveldb.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
-					"\"${PODS_ROOT}/Headers/Public/FirebaseAuthInterop\"",
-					"\"${PODS_ROOT}/Headers/Public/FirebaseCoreDiagnosticsInterop\"",
-					"$(inherited)",
-					"${PODS_ROOT}/Firebase/CoreOnly/Sources",
-				);
 				INFOPLIST_FILE = "Final Challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -40,7 +40,7 @@ class BimbelProfileViewController: BaseViewController {
 extension BimbelProfileViewController{
     private func setupData() {
         dataArray.removeAll()
-        dataArray.append(tutorModel)
+//        dataArray.append(tutorModel)
         dataArray.append(("Keterampilan","Tambah Keterampilan",0))
         dataArray.append(("Bahasa","Tambah Bahasa"))
         dataArray.append(("Pendidikan","Edit Pendidikan",1))

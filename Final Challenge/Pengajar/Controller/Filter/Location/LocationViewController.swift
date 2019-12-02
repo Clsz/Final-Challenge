@@ -47,13 +47,13 @@ class LocationViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setupView(text: "Lokasi")
+        setupView(text: "Locations")
     }
     
     func setUpSearchBar() {
         searchBar.layer.borderWidth = 1
-        searchBar.layer.borderColor = #colorLiteral(red: 0.9214878678, green: 0.9216204286, blue: 0.9214589, alpha: 1)
-        searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        searchBar.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        searchBar.searchTextField.backgroundColor = #colorLiteral(red: 0.8941176471, green: 0.8941176471, blue: 0.8980392157, alpha: 1)
     }
     
     @IBAction func lokasiAplliedTapped(_ sender: UIButton) {
