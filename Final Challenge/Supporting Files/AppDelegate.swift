@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         UITabBar.appearance().tintColor = ConstantManager.mainColor
 //        //Penting nih
-//        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window = UIWindow(frame: UIScreen.main.bounds)
 //        self.tabBarController = TabBarController()
 //        window?.rootViewController = tabBarController
 //        window?.makeKeyAndVisible()
