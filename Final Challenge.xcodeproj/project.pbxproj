@@ -309,25 +309,29 @@
 			path = "Detail Schedule";
 			sourceTree = "<group>";
 		};
-		144B4311239510A700F1ACE1 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		144B4312239510B500F1ACE1 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		144B4313239510CE00F1ACE1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		144B4314239520A800F1ACE1 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				E139B5382375D6CA00FEF1F5 /* RegisterViewController.swift */,
+				E139B5392375D6CA00FEF1F5 /* RegisterViewController.xib */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		144B4315239520AF00F1ACE1 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E139B5342375D6B700FEF1F5 /* LoginViewController.swift */,
+				E139B5352375D6B700FEF1F5 /* LoginViewController.xib */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		145705D4237A9BE60093E944 /* Filter */ = {
@@ -665,8 +669,6 @@
 		E13441BC239500B20077E7D3 /* Bimbel */ = {
 			isa = PBXGroup;
 			children = (
-				144B4311239510A700F1ACE1 /* Model */,
-				144B4312239510B500F1ACE1 /* View */,
 				144B4313239510CE00F1ACE1 /* Controller */,
 			);
 			path = Bimbel;
@@ -727,10 +729,8 @@
 		E139B5332375D6A300FEF1F5 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				E139B5342375D6B700FEF1F5 /* LoginViewController.swift */,
-				E139B5352375D6B700FEF1F5 /* LoginViewController.xib */,
-				E139B5382375D6CA00FEF1F5 /* RegisterViewController.swift */,
-				E139B5392375D6CA00FEF1F5 /* RegisterViewController.xib */,
+				144B4315239520AF00F1ACE1 /* Login */,
+				144B4314239520A800F1ACE1 /* Register */,
 			);
 			path = Login;
 			sourceTree = "<group>";
