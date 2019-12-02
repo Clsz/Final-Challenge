@@ -61,6 +61,10 @@
 		E106615E2381294D0098AE11 /* AdditionalExperienceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E106615C2381294D0098AE11 /* AdditionalExperienceViewController.xib */; };
 		E11BB7F0237D5BA600B3B5E7 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11BB7EF237D5BA600B3B5E7 /* Protocol.swift */; };
 		E13441B4238FEC580077E7D3 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E13441B3238FEC580077E7D3 /* CloudKit.framework */; };
+		E13441C3239509310077E7D3 /* DetailAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13441C1239509310077E7D3 /* DetailAddressTableViewCell.swift */; };
+		E13441C4239509310077E7D3 /* DetailAddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E13441C2239509310077E7D3 /* DetailAddressTableViewCell.xib */; };
+		E13441C8239513510077E7D3 /* BimbelProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13441C6239513510077E7D3 /* BimbelProfileViewController.swift */; };
+		E13441C9239513510077E7D3 /* BimbelProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E13441C7239513510077E7D3 /* BimbelProfileViewController.xib */; };
 		E139B52E2375D20400FEF1F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E139B52D2375D20400FEF1F5 /* GoogleService-Info.plist */; };
 		E139B5362375D6B700FEF1F5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E139B5342375D6B700FEF1F5 /* LoginViewController.swift */; };
 		E139B5372375D6B700FEF1F5 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E139B5352375D6B700FEF1F5 /* LoginViewController.xib */; };
@@ -197,6 +201,10 @@
 		E11BB7EF237D5BA600B3B5E7 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		E13441B3238FEC580077E7D3 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		E13441B8238FEDC20077E7D3 /* Final Challenge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Final Challenge.entitlements"; sourceTree = "<group>"; };
+		E13441C1239509310077E7D3 /* DetailAddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAddressTableViewCell.swift; sourceTree = "<group>"; };
+		E13441C2239509310077E7D3 /* DetailAddressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailAddressTableViewCell.xib; sourceTree = "<group>"; };
+		E13441C6239513510077E7D3 /* BimbelProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BimbelProfileViewController.swift; sourceTree = "<group>"; };
+		E13441C7239513510077E7D3 /* BimbelProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BimbelProfileViewController.xib; sourceTree = "<group>"; };
 		E139B52D2375D20400FEF1F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E139B5342375D6B700FEF1F5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E139B5352375D6B700FEF1F5 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -634,8 +642,6 @@
 		E13441BB239500980077E7D3 /* Pengajar */ = {
 			isa = PBXGroup;
 			children = (
-				E168479A237901BA001B6319 /* Model */,
-				E106615F23812A6C0098AE11 /* View */,
 				E139B5312375D44D00FEF1F5 /* Controller */,
 			);
 			path = Pengajar;
@@ -644,8 +650,26 @@
 		E13441BC239500B20077E7D3 /* Bimbel */ = {
 			isa = PBXGroup;
 			children = (
+				E13441BF239501280077E7D3 /* Controller */,
 			);
 			path = Bimbel;
+			sourceTree = "<group>";
+		};
+		E13441BF239501280077E7D3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E13441C5239513300077E7D3 /* Profile */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E13441C5239513300077E7D3 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				E13441C6239513510077E7D3 /* BimbelProfileViewController.swift */,
+				E13441C7239513510077E7D3 /* BimbelProfileViewController.xib */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		E139B52F2375D3E500FEF1F5 /* CollectionViewCells */ = {
@@ -847,6 +871,8 @@
 				E168478723784463001B6319 /* AnotherDetailProfileTableViewCell.xib */,
 				E17F321923794A6D00AEBCD5 /* MoreDetailTableViewCell.swift */,
 				E17F321A23794A6D00AEBCD5 /* MoreDetailTableViewCell.xib */,
+				E13441C1239509310077E7D3 /* DetailAddressTableViewCell.swift */,
+				E13441C2239509310077E7D3 /* DetailAddressTableViewCell.xib */,
 			);
 			path = "Detail View";
 			sourceTree = "<group>";
@@ -911,6 +937,8 @@
 		E1E3A8992366CA8800F1571E /* Final Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				E168479A237901BA001B6319 /* Model */,
+				E106615F23812A6C0098AE11 /* View */,
 				E13441BC239500B20077E7D3 /* Bimbel */,
 				E13441BB239500980077E7D3 /* Pengajar */,
 				E13441B8238FEDC20077E7D3 /* Final Challenge.entitlements */,
@@ -1064,8 +1092,10 @@
 				148C438B237EAA0000B87174 /* SubmitTableViewCell.xib in Resources */,
 				148C4366237E9D5800B87174 /* HomeViewController.xib in Resources */,
 				148C4383237EA97D00B87174 /* ScheduleTableViewCell.xib in Resources */,
+				E13441C4239509310077E7D3 /* DetailAddressTableViewCell.xib in Resources */,
 				E168478523784354001B6319 /* DetailProfileTableViewCell.xib in Resources */,
 				14C10189237943300074469D /* ListJobTableViewCell.xib in Resources */,
+				E13441C9239513510077E7D3 /* BimbelProfileViewController.xib in Resources */,
 				E13EE6032380F759005016A0 /* SetupPersonalTableViewCell.xib in Resources */,
 				148C4356237C3D3300B87174 /* SubjectTableViewCell.xib in Resources */,
 				148C4362237E97FB00B87174 /* ProfileBimbelTableViewCell.xib in Resources */,
@@ -1098,6 +1128,7 @@
 				148C4382237EA97D00B87174 /* ScheduleTableViewCell.swift in Sources */,
 				E1F5BB582382D2B500BC9CFE /* DetailTestViewController.swift in Sources */,
 				E168478423784354001B6319 /* DetailProfileTableViewCell.swift in Sources */,
+				E13441C3239509310077E7D3 /* DetailAddressTableViewCell.swift in Sources */,
 				148C43A123824DCF00B87174 /* AddressTableViewCell.swift in Sources */,
 				E139B53E2375D6E400FEF1F5 /* ProfileViewController.swift in Sources */,
 				148C4365237E9D5300B87174 /* HomeViewController.swift in Sources */,
@@ -1131,6 +1162,7 @@
 				E18CAE8D237D4C9800DEAC83 /* FilterCollectionViewCell.swift in Sources */,
 				E168478823784463001B6319 /* AnotherDetailProfileTableViewCell.swift in Sources */,
 				148C4341237C07F900B87174 /* LocationViewController.swift in Sources */,
+				E13441C8239513510077E7D3 /* BimbelProfileViewController.swift in Sources */,
 				148C4347237C118A00B87174 /* LocationTableViewCell.swift in Sources */,
 				142223802382916C004F2625 /* DetailScheduleTableViewCell.swift in Sources */,
 				148C436A237E9E0500B87174 /* SubjectViewController.swift in Sources */,
