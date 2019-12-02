@@ -44,6 +44,13 @@ extension ScheduleTableViewCell: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "dsCell", for: indexPath) as! DetailScheduleTableViewCell
+       cell.jadwalView.layer.borderWidth = 3
+        cell.jadwalView.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        cell.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        cell.jadwalView.layer.cornerRadius = 15
+        cell.jadwalView.layer.masksToBounds = true
+        cell.jadwalView.backgroundColor = #colorLiteral(red: 0.1098039216, green: 0.3921568627, blue: 0.6666666667, alpha: 1)
+        
         let schedule = "\(scheduleStart[indexPath.row]) AM" + " - " + "\(scheduleEnd[indexPath.row]) PM"
         cell.setView(day: day[indexPath.row], time: schedule)
         return cell

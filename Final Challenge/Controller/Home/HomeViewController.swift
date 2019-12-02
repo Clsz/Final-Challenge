@@ -29,7 +29,8 @@ class HomeViewController: BaseViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setupView(text: "Pekerjaan")
+        setupView(text: "Jobs")
+        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     }
     
     
@@ -71,11 +72,11 @@ extension HomeViewController: UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "jobCell", for: indexPath) as! ListJobTableViewCell
         cell.bimbelView.layer.borderWidth = 3
-        cell.bimbelView.layer.borderColor = #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
-        cell.backgroundColor = #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
+        cell.bimbelView.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        cell.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         cell.bimbelView.layer.cornerRadius = 15
         cell.bimbelView.layer.masksToBounds = true
-        cell.bimbelView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        cell.bimbelView.backgroundColor = #colorLiteral(red: 0.1098039216, green: 0.3921568627, blue: 0.6666666667, alpha: 1)
         cell.selectionStyle = .none
         cell.bimbelPhoto.image = images
     

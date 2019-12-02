@@ -20,9 +20,9 @@ class BaseViewController: UIViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.largeTitleDisplayMode = .automatic
         self.navigationController?.navigationBar.sizeToFit()
-        UINavigationBar.appearance().backgroundColor = #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
+        UINavigationBar.appearance().backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         self.navigationController?.navigationBar.barTintColor =  #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
-        self.view.backgroundColor = #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
+        self.view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         self.navigationItem.title = text
     }
     

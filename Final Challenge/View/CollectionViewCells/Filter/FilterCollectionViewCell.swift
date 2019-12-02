@@ -28,8 +28,9 @@ class FilterCollectionViewCell: UICollectionViewCell {
         didSet {
             DispatchQueue.main.async {
                 self.kotakFilter.layer.borderWidth = self.isSelected ? 0 : 1
-                self.kotakFilter.backgroundColor = self.isSelected ? #colorLiteral(red: 0.3254901961, green: 0.7803921569, blue: 0.9411764706, alpha: 1) : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                self.kotakFilter.backgroundColor = self.isSelected ? #colorLiteral(red: 0.1098039216, green: 0.3921568627, blue: 0.6666666667, alpha: 1) : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
                 self.imageFilter.image = self.isSelected ? self.images:self.images1
+                self.labelFilter.textColor = self.isSelected ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
             }
         }
     }
@@ -38,7 +39,7 @@ class FilterCollectionViewCell: UICollectionViewCell {
 extension FilterCollectionViewCell{
     func setView() {
         kotakFilter.layer.cornerRadius = 10
-        kotakFilter.layer.borderColor = #colorLiteral(red: 0.2392156863, green: 0.431372549, blue: 0.8, alpha: 1)
+        kotakFilter.layer.borderColor = #colorLiteral(red: 0.1098039216, green: 0.3921568627, blue: 0.6666666667, alpha: 1)
         kotakFilter.layer.borderWidth = 1
     }
 }

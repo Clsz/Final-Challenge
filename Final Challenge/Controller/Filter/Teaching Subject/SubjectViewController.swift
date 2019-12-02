@@ -35,7 +35,7 @@ class SubjectViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setupView(text: "Kategori Pelajaran")
+        setupView(text: "Teaching Subjects")
     }
     
     @IBAction func subjectAppliedTapped(_ sender: UIButton) {
@@ -47,8 +47,8 @@ class SubjectViewController: BaseViewController {
 extension SubjectViewController{
     func setUpSearchBar() {
         searchSubjectBar.layer.borderWidth = 1
-        searchSubjectBar.layer.borderColor = #colorLiteral(red: 0.9214878678, green: 0.9216204286, blue: 0.9214589, alpha: 1)
-        searchSubjectBar.searchTextField.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        searchSubjectBar.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        searchSubjectBar.searchTextField.backgroundColor = #colorLiteral(red: 0.8941176471, green: 0.8941176471, blue: 0.8980392157, alpha: 1)
     }
     
 }
@@ -63,8 +63,6 @@ extension SubjectViewController: UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "subjekCell", for: indexPath) as! SubjectTableViewCell
-        
-        cell.gambarSubjek.image = images
         cell.selectionStyle = .none
         
         if searching  {
