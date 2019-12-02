@@ -309,6 +309,27 @@
 			path = "Detail Schedule";
 			sourceTree = "<group>";
 		};
+		144B4311239510A700F1ACE1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		144B4312239510B500F1ACE1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		144B4313239510CE00F1ACE1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		145705D4237A9BE60093E944 /* Filter */ = {
 			isa = PBXGroup;
 			children = (
@@ -644,6 +665,9 @@
 		E13441BC239500B20077E7D3 /* Bimbel */ = {
 			isa = PBXGroup;
 			children = (
+				144B4311239510A700F1ACE1 /* Model */,
+				144B4312239510B500F1ACE1 /* View */,
+				144B4313239510CE00F1ACE1 /* Controller */,
 			);
 			path = Bimbel;
 			sourceTree = "<group>";
