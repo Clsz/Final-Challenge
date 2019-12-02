@@ -10,6 +10,10 @@ import UIKit
 
 class DetailAddressTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var textField: UITextField!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,4 +25,10 @@ class DetailAddressTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+}
+extension DetailAddressTableViewCell{
+    func setCell(_ label:String, _ button:String) {
+        self.label.text = label
+        self.button.setTitle(button, for: .normal)
+    }
 }
