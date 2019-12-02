@@ -31,7 +31,7 @@ class DetailBimbelViewController: BaseViewController {
     
 }
 extension DetailBimbelViewController{
-    func setupData() {
+    private func setupData() {
         dataArray.removeAll()
         dataArray.append(course)
         let address = (course?.value(forKey: "courseAddress") as! String)
@@ -49,7 +49,7 @@ extension DetailBimbelViewController{
         dataArray.append(true)
     }
     
-    func applyJob(){
+    private func applyJob(){
         //Get Referemce
         let newApply = CKRecord(recordType: "Activity")
         let reference = CKRecord.Reference(recordID: course.recordID , action: .deleteSelf)
@@ -60,17 +60,15 @@ extension DetailBimbelViewController{
             guard record != nil else {
                 print("error", error as Any)
                 return }
-            print("saved request with data")
+            self.showAlert(title: "Succesful", message: "Applied Job !!")
         }
     }
     
-}
-extension DetailBimbelViewController:DetailBimbel{
-    func requestSchedule() {
+    private func requestSchedule() {
         let listScheduleID = (course?.value(forKey: "scheduleID") as! CKRecord.Reference)
-        
         let pred = NSPredicate(format: "recordID = %@", CKRecord.ID(recordName: listScheduleID.recordID.recordName))
         let query = CKQuery(recordType: "Schedule", predicate: pred)
+        
         database.perform(query, inZoneWith: nil) { (records, error) in
             guard let record = records else {return}
             let sortedRecords = record.sorted(by: { $0.creationDate! > $1.creationDate! })
@@ -81,7 +79,8 @@ extension DetailBimbelViewController:DetailBimbel{
             }
         }
     }
-    
+}
+extension DetailBimbelViewController:DetailBimbel{
     func requestTapped() {
         applyJob()
         self.navigationController?.popViewController(animated: true)

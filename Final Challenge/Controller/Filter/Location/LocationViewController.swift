@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol AldiProtocol {
-    func sendIndex(arrIndex:[Int])
-}
-
 class LocationViewController: BaseViewController {
     
     @IBOutlet weak var locationTV: UITableView!
@@ -38,7 +34,7 @@ class LocationViewController: BaseViewController {
     var searchLocation = [String]()
     var searching = false
     
-    var aldiDelegate:AldiProtocol?
+    var aldiDelegate:sendLocation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,13 +57,11 @@ class LocationViewController: BaseViewController {
     }
     
     @IBAction func lokasiAplliedTapped(_ sender: UIButton) {
-        print(selected,"#")
         self.aldiDelegate?.sendIndex(arrIndex: selected)
         self.navigationController?.popViewController(animated: true)
     }
     
 }
-
 extension LocationViewController: UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searching {
@@ -94,13 +88,9 @@ extension LocationViewController: UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCell.AccessoryType.checkmark
-        {
+        if tableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCell.AccessoryType.checkmark{
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.none
-            
-        }
-        else
-        {
+        }else{
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.checkmark
             selected.append(indexPath.row)
             ConstantManager.tempArray.insert(lokasi[indexPath.row], at: 0)
@@ -125,7 +115,6 @@ extension LocationViewController: UITableViewDataSource,UITableViewDelegate{
     }
     
 }
-
 extension LocationViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)

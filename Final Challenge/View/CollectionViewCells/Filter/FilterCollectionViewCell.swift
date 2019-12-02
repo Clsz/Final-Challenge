@@ -12,6 +12,9 @@ class FilterCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var kotakFilter: UIView!
     @IBOutlet weak var imageFilter: UIImageView!
     @IBOutlet weak var labelFilter: UILabel!
+    var tempSelectedLocation:[String] = []
+    var tempSelectedGrade:[String] = []
+    var tempSelectedSubject:[String] = []
     let images = UIImage(named: "tick")
     let images1 = UIImage(named: "Add")
     
