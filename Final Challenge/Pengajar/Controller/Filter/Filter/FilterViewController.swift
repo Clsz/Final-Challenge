@@ -43,8 +43,8 @@ class FilterViewController: BaseViewController {
         flushArray()
         LocationCV.reloadData()
         subjectCV.reloadData()
-        setupView(text: "Filter")
-        
+        setupView(text: "Filters")
+        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         let vc = LocationViewController()
         vc.aldiDelegate = self
     }
@@ -126,7 +126,7 @@ extension FilterViewController:UICollectionViewDataSource, UICollectionViewDeleg
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filterCell", for: indexPath) as! FilterCollectionViewCell
             
             cell.kotakFilter.layer.cornerRadius = 10
-            cell.kotakFilter.layer.borderColor = #colorLiteral(red: 0.2392156863, green: 0.431372549, blue: 0.8, alpha: 1)
+            cell.kotakFilter.layer.borderColor = #colorLiteral(red: 0.1098039216, green: 0.3921568627, blue: 0.6666666667, alpha: 1)
             cell.kotakFilter.layer.borderWidth = 1
             if selectedIndex.contains(indexPath.row) {
                 selectedLocation.insert(ConstantManager.tempArray[indexPath.row], at: 0)
@@ -140,7 +140,7 @@ extension FilterViewController:UICollectionViewDataSource, UICollectionViewDeleg
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filterCell", for: indexPath) as! FilterCollectionViewCell
             
             cell.kotakFilter.layer.cornerRadius = 10
-            cell.kotakFilter.layer.borderColor = #colorLiteral(red: 0.2392156863, green: 0.431372549, blue: 0.8, alpha: 1)
+            cell.kotakFilter.layer.borderColor = #colorLiteral(red: 0.1098039216, green: 0.3921568627, blue: 0.6666666667, alpha: 1)
             cell.kotakFilter.layer.borderWidth = 1
             cell.labelFilter.text = ConstantManager.tempArraySubject[indexPath.row]
             
@@ -155,7 +155,7 @@ extension FilterViewController:UICollectionViewDataSource, UICollectionViewDeleg
         else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filterCell", for: indexPath) as! FilterCollectionViewCell
             cell.kotakFilter.layer.cornerRadius = 10
-            cell.kotakFilter.layer.borderColor = #colorLiteral(red: 0.2392156863, green: 0.431372549, blue: 0.8, alpha: 1)
+            cell.kotakFilter.layer.borderColor = #colorLiteral(red: 0.1098039216, green: 0.3921568627, blue: 0.6666666667, alpha: 1)
             cell.kotakFilter.layer.borderWidth = 1
             cell.labelFilter.text = ConstantManager.grade[indexPath.row]
             

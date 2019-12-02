@@ -9,8 +9,7 @@
 import UIKit
 
 class SubjectTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var gambarSubjek: UIImageView!
+    
     @IBOutlet weak var namaSubjek: UILabel!
     
     override func awakeFromNib() {
