@@ -19,6 +19,14 @@ protocol ProfileProtocol{
     func logout()
 }
 
+protocol BimbelProtocol{
+    func pencilTapped()
+    func addressTapped()
+    func subjectTapped()
+    func gradesTapped()
+    func logout()
+}
+
 protocol sendLocation {
     func sendIndex(arrIndex:[Int])
 }
@@ -29,6 +37,12 @@ protocol PasswordProtocol{
 
 protocol ProfileDetailProtocol{
     func applyProfile()
+}
+
+protocol ProfileBimbelDetailProtocol {
+    func startTapped()
+    func endTapped()
+    func applyProfileBimbel()
 }
 
 protocol LanguageProtocol {
@@ -68,6 +82,10 @@ protocol ShowMoreLanguage{
 
 protocol ShowMoreExperience{
     func showExperience()
+}
+
+protocol LanguageViewControllerDelegate: class {
+    func refreshData(withTutorModel: Tutor)
 }
 
 protocol SendTutorToCustom {
