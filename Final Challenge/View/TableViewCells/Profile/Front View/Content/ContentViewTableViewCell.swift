@@ -13,9 +13,10 @@ class ContentViewTableViewCell: UITableViewCell {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var tableView: UITableView!
-    var contentDelegate:ProfileProtocol?
+    var tutorDelegate:ProfileProtocol?
+    var bimbelDelegate:BimbelProtocol?
+    var index:Int?
     let customExperieneTableViewCell = "CustomExperienceTableViewCellID"
-    var tutorCustom:Tutor!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,7 +33,11 @@ class ContentViewTableViewCell: UITableViewCell {
     }
     
     @IBAction func editTapped(_ sender: Any) {
-        contentDelegate?.educationTapped()
+        if index == 0{
+            tutorDelegate?.educationTapped()
+        }else{
+            bimbelDelegate?.gradesTapped()
+        }
     }
     
 }
@@ -44,7 +49,7 @@ extension ContentViewTableViewCell{
 }
 extension ContentViewTableViewCell:SendTutorToCustom{
     func sendTutor(tutor: Tutor) {
-        self.tutorCustom = tutor
+        
     }
 }
 extension ContentViewTableViewCell:UITableViewDataSource, UITableViewDelegate{
@@ -55,7 +60,7 @@ extension ContentViewTableViewCell:UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: customExperieneTableViewCell, for: indexPath) as! CustomExperienceTableViewCell
-        cell.setCell(name: tutorCustom.tutorEducation[indexPath.row].universityName, place: tutorCustom.tutorEducation[indexPath.row].grade, date: "Jurusan : \(tutorCustom.tutorEducation[indexPath.row].fieldOfStudy)")
+        
         return cell
     }
     
