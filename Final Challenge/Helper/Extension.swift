@@ -54,6 +54,11 @@ extension UIView{
         self.clipsToBounds = true
     }
     
+    func outerRound3() {
+        self.layer.cornerRadius = 12
+        self.clipsToBounds = true
+    }
+    
 }
 
 extension UITextField {

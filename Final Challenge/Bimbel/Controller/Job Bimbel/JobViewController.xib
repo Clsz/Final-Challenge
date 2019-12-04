@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JobViewController" customModule="Final_Challenge" customModuleProvider="target">
+            <connections>
+                <outlet property="buttonPostJob" destination="EZT-2c-uce" id="Ifm-Tm-nGg"/>
+                <outlet property="postedJobTableView" destination="cM1-3l-DOm" id="Vkw-hR-c6H"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOU CAN POST A JOB HERE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sxt-iv-Api">
+                    <rect key="frame" x="20" y="44" width="374" height="16"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                    <color key="textColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nbL-pQ-CXD">
+                    <rect key="frame" x="20" y="106" width="374" height="100"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EZT-2c-uce">
+                            <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
+                            <color key="backgroundColor" red="0.105868794" green="0.34749037030000002" blue="0.60002660750000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="100" id="jwz-N1-zfR"/>
+                            </constraints>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEED ANOTHER TEACHER?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWI-ZW-iyb">
+                            <rect key="frame" x="20" y="21" width="174" height="16"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="POST A JOB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4e-Bq-ir1">
+                            <rect key="frame" x="20" y="43" width="151" height="32"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="fWI-ZW-iyb" firstAttribute="top" secondItem="nbL-pQ-CXD" secondAttribute="top" constant="21" id="2wE-an-z4b"/>
+                        <constraint firstAttribute="bottom" secondItem="k4e-Bq-ir1" secondAttribute="bottom" constant="25" id="4dV-zL-RnL"/>
+                        <constraint firstAttribute="bottom" secondItem="EZT-2c-uce" secondAttribute="bottom" id="JNS-g1-w4W"/>
+                        <constraint firstItem="fWI-ZW-iyb" firstAttribute="leading" secondItem="nbL-pQ-CXD" secondAttribute="leading" constant="20" id="Rok-bu-fwr"/>
+                        <constraint firstAttribute="trailing" secondItem="k4e-Bq-ir1" secondAttribute="trailing" constant="203" id="ZB3-OE-UZR"/>
+                        <constraint firstItem="k4e-Bq-ir1" firstAttribute="leading" secondItem="nbL-pQ-CXD" secondAttribute="leading" constant="20" id="Zmm-7G-huk"/>
+                        <constraint firstItem="EZT-2c-uce" firstAttribute="top" secondItem="nbL-pQ-CXD" secondAttribute="top" id="iQA-To-IZF"/>
+                        <constraint firstAttribute="trailing" secondItem="fWI-ZW-iyb" secondAttribute="trailing" constant="180" id="jjI-mZ-6Qx"/>
+                        <constraint firstItem="EZT-2c-uce" firstAttribute="leading" secondItem="nbL-pQ-CXD" secondAttribute="leading" id="loy-4U-ggi"/>
+                        <constraint firstItem="k4e-Bq-ir1" firstAttribute="top" secondItem="fWI-ZW-iyb" secondAttribute="bottom" constant="6" id="mRU-nV-wbn"/>
+                        <constraint firstAttribute="trailing" secondItem="EZT-2c-uce" secondAttribute="trailing" id="wnA-nU-gmu"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posted Jobs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qcb-cV-ixk">
+                    <rect key="frame" x="20" y="235" width="129" height="27"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cM1-3l-DOm">
+                    <rect key="frame" x="0.0" y="270" width="414" height="592"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="nbL-pQ-CXD" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="0KN-EH-vur"/>
+                <constraint firstItem="cM1-3l-DOm" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="5Lg-qL-eqD"/>
+                <constraint firstItem="Sxt-iv-Api" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="AzQ-Cd-63f"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Qcb-cV-ixk" secondAttribute="trailing" constant="265" id="BZb-5h-MhE"/>
+                <constraint firstItem="cM1-3l-DOm" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="KY9-Mr-bDi"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cM1-3l-DOm" secondAttribute="trailing" id="Loa-09-hkQ"/>
+                <constraint firstItem="cM1-3l-DOm" firstAttribute="top" secondItem="Qcb-cV-ixk" secondAttribute="bottom" constant="8" id="ZCE-Kx-Qid"/>
+                <constraint firstItem="Qcb-cV-ixk" firstAttribute="top" secondItem="nbL-pQ-CXD" secondAttribute="bottom" constant="29" id="boY-yu-RfN"/>
+                <constraint firstItem="Sxt-iv-Api" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="elt-zq-cgp"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Sxt-iv-Api" secondAttribute="trailing" constant="20" id="lQd-Hq-fxf"/>
+                <constraint firstItem="nbL-pQ-CXD" firstAttribute="top" secondItem="Sxt-iv-Api" secondAttribute="bottom" constant="46" id="rWB-fc-jG7"/>
+                <constraint firstItem="Qcb-cV-ixk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="rXo-1L-a5R"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="nbL-pQ-CXD" secondAttribute="trailing" constant="20" id="vR3-9R-Dhm"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="176.81159420289856" y="178.79464285714286"/>
+        </view>
+    </objects>
+</document>
