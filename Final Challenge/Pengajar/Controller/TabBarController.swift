@@ -1,0 +1,44 @@
+//
+//  TabBarController.swift
+//  Final Challenge
+//
+//  Created by Muhammad Reynaldi on 09/11/19.
+//  Copyright © 2019 12. All rights reserved.
+//
+
+import UIKit
+
+class TabBarController: UITabBarController {
+    
+    var homeNav:UINavigationController!
+    var homeVC: HomeViewController!
+    var detailNav:UINavigationController!
+    var detailVC: SegmentedViewController!
+    var profileNav:UINavigationController!
+    var profileVC: ProfileViewController!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setTabBar()
+    }
+    
+    func setTabBar() {
+        homeVC = HomeViewController()
+        homeNav = UINavigationController(rootViewController: homeVC)
+        homeNav.tabBarItem = UITabBarItem(title: "Job", image: UIImage(named: "icon_job"), selectedImage: UIImage(named: "icon_job"))
+        
+        detailVC = SegmentedViewController()
+        detailNav = UINavigationController(rootViewController: detailVC)
+        detailNav.tabBarItem = UITabBarItem(title: "Progress", image: UIImage(named: "tab_progres"), selectedImage: UIImage(named: "tab_progres"))
+        
+        profileVC = ProfileViewController()
+        profileNav = UINavigationController(rootViewController: profileVC)
+        profileNav.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "icon_profile"), selectedImage: UIImage(named: "icon_profile"))
+
+        let tabBarList:[UIViewController] = [homeNav,detailNav,profileNav]
+
+        viewControllers = tabBarList
+    }
+}
+
+
