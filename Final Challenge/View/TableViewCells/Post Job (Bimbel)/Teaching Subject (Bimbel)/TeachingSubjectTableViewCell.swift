@@ -1,14 +1,14 @@
 //
-//  PostedSubjectTableViewCell.swift
+//  TeachingSubjectTableViewCell.swift
 //  Final Challenge
 //
-//  Created by Jason Valencius Wijaya on 03/12/19.
+//  Created by Jason Valencius Wijaya on 04/12/19.
 //  Copyright © 2019 12. All rights reserved.
 //
 
 import UIKit
 
-class PostedSubjectTableViewCell: UITableViewCell {
+class TeachingSubjectTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
