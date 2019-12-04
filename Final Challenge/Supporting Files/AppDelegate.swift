@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        self.tabBarController = TabBarController()
 //        window?.rootViewController = tabBarController
 //        window?.makeKeyAndVisible()
-        let rv = BimbelProfileViewController()
+        let rv = HomeViewController()
         let navigationController = UINavigationController(rootViewController: rv)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

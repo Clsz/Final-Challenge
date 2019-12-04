@@ -82,15 +82,15 @@ extension SubjectViewController: UITableViewDataSource,UITableViewDelegate{
         } else {
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.checkmark
             selected.append(indexPath.row)
-            ConstantManager.tempArraySubject.insert(subjek[indexPath.row], at: 0)
+            ConstantManager.subject.insert(subjek[indexPath.row], at: 0)
         }
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.none
         
-        if let index = ConstantManager.tempArraySubject.firstIndex(of: subjek[indexPath.row]) {
-            ConstantManager.tempArraySubject.remove(at: index)
+        if let index = ConstantManager.subject.firstIndex(of: subjek[indexPath.row]) {
+            ConstantManager.subject.remove(at: index)
         }
         
     }

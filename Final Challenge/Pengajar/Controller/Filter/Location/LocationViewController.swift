@@ -93,15 +93,15 @@ extension LocationViewController: UITableViewDataSource,UITableViewDelegate{
         }else{
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.checkmark
             selected.append(indexPath.row)
-            ConstantManager.tempArray.insert(lokasi[indexPath.row], at: 0)
+            ConstantManager.location.insert(lokasi[indexPath.row], at: 0)
         }
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.none
         
-        if let index = ConstantManager.tempArray.firstIndex(of: lokasi[indexPath.row]) {
-            ConstantManager.tempArray.remove(at: index)
+        if let index = ConstantManager.location.firstIndex(of: lokasi[indexPath.row]) {
+            ConstantManager.location.remove(at: index)
         }
     }
     

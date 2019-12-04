@@ -110,10 +110,10 @@ extension FilterViewController:SubjectProtocol{
 extension FilterViewController:UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if (collectionView == self.LocationCV) {
-            return ConstantManager.tempArray.count;
+            return ConstantManager.location.count;
         }
         else if (collectionView  == subjectCV) {
-            return  ConstantManager.tempArraySubject.count
+            return  ConstantManager.subject.count
         }
         else {
             return ConstantManager.grade.count
@@ -129,10 +129,10 @@ extension FilterViewController:UICollectionViewDataSource, UICollectionViewDeleg
             cell.kotakFilter.layer.borderColor = #colorLiteral(red: 0.1098039216, green: 0.3921568627, blue: 0.6666666667, alpha: 1)
             cell.kotakFilter.layer.borderWidth = 1
             if selectedIndex.contains(indexPath.row) {
-                selectedLocation.insert(ConstantManager.tempArray[indexPath.row], at: 0)
+                selectedLocation.insert(ConstantManager.location[indexPath.row], at: 0)
                 cell.isSelected = true
             }
-            cell.labelFilter.text = ConstantManager.tempArray[indexPath.row]
+            cell.labelFilter.text = ConstantManager.location[indexPath.row]
             
             return cell
         }
@@ -142,11 +142,11 @@ extension FilterViewController:UICollectionViewDataSource, UICollectionViewDeleg
             cell.kotakFilter.layer.cornerRadius = 10
             cell.kotakFilter.layer.borderColor = #colorLiteral(red: 0.1098039216, green: 0.3921568627, blue: 0.6666666667, alpha: 1)
             cell.kotakFilter.layer.borderWidth = 1
-            cell.labelFilter.text = ConstantManager.tempArraySubject[indexPath.row]
+            cell.labelFilter.text = ConstantManager.subject[indexPath.row]
             
             if kirimIndex.contains(indexPath.row){
                 cell.isSelected = true
-                selectedLocation.insert(ConstantManager.tempArraySubject[indexPath.row], at: 0)
+                selectedLocation.insert(ConstantManager.subject[indexPath.row], at: 0)
             }
             
             return cell
