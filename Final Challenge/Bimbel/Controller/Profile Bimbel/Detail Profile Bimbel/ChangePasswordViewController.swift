@@ -14,6 +14,7 @@ class ChangePasswordViewController: BaseViewController {
     @IBOutlet weak var newPasswordTF: UITextField!
     @IBOutlet weak var confirmPasswordTF: UITextField!
     @IBOutlet weak var applyButton: UIButton!
+    var password:String?
     var accessoryDoneButton: UIBarButtonItem!
     let accessoryToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
     let flexiblea = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)

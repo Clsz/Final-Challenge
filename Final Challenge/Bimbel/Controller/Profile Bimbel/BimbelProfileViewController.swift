@@ -56,15 +56,13 @@ extension BimbelProfileViewController:BimbelProtocol{
     }
     
     func addressTapped() {
+        let index = IndexPath(row: 1, section: 0)
+        let cell = tableView.cellForRow(at: index) as! DetailAddressTableViewCell
         if flag == false{
             flag = true
-            let index = IndexPath(row: 1, section: 0)
-            let cell = tableView.cellForRow(at: index) as! DetailAddressTableViewCell
             cell.textField.isEnabled = true
             cell.button.setTitle("Done", for: .normal)
         }else{
-            let index = IndexPath(row: 1, section: 0)
-            let cell = tableView.cellForRow(at: index) as! DetailAddressTableViewCell
             cell.textField.isEnabled = false
             cell.button.setTitle("Edit Address", for: .normal)
             flag = false
