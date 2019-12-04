@@ -18,7 +18,7 @@ class BimbelProfileViewController: BaseViewController {
     let subject = "ContentTableViewCellID"
     let grade = "ContentViewTableViewCellID"
     let logoutView = "LogoutTableViewCellID"
-    
+    var flag = false
     var sendToCustom:SendTutorToCustom?
     
     override func viewDidLoad() {
@@ -31,7 +31,7 @@ class BimbelProfileViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         //        sendToCustom?.sendTutor(tutor: self.tutorModel)
-        setupView(text: "Profil")
+        setupView(text: "Bimbel Profile")
         setupData()
         registerCell()
         cellDelegate()
@@ -56,8 +56,19 @@ extension BimbelProfileViewController:BimbelProtocol{
     }
     
     func addressTapped() {
-        let destVC = DetailAddressViewController()
-        self.navigationController?.pushViewController(destVC, animated: true)
+        if flag == false{
+            flag = true
+            let index = IndexPath(row: 1, section: 0)
+            let cell = tableView.cellForRow(at: index) as! DetailAddressTableViewCell
+            cell.textField.isEnabled = true
+            cell.button.setTitle("Done", for: .normal)
+        }else{
+            let index = IndexPath(row: 1, section: 0)
+            let cell = tableView.cellForRow(at: index) as! DetailAddressTableViewCell
+            cell.textField.isEnabled = false
+            cell.button.setTitle("Edit Address", for: .normal)
+            flag = false
+        }
     }
     
     func subjectTapped() {

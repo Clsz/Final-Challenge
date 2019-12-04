@@ -20,7 +20,7 @@ class DetailProfileBimbelTableViewCell: UITableViewCell {
     @IBOutlet weak var outerEnd: UIView!
     @IBOutlet weak var changePasswordButton: UIButton!
     @IBOutlet weak var applyButton: UIButton!
-    var index:Int?
+    var toolBar = UIToolbar()
     var passwordDelegate:PasswordProtocol?
     var delegate:ProfileBimbelDetailProtocol?
     var accessoryDoneButton: UIBarButtonItem!
@@ -79,6 +79,8 @@ extension DetailProfileBimbelTableViewCell{
         self.addressTF.layer.borderColor = #colorLiteral(red: 0.1098039216, green: 0.3921568627, blue: 0.6666666667, alpha: 1)
         self.startTF.layer.borderColor = #colorLiteral(red: 0.1098039216, green: 0.3921568627, blue: 0.6666666667, alpha: 1)
         self.endTF.layer.borderColor = #colorLiteral(red: 0.1098039216, green: 0.3921568627, blue: 0.6666666667, alpha: 1)
+        self.startTF.setLeftPaddingPoints(10.0)
+        self.endTF.setLeftPaddingPoints(10.0)
         self.nameTF.outerRound()
         self.addressTF.outerRound()
         self.startTF.outerRound()
@@ -88,7 +90,7 @@ extension DetailProfileBimbelTableViewCell{
 }
 extension DetailProfileBimbelTableViewCell:UITextFieldDelegate{
     private func doneButton() {
-        self.accessoryDoneButton = UIBarButtonItem(title: "Selesai", style: .done, target: self, action: #selector(self.donePressed))
+        self.accessoryDoneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.donePressed))
         
         
         self.accessoryToolBar.items = [self.accessoryDoneButton]
@@ -98,10 +100,11 @@ extension DetailProfileBimbelTableViewCell:UITextFieldDelegate{
         
         self.nameTF.inputAccessoryView = accessoryToolBar
         self.addressTF.inputAccessoryView = accessoryToolBar
+        self.startTF.inputAccessoryView  = accessoryToolBar
+        self.endTF.inputAccessoryView = accessoryToolBar
     }
     
     @objc func donePressed() {
         view.endEditing(true)
     }
 }
-

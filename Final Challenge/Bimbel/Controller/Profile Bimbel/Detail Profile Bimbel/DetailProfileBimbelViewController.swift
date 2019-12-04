@@ -16,8 +16,8 @@ class DetailProfileBimbelViewController: BaseViewController {
     var selectedStartYear: String?
     var selectedEndYear: String?
     var toolBar = UIToolbar()
-    var pickerStart = UIPickerView()
-    var pickerEnd = UIPickerView()
+    var pickerStart = UIDatePicker()
+    var pickerEnd = UIDatePicker()
     let content = "DetailProfileBimbelTableViewCellID"
     var bimbel:CKRecord?
     weak var delegate: LanguageViewControllerDelegate?
@@ -88,36 +88,32 @@ extension DetailProfileBimbelViewController:ProfileBimbelDetailProtocol, Passwor
         // Panggil get data and save
     }
 }
-extension DetailProfileBimbelViewController:UIPickerViewDelegate, UIPickerViewDataSource{
+extension DetailProfileBimbelViewController{
     
     private func createStartHour() {
-        pickerStart = UIPickerView.init()
         pickerStart.tag = 0
-        pickerStart.delegate = self
-        pickerStart.selectRow(5, inComponent:0, animated:true)
-        
+        pickerStart.datePickerMode = .time
         pickerStart.backgroundColor = UIColor.white
         pickerStart.autoresizingMask = .flexibleWidth
         pickerStart.contentMode = .center
         pickerStart.setValue(UIColor.black, forKey: "textColor")
         pickerStart.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
         self.view.addSubview(pickerStart)
+        pickerStart.addTarget(self, action: #selector(dateChange(datePicker:)), for: .valueChanged)
         
         createToolbar()
     }
-    
+
     private func createEndHour() {
-        pickerEnd = UIPickerView.init()
         pickerEnd.tag = 1
-        pickerEnd.delegate = self
-        pickerEnd.selectRow(5, inComponent:0, animated:true)
-        
         pickerEnd.backgroundColor = UIColor.white
+        pickerEnd.datePickerMode = .time
         pickerEnd.autoresizingMask = .flexibleWidth
         pickerEnd.contentMode = .center
         pickerEnd.setValue(UIColor.black, forKey: "textColor")
         pickerEnd.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
         self.view.addSubview(pickerEnd)
+        pickerEnd.addTarget(self, action: #selector(dateChange(datePicker:)), for: .valueChanged)
         
         createToolbar()
     }
@@ -129,47 +125,27 @@ extension DetailProfileBimbelViewController:UIPickerViewDelegate, UIPickerViewDa
     }
     
     @objc func onDoneButtonTapped() {
-        let index = IndexPath(row: 0, section: 0)
-        let cell = tableView.cellForRow(at: index) as! DetailProfileBimbelTableViewCell
-        cell.startTF.text = selectedStartYear
-        cell.endTF.text = selectedEndYear
-        
         toolBar.removeFromSuperview()
         pickerStart.removeFromSuperview()
         pickerEnd.removeFromSuperview()
     }
     
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView.tag == 0{
-            return ConstantManager.year.count
+    @objc func dateChange(datePicker: UIDatePicker) {
+        let index = IndexPath(row: 0, section: 0)
+        let cell = tableView.cellForRow(at: index) as! DetailProfileBimbelTableViewCell
+        
+        if datePicker == pickerStart{
+            let dateFormater = DateFormatter()
+            dateFormater.dateFormat = "HH:mm a"
+            cell.startTF.text = dateFormater.string(from: datePicker.date)
         }else{
-            return ConstantManager.year.count
+            let dateFormater = DateFormatter()
+            dateFormater.dateFormat = "HH:mm a"
+            
+            cell.endTF.text = dateFormater.string(from: datePicker.date)
         }
     }
     
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerView.tag == 0{
-            return ConstantManager.year[row]
-        }else {
-            return ConstantManager.year[row]
-        }
-    }
-    
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if pickerView.tag == 0{
-            selectedStartYear = ConstantManager.year[row]
-        }else{
-            selectedEndYear = ConstantManager.year[row]
-        }
-    }
 }
 extension DetailProfileBimbelViewController:UITableViewDataSource,UITableViewDelegate{
     func registerCell() {
