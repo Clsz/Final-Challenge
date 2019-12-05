@@ -13,6 +13,8 @@ class DetailAddressTableViewCell: UITableViewCell {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var textField: UITextField!
+    var bimbelDelegate:BimbelProtocol?
+    var index:Int?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,6 +25,9 @@ class DetailAddressTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    @IBAction func editTapped(_ sender: Any) {
+        bimbelDelegate?.addressTapped()
     }
     
 }

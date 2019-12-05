@@ -23,6 +23,7 @@ class ProfileViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         sendToCustom?.sendTutor(tutor: self.tutorModel)
         setupView(text: "Profil")
         setupData()
@@ -147,18 +148,18 @@ extension ProfileViewController:UITableViewDataSource, UITableViewDelegate{
                 cell.setCell(image: tutor.tutorImage, name: fullName, university: "Bina Nusantara", age: 22)
                 print(fullName)
             }
-            cell.contentDelegate = self
+            cell.tutorDelegate = self
             return cell
         }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:String, code:Int){
             if keyValue.code == 0{
                 let cell = tableView.dequeueReusableCell(withIdentifier: content, for: indexPath) as! ContentTableViewCell
                 cell.setCell(title: keyValue.key, button: keyValue.value)
-                cell.contentDelegate =  self
+                cell.tutorDelegate =  self
                 return cell
             }else if keyValue.code == 1{
                 let cell = tableView.dequeueReusableCell(withIdentifier: contentView, for: indexPath) as! ContentViewTableViewCell
                 cell.setCell(text: keyValue.key, button: keyValue.value)
-                cell.contentDelegate = self
+                cell.tutorDelegate = self
                 return cell
             }else if keyValue.code == 2{
                 let cell = tableView.dequeueReusableCell(withIdentifier: achievement, for: indexPath) as! AchievementTableViewCell
