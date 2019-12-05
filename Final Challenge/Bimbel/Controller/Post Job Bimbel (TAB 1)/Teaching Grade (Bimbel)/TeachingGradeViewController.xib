@@ -17,42 +17,24 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLEASE CHOOSE YOUR TEACHING GRADES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2G-8m-Yvq">
-                    <rect key="frame" x="20" y="44" width="374" height="16"/>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
-                    <color key="textColor" red="0.48627450980392156" green="0.48627450980392156" blue="0.48627450980392156" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cob-0o-Wyr">
-                    <rect key="frame" x="0.0" y="118" width="414" height="360"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="360" id="eNt-xc-FGe"/>
+                    </constraints>
                     <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <inset key="separatorInset" minX="18" minY="0.0" maxX="0.0" maxY="0.0"/>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DT5-xx-DB7">
-                    <rect key="frame" x="20" y="743" width="374" height="44"/>
-                    <color key="backgroundColor" red="0.12621474269999999" green="0.38607421520000001" blue="0.6666960716" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="dkp-lg-jOP"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                    <state key="normal" title="Button">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="DT5-xx-DB7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="0VO-Bo-uqm"/>
-                <constraint firstItem="p2G-8m-Yvq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="6Ys-n9-YTh"/>
-                <constraint firstItem="DT5-xx-DB7" firstAttribute="top" secondItem="cob-0o-Wyr" secondAttribute="bottom" constant="265" id="CLG-1F-NLw"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="DT5-xx-DB7" secondAttribute="trailing" constant="20" id="GOa-HD-cBj"/>
-                <constraint firstItem="cob-0o-Wyr" firstAttribute="top" secondItem="p2G-8m-Yvq" secondAttribute="bottom" constant="58" id="OtM-r9-hIM"/>
+                <constraint firstItem="cob-0o-Wyr" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Rp4-9w-b20"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cob-0o-Wyr" secondAttribute="trailing" id="Soc-yK-hFs"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="p2G-8m-Yvq" secondAttribute="trailing" constant="20" id="Uvb-7d-U33"/>
-                <constraint firstItem="p2G-8m-Yvq" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="YgA-cE-Et1"/>
+                <constraint firstItem="cob-0o-Wyr" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="W7e-yv-Cvm"/>
+                <constraint firstItem="cob-0o-Wyr" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="e0m-wa-JeH"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="cob-0o-Wyr" secondAttribute="bottom" id="gw8-y9-GPR"/>
                 <constraint firstItem="cob-0o-Wyr" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="hZl-UN-6mC"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="DT5-xx-DB7" secondAttribute="bottom" constant="75" id="lsT-9B-9ZD"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="139" y="141"/>

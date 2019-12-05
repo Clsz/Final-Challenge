@@ -10,6 +10,8 @@ import UIKit
 
 class TeachingGradeTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var teachingGrade: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

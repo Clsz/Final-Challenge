@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 class ChangePasswordViewController: BaseViewController {
 
@@ -14,7 +15,7 @@ class ChangePasswordViewController: BaseViewController {
     @IBOutlet weak var newPasswordTF: UITextField!
     @IBOutlet weak var confirmPasswordTF: UITextField!
     @IBOutlet weak var applyButton: UIButton!
-    var password:String?
+    var bimbel:CKRecord?
     var accessoryDoneButton: UIBarButtonItem!
     let accessoryToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
     let flexiblea = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -53,7 +54,6 @@ extension ChangePasswordViewController{
         self.applyButton.loginRound()
     }
     
-    
     private func validatePassword() {
         if newPasswordTF.text?.isValidPassword() == false{
             return showAlert(title: "Attention", message: "Password minimum 6 characters, one uppercase and lowercase")
@@ -62,6 +62,10 @@ extension ChangePasswordViewController{
         }else{
             showAlert(title: "Success", message: "Password must be filled")
         }
+    }
+    
+    private func updatePassword() {
+        //Query update
     }
 }
 extension ChangePasswordViewController:UITextFieldDelegate{

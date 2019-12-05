@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TeachingSubjectViewController" customModule="Final_Challenge" customModuleProvider="target">
             <connections>
+                <outlet property="tableViewCuy" destination="4PA-9g-y5P" id="6te-Jf-fzp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,45 +18,21 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLEASE CHOOSE YOUR TEACHING SUBJECTS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K21-2I-geo">
-                    <rect key="frame" x="20" y="44" width="374" height="16"/>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
-                    <color key="textColor" red="0.48627450980392156" green="0.48627450980392156" blue="0.48627450980392156" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bdt-2A-3uW">
-                    <rect key="frame" x="0.0" y="117" width="414" height="541"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4PA-9g-y5P">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                    <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <inset key="separatorInset" minX="18" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <viewLayoutGuide key="safeArea" id="6tZ-PZ-3fm"/>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uUe-74-vwc">
-                    <rect key="frame" x="20" y="743" width="374" height="44"/>
-                    <color key="backgroundColor" red="0.10237450150000001" green="0.3474898636" blue="0.60002666709999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="kYH-nY-YZ7"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                    <state key="normal" title="Button">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="K21-2I-geo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="I6S-IF-uWz"/>
-                <constraint firstItem="K21-2I-geo" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="QQ6-dm-A6F"/>
-                <constraint firstItem="uUe-74-vwc" firstAttribute="top" secondItem="bdt-2A-3uW" secondAttribute="bottom" constant="85" id="Qw4-5x-d3Y"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="K21-2I-geo" secondAttribute="trailing" constant="20" id="Rg2-aF-VuO"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bdt-2A-3uW" secondAttribute="trailing" id="Xad-XV-c8q"/>
-                <constraint firstItem="uUe-74-vwc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Ym5-Oj-sIR"/>
-                <constraint firstItem="bdt-2A-3uW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="dvc-9E-c7q"/>
-                <constraint firstItem="bdt-2A-3uW" firstAttribute="top" secondItem="K21-2I-geo" secondAttribute="bottom" constant="57" id="iEy-0q-0h3"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="uUe-74-vwc" secondAttribute="trailing" constant="20" id="jEc-0N-RdC"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="uUe-74-vwc" secondAttribute="bottom" constant="75" id="yms-uW-WQw"/>
+                <constraint firstItem="UXJ-JW-Ybl" firstAttribute="trailing" secondItem="4PA-9g-y5P" secondAttribute="trailing" id="9Is-aO-88o"/>
+                <constraint firstItem="4PA-9g-y5P" firstAttribute="bottom" secondItem="UXJ-JW-Ybl" secondAttribute="bottom" id="IjY-pV-DoR"/>
+                <constraint firstItem="4PA-9g-y5P" firstAttribute="leading" secondItem="UXJ-JW-Ybl" secondAttribute="leading" id="Pw9-Yi-sco"/>
+                <constraint firstItem="4PA-9g-y5P" firstAttribute="top" secondItem="UXJ-JW-Ybl" secondAttribute="top" id="SIF-vi-HC0"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="139" y="141"/>
+            <viewLayoutGuide key="safeArea" id="UXJ-JW-Ybl"/>
+            <point key="canvasLocation" x="137.68115942028987" y="140.625"/>
         </view>
     </objects>
 </document>
