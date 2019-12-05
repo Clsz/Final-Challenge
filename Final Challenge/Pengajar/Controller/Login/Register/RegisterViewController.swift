@@ -16,10 +16,15 @@ class RegisterViewController: BaseViewController {
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var textError: UILabel!
+    var accessoryDoneButton: UIBarButtonItem!
+    let accessoryToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
+    let flexiblea = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setTextField()
     }
     
     @IBAction func eyeTapped(_ sender: Any) {
@@ -28,65 +33,108 @@ class RegisterViewController: BaseViewController {
     
     @IBAction func regiterTapped(_ sender: Any) {
         validateFields()
+        
+        let firstName = firstNameTF.text!
+        let lastName = lastNameTF.text!
+        let email = emailTF.text!
+        let password = passwordTF.text!
+        let vc = HomeViewController()
+        
+        if CKUserData.shared.checkUser(email: email) == LoginResults.userNotExist {
+            CKUserData.shared.addUser(firstName: firstName, lastName: lastName, email: email, password: password)
+            CKUserData.shared.saveUsers()
+            self.navigationController?.pushViewController(vc, animated: false)
+        } else { return }
     }
     
     @IBAction func loginTapped(_ sender: Any) {
         let loginVC = LoginViewController()
-        self.navigationController?.pushViewController(loginVC, animated: true)
+        self.navigationController?.pushViewController(loginVC, animated: false)
     }
     
+}
+
+extension RegisterViewController {
     func setupView() {
         registerButton.loginRound()
         self.navigationController?.navigationBar.isHidden = true
     }
+}
+
+extension RegisterViewController: UITextFieldDelegate {
+    
+    
+    func setTextField() {
+        firstNameTF.delegate = self
+        lastNameTF.delegate = self
+        emailTF.delegate = self
+        passwordTF.delegate = self
+        
+        self.accessoryDoneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.donePressed))
+        self.accessoryToolBar.items = [self.accessoryDoneButton]
+        accessoryToolBar.setItems([flexiblea, accessoryDoneButton], animated: false)
+        
+        firstNameTF.inputAccessoryView = accessoryToolBar
+        lastNameTF.inputAccessoryView = accessoryToolBar
+        emailTF.inputAccessoryView = accessoryToolBar
+        passwordTF.inputAccessoryView = accessoryToolBar
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        moveTextField(textField, moveDistance: -250, up: true)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        moveTextField(textField, moveDistance: -250, up: false)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case firstNameTF:
+            lastNameTF.becomeFirstResponder()
+        case lastNameTF:
+            emailTF.becomeFirstResponder()
+        case emailTF:
+            passwordTF.becomeFirstResponder()
+        default:
+            textField.resignFirstResponder()
+        }
+        return false
+    }
+    
+    
+    func moveTextField(_ textField: UITextField, moveDistance: Int, up: Bool) {
+        let moveDuration = 0.3
+        let movement: CGFloat = CGFloat(up ? moveDistance : -moveDistance)
+        
+        UIView.beginAnimations("animateTextField", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(moveDuration)
+        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
+        UIView.commitAnimations()
+    }
     
     func validateFields() {
+        textError.textColor = .systemRed
         if firstNameTF.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-            return self.showAlert(title: "Error", message: "Nama depan belum diisi")
-        }else if lastNameTF.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-            return self.showAlert(title: "Error", message: "Nama Belakang belum diisi")
+            return textError.text = "Please enter your first name"
         }else if emailTF.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-            return self.showAlert(title: "Error", message: "Email belum diisi")
+            return textError.text = "Please enter your email address"
         }else if emailTF.text?.isValidEmail() == false {
-            return self.showAlert(title: "Error", message: "Format email salah")
+            return textError.text = "Invalid format"
         }else if passwordTF.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-            return self.showAlert(title: "Error", message: "Password belum diisi")
+            return textError.text = "Please enter your password"
         }else if passwordTF.text?.isValidPassword() == false {
-            return self.showAlert(title: "Perhatian", message: "Password harus berisi 6 karakter 1 huruf kecil dan 1 huruf besar")
+            return textError.text = "Password must contain 6 characters. Combination of uppercase letter, lowercase letter, and number"
         }else {
-            register()
+            //                        register()
         }
     }
     
-    func register() {
-        self.showLoading()
-        
-        let firstName = firstNameTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        let lastName = lastNameTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        let email = emailTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        let password = passwordTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-//        Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
-//            if err != nil {
-//                DispatchQueue.main.async {
-//                    self.showAlert(title: "Error", message: "Error Creating User!!")
-//                    self.hideLoading()
-//                }
-//            } else {
-//                let db = Firestore.firestore()
-//                db.collection("Tutor").document(result!.user.uid).setData(["firstName":firstName, "lastName":lastName]) { (error) in
-//                    
-//                    if error != nil {
-//                        print("Error Saving User!!")
-//                    }
-//                    
-//                    DispatchQueue.main.async {
-//                        self.dismiss(animated: false, completion: nil)
-//                        //Dashboard segue
-//                    }
-//                }
-//            }
-//        }
+    
+    @objc func donePressed(_ textField: UITextField) {
+        moveTextField(textField, moveDistance: 0, up: true)
+        view.endEditing(true)
     }
     
 }

@@ -43,6 +43,15 @@ extension TitleTableViewCell{
         setInterface()
     }
     
+    func setCellBimbel(image:String, name:String, umur:String, status:String) {
+        self.nameLabel.text = name
+        self.universityLabel.text = umur
+        self.ageLabel.text = status
+        pencil.isHidden = true
+        setInterface()
+        
+    }
+    
     private func setInterface() {
         self.outerProfile.outerRound()
         self.profileImage.setRounded()

@@ -15,14 +15,22 @@ class LoginViewController:BaseViewController{
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var forgotPassButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
+    var accessoryDoneButton: UIBarButtonItem!
+    let accessoryToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
+    let flexiblea = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setTextField()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setupView()
+    }
+    @IBAction func registerTapped(_ sender: Any) {
+        let vc = RegisterViewController()
+        self.navigationController?.pushViewController(vc, animated: false)
     }
     
     @IBAction func eyeTapped(_ sender: Any) {
@@ -30,7 +38,23 @@ class LoginViewController:BaseViewController{
     }
     
     @IBAction func loginTapped(_ sender: Any) {
+        self.showLoading()
         validateFields()
+        let email = emailTF.text!
+        let password = passwordTF.text!
+        CKUserData.shared.loadUsers(email: email, password: password) { isSuccess in
+            if isSuccess{
+                self.hideLoading()
+                let vc = TabBarController()
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.window?.rootViewController = vc
+                appDelegate.window?.makeKeyAndVisible()
+                CKUserData.shared.saveToken(token: email)
+            }else{
+                self.showAlert(title: "Attention", message: "Invalid")
+            }
+        }
+        
     }
 }
 
@@ -38,6 +62,26 @@ extension LoginViewController{
     func setupView() {
         loginButton.loginRound()
         self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    func loginSucceeded() {
+        print ("Login Succeeded")
+        
+        
+    }
+    
+    func userNotFound() {
+        let alert = UIAlertController(title: "User Not Found", message: "Please Sign Up", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func loginFailed() {
+        print ("Login Failed")
+        let alert = UIAlertController(title: "Login Failed", message: "Your Password is incorrect", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
     }
     
     func validateFields() {
@@ -48,32 +92,59 @@ extension LoginViewController{
         }else if passwordTF.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
             return self.showAlert(title: "Error", message: "Password belum diisi")
         }else {
-//            login()
         }
     }
     
-//    func login() {
-//        self.showLoading()
-//        
-//        let mail = emailTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-//        let pass = passwordTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-//        
-//        Auth.auth().signIn(withEmail: mail, password: pass) { (result, error) in
-//            if error != nil {
-//                DispatchQueue.main.async {
-//                    self.dismiss(animated: false) {
-//                        self.showAlert(title: "Error", message: "Email dan Password salah")
-//                    }
-//                }
-//            }else {
-//                //Dashboard Segue
-//                DispatchQueue.main.async {
-//                    self.dismiss(animated: false, completion: nil)
-//                    print("Loggedin")
-//                    let destVC = SkillsViewController()
-//                    self.navigationController?.pushViewController(destVC, animated: true)
-//                }
-//            }
-//        }
-//    }
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    
+    
+    func setTextField() {
+        emailTF.delegate = self
+        passwordTF.delegate = self
+        
+        self.accessoryDoneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.donePressed))
+        self.accessoryToolBar.items = [self.accessoryDoneButton]
+        accessoryToolBar.setItems([flexiblea, accessoryDoneButton], animated: false)
+        
+        emailTF.inputAccessoryView = accessoryToolBar
+        passwordTF.inputAccessoryView = accessoryToolBar
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        moveTextField(textField, moveDistance: -250, up: true)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        moveTextField(textField, moveDistance: -250, up: false)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case emailTF:
+            passwordTF.becomeFirstResponder()
+        default:
+            textField.resignFirstResponder()
+        }
+        return false
+    }
+    
+    
+    func moveTextField(_ textField: UITextField, moveDistance: Int, up: Bool) {
+        let moveDuration = 0.3
+        let movement: CGFloat = CGFloat(up ? moveDistance : -moveDistance)
+        
+        UIView.beginAnimations("animateTextField", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(moveDuration)
+        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
+        UIView.commitAnimations()
+    }
+    
+    @objc func donePressed(_ textField: UITextField) {
+        moveTextField(textField, moveDistance: 0, up: true)
+        view.endEditing(true)
+    }
+    
 }
