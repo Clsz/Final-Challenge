@@ -16,6 +16,7 @@ class ContentViewTableViewCell: UITableViewCell {
     @IBOutlet weak var tableView: UITableView!
     var id:Int?
     var tutor:CKRecord?
+    var index:Int?
     var education:CKRecord?
     var language:CKRecord?
     var experience:CKRecord?
@@ -24,6 +25,8 @@ class ContentViewTableViewCell: UITableViewCell {
     let customExperienceTableViewCell = "CustomExperienceTableViewCellID"
     let customLanguageTableViewCell = "CustomLanguageTableViewCellID"
     var tutorCustom:Tutor!
+    var tutorDelegate:ProfileProtocol?
+    var bimbelDelegate:BimbelProtocol?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,7 +43,11 @@ class ContentViewTableViewCell: UITableViewCell {
     }
     
     @IBAction func editTapped(_ sender: Any) {
-        contentDelegate?.educationTapped()
+        if index == 0{
+            tutorDelegate?.educationTapped()
+        }else{
+            bimbelDelegate?.gradesTapped()
+        }
     }
     
 }
@@ -76,7 +83,7 @@ extension ContentViewTableViewCell{
 
 extension ContentViewTableViewCell:SendTutorToCustom{
     func sendTutor(tutor: Tutor) {
-        self.tutorCustom = tutor
+        
     }
 }
 extension ContentViewTableViewCell:UITableViewDataSource, UITableViewDelegate{

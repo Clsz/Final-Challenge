@@ -39,10 +39,11 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dz6-GP-TFg">
-                        <rect key="frame" x="252" y="30" width="142" height="28"/>
+                        <rect key="frame" x="273" y="30" width="121" height="28"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="28" id="PIy-1S-OJE"/>
                         </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <state key="normal" title="Add Achievement">
                             <color key="titleColor" red="0.10980392160000001" green="0.3921568627" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
@@ -63,7 +64,7 @@
                     <constraint firstItem="7Z0-YI-2EX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="zD5-0I-Qy6"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="button" destination="Dz6-GP-TFg" id="Ul6-ca-CNv"/>

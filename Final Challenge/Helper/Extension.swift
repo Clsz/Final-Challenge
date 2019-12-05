@@ -54,6 +54,11 @@ extension UIView{
         self.clipsToBounds = true
     }
     
+    func outerRound3() {
+        self.layer.cornerRadius = 12
+        self.clipsToBounds = true
+    }
+    
 }
 
 extension UITextField {
@@ -204,6 +209,7 @@ extension Date{
         formatter.dateFormat = "MMM"
         return formatter.string(from: self)
     }
+
 }
 
 extension CKRecord.ID {

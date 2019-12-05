@@ -14,14 +14,16 @@ class ContentTableViewCell: UITableViewCell {
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     let filterCell = "filterCell"
-    var contentDelegate:ProfileProtocol?
+    var tutorDelegate:ProfileProtocol?
+    var bimbelDelegate:BimbelProtocol?
+    var index:Int?
     var tutorCustom:Tutor!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        cellDelegate()
         registerCell()
-//        collectionView.reloadData()
+        cellDelegate()
+        collectionView.reloadData()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -31,7 +33,11 @@ class ContentTableViewCell: UITableViewCell {
     }
     
     @IBAction func editTapped(_ sender: Any) {
-        contentDelegate?.skillTapped()
+        if index == 0{
+            tutorDelegate?.skillTapped()
+        }else{
+            bimbelDelegate?.subjectTapped()
+        }
     }
     
 }
@@ -39,6 +45,8 @@ extension ContentTableViewCell{
     func setCell(title:String,button:String) {
         self.titleLabel.text = title
         self.editButton.setTitle(button, for: .normal)
+        
+        setInterface()
     }
     
     private func setInterface() {
@@ -50,7 +58,7 @@ extension ContentTableViewCell:SendTutorToCustom{
         self.tutorCustom = tutor
     }
 }
-extension ContentTableViewCell:UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+extension ContentTableViewCell:UICollectionViewDataSource, UICollectionViewDelegate{
     private func registerCell() {
         collectionView.register(UINib(nibName: "FilterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: filterCell)
     }
@@ -60,14 +68,19 @@ extension ContentTableViewCell:UICollectionViewDataSource, UICollectionViewDeleg
         collectionView.dataSource = self
     }
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: filterCell, for: indexPath) as! FilterCollectionViewCell
-        cell.labelFilter.text = tutorCustom.tutorSkills[indexPath.row]
-        print("Skill cell = \(tutorCustom.tutorSkills[indexPath.row])")
+        cell.imageFilter.image = #imageLiteral(resourceName: "networking")
+        cell.labelFilter.text = "Menangis"
         return cell
     }
     

@@ -8,9 +8,7 @@
 
 import UIKit
 
-protocol LanguageViewControllerDelegate: class {
-    func refreshData(withTutorModel: Tutor)
-}
+
 
 class LanguageViewController: BaseViewController {
 

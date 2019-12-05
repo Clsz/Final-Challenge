@@ -10,21 +10,34 @@ import UIKit
 
 class ConstantManager{
     
-    static let mainColor = #colorLiteral(red: 0.3254901961, green: 0.7803921569, blue: 0.9411764706, alpha: 1)
+    static let mainColor = #colorLiteral(red: 0.09411764706, green: 0.3529411765, blue: 0.6, alpha: 1)
+    static var gender = ["Pria", "Wanita"]
 <<<<<<< HEAD
     static var tempArray = ["Kota Tangerang","Jakarta Barat","Kota Serang","Jakarta Pusat"]
+    static let grade = ["Elementary School","Junior Highschool","Senior Highschool"]
     static var tempArraySubject = ["Matematika", "Fisika", "Kimia", "Bahasa Inggris"]
-    static let proficiency = ["Beginner","Intermediate","Advanced"]
-    static let educationType = ["Junior High School","Senior High School","Undergraduate"]
-    static let experienceType = ["Teaching Assistant","Junior Developer","Senior Developer","Part Time","Freelance"]
-=======
-    static var tempArray = ["Kota Tangerang","Jakarta Utara","Kota Serang","Jakarta Barat"]
-    static var tempArraySubject = ["Kota Tangerang","Jakarta Utara","Kota Serang","Jakarta Barat"]
     static let proficiency = ["Pemula","Menengah","Mahir"]
-    static let educationType = ["Sekolah Menengah Pertama","Sekolah Menengah Atas","Sarjana"]
+    static let educationType = ["Sekolah Menengah Pertama","Sekolah Menengah Atas","Kuliah"]
     static let experienceType = ["Tutor","Junior Developer","Senior Developer","Paruh Waktu","Pengusaha"]
->>>>>>> a45d3fac3a520b6580a3c38608b3ff20f0f5e366
     static let year = ["2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025"]
     static let hardSkill = ["Pecahan","Alajabar","Geometri","Algoritma","Microsoft Word","Calculus","Microsoft Excel","Perkalian"]
     static let softSkill = ["Komunikasi","Integritas","Pemecahan Masalah","Kerja Sama"]
+=======
+    static var location = ["Kabupaten Lebak","Kabupaten Pandeglang","Kabupaten Serang","Kabupaten Tangerang", "Kota Cilegon","Kota Tangerang","Kota Serang","Kota Tangerang Selatan","Jakarta Barat","Jakarta Pusat","Jakarta Utara","Jakarta Timur","Jakarta Selatan","Kepulauan Seribu"]
+    static let grade = ["Kindergarten","Elementary School","Junior Highschool","Senior Highschool","College"]
+    static var subject = ["Mathematics", "Physisc", "Kimia", "Bahasa Inggris"]
+    static let kindergartenSubject = ["Writing","Speaking","Reading","Mathematics","English","Mandarin","Indonesian"]
+    static let elementarySubject = ["Natural Science","Social Science","Mathematics","English","Mandarin","Indonesian","Japanese","Korean","Arabic","French","German","Spanish","Code","TIK"]
+    static let juniorHighSchoolSubject = ["Mathematics","Physic","Chemistry","Biology","Sociology","Economics","History","Geography","English","Mandarin","Indonesian","Japanese","Korean","Arabic","French","German","Spanish","Code","TIK"]
+     static let seniorHighSchoolSubject = ["Mathematics","Physic","Chemistry","Biology","Sociology","Economics","History","Geography","English","Mandarin","Indonesian","Japanese","Korean","Arabic","French","German","Spanish","Code","TIK","UN","SBMPTN"]
+    static let college = ["Mathematics","Physic","Chemistry","Biology","Sociology","Economics","History","Geography","English","Mandarin","Indonesian","Japanese","Korean","Arabic","French","German","Spanish","Code","TIK"]
+    static let proficiency = ["Novice","Intermediate","Proficience","Expert"]
+    static let educationType = ["Senior High School","College"]
+    static let experienceType = ["Full Time","Part Time","Organization","Volunteer"]
+    static let year = ["Now","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025"]
+    static let hardSkill = ["Natural Science","Mathematics","Physic","Chemistry","Biology","Sociology","Economics","History","Geography","Code","TIK"]
+    static let softSkill = ["Creativity","Persuasive","Collaboration","Adaptability","Time Management","Decision Making","Inisiative","Communication","Patience","Resiliance","Strong Will","Hard Working","Friendly","Polite","Honest","Commitment","Responsible","Integrity","Confidence","Public Speaking","Presentation Skill","Leadership","Ability to Work Under Pressure"]
+    static let language = ["English","Mandarin","Indonesian","Japanese","Korean","Arabic","French","German","Spanish"]
+>>>>>>> 479736f500c70f303ca976566bc6c5b1e65370a6
+    
 }

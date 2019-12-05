@@ -16,7 +16,9 @@ class TitleTableViewCell: UITableViewCell {
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var pencil: UIButton!
     @IBOutlet weak var outerProfile: UIView!
-    var contentDelegate:ProfileProtocol?
+    var index:Int?
+    var tutorDelegate:ProfileProtocol?
+    var bimbelDelegate:BimbelProtocol?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,7 +32,11 @@ class TitleTableViewCell: UITableViewCell {
     }
     
     @IBAction func pencilTapped(_ sender: Any) {
-        contentDelegate?.pencilTapped()
+        if index == 0{
+            tutorDelegate?.pencilTapped()
+        }else{
+            bimbelDelegate?.pencilTapped()
+        }
     }
     
 }

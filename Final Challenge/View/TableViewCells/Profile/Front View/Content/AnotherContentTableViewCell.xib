@@ -26,10 +26,11 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="diF-FE-snr">
-                        <rect key="frame" x="277" y="30" width="117" height="28"/>
+                        <rect key="frame" x="295" y="30" width="99" height="28"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="28" id="4Jm-bc-woo"/>
                         </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <state key="normal" title="Add Language">
                             <color key="titleColor" red="0.10980392160000001" green="0.3921568627" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
@@ -43,12 +44,12 @@
                     </tableView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iz9-cU-ckW">
                         <rect key="frame" x="20" y="294" width="374" height="44"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.10980392160000001" green="0.3921568627" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="44" id="fiv-NV-hZ4"/>
                         </constraints>
                         <state key="normal" title="Show More">
-                            <color key="titleColor" red="0.10980392160000001" green="0.3921568627" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                     </button>
                 </subviews>
@@ -67,7 +68,7 @@
                     <constraint firstItem="diF-FE-snr" firstAttribute="centerY" secondItem="KpY-uw-B6J" secondAttribute="centerY" id="lNJ-et-hkw"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="button" destination="diF-FE-snr" id="GPg-nX-LyV"/>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="postedJobCell" id="KGk-i7-Jjw" customClass="JobBimbelTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="87"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="87"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E6p-uT-vBE" userLabel="Posted Job View">
+                        <rect key="frame" x="20" y="0.0" width="374" height="87"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sq2-Rh-ueW">
+                                <rect key="frame" x="20" y="13" width="342" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="NuE-xp-tBZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teaching Subjects" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGm-t5-XOF">
+                                <rect key="frame" x="20" y="37" width="342" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="kC7-js-bj3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Range Salary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WpP-zI-xuh">
+                                <rect key="frame" x="20" y="56" width="342" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="ib5-Z4-GRC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.105868794" green="0.34749037030000002" blue="0.60002660750000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="sq2-Rh-ueW" firstAttribute="top" secondItem="E6p-uT-vBE" secondAttribute="top" constant="13" id="E9s-Mg-zeM"/>
+                            <constraint firstAttribute="trailing" secondItem="sq2-Rh-ueW" secondAttribute="trailing" constant="12" id="FH2-Us-Rtc"/>
+                            <constraint firstAttribute="trailing" secondItem="WpP-zI-xuh" secondAttribute="trailing" constant="12" id="If0-H6-r09"/>
+                            <constraint firstAttribute="bottom" secondItem="WpP-zI-xuh" secondAttribute="bottom" constant="13" id="T9j-ud-Shz"/>
+                            <constraint firstItem="WpP-zI-xuh" firstAttribute="leading" secondItem="E6p-uT-vBE" secondAttribute="leading" constant="20" id="YTV-Pv-C98"/>
+                            <constraint firstItem="wGm-t5-XOF" firstAttribute="top" secondItem="sq2-Rh-ueW" secondAttribute="bottom" constant="1" id="ask-Lg-bhj"/>
+                            <constraint firstAttribute="trailing" secondItem="wGm-t5-XOF" secondAttribute="trailing" constant="12" id="pml-g5-9ez"/>
+                            <constraint firstItem="WpP-zI-xuh" firstAttribute="top" secondItem="wGm-t5-XOF" secondAttribute="bottom" constant="1" id="sw0-qX-XX8"/>
+                            <constraint firstItem="sq2-Rh-ueW" firstAttribute="leading" secondItem="E6p-uT-vBE" secondAttribute="leading" constant="20" id="tWK-zd-FmG"/>
+                            <constraint firstItem="wGm-t5-XOF" firstAttribute="leading" secondItem="E6p-uT-vBE" secondAttribute="leading" constant="20" id="u43-Iv-oX1"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="E6p-uT-vBE" secondAttribute="bottom" id="0BT-s5-HkB"/>
+                    <constraint firstItem="E6p-uT-vBE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="BmR-hR-P6E"/>
+                    <constraint firstItem="E6p-uT-vBE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="EGT-jf-rez"/>
+                    <constraint firstAttribute="trailing" secondItem="E6p-uT-vBE" secondAttribute="trailing" constant="20" id="vEK-op-3dG"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="outerView" destination="E6p-uT-vBE" id="nQ6-RH-e3c"/>
+                <outlet property="postedJobNumber" destination="sq2-Rh-ueW" id="LtT-1k-hYF"/>
+                <outlet property="postedRangeSalary" destination="WpP-zI-xuh" id="Sa4-tn-TcY"/>
+                <outlet property="postedTeachingSubjects" destination="wGm-t5-XOF" id="Kjl-ft-qF8"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="95"/>
+        </tableViewCell>
+    </objects>
+</document>

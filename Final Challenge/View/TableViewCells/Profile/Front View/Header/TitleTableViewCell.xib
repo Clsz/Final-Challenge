@@ -98,7 +98,7 @@
                     <constraint firstAttribute="trailing" secondItem="ruf-6B-N2O" secondAttribute="trailing" constant="20" id="zjz-ql-rAn"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="ageLabel" destination="AFq-b5-dft" id="6XX-a6-jkz"/>
