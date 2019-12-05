@@ -18,15 +18,6 @@ extension UIView {
     
 }
 
-extension Int{
-    func toNumberFormat()->String{
-        let myNumber = NSNumber(value:self)
-        let formater = NumberFormatter()
-        formater.groupingSeparator = "."
-        formater.numberStyle = .decimal
-        return formater.string(from: myNumber) ?? "\(self)"
-    }
-}
 
 extension String{
     
