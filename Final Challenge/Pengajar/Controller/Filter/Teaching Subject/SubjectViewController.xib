@@ -35,7 +35,6 @@
                     <rect key="frame" x="20" y="796" width="374" height="44"/>
                     <color key="backgroundColor" red="0.10588235294117647" green="0.34901960784313724" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="Aov-XQ-734"/>
                         <constraint firstAttribute="height" constant="44" id="CvC-M2-Xj7"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>

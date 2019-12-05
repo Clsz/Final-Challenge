@@ -7,33 +7,35 @@
 //
 
 import UIKit
+import CloudKit
 
 class ProfileViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var dataArray:[Any?] = []
+    var tutorModel:CKRecord?
+    let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
     let header = "TitleTableViewCellID"
     let content = "ContentTableViewCellID"
     let anotherContent = "AnotherContentTableViewCellID"
     let achievement = "AchievementTableViewCellID"
     let contentView = "ContentViewTableViewCellID"
     let logoutView = "LogoutTableViewCellID"
-    var tutorModel = Tutor(tutorID: "01", tutorEducation: [], email: "unknown@gmail.com", password: "rahasia", tutorFirstName: "", tutorLastName: "", tutorImage: "", tutorPhoneNumber: "", tutorAddress: "", tutorGender: "", tutorBirthDate: "", tutorSkills: ["Algebra","Microsoft Word"], tutorExperience: [], tutorLanguage: [], tutorAchievement: [])
+//    var tutorModel = Tutor(tutorID: "01", tutorEducation: [], email: "unknown@gmail.com", password: "rahasia", tutorFirstName: "", tutorLastName: "", tutorImage: "", tutorPhoneNumber: "", tutorAddress: "", tutorGender: "", tutorBirthDate: "", tutorSkills: ["Algebra","Microsoft Word"], tutorExperience: [], tutorLanguage: [], tutorAchievement: [])
     var sendToCustom:SendTutorToCustom?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        sendToCustom?.sendTutor(tutor: self.tutorModel)
-        setupView(text: "Profil")
+//        sendToCustom?.sendTutor(tutor: self.tutorModel)
+        queryUser()
         setupData()
         registerCell()
-        cellDelegate()
+//        cellDelegate()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("skills : \(tutorModel.tutorSkills)")
-        sendToCustom?.sendTutor(tutor: self.tutorModel)
+//        print("skills : \(tutorModel.tutorSkills)")
+//        sendToCustom?.sendTutor(tutor: self.tutorModel)
         setupView(text: "Profil")
         setupData()
         registerCell()
@@ -67,46 +69,63 @@ extension ProfileViewController{
         present(actionSheet, animated: true, completion: nil)
     }
     
+    func queryUser() {
+        let token = CKUserData.shared.getToken()
+        
+        let pred = NSPredicate(format: "tutorEmail == %@", token)
+        
+        let query = CKQuery(recordType: "Tutor", predicate: pred)
+        
+        database.perform(query, inZoneWith: nil) { (records, error) in
+            guard let record = records else {return}
+            
+            self.tutorModel = record[0]
+            DispatchQueue.main.async {
+                self.cellDelegate()
+            }
+        }
+    }
+    
 }
 extension ProfileViewController:ProfileProtocol, LanguageViewControllerDelegate{
     
     func refreshData(withTutorModel: Tutor) {
-        self.tutorModel = withTutorModel
+        
         setupData()
         tableView.reloadData()
     }
     
     func pencilTapped() {
         let destVC = EditProfileViewController()
-        destVC.tutor = self.tutorModel
+        
         destVC.delegate = self
         navigationController?.pushViewController(destVC, animated: true)
     }
     
     func skillTapped() {
         let destVC = SkillsViewController()
-        destVC.tutor = self.tutorModel
+        
         destVC.delegate = self
         navigationController?.pushViewController(destVC, animated: true)
     }
     
     func languageTapped() {
         let destVC = LanguageViewController()
-        destVC.tutor = self.tutorModel
+        
         destVC.delegate = self
         navigationController?.pushViewController(destVC, animated: true)
     }
     
     func educationTapped() {
         let destVC = EducationViewController()
-        destVC.tutor = self.tutorModel
+        
         destVC.delegate = self
         navigationController?.pushViewController(destVC, animated: true)
     }
     
     func experienceTapped() {
         let destVC = ExperienceViewController()
-        destVC.tutor = self.tutorModel
+        
         destVC.delegate = self
         navigationController?.pushViewController(destVC, animated: true)
     }
@@ -116,7 +135,12 @@ extension ProfileViewController:ProfileProtocol, LanguageViewControllerDelegate{
     }
     
     func logout() {
-        //Back to Login as Bimbel or Pengajar
+        CKUserData.shared.setStatus(status: false)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let vc = LoginViewController()
+        let navigationController = UINavigationController(rootViewController: vc)
+        appDelegate.window?.rootViewController = navigationController
+        appDelegate.window?.makeKeyAndVisible()
     }
     
 }

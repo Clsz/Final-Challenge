@@ -106,3 +106,12 @@ extension DetailFinalThirdViewController: UITableViewDataSource,UITableViewDeleg
     }
 }
 
+
+// coding disabled button
+//func checkLoginButtonActivate() {
+//      if firstNameTF.text!.isEmpty || lastNameTF.text!.isEmpty || emailTF.text!.isEmpty || passwordTF.text!.isEmpty {
+//          registerButton.isEnabled = false
+//      } else {
+//          registerButton.isEnabled = true
+//      }
+//  }
