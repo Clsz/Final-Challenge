@@ -39,6 +39,9 @@ class DetailProfileBimbelTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func changePictureTapped(_ sender: Any) {
+        delegate?.imageTapped()
+    }
     @IBAction func startTapped(_ sender: Any) {
         delegate?.startTapped()
     }

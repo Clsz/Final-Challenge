@@ -11,6 +11,7 @@ import CloudKit
 class BimbelProfileViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
     var dataArray:[Any?] = []
     var bimbel:CKRecord?
     let header = "TitleTableViewCellID"
@@ -23,6 +24,7 @@ class BimbelProfileViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        queryDatabase()
         setupView(text: "Bimbel Profile")
         setupData()
         registerCell()
@@ -30,7 +32,6 @@ class BimbelProfileViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //        sendToCustom?.sendTutor(tutor: self.tutorModel)
         setupView(text: "Bimbel Profile")
         setupData()
         registerCell()
@@ -40,18 +41,30 @@ class BimbelProfileViewController: BaseViewController {
 }
 extension BimbelProfileViewController{
     private func setupData() {
-        dataArray.removeAll() //Flush
-        dataArray.append(bimbel) //0
-        dataArray.append(("Address","Edit Address",0)) //1
-        dataArray.append(("Teaching Subjects","Add Subjects",1)) //2
-        dataArray.append(("Teaching Grades","Edit Grades",2)) //3
-        dataArray.append(true) //4
+        dataArray.removeAll()
+        dataArray.append(bimbel)
+        dataArray.append(("Address","Edit Address",0))
+        dataArray.append(("Teaching Subjects","Add Subjects",1))
+        dataArray.append(("Teaching Grades","Edit Grades",2))
+        dataArray.append(true)
     }
     
+    func queryDatabase() {
+        let query = CKQuery(recordType: "Course", predicate: NSPredicate(value: true))
+        database.perform(query, inZoneWith: nil) { (records, error) in
+            guard let records = records else {
+                print("error",error as Any)
+                return
+            }
+            let sortedRecords = records.sorted(by: { $0.creationDate! > $1.creationDate! })
+            self.bimbel = sortedRecords[0]
+        }
+    }
 }
 extension BimbelProfileViewController:BimbelProtocol{
     func pencilTapped() {
         let destVC = DetailProfileBimbelViewController()
+        destVC.bimbel = self.bimbel
         self.navigationController?.pushViewController(destVC, animated: true)
     }
     
@@ -107,9 +120,9 @@ extension BimbelProfileViewController:UITableViewDataSource, UITableViewDelegate
         if indexPath.row == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: header, for: indexPath) as! TitleTableViewCell
             cell.setCell(image: "", name: "Ming Ho", university: "Binus", age: 10)
-            if let course = dataArray[indexPath.row] as? Courses {
-                //GENERATE DATANYA HEADER
-            }
+            
+            //GENERATE DATANYA HEADER
+            
             cell.index = 1
             cell.bimbelDelegate = self
             cell.outerProfile.outerRound()

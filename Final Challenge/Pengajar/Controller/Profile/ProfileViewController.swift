@@ -23,6 +23,7 @@ class ProfileViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         sendToCustom?.sendTutor(tutor: self.tutorModel)
         setupView(text: "Profil")
         setupData()

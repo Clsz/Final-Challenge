@@ -13,12 +13,14 @@ class DetailProfileBimbelViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var dataArray:[Any?] = []
+    var tempImage:CKAsset?
     var selectedStartYear: String?
     var selectedEndYear: String?
     var toolBar = UIToolbar()
     var pickerStart = UIDatePicker()
     var pickerEnd = UIDatePicker()
     let content = "DetailProfileBimbelTableViewCellID"
+    let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
     var bimbel:CKRecord?
     weak var delegate: LanguageViewControllerDelegate?
     
@@ -50,7 +52,36 @@ extension DetailProfileBimbelViewController{
         dataArray.append(bimbel)
     }
     
-    private func saveToDatabase() {
+    private func updateToDatabase(profileImage:UIImage, courseName:String, courseAddress:String, courseStartHour:String, courseEndHour:String) {
+        
+        let recordID = bimbel!.recordID
+        
+        database.fetch(withRecordID: recordID) { (record, error) in
+            if error == nil {
+                
+                if let newData = profileImage.jpegData(compressionQuality: 0.00001){
+                    if let data = self.createAsset(data: newData){
+                        self.tempImage = data
+                    }
+                }
+                    
+                record?.setValue(self.tempImage, forKey: "courseImage")
+                record?.setValue(courseName, forKey: "courseName")
+                record?.setValue(courseAddress, forKey: "courseAddress")
+                record?.setValue(courseStartHour, forKey: "courseStartHour")
+                record?.setValue(courseEndHour, forKey: "courseEndHour")
+                
+                self.database.save(record!, completionHandler: { (newRecord, error) in
+                    if error == nil {
+                        print("Record Saved")
+                    } else {
+                        print("Record Not Saved")
+                    }
+                })
+            } else {
+                print("Could not fetch record")
+            }
+        }
         
     }
     
@@ -58,19 +89,21 @@ extension DetailProfileBimbelViewController{
         let index = IndexPath(row: 0, section: 0)
         let cell = tableView.cellForRow(at: index) as! DetailProfileBimbelTableViewCell
         
-        let image = cell.profileImage.image
-        let name = cell.nameTF.text
-        let address = cell.addressTF.text
-        let startHour = cell.startTF.text
-        let endHour = cell.endTF.text
+        let image = (cell.profileImage.image ?? UIImage(named: ""))!
+        let name = cell.nameTF.text ?? ""
+        let address = cell.addressTF.text ?? ""
+        let startHour = cell.startTF.text ?? ""
+        let endHour = cell.endTF.text ?? ""
         
-        //Save here later
+        updateToDatabase(profileImage: image, courseName: name, courseAddress: address, courseStartHour: startHour, courseEndHour: endHour)
     }
-    
-    
     
 }
 extension DetailProfileBimbelViewController:ProfileBimbelDetailProtocol, PasswordProtocol{
+    func imageTapped() {
+        
+    }
+    
     func startTapped() {
         createStartHour()
     }
@@ -81,14 +114,18 @@ extension DetailProfileBimbelViewController:ProfileBimbelDetailProtocol, Passwor
     
     func changePassword() {
         let destVC = ChangePasswordViewController()
+        destVC.bimbel = self.bimbel
         self.navigationController?.pushViewController(destVC, animated: true)
     }
     
     func applyProfileBimbel() {
-        // Panggil get data and save
+        getData()
     }
 }
 extension DetailProfileBimbelViewController{
+    private func createImagePicker() {
+        
+    }
     
     private func createStartHour() {
         pickerStart.tag = 0
@@ -146,6 +183,25 @@ extension DetailProfileBimbelViewController{
         }
     }
     
+    fileprivate func createAsset(data: Data) -> CKAsset? {
+        
+        var returnAsset: CKAsset? = nil
+        
+        let tempStr = ProcessInfo.processInfo.globallyUniqueString
+        let filename = "\(tempStr)_file.dat"
+        let baseURL = URL(fileURLWithPath: NSTemporaryDirectory())
+        let fileURL = baseURL.appendingPathComponent(filename, isDirectory: false)
+        
+        do {
+            try data.write(to: fileURL, options: [.atomicWrite])
+            returnAsset = CKAsset(fileURL: fileURL)
+        } catch {
+            print("Error creating asset: \(error)")
+        }
+        
+        return returnAsset
+    }
+    
 }
 extension DetailProfileBimbelViewController:UITableViewDataSource,UITableViewDelegate{
     func registerCell() {
@@ -169,8 +225,7 @@ extension DetailProfileBimbelViewController:UITableViewDataSource,UITableViewDel
         cell.view = self.view
 //        cell.setCell(nameText: (bimbel?.value(forKey: "courseName") as! String) ?? "", addressText: (bimbel?.value(forKey: "courseAddress") as! String) ?? "", start: (bimbel?.value(forKey: "courseStartHour") as! String) ?? "", end: (bimbel?.value(forKey: "courseEndHour") as! String) ?? "")
         
-        
-        
         return cell
     }
 }
+
