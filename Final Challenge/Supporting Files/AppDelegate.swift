@@ -18,25 +18,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().tintColor = ConstantManager.mainColor
 //        //Penting nih
         self.window = UIWindow(frame: UIScreen.main.bounds)
-//        let rv = SetupPersonalViewController()
-//                   let navigationController = UINavigationController(rootViewController: rv)
-//                   window?.rootViewController = navigationController
-//                   window?.makeKeyAndVisible()
+        let rv = ExperienceViewController()
+                   let navigationController = UINavigationController(rootViewController: rv)
+                   window?.rootViewController = navigationController
+                   window?.makeKeyAndVisible()
         
-        if CKUserData.shared.getStatus() == true{
+//        if CKUserData.shared.getStatus() == true{
 //            self.tabBarController = TabBarController()
 //            window?.rootViewController = tabBarController
 //            window?.makeKeyAndVisible()
-            let rv = SetupPersonalViewController()
-            let navigationController = UINavigationController(rootViewController: rv)
-            window?.rootViewController = navigationController
-            window?.makeKeyAndVisible()
-        }else{
-            let rv = RegisterViewController()
-            let navigationController = UINavigationController(rootViewController: rv)
-            window?.rootViewController = navigationController
-            window?.makeKeyAndVisible()
-        }
+////            let rv = SetupPersonalViewController()
+////            let navigationController = UINavigationController(rootViewController: rv)
+////            window?.rootViewController = navigationController
+////            window?.makeKeyAndVisible()
+//        }else{
+//            let rv = RegisterViewController()
+//            let navigationController = UINavigationController(rootViewController: rv)
+//            window?.rootViewController = navigationController
+//            window?.makeKeyAndVisible()
+//        }
         return true
     }
     

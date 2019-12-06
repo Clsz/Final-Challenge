@@ -32,18 +32,22 @@ class RegisterViewController: BaseViewController {
     }
     
     @IBAction func regiterTapped(_ sender: Any) {
+        showLoading()
         validateFields()
-        
         let firstName = firstNameTF.text!
         let lastName = lastNameTF.text!
         let email = emailTF.text!
         let password = passwordTF.text!
-        let vc = SetupPersonalViewController()
         
         if CKUserData.shared.checkUser(email: email) == LoginResults.userNotExist {
+             hideLoading()
             CKUserData.shared.addUser(firstName: firstName, lastName: lastName, email: email, password: password)
             CKUserData.shared.saveUsers()
-            self.navigationController?.pushViewController(vc, animated: false)
+            let vc = SetupPersonalViewController()
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.window?.rootViewController = vc
+            appDelegate.window?.makeKeyAndVisible()
+            CKUserData.shared.saveToken(token: email)
         } else { return }
     }
     

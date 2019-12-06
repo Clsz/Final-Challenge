@@ -57,16 +57,6 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Choose your DOB" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rxv-xy-doL">
-                        <rect key="frame" x="20" y="359" width="374" height="50"/>
-                        <color key="backgroundColor" red="0.1137254902" green="0.3921568627" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="50" id="Na5-3k-UWk"/>
-                        </constraints>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <textInputTraits key="textInputTraits"/>
-                    </textField>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfE-7W-rH1">
                         <rect key="frame" x="20" y="429" width="374" height="26.5"/>
                         <constraints>
@@ -100,32 +90,58 @@
                             <action selector="applyTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="n5l-mK-i6p"/>
                         </connections>
                     </button>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Lp-SI-WCv">
+                        <rect key="frame" x="20" y="359" width="374" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="qLP-14-gld"/>
+                        </constraints>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vTq-El-QX7">
+                        <rect key="frame" x="20" y="359" width="374" height="50"/>
+                        <color key="backgroundColor" red="0.032647829500000003" green="0.39359486100000002" blue="0.68630516529999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="hNr-UZ-YDQ"/>
+                        </constraints>
+                        <state key="normal" title="a" image="Right Detail">
+                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <connections>
+                            <action selector="agePickerTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="zTD-ym-DVc"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="gfE-7W-rH1" firstAttribute="top" secondItem="5Lp-SI-WCv" secondAttribute="bottom" constant="20" id="2gM-TB-ryt"/>
                     <constraint firstItem="JgQ-on-cJt" firstAttribute="top" secondItem="3vD-wf-ww7" secondAttribute="bottom" constant="12" id="55X-Mb-hmP"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="vTq-El-QX7" secondAttribute="trailing" id="5Yq-Jh-dbG"/>
                     <constraint firstAttribute="trailing" secondItem="3vD-wf-ww7" secondAttribute="trailing" constant="20" id="9Af-iO-BCg"/>
                     <constraint firstAttribute="trailing" secondItem="gfE-7W-rH1" secondAttribute="trailing" constant="20" id="Agc-kV-BjL"/>
-                    <constraint firstItem="gfE-7W-rH1" firstAttribute="top" secondItem="Rxv-xy-doL" secondAttribute="bottom" constant="20" id="Cs2-ti-3gN"/>
                     <constraint firstItem="JgQ-on-cJt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="DQ8-iX-kU2"/>
-                    <constraint firstAttribute="trailing" secondItem="Rxv-xy-doL" secondAttribute="trailing" constant="20" id="Fa1-5h-kXs"/>
                     <constraint firstItem="aRb-zj-ROX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="140" id="H3q-kQ-I3Y"/>
-                    <constraint firstItem="Rxv-xy-doL" firstAttribute="top" secondItem="tCv-l2-AX8" secondAttribute="bottom" constant="12" id="Hx3-vP-8ZJ"/>
+                    <constraint firstItem="5Lp-SI-WCv" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="JOC-L2-Vh5"/>
                     <constraint firstAttribute="trailing" secondItem="JgQ-on-cJt" secondAttribute="trailing" constant="20" id="JXP-Qb-oOk"/>
                     <constraint firstAttribute="trailing" secondItem="9MX-jk-m4z" secondAttribute="trailing" constant="132" id="McH-sw-kOm"/>
                     <constraint firstAttribute="trailing" secondItem="aRb-zj-ROX" secondAttribute="trailing" constant="140" id="OCe-V3-QU1"/>
                     <constraint firstItem="3vD-wf-ww7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Tr9-3a-mrh"/>
+                    <constraint firstItem="5Lp-SI-WCv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="U1l-7A-Xri"/>
                     <constraint firstItem="3vD-wf-ww7" firstAttribute="top" secondItem="aRb-zj-ROX" secondAttribute="bottom" constant="12" id="XRt-Xt-yZ2"/>
                     <constraint firstAttribute="trailing" secondItem="tCv-l2-AX8" secondAttribute="trailing" constant="20" id="aab-GA-FIo"/>
+                    <constraint firstItem="5Lp-SI-WCv" firstAttribute="top" secondItem="tCv-l2-AX8" secondAttribute="bottom" constant="12" id="ct3-zp-LZb"/>
                     <constraint firstItem="tvs-Bn-wvx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="g82-fb-apc"/>
                     <constraint firstAttribute="trailing" secondItem="tvs-Bn-wvx" secondAttribute="trailing" constant="20" id="hOy-15-d40"/>
+                    <constraint firstItem="vTq-El-QX7" firstAttribute="top" secondItem="tCv-l2-AX8" secondAttribute="bottom" constant="12" id="iRX-fH-5TT"/>
+                    <constraint firstItem="vTq-El-QX7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="j96-Xj-uNb"/>
                     <constraint firstItem="tCv-l2-AX8" firstAttribute="top" secondItem="JgQ-on-cJt" secondAttribute="bottom" constant="20" id="jXz-dQ-6co"/>
                     <constraint firstItem="gfE-7W-rH1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="jbu-8E-dvn"/>
+                    <constraint firstItem="gfE-7W-rH1" firstAttribute="top" secondItem="vTq-El-QX7" secondAttribute="bottom" constant="20" id="kJS-Ze-FOq"/>
                     <constraint firstItem="tvs-Bn-wvx" firstAttribute="top" secondItem="gfE-7W-rH1" secondAttribute="bottom" constant="12" id="lRw-ZK-8GJ"/>
                     <constraint firstItem="Z2E-Wd-T2w" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="mwx-0M-Esg"/>
                     <constraint firstAttribute="bottom" secondItem="Z2E-Wd-T2w" secondAttribute="bottom" constant="5.5" id="qKx-AD-zlV"/>
                     <constraint firstItem="Z2E-Wd-T2w" firstAttribute="top" secondItem="tvs-Bn-wvx" secondAttribute="bottom" constant="94" id="qWo-S0-m8h"/>
                     <constraint firstItem="aRb-zj-ROX" firstAttribute="top" secondItem="9MX-jk-m4z" secondAttribute="bottom" id="rEi-aF-HbF"/>
-                    <constraint firstItem="Rxv-xy-doL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="riO-o9-883"/>
                     <constraint firstItem="9MX-jk-m4z" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="132" id="tPw-7X-Hwk"/>
                     <constraint firstItem="tCv-l2-AX8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="vzy-W2-N8T"/>
                     <constraint firstAttribute="trailing" secondItem="Z2E-Wd-T2w" secondAttribute="trailing" constant="20" id="xTT-m5-VFc"/>
@@ -136,7 +152,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="addressTF" destination="tvs-Bn-wvx" id="kab-1J-rKz"/>
-                <outlet property="ageTF" destination="Rxv-xy-doL" id="X3B-xj-XwT"/>
+                <outlet property="ageTF" destination="5Lp-SI-WCv" id="ZSX-Vd-zFL"/>
                 <outlet property="applyButton" destination="Z2E-Wd-T2w" id="5tp-UB-hlI"/>
                 <outlet property="changePhotoButton" destination="aRb-zj-ROX" id="bJe-dV-dMB"/>
                 <outlet property="imageProfile" destination="9MX-jk-m4z" id="XSB-c2-1Or"/>
@@ -146,6 +162,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="Right Detail" width="15" height="10"/>
         <image name="user-5" width="150" height="150"/>
     </resources>
 </document>

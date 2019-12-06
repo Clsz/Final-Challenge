@@ -9,7 +9,7 @@
 import UIKit
 
 class SetupPersonalTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var imageProfile: UIImageView!
     @IBOutlet weak var changePhotoButton: UIButton!
     @IBOutlet weak var nameTF: UITextField!
@@ -17,20 +17,27 @@ class SetupPersonalTableViewCell: UITableViewCell {
     @IBOutlet weak var addressTF: UITextField!
     @IBOutlet weak var applyButton: UIButton!
     var contentDelegate:ProfileDetailProtocol?
-//   var accessoryDoneButton: UIBarButtonItem!
-//    let accessoryToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
-//    let flexiblea = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-//    var view: UIView!
+    var birthDelegate:BirthProtocol?
+    var accessoryDoneButton: UIBarButtonItem!
+    let accessoryToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
+    let flexiblea = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+    var view: UIView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//        doneButton()
+        doneButton()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
+    }
+    
+    
+    @IBAction func agePickerTapped(_ sender: UIButton) {
+        birthDelegate?.dropBirth()
     }
     
     @IBAction func applyTapped(_ sender: Any) {
@@ -67,21 +74,22 @@ extension SetupPersonalTableViewCell{
     }
     
 }
-
-//extension SetupPersonalTableViewCell:UITextFieldDelegate{
-//    private func doneButton() {
-//        self.accessoryDoneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.donePressed))
-//
-//        self.accessoryToolBar.items = [self.accessoryDoneButton]
-//
-//        accessoryToolBar.setItems([flexiblea, accessoryDoneButton], animated: false)
-//
-//        self.nameTF.inputAccessoryView = accessoryToolBar
-//        self.addressTF.inputAccessoryView = accessoryToolBar
-//        self.ageTF.inputAccessoryView  = accessoryToolBar
-//    }
-//
-//    @objc func donePressed() {
-//        view.endEditing(true)
-//    }
-//}
+extension SetupPersonalTableViewCell:UITextFieldDelegate{
+    private func doneButton() {
+        self.accessoryDoneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.donePressed))
+        
+        
+        self.accessoryToolBar.items = [self.accessoryDoneButton]
+        
+        
+        accessoryToolBar.setItems([flexiblea, accessoryDoneButton], animated: false)
+        
+        self.nameTF.inputAccessoryView = accessoryToolBar
+        self.addressTF.inputAccessoryView = accessoryToolBar
+        
+    }
+    
+    @objc func donePressed() {
+        view.endEditing(true)
+    }
+}
