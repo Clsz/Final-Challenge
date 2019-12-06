@@ -38,7 +38,7 @@ class RegisterViewController: BaseViewController {
         let lastName = lastNameTF.text!
         let email = emailTF.text!
         let password = passwordTF.text!
-        let vc = HomeViewController()
+        let vc = SetupPersonalViewController()
         
         if CKUserData.shared.checkUser(email: email) == LoginResults.userNotExist {
             CKUserData.shared.addUser(firstName: firstName, lastName: lastName, email: email, password: password)
