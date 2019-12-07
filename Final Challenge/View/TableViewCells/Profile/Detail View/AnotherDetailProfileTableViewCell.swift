@@ -44,7 +44,7 @@ extension AnotherDetailProfileTableViewCell{
     func setCell(text:String, content:String) {
         self.label.text = text
         self.textField.placeholder = content
-        
+//        self.textField.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         setInterface()
     }
     

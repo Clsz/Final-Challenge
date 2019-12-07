@@ -47,7 +47,7 @@ extension DetailProfileTableViewCell{
 }
 extension DetailProfileTableViewCell:UITextFieldDelegate{
     private func doneButton() {
-        self.accessoryDoneButton = UIBarButtonItem(title: "Selesai", style: .done, target: self, action: #selector(self.donePressed))
+        self.accessoryDoneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.donePressed))
         
         
         self.accessoryToolBar.items = [self.accessoryDoneButton]

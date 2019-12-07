@@ -51,6 +51,8 @@ protocol LanguageProtocol {
 }
 
 protocol EducationProtocol {
+    func startTapped()
+    func endTapped()
     func dropEducation()
 }
 
@@ -58,6 +60,10 @@ protocol ExperienceProtocol {
     func startTapped()
     func endTapped()
     func dropExperience()
+}
+
+protocol BirthProtocol {
+    func dropBirth()
 }
 
 protocol HomeProtocol {

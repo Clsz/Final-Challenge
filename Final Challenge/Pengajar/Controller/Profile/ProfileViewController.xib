@@ -23,7 +23,7 @@
                     <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="Koy-ys-t67" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Kcm-td-AGO"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Koy-ys-t67" secondAttribute="trailing" id="WMl-wU-yRM"/>

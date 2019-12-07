@@ -95,9 +95,7 @@ extension DetailProfileBimbelTableViewCell:UITextFieldDelegate{
     private func doneButton() {
         self.accessoryDoneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.donePressed))
         
-        
         self.accessoryToolBar.items = [self.accessoryDoneButton]
-        
         
         accessoryToolBar.setItems([flexiblea, accessoryDoneButton], animated: false)
         
