@@ -20,7 +20,7 @@
                         <rect key="frame" x="20" y="100" width="374" height="114"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NT3-Tp-nQe">
-                                <rect key="frame" x="0.0" y="86" width="374" height="16"/>
+                                <rect key="frame" x="0.0" y="81" width="374" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="FGA-o8-AwD"/>
                                 </constraints>
@@ -37,17 +37,29 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.85000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghe-s7-4nu">
+                                <rect key="frame" x="0.0" y="97" width="374" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="zr1-Ss-6Xm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.10980392156862745" green="0.39215686274509803" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="114" id="2d5-Sh-kov"/>
                             <constraint firstAttribute="trailing" secondItem="RyE-j1-bLj" secondAttribute="trailing" id="4kc-Zx-PcI"/>
-                            <constraint firstAttribute="bottom" secondItem="NT3-Tp-nQe" secondAttribute="bottom" constant="12" id="Hm2-8I-eUU"/>
+                            <constraint firstItem="ghe-s7-4nu" firstAttribute="leading" secondItem="vxJ-zc-7TB" secondAttribute="leading" id="DMM-80-AOH"/>
                             <constraint firstAttribute="trailing" secondItem="NT3-Tp-nQe" secondAttribute="trailing" id="L0n-2F-C2e"/>
                             <constraint firstItem="RyE-j1-bLj" firstAttribute="top" secondItem="vxJ-zc-7TB" secondAttribute="top" constant="58" id="P16-e5-RAb"/>
                             <constraint firstItem="NT3-Tp-nQe" firstAttribute="leading" secondItem="vxJ-zc-7TB" secondAttribute="leading" id="XBy-al-oTn"/>
-                            <constraint firstItem="NT3-Tp-nQe" firstAttribute="top" secondItem="RyE-j1-bLj" secondAttribute="bottom" constant="5" id="agX-Qg-ai2"/>
+                            <constraint firstItem="NT3-Tp-nQe" firstAttribute="top" secondItem="RyE-j1-bLj" secondAttribute="bottom" id="agX-Qg-ai2"/>
+                            <constraint firstAttribute="trailing" secondItem="ghe-s7-4nu" secondAttribute="trailing" id="bvp-gx-pC1"/>
+                            <constraint firstAttribute="bottom" secondItem="ghe-s7-4nu" secondAttribute="bottom" id="d91-Zg-KW1"/>
                             <constraint firstItem="RyE-j1-bLj" firstAttribute="leading" secondItem="vxJ-zc-7TB" secondAttribute="leading" id="rj3-x7-2Lj"/>
+                            <constraint firstItem="ghe-s7-4nu" firstAttribute="top" secondItem="NT3-Tp-nQe" secondAttribute="bottom" id="sc0-Ht-kJI"/>
                         </constraints>
                     </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="school" translatesAutoresizingMaskIntoConstraints="NO" id="o3N-TY-ScP">
@@ -72,8 +84,9 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="imageBimbel" destination="o3N-TY-ScP" id="vnk-wC-HdW"/>
-                <outlet property="lokasiBimbel" destination="NT3-Tp-nQe" id="Usk-1J-CgA"/>
-                <outlet property="namaBimbel" destination="RyE-j1-bLj" id="9O8-2A-WSA"/>
+                <outlet property="jamBimbel" destination="NT3-Tp-nQe" id="kgH-aa-ENu"/>
+                <outlet property="namaBimbel" destination="RyE-j1-bLj" id="ybK-zz-SLA"/>
+                <outlet property="statusBimbel" destination="ghe-s7-4nu" id="CLC-EW-iCq"/>
                 <outlet property="viewBimbel" destination="vxJ-zc-7TB" id="mqw-1u-NsV"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="109.82142857142857"/>

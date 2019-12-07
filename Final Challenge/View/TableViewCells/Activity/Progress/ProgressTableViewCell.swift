@@ -9,24 +9,10 @@
 import UIKit
 
 class ProgressTableViewCell: UITableViewCell {
-    @IBOutlet weak var imageBimbel: UIImageView!
     @IBOutlet weak var namaBimbel: UILabel!
     @IBOutlet weak var statusView: UIView!
     @IBOutlet weak var statusBimbel: UILabel!
     @IBOutlet weak var viewBimbel: UIView!
-    let images = UIImage(named: "school")
-    
-    func setView(nama:String, status:String) {
-        self.imageBimbel.setRounded()
-        self.namaBimbel.text = nama
-        self.statusBimbel.text = status
-        self.viewBimbel.dropShadow()
-        self.viewBimbel.outerRound2()
-        self.viewBimbel.setBorder()
-        self.viewBimbel.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        self.imageBimbel.image = images
-    }
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,4 +25,19 @@ class ProgressTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+}
+extension ProgressTableViewCell{
+    func setCell(nama:String, status:String) {
+        self.namaBimbel.text = nama
+        self.statusBimbel.text = status
+        
+        setInterface()
+    }
+    
+    private func setInterface() {
+        self.viewBimbel.dropShadow()
+        self.viewBimbel.outerRound2()
+        self.viewBimbel.setBorder()
+        self.viewBimbel.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    }
 }

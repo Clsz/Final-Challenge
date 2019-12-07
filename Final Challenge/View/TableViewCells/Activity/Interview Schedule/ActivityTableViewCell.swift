@@ -18,8 +18,9 @@ class ActivityTableViewCell: UITableViewCell {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var viewEquipment: UIView!
     var activityDelegate:ActivityProtocol?
-    var interviewSchedule:[String] = []
-    var interviewTime:[String] = []
+    var day:[String] = []
+    var scheduleStart:[String] = []
+    var scheduleEnd:[String] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -52,24 +53,33 @@ extension ActivityTableViewCell{
     
     private func setInterface() {
         self.viewEquipment.outerRound()
+        self.requestScheduleButton.loginRound()
     }
     
 }
 extension ActivityTableViewCell:UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return interviewSchedule.count
+        return day.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "dsCell", for: indexPath) as! DetailScheduleTableViewCell
-        cell.setView(day: interviewSchedule[indexPath.row], time: interviewTime[indexPath.row])
-        return cell
+        cell.jadwalView.layer.borderWidth = 3
+         cell.jadwalView.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+         cell.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+         cell.jadwalView.layer.cornerRadius = 15
+         cell.jadwalView.layer.masksToBounds = true
+         cell.jadwalView.backgroundColor = #colorLiteral(red: 0.1098039216, green: 0.3921568627, blue: 0.6666666667, alpha: 1)
+         
+         let schedule = "\(scheduleStart[indexPath.row]) " + " - " + "\(scheduleEnd[indexPath.row]) "
+         cell.setView(day: day[indexPath.row], time: schedule)
+         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
             UIView.animate(withDuration: 0.3, animations: {
-                cell.contentView.backgroundColor = #colorLiteral(red: 0.3812787533, green: 0.8201360106, blue: 0.9539147019, alpha: 1)
+                cell.contentView.backgroundColor = #colorLiteral(red: 0.1062052175, green: 0.4349771738, blue: 0.6650052667, alpha: 1)
             })
         } else if let cell = tableView.cellForRow(at: indexPath) {
             UIView.animate(withDuration: 0.3, animations: {
@@ -95,7 +105,6 @@ extension ActivityTableViewCell:UITableViewDataSource, UITableViewDelegate{
     private func registerCell() {
         tableView.register(UINib(nibName: "DetailScheduleTableViewCell", bundle: nil), forCellReuseIdentifier: "dsCell")
     }
-    
     
 }
 

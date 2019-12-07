@@ -96,3 +96,7 @@ protocol SendTutorToCustom {
 protocol refreshTableProtocol {
     func refreshTableView()
 }
+
+protocol JobDetail {
+    func seeDetailTapped()
+}

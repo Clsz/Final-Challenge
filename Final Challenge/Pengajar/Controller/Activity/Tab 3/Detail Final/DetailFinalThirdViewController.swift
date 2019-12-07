@@ -69,12 +69,12 @@ extension DetailFinalThirdViewController: UITableViewDataSource,UITableViewDeleg
             let cell = tableView.dequeueReusableCell(withIdentifier: "profileBimbelCell", for: indexPath) as! ProfileBimbelTableViewCell
             if let course = dataArray[indexPath.row] as? Activity {
                 print(indexPath.row)
-                cell.setView(image: course.courseImage, name: course.courseName, lokasi: course.activityStatus)
-                if course.activityStatus == "DITERIMA"{
-                    cell.lokasiBimbel.textColor = .green
-                }else{
-                    cell.lokasiBimbel.textColor = .red
-                }
+//                cell.setView(image: course.courseImage, name: course.courseName, lokasi: course.activityStatus)
+//                if course.activityStatus == "DITERIMA"{
+//                    cell.lokasiBimbel.textColor = .green
+//                }else{
+//                    cell.lokasiBimbel.textColor = .red
+//                }
             }
             return cell
         }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:String, code:Int){

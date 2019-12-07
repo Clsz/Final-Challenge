@@ -18,17 +18,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().tintColor = ConstantManager.mainColor
 //        //Penting nih
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        
-        if CKUserData.shared.getStatus() == true{
-            self.tabBarController = TabBarController()
-            window?.rootViewController = tabBarController
-            window?.makeKeyAndVisible()
-        }else{
-            let rv = RegisterViewController()
-            let navigationController = UINavigationController(rootViewController: rv)
-            window?.rootViewController = navigationController
-            window?.makeKeyAndVisible()
-        }
+        self.tabBarController = TabBarController()
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
+//        if CKUserData.shared.getStatus() == true{
+//            self.tabBarController = TabBarController()
+//            window?.rootViewController = tabBarController
+//            window?.makeKeyAndVisible()
+//        }else{
+//            let rv = RegisterViewController()
+//            let navigationController = UINavigationController(rootViewController: rv)
+//            window?.rootViewController = navigationController
+//            window?.makeKeyAndVisible()
+//        }
         return true
     }
     

@@ -51,7 +51,7 @@ extension ScheduleTableViewCell: UITableViewDataSource, UITableViewDelegate {
         cell.jadwalView.layer.masksToBounds = true
         cell.jadwalView.backgroundColor = #colorLiteral(red: 0.1098039216, green: 0.3921568627, blue: 0.6666666667, alpha: 1)
         
-        let schedule = "\(scheduleStart[indexPath.row]) AM" + " - " + "\(scheduleEnd[indexPath.row]) PM"
+        let schedule = "\(scheduleStart[indexPath.row]) " + " - " + "\(scheduleEnd[indexPath.row]) "
         cell.setView(day: day[indexPath.row], time: schedule)
         return cell
     }

@@ -12,8 +12,7 @@ import CloudKit
 class HomeViewController: BaseViewController{
     
     let images = UIImage(named: "school")
-    var bimbel:[Courses] = []
-    var listCourse = [CKRecord]()
+    var listJob = [CKRecord]()
     let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
     var homeDelegate:HomeProtocol?
     
@@ -22,7 +21,7 @@ class HomeViewController: BaseViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        queryCourse()
+        queryJob()
         cellDelegate()
         registerCell()
         jobTableView.reloadData()
@@ -41,22 +40,22 @@ class HomeViewController: BaseViewController{
 }
 
 extension HomeViewController{
-    func queryCourse() {
-        let query = CKQuery(recordType: "Course", predicate: NSPredicate(value: true))
+    private func queryJob() {
+        let query = CKQuery(recordType: "Job", predicate: NSPredicate(value: true))
         database.perform(query, inZoneWith: nil) { (records, error) in
             guard let records = records else {
                 print("error",error as Any)
                 return
             }
             let sortedRecords = records.sorted(by: { $0.creationDate! > $1.creationDate! })
-            self.listCourse = sortedRecords
+            self.listJob = sortedRecords
             DispatchQueue.main.async {
                 self.jobTableView.reloadData()
             }
         }
     }
-}
 
+}
 extension HomeViewController:HomeProtocol{
     func bimbelTapped() {
         
@@ -66,7 +65,7 @@ extension HomeViewController:HomeProtocol{
 
 extension HomeViewController: UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listCourse.count
+        return listJob.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -80,12 +79,12 @@ extension HomeViewController: UITableViewDataSource,UITableViewDelegate{
         cell.selectionStyle = .none
         cell.bimbelPhoto.image = images
     
-        let data = listCourse[indexPath.row]
+        let data = listJob[indexPath.row]
         
         cell.bimbelName.text = (data.value(forKey: "courseName") as! String)
         cell.bimbelLocation.text = (data.value(forKey: "courseAddress") as! String)
-        let minFare = (data.value(forKey: "courseFareMinimum") as! Int)
-        let maxFare = (data.value(forKey: "courseFareMaximum") as! Int)
+        let minFare = (data.value(forKey: "minimumSalary") as! Double)
+        let maxFare = (data.value(forKey: "maximumSalary") as! Double)
         let gajiBimbel =  "Rp \(String(describing: minFare.formattedWithSeparator)) - Rp \(String(describing: maxFare.formattedWithSeparator))"
         cell.bimbelSubject.text = gajiBimbel
         return cell
@@ -93,7 +92,7 @@ extension HomeViewController: UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let destVC = DetailBimbelViewController()
-        destVC.course = listCourse[indexPath.row]
+        destVC.job = listJob[indexPath.row]
         navigationController?.pushViewController(destVC, animated: true)
     }
     

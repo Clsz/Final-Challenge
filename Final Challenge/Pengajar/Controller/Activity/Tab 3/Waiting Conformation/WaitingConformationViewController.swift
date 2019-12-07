@@ -112,8 +112,8 @@ extension WaitingConformationViewController: UITableViewDataSource,UITableViewDe
             let cell = tableView.dequeueReusableCell(withIdentifier: "profileBimbelCell", for: indexPath) as! ProfileBimbelTableViewCell
             if let course = dataArray[indexPath.row] as? Activity {
                 print(indexPath.row)
-                cell.setView(image: course.courseImage, name: course.courseName, lokasi: course.activityStatus)
-                cell.lokasiBimbel.textColor = #colorLiteral(red: 0, green: 0.8650887609, blue: 0.320767343, alpha: 1)
+//                cell.setView(image: course.courseImage, name: course.courseName, lokasi: course.activityStatus)
+//                cell.lokasiBimbel.textColor = #colorLiteral(red: 0, green: 0.8650887609, blue: 0.320767343, alpha: 1)
             }
             return cell
         }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:String, code:Int){
