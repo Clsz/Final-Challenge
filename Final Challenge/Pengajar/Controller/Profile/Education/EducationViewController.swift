@@ -76,6 +76,14 @@ extension EducationViewController{
     
 }
 extension EducationViewController:EducationProtocol{
+    func startTapped() {
+        return
+    }
+    
+    func endTapped() {
+        return 
+    }
+    
     func dropEducation() {
         self.createSchoolPicker()
     }

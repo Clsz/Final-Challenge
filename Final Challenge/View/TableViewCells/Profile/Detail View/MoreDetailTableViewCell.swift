@@ -18,6 +18,7 @@ class MoreDetailTableViewCell: UITableViewCell {
     @IBOutlet weak var endTF: UITextField!
     var id:Int?
     var dateDelegate:ExperienceProtocol?
+    var educationDelegate:EducationProtocol?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,10 +33,12 @@ class MoreDetailTableViewCell: UITableViewCell {
     
     @IBAction func startTapped(_ sender: Any) {
         dateDelegate?.startTapped()
+        educationDelegate?.startTapped()
     }
     
     @IBAction func endTapped(_ sender: Any) {
         dateDelegate?.endTapped()
+        educationDelegate?.endTapped()
     }
     
 }

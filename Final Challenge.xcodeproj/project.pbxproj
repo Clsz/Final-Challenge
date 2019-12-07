@@ -450,6 +450,57 @@
 			path = Segmented;
 			sourceTree = "<group>";
 		};
+		144B4330239ADE6D00F1ACE1 /* Set Personal */ = {
+			isa = PBXGroup;
+			children = (
+				E13EE5F02380E86A005016A0 /* SetupPersonalViewController.swift */,
+				E13EE5F12380E86A005016A0 /* SetupPersonalViewController.xib */,
+			);
+			path = "Set Personal";
+			sourceTree = "<group>";
+		};
+		144B4331239ADE7B00F1ACE1 /* Set Education */ = {
+			isa = PBXGroup;
+			children = (
+				E13EE6082381040E005016A0 /* SetupEducationViewController.swift */,
+				E13EE6092381040E005016A0 /* SetupEducationViewController.xib */,
+				E10661572381278D0098AE11 /* AdditionalEducationViewController.swift */,
+				E10661582381278D0098AE11 /* AdditionalEducationViewController.xib */,
+			);
+			path = "Set Education";
+			sourceTree = "<group>";
+		};
+		144B4332239ADE8700F1ACE1 /* Set Skill */ = {
+			isa = PBXGroup;
+			children = (
+				E13EE6042380FF7A005016A0 /* SetupSkillsViewController.swift */,
+				E13EE6052380FF7A005016A0 /* SetupSkillsViewController.xib */,
+			);
+			path = "Set Skill";
+			sourceTree = "<group>";
+		};
+		144B4333239ADE9200F1ACE1 /* Set Language */ = {
+			isa = PBXGroup;
+			children = (
+				E13EE60C23810475005016A0 /* SetupLanguageViewController.swift */,
+				E13EE60D23810475005016A0 /* SetupLanguageViewController.xib */,
+				E106614F23811A4A0098AE11 /* AdditionalLanguageViewController.swift */,
+				E106615023811A4A0098AE11 /* AdditionalLanguageViewController.xib */,
+			);
+			path = "Set Language";
+			sourceTree = "<group>";
+		};
+		144B4334239ADEA300F1ACE1 /* Set Experience */ = {
+			isa = PBXGroup;
+			children = (
+				E13EE61023811320005016A0 /* SetupExperienceViewController.swift */,
+				E13EE61123811320005016A0 /* SetupExperienceViewController.xib */,
+				E106615B2381294D0098AE11 /* AdditionalExperienceViewController.swift */,
+				E106615C2381294D0098AE11 /* AdditionalExperienceViewController.xib */,
+			);
+			path = "Set Experience";
+			sourceTree = "<group>";
+		};
 		145705D4237A9BE60093E944 /* Filter */ = {
 			isa = PBXGroup;
 			children = (
@@ -1126,22 +1177,11 @@
 		E13EE5EF2380E844005016A0 /* Setup Profile */ = {
 			isa = PBXGroup;
 			children = (
-				E13EE5F02380E86A005016A0 /* SetupPersonalViewController.swift */,
-				E13EE5F12380E86A005016A0 /* SetupPersonalViewController.xib */,
-				E13EE6042380FF7A005016A0 /* SetupSkillsViewController.swift */,
-				E13EE6052380FF7A005016A0 /* SetupSkillsViewController.xib */,
-				E13EE60C23810475005016A0 /* SetupLanguageViewController.swift */,
-				E13EE60D23810475005016A0 /* SetupLanguageViewController.xib */,
-				E13EE6082381040E005016A0 /* SetupEducationViewController.swift */,
-				E13EE6092381040E005016A0 /* SetupEducationViewController.xib */,
-				E13EE61023811320005016A0 /* SetupExperienceViewController.swift */,
-				E13EE61123811320005016A0 /* SetupExperienceViewController.xib */,
-				E106614F23811A4A0098AE11 /* AdditionalLanguageViewController.swift */,
-				E106615023811A4A0098AE11 /* AdditionalLanguageViewController.xib */,
-				E10661572381278D0098AE11 /* AdditionalEducationViewController.swift */,
-				E10661582381278D0098AE11 /* AdditionalEducationViewController.xib */,
-				E106615B2381294D0098AE11 /* AdditionalExperienceViewController.swift */,
-				E106615C2381294D0098AE11 /* AdditionalExperienceViewController.xib */,
+				144B4330239ADE6D00F1ACE1 /* Set Personal */,
+				144B4331239ADE7B00F1ACE1 /* Set Education */,
+				144B4332239ADE8700F1ACE1 /* Set Skill */,
+				144B4333239ADE9200F1ACE1 /* Set Language */,
+				144B4334239ADEA300F1ACE1 /* Set Experience */,
 			);
 			path = "Setup Profile";
 			sourceTree = "<group>";

@@ -9,7 +9,7 @@
 import UIKit
 
 class SetupPersonalTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var imageProfile: UIImageView!
     @IBOutlet weak var changePhotoButton: UIButton!
     @IBOutlet weak var nameTF: UITextField!
@@ -17,15 +17,27 @@ class SetupPersonalTableViewCell: UITableViewCell {
     @IBOutlet weak var addressTF: UITextField!
     @IBOutlet weak var applyButton: UIButton!
     var contentDelegate:ProfileDetailProtocol?
+    var birthDelegate:BirthProtocol?
+    var accessoryDoneButton: UIBarButtonItem!
+    let accessoryToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
+    let flexiblea = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+    var view: UIView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        doneButton()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
+    }
+    
+    
+    @IBAction func agePickerTapped(_ sender: UIButton) {
+        birthDelegate?.dropBirth()
     }
     
     @IBAction func applyTapped(_ sender: Any) {
@@ -51,6 +63,10 @@ extension SetupPersonalTableViewCell{
         self.ageTF.outerRound()
         self.addressTF.outerRound()
         
+        self.nameTF.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        self.ageTF.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        self.addressTF.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        
         self.nameTF.setLeftPaddingPoints(10.0)
         self.ageTF.setLeftPaddingPoints(10.0)
         self.addressTF.setLeftPaddingPoints(10.0)
@@ -58,4 +74,22 @@ extension SetupPersonalTableViewCell{
     }
     
 }
-
+extension SetupPersonalTableViewCell:UITextFieldDelegate{
+    private func doneButton() {
+        self.accessoryDoneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.donePressed))
+        
+        
+        self.accessoryToolBar.items = [self.accessoryDoneButton]
+        
+        
+        accessoryToolBar.setItems([flexiblea, accessoryDoneButton], animated: false)
+        
+        self.nameTF.inputAccessoryView = accessoryToolBar
+        self.addressTF.inputAccessoryView = accessoryToolBar
+        
+    }
+    
+    @objc func donePressed() {
+        view.endEditing(true)
+    }
+}
