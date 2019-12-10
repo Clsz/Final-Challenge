@@ -516,7 +516,10 @@
 		145705D4237A9BE60093E944 /* Filter */ = {
 			isa = PBXGroup;
 			children = (
-				148C4343237C080500B87174 /* Filter */,
+				145705D7237A9C130093E944 /* FilterViewController.swift */,
+				145705D8237A9C130093E944 /* FilterViewController.xib */,
+				148C433E237C07DB00B87174 /* Location Filter */,
+				148C434B237C3A7100B87174 /* Teaching Subject Filter */,
 			);
 			path = Filter;
 			sourceTree = "<group>";
@@ -630,17 +633,6 @@
 				148C4340237C07F900B87174 /* LocationViewController.xib */,
 			);
 			path = "Location Filter";
-			sourceTree = "<group>";
-		};
-		148C4343237C080500B87174 /* Filter */ = {
-			isa = PBXGroup;
-			children = (
-				145705D7237A9C130093E944 /* FilterViewController.swift */,
-				145705D8237A9C130093E944 /* FilterViewController.xib */,
-				148C433E237C07DB00B87174 /* Location Filter */,
-				148C434B237C3A7100B87174 /* Teaching Subject Filter */,
-			);
-			path = Filter;
 			sourceTree = "<group>";
 		};
 		148C4344237C116900B87174 /* Filter */ = {
