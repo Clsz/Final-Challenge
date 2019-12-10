@@ -32,6 +32,7 @@ class SetupEducationViewController: BaseViewController {
         setupData()
         registerCell()
         cellDelegate()
+        self.hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,10 +46,6 @@ class SetupEducationViewController: BaseViewController {
     
     @IBAction func applyTapped(_ sender: Any) {
         getDataCustomCell()
-    }
-    
-    @IBAction func skipTapped(_ sender: Any) {
-        
     }
     
 }
@@ -80,9 +77,18 @@ extension SetupEducationViewController{
         let index4 = IndexPath(row: 4, section: 0)
         let cell4 = tableView.cellForRow(at: index4) as! MoreDetailTableViewCell
         
-        education = Education(tutor.tutorID, cell.textField.text ?? "", cell1.textField.text ?? "", cell2.textField.text ?? "", cell3.textField.text ?? "", cell4.startTF.text ?? "", cell4.endTF.text ?? "")
-        
-        tutor.tutorEducation.append(education!)
+        self.sendData(startYear: Int(cell4.startTF.text ?? "")!, endYear: Int(cell4.endTF.text ?? "")!, school: cell.textField.text ?? "", fieldOfStudy: cell2.textField.text ?? "", gpa: Double(cell3.textField.text ?? "")!, grade: cell1.textField.text ?? "")
+    }
+    
+    private func sendData(startYear:Int, endYear:Int, school:String, fieldOfStudy:String, gpa:Double, grade: String) {
+        let destVC = AdditionalEducationViewController()
+        destVC.dataStart.append(startYear)
+        destVC.dataEnd.append(endYear)
+        destVC.dataSchoolName.append(school)
+        destVC.dataFieldStudy.append(fieldOfStudy)
+        destVC.dataGpa.append(gpa)
+        destVC.dataGrade.append(grade)
+        self.navigationController?.pushViewController(destVC, animated: true)
     }
 }
 extension SetupEducationViewController:EducationProtocol{
@@ -120,6 +126,7 @@ extension SetupEducationViewController:UITableViewDataSource,UITableViewDelegate
             if keyValue.code == 0{
                 let cell = tableView.dequeueReusableCell(withIdentifier: content, for: indexPath) as! DetailProfileTableViewCell
                 cell.setCell(text: keyValue.key, content: keyValue.value)
+                cell.view = self.view
                 return cell
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: contentDrop, for: indexPath) as! AnotherDetailProfileTableViewCell

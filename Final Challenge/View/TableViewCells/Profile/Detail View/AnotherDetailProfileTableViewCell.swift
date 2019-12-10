@@ -34,6 +34,8 @@ class AnotherDetailProfileTableViewCell: UITableViewCell {
             languageDelegate?.dropLanguage()
         }else if dropID == 1{
             educationDelegate?.dropEducation()
+        }else if dropID == 2{
+            languageDelegate?.dropProfiency()
         }else{
             experienceDelegate?.dropExperience()
         }

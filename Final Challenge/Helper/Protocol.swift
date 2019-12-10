@@ -48,6 +48,7 @@ protocol ProfileBimbelDetailProtocol {
 
 protocol LanguageProtocol {
     func dropLanguage()
+    func dropProfiency()
 }
 
 protocol EducationProtocol {

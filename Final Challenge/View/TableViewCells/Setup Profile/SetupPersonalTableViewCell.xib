@@ -28,6 +28,9 @@
                             <constraint firstAttribute="height" constant="30" id="9ZT-an-3yo"/>
                         </constraints>
                         <state key="normal" title="Take Photo"/>
+                        <connections>
+                            <action selector="photoTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="r2f-mf-U8z"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3vD-wf-ww7">
                         <rect key="frame" x="20" y="212" width="374" height="26.5"/>
@@ -66,7 +69,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="Enter your address" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tvs-Bn-wvx">
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tvs-Bn-wvx">
                         <rect key="frame" x="20" y="467.5" width="374" height="100"/>
                         <color key="backgroundColor" red="0.1137254902" green="0.3921568627" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -92,6 +95,7 @@
                     </button>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Lp-SI-WCv">
                         <rect key="frame" x="20" y="359" width="374" height="50"/>
+                        <color key="backgroundColor" red="0.11372549019607843" green="0.39215686274509803" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="qLP-14-gld"/>
                         </constraints>
@@ -101,7 +105,7 @@
                     </textField>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vTq-El-QX7">
                         <rect key="frame" x="20" y="359" width="374" height="50"/>
-                        <color key="backgroundColor" red="0.032647829500000003" green="0.39359486100000002" blue="0.68630516529999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="hNr-UZ-YDQ"/>
                         </constraints>
@@ -155,6 +159,7 @@
                 <outlet property="ageTF" destination="5Lp-SI-WCv" id="ZSX-Vd-zFL"/>
                 <outlet property="applyButton" destination="Z2E-Wd-T2w" id="5tp-UB-hlI"/>
                 <outlet property="changePhotoButton" destination="aRb-zj-ROX" id="bJe-dV-dMB"/>
+                <outlet property="dobButton" destination="vTq-El-QX7" id="kzO-Mj-icn"/>
                 <outlet property="imageProfile" destination="9MX-jk-m4z" id="XSB-c2-1Or"/>
                 <outlet property="nameTF" destination="JgQ-on-cJt" id="fPs-vm-38i"/>
             </connections>
