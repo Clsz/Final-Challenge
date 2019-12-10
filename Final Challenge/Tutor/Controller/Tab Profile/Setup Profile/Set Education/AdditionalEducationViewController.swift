@@ -60,20 +60,13 @@ extension AdditionalEducationViewController:UITableViewDataSource,UITableViewDel
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if IndexPath = 1 {
-            return 1
-//        }
+        return dataSchoolName.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //        if let keyValue = dataArray[indexPath.row] as? (key:String,value:String,code:Int){
-        //                   if keyValue.code == 0{
-        //
-        //        let cell = tableView.dequeueReusableCell(withIdentifier: hint, for: indexPath) as! HintTableViewCell
-        //        cell.setCell
-        //                    return cell} else{
         let cell = tableView.dequeueReusableCell(withIdentifier: CustomExperienceTableViewCell, for: indexPath) as! CustomExperienceTableViewCell
-        cell.setCell(name: "", place: "", date: "")
+        let fos = "Field of Study: \(dataFieldStudy)"
+        cell.setCell(name: String(dataSchoolName.count), place: String(dataGrade.count), date: fos)
         return cell}
 }
 

@@ -39,6 +39,10 @@ protocol ProfileDetailProtocol{
     func applyProfile()
 }
 
+protocol PhotoProtocol {
+    func photoTapped()
+}
+
 protocol ProfileBimbelDetailProtocol {
     func imageTapped()
     func startTapped()

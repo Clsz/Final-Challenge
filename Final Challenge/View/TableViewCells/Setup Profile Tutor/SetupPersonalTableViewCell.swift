@@ -19,6 +19,7 @@ class SetupPersonalTableViewCell: UITableViewCell {
     @IBOutlet weak var dobButton: UIButton!
     var contentDelegate:ProfileDetailProtocol?
     var birthDelegate:BirthProtocol?
+    var photoDelegate:PhotoProtocol?
     var accessoryDoneButton: UIBarButtonItem!
     let accessoryToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
     let flexiblea = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -46,6 +47,7 @@ class SetupPersonalTableViewCell: UITableViewCell {
     }
     
     @IBAction func photoTapped(_ sender: UIButton) {
+        photoDelegate?.photoTapped()
     }
     
     

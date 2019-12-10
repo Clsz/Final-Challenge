@@ -85,11 +85,17 @@ extension SetupPersonalViewController{
         }
     }
     
+    func sendVC() {
+           let vc = SetupEducationViewController()
+           self.navigationController?.pushViewController(vc, animated: true)
+       }
+    
 }
 
 extension SetupPersonalViewController:ProfileDetailProtocol{
     func applyProfile() {
         getDataCustomCell()
+        sendVC()
     }
     
 }
@@ -98,6 +104,13 @@ extension SetupPersonalViewController:BirthProtocol{
     func dropBirth() {
         createBirthDate()
     }
+}
+
+extension SetupPersonalViewController:PhotoProtocol{
+    func photoTapped() {
+    }
+    
+    
 }
 
 extension SetupPersonalViewController:UITableViewDataSource, UITableViewDelegate{
@@ -114,6 +127,7 @@ extension SetupPersonalViewController:UITableViewDataSource, UITableViewDelegate
         cell.setCell(name: fName, age: "Choose your DOB", address: "Enter your address")
         cell.contentDelegate = self
         cell.birthDelegate = self
+        cell.photoDelegate = self
         cell.view = self.view
         return cell
         
@@ -178,19 +192,19 @@ extension SetupPersonalViewController:UIImagePickerControllerDelegate, UINavigat
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         
-                let actionSheet = UIAlertController(title: "Photo Source", message: "Choose your photo evidence ", preferredStyle: .actionSheet)
+        let actionSheet = UIAlertController(title: "Photo Source", message: "Choose your photo evidence ", preferredStyle: .actionSheet)
         
-                actionSheet.addAction(.init(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
-                    imagePickerController.sourceType = .camera
-                    self.present(imagePickerController, animated: true, completion: nil)
-                }))
-                actionSheet.addAction(.init(title: "Photo Library", style: .default, handler: { (action:UIAlertAction) in
-                    imagePickerController.sourceType = .photoLibrary
-                    self.present(imagePickerController, animated: true, completion: nil)
-                }))
-                actionSheet.addAction(.init(title: "Cancel", style: .cancel, handler: nil))
+        actionSheet.addAction(.init(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
+            imagePickerController.sourceType = .camera
+            self.present(imagePickerController, animated: true, completion: nil)
+        }))
+        actionSheet.addAction(.init(title: "Photo Library", style: .default, handler: { (action:UIAlertAction) in
+            imagePickerController.sourceType = .photoLibrary
+            self.present(imagePickerController, animated: true, completion: nil)
+        }))
+        actionSheet.addAction(.init(title: "Cancel", style: .cancel, handler: nil))
         
-                self.present(actionSheet, animated: true, completion: nil)
+        self.present(actionSheet, animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
