@@ -14,12 +14,14 @@ class ProfileBimbelTableViewCell: UITableViewCell {
     @IBOutlet weak var viewBimbel: UIView!
     @IBOutlet weak var imageBimbel: UIImageView!
     @IBOutlet weak var namaBimbel: UILabel!
-    @IBOutlet weak var lokasiBimbel: UILabel!
+    @IBOutlet weak var jamBimbel: UILabel!
+    @IBOutlet weak var statusBimbel: UILabel!
     var homeDelegate:HomeProtocol?
     
-    func setView(image:String, name:String, lokasi:String) {
+    func setView(image:String, name:String, jam:String, status:String) {
         self.namaBimbel.text = name
-        self.lokasiBimbel.text = lokasi
+        self.jamBimbel.text = jam
+        self.statusBimbel.text = status
         self.imageBimbel.setRounded()
         self.imageBimbel.dropShadow()
         viewBimbel.outerRound()
