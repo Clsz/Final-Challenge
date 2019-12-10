@@ -34,6 +34,8 @@ class SegmentedViewController: BaseViewController {
         setupView(text: "Progress")
         tableView.reloadData()
         self.navigationItem.setHidesBackButton(true, animated:true);
+        self.tabBarController?.tabBar.isHidden = false
+        self.hidesBottomBarWhenPushed = true
     }
     
     
@@ -79,7 +81,7 @@ extension SegmentedViewController{
                 return
             }
             let sortedRecords = records.sorted(by: { $0.creationDate! > $1.creationDate! })
-            self.activity.append(sortedRecords[0])
+            self.activity = sortedRecords
             DispatchQueue.main.async {
                 for i in self.activity{
                     if (i.value(forKey: "status") as! String) == "Job Requested"{
@@ -107,7 +109,7 @@ extension SegmentedViewController:UITableViewDataSource, UITableViewDelegate{
         tableView.dataSource = self
         tableView.delegate = self
     }
-
+    
     private func registerCell() {
         tableView.register(UINib(nibName: "ProgressTableViewCell", bundle: nil), forCellReuseIdentifier: "progressCell")
     }
@@ -127,22 +129,28 @@ extension SegmentedViewController:UITableViewDataSource, UITableViewDelegate{
         
         if currentTableView == 0{
             let name = (activityApplied[indexPath.row].value(forKey: "courseName") as? String) ?? ""
-            let status = (activityTest[indexPath.row].value(forKey: "status") as? String) ?? ""
+            let status = (activityApplied[indexPath.row].value(forKey: "status") as? String) ?? ""
+            cell.statusBimbel.textColor = #colorLiteral(red: 1, green: 0.5843137255, blue: 0, alpha: 1)
             cell.setCell(nama: name, status: status)
         }else if currentTableView == 1{
             let name = (activityTest[indexPath.row].value(forKey: "courseName") as? String) ?? ""
             let status = (activityTest[indexPath.row].value(forKey: "status") as? String) ?? ""
+            cell.statusBimbel.textColor = #colorLiteral(red: 1, green: 0.5843137255, blue: 0, alpha: 1)
             cell.setCell(nama: name, status: status)
         }else{
             let name = (activityResult[indexPath.row].value(forKey: "courseName") as? String) ?? ""
             let status = (activityResult[indexPath.row].value(forKey: "status") as? String) ?? ""
+            if status == "Accepted"{
+                cell.statusBimbel.textColor = #colorLiteral(red: 0.2980392157, green: 0.8509803922, blue: 0.3921568627, alpha: 1)
+            }else{
+                cell.statusBimbel.textColor = #colorLiteral(red: 1, green: 0.3333333333, blue: 0.2980392157, alpha: 1)
+            }
             cell.setCell(nama: name , status: status)
         }
-        cell.backgroundColor = #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
         cell.selectionStyle = .none
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //Send data Course and Job Detail
         if currentTableView == 0{
@@ -156,13 +164,16 @@ extension SegmentedViewController:UITableViewDataSource, UITableViewDelegate{
             destVC.applicant = activityTest[indexPath.row];          self.navigationController?.pushViewController(destVC, animated: true)
         }else{
             let data = (activityResult[indexPath.row].value(forKey: "status") as? String) ?? ""
-            if data == "Accepted"{
+            if data == "Waiting for Your Response"{
                 let destVC = WaitingConformationViewController()
-                
+                destVC.jobReference = (activityResult[indexPath.row].value(forKey: "jobID") as! CKRecord.Reference)
+                destVC.jobStatus = (activityResult[indexPath.row].value(forKey: "status") as! String)
+                destVC.applicant = activityResult[indexPath.row];
                 self.navigationController?.pushViewController(destVC, animated: true)
             }else{
                 let destVC = DetailFinalThirdViewController()
-                
+                destVC.jobReference = (activityResult[indexPath.row].value(forKey: "jobID") as! CKRecord.Reference)
+                destVC.jobStatus = (activityResult[indexPath.row].value(forKey: "status") as! String)
                 self.navigationController?.pushViewController(destVC, animated: true)
             }
         }

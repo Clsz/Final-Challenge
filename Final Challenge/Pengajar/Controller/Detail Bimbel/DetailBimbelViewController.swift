@@ -14,11 +14,14 @@ class DetailBimbelViewController: BaseViewController {
     @IBOutlet weak var detailBimbelTV: UITableView!
     var dataArray:[Any?] = []
     let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
-    var course:CKRecord?
-    var job:CKRecord?
+    var course:CKRecord!
+    var job:CKRecord!
+    var user:CKRecord!
+    var tempArray:[CKRecord.Reference] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UserDefaults.standard.set("sg@gmail.com", forKey: "token")
         queryCourse()
         registerCell()
     }
@@ -52,19 +55,53 @@ extension DetailBimbelViewController{
         dataArray.append(true)
     }
     
-    private func applyJob(){
-        //Get Referemce
-        let newApply = CKRecord(recordType: "Activity")
-        //        let reference = CKRecord.Reference(recordID: job.recordID , action: .deleteSelf)
-        //        newApply["courseID"] = reference
-        newApply["activityStatus"] = "Waiting Confirmation"
+    private func queryUser() {
+        let token = CKUserData.shared.getToken()
         
-        database.save(newApply) { (record, error) in
-            guard record != nil else {
-                print("error", error as Any)
-                return }
-            self.showAlert(title: "Succesful", message: "Applied Job !!")
+        let pred = NSPredicate(format: "tutorEmail == %@", token)
+        
+        let query = CKQuery(recordType: "Tutor", predicate: pred)
+        
+        database.perform(query, inZoneWith: nil) { (records, error) in
+            guard let record = records else {return}
+            
+            self.user = record[0]
+            DispatchQueue.main.async {
+                self.applyJob()
+            }
         }
+    }
+    
+    private func applyJob(){
+        let record = CKRecord(recordType: "Applicant")
+    
+        record["courseName"] = course?.value(forKey: "courseName") as! String
+        record["jobID"] = CKRecord.Reference.init(recordID: job.recordID , action: .deleteSelf)
+        record["tutorID"] = CKRecord.Reference.init(recordID: user.recordID , action: .deleteSelf)
+        record["status"] = "Job Requested"
+        
+        database.save(record) { (record, error) in
+            guard record != nil  else { return print("error", error as Any) }
+            self.updateToDatabase(recordApplicant: record!)
+        }
+    }
+    
+    private func updateToDatabase(recordApplicant:CKRecord) {
+        if let record = job{
+            tempArray = job.value(forKey: "applicantID") as? [CKRecord.Reference] ?? []
+            let tempID = CKRecord.Reference.init(recordID: recordApplicant.recordID, action: .deleteSelf)
+            tempArray.append(tempID)
+            record["applicantID"] = tempArray
+            
+            self.database.save(record, completionHandler: {returnedRecord, error in
+                if error != nil {
+                    self.showAlert(title: "Error", message: "Cannot update :(")
+                } else {
+                    
+                }
+            })
+        }
+        
     }
     
     private func queryCourse() {
@@ -86,7 +123,7 @@ extension DetailBimbelViewController{
 }
 extension DetailBimbelViewController:DetailBimbel{
     func requestTapped() {
-        applyJob()
+        self.queryUser()
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -141,6 +178,11 @@ extension DetailBimbelViewController: UITableViewDataSource,UITableViewDelegate{
             cell.day = keyValue.day
             cell.scheduleStart = keyValue.start
             cell.scheduleEnd = keyValue.end
+            return cell
+        }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "submitCell", for: indexPath) as! SubmitTableViewCell
+            cell.contentDelegate = self
+            cell.setInterface()
             return cell
         }
         return UITableViewCell()

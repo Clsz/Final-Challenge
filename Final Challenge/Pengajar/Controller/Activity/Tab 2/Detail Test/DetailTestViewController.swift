@@ -18,26 +18,26 @@ class DetailTestViewController: BaseViewController {
     var applicant:CKRecord?
     var course:CKRecord?
     var job:CKRecord?
+    var confirmStatus:Bool?
     let header = "profileBimbelCell"
     let address = "addressCell"
     let seeDetail = "SeeDetailTableViewCellID"
     let interviewSchedule = "ActivityTableViewCellID"
     let footer = "FooterActivityTableViewCellID"
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        queryJob()
         registerCell()
+        queryJob()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.tableView.contentInsetAdjustmentBehavior = .never
-        setupView(text: "Detail Pekerjaan")
+        setupView(text: "Test Details")
     }
 }
 extension DetailTestViewController{
-    
     private func queryJob() {
         let pred = NSPredicate(format: "recordID = %@", CKRecord.ID(recordName: jobReference.recordID.recordName))
         let query = CKQuery(recordType: "Job", predicate: pred)
@@ -62,8 +62,37 @@ extension DetailTestViewController{
             DispatchQueue.main.async {
                 self.setupData()
                 self.cellDelegate()
+                self.tableView.reloadData()
             }
         }
+    }
+    
+    private func updateToDatabase(status:String) {
+        if let record = applicant{
+            record["courseName"] = applicant?.value(forKey: "courseName") as! String
+            record["tutorID"] = applicant?.value(forKey: "tutorID") as! CKRecord.Reference
+            record["jobID"] = self.jobReference
+            record["testDay"] = applicant?.value(forKey: "testDay") as! [String]
+            record["testStartHour"] = applicant?.value(forKey: "testStartHour") as! [String]
+            record["testEndHour"] = applicant?.value(forKey: "testEndHour") as! [String]
+            record["testRequirement"] = applicant?.value(forKey: "testRequirement") as! String
+            record["status"] = status
+            
+            self.database.save(record, completionHandler: {returnedRecord, error in
+                if error != nil {
+                    self.showAlert(title: "Error", message: "Cannot update :(")
+                } else {
+                    let destVC = ResultViewController()
+                    if self.confirmStatus == true{
+                        destVC.fromID = 1
+                    }else{
+                        destVC.fromID = 4
+                    }
+                    self.navigationController?.pushViewController(destVC, animated: true)
+                }
+            })
+        }
+        
     }
     
     private func setupData() {
@@ -77,12 +106,56 @@ extension DetailTestViewController{
         dataArray.append(false)
     }
     
+    private func acceptAlert() {
+        let confirmAlert = UIAlertController(title: "Accept the Test", message: "Are You Sure Want to Accept?", preferredStyle: UIAlertController.Style.alert)
+        
+        confirmAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            self.confirmStatus = true
+            self.updateToDatabase(status: "Test Accepted")
+        }))
+        
+        confirmAlert.addAction(UIAlertAction(title: "No", style: .destructive, handler: { (action: UIAlertAction!) in }))
+        
+        present(confirmAlert, animated: true, completion: nil)
+    }
+    
+    private func rejectAlert() {
+        let confirmAlert = UIAlertController(title: "Accept the Test", message: "Are You Sure Want to Declined? It Means you lost this job.", preferredStyle: UIAlertController.Style.alert)
+        
+        confirmAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            self.confirmStatus = false
+            self.updateToDatabase(status: "Test Declined")
+        }))
+        
+        confirmAlert.addAction(UIAlertAction(title: "No", style: .destructive, handler: { (action: UIAlertAction!) in
+            
+        }))
+        
+        present(confirmAlert, animated: true, completion: nil)
+    }
+    
 }
 extension DetailTestViewController:JobDetail{
     func seeDetailTapped() {
         let destVC = SeeDetailBimbelViewController()
-        destVC.jobReference = self.jobReference
+        destVC.course = course
+        destVC.job = job
+        destVC.jobStatus = applicant?.value(forKey: "status") as? String
         self.navigationController?.pushViewController(destVC, animated: true)
+    }
+    
+}
+extension DetailTestViewController:ActivityProcess, ActivityProtocol{
+    func accept() {
+        acceptAlert()
+    }
+    
+    func reject() {
+        rejectAlert()
+    }
+    
+    func requestNewSchedule() {
+        self.showAlert(title: "Coming Soon", message: "Under construction :(")
     }
 }
 extension DetailTestViewController: UITableViewDataSource,UITableViewDelegate{
@@ -110,12 +183,13 @@ extension DetailTestViewController: UITableViewDataSource,UITableViewDelegate{
             let name = (course?.value(forKey: "courseName") as! String)
             let workHour = ((course?.value(forKey: "courseStartHour") as! String) + " - " + (course?.value(forKey: "courseEndHour") as! String))
             let status = ("Status: " + (applicant?.value(forKey: "status") as! String))
+            cell.statusBimbel.textColor = #colorLiteral(red: 1, green: 0.5843137255, blue: 0, alpha: 1)
             cell.setView(image: "school", name: name, jam: workHour, status: status)
             return cell
         }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:String, code:Int){
-                let cell = tableView.dequeueReusableCell(withIdentifier: "addressCell", for: indexPath) as! AddressTableViewCell
-                cell.setView(title: keyValue.key, description: keyValue.value)
-                return cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "addressCell", for: indexPath) as! AddressTableViewCell
+            cell.setView(title: keyValue.key, description: keyValue.value)
+            return cell
         }else if let keyValue = dataArray[indexPath.row] as? (key:String, hint:String, anotherKey:String, content:String, button:String){
             let cell = tableView.dequeueReusableCell(withIdentifier: interviewSchedule, for: indexPath) as! ActivityTableViewCell
             cell.day = applicant?.value(forKey: "testDay") as! [String]
@@ -126,10 +200,12 @@ extension DetailTestViewController: UITableViewDataSource,UITableViewDelegate{
         }else if let keyValue = dataArray[indexPath.row] as? Bool{
             if keyValue == true{
                 let cell = tableView.dequeueReusableCell(withIdentifier: seeDetail, for: indexPath) as! SeeDetailTableViewCell
-                cell.setCell(titleButton: "Request New Schedule")
+                cell.jobDetailDelegate = self
+                cell.setCell(titleButton: "See Bimbel Details")
                 return cell
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: footer, for: indexPath) as! FooterActivityTableViewCell
+                cell.footerDelegate = self
                 cell.setCell(accept: "Accept", reject: "Declined")
                 return cell
             }

@@ -30,6 +30,8 @@ class HomeViewController: BaseViewController{
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Jobs")
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        self.tabBarController?.tabBar.isHidden = false
+        self.hidesBottomBarWhenPushed = true
     }
     
     
@@ -56,13 +58,6 @@ extension HomeViewController{
     }
 
 }
-extension HomeViewController:HomeProtocol{
-    func bimbelTapped() {
-        
-    }
-    
-}
-
 extension HomeViewController: UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listJob.count
@@ -93,7 +88,8 @@ extension HomeViewController: UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let destVC = DetailBimbelViewController()
         destVC.job = listJob[indexPath.row]
-        navigationController?.pushViewController(destVC, animated: true)
+        
+        self.navigationController?.pushViewController(destVC, animated: true)
     }
     
     func cellDelegate(){

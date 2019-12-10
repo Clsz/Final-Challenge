@@ -38,6 +38,5 @@ extension ProgressTableViewCell{
         self.viewBimbel.dropShadow()
         self.viewBimbel.outerRound2()
         self.viewBimbel.setBorder()
-        self.viewBimbel.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     }
 }

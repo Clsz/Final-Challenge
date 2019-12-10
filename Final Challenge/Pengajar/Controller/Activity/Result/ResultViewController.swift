@@ -9,25 +9,25 @@
 import UIKit
 
 class ResultViewController: UIViewController {
-   
+    
     @IBOutlet weak var imageResult: UIImageView!
     @IBOutlet weak var labelResult: UILabel!
     
-     let imageAcc = UIImage(named: "Accepted")
-     let imageDec = UIImage(named: "Decline")
+    let imageAcc = UIImage(named: "Accepted")
+    let imageDec = UIImage(named: "Decline")
     var fromID: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
     }
-
-
+    
+    
     @IBAction func buttonTapped(_ sender: UIButton) {
         self.navigationController?.popToRootViewController(animated: true)
         
@@ -62,5 +62,5 @@ class ResultViewController: UIViewController {
         
     }
     
-
+    
 }

@@ -404,7 +404,7 @@
 			children = (
 				E101A89623951AA400701DDB /* BimbelProfileViewController.swift */,
 				E101A89723951AA400701DDB /* BimbelProfileViewController.xib */,
-				144B432A23966FBF00F1ACE1 /* Tab 2 */,
+				144B432A23966FBF00F1ACE1 /* Activity (TAB 2) */,
 				2761272E2397A817007BC852 /* Post Job Bimbel (TAB 1) */,
 				278FABCF23966F3000590D4A /* Detail Job Bmbel */,
 				27CFEC8C239648380015B6CC /* Job Bimbel (TAB 1) */,
@@ -440,13 +440,13 @@
 			path = "Detail Mahasiswa";
 			sourceTree = "<group>";
 		};
-		144B432A23966FBF00F1ACE1 /* Tab 2 */ = {
+		144B432A23966FBF00F1ACE1 /* Activity (TAB 2) */ = {
 			isa = PBXGroup;
 			children = (
 				144B432B23966FC800F1ACE1 /* Segmented */,
 				144B432523964BA600F1ACE1 /* Detail Mahasiswa */,
 			);
-			path = "Tab 2";
+			path = "Activity (TAB 2)";
 			sourceTree = "<group>";
 		};
 		144B432B23966FC800F1ACE1 /* Segmented */ = {
@@ -1067,8 +1067,8 @@
 				148C4357237D7FE100B87174 /* Detail Bimbel */,
 				145705D4237A9BE60093E944 /* Filter */,
 				E13EE5EF2380E844005016A0 /* Setup Profile */,
-				E139B5332375D6A300FEF1F5 /* Login */,
 				E139B5322375D68C00FEF1F5 /* Profile */,
+				E139B5332375D6A300FEF1F5 /* Login */,
 				E139B5402375D73600FEF1F5 /* BaseViewController.swift */,
 				E139B5422375D7C200FEF1F5 /* TabBarController.swift */,
 			);

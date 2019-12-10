@@ -25,13 +25,11 @@ class DetailBimbelTabFirstViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.detailBimbelFirst.contentInsetAdjustmentBehavior = .never
-        setupView(text: "Detail Pekerjaan")
+        setupView(text: "Bimbel Details")
     }
 }
 
 extension DetailBimbelTabFirstViewController{
-    
     private func queryJob() {
         let pred = NSPredicate(format: "recordID = %@", CKRecord.ID(recordName: jobReference.recordID.recordName))
         let query = CKQuery(recordType: "Job", predicate: pred)
@@ -56,6 +54,7 @@ extension DetailBimbelTabFirstViewController{
             DispatchQueue.main.async {
                 self.setupData()
                 self.cellDelegate()
+                self.detailBimbelFirst.reloadData()
             }
         }
     }
@@ -95,7 +94,6 @@ extension DetailBimbelTabFirstViewController: UITableViewDataSource,UITableViewD
         detailBimbelFirst.register(UINib(nibName: "SubjectCategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "subjekCell")
         detailBimbelFirst.register(UINib(nibName: "SalaryTableViewCell", bundle: nil), forCellReuseIdentifier: "salaryCell")
         detailBimbelFirst.register(UINib(nibName: "ScheduleTableViewCell", bundle: nil), forCellReuseIdentifier: "scheduleCell")
-        detailBimbelFirst.register(UINib(nibName: "SubmitTableViewCell", bundle: nil), forCellReuseIdentifier: "submitCell")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -109,6 +107,7 @@ extension DetailBimbelTabFirstViewController: UITableViewDataSource,UITableViewD
             let name = (course?.value(forKey: "courseName") as! String)
             let workHour = ((course?.value(forKey: "courseStartHour") as! String) + " - " + (course?.value(forKey: "courseEndHour") as! String))
             let status = ("Status: " + (jobStatus ?? ""))
+            cell.statusBimbel.textColor = #colorLiteral(red: 1, green: 0.5843137255, blue: 0, alpha: 1)
             cell.setView(image: "school", name: name, jam: workHour, status: status)
             return cell
         }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:String, code:Int){

@@ -34,12 +34,12 @@ class ProfileViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        print("skills : \(tutorModel.tutorSkills)")
-//        sendToCustom?.sendTutor(tutor: self.tutorModel)
         setupView(text: "Profil")
         setupData()
         registerCell()
         cellDelegate()
+        self.tabBarController?.tabBar.isHidden = false
+        self.hidesBottomBarWhenPushed = true
     }
     
 }

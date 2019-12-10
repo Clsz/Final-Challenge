@@ -7,120 +7,180 @@
 //
 
 import UIKit
+import CloudKit
 
 class WaitingConformationViewController: BaseViewController {
-    @IBOutlet weak var waitingTV: UITableView!
-    
+    @IBOutlet weak var tableView: UITableView!
+    let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
     var dataArray:[Any?] = []
-    var activity:Activity!
+    var jobReference:CKRecord.Reference!
+    var jobStatus:String?
+    var applicant:CKRecord?
+    var course:CKRecord?
+    var job:CKRecord?
+    var confirmStatus:Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cellDelegate()
+        queryJob()
         registerCell()
-        setupData()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.waitingTV.contentInsetAdjustmentBehavior = .never
-        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: {})
-        setupView(text: "Detail Pekerjaan")
+        setupView(text: "Job Details")
     }
-    
-    
-    
-    
 }
 
 extension WaitingConformationViewController{
-    func setupData() {
-        dataArray.removeAll()
-        dataArray.append(activity)
-        dataArray.append(("Address",activity.courseAddress,0))
-        dataArray.append(("Subject Category",activity.courseCategory))
-        dataArray.append(("Grade",activity.courseGrade))
-        dataArray.append(("Range Salary","Rp \(String(describing: activity.courseMinFare!.formattedWithSeparator)) - Rp \(String(describing: activity.courseMaxFare!.formattedWithSeparator))",1))
-        dataArray.append(("Schedule",activity.courseWorkTime,activity.courseWorkSchedule))
-        dataArray.append(("Qualification",activity.courseWorkQualification,0))
-        dataArray.append(("Terima Lowongan Kerja","Tolak Lowongan Kerja",true))
+    private func queryJob() {
+        let pred = NSPredicate(format: "recordID = %@", CKRecord.ID(recordName: jobReference.recordID.recordName))
+        let query = CKQuery(recordType: "Job", predicate: pred)
+        
+        database.perform(query, inZoneWith: nil) { (records, error) in
+            guard let record = records else {return}
+            self.job = record[0]
+            DispatchQueue.main.async {
+                self.queryCourse()
+            }
+        }
     }
     
+    private func queryCourse() {
+        let courseID = job?.value(forKey: "courseID") as! CKRecord.Reference
+        let pred = NSPredicate(format: "recordID = %@", CKRecord.ID(recordName: courseID.recordID.recordName))
+        let query = CKQuery(recordType: "Course", predicate: pred)
+        
+        database.perform(query, inZoneWith: nil) { (records, error) in
+            guard let record = records else {return}
+            self.course = record[0]
+            DispatchQueue.main.async {
+                self.setupData()
+                self.cellDelegate()
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    private func updateToDatabase(status:String) {
+        if let record = applicant{
+            record["courseName"] = applicant?.value(forKey: "courseName") as! String
+            record["tutorID"] = applicant?.value(forKey: "tutorID") as! CKRecord.Reference
+            record["jobID"] = self.jobReference
+            record["testDay"] = applicant?.value(forKey: "testDay") as! [String]
+            record["testStartHour"] = applicant?.value(forKey: "testStartHour") as! [String]
+            record["testEndHour"] = applicant?.value(forKey: "testEndHour") as! [String]
+            record["testRequirement"] = applicant?.value(forKey: "testRequirement") as! String
+            record["status"] = status
+            
+            self.database.save(record, completionHandler: {returnedRecord, error in
+                if error != nil {
+                    self.showAlert(title: "Error", message: "Cannot update :(")
+                } else {
+                    let destVC = ResultViewController()
+                    if self.confirmStatus == true{
+                        destVC.fromID = 1
+                    }else{
+                        destVC.fromID = 4
+                    }
+                    self.navigationController?.pushViewController(destVC, animated: true)
+                }
+            })
+        }
+        
+    }
+    
+    private func setupData() {
+        dataArray.removeAll()
+        dataArray.append(course)
+        let address = (course?.value(forKey: "courseAddress") as! String)
+        dataArray.append(("Address",address,0))
+        let subject = (job?.value(forKey: "jobSubject") as! [String])
+        dataArray.append(("Subject Category", subject))
+        let grade = (job?.value(forKey: "jobGrade") as! [String])
+        dataArray.append(("Grade", grade))
+        let minFare = (job?.value(forKey: "minimumSalary") as! Double)
+        let maxFare = (job?.value(forKey: "maximumSalary") as! Double)
+        dataArray.append(("Range Salary","Rp \(String(describing: minFare.formattedWithSeparator)) - Rp \(String(describing: maxFare.formattedWithSeparator))",1))
+        let scheduleDay = (job?.value(forKey: "jobScheduleDay") as! [String])
+        let scheduleStart = (job?.value(forKey: "jobScheduleStart") as! [String])
+        let scheduleEnd = (job?.value(forKey: "jobScheduleEnd") as! [String])
+        dataArray.append(("Work Schedule",scheduleDay,scheduleStart,scheduleEnd))
+        let qualification = (job?.value(forKey: "jobQualification") as! String)
+        dataArray.append(("Qualification",qualification,0))
+        dataArray.append(true)
+    }
+    
+    private func acceptAlert() {
+        let confirmAlert = UIAlertController(title: "Accept the Test", message: "Are You Sure Want to Accept?", preferredStyle: UIAlertController.Style.alert)
+        
+        confirmAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            self.updateToDatabase(status: "Test Accepted")
+        }))
+        
+        confirmAlert.addAction(UIAlertAction(title: "No", style: .destructive, handler: { (action: UIAlertAction!) in
+            
+        }))
+        
+        present(confirmAlert, animated: true, completion: nil)
+    }
+    
+    private func rejectAlert() {
+        let confirmAlert = UIAlertController(title: "Accept the Test", message: "Are You Sure Want to Declined? It Means you lost this job.", preferredStyle: UIAlertController.Style.alert)
+        
+        confirmAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            self.updateToDatabase(status: "Test Declined")
+
+        }))
+        
+        confirmAlert.addAction(UIAlertAction(title: "No", style: .destructive, handler: { (action: UIAlertAction!) in
+            
+        }))
+        
+        present(confirmAlert, animated: true, completion: nil)
+    }
 }
 extension WaitingConformationViewController:ActivityProcess{
     func accept() {
-        let refreshAlert = UIAlertController(title: "Terima Lowongan Kerja", message: "Apakah Anda Yakin Untuk Menerima Lowongan Kerja Ini", preferredStyle: UIAlertController.Style.alert)
-        
-        refreshAlert.addAction(UIAlertAction(title: "Ya", style: .default, handler: { (action: UIAlertAction!) in
-            print("Handle Ok logic here")
-            let destVC = ResultViewController()
-            destVC.fromID = 3
-            self.navigationController?.pushViewController(destVC, animated: true)
-        }))
-        
-        refreshAlert.addAction(UIAlertAction(title: "Tidak", style: .cancel, handler: { (action: UIAlertAction!) in
-            print("Handle Cancel Logic here")
-        }))
-        
-        
-        
-        present(refreshAlert, animated: true, completion: nil)
+        acceptAlert()
     }
     
     func reject() {
-        let refreshAlert = UIAlertController(title: "Tolak Lowongan Kerja", message: "Apakah Anda Yakin Untuk Menolak Lowongan Kerja Ini", preferredStyle: UIAlertController.Style.alert)
-        
-        refreshAlert.addAction(UIAlertAction(title: "Ya", style: .default, handler: { (action: UIAlertAction!) in
-            print("Handle Ok logic here")
-            let destVC = ResultViewController()
-            destVC.fromID = 5
-            self.navigationController?.pushViewController(destVC, animated: true)
-        }))
-        
-        refreshAlert.addAction(UIAlertAction(title: "Tidak", style: .cancel, handler: { (action: UIAlertAction!) in
-            print("Handle Cancel Logic here")
-        }))
-        
-        present(refreshAlert, animated: true, completion: nil)
-    }
-}
-extension WaitingConformationViewController: UITableViewDataSource,UITableViewDelegate{
-    func cellDelegate(){
-        waitingTV.dataSource = self
-        waitingTV.delegate = self
+        rejectAlert()
     }
     
-    func registerCell() {
-        waitingTV.register(UINib(nibName: "ProfileBimbelTableViewCell", bundle: nil), forCellReuseIdentifier: "profileBimbelCell")
-        waitingTV.register(UINib(nibName: "AddressTableViewCell", bundle: nil), forCellReuseIdentifier: "addressCell")
-        waitingTV.register(UINib(nibName: "SubjectCategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "subjekCell")
-        waitingTV.register(UINib(nibName: "SalaryTableViewCell", bundle: nil), forCellReuseIdentifier: "salaryCell")
-        waitingTV.register(UINib(nibName: "ScheduleTableViewCell", bundle: nil), forCellReuseIdentifier: "scheduleCell")
-        waitingTV.register(UINib(nibName: "SubmitTableViewCell", bundle: nil), forCellReuseIdentifier: "submitCell")
-        waitingTV.register(UINib(nibName: "FooterActivityTableViewCell", bundle: nil), forCellReuseIdentifier: "FooterActivityTableViewCellID")
-        
+}
+extension WaitingConformationViewController: UITableViewDataSource,UITableViewDelegate{
+    private func cellDelegate(){
+        tableView.dataSource = self
+        tableView.delegate = self
+    }
+    
+    private func registerCell() {
+        tableView.register(UINib(nibName: "ProfileBimbelTableViewCell", bundle: nil), forCellReuseIdentifier: "profileBimbelCell")
+        tableView.register(UINib(nibName: "AddressTableViewCell", bundle: nil), forCellReuseIdentifier: "addressCell")
+        tableView.register(UINib(nibName: "SubjectCategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "subjekCell")
+        tableView.register(UINib(nibName: "SalaryTableViewCell", bundle: nil), forCellReuseIdentifier: "salaryCell")
+        tableView.register(UINib(nibName: "ScheduleTableViewCell", bundle: nil), forCellReuseIdentifier: "scheduleCell")
+        tableView.register(UINib(nibName: "FooterActivityTableViewCell", bundle: nil), forCellReuseIdentifier: "FooterActivityTableViewCellID")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataArray.count
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.row == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "profileBimbelCell", for: indexPath) as! ProfileBimbelTableViewCell
-            if let course = dataArray[indexPath.row] as? Activity {
-                print(indexPath.row)
-//                cell.setView(image: course.courseImage, name: course.courseName, lokasi: course.activityStatus)
-//                cell.lokasiBimbel.textColor = #colorLiteral(red: 0, green: 0.8650887609, blue: 0.320767343, alpha: 1)
-            }
+            let name = (course?.value(forKey: "courseName") as! String)
+            let workHour = ((course?.value(forKey: "courseStartHour") as! String) + " - " + (course?.value(forKey: "courseEndHour") as! String))
+            let status = ("Status: " + (jobStatus ?? ""))
+            cell.statusBimbel.textColor = #colorLiteral(red: 1, green: 0.5843137255, blue: 0, alpha: 1)
+            cell.setView(image: "school", name: name, jam: workHour, status: status)
             return cell
         }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:String, code:Int){
-            
             if keyValue.code == 0{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "addressCell", for: indexPath) as! AddressTableViewCell
-                print("keyVAlue\(keyValue.value)")
                 cell.setView(title: keyValue.key, description: keyValue.value)
                 return cell
             }
@@ -134,16 +194,17 @@ extension WaitingConformationViewController: UITableViewDataSource,UITableViewDe
             cell.setView(title: keyValue.key)
             cell.subject = keyValue.value
             return cell
-        }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:[String], desc:[String]){
+        }else if let keyValue = dataArray[indexPath.row] as? (key:String, day:[String], start:[String], end:[String]){
             let cell = tableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath) as! ScheduleTableViewCell
             cell.setView(title: keyValue.key)
-            cell.day = keyValue.value
-//            cell.schedule = keyValue.desc
+            cell.day = keyValue.day
+            cell.scheduleStart = keyValue.start
+            cell.scheduleEnd = keyValue.end
             return cell
-        }else if let keyValue = dataArray[indexPath.row] as? (acc:String, rej:String, _ :Bool){
+        }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "FooterActivityTableViewCellID", for: indexPath) as! FooterActivityTableViewCell
             cell.footerDelegate = self
-            cell.setCell(accept: keyValue.acc, reject: keyValue.rej)
+            cell.setCell(accept: "Accept", reject: "Declined")
             return cell
         }
         return UITableViewCell()

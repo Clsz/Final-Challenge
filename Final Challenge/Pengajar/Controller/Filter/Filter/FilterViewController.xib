@@ -158,7 +158,7 @@
                                         <constraint firstAttribute="height" constant="44" id="Hia-xm-ALe"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                    <state key="normal" title="Terapkan Filter">
+                                    <state key="normal" title="Apply Filter">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <userDefinedRuntimeAttributes>
