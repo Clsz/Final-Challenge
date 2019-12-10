@@ -30,6 +30,7 @@ class SeeDetailBimbelViewController: BaseViewController {
         self.tableView.reloadData()
 
     }
+    
 }
 
 extension SeeDetailBimbelViewController{

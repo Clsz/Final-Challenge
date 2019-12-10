@@ -11,13 +11,11 @@ import CloudKit
 
 class HomeViewController: BaseViewController{
     
+    @IBOutlet weak var jobTableView: UITableView!
     let images = UIImage(named: "school")
     var listJob = [CKRecord]()
     let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
     var homeDelegate:HomeProtocol?
-    
-    
-    @IBOutlet weak var jobTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,12 +29,12 @@ class HomeViewController: BaseViewController{
         setupView(text: "Jobs")
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         self.tabBarController?.tabBar.isHidden = false
-        self.hidesBottomBarWhenPushed = true
     }
     
     
     @IBAction func filterTapped(_ sender: UIButton) {
         let filterVC = FilterViewController()
+        self.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(filterVC, animated: true)
     }
 }

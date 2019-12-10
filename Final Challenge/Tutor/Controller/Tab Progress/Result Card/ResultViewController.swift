@@ -30,7 +30,6 @@ class ResultViewController: UIViewController {
     
     @IBAction func buttonTapped(_ sender: UIButton) {
         self.navigationController?.popToRootViewController(animated: true)
-        
     }
     
     func setView() {

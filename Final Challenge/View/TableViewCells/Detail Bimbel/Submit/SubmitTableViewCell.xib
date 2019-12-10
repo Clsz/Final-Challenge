@@ -23,7 +23,7 @@
                             <constraint firstAttribute="height" constant="42" id="Rus-y5-gRN"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                        <state key="normal" title="Request">
+                        <state key="normal" title="Apply Job">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                         <userDefinedRuntimeAttributes>

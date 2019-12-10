@@ -1,22 +1,24 @@
 //
-//  DetailBimbelTabFirstViewController.swift
+//  WaitingConformationViewController.swift
 //  Final Challenge
 //
-//  Created by Steven Gunawan on 18/11/19.
+//  Created by Steven Gunawan on 19/11/19.
 //  Copyright © 2019 12. All rights reserved.
 //
 
 import UIKit
 import CloudKit
 
-class DetailBimbelTabFirstViewController: BaseViewController {
-    @IBOutlet weak var detailBimbelFirst: UITableView!
+class WaitingConformationViewController: BaseViewController {
+    @IBOutlet weak var tableView: UITableView!
     let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
     var dataArray:[Any?] = []
     var jobReference:CKRecord.Reference!
     var jobStatus:String?
+    var applicant:CKRecord?
     var course:CKRecord?
     var job:CKRecord?
+    var confirmStatus:Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,11 +27,11 @@ class DetailBimbelTabFirstViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setupView(text: "Bimbel Details")
+        setupView(text: "Job Details")
     }
+    
 }
-
-extension DetailBimbelTabFirstViewController{
+extension WaitingConformationViewController{
     private func queryJob() {
         let pred = NSPredicate(format: "recordID = %@", CKRecord.ID(recordName: jobReference.recordID.recordName))
         let query = CKQuery(recordType: "Job", predicate: pred)
@@ -54,9 +56,37 @@ extension DetailBimbelTabFirstViewController{
             DispatchQueue.main.async {
                 self.setupData()
                 self.cellDelegate()
-                self.detailBimbelFirst.reloadData()
+                self.tableView.reloadData()
             }
         }
+    }
+    
+    private func updateToDatabase(status:String) {
+        if let record = applicant{
+            record["courseName"] = applicant?.value(forKey: "courseName") as! String
+            record["tutorID"] = applicant?.value(forKey: "tutorID") as! CKRecord.Reference
+            record["jobID"] = self.jobReference
+            record["testDay"] = applicant?.value(forKey: "testDay") as! [String]
+            record["testStartHour"] = applicant?.value(forKey: "testStartHour") as! [String]
+            record["testEndHour"] = applicant?.value(forKey: "testEndHour") as! [String]
+            record["testRequirement"] = applicant?.value(forKey: "testRequirement") as! String
+            record["status"] = status
+            
+            self.database.save(record, completionHandler: {returnedRecord, error in
+                if error != nil {
+                    self.showAlert(title: "Error", message: "Cannot update :(")
+                } else {
+                    let destVC = ResultViewController()
+                    if self.confirmStatus == true{
+                        destVC.fromID = 1
+                    }else{
+                        destVC.fromID = 4
+                    }
+                    self.navigationController?.pushViewController(destVC, animated: true)
+                }
+            })
+        }
+        
     }
     
     private func setupData() {
@@ -80,20 +110,58 @@ extension DetailBimbelTabFirstViewController{
         dataArray.append(true)
     }
     
-}
+    private func acceptAlert() {
+        let confirmAlert = UIAlertController(title: "Accept the Test", message: "Are You Sure Want to Accept?", preferredStyle: UIAlertController.Style.alert)
+        
+        confirmAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            self.updateToDatabase(status: "Test Accepted")
+        }))
+        
+        confirmAlert.addAction(UIAlertAction(title: "No", style: .destructive, handler: { (action: UIAlertAction!) in
+            
+        }))
+        
+        present(confirmAlert, animated: true, completion: nil)
+    }
+    
+    private func rejectAlert() {
+        let confirmAlert = UIAlertController(title: "Accept the Test", message: "Are You Sure Want to Declined? It Means you lost this job.", preferredStyle: UIAlertController.Style.alert)
+        
+        confirmAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            self.updateToDatabase(status: "Test Declined")
 
-extension DetailBimbelTabFirstViewController: UITableViewDataSource,UITableViewDelegate{
+        }))
+        
+        confirmAlert.addAction(UIAlertAction(title: "No", style: .destructive, handler: { (action: UIAlertAction!) in
+            
+        }))
+        
+        present(confirmAlert, animated: true, completion: nil)
+    }
+}
+extension WaitingConformationViewController:ActivityProcess{
+    func accept() {
+        acceptAlert()
+    }
+    
+    func reject() {
+        rejectAlert()
+    }
+    
+}
+extension WaitingConformationViewController: UITableViewDataSource,UITableViewDelegate{
     private func cellDelegate(){
-        detailBimbelFirst.dataSource = self
-        detailBimbelFirst.delegate = self
+        tableView.dataSource = self
+        tableView.delegate = self
     }
     
     private func registerCell() {
-        detailBimbelFirst.register(UINib(nibName: "ProfileBimbelTableViewCell", bundle: nil), forCellReuseIdentifier: "profileBimbelCell")
-        detailBimbelFirst.register(UINib(nibName: "AddressTableViewCell", bundle: nil), forCellReuseIdentifier: "addressCell")
-        detailBimbelFirst.register(UINib(nibName: "SubjectCategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "subjekCell")
-        detailBimbelFirst.register(UINib(nibName: "SalaryTableViewCell", bundle: nil), forCellReuseIdentifier: "salaryCell")
-        detailBimbelFirst.register(UINib(nibName: "ScheduleTableViewCell", bundle: nil), forCellReuseIdentifier: "scheduleCell")
+        tableView.register(UINib(nibName: "ProfileBimbelTableViewCell", bundle: nil), forCellReuseIdentifier: "profileBimbelCell")
+        tableView.register(UINib(nibName: "AddressTableViewCell", bundle: nil), forCellReuseIdentifier: "addressCell")
+        tableView.register(UINib(nibName: "SubjectCategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "subjekCell")
+        tableView.register(UINib(nibName: "SalaryTableViewCell", bundle: nil), forCellReuseIdentifier: "salaryCell")
+        tableView.register(UINib(nibName: "ScheduleTableViewCell", bundle: nil), forCellReuseIdentifier: "scheduleCell")
+        tableView.register(UINib(nibName: "FooterActivityTableViewCell", bundle: nil), forCellReuseIdentifier: "FooterActivityTableViewCellID")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -132,6 +200,11 @@ extension DetailBimbelTabFirstViewController: UITableViewDataSource,UITableViewD
             cell.day = keyValue.day
             cell.scheduleStart = keyValue.start
             cell.scheduleEnd = keyValue.end
+            return cell
+        }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FooterActivityTableViewCellID", for: indexPath) as! FooterActivityTableViewCell
+            cell.footerDelegate = self
+            cell.setCell(accept: "Accept", reject: "Declined")
             return cell
         }
         return UITableViewCell()

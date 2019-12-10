@@ -28,14 +28,13 @@ class SegmentedViewController: BaseViewController {
         registerCell()
         cellDelegate()
         setMainInterface()
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Progress")
         tableView.reloadData()
         self.navigationItem.setHidesBackButton(true, animated:true);
-        self.tabBarController?.tabBar.isHidden = false
-        self.hidesBottomBarWhenPushed = true
     }
     
     
@@ -152,7 +151,7 @@ extension SegmentedViewController:UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //Send data Course and Job Detail
+        self.hidesBottomBarWhenPushed = true
         if currentTableView == 0{
             let destVC = DetailBimbelTabFirstViewController()
             destVC.jobReference = (activityApplied[indexPath.row].value(forKey: "jobID") as! CKRecord.Reference)
