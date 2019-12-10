@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SetupSkillTableViewCellID" id="KGk-i7-Jjw" customClass="SetupSkillTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="605"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="605"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="GdW-4N-fq7">
+                        <rect key="frame" x="0.0" y="10" width="414" height="56"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="56" id="Gpz-qi-GoD"/>
+                        </constraints>
+                        <textInputTraits key="textInputTraits"/>
+                    </searchBar>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggested Hard Skills" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hm8-n4-5aZ">
+                        <rect key="frame" x="20" y="96" width="354" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="27" id="WL3-J7-ggb"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="BVU-5Y-m4c">
+                        <rect key="frame" x="20" y="135" width="374" height="200"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="200" id="2sM-ce-Yd7"/>
+                        </constraints>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0zk-wJ-Zqe">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggested Soft Skills" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xuy-oY-yD3">
+                        <rect key="frame" x="20" y="365" width="354" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="27" id="60L-9K-oMF"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="dul-cp-jSf">
+                        <rect key="frame" x="20" y="404" width="374" height="200"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="200" id="3s8-Fg-AvX"/>
+                        </constraints>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5mw-4L-rn7">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="hm8-n4-5aZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="02n-vk-P1J"/>
+                    <constraint firstAttribute="trailing" secondItem="GdW-4N-fq7" secondAttribute="trailing" id="3tk-GS-zfB"/>
+                    <constraint firstItem="hm8-n4-5aZ" firstAttribute="top" secondItem="GdW-4N-fq7" secondAttribute="bottom" constant="30" id="5QN-ca-cBp"/>
+                    <constraint firstItem="Xuy-oY-yD3" firstAttribute="top" secondItem="BVU-5Y-m4c" secondAttribute="bottom" constant="30" id="CQN-vJ-XQa"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="hm8-n4-5aZ" secondAttribute="trailing" constant="20" id="CVG-Sf-8fg"/>
+                    <constraint firstItem="GdW-4N-fq7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Csx-Vi-zUe"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Xuy-oY-yD3" secondAttribute="trailing" constant="20" id="PX1-xU-tVN"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="BVU-5Y-m4c" secondAttribute="trailing" id="PZq-T5-PCk"/>
+                    <constraint firstItem="Xuy-oY-yD3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="dHS-2Z-uYj"/>
+                    <constraint firstAttribute="bottom" secondItem="dul-cp-jSf" secondAttribute="bottom" constant="1" id="hGB-Va-C2s"/>
+                    <constraint firstItem="dul-cp-jSf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="hj3-LT-Fej"/>
+                    <constraint firstItem="BVU-5Y-m4c" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="pxu-HH-YqB"/>
+                    <constraint firstItem="BVU-5Y-m4c" firstAttribute="top" secondItem="hm8-n4-5aZ" secondAttribute="bottom" constant="12" id="tdO-2K-ebi"/>
+                    <constraint firstItem="GdW-4N-fq7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="tfz-ac-1cQ"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="dul-cp-jSf" secondAttribute="trailing" id="w2E-WL-dS5"/>
+                    <constraint firstItem="dul-cp-jSf" firstAttribute="top" secondItem="Xuy-oY-yD3" secondAttribute="bottom" constant="12" id="wDF-wM-3lO"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="hardSkillCV" destination="BVU-5Y-m4c" id="IMf-OC-4SR"/>
+                <outlet property="softSkillCV" destination="dul-cp-jSf" id="qIj-Ob-977"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="-17.745535714285712"/>
+        </tableViewCell>
+    </objects>
+</document>

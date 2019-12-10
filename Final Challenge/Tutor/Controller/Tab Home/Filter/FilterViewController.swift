@@ -44,7 +44,6 @@ class FilterViewController: BaseViewController {
         LocationCV.reloadData()
         subjectCV.reloadData()
         setupView(text: "Filters")
-        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         let vc = LocationViewController()
         vc.aldiDelegate = self
     }

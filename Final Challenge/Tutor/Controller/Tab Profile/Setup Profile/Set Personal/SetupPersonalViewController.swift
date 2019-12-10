@@ -14,7 +14,6 @@ class SetupPersonalViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     let hint = "HintTableViewCellID"
     let detailProfile = "SetupPersonalTableViewCellID"
-    var tutor:Tutor!
     var selectedBirthDate: String?
     var toolBar = UIToolbar()
     var pickerBirthDate = UIDatePicker()
@@ -28,7 +27,7 @@ class SetupPersonalViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        queryUser()
+        queryTutor()
         registerCell()
         self.hideKeyboardWhenTappedAround()
     }
@@ -42,13 +41,14 @@ extension SetupPersonalViewController{
     private func getDataCustomCell() {
         let index = IndexPath(row: 0, section: 0)
         let cell = tableView.cellForRow(at: index) as! SetupPersonalTableViewCell
+        
         fullNames = cell.nameTF.text ?? ""
         arrName = fullNames?.components(separatedBy: " ")
         
         self.updateUser(name: cell.nameTF.text ?? "", age: cell.ageTF.text ?? "", address: cell.addressTF.text ?? "")
     }
     
-    func queryUser() {
+    func queryTutor() {
         let token = CKUserData.shared.getToken()
         let pred = NSPredicate(format: "tutorEmail == %@", token)
         let query = CKQuery(recordType: "Tutor", predicate: pred)
@@ -67,10 +67,12 @@ extension SetupPersonalViewController{
     
     func updateUser(name:String, age:String, address:String){
         if let record = tutors{
-            let first = arrName?[0] ?? ""
-            let second = arrName?[1] ?? ""
-            record["tutorFirstName"] = first
-            record["tutorLastName"] = second
+            if fullNames?.isEmpty == false{
+                let first = arrName?[0] ?? ""
+                let second = arrName?[1] ?? ""
+                record["tutorFirstName"] = first
+                record["tutorLastName"] = second
+            }
             record["tutorAddress"] = address
             record["tutorBirthDate"] = dob ?? ""
             
@@ -86,9 +88,10 @@ extension SetupPersonalViewController{
     }
     
     func sendVC() {
-           let vc = SetupEducationViewController()
-           self.navigationController?.pushViewController(vc, animated: true)
-       }
+        let vc = SetupEducationViewController()
+        vc.tutors = self.tutors
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
 }
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 class AdditionalEducationViewController: BaseViewController {
     
@@ -21,24 +22,32 @@ class AdditionalEducationViewController: BaseViewController {
     var dataStart:[Int] = []
     var dataEnd:[Int] = []
     var dataGpa:[Double] = []
-    var tutor:Tutor!
+    var listEducation = [CKRecord]()
+    var tutors:CKRecord?
+    var education:Education?
+    var dataArray:[Education] = []
+    let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
     
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()
         cellDelegate()
-        
+        queryEducation()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setMainInterface()
         setupView(text: "Education")
+        queryEducation()
+        self.navigationItem.setHidesBackButton(true, animated:true);
     }
     
     @IBAction func addAddtionalTapped(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func applyTapped(_ sender: Any) {
+        
     }
     
 }
@@ -47,10 +56,35 @@ extension AdditionalEducationViewController{
         self.addAdditional.loginRound()
         self.applyButton.loginRound()
     }
+    
+    private func queryEducation() {
+        let educationID = tutors?.value(forKey: "educationID") as! CKRecord.Reference
+        let pred = NSPredicate(format: "recordID == %@", educationID)
+        let query = CKQuery(recordType: "Education", predicate: pred)
+        database.perform(query, inZoneWith: nil) { (records, error) in
+            guard let records = records else {
+                print("error",error as Any)
+                return
+            }
+            let sortedRecords = records.sorted(by: { $0.creationDate! > $1.creationDate! })
+            self.listEducation = sortedRecords
+            DispatchQueue.main.async {
+                self.setData()
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    private func setData() {
+        for i in listEducation{
+            self.dataSchoolName = i.value(forKey: "schoolName") as! [String]
+            self.dataGrade = i.value(forKey: "grade") as! [String]
+            self.dataFieldStudy = i.value(forKey: "fieldOfStudy") as! [String]
+        }
+    }
 }
 extension AdditionalEducationViewController:UITableViewDataSource,UITableViewDelegate{
     func registerCell() {
-        //        tableView.register(UINib(nibName: "HintTableViewCell", bundle: nil), forCellReuseIdentifier: hint)
         tableView.register(UINib(nibName: "CustomExperienceTableViewCell", bundle: nil), forCellReuseIdentifier: CustomExperienceTableViewCell)
     }
     
@@ -65,8 +99,13 @@ extension AdditionalEducationViewController:UITableViewDataSource,UITableViewDel
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CustomExperienceTableViewCell, for: indexPath) as! CustomExperienceTableViewCell
-        let fos = "Field of Study: \(dataFieldStudy)"
-        cell.setCell(name: String(dataSchoolName.count), place: String(dataGrade.count), date: fos)
+        
+//        let fos = "Field of Study: \(dataFieldStudy[indexPath.row])"
+        
+        
+        cell.setCell(name: dataSchoolName[indexPath.row] , place: dataGrade[indexPath.row], date: "Field of Study: \(dataFieldStudy[indexPath.row])")
+        
+        
         return cell}
 }
 

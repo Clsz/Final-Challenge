@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 class SetupEducationViewController: BaseViewController {
     
@@ -23,9 +24,17 @@ class SetupEducationViewController: BaseViewController {
     let content = "DetailProfileTableViewCellID"
     let contentDrop = "AnotherDetailProfileTableViewCellID"
     let contentDate = "MoreDetailTableViewCellID"
-    var tutor:Tutor!
-    var education:Education!
-    weak var delegate: LanguageViewControllerDelegate?
+    var tutors:CKRecord?
+    var education:CKRecord?
+    var educationReference:CKRecord.Reference!
+    let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
+    
+    var arrStart:[String] = []
+    var arrEnd:[String] = []
+    var arrSchoolName:[String] = []
+    var arrGrade:[String] = []
+    var arrFOS:[String] = []
+    var arrGPA:[Double] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,11 +50,12 @@ class SetupEducationViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.delegate?.refreshData(withTutorModel: tutor)
+        removeContentCustom()
     }
     
     @IBAction func applyTapped(_ sender: Any) {
         getDataCustomCell()
+        createEducation()
     }
     
 }
@@ -77,19 +87,53 @@ extension SetupEducationViewController{
         let index4 = IndexPath(row: 4, section: 0)
         let cell4 = tableView.cellForRow(at: index4) as! MoreDetailTableViewCell
         
-        self.sendData(startYear: Int(cell4.startTF.text ?? "")!, endYear: Int(cell4.endTF.text ?? "")!, school: cell.textField.text ?? "", fieldOfStudy: cell2.textField.text ?? "", gpa: Double(cell3.textField.text ?? "")!, grade: cell1.textField.text ?? "")
+        self.arrStart.append(cell4.startTF.text ?? "")
+        self.arrEnd.append(cell4.endTF.text ?? "")
+        self.arrSchoolName.append(cell.textField.text ?? "")
+        self.arrGrade.append(cell1.textField.text ?? "")
+        self.arrFOS.append(cell2.textField.text ?? "")
+        self.arrGPA.append(Double(cell3.textField.text ?? "") ?? 0.0)
     }
     
-    private func sendData(startYear:Int, endYear:Int, school:String, fieldOfStudy:String, gpa:Double, grade: String) {
-        let destVC = AdditionalEducationViewController()
-        destVC.dataStart.append(startYear)
-        destVC.dataEnd.append(endYear)
-        destVC.dataSchoolName.append(school)
-        destVC.dataFieldStudy.append(fieldOfStudy)
-        destVC.dataGpa.append(gpa)
-        destVC.dataGrade.append(grade)
-        self.navigationController?.pushViewController(destVC, animated: true)
+    private func createEducation(){
+        let newEducation = CKRecord(recordType: "Education")
+        newEducation["schoolName"] = arrSchoolName
+        newEducation["grade"] = arrGrade
+        newEducation["fieldOfStudy"] = arrFOS
+        newEducation["gpa"] = arrGPA
+        newEducation["startYear"] = arrStart
+        newEducation["endYear"] = arrEnd
+        
+        database.save(newEducation) { (record, error) in
+            guard record != nil  else { return print("error", error as Any) }
+            self.updateEducation(recordEducation: record!)
+            
+        }
+        
     }
+    
+    
+    private func updateEducation(recordEducation:CKRecord){
+        if let record = tutors{
+            record["educationID"] = CKRecord.Reference.init(recordID: recordEducation.recordID, action: .deleteSelf)
+            self.database.save(record, completionHandler: {returnRecord, error in
+                if error != nil{
+                    self.showAlert(title: "Error", message: "Update Error")
+                }else{ DispatchQueue.main.async {
+                    self.sendVC()
+                    }
+                }
+            })
+        }
+        
+    }
+    
+    private func sendVC() {
+        let vc = AdditionalEducationViewController()
+        vc.tutors = self.tutors
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
 extension SetupEducationViewController:EducationProtocol{
     func dropEducation() {
@@ -251,4 +295,23 @@ extension SetupEducationViewController:UIPickerViewDelegate, UIPickerViewDataSou
         }
     }
     
+    private func removeContentCustom() {
+        let index = IndexPath(row: 0, section: 0)
+        let cell = tableView.cellForRow(at: index) as! DetailProfileTableViewCell
+        let index1 = IndexPath(row: 1, section: 0)
+        let cell1 = tableView.cellForRow(at: index1) as! AnotherDetailProfileTableViewCell
+        let index2 = IndexPath(row: 2, section: 0)
+        let cell2 = tableView.cellForRow(at: index2) as! DetailProfileTableViewCell
+        let index3 = IndexPath(row: 3, section: 0)
+        let cell3 = tableView.cellForRow(at: index3) as! DetailProfileTableViewCell
+        let index4 = IndexPath(row: 4, section: 0)
+        let cell4 = tableView.cellForRow(at: index4) as! MoreDetailTableViewCell
+        
+        cell4.startTF.text = ""
+        cell4.endTF.text = ""
+        cell.textField.text = ""
+        cell2.textField.text  = ""
+        cell3.textField.text = ""
+        cell1.textField.text = ""
+    }
 }
