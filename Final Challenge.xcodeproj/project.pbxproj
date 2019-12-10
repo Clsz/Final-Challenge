@@ -169,6 +169,8 @@
 		E1CE74382395374900FA8FEC /* SubjectBimbelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1CE74362395374900FA8FEC /* SubjectBimbelViewController.xib */; };
 		E1CE743B2395376D00FA8FEC /* GradeBimbelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CE74392395376D00FA8FEC /* GradeBimbelViewController.swift */; };
 		E1CE743C2395376D00FA8FEC /* GradeBimbelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1CE743A2395376D00FA8FEC /* GradeBimbelViewController.xib */; };
+		E1DF1F78239F605C00C53123 /* AddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1DF1F76239F605C00C53123 /* AddressTableViewCell.xib */; };
+		E1DF1F79239F605C00C53123 /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF1F77239F605C00C53123 /* AddressTableViewCell.swift */; };
 		E1E0087F2380317100FD985A /* LogoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E0087D2380317100FD985A /* LogoutTableViewCell.swift */; };
 		E1E008802380317100FD985A /* LogoutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E0087E2380317100FD985A /* LogoutTableViewCell.xib */; };
 		E1E3A89B2366CA8800F1571E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E3A89A2366CA8800F1571E /* AppDelegate.swift */; };
@@ -368,6 +370,8 @@
 		E1CE74362395374900FA8FEC /* SubjectBimbelViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubjectBimbelViewController.xib; sourceTree = "<group>"; };
 		E1CE74392395376D00FA8FEC /* GradeBimbelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeBimbelViewController.swift; sourceTree = "<group>"; };
 		E1CE743A2395376D00FA8FEC /* GradeBimbelViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GradeBimbelViewController.xib; sourceTree = "<group>"; };
+		E1DF1F76239F605C00C53123 /* AddressTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressTableViewCell.xib; sourceTree = "<group>"; };
+		E1DF1F77239F605C00C53123 /* AddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
 		E1E0087D2380317100FD985A /* LogoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutTableViewCell.swift; sourceTree = "<group>"; };
 		E1E0087E2380317100FD985A /* LogoutTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutTableViewCell.xib; sourceTree = "<group>"; };
 		E1E3A8972366CA8800F1571E /* Final Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Final Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -684,8 +688,10 @@
 			isa = PBXGroup;
 			children = (
 				148C436E237EA12A00B87174 /* Profile Bimbel */,
-				148C436F237EA13800B87174 /* Address & Qualification */,
-				148C438C237EAA2500B87174 /* Subject & Grade Category */,
+				E1DF1F75239F605C00C53123 /* Address */,
+				148C436F237EA13800B87174 /* Qualificationn */,
+				148C438C237EAA2500B87174 /* Subject */,
+				E1DF1F7A239F60C400C53123 /* Grade */,
 				148C438E237EAA4100B87174 /* Salary */,
 				148C438F237EAA4D00B87174 /* Schedule */,
 				1422237D2382914B004F2625 /* Detail Schedule */,
@@ -732,24 +738,22 @@
 			path = "Profile Bimbel";
 			sourceTree = "<group>";
 		};
-		148C436F237EA13800B87174 /* Address & Qualification */ = {
+		148C436F237EA13800B87174 /* Qualificationn */ = {
 			isa = PBXGroup;
 			children = (
 				E18AEFB5239F56D30076000E /* QualificationTableViewCell.swift */,
 				E18AEFB6239F56D30076000E /* QualificationTableViewCell.xib */,
 			);
-			path = "Address & Qualification";
+			path = Qualificationn;
 			sourceTree = "<group>";
 		};
-		148C438C237EAA2500B87174 /* Subject & Grade Category */ = {
+		148C438C237EAA2500B87174 /* Subject */ = {
 			isa = PBXGroup;
 			children = (
 				E18AEFB9239F56EA0076000E /* SubjectCategoryTableViewCell.swift */,
 				E18AEFBA239F56EA0076000E /* SubjectCategoryTableViewCell.xib */,
-				E18AEFB1239F56BE0076000E /* GradeCategoryTableViewCell.swift */,
-				E18AEFB2239F56BE0076000E /* GradeCategoryTableViewCell.xib */,
 			);
-			path = "Subject & Grade Category";
+			path = Subject;
 			sourceTree = "<group>";
 		};
 		148C438E237EAA4100B87174 /* Salary */ = {
@@ -1044,9 +1048,9 @@
 				27CFEC9923965B6B0015B6CC /* Home (Bimbel) */,
 				278FABD023966FDE00590D4A /* Detail Post Job (Bimbel) */,
 				E1F5BB4C2382C65000BC9CFE /* Progress  */,
-				E13EE5EA2380614D005016A0 /* Setup Profile Tutor */,
 				148C435E237E978C00B87174 /* Detail Bimbel */,
 				E168477C23784167001B6319 /* Profile */,
+				E13EE5EA2380614D005016A0 /* Setup Profile Tutor */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -1319,6 +1323,24 @@
 			path = "Detail Profile Bimbel";
 			sourceTree = "<group>";
 		};
+		E1DF1F75239F605C00C53123 /* Address */ = {
+			isa = PBXGroup;
+			children = (
+				E1DF1F77239F605C00C53123 /* AddressTableViewCell.swift */,
+				E1DF1F76239F605C00C53123 /* AddressTableViewCell.xib */,
+			);
+			path = Address;
+			sourceTree = "<group>";
+		};
+		E1DF1F7A239F60C400C53123 /* Grade */ = {
+			isa = PBXGroup;
+			children = (
+				E18AEFB1239F56BE0076000E /* GradeCategoryTableViewCell.swift */,
+				E18AEFB2239F56BE0076000E /* GradeCategoryTableViewCell.xib */,
+			);
+			path = Grade;
+			sourceTree = "<group>";
+		};
 		E1E3A88E2366CA8800F1571E = {
 			isa = PBXGroup;
 			children = (
@@ -1533,6 +1555,7 @@
 				276127382397A994007BC852 /* TeachingSubjectViewController.xib in Resources */,
 				E168478923784463001B6319 /* AnotherDetailProfileTableViewCell.xib in Resources */,
 				147E1F0B2384024D003CAF5D /* WaitingConformationViewController.xib in Resources */,
+				E1DF1F78239F605C00C53123 /* AddressTableViewCell.xib in Resources */,
 				148C437F237EA96600B87174 /* SalaryTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1586,6 +1609,7 @@
 				E1E3A89B2366CA8800F1571E /* AppDelegate.swift in Sources */,
 				148C4367237E9D6A00B87174 /* FilterViewController.swift in Sources */,
 				E1CE742F2395372400FA8FEC /* DetailProfileBimbelViewController.swift in Sources */,
+				E1DF1F79239F605C00C53123 /* AddressTableViewCell.swift in Sources */,
 				E13EE60A2381040E005016A0 /* SetupEducationViewController.swift in Sources */,
 				E139B53A2375D6CA00FEF1F5 /* RegisterViewController.swift in Sources */,
 				276127482397B331007BC852 /* TeachingGradeTableViewCell.swift in Sources */,
