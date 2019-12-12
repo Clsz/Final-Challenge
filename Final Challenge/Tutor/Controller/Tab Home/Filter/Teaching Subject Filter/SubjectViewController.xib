@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="74" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="psg-Lh-dSW">
-                    <rect key="frame" x="20" y="161" width="374" height="548"/>
+                    <rect key="frame" x="20" y="162" width="374" height="572"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -56,7 +56,7 @@
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subjects" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGJ-cp-pyh">
-                    <rect key="frame" x="20" y="129" width="374" height="27"/>
+                    <rect key="frame" x="20" y="130" width="374" height="27"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -67,11 +67,12 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="psg-Lh-dSW" secondAttribute="trailing" constant="20" id="2LH-eG-jZ9"/>
                 <constraint firstItem="IJh-pi-dcR" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="2bh-rL-7Gd"/>
                 <constraint firstItem="dGJ-cp-pyh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="DNc-1v-Vrk"/>
-                <constraint firstItem="BH7-Sv-LOx" firstAttribute="top" secondItem="psg-Lh-dSW" secondAttribute="bottom" constant="87" id="GZH-GZ-JaY"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="BH7-Sv-LOx" secondAttribute="bottom" constant="22" id="IXr-iU-a7P"/>
                 <constraint firstItem="IJh-pi-dcR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="N14-9Q-2FU"/>
                 <constraint firstItem="psg-Lh-dSW" firstAttribute="top" secondItem="dGJ-cp-pyh" secondAttribute="bottom" constant="5" id="RWD-jZ-RZR"/>
-                <constraint firstItem="dGJ-cp-pyh" firstAttribute="top" secondItem="IJh-pi-dcR" secondAttribute="bottom" constant="29" id="UVZ-Ja-NH3"/>
+                <constraint firstItem="dGJ-cp-pyh" firstAttribute="top" secondItem="IJh-pi-dcR" secondAttribute="bottom" constant="30" id="UVZ-Ja-NH3"/>
+                <constraint firstItem="psg-Lh-dSW" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="WUH-NI-z6h"/>
+                <constraint firstItem="psg-Lh-dSW" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ZbT-ke-Auy"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="BH7-Sv-LOx" secondAttribute="trailing" constant="20" id="aWW-aI-XMW"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="IJh-pi-dcR" secondAttribute="trailing" constant="20" id="b4X-lk-cKX"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="dGJ-cp-pyh" secondAttribute="trailing" constant="20" id="mOF-Gd-C06"/>

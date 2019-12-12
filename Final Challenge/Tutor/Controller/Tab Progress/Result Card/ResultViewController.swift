@@ -50,13 +50,13 @@ class ResultViewController: UIViewController {
             """
         } else if fromID == 3 {
             imageResult.image = imageAcc
-            labelResult.text = "Selamat, Anda Mendapatkan Pekerjaan Baru"
+            labelResult.text = "Teacher Accepted"
         } else if fromID == 4 {
             imageResult.image = imageDec
             labelResult.text = "Anda Telah Membatalkan Tes"
         } else if fromID == 5 {
             imageResult.image = imageDec
-            labelResult.text = "Ditolak"
+            labelResult.text = "Teacher Declined"
         }
         
     }

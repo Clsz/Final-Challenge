@@ -8,16 +8,12 @@
 
 import UIKit
 
-protocol SubjectProtocol {
-    func kirimIndex(arrayIndex:[Int])
-}
-
 class SubjectViewController: BaseViewController {
     
     @IBOutlet weak var searchSubjectBar: UISearchBar!
     @IBOutlet weak var subjekTV: UITableView!
     let destVC = FilterViewController()
-    var subjekDelegate:SubjectProtocol?
+    var subjekDelegate:GetSelectedContent?
     var searchSubjek = [String]()
     var selected : [Int] = []
     var searching = false
@@ -29,17 +25,18 @@ class SubjectViewController: BaseViewController {
         cellDelegate()
         registerCell()
         cariCellDelegate()
-        self.hideKeyboardWhenTappedAround()
         setUpSearchBar()
         subjekTV.allowsMultipleSelection = true
+        self.hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Teaching Subjects")
+        self.navigationController?.navigationBar.scalesLargeContentImage = false
     }
     
     @IBAction func subjectAppliedTapped(_ sender: UIButton) {
-        self.subjekDelegate?.kirimIndex(arrayIndex: selected)
+        self.subjekDelegate?.getIndex(arrayIndex: selected)
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -82,16 +79,17 @@ extension SubjectViewController: UITableViewDataSource,UITableViewDelegate{
         } else {
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.checkmark
             selected.append(indexPath.row)
-            ConstantManager.subject.insert(subjek[indexPath.row], at: 0)
+            
+//            ConstantManager.allSubject.insert(subjek[indexPath.row], at: 0)
         }
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.none
         
-        if let index = ConstantManager.subject.firstIndex(of: subjek[indexPath.row]) {
-            ConstantManager.subject.remove(at: index)
-        }
+//        if let index = ConstantManager.subject.firstIndex(of: subjek[indexPath.row]) {
+//            ConstantManager.subject.remove(at: index)
+//        }
         
     }
     

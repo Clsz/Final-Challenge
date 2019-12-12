@@ -61,34 +61,6 @@ extension WaitingConformationViewController{
         }
     }
     
-    private func updateToDatabase(status:String) {
-        if let record = applicant{
-            record["courseName"] = applicant?.value(forKey: "courseName") as! String
-            record["tutorID"] = applicant?.value(forKey: "tutorID") as! CKRecord.Reference
-            record["jobID"] = self.jobReference
-            record["testDay"] = applicant?.value(forKey: "testDay") as! [String]
-            record["testStartHour"] = applicant?.value(forKey: "testStartHour") as! [String]
-            record["testEndHour"] = applicant?.value(forKey: "testEndHour") as! [String]
-            record["testRequirement"] = applicant?.value(forKey: "testRequirement") as! String
-            record["status"] = status
-            
-            self.database.save(record, completionHandler: {returnedRecord, error in
-                if error != nil {
-                    self.showAlert(title: "Error", message: "Cannot update :(")
-                } else {
-                    let destVC = ResultViewController()
-                    if self.confirmStatus == true{
-                        destVC.fromID = 1
-                    }else{
-                        destVC.fromID = 4
-                    }
-                    self.navigationController?.pushViewController(destVC, animated: true)
-                }
-            })
-        }
-        
-    }
-    
     private func setupData() {
         dataArray.removeAll()
         dataArray.append(course)
@@ -110,26 +82,59 @@ extension WaitingConformationViewController{
         dataArray.append(true)
     }
     
+    private func updateToDatabase(status:String, completion : @escaping (Bool) -> Void) {
+        if let record = applicant{
+            record["courseName"] = applicant?.value(forKey: "courseName") as! String
+            record["tutorID"] = applicant?.value(forKey: "tutorID") as! CKRecord.Reference
+            record["jobID"] = self.jobReference
+            record["testDay"] = applicant?.value(forKey: "testDay") as! [String]
+            record["testStartHour"] = applicant?.value(forKey: "testStartHour") as! [String]
+            record["testEndHour"] = applicant?.value(forKey: "testEndHour") as! [String]
+            record["testRequirement"] = applicant?.value(forKey: "testRequirement") as! String
+            record["status"] = status
+            
+            self.database.save(record, completionHandler: {returnedRecord, error in
+                DispatchQueue.main.async {
+                    if error != nil {
+                        self.showAlert(title: "Error", message: "Cannot update :(")
+                    } else {
+                        completion(true)
+                    }
+                }
+            })
+        }
+        
+    }
+    
     private func acceptAlert() {
-        let confirmAlert = UIAlertController(title: "Accept the Test", message: "Are You Sure Want to Accept?", preferredStyle: UIAlertController.Style.alert)
+        let confirmAlert = UIAlertController(title: "Accept the Job", message: "Are You Sure Want to Accept?", preferredStyle: UIAlertController.Style.alert)
         
         confirmAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
-            self.updateToDatabase(status: "Test Accepted")
+            self.updateToDatabase(status: "Accepted") { (res) in
+                if res == true{
+                    let destVC = ResultViewController()
+                    destVC.fromID = 3
+                    self.navigationController?.pushViewController(destVC, animated: true)
+                }
+            }
         }))
         
-        confirmAlert.addAction(UIAlertAction(title: "No", style: .destructive, handler: { (action: UIAlertAction!) in
-            
-        }))
+        confirmAlert.addAction(UIAlertAction(title: "No", style: .destructive, handler: { (action: UIAlertAction!) in }))
         
         present(confirmAlert, animated: true, completion: nil)
     }
     
     private func rejectAlert() {
-        let confirmAlert = UIAlertController(title: "Accept the Test", message: "Are You Sure Want to Declined? It Means you lost this job.", preferredStyle: UIAlertController.Style.alert)
+        let confirmAlert = UIAlertController(title: "Reject the Job", message: "Are You Sure Want to Declined? It Means you lost this job.", preferredStyle: UIAlertController.Style.alert)
         
         confirmAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
-            self.updateToDatabase(status: "Test Declined")
-
+            self.updateToDatabase(status: "Declined") { (res) in
+                if res == true{
+                    let destVC = ResultViewController()
+                    destVC.fromID = 5
+                    self.navigationController?.pushViewController(destVC, animated: true)
+                }
+            }
         }))
         
         confirmAlert.addAction(UIAlertAction(title: "No", style: .destructive, handler: { (action: UIAlertAction!) in

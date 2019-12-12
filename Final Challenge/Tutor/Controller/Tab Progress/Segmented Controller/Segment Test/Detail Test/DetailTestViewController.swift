@@ -18,7 +18,6 @@ class DetailTestViewController: BaseViewController {
     var applicant:CKRecord?
     var course:CKRecord?
     var job:CKRecord?
-    var confirmStatus:Bool?
     let header = "profileBimbelCell"
     let address = "addressCell"
     let seeDetail = "SeeDetailTableViewCellID"
@@ -67,7 +66,7 @@ extension DetailTestViewController{
         }
     }
     
-    private func updateToDatabase(status:String) {
+    private func updateToDatabase(status:String, completion : @escaping (Bool) -> Void) {
         if let record = applicant{
             record["courseName"] = applicant?.value(forKey: "courseName") as! String
             record["tutorID"] = applicant?.value(forKey: "tutorID") as! CKRecord.Reference
@@ -79,16 +78,12 @@ extension DetailTestViewController{
             record["status"] = status
             
             self.database.save(record, completionHandler: {returnedRecord, error in
-                if error != nil {
-                    self.showAlert(title: "Error", message: "Cannot update :(")
-                } else {
-                    let destVC = ResultViewController()
-                    if self.confirmStatus == true{
-                        destVC.fromID = 1
-                    }else{
-                        destVC.fromID = 4
+                DispatchQueue.main.async {
+                    if error != nil {
+                        self.showAlert(title: "Error", message: "Cannot update :(")
+                    } else {
+                        completion(true)
                     }
-                    self.navigationController?.pushViewController(destVC, animated: true)
                 }
             })
         }
@@ -110,8 +105,13 @@ extension DetailTestViewController{
         let confirmAlert = UIAlertController(title: "Accept the Test", message: "Are You Sure Want to Accept?", preferredStyle: UIAlertController.Style.alert)
         
         confirmAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
-            self.confirmStatus = true
-            self.updateToDatabase(status: "Test Accepted")
+            self.updateToDatabase(status: "Waiting for Test") { (res) in
+                if res == true{
+                    let destVC = ResultViewController()
+                    destVC.fromID = 1
+                    self.navigationController?.pushViewController(destVC, animated: true)
+                }
+            }
         }))
         
         confirmAlert.addAction(UIAlertAction(title: "No", style: .destructive, handler: { (action: UIAlertAction!) in }))
@@ -123,8 +123,13 @@ extension DetailTestViewController{
         let confirmAlert = UIAlertController(title: "Accept the Test", message: "Are You Sure Want to Declined? It Means you lost this job.", preferredStyle: UIAlertController.Style.alert)
         
         confirmAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
-            self.confirmStatus = false
-            self.updateToDatabase(status: "Test Declined")
+            self.updateToDatabase(status: "Test Declined") { (res) in
+                if res == true{
+                    let destVC = ResultViewController()
+                    destVC.fromID = 4
+                    self.navigationController?.pushViewController(destVC, animated: true)
+                }
+            }
         }))
         
         confirmAlert.addAction(UIAlertAction(title: "No", style: .destructive, handler: { (action: UIAlertAction!) in

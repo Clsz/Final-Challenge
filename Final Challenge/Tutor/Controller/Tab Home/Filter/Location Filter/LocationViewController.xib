@@ -25,13 +25,13 @@
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ftj-7E-3Te">
-                    <rect key="frame" x="20" y="129" width="374" height="27"/>
+                    <rect key="frame" x="20" y="130" width="374" height="27"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="74" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zDE-yE-rm7">
-                    <rect key="frame" x="20" y="161" width="374" height="574"/>
+                    <rect key="frame" x="20" y="162" width="374" height="572"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="separatorColor" red="1" green="0.99998801950000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -43,7 +43,7 @@
                     </userDefinedRuntimeAttributes>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqe-iB-iKr">
-                    <rect key="frame" x="20" y="782" width="374" height="44"/>
+                    <rect key="frame" x="20" y="796" width="374" height="44"/>
                     <color key="backgroundColor" red="0.10588235294117647" green="0.34901960784313724" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="7BO-RK-Xf9"/>
@@ -68,12 +68,12 @@
                 <constraint firstItem="Ftj-7E-3Te" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="3pn-yW-XGc"/>
                 <constraint firstItem="C2J-ZQ-6xT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="8OC-fq-4W2"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ftj-7E-3Te" secondAttribute="trailing" constant="20" id="BL1-6F-LzS"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="fqe-iB-iKr" secondAttribute="bottom" constant="36" id="Gcx-5Y-wHo"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="fqe-iB-iKr" secondAttribute="bottom" constant="22" id="Gcx-5Y-wHo"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fqe-iB-iKr" secondAttribute="trailing" constant="20" id="Ki6-YI-3so"/>
                 <constraint firstItem="zDE-yE-rm7" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="QYl-sV-SBz"/>
                 <constraint firstItem="zDE-yE-rm7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="WTv-qC-PAa"/>
                 <constraint firstItem="C2J-ZQ-6xT" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ccc-Xs-eBy"/>
-                <constraint firstItem="Ftj-7E-3Te" firstAttribute="top" secondItem="C2J-ZQ-6xT" secondAttribute="bottom" constant="29" id="jIa-ou-780"/>
+                <constraint firstItem="Ftj-7E-3Te" firstAttribute="top" secondItem="C2J-ZQ-6xT" secondAttribute="bottom" constant="30" id="jIa-ou-780"/>
                 <constraint firstItem="zDE-yE-rm7" firstAttribute="top" secondItem="Ftj-7E-3Te" secondAttribute="bottom" constant="5" id="pYB-at-Pa4"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="C2J-ZQ-6xT" secondAttribute="trailing" constant="20" id="t9R-02-Crg"/>
                 <constraint firstItem="fqe-iB-iKr" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="xRD-yo-srn"/>

@@ -27,7 +27,7 @@ protocol BimbelProtocol{
     func logout()
 }
 
-protocol sendLocation {
+protocol SendLocation {
     func sendIndex(arrIndex:[Int])
 }
 
@@ -110,4 +110,16 @@ protocol refreshTableProtocol {
 
 protocol JobDetail {
     func seeDetailTapped()
+}
+
+protocol SendFilter{
+    func sendDataFilter(location:[String], minSalary:Double, maxSalary:Double, grade:[String], subject:[String])
+}
+
+protocol GetSelectedContent {
+    func getIndex(arrayIndex:[Int])
+}
+
+protocol UpdateConstraint {
+    func updateViewConstraint()
 }

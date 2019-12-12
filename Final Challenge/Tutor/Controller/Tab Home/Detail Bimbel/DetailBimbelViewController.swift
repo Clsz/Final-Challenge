@@ -16,12 +16,13 @@ class DetailBimbelViewController: BaseViewController {
     let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
     var course:CKRecord!
     var job:CKRecord!
-    var user:CKRecord!
-    var tempArray:[CKRecord.Reference] = []
-    
+    var tutor:CKRecord!
+    var tempJobApplicant:[CKRecord.Reference] = []
+    var tempUserApplicant:[CKRecord.Reference] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        UserDefaults.standard.set("sg@gmail.com", forKey: "token")
+        UserDefaults.standard.set("aldi@gmail.com", forKey: "token")
         queryCourse()
         registerCell()
     }
@@ -30,6 +31,10 @@ class DetailBimbelViewController: BaseViewController {
         setupView(text: "Detail Pekerjaan")
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.updateViewConstraints()
     }
     
 }
@@ -64,8 +69,7 @@ extension DetailBimbelViewController{
         
         database.perform(query, inZoneWith: nil) { (records, error) in
             guard let record = records else {return}
-            
-            self.user = record[0]
+            self.tutor = record[0]
             DispatchQueue.main.async {
                 self.applyJob()
             }
@@ -77,21 +81,40 @@ extension DetailBimbelViewController{
     
         record["courseName"] = course?.value(forKey: "courseName") as! String
         record["jobID"] = CKRecord.Reference.init(recordID: job.recordID , action: .deleteSelf)
-        record["tutorID"] = CKRecord.Reference.init(recordID: user.recordID , action: .deleteSelf)
+        record["tutorID"] = CKRecord.Reference.init(recordID: tutor.recordID , action: .deleteSelf)
         record["status"] = "Job Requested"
         
         database.save(record) { (record, error) in
             guard record != nil  else { return print("error", error as Any) }
-            self.updateToDatabase(recordApplicant: record!)
+            self.updateToJob(recordApplicant: record!)
+            self.updateToUser(recordApplicant: record!)
         }
     }
     
-    private func updateToDatabase(recordApplicant:CKRecord) {
-        if let record = job{
-            tempArray = job.value(forKey: "applicantID") as? [CKRecord.Reference] ?? []
+    private func updateToJob(recordApplicant:CKRecord) {
+        if let record = tutor{
+            tempJobApplicant = job.value(forKey: "applicantID") as? [CKRecord.Reference] ?? []
             let tempID = CKRecord.Reference.init(recordID: recordApplicant.recordID, action: .deleteSelf)
-            tempArray.append(tempID)
-            record["applicantID"] = tempArray
+            tempJobApplicant.append(tempID)
+            record["applicantID"] = tempJobApplicant
+            
+            self.database.save(record, completionHandler: {returnedRecord, error in
+                if error != nil {
+                    self.showAlert(title: "Error", message: "Cannot update :(")
+                } else {
+                    
+                }
+            })
+        }
+        
+    }
+    
+    private func updateToUser(recordApplicant:CKRecord) {
+        if let record = job{
+            tempUserApplicant = job.value(forKey: "applicantID") as? [CKRecord.Reference] ?? []
+            let tempID = CKRecord.Reference.init(recordID: recordApplicant.recordID, action: .deleteSelf)
+            tempUserApplicant.append(tempID)
+            record["applicantID"] = tempUserApplicant
             
             self.database.save(record, completionHandler: {returnedRecord, error in
                 if error != nil {
@@ -121,10 +144,14 @@ extension DetailBimbelViewController{
     }
     
 }
-extension DetailBimbelViewController:DetailBimbel{
+extension DetailBimbelViewController:DetailBimbel, UpdateConstraint{
     func requestTapped() {
         self.queryUser()
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func updateViewConstraint() {
+        viewWillLayoutSubviews()
     }
     
 }
