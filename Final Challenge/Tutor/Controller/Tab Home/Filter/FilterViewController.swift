@@ -212,6 +212,7 @@ extension FilterViewController:UICollectionViewDataSource, UICollectionViewDeleg
             
             if gotIndex.contains(indexPath.row){
                 cell.isSelected = true
+                selectedLocation.insert(ConstantManager.subject[indexPath.row], at: 0)
             }
             
             return cell
