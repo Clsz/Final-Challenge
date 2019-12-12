@@ -10,7 +10,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SetupLanguageViewController" customModule="Final_Challenge" customModuleProvider="target">
             <connections>
                 <outlet property="applyButton" destination="b5Z-c8-dwh" id="V2j-UI-r97"/>
-                <outlet property="skipButton" destination="dbr-6G-Rmr" id="eNd-sR-Awz"/>
                 <outlet property="tableView" destination="lUl-mN-Ktf" id="dZK-3h-T9o"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,30 +20,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5Z-c8-dwh">
-                    <rect key="frame" x="20" y="765" width="374" height="44"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <rect key="frame" x="20" y="774" width="374" height="44"/>
+                    <color key="backgroundColor" red="0.1137254902" green="0.3921568627" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="0NT-Z8-nup"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="Terapkan Bahasa">
-                        <color key="titleColor" red="0.32549019610000002" green="0.78039215689999997" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                    <state key="normal" title="Apply Language">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
                         <action selector="applyTapped:" destination="-1" eventType="touchUpInside" id="TqF-f9-RH6"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbr-6G-Rmr">
-                    <rect key="frame" x="100" y="829" width="214" height="33"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="33" id="FA7-h8-Ev3"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="Lewatkan">
-                        <color key="titleColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="skipTapped:" destination="-1" eventType="touchUpInside" id="NnH-33-c96"/>
                     </connections>
                 </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lUl-mN-Ktf">
@@ -54,14 +40,11 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="dbr-6G-Rmr" secondAttribute="trailing" constant="100" id="1SJ-Jo-W9D"/>
-                <constraint firstItem="dbr-6G-Rmr" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="8Bj-SD-uW6"/>
-                <constraint firstItem="b5Z-c8-dwh" firstAttribute="top" secondItem="lUl-mN-Ktf" secondAttribute="bottom" id="ENa-O1-g4i"/>
+                <constraint firstItem="b5Z-c8-dwh" firstAttribute="top" secondItem="lUl-mN-Ktf" secondAttribute="bottom" constant="9" id="ENa-O1-g4i"/>
                 <constraint firstItem="lUl-mN-Ktf" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="KEG-if-amH"/>
-                <constraint firstItem="dbr-6G-Rmr" firstAttribute="top" secondItem="b5Z-c8-dwh" secondAttribute="bottom" constant="20" id="Krq-fS-cq9"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="b5Z-c8-dwh" secondAttribute="bottom" constant="44" id="OAn-rH-mTE"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lUl-mN-Ktf" secondAttribute="trailing" id="RUo-0e-Prj"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="b5Z-c8-dwh" secondAttribute="trailing" constant="20" id="fUQ-e8-yfH"/>
-                <constraint firstItem="dbr-6G-Rmr" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="100" id="i6U-HI-k6h"/>
                 <constraint firstItem="lUl-mN-Ktf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="uCh-hc-d9c"/>
                 <constraint firstItem="b5Z-c8-dwh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="v4Q-Hy-mwX"/>
             </constraints>

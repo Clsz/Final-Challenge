@@ -75,25 +75,24 @@ class CKUserData {
         
     }
     
-    func saveUsers() {
-        
+    func saveUsers(completion: @escaping (Bool) -> Void) {
         let record = CKRecord(recordType: "Tutor")
-        
         for user in users {
-            
             record.setObject(user.firstName as CKRecordValue? , forKey: "tutorFirstName")
             record.setObject(user.lastName as CKRecordValue?, forKey: "tutorLastName")
             record.setObject(user.email as CKRecordValue?, forKey: "tutorEmail")
             record.setObject(user.password as CKRecordValue? , forKey: "tutorPassword")
             privateDB.save(record) { (savedRecord: CKRecord?, error: Error?) -> Void in
-                if error == nil {
-                    print ("saved")
+                DispatchQueue.main.async {
+                    completion(true)
                 }
             }
         }
     }
     
     func addUser(firstName: String, lastName: String, email: String, password: String){
+        users.removeAll()
+
         let tempUser = User(firstName: firstName, lastName: lastName, email: email, password: password)
         users.append(tempUser)
     }

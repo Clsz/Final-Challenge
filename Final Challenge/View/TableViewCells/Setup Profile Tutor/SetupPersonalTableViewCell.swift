@@ -16,8 +16,10 @@ class SetupPersonalTableViewCell: UITableViewCell {
     @IBOutlet weak var ageTF: UITextField!
     @IBOutlet weak var addressTF: UITextField!
     @IBOutlet weak var applyButton: UIButton!
+    @IBOutlet weak var dobButton: UIButton!
     var contentDelegate:ProfileDetailProtocol?
     var birthDelegate:BirthProtocol?
+    var photoDelegate:PhotoProtocol?
     var accessoryDoneButton: UIBarButtonItem!
     let accessoryToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
     let flexiblea = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -44,9 +46,11 @@ class SetupPersonalTableViewCell: UITableViewCell {
         contentDelegate?.applyProfile()
     }
     
-    @IBAction func skipTapped(_ sender: Any) {
-        
+    @IBAction func photoTapped(_ sender: UIButton) {
+        photoDelegate?.photoTapped()
     }
+    
+    
 }
 extension SetupPersonalTableViewCell{
     func setCell(name:String, age:String, address:String) {
@@ -72,7 +76,6 @@ extension SetupPersonalTableViewCell{
         self.addressTF.setLeftPaddingPoints(10.0)
         self.addressTF.contentVerticalAlignment = .top
     }
-    
 }
 extension SetupPersonalTableViewCell:UITextFieldDelegate{
     private func doneButton() {
@@ -87,6 +90,12 @@ extension SetupPersonalTableViewCell:UITextFieldDelegate{
         self.nameTF.inputAccessoryView = accessoryToolBar
         self.addressTF.inputAccessoryView = accessoryToolBar
         
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if nameTF.isFirstResponder == true {
+            nameTF.placeholder = ""
+        }
     }
     
     @objc func donePressed() {

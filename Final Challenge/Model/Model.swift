@@ -95,13 +95,11 @@ class Tutor{
 }
 
 class Education{
-    var educationID:String
     var universityName, educationLevel, fieldOfStudy, grade:String
     var startYear:String
     var endYear:String
     
-    init(_ educationID:String, _ universityName:String, _ educationLevel:String, _ fieldOfStudy:String, _ grade:String, _ startYear:String, _ endYear:String) {
-        self.educationID = educationID
+    init(_ universityName:String, _ educationLevel:String, _ fieldOfStudy:String, _ grade:String, _ startYear:String, _ endYear:String) {
         self.universityName = universityName
         self.educationLevel = educationLevel
         self.fieldOfStudy = fieldOfStudy

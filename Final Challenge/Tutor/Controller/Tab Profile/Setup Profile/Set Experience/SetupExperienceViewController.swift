@@ -12,7 +12,6 @@ class SetupExperienceViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var applyButton: UIButton!
-    @IBOutlet weak var skipButton: UIButton!
     var dataArray:[Any?] = []
     var selectedExperience: String?
     var selectedStartYear: String?
@@ -27,25 +26,23 @@ class SetupExperienceViewController: BaseViewController {
     let contentDate = "MoreDetailTableViewCellID"
     let footer = "FooterTableViewCellID"
     var tutor:Tutor!
+    var experience:Experience!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupData()
         registerCell()
         cellDelegate()
+        self.hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setMainInterface()
-        setupView(text: "Pengaturan Pengalaman")
+        setupView(text: "Experience")
     }
     
     @IBAction func applyTapped(_ sender: Any) {
-        
-    }
-    
-    @IBAction func skipTapped(_ sender: Any) {
-        
+        getDataCustomCell()
     }
     
 }
@@ -58,15 +55,27 @@ extension SetupExperienceViewController{
     private func setupData() {
         dataArray.removeAll()
         dataArray.append(0)
-        dataArray.append(("Judul","Contoh: iOS Developer",0))
-        dataArray.append(("Tipe Pengalaman","Paruh Waktu",1))
-        dataArray.append(("Perusahaan","Contoh: Apple Developer Academy",0))
-        dataArray.append(("Lokasi","Masukkan lokasi Anda bekerja",0))
+        dataArray.append(("Title","Contoh: iOS Developer",0))
+        dataArray.append(("Experience Type","Part Time",1))
+        dataArray.append(("Company","Example: Apple Developer Academy",0))
+        dataArray.append(("Location","Enter your Location",0))
         dataArray.append(true)
     }
     
     private func getDataCustomCell() {
-        //Getdata
+        let index = IndexPath(row: 0, section: 0)
+        let cell = tableView.cellForRow(at: index) as! DetailProfileTableViewCell
+        let index1 = IndexPath(row: 1, section: 0)
+        let cell1 = tableView.cellForRow(at: index1) as! AnotherDetailProfileTableViewCell
+        let index2 = IndexPath(row: 2, section: 0)
+        let cell2 = tableView.cellForRow(at: index2) as! DetailProfileTableViewCell
+        let index3 = IndexPath(row: 3, section: 0)
+        let cell3 = tableView.cellForRow(at: index3) as! DetailProfileTableViewCell
+        let index4 = IndexPath(row: 4, section: 0)
+        let cell4 = tableView.cellForRow(at: index4) as! MoreDetailTableViewCell
+        
+        experience = Experience(cell.textField.text ?? "", cell1.textField.text ?? "", cell2.textField.text ?? "", cell3.textField.text ?? "", cell4.startTF.text ?? "", cell4.endTF.text ?? "")
+        tutor.tutorExperience.append(experience!)
     }
     
 }
@@ -146,6 +155,15 @@ extension SetupExperienceViewController:UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     @objc func onDoneButtonTapped() {
+        let index1 = IndexPath(row: 2, section: 0)
+        let cell1 = tableView.cellForRow(at: index1) as! AnotherDetailProfileTableViewCell
+        let index4 = IndexPath(row: 5, section: 0)
+        let cell4 = tableView.cellForRow(at: index4) as! MoreDetailTableViewCell
+        
+        cell1.textField.text = selectedExperience
+        cell4.startTF.text = selectedStartYear
+        cell4.endTF.text = selectedEndYear
+        
         toolBar.removeFromSuperview()
         pickerExperience.removeFromSuperview()
         pickerStart.removeFromSuperview()
@@ -211,17 +229,18 @@ extension SetupExperienceViewController:UITableViewDataSource,UITableViewDelegat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: hint, for: indexPath) as! HintTableViewCell
-            cell.setCell(text: "HARAP TAMBAHKAN INFORMASI PENGALAMAN ANDA")
+            cell.setCell(text: "PLEASE ADD YOUR EXPERIENCE INFORMATION")
             return cell
         }else if let keyValue = dataArray[indexPath.row] as? (key:String,value:String,code:Int){
             if keyValue.code == 0{
                 let cell = tableView.dequeueReusableCell(withIdentifier: content, for: indexPath) as! DetailProfileTableViewCell
+                cell.view = self.view
                 cell.setCell(text: keyValue.key, content: keyValue.value)
                 return cell
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: contentDrop, for: indexPath) as! AnotherDetailProfileTableViewCell
                 cell.setCell(text: keyValue.key, content: keyValue.value)
-                cell.dropID = 2
+                cell.dropID = 3
                 cell.experienceDelegate = self
                 return cell
             }
