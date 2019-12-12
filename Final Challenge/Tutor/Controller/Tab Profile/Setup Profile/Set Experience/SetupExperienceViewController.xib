@@ -10,7 +10,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SetupExperienceViewController" customModule="Final_Challenge" customModuleProvider="target">
             <connections>
                 <outlet property="applyButton" destination="uae-t1-fO4" id="amQ-KC-P6Y"/>
-                <outlet property="skipButton" destination="XbB-mA-KbF" id="Byt-f2-zFj"/>
                 <outlet property="tableView" destination="OEh-Nd-nrw" id="AIc-zD-6e5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -20,32 +19,19 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XbB-mA-KbF">
-                    <rect key="frame" x="100" y="829" width="214" height="33"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="33" id="KGn-tu-14l"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="Lewatkan">
-                        <color key="titleColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="skipTapped:" destination="-1" eventType="touchUpInside" id="j9w-37-oGZ"/>
-                    </connections>
-                </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OEh-Nd-nrw">
                     <rect key="frame" x="0.0" y="44" width="414" height="721"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uae-t1-fO4">
-                    <rect key="frame" x="20" y="765" width="374" height="44"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <rect key="frame" x="20" y="774" width="374" height="44"/>
+                    <color key="backgroundColor" red="0.1137254902" green="0.3921568627" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="twk-Hs-2fL"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="Terapkan Edukasi">
-                        <color key="titleColor" red="0.32549019610000002" green="0.78039215689999997" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                    <state key="normal" title="Apply Education">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
                         <action selector="applyTapped:" destination="-1" eventType="touchUpInside" id="Wht-as-PFL"/>
@@ -54,16 +40,13 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="XbB-mA-KbF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="100" id="6DO-tB-G5N"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="XbB-mA-KbF" secondAttribute="trailing" constant="100" id="CUa-eX-Fc8"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="uae-t1-fO4" secondAttribute="bottom" constant="44" id="Lx8-fb-H8b"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="OEh-Nd-nrw" secondAttribute="trailing" id="Pil-NW-q7t"/>
-                <constraint firstItem="XbB-mA-KbF" firstAttribute="top" secondItem="uae-t1-fO4" secondAttribute="bottom" constant="20" id="Sip-tk-WM6"/>
                 <constraint firstItem="uae-t1-fO4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="cBI-x3-4Jq"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="uae-t1-fO4" secondAttribute="trailing" constant="20" id="eQ9-A4-8AA"/>
-                <constraint firstItem="uae-t1-fO4" firstAttribute="top" secondItem="OEh-Nd-nrw" secondAttribute="bottom" id="h8D-XI-jGg"/>
+                <constraint firstItem="uae-t1-fO4" firstAttribute="top" secondItem="OEh-Nd-nrw" secondAttribute="bottom" constant="9" id="h8D-XI-jGg"/>
                 <constraint firstItem="OEh-Nd-nrw" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="hJg-xr-IDS"/>
                 <constraint firstItem="OEh-Nd-nrw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="jyb-Uk-Reb"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="XbB-mA-KbF" secondAttribute="bottom" id="l6q-1d-j1g"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="139" y="104"/>

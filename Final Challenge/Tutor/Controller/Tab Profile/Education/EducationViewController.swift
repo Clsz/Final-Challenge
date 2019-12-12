@@ -69,9 +69,6 @@ extension EducationViewController{
         let index3 = IndexPath(row: 3, section: 0)
         let cell3 = tableView.cellForRow(at: index3) as! DetailProfileTableViewCell
         
-        
-        tutor = Tutor(tutorID: tutor.tutorID, tutorEducation: [Education("01", cell.textField.text ?? "", cell1.textField.text ?? "", cell2.textField.text ?? "", cell3.textField.text ?? "", "2016", "2020")], email: tutor.email, password: tutor.password, tutorFirstName: tutor.tutorFirstName, tutorLastName: tutor.tutorLastName, tutorImage: tutor.tutorImage, tutorPhoneNumber: tutor.tutorPhoneNumber, tutorAddress: tutor.tutorAddress, tutorGender: tutor.tutorGender, tutorBirthDate: tutor.tutorBirthDate, tutorSkills: tutor.tutorSkills, tutorExperience: tutor.tutorExperience, tutorLanguage: tutor.tutorLanguage, tutorAchievement: tutor.tutorAchievement)
-        showAlert(title: "Berhasil", message: "Pengalaman anda telah diperbaruhi")
     }
     
 }

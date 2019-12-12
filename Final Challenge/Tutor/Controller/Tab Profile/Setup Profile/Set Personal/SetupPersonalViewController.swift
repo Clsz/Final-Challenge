@@ -14,24 +14,21 @@ class SetupPersonalViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     let hint = "HintTableViewCellID"
     let detailProfile = "SetupPersonalTableViewCellID"
-    var tutor:Tutor!
-    var name:String?
-    var age:String?
-    var address:String?
-     var selectedBirthDate: String?
-     var toolBar = UIToolbar()
-     var pickerBirthDate = UIPickerView()
-    private var datePicker: UIDatePicker?
-    
-    
+    var selectedBirthDate: String?
+    var toolBar = UIToolbar()
+    var pickerBirthDate = UIDatePicker()
+    var dob:Date?
+    var firstName:String?
+    var lastName:String?
+    var fullNames:String?
+    var arrName:[String]?
     var tutors:CKRecord?
     let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cellDelegate()
+        queryTutor()
         registerCell()
-//        queryUser()
         self.hideKeyboardWhenTappedAround()
     }
     
@@ -42,41 +39,81 @@ class SetupPersonalViewController: BaseViewController {
 }
 extension SetupPersonalViewController{
     private func getDataCustomCell() {
-        let index = IndexPath(row: 1, section: 0)
+        let index = IndexPath(row: 0, section: 0)
         let cell = tableView.cellForRow(at: index) as! SetupPersonalTableViewCell
-        self.name = cell.nameTF.text ?? ""
-        self.age = cell.ageTF.text ?? ""
-        self.address = cell.addressTF.text ?? ""
+        
+        fullNames = cell.nameTF.text ?? ""
+        arrName = fullNames?.components(separatedBy: " ")
+        
+        self.updateUser(name: cell.nameTF.text ?? "", age: cell.ageTF.text ?? "", address: cell.addressTF.text ?? "")
     }
     
-//    func queryUser() {
-//        let token = CKUserData.shared.getToken()
-//        let pred = NSPredicate(format: "tutorEmail == %@", token)
-//        let query = CKQuery(recordType: "Tutor", predicate: pred)
-//
-//        database.perform(query, inZoneWith: nil) { (records, error) in
-//            guard let record = records else {return}
-//
-//            self.tutors = record[0]
-//            DispatchQueue.main.async {
-//                self.cellDelegate()
-//            }
-//        }
-//    }
+    func queryTutor() {
+        let token = CKUserData.shared.getToken()
+        let pred = NSPredicate(format: "tutorEmail == %@", token)
+        let query = CKQuery(recordType: "Tutor", predicate: pred)
+        
+        database.perform(query, inZoneWith: nil) { (records, error) in
+            guard let record = records else {return}
+            if record.count > 0 {
+                self.tutors = record[0]
+                DispatchQueue.main.async {
+                    self.cellDelegate()
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
+    
+    func updateUser(name:String, age:String, address:String){
+        if let record = tutors{
+            if fullNames?.isEmpty == false{
+                let first = arrName?[0] ?? ""
+                let second = arrName?[1] ?? ""
+                record["tutorFirstName"] = first
+                record["tutorLastName"] = second
+            }
+            record["tutorAddress"] = address
+            record["tutorBirthDate"] = dob ?? ""
+            
+            
+            self.database.save(record, completionHandler: {returnRecord, error in
+                if error != nil
+                {
+                    self.showAlert(title: "Error", message: "Update Error")
+                } else{
+                }
+            })
+        }
+    }
+    
+    func sendVC() {
+        let vc = SetupEducationViewController()
+        vc.tutors = self.tutors
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
 }
 
 extension SetupPersonalViewController:ProfileDetailProtocol{
     func applyProfile() {
         getDataCustomCell()
+        sendVC()
     }
     
 }
 
 extension SetupPersonalViewController:BirthProtocol{
     func dropBirth() {
-//        createBirthDate()
+        createBirthDate()
     }
+}
+
+extension SetupPersonalViewController:PhotoProtocol{
+    func photoTapped() {
+    }
+    
+    
 }
 
 extension SetupPersonalViewController:UITableViewDataSource, UITableViewDelegate{
@@ -86,10 +123,15 @@ extension SetupPersonalViewController:UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: detailProfile, for: indexPath) as! SetupPersonalTableViewCell
-//        let fName = (tutors?.value(forKey: "tutorFirstName") as! String) + (tutors?.value(forKey: "tutorLastName") as! String)
+        let fName = "\(tutors?.value(forKey: "tutorFirstName") as! String) \(tutors?.value(forKey: "tutorLastName") as! String)"
         
-        cell.setCell(name: "fName", age: "Choose your DOB", address: "Enter your address")
+        cell.nameTF.attributedPlaceholder = NSAttributedString(string: fName, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        
+        cell.setCell(name: fName, age: "Choose your DOB", address: "Enter your address")
         cell.contentDelegate = self
+        cell.birthDelegate = self
+        cell.photoDelegate = self
+        cell.view = self.view
         return cell
         
     }
@@ -106,55 +148,97 @@ extension SetupPersonalViewController:UITableViewDataSource, UITableViewDelegate
     
 }
 
-//extension SetupPersonalViewController:UIPickerViewDelegate, UIPickerViewDataSource{
-//    private func createBirthDate() {
-//        pickerBirthDate = UIPickerView.init()
-//        pickerBirthDate.tag = 1
-//        pickerBirthDate.delegate = self
-//        pickerBirthDate.selectRow(5, inComponent:0, animated:true)
-//
-//        pickerBirthDate.backgroundColor = UIColor.white
-//        pickerBirthDate.autoresizingMask = .flexibleWidth
-//        pickerBirthDate.contentMode = .center
-//        pickerBirthDate.setValue(UIColor.black, forKey: "textColor")
-//        pickerBirthDate.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
-//        self.view.addSubview(pickerBirthDate)
-//
-//        createToolbar()
-//    }
-//
-//    private func createToolbar() {
-//        toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
-//        toolBar.items = [UIBarButtonItem.init(title: "Selesai", style: .plain, target: self, action: #selector(onDoneButtonTapped))]
-//        self.view.addSubview(toolBar)
-//    }
-//
-//    @objc func onDoneButtonTapped() {
-//        let index = IndexPath(row: 1, section: 0)
-//        let cell = tableView.cellForRow(at: index) as! SetupPersonalTableViewCell
-//
-//        cell.ageTF.text = selectedBirthDate
-//        toolBar.removeFromSuperview()
-//        pickerBirthDate.removeFromSuperview()
-//    }
-//
-//
-//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-//        return 1
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//            return ConstantManager.year.count
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//            return ConstantManager.year[row]
-//    }
-//
-//
-//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//            selectedBirthDate = ConstantManager.year[row]
-//    }
-//    
-//    
-//}
+extension SetupPersonalViewController{
+    private func createBirthDate() {
+        pickerBirthDate.tag = 1
+        pickerBirthDate.backgroundColor = UIColor.white
+        pickerBirthDate.datePickerMode = .date
+        pickerBirthDate.autoresizingMask = .flexibleWidth
+        pickerBirthDate.contentMode = .center
+        pickerBirthDate.setValue(UIColor.black, forKey: "textColor")
+        pickerBirthDate.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
+        self.view.addSubview(pickerBirthDate)
+        pickerBirthDate.addTarget(self, action: #selector(dateChange(datePicker:)), for: .valueChanged)
+        
+        createToolbar()
+    }
+    
+    private func createToolbar() {
+        toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
+        toolBar.items = [UIBarButtonItem.init(title: "Done", style: .plain, target: self, action: #selector(onDoneButtonTapped))]
+        self.view.addSubview(toolBar)
+    }
+    
+    @objc func onDoneButtonTapped() {
+        toolBar.removeFromSuperview()
+        pickerBirthDate.removeFromSuperview()
+    }
+    
+    @objc func dateChange(datePicker: UIDatePicker) {
+        let index = IndexPath(row: 0, section: 0)
+        let cell = tableView.cellForRow(at: index) as! SetupPersonalTableViewCell
+        self.dob = datePicker.date
+        let dateFormater = DateFormatter()
+        dateFormater.dateFormat = "dd MMMM yyyy"
+        pickerBirthDate.maximumDate = Calendar.current.date(byAdding: .year, value: 0, to: Date())
+        pickerBirthDate.minimumDate = Calendar.current.date(byAdding: .year, value: -20, to: Date());
+        cell.ageTF.text = dateFormater.string(from: datePicker.date)
+    }
+}
+
+extension SetupPersonalViewController:UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
+    @objc func imageTapped(tapGesture: UITapGestureRecognizer){
+        let tappedImage = tapGesture.view as! UIImageView
+        
+        //Codingan untuk Image Picker Controller
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        
+        let actionSheet = UIAlertController(title: "Photo Source", message: "Choose your photo evidence ", preferredStyle: .actionSheet)
+        
+        actionSheet.addAction(.init(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
+            imagePickerController.sourceType = .camera
+            self.present(imagePickerController, animated: true, completion: nil)
+        }))
+        actionSheet.addAction(.init(title: "Photo Library", style: .default, handler: { (action:UIAlertAction) in
+            imagePickerController.sourceType = .photoLibrary
+            self.present(imagePickerController, animated: true, completion: nil)
+        }))
+        actionSheet.addAction(.init(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let index = IndexPath(row: 0, section: 0)
+        let cell = tableView.cellForRow(at: index) as! SetupPersonalTableViewCell
+        
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        cell.imageProfile.image = image
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    fileprivate func createAsset(data: Data) -> CKAsset? {
+        
+        var returnAsset: CKAsset? = nil
+        
+        let tempStr = ProcessInfo.processInfo.globallyUniqueString
+        let filename = "\(tempStr)_file.dat"
+        let baseURL = URL(fileURLWithPath: NSTemporaryDirectory())
+        let fileURL = baseURL.appendingPathComponent(filename, isDirectory: false)
+        
+        do {
+            try data.write(to: fileURL, options: [.atomicWrite])
+            returnAsset = CKAsset(fileURL: fileURL)
+        } catch {
+            print("Error creating asset: \(error)")
+        }
+        
+        return returnAsset
+    }
+}

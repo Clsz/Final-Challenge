@@ -32,23 +32,8 @@ class RegisterViewController: BaseViewController {
     }
     
     @IBAction func regiterTapped(_ sender: Any) {
-        showLoading()
         validateFields()
-        let firstName = firstNameTF.text!
-        let lastName = lastNameTF.text!
-        let email = emailTF.text!
-        let password = passwordTF.text!
         
-        if CKUserData.shared.checkUser(email: email) == LoginResults.userNotExist {
-             hideLoading()
-            CKUserData.shared.addUser(firstName: firstName, lastName: lastName, email: email, password: password)
-            CKUserData.shared.saveUsers()
-            let vc = SetupPersonalViewController()
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.window?.rootViewController = vc
-            appDelegate.window?.makeKeyAndVisible()
-            CKUserData.shared.saveToken(token: email)
-        } else { return }
     }
     
     @IBAction func loginTapped(_ sender: Any) {
@@ -131,7 +116,23 @@ extension RegisterViewController: UITextFieldDelegate {
         }else if passwordTF.text?.isValidPassword() == false {
             return textError.text = "Password must contain 6 characters. Combination of uppercase letter, lowercase letter, and number"
         }else {
-            //                        register()
+            self.showLoading()
+            let firstName = firstNameTF.text!
+            let lastName = lastNameTF.text!
+            let email = emailTF.text!
+            let password = passwordTF.text!
+            
+            if CKUserData.shared.checkUser(email: email) == LoginResults.userNotExist {
+                CKUserData.shared.addUser(firstName: firstName, lastName: lastName, email: email, password: password)
+                CKUserData.shared.saveUsers { (res) in
+                    if res == true{
+                        self.hideLoading()
+                        let vc = SetupPersonalViewController()
+                        self.navigationController?.pushViewController(vc, animated: true)
+                        CKUserData.shared.saveToken(token: email)
+                    }
+                }
+            } else { return }
         }
     }
     

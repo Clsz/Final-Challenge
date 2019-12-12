@@ -72,6 +72,10 @@ extension LanguageViewController{
 }
 
 extension LanguageViewController:LanguageProtocol{
+    func dropProfiency() {
+        print("")
+    }
+    
     func dropLanguage() {
         self.createLanguagePicker()
     }
