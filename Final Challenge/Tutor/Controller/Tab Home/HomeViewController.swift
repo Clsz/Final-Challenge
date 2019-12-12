@@ -15,18 +15,24 @@ class HomeViewController: BaseViewController{
     let images = UIImage(named: "school")
     var listJob = [CKRecord]()
     let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
+    var filteredminSalary:Double = -1
+    var filteredmaxSalary:Double = -1
+    var filteredLocation:[String] = []
+    var filteredGrade:[String] = []
+    var filteredSubject:[String] = []
     var homeDelegate:HomeProtocol?
+    var tutorModel:CKRecord?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        queryJob()
         cellDelegate()
         registerCell()
-        jobTableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Jobs")
+        queryJob()
+
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         self.tabBarController?.tabBar.isHidden = false
     }
@@ -34,27 +40,75 @@ class HomeViewController: BaseViewController{
     
     @IBAction func filterTapped(_ sender: UIButton) {
         let filterVC = FilterViewController()
+        filterVC.sendFilterDelegate = self
         self.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(filterVC, animated: true)
     }
 }
-
 extension HomeViewController{
     private func queryJob() {
-        let query = CKQuery(recordType: "Job", predicate: NSPredicate(value: true))
+        let query:CKQuery!
+        
+        let minSalary = filteredminSalary == -1.0 ? 0.0 : filteredmaxSalary
+        let maxSalary = filteredmaxSalary == -1.0 ? 5000000.0 : filteredmaxSalary
+        let location = filteredLocation == [] ? [] : filteredLocation
+        let grade = filteredGrade == [] ? [] : filteredGrade
+        let subject = filteredSubject == [] ? [] : filteredSubject
+        
+        let predMinimumSalary = NSPredicate(format: "minimumSalary >= %f", minSalary)
+        let predMaximumSalary = NSPredicate(format: "maximumSalary >= %f", maxSalary)
+        let predAddress = NSPredicate(format: "courseAddress IN %@", [location.joined(separator: ",")])
+        let predGrade = NSPredicate(format: "jobGrade IN %@", [grade.joined(separator: ",")])
+        let predSubject = NSPredicate(format: "jobSubject IN %@", [subject.joined(separator: ",")])
+        
+        if location == [] && grade == [] && subject == [] {
+            query = CKQuery(recordType: "Job", predicate: NSPredicate(value: true))
+        }else{
+            let allPred = NSCompoundPredicate(andPredicateWithSubpredicates: [predMinimumSalary,predMaximumSalary,predAddress,predGrade,predSubject])
+            
+            query = CKQuery(recordType: "Job", predicate: allPred)
+        }
+        
         database.perform(query, inZoneWith: nil) { (records, error) in
-            guard let records = records else {
-                print("error",error as Any)
-                return
-            }
+            guard let records = records else { print("error",error as Any)
+                return }
+
             let sortedRecords = records.sorted(by: { $0.creationDate! > $1.creationDate! })
             self.listJob = sortedRecords
             DispatchQueue.main.async {
                 self.jobTableView.reloadData()
             }
         }
+        
     }
 
+    private func getUser() {
+        let token = CKUserData.shared.getToken()
+        
+        let pred = NSPredicate(format: "tutorEmail == %@", token)
+        
+        let query = CKQuery(recordType: "Tutor", predicate: pred)
+        
+        database.perform(query, inZoneWith: nil) { (records, error) in
+            guard let record = records else {return}
+            
+            self.tutorModel = record[0]
+            DispatchQueue.main.async {
+                self.queryJob()
+            }
+        }
+    }
+    
+}
+extension HomeViewController:SendFilter{
+    func sendDataFilter(location: [String], minSalary: Double, maxSalary: Double, grade: [String], subject: [String]) {
+        self.filteredLocation = location
+        self.filteredminSalary = minSalary
+        self.filteredmaxSalary = maxSalary
+        self.filteredGrade = grade
+        self.filteredSubject = subject
+    }
+    
 }
 extension HomeViewController: UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,30 +117,22 @@ extension HomeViewController: UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "jobCell", for: indexPath) as! ListJobTableViewCell
-        cell.bimbelView.layer.borderWidth = 3
-        cell.bimbelView.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        cell.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        cell.bimbelView.layer.cornerRadius = 15
-        cell.bimbelView.layer.masksToBounds = true
-        cell.bimbelView.backgroundColor = #colorLiteral(red: 0.1098039216, green: 0.3921568627, blue: 0.6666666667, alpha: 1)
-        cell.selectionStyle = .none
-        cell.bimbelPhoto.image = images
+        
     
         let data = listJob[indexPath.row]
-        
-        cell.bimbelName.text = (data.value(forKey: "courseName") as! String)
-        cell.bimbelLocation.text = (data.value(forKey: "courseAddress") as! String)
+        let name = (data.value(forKey: "courseName") as! String)
+        let location = (data.value(forKey: "courseCity") as! String)
         let minFare = (data.value(forKey: "minimumSalary") as! Double)
         let maxFare = (data.value(forKey: "maximumSalary") as! Double)
         let gajiBimbel =  "Rp \(String(describing: minFare.formattedWithSeparator)) - Rp \(String(describing: maxFare.formattedWithSeparator))"
-        cell.bimbelSubject.text = gajiBimbel
+        cell.setView(name: name, location: location, subject: gajiBimbel)
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let destVC = DetailBimbelViewController()
         destVC.job = listJob[indexPath.row]
-        
         self.navigationController?.pushViewController(destVC, animated: true)
     }
     

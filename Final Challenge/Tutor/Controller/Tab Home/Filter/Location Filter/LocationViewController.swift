@@ -34,7 +34,7 @@ class LocationViewController: BaseViewController {
     var searchLocation = [String]()
     var searching = false
     
-    var aldiDelegate:sendLocation?
+    var aldiDelegate:SendLocation?
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -23,7 +23,6 @@ class SegmentedViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        queryActivity()
         currentTableView = 0
         registerCell()
         cellDelegate()
@@ -32,8 +31,10 @@ class SegmentedViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        queryActivity()
         setupView(text: "Progress")
         tableView.reloadData()
+        self.navigationController?.navigationBar.isHidden = false
         self.navigationItem.setHidesBackButton(true, animated:true);
     }
     
@@ -74,6 +75,7 @@ extension SegmentedViewController{
     
     private func queryActivity() {
         let query = CKQuery(recordType: "Applicant", predicate: NSPredicate(value: true))
+        self.flushArray()
         database.perform(query, inZoneWith: nil) { (records, error) in
             guard let records = records else {
                 print("error",error as Any)
@@ -85,13 +87,19 @@ extension SegmentedViewController{
                 for i in self.activity{
                     if (i.value(forKey: "status") as! String) == "Job Requested"{
                         self.activityApplied.append(i)
-                    }else if (i.value(forKey: "status") as! String) == "Waiting for Your Response"{
+                    }else if (i.value(forKey: "status") as! String) == "Waiting for New Test Schedule"{
                         self.activityTest.append(i)
                     }else if (i.value(forKey: "status") as! String) == "Waiting for Test"{
                         self.activityTest.append(i)
+                    }else if (i.value(forKey: "status") as! String) == "Waiting for Test Result"{
+                        self.activityTest.append(i)
+                    }else if (i.value(forKey: "status") as! String) == "Waiting for Your Approval"{
+                        self.activityResult.append(i)
                     }else if (i.value(forKey: "status") as! String) == "Accepted"{
                         self.activityResult.append(i)
                     }else if (i.value(forKey: "status") as! String) == "Declined"{
+                        self.activityResult.append(i)
+                    }else if (i.value(forKey: "status") as! String) == "Test Declined"{
                         self.activityResult.append(i)
                     }
                 }
@@ -100,8 +108,14 @@ extension SegmentedViewController{
         }
     }
     
+    private func flushArray() {
+        self.activity.removeAll()
+        self.activityApplied.removeAll()
+        self.activityTest.removeAll()
+        self.activityResult.removeAll()
+    }
+    
 }
-
 extension SegmentedViewController:UITableViewDataSource, UITableViewDelegate{
     
     private func cellDelegate(){
@@ -151,7 +165,6 @@ extension SegmentedViewController:UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.hidesBottomBarWhenPushed = true
         if currentTableView == 0{
             let destVC = DetailBimbelTabFirstViewController()
             destVC.jobReference = (activityApplied[indexPath.row].value(forKey: "jobID") as! CKRecord.Reference)
@@ -163,7 +176,7 @@ extension SegmentedViewController:UITableViewDataSource, UITableViewDelegate{
             destVC.applicant = activityTest[indexPath.row];          self.navigationController?.pushViewController(destVC, animated: true)
         }else{
             let data = (activityResult[indexPath.row].value(forKey: "status") as? String) ?? ""
-            if data == "Waiting for Your Response"{
+            if data == "Waiting for Your Approval"{
                 let destVC = WaitingConformationViewController()
                 destVC.jobReference = (activityResult[indexPath.row].value(forKey: "jobID") as! CKRecord.Reference)
                 destVC.jobStatus = (activityResult[indexPath.row].value(forKey: "status") as! String)

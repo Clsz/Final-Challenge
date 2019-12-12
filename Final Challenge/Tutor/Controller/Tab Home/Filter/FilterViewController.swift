@@ -17,18 +17,25 @@ class FilterViewController: BaseViewController {
     @IBOutlet weak var maxLabel: UILabel!
     @IBOutlet weak var minLabel: UILabel!
     @IBOutlet weak var maxSlide: UISlider!
-    var contentDelegate:sendLocation?
-    var contDelegate:SubjectProtocol?
-    var salaryMin: Double?
+    let defaultMin = 0.0
+    let defaultMax = 5000000.0
+    var contentDelegate:SendLocation?
+    var contDelegate:GetSelectedContent?
+    var sendFilterDelegate:SendFilter?
+    var salaryMin:Double?
+    var salaryMax:Double?
+    //Selected
+    var selectMin:String?
+    var selectMax:String?
     var selectedIndex:[Int] = []
-    var kirimIndex:[Int] = []
+    var gotIndex:[Int] = []
     var selectedLocation:[String] = []
     var selectedGrade:[String] = []
     var selectedSubject:[String] = []
+    var filteredData:[(key:Int, value:String)] = [(Int,String)]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        LocationCV.delegate = self
         registerCell()
         cellDelegate()
         
@@ -41,12 +48,11 @@ class FilterViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         flushArray()
-        LocationCV.reloadData()
-        subjectCV.reloadData()
+        reloadTable()
         setupView(text: "Filters")
-        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         let vc = LocationViewController()
         vc.aldiDelegate = self
+        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     }
     
     @IBAction func minSlider(_ sender: UISlider) {
@@ -56,7 +62,8 @@ class FilterViewController: BaseViewController {
         let myMaxSalary = maxSalary.formattedWithSeparator
         minLabel.text = "Rp \(myMinSalary)"
         maxLabel.text = "Rp \(myMaxSalary)"
-        salaryMin = Double(sender.value)
+        self.salaryMin = Double(sender.value)
+        self.selectMin = myMinSalary
     }
     
     @IBAction func maxSlider(_ sender: UISlider) {
@@ -64,6 +71,7 @@ class FilterViewController: BaseViewController {
         let maxSalary = Int((roundf(sender.value)*50000))
         let myMaxSalary = maxSalary.formattedWithSeparator
         maxLabel.text = "Rp \(myMaxSalary)"
+        self.selectMax = myMaxSalary
     }
     
     @IBAction func viewAllLocationTapped(_ sender: UIButton) {
@@ -79,43 +87,96 @@ class FilterViewController: BaseViewController {
     }
     
     @IBAction func applyTapped(_ sender: UIButton) {
-        //        minLabel.text
-        //        maxLabel.text
+        getData()
+        self.sendFilterDelegate?.sendDataFilter(location: selectedLocation, minSalary: salaryMin ?? defaultMin, maxSalary: salaryMax ?? defaultMax, grade: selectedGrade, subject: selectedSubject)
         self.navigationController?.popViewController(animated: true)
     }
 }
 extension FilterViewController{
     private func flushArray() {
         selectedIndex.removeAll()
-        kirimIndex.removeAll()
+        gotIndex.removeAll()
         selectedLocation.removeAll()
         selectedGrade.removeAll()
         selectedSubject.removeAll()
     }
+    
+    private func reloadTable() {
+        LocationCV.reloadData()
+        subjectCV.reloadData()
+        gradeCV.reloadData()
+    }
+    
+    private func getData() {
+        let indexLocation : [IndexPath] = (self.LocationCV!.indexPathsForSelectedItems) ?? []
+        let indexGrade : [IndexPath] = self.gradeCV!.indexPathsForSelectedItems ?? []
+        let indexSubject : [IndexPath] = self.subjectCV.indexPathsForSelectedItems ?? []
+        
+        for i in indexLocation{
+            self.selectedLocation.append(ConstantManager.location[i.row])
+        }
+        for i in indexGrade{
+            self.selectedGrade.append(ConstantManager.grade[i.row])
+        }
+        for i in indexSubject{
+            let data = filteredData[i.row] as (key:Int,value:String)
+            self.selectedSubject.append(data.value)
+        }
+    }
+    
 }
-extension FilterViewController:sendLocation{
+extension FilterViewController:SendLocation{
     func sendIndex(arrIndex: [Int]) {
+        selectedIndex.removeAll()
         selectedIndex = arrIndex
     }
     
 }
-
-extension FilterViewController:SubjectProtocol{
-    func kirimIndex(arrayIndex: [Int]) {
-        kirimIndex = arrayIndex
+extension FilterViewController:GetSelectedContent{
+    func getIndex(arrayIndex: [Int]) {
+        gotIndex = arrayIndex
     }
     
 }
-
 extension FilterViewController:UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+    private func registerCell() {
+        LocationCV.register(UINib(nibName: "FilterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "filterCell")
+        gradeCV.register(UINib(nibName: "FilterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "filterCell")
+        subjectCV.register(UINib(nibName: "FilterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "filterCell")
+    }
+    
+    private func cellDelegate() {
+        LocationCV.delegate = self
+        LocationCV.dataSource = self
+        subjectCV.delegate = self
+        subjectCV.dataSource = self
+        gradeCV.delegate = self
+        gradeCV.dataSource = self
+    }
+    
+    private func reloadDataSubject(id:[Int]) {
+        filteredData.removeAll()
+        for i in ConstantManager.allSubject as [(key:Int, value:String)]{
+            for j in id{
+                if i.key == j{
+                    self.filteredData.append(i)
+                }
+            }
+        }
+        self.subjectCV.reloadData()
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if (collectionView == self.LocationCV) {
             return ConstantManager.location.count;
         }
         else if (collectionView  == subjectCV) {
-            return  ConstantManager.subject.count
-        }
-        else {
+            if filteredData.count == 0{
+                return ConstantManager.allSubject.count
+            }else{
+                return filteredData.count
+            }
+        }else {
             return ConstantManager.grade.count
         }
     }
@@ -138,21 +199,23 @@ extension FilterViewController:UICollectionViewDataSource, UICollectionViewDeleg
         }
         else if (collectionView == self.subjectCV) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filterCell", for: indexPath) as! FilterCollectionViewCell
-            
             cell.kotakFilter.layer.cornerRadius = 10
             cell.kotakFilter.layer.borderColor = #colorLiteral(red: 0.1098039216, green: 0.3921568627, blue: 0.6666666667, alpha: 1)
             cell.kotakFilter.layer.borderWidth = 1
-            cell.labelFilter.text = ConstantManager.subject[indexPath.row]
             
-            if kirimIndex.contains(indexPath.row){
+            if filteredData.count == 0{
+                let data = ConstantManager.allSubject[indexPath.row] as (key:Int, value:String)
+                cell.labelFilter.text = data.value
+            }else{
+                cell.labelFilter.text = filteredData[indexPath.row].value
+            }
+            
+            if gotIndex.contains(indexPath.row){
                 cell.isSelected = true
-                selectedLocation.insert(ConstantManager.location[indexPath.row], at: 0)
             }
             
             return cell
-            
-        }
-        else {
+        }else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filterCell", for: indexPath) as! FilterCollectionViewCell
             cell.kotakFilter.layer.cornerRadius = 10
             cell.kotakFilter.layer.borderColor = #colorLiteral(red: 0.1098039216, green: 0.3921568627, blue: 0.6666666667, alpha: 1)
@@ -167,38 +230,25 @@ extension FilterViewController:UICollectionViewDataSource, UICollectionViewDeleg
         return CGSize(width: 180, height: 44)
     }
     
-    func cellDelegate() {
-        LocationCV.delegate = self
-        LocationCV.dataSource = self
-        subjectCV.delegate = self
-        subjectCV.dataSource = self
-        gradeCV.delegate = self
-        gradeCV.dataSource = self
-    }
-    
-    func registerCell() {
-        LocationCV.register(UINib(nibName: "FilterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "filterCell")
-        subjectCV.register(UINib(nibName: "FilterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "filterCell")
-        gradeCV.register(UINib(nibName: "FilterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "filterCell")
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        if collectionView == LocationCV{
-            
-        }else if collectionView == subjectCV{
-            
-        }else{
-            
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == gradeCV{
+            selectedIndex.insert(indexPath.row, at: 0)
+            reloadDataSubject(id: selectedIndex)
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
         if let selectedItems = collectionView.indexPathsForSelectedItems {
             if selectedItems.contains(indexPath) {
+                if let index = selectedIndex.firstIndex(of: indexPath.row){
+                    selectedIndex.remove(at: index)
+                    reloadDataSubject(id: selectedIndex)
+                }
                 collectionView.deselectItem(at: indexPath, animated: true)
                 return false
             }
         }
         return true
     }
+    
 }

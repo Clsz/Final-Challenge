@@ -27,6 +27,7 @@ class DetailFinalThirdViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Job Details")
+        self.tableView.reloadData()
     }
     
 }
