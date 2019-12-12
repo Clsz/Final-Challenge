@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SetupExperienceViewController" customModule="Final_Challenge" customModuleProvider="target">
+            <connections>
+                <outlet property="applyButton" destination="uae-t1-fO4" id="amQ-KC-P6Y"/>
+                <outlet property="tableView" destination="OEh-Nd-nrw" id="AIc-zD-6e5"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OEh-Nd-nrw">
+                    <rect key="frame" x="0.0" y="44" width="414" height="721"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uae-t1-fO4">
+                    <rect key="frame" x="20" y="774" width="374" height="44"/>
+                    <color key="backgroundColor" red="0.1137254902" green="0.3921568627" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="twk-Hs-2fL"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                    <state key="normal" title="Apply Education">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="applyTapped:" destination="-1" eventType="touchUpInside" id="Wht-as-PFL"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="uae-t1-fO4" secondAttribute="bottom" constant="44" id="Lx8-fb-H8b"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="OEh-Nd-nrw" secondAttribute="trailing" id="Pil-NW-q7t"/>
+                <constraint firstItem="uae-t1-fO4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="cBI-x3-4Jq"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="uae-t1-fO4" secondAttribute="trailing" constant="20" id="eQ9-A4-8AA"/>
+                <constraint firstItem="uae-t1-fO4" firstAttribute="top" secondItem="OEh-Nd-nrw" secondAttribute="bottom" constant="9" id="h8D-XI-jGg"/>
+                <constraint firstItem="OEh-Nd-nrw" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="hJg-xr-IDS"/>
+                <constraint firstItem="OEh-Nd-nrw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="jyb-Uk-Reb"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="139" y="104"/>
+        </view>
+    </objects>
+</document>

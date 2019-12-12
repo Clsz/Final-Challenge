@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SkillCollectionViewCellID" id="gTV-IL-0wX" customClass="SkillCollectionViewCell" customModule="Final_Challenge" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="185" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="185" height="44"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PT7-Wt-9GD">
+                        <rect key="frame" x="40" y="10" width="145" height="23"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Add" translatesAutoresizingMaskIntoConstraints="NO" id="gIK-07-1R7">
+                        <rect key="frame" x="8" y="10" width="22" height="23"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="23" id="ct0-xZ-K6c"/>
+                            <constraint firstAttribute="width" constant="22" id="g4Q-4Y-EIZ"/>
+                            <constraint firstAttribute="width" secondItem="gIK-07-1R7" secondAttribute="height" multiplier="22:23" id="lxa-ay-Vkq"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="gIK-07-1R7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="8ri-R7-kPp"/>
+                <constraint firstItem="PT7-Wt-9GD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="GMh-VP-iqh"/>
+                <constraint firstItem="gIK-07-1R7" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="KOG-Sy-Zo3"/>
+                <constraint firstAttribute="trailing" secondItem="PT7-Wt-9GD" secondAttribute="trailing" id="dVm-9m-9bZ"/>
+                <constraint firstItem="PT7-Wt-9GD" firstAttribute="leading" secondItem="gIK-07-1R7" secondAttribute="trailing" constant="10" id="mKK-re-8Id"/>
+                <constraint firstAttribute="bottom" secondItem="PT7-Wt-9GD" secondAttribute="bottom" constant="11" id="uaI-12-0QV"/>
+                <constraint firstAttribute="bottom" secondItem="gIK-07-1R7" secondAttribute="bottom" constant="11" id="ybE-ok-m3F"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="gambarSkill" destination="gIK-07-1R7" id="vhy-ia-NDr"/>
+                <outlet property="labelSkill" destination="PT7-Wt-9GD" id="trz-N7-8PF"/>
+            </connections>
+            <point key="canvasLocation" x="138.40579710144928" y="144.64285714285714"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Add" width="22" height="22"/>
+    </resources>
+</document>

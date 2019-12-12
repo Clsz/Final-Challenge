@@ -27,7 +27,7 @@ protocol BimbelProtocol{
     func logout()
 }
 
-protocol sendLocation {
+protocol SendLocation {
     func sendIndex(arrIndex:[Int])
 }
 
@@ -39,6 +39,10 @@ protocol ProfileDetailProtocol{
     func applyProfile()
 }
 
+protocol PhotoProtocol {
+    func photoTapped()
+}
+
 protocol ProfileBimbelDetailProtocol {
     func imageTapped()
     func startTapped()
@@ -48,9 +52,12 @@ protocol ProfileBimbelDetailProtocol {
 
 protocol LanguageProtocol {
     func dropLanguage()
+    func dropProfiency()
 }
 
 protocol EducationProtocol {
+    func startTapped()
+    func endTapped()
     func dropEducation()
 }
 
@@ -58,6 +65,10 @@ protocol ExperienceProtocol {
     func startTapped()
     func endTapped()
     func dropExperience()
+}
+
+protocol BirthProtocol {
+    func dropBirth()
 }
 
 protocol HomeProtocol {
@@ -95,4 +106,20 @@ protocol SendTutorToCustom {
 
 protocol refreshTableProtocol {
     func refreshTableView()
+}
+
+protocol JobDetail {
+    func seeDetailTapped()
+}
+
+protocol SendFilter{
+    func sendDataFilter(location:[String], minSalary:Double, maxSalary:Double, grade:[String], subject:[String])
+}
+
+protocol GetSelectedContent {
+    func getIndex(arrayIndex:[Int])
+}
+
+protocol UpdateConstraint {
+    func updateViewConstraint()
 }

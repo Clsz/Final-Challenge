@@ -18,14 +18,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().tintColor = ConstantManager.mainColor
 //        //Penting nih
         self.window = UIWindow(frame: UIScreen.main.bounds)
+<<<<<<< HEAD
 //        self.tabBarController = TabBarController()
 //        window?.rootViewController = tabBarController
 //        window?.makeKeyAndVisible()
         let rv = TeachingSchedulesViewController()
+=======
+        let rv = HomeViewController()
+>>>>>>> dc2618db46d9a97a52a3a272cfe7542cada1d689
         let navigationController = UINavigationController(rootViewController: rv)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         
+//        if CKUserData.shared.getStatus() == true{
+//            self.tabBarController = TabBarController()
+//            window?.rootViewController = tabBarController
+//            window?.makeKeyAndVisible()
+//        }else{
+//            let rv = RegisterViewController()
+//            let navigationController = UINavigationController(rootViewController: rv)
+//            window?.rootViewController = navigationController
+//            window?.makeKeyAndVisible()
+//        }
         return true
     }
     

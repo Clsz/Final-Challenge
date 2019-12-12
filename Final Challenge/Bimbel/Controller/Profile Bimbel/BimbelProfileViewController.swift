@@ -1,9 +1,10 @@
-//
-//  BimbelProfileViewController.swift
-//  Final Challenge
-//
-//  Created by Muhammad Reynaldi on 02/12/19.
-//  Copyright © 2019 12. All rights reserved.
+////
+////  BimbelProfileViewController.swift
+////  Final Challenge
+////
+////  Created by Muhammad Reynaldi on 02/12/19.
+////  Copyright © 2019 12. All rights reserved.
+////
 //
 
 import UIKit

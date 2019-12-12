@@ -223,7 +223,6 @@ extension DetailProfileBimbelViewController:UITableViewDataSource,UITableViewDel
         cell.passwordDelegate = self
         cell.delegate = self
         cell.view = self.view
-//        cell.setCell(nameText: (bimbel?.value(forKey: "courseName") as! String) ?? "", addressText: (bimbel?.value(forKey: "courseAddress") as! String) ?? "", start: (bimbel?.value(forKey: "courseStartHour") as! String) ?? "", end: (bimbel?.value(forKey: "courseEndHour") as! String) ?? "")
         
         return cell
     }
