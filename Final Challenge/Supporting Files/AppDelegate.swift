@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        self.tabBarController = TabBarController()
 //        window?.rootViewController = tabBarController
 //        window?.makeKeyAndVisible()
-        let rv = TeachingSubjectViewController()
+        let rv = TeachingSchedulesViewController()
         let navigationController = UINavigationController(rootViewController: rv)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

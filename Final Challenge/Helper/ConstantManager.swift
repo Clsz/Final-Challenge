@@ -12,6 +12,7 @@ class ConstantManager{
     
     static let mainColor = #colorLiteral(red: 0.09411764706, green: 0.3529411765, blue: 0.6, alpha: 1)
     static var gender = ["Male", "Female"]
+    static var day = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday","Weekdays"]
     static var location = ["Kabupaten Lebak","Kabupaten Pandeglang","Kabupaten Serang","Kabupaten Tangerang", "Kota Cilegon","Kota Tangerang","Kota Serang","Kota Tangerang Selatan","Jakarta Barat","Jakarta Pusat","Jakarta Utara","Jakarta Timur","Jakarta Selatan","Kepulauan Seribu"]
     static let grade = ["Kindergarten","Elementary School","Junior Highschool","Senior Highschool","College"]
     static var subject = ["Mathematics", "Physisc", "Kimia", "Bahasa Inggris"]
