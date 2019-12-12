@@ -9,10 +9,6 @@
 /* Begin PBXBuildFile section */
 		142223802382916C004F2625 /* DetailScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1422237E2382916C004F2625 /* DetailScheduleTableViewCell.swift */; };
 		142223812382916C004F2625 /* DetailScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1422237F2382916C004F2625 /* DetailScheduleTableViewCell.xib */; };
-		144B432323964B9B00F1ACE1 /* DetailMahasiswaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144B432123964B9B00F1ACE1 /* DetailMahasiswaViewController.swift */; };
-		144B432423964B9B00F1ACE1 /* DetailMahasiswaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 144B432223964B9B00F1ACE1 /* DetailMahasiswaViewController.xib */; };
-		144B432823966FBA00F1ACE1 /* Tab2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144B432623966FBA00F1ACE1 /* Tab2ViewController.swift */; };
-		144B432923966FBA00F1ACE1 /* Tab2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 144B432723966FBA00F1ACE1 /* Tab2ViewController.xib */; };
 		144B432F2398AE5700F1ACE1 /* Cloudkit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144B432E2398AE5700F1ACE1 /* Cloudkit.swift */; };
 		147E1ECF2382B1DD003CAF5D /* DetailBimbelTabFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147E1ECD2382B1DD003CAF5D /* DetailBimbelTabFirstViewController.swift */; };
 		147E1ED02382B1DD003CAF5D /* DetailBimbelTabFirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147E1ECE2382B1DD003CAF5D /* DetailBimbelTabFirstViewController.xib */; };
@@ -187,10 +183,6 @@
 /* Begin PBXFileReference section */
 		1422237E2382916C004F2625 /* DetailScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		1422237F2382916C004F2625 /* DetailScheduleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailScheduleTableViewCell.xib; sourceTree = "<group>"; };
-		144B432123964B9B00F1ACE1 /* DetailMahasiswaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMahasiswaViewController.swift; sourceTree = "<group>"; };
-		144B432223964B9B00F1ACE1 /* DetailMahasiswaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailMahasiswaViewController.xib; sourceTree = "<group>"; };
-		144B432623966FBA00F1ACE1 /* Tab2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab2ViewController.swift; sourceTree = "<group>"; };
-		144B432723966FBA00F1ACE1 /* Tab2ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Tab2ViewController.xib; sourceTree = "<group>"; };
 		144B432E2398AE5700F1ACE1 /* Cloudkit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloudkit.swift; sourceTree = "<group>"; };
 		145705D7237A9C130093E944 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		145705D8237A9C130093E944 /* FilterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterViewController.xib; sourceTree = "<group>"; };
@@ -439,20 +431,10 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		144B432523964BA600F1ACE1 /* Detail Mahasiswa */ = {
-			isa = PBXGroup;
-			children = (
-				144B432123964B9B00F1ACE1 /* DetailMahasiswaViewController.swift */,
-				144B432223964B9B00F1ACE1 /* DetailMahasiswaViewController.xib */,
-			);
-			path = "Detail Mahasiswa";
-			sourceTree = "<group>";
-		};
 		144B432A23966FBF00F1ACE1 /* Activity (TAB 2) */ = {
 			isa = PBXGroup;
 			children = (
 				144B432B23966FC800F1ACE1 /* Segmented */,
-				144B432523964BA600F1ACE1 /* Detail Mahasiswa */,
 			);
 			path = "Activity (TAB 2)";
 			sourceTree = "<group>";
@@ -460,8 +442,7 @@
 		144B432B23966FC800F1ACE1 /* Segmented */ = {
 			isa = PBXGroup;
 			children = (
-				144B432623966FBA00F1ACE1 /* Tab2ViewController.swift */,
-				144B432723966FBA00F1ACE1 /* Tab2ViewController.xib */,
+				E1F47B8623A2052400EE6073 /* Segmented Applicant */,
 			);
 			path = Segmented;
 			sourceTree = "<group>";
@@ -1395,6 +1376,13 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		E1F47B8623A2052400EE6073 /* Segmented Applicant */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Segmented Applicant";
+			sourceTree = "<group>";
+		};
 		E1F5BB4C2382C65000BC9CFE /* Progress  */ = {
 			isa = PBXGroup;
 			children = (
@@ -1475,7 +1463,6 @@
 			files = (
 				E168478D2378F346001B6319 /* TitleTableViewCell.xib in Resources */,
 				E1E008802380317100FD985A /* LogoutTableViewCell.xib in Resources */,
-				144B432923966FBA00F1ACE1 /* Tab2ViewController.xib in Resources */,
 				E139B53F2375D6E400FEF1F5 /* ProfileViewController.xib in Resources */,
 				E16847A0237903B2001B6319 /* AchievementTableViewCell.xib in Resources */,
 				148C4392237EC18200B87174 /* LocationViewController.xib in Resources */,
@@ -1539,7 +1526,6 @@
 				14C10189237943300074469D /* ListJobTableViewCell.xib in Resources */,
 				E13EE6032380F759005016A0 /* SetupPersonalTableViewCell.xib in Resources */,
 				148C4356237C3D3300B87174 /* SubjectTableViewCell.xib in Resources */,
-				144B432423964B9B00F1ACE1 /* DetailMahasiswaViewController.xib in Resources */,
 				148C4362237E97FB00B87174 /* ProfileBimbelTableViewCell.xib in Resources */,
 				148C435D237D836100B87174 /* DetailBimbelViewController.xib in Resources */,
 				E1713A51237AC68C00F6A8A7 /* ContentViewTableViewCell.xib in Resources */,
@@ -1578,7 +1564,6 @@
 				147E1ECF2382B1DD003CAF5D /* DetailBimbelTabFirstViewController.swift in Sources */,
 				148C4382237EA97D00B87174 /* ScheduleTableViewCell.swift in Sources */,
 				E1F5BB582382D2B500BC9CFE /* DetailTestViewController.swift in Sources */,
-				144B432823966FBA00F1ACE1 /* Tab2ViewController.swift in Sources */,
 				E168478423784354001B6319 /* DetailProfileTableViewCell.swift in Sources */,
 				E13441C3239509310077E7D3 /* DetailAddressTableViewCell.swift in Sources */,
 				276127372397A994007BC852 /* TeachingSubjectViewController.swift in Sources */,
@@ -1631,7 +1616,6 @@
 				148C436A237E9E0500B87174 /* SubjectViewController.swift in Sources */,
 				148C439E23824D8600B87174 /* SubjectCollectionViewCell.swift in Sources */,
 				148C4361237E97FB00B87174 /* ProfileBimbelTableViewCell.swift in Sources */,
-				144B432323964B9B00F1ACE1 /* DetailMahasiswaViewController.swift in Sources */,
 				E11BB7F0237D5BA600B3B5E7 /* Protocol.swift in Sources */,
 				276127422397B171007BC852 /* TeachingGradeViewController.swift in Sources */,
 				E168477A237834DD001B6319 /* LanguageViewController.swift in Sources */,
