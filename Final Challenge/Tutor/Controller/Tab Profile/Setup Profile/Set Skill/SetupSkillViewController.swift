@@ -16,19 +16,20 @@ class SetupSkillViewController: BaseViewController {
         super.viewDidLoad()
         cellDelegate()
         registerCell()
-
        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Skills")
+        
     }
-
-
-
-
+    
 }
-
+extension SetupSkillViewController : refreshTableProtocol{
+    func refreshTableView() {
+        self.tableView.reloadData()
+    }
+}
 extension SetupSkillViewController: UITableViewDelegate, UITableViewDataSource{
     func registerCell() {
         tableView.register(UINib(nibName: "SetupSkillTableViewCell", bundle: nil), forCellReuseIdentifier: setupSkillTableViewCellID)

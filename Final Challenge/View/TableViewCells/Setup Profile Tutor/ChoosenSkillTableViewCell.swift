@@ -11,6 +11,7 @@ import UIKit
 class ChoosenSkillTableViewCell: UITableViewCell {
     
     @IBOutlet weak var choosenSkillCV: UICollectionView!
+    var arrChoosen:[String] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()

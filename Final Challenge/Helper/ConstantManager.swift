@@ -24,8 +24,8 @@ class ConstantManager{
     static let educationType = ["Senior High School","College"]
     static let experienceType = ["Full Time","Part Time","Organization","Volunteer"]
     static let year = ["Now","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025"]
-    static let hardSkill = ["Natural Science","Mathematics","Physic","Chemistry","Biology","Sociology","Economics","History","Geography","Code","TIK"]
-    static let softSkill = ["Creativity","Persuasive","Collaboration","Adaptability","Time Management","Decision Making","Inisiative","Communication","Patience","Resiliance","Strong Will","Hard Working","Friendly","Polite","Honest","Commitment","Responsible","Integrity","Confidence","Public Speaking","Presentation Skill","Leadership","Ability to Work Under Pressure"]
+    static var hardSkill = ["Natural Science","Mathematics","Physic","Chemistry","Biology","Sociology","Economics","History","Geography","Code","TIK"]
+    static var softSkill = ["Creativity","Persuasive","Collaboration","Adaptability","Time Management","Decision Making","Inisiative","Communication","Patience","Resiliance","Strong Will","Hard Working","Friendly","Polite","Honest","Commitment","Responsible","Integrity","Confidence","Public Speaking","Presentation Skill","Leadership","Ability to Work Under Pressure"]
     static let language = ["English","Mandarin","Indonesian","Japanese","Korean","Arabic","French","German","Spanish"]
     
 }
