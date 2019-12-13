@@ -17,8 +17,6 @@ class FilterViewController: BaseViewController {
     @IBOutlet weak var maxLabel: UILabel!
     @IBOutlet weak var minLabel: UILabel!
     @IBOutlet weak var maxSlide: UISlider!
-    let defaultMin = 0.0
-    let defaultMax = 5000000.0
     var contentDelegate:SendLocation?
     var contDelegate:GetSelectedContent?
     var sendFilterDelegate:SendFilter?
@@ -32,13 +30,12 @@ class FilterViewController: BaseViewController {
     var selectedLocation:[String] = []
     var selectedGrade:[String] = []
     var selectedSubject:[String] = []
-    var filteredData:[(key:Int, value:String)] = [(Int,String)]()
+    var filteredData:[(key:Int, value:String)] = ConstantManager.allSubject
     
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()
         cellDelegate()
-        
         LocationCV.reloadData()
         subjectCV.reloadData()
         self.LocationCV.allowsMultipleSelection = true
@@ -88,7 +85,7 @@ class FilterViewController: BaseViewController {
     
     @IBAction func applyTapped(_ sender: UIButton) {
         getData()
-        self.sendFilterDelegate?.sendDataFilter(location: selectedLocation, minSalary: salaryMin ?? defaultMin, maxSalary: salaryMax ?? defaultMax, grade: selectedGrade, subject: selectedSubject)
+        self.sendFilterDelegate?.sendDataFilter(location: selectedLocation, minSalary: salaryMin ?? -1, maxSalary: salaryMax ?? -1, grade: selectedGrade, subject: selectedSubject)
         self.navigationController?.popViewController(animated: true)
     }
 }

@@ -32,9 +32,9 @@ class HomeViewController: BaseViewController{
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Jobs")
         queryJob()
-
-        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        self.tabBarController?.hidesBottomBarWhenPushed = true
         self.tabBarController?.tabBar.isHidden = false
+        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     }
     
     
@@ -48,26 +48,26 @@ class HomeViewController: BaseViewController{
 extension HomeViewController{
     private func queryJob() {
         let query:CKQuery!
+        var preds:[NSPredicate] = []
         
-        let minSalary = filteredminSalary == -1.0 ? 0.0 : filteredmaxSalary
-        let maxSalary = filteredmaxSalary == -1.0 ? 5000000.0 : filteredmaxSalary
-        let location = filteredLocation == [] ? [] : filteredLocation
-        let grade = filteredGrade == [] ? [] : filteredGrade
-        let subject = filteredSubject == [] ? [] : filteredSubject
+        let minSalary = filteredminSalary == -1.0 ? 0.0 : filteredminSalary
+        let maxSalary = filteredmaxSalary == -1.0 ? 10000000.0 : filteredmaxSalary
         
         let predMinimumSalary = NSPredicate(format: "minimumSalary >= %f", minSalary)
-        let predMaximumSalary = NSPredicate(format: "maximumSalary >= %f", maxSalary)
-        let predAddress = NSPredicate(format: "courseAddress IN %@", [location.joined(separator: ",")])
-        let predGrade = NSPredicate(format: "jobGrade IN %@", [grade.joined(separator: ",")])
-        let predSubject = NSPredicate(format: "jobSubject IN %@", [subject.joined(separator: ",")])
+        let predMaximumSalary = NSPredicate(format: "maximumSalary <= %f", maxSalary)
+        let predAddress = NSPredicate(format: "courseCity IN %@", filteredLocation)
         
-        if location == [] && grade == [] && subject == [] {
-            query = CKQuery(recordType: "Job", predicate: NSPredicate(value: true))
-        }else{
-            let allPred = NSCompoundPredicate(andPredicateWithSubpredicates: [predMinimumSalary,predMaximumSalary,predAddress,predGrade,predSubject])
-            
-            query = CKQuery(recordType: "Job", predicate: allPred)
-        }
+        let predSubject = filteredSubject.map{NSPredicate(format: "jobSubject CONTAINS %@", $0)}
+        let predGrades = filteredGrade.map{NSPredicate(format: "jobGrade CONTAINS %@", $0)}
+        preds.append(predMinimumSalary)
+        preds.append(predMaximumSalary)
+        preds.append(predAddress)
+        preds.append(contentsOf: predSubject)
+        preds.append(contentsOf: predGrades)
+        
+        let allPred = NSCompoundPredicate(andPredicateWithSubpredicates: preds)
+        query = CKQuery(recordType: "Job", predicate: allPred)
+        
         
         database.perform(query, inZoneWith: nil) { (records, error) in
             guard let records = records else { print("error",error as Any)
