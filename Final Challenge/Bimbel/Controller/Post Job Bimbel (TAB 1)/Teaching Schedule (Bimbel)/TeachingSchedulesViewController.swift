@@ -15,10 +15,11 @@ class TeachingSchedulesViewController: BaseViewController {
     @IBOutlet weak var startTF: UITextField!
     @IBOutlet weak var endTF: UITextField!
     @IBOutlet weak var applyButton: UIButton!
+    lazy var jobDetailVC = JobDetailsViewController()
     
     
-    var contentDelegate:sendLocation?
-    var contDelegate:SubjectProtocol?
+//    var contentDelegate:sendLocation?
+//    var contDelegate:SubjectProtocol?
     var selectedIndex:[Int] = []
     var selectedDays:[String] = []
     var toolBar = UIToolbar()
@@ -135,7 +136,7 @@ extension TeachingSchedulesViewController:UICollectionViewDataSource, UICollecti
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ConstantManager.day.count
+        return 1
     }
     
     
@@ -147,10 +148,10 @@ extension TeachingSchedulesViewController:UICollectionViewDataSource, UICollecti
         cell.kotakFilter.layer.borderColor = #colorLiteral(red: 0.1098039216, green: 0.3921568627, blue: 0.6666666667, alpha: 1)
         cell.kotakFilter.layer.borderWidth = 1
         if selectedIndex.contains(indexPath.row) {
-            selectedDays.insert(ConstantManager.day[indexPath.row], at: 0)
+//            selectedDays.insert(ConstantManager.day[indexPath.row], at: 0)
             cell.isSelected = true
         }
-        cell.labelFilter.text = ConstantManager.day[indexPath.row]
+//        cell.labelFilter.text = ConstantManager.day[indexPath.row]
         
         return cell
     }

@@ -32,7 +32,7 @@ class SegmentedBimbelViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setupView(text: "Progress")
+        setupView(text: "Activities")
         tableView.reloadData()
         self.navigationController?.navigationBar.isHidden = false
     }
@@ -58,9 +58,9 @@ extension SegmentedBimbelViewController{
     func queryUser() {
         let token = CKUserData.shared.getToken()
         
-        let pred = NSPredicate(format: "tutorEmail == %@", token)
+        let pred = NSPredicate(format: "courseEmail == %@", token)
         
-        let query = CKQuery(recordType: "Tutor", predicate: pred)
+        let query = CKQuery(recordType: "Course", predicate: pred)
         
         database.perform(query, inZoneWith: nil) { (records, error) in
             guard let record = records else {return}
@@ -73,8 +73,8 @@ extension SegmentedBimbelViewController{
     }
     
     private func queryActivity() {
-        let arrApplicant = courseModel?.value(forKey: "applicantID") as! [CKRecord.Reference]
-        let pred = NSPredicate(format: "recordID IN %@", arrApplicant)
+        let arrApplicant = courseModel?.value(forKey: "jobID") as! [CKRecord.Reference]
+        let pred = NSPredicate(format: "jobID IN %@", arrApplicant)
         let query = CKQuery(recordType: "Applicant", predicate: pred)
         self.flushArray()
         database.perform(query, inZoneWith: nil) { (records, error) in
@@ -143,7 +143,7 @@ extension SegmentedBimbelViewController:UITableViewDataSource, UITableViewDelega
         
         if currentTableView == 0{
             let name = (activityApplied[indexPath.row].value(forKey: "courseName") as? String) ?? ""
-            let status = (activityApplied[indexPath.row].value(forKey: "status") as? String) ?? ""
+            let status = "Waiting for your response"
             cell.statusBimbel.textColor = #colorLiteral(red: 1, green: 0.5843137255, blue: 0, alpha: 1)
             cell.setCell(nama: name, status: status)
         }else if currentTableView == 1{
@@ -170,7 +170,8 @@ extension SegmentedBimbelViewController:UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if currentTableView == 0{
             let destVC = ApplicantProfileViewController()
-            //
+            destVC.tutorReference = (activityApplied[indexPath.row].value(forKey: "tutorID") as! CKRecord.Reference)
+            destVC.jobStatus = (activityApplied[indexPath.row].value(forKey: "status") as! String)
             self.navigationController?.pushViewController(destVC, animated: true)
         }else if currentTableView == 1{
             let destVC = TestScheduleViewController()

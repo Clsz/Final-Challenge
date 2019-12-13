@@ -123,3 +123,8 @@ protocol GetSelectedContent {
 protocol UpdateConstraint {
     func updateViewConstraint()
 }
+
+protocol PassSubjectToDetails{
+    func passDataToSubject(arrSubject:[String])
+}
+

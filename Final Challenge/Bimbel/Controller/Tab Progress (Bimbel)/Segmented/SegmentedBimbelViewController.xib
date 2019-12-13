@@ -31,6 +31,9 @@
                     </segments>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="selectedSegmentTintColor" red="0.10980392160000001" green="0.3921568627" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <connections>
+                        <action selector="switchViewAction:" destination="-1" eventType="valueChanged" id="F7d-tZ-UNl"/>
+                    </connections>
                 </segmentedControl>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="O2o-86-HOi">
                     <rect key="frame" x="0.0" y="130" width="414" height="732"/>

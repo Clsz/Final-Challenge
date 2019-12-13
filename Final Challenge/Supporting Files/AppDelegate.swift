@@ -18,18 +18,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().tintColor = ConstantManager.mainColor
         //        //Penting nih
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        UserDefaults.standard.set("aldi@gmail.com", forKey: "token")
+        UserDefaults.standard.set("multilanguage@gmail.com", forKey: "token")
         
-        self.tabBarController = TabBarController()
-        window?.rootViewController = tabBarController
+        
+        let rv = TeachingSubjectViewController()
+        let navigationController = UINavigationController(rootViewController: rv)
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+        //        self.tabBarController = TabBarController()
+        //        window?.rootViewController = tabBarController
+        //        window?.makeKeyAndVisible()
         
         //        if CKUserData.shared.getStatus() == true{
         //            self.tabBarController = TabBarController()
         //            window?.rootViewController = tabBarController
         //            window?.makeKeyAndVisible()
         //        }else{
-        //            let rv = RegisterViewController()
+        //            let rv = SegmentedBimbelViewController()
         //            let navigationController = UINavigationController(rootViewController: rv)
         //            window?.rootViewController = navigationController
         //            window?.makeKeyAndVisible()
