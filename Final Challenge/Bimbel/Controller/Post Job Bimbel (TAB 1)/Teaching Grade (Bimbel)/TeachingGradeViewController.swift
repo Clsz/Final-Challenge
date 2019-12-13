@@ -31,11 +31,11 @@ class TeachingGradeViewController: BaseViewController {
     
     
     @IBAction func applyGradeTapped(_ sender: Any) {
-        jobDetailVC.arrayGrade = self.selectedGrade
+        jobDetailVC.arrayGrade = ["Kindergarten"]
         
         let destVC = JobInformationViewController()
         destVC.jobDetailVC = self.jobDetailVC
-        self.navigationController?.pushViewController(jobDetailVC, animated: true)
+        self.navigationController?.pushViewController(destVC, animated: true)
     }
     
 }

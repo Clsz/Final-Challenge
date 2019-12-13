@@ -30,7 +30,6 @@ class JobDetailsViewController: BaseViewController {
         registerCell()
         cellDelegateCV()
         self.cvTeachingSubjects.reloadData()
-//        cellDelegateTV()
         
     }
     
