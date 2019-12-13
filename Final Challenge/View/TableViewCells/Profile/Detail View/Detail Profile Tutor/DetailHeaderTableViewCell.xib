@@ -25,7 +25,7 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="neg-B4-aSb">
                         <rect key="frame" x="100" y="171" width="214" height="33.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <state key="normal" title="Ganti Foto">
+                        <state key="normal" title="Change Photo">
                             <color key="titleColor" red="0.10980392160000001" green="0.3921568627" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                     </button>
@@ -37,11 +37,12 @@
                     </label>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JcV-3b-hUx">
                         <rect key="frame" x="20" y="248.5" width="374" height="50"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.1137254902" green="0.3921568627" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="JgJ-TP-fhj"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Umur" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aai-wE-bi0">
@@ -52,11 +53,12 @@
                     </label>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="67V-Q4-d65">
                         <rect key="frame" x="20" y="365.5" width="374" height="50"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.1137254902" green="0.3921568627" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="UcK-ka-MiF"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alamat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8RY-K5-7o3">
@@ -67,18 +69,19 @@
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EK9-Yt-cCl">
                         <rect key="frame" x="20" y="659.5" width="374" height="44"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.1137254902" green="0.3921568627" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="44" id="aqV-zl-Tk0"/>
                         </constraints>
-                        <state key="normal" title="   Ubah Kata Sandi">
-                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <state key="normal" title="   Change Password">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                         <connections>
                             <action selector="changePasswordTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="iQM-3s-AGF"/>
                         </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   Anda dapat mengubah kata sandi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uyf-o0-Iri">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   You can change your password." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uyf-o0-Iri">
                         <rect key="frame" x="20" y="712.5" width="374" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -99,27 +102,51 @@
                     </button>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y0g-ho-6Xc">
                         <rect key="frame" x="20" y="480.5" width="374" height="114"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.1137254902" green="0.3921568627" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="114" id="rPc-qb-KGw"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="mPe-XA-G4r">
+                        <rect key="frame" x="371" y="674.5" width="15" height="14.5"/>
+                        <color key="tintColor" red="0.81973046059999999" green="0.81930357220000005" blue="0.83921885490000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="15" id="BBv-PS-fZp"/>
+                            <constraint firstAttribute="height" constant="18" id="t11-5B-D4G"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wI8-S3-CJG">
+                        <rect key="frame" x="20" y="365.5" width="374" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="t2J-82-N7p"/>
+                        </constraints>
+                        <state key="normal" title="a" image="Right Detail-1">
+                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <connections>
+                            <action selector="birthButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="2Rb-pX-j7D"/>
+                        </connections>
+                    </button>
                 </subviews>
-                <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="Aai-wE-bi0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="0cR-pg-dGG"/>
                     <constraint firstItem="JcV-3b-hUx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="3C4-AJ-Uxv"/>
+                    <constraint firstItem="wI8-S3-CJG" firstAttribute="top" secondItem="Aai-wE-bi0" secondAttribute="bottom" constant="10" id="3lx-gT-P78"/>
                     <constraint firstItem="67V-Q4-d65" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="5r3-OI-eaM"/>
                     <constraint firstItem="neg-B4-aSb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="100" id="6EX-Iz-q9b"/>
                     <constraint firstAttribute="trailing" secondItem="67V-Q4-d65" secondAttribute="trailing" constant="20" id="6QF-DU-xVD"/>
                     <constraint firstItem="EK9-Yt-cCl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="8tW-1X-EE8"/>
                     <constraint firstItem="A3q-1d-V8P" firstAttribute="top" secondItem="neg-B4-aSb" secondAttribute="bottom" constant="7" id="9Br-ri-uQT"/>
                     <constraint firstAttribute="trailing" secondItem="JcV-3b-hUx" secondAttribute="trailing" constant="20" id="Bg4-5L-9LY"/>
+                    <constraint firstItem="wI8-S3-CJG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="DIx-Lb-3kf"/>
                     <constraint firstItem="A3q-1d-V8P" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="LaC-eA-8iT"/>
                     <constraint firstItem="neg-B4-aSb" firstAttribute="top" secondItem="Uad-Hh-KHU" secondAttribute="bottom" id="LuJ-HQ-Syg"/>
                     <constraint firstAttribute="trailing" secondItem="Uad-Hh-KHU" secondAttribute="trailing" constant="152" id="OEd-Dm-vgb"/>
+                    <constraint firstItem="mPe-XA-G4r" firstAttribute="leading" secondItem="EK9-Yt-cCl" secondAttribute="trailing" constant="-23" id="RG5-sG-UTa"/>
                     <constraint firstItem="Uad-Hh-KHU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="61" id="RkG-RE-ohs"/>
                     <constraint firstItem="8RY-K5-7o3" firstAttribute="top" secondItem="67V-Q4-d65" secondAttribute="bottom" constant="30" id="Tmq-sl-xY8"/>
                     <constraint firstAttribute="trailing" secondItem="neg-B4-aSb" secondAttribute="trailing" constant="100" id="TnH-9f-3Bs"/>
@@ -129,8 +156,11 @@
                     <constraint firstItem="Uad-Hh-KHU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="152" id="cvw-hE-OWe"/>
                     <constraint firstAttribute="trailing" secondItem="A3q-1d-V8P" secondAttribute="trailing" constant="20" id="dXu-04-LSH"/>
                     <constraint firstItem="y0g-ho-6Xc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="fG9-Pl-vls"/>
+                    <constraint firstAttribute="trailing" secondItem="wI8-S3-CJG" secondAttribute="trailing" constant="20" id="fjg-wA-4DB"/>
                     <constraint firstAttribute="trailing" secondItem="Uyf-o0-Iri" secondAttribute="trailing" constant="20" id="fxW-Q0-hee"/>
+                    <constraint firstItem="EK9-Yt-cCl" firstAttribute="top" secondItem="mPe-XA-G4r" secondAttribute="bottom" constant="-31" id="gxZ-J3-70d"/>
                     <constraint firstAttribute="trailing" secondItem="a4q-zX-dk6" secondAttribute="trailing" constant="20" id="nsC-jV-EWB"/>
+                    <constraint firstItem="8RY-K5-7o3" firstAttribute="top" secondItem="wI8-S3-CJG" secondAttribute="bottom" constant="30" id="o3p-rX-toe"/>
                     <constraint firstAttribute="trailing" secondItem="Aai-wE-bi0" secondAttribute="trailing" constant="20" id="oX6-o7-nZe"/>
                     <constraint firstItem="y0g-ho-6Xc" firstAttribute="top" secondItem="8RY-K5-7o3" secondAttribute="bottom" constant="8" id="pDz-P6-8oq"/>
                     <constraint firstItem="8RY-K5-7o3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="pvP-zM-A1N"/>
@@ -145,7 +175,7 @@
                     <constraint firstItem="Uyf-o0-Iri" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="z2p-oN-qlm"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="addressTF" destination="y0g-ho-6Xc" id="2kl-I9-cSR"/>
@@ -158,6 +188,8 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="Right Detail-1" width="10" height="15"/>
+        <image name="chevron.right" catalog="system" width="48" height="64"/>
         <image name="user-5" width="150" height="150"/>
     </resources>
 </document>

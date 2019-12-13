@@ -7,9 +7,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SetupSkillViewController" customModule="Final_Challenge" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SummarySetupViewController" customModule="Final_Challenge" customModuleProvider="target">
             <connections>
-                <outlet property="tableView" destination="LNe-zt-UgP" id="UpV-Rt-Y1i"/>
+                <outlet property="summaryTV" destination="N0Z-gK-5rf" id="1os-HM-uNd"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,20 +18,20 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LNe-zt-UgP">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N0Z-gK-5rf">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="LNe-zt-UgP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="68B-m3-CsA"/>
-                <constraint firstItem="LNe-zt-UgP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="PNU-np-i7G"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="LNe-zt-UgP" secondAttribute="trailing" id="eSl-ax-of5"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="LNe-zt-UgP" secondAttribute="bottom" id="qBB-eD-6a1"/>
+                <constraint firstItem="N0Z-gK-5rf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="2lm-GF-U0a"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="N0Z-gK-5rf" secondAttribute="bottom" id="7ec-rk-nZD"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="N0Z-gK-5rf" secondAttribute="trailing" id="R6w-76-8pf"/>
+                <constraint firstItem="N0Z-gK-5rf" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="qeo-kj-ibU"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="139" y="103"/>
+            <point key="canvasLocation" x="139" y="141"/>
         </view>
     </objects>
 </document>

@@ -22,7 +22,6 @@ class DetailBimbelViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        UserDefaults.standard.set("aldi@gmail.com", forKey: "token")
         queryCourse()
         registerCell()
     }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 class SetupLanguageViewController: BaseViewController {
     
@@ -22,6 +23,15 @@ class SetupLanguageViewController: BaseViewController {
     let content = "DetailProfileTableViewCellID"
     let contentDrop = "AnotherDetailProfileTableViewCellID"
     var tutor:Tutor!
+    var tutors:CKRecord?
+    var language:CKRecord?
+    var languageReference:CKRecord.Reference!
+    let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
+    var arrLanguage:[String] = []
+    var arrProfiency:[String] = []
+    var id: Int!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +47,7 @@ class SetupLanguageViewController: BaseViewController {
     
     @IBAction func applyTapped(_ sender: Any) {
         getDataCustomCell()
+        createLanguage()
     }
     
 }
@@ -55,11 +66,55 @@ extension SetupLanguageViewController{
     }
     
     private func getDataCustomCell() {
-        //Getdata
+        let index = IndexPath(row: 1, section: 0)
+        let cell = tableView.cellForRow(at: index) as! AnotherDetailProfileTableViewCell
+        let index1 = IndexPath(row: 2, section: 0)
+        let cell1 = tableView.cellForRow(at: index1) as! AnotherDetailProfileTableViewCell
+        
+        self.arrLanguage.append(cell.textField.text ?? "")
+        self.arrProfiency.append(cell1.textField.text ?? "")
+    }
+    
+    private func createLanguage(){
+        let newLanguage = CKRecord(recordType: "Language")
+         newLanguage["languageName"] = arrLanguage
+        newLanguage["languageLevel"] = arrProfiency
+        
+        database.save(newLanguage) { (record, error) in
+            guard record != nil  else { return print("error", error as Any) }
+            self.updateLanguage(recordLanguage: record!)
+            
+        }
+        
+    }
+    
+    
+    private func updateLanguage(recordLanguage:CKRecord){
+        if let record = tutors{
+            record["languageID"] = CKRecord.Reference.init(recordID: recordLanguage.recordID, action: .deleteSelf)
+            self.database.save(record, completionHandler: {returnRecord, error in
+                if error != nil{
+                    self.showAlert(title: "Error", message: "Update Error")
+                }else{ DispatchQueue.main.async {
+                    self.sendVC()
+                    }
+                }
+            })
+        }
+        
+    }
+    
+    private func sendVC() {
+        if id == 0 {
+        let vc = AdditionalLanguageViewController()
+        vc.tutors = self.tutors
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
 }
-
 extension SetupLanguageViewController:LanguageProtocol{
     func dropLanguage() {
         self.createLanguagePicker()

@@ -17,6 +17,7 @@ class DetailHeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var applyButton: UIButton!
     var passwordDelegate:PasswordProtocol?
     var delegate:ProfileDetailProtocol?
+    var birthDelegate:BirthProtocol?
     var accessoryDoneButton: UIBarButtonItem!
     let accessoryToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
     let flexiblea = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -30,6 +31,10 @@ class DetailHeaderTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
+    }
+    
+    @IBAction func birthButton(_ sender: UIButton) {
+        birthDelegate?.dropBirth()
     }
     
     @IBAction func changePasswordTapped(_ sender: Any) {

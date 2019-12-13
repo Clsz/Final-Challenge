@@ -32,7 +32,7 @@ class FilterViewController: BaseViewController {
     var selectedLocation:[String] = []
     var selectedGrade:[String] = []
     var selectedSubject:[String] = []
-    var filteredData:[(key:Int, value:String)] = [(Int,String)]()
+    var filteredData:[(key:Int, value:String)] = ConstantManager.allSubject
     
     override func viewDidLoad() {
         super.viewDidLoad()
