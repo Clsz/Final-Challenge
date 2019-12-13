@@ -97,16 +97,17 @@ extension ProfileViewController:ProfileProtocol, LanguageViewControllerDelegate{
     
     func pencilTapped() {
         let destVC = EditProfileViewController()
-        
+        destVC.tutors = self.tutorModel
         destVC.delegate = self
         navigationController?.pushViewController(destVC, animated: true)
     }
     
     func skillTapped() {
-        let destVC = SkillsViewController()
-        
-        destVC.delegate = self
-        navigationController?.pushViewController(destVC, animated: true)
+//        let destVC = SkillsViewController()
+//
+//        destVC.delegate = self
+//        navigationController?.pushViewController(destVC, animated: true)
+        print("")
     }
     
     func languageTapped() {

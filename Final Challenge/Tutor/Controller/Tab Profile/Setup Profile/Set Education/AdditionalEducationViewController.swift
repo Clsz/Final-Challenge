@@ -47,7 +47,9 @@ class AdditionalEducationViewController: BaseViewController {
     }
     
     @IBAction func applyTapped(_ sender: Any) {
-        
+        let destVC = SetupLanguageViewController()
+        destVC.tutors = tutors
+        self.navigationController?.pushViewController(destVC, animated: true)
     }
     
 }

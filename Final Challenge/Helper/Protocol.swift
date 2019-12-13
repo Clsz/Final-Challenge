@@ -71,6 +71,19 @@ protocol BirthProtocol {
     func dropBirth()
 }
 
+protocol ChooseSkillProtocol {
+    func passData(dataSkills: [(key:Int,value:String)])
+    func reloadCV()
+}
+
+protocol ActivateDelegateCell{
+    func activateDelegate(delegate :ChooseSkillProtocol)
+}
+
+protocol ReloadProtocol {
+    func reloadChoosenCV()
+}
+
 protocol HomeProtocol {
     func bimbelTapped()
 }
@@ -123,6 +136,11 @@ protocol GetSelectedContent {
 protocol UpdateConstraint {
     func updateViewConstraint()
 }
+
+protocol SendFlag{
+    func sendFlag(flag:Bool)
+}
+
 
 protocol PassSubjectToDetails{
     func passDataToSubject(arrSubject:[String])

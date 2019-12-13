@@ -14,7 +14,6 @@ class SetupPersonalViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     let hint = "HintTableViewCellID"
     let detailProfile = "SetupPersonalTableViewCellID"
-    var selectedBirthDate: String?
     var toolBar = UIToolbar()
     var pickerBirthDate = UIDatePicker()
     var dob:Date?
