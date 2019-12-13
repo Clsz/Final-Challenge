@@ -34,6 +34,7 @@ class DetailBimbelViewController: BaseViewController {
     
     override func viewWillLayoutSubviews() {
         super.updateViewConstraints()
+        
     }
     
 }

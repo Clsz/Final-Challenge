@@ -24,10 +24,10 @@ class ScheduleTableViewCell: UITableViewCell {
         self.scheduleTitle.text = title
     }
     
-//    override func layoutSubviews() {
-//        super.updateConstraints()
-//        self.heightConstraint?.constant = self.scheduleTV.contentSize.height
-//    }
+    override func layoutSubviews() {
+        super.updateConstraints()
+        self.heightConstraint?.constant = self.scheduleTV.contentSize.height
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -58,8 +58,12 @@ extension ScheduleTableViewCell: UITableViewDataSource, UITableViewDelegate {
         cell.jadwalView.backgroundColor = #colorLiteral(red: 0.1098039216, green: 0.3921568627, blue: 0.6666666667, alpha: 1)
         let schedule = "\(scheduleStart[indexPath.row]) " + " - " + "\(scheduleEnd[indexPath.row]) "
         cell.setView(day: day[indexPath.row], time: schedule)
-
+        layoutSubviews()
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        print(indexPath.row,"$")
     }
     
     private func cellDelegate() {

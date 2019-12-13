@@ -141,3 +141,8 @@ protocol SendFlag{
     func sendFlag(flag:Bool)
 }
 
+
+protocol PassSubjectToDetails{
+    func passDataToSubject(arrSubject:[String])
+}
+

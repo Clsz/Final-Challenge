@@ -211,6 +211,12 @@ extension Date{
         return formatter.string(from: self)
     }
 
+    func toYear()->String{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM"
+        return formatter.string(from: self)
+    }
+    
 }
 
 extension CKRecord.ID {

@@ -17,8 +17,6 @@ class FilterViewController: BaseViewController {
     @IBOutlet weak var maxLabel: UILabel!
     @IBOutlet weak var minLabel: UILabel!
     @IBOutlet weak var maxSlide: UISlider!
-    let defaultMin = 0.0
-    let defaultMax = 5000000.0
     var contentDelegate:SendLocation?
     var contDelegate:GetSelectedContent?
     var sendFilterDelegate:SendFilter?
@@ -38,7 +36,6 @@ class FilterViewController: BaseViewController {
         super.viewDidLoad()
         registerCell()
         cellDelegate()
-        
         LocationCV.reloadData()
         subjectCV.reloadData()
         self.LocationCV.allowsMultipleSelection = true
@@ -88,7 +85,7 @@ class FilterViewController: BaseViewController {
     
     @IBAction func applyTapped(_ sender: UIButton) {
         getData()
-        self.sendFilterDelegate?.sendDataFilter(location: selectedLocation, minSalary: salaryMin ?? defaultMin, maxSalary: salaryMax ?? defaultMax, grade: selectedGrade, subject: selectedSubject)
+        self.sendFilterDelegate?.sendDataFilter(location: selectedLocation, minSalary: salaryMin ?? -1, maxSalary: salaryMax ?? -1, grade: selectedGrade, subject: selectedSubject)
         self.navigationController?.popViewController(animated: true)
     }
 }
@@ -212,6 +209,7 @@ extension FilterViewController:UICollectionViewDataSource, UICollectionViewDeleg
             
             if gotIndex.contains(indexPath.row){
                 cell.isSelected = true
+                selectedLocation.insert(ConstantManager.location[indexPath.row], at: 0)
             }
             
             return cell

@@ -9,13 +9,7 @@
 /* Begin PBXBuildFile section */
 		142223802382916C004F2625 /* DetailScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1422237E2382916C004F2625 /* DetailScheduleTableViewCell.swift */; };
 		142223812382916C004F2625 /* DetailScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1422237F2382916C004F2625 /* DetailScheduleTableViewCell.xib */; };
-		144B432323964B9B00F1ACE1 /* DetailMahasiswaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144B432123964B9B00F1ACE1 /* DetailMahasiswaViewController.swift */; };
-		144B432423964B9B00F1ACE1 /* DetailMahasiswaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 144B432223964B9B00F1ACE1 /* DetailMahasiswaViewController.xib */; };
-		144B432823966FBA00F1ACE1 /* Tab2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144B432623966FBA00F1ACE1 /* Tab2ViewController.swift */; };
-		144B432923966FBA00F1ACE1 /* Tab2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 144B432723966FBA00F1ACE1 /* Tab2ViewController.xib */; };
 		144B432F2398AE5700F1ACE1 /* Cloudkit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144B432E2398AE5700F1ACE1 /* Cloudkit.swift */; };
-		144B433A239F5FD600F1ACE1 /* AddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 144B4338239F5FD500F1ACE1 /* AddressTableViewCell.xib */; };
-		144B433B239F5FD600F1ACE1 /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144B4339239F5FD500F1ACE1 /* AddressTableViewCell.swift */; };
 		144B433E239FD30400F1ACE1 /* SetupSkillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144B433C239FD30400F1ACE1 /* SetupSkillTableViewCell.swift */; };
 		144B433F239FD30400F1ACE1 /* SetupSkillTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 144B433D239FD30400F1ACE1 /* SetupSkillTableViewCell.xib */; };
 		144B4342239FD32500F1ACE1 /* ChoosenSkillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144B4340239FD32500F1ACE1 /* ChoosenSkillTableViewCell.swift */; };
@@ -24,6 +18,10 @@
 		144B4347239FD5E600F1ACE1 /* SetupSkillViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 144B4345239FD5E600F1ACE1 /* SetupSkillViewController.xib */; };
 		144B434B23A0B18600F1ACE1 /* SkillCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144B434923A0B18600F1ACE1 /* SkillCollectionViewCell.swift */; };
 		144B434C23A0B18600F1ACE1 /* SkillCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 144B434A23A0B18600F1ACE1 /* SkillCollectionViewCell.xib */; };
+		144B435523A2113300F1ACE1 /* AddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1DF1F76239F605C00C53123 /* AddressTableViewCell.xib */; };
+		144B435623A2113800F1ACE1 /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF1F77239F605C00C53123 /* AddressTableViewCell.swift */; };
+		144B435923A38C2700F1ACE1 /* SummarySetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144B435723A38C2700F1ACE1 /* SummarySetupViewController.swift */; };
+		144B435A23A38C2700F1ACE1 /* SummarySetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 144B435823A38C2700F1ACE1 /* SummarySetupViewController.xib */; };
 		147E1ECF2382B1DD003CAF5D /* DetailBimbelTabFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147E1ECD2382B1DD003CAF5D /* DetailBimbelTabFirstViewController.swift */; };
 		147E1ED02382B1DD003CAF5D /* DetailBimbelTabFirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147E1ECE2382B1DD003CAF5D /* DetailBimbelTabFirstViewController.xib */; };
 		147E1ED52383155A003CAF5D /* SegmentedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147E1ED32383155A003CAF5D /* SegmentedViewController.swift */; };
@@ -62,12 +60,8 @@
 		148C439D23824D8600B87174 /* SubjectCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 148C439B23824D8600B87174 /* SubjectCollectionViewCell.xib */; };
 		148C439E23824D8600B87174 /* SubjectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148C439C23824D8600B87174 /* SubjectCollectionViewCell.swift */; };
 		14C10189237943300074469D /* ListJobTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14C10187237943300074469D /* ListJobTableViewCell.xib */; };
-		276127372397A994007BC852 /* TeachingSubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276127352397A994007BC852 /* TeachingSubjectViewController.swift */; };
-		276127382397A994007BC852 /* TeachingSubjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 276127362397A994007BC852 /* TeachingSubjectViewController.xib */; };
 		2761273D2397AC32007BC852 /* TeachingSubjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2761273B2397AC32007BC852 /* TeachingSubjectTableViewCell.swift */; };
 		2761273E2397AC32007BC852 /* TeachingSubjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2761273C2397AC32007BC852 /* TeachingSubjectTableViewCell.xib */; };
-		276127422397B171007BC852 /* TeachingGradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276127402397B171007BC852 /* TeachingGradeViewController.swift */; };
-		276127432397B171007BC852 /* TeachingGradeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 276127412397B171007BC852 /* TeachingGradeViewController.xib */; };
 		276127482397B331007BC852 /* TeachingGradeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276127462397B331007BC852 /* TeachingGradeTableViewCell.swift */; };
 		276127492397B332007BC852 /* TeachingGradeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 276127472397B331007BC852 /* TeachingGradeTableViewCell.xib */; };
 		278FABD3239675E600590D4A /* DetailPostedJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278FABD1239675E600590D4A /* DetailPostedJobViewController.swift */; };
@@ -139,6 +133,12 @@
 		E16847A0237903B2001B6319 /* AchievementTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E168479E237903B2001B6319 /* AchievementTableViewCell.xib */; };
 		E1713A50237AC68C00F6A8A7 /* ContentViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1713A4E237AC68C00F6A8A7 /* ContentViewTableViewCell.swift */; };
 		E1713A51237AC68C00F6A8A7 /* ContentViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1713A4F237AC68C00F6A8A7 /* ContentViewTableViewCell.xib */; };
+		E178C2A223A3B75000EF1F21 /* TeachingGradePlainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E178C2A023A3B75000EF1F21 /* TeachingGradePlainTableViewCell.swift */; };
+		E178C2A323A3B75000EF1F21 /* TeachingGradePlainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E178C2A123A3B75000EF1F21 /* TeachingGradePlainTableViewCell.xib */; };
+		E178C2A723A3B83400EF1F21 /* TeachingScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E178C2A523A3B83400EF1F21 /* TeachingScheduleTableViewCell.swift */; };
+		E178C2A823A3B83400EF1F21 /* TeachingScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E178C2A623A3B83400EF1F21 /* TeachingScheduleTableViewCell.xib */; };
+		E178C2AB23A3C75300EF1F21 /* JobInformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E178C2A923A3C75300EF1F21 /* JobInformationViewController.xib */; };
+		E178C2AC23A3C75300EF1F21 /* JobInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E178C2AA23A3C75300EF1F21 /* JobInformationViewController.swift */; };
 		E17F320F23793BFE00AEBCD5 /* EducationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17F320D23793BFE00AEBCD5 /* EducationViewController.swift */; };
 		E17F321023793BFE00AEBCD5 /* EducationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E17F320E23793BFE00AEBCD5 /* EducationViewController.xib */; };
 		E17F32132379446300AEBCD5 /* ExperienceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17F32112379446300AEBCD5 /* ExperienceViewController.swift */; };
@@ -159,6 +159,8 @@
 		E19D1AEC237BF10F003AFFBD /* CustomLanguageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E19D1AEA237BF10F003AFFBD /* CustomLanguageTableViewCell.xib */; };
 		E19D1AF0237BF274003AFFBD /* CustomExperienceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19D1AEE237BF274003AFFBD /* CustomExperienceTableViewCell.swift */; };
 		E19D1AF1237BF274003AFFBD /* CustomExperienceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E19D1AEF237BF274003AFFBD /* CustomExperienceTableViewCell.xib */; };
+		E1A12CC023A3B21900009F52 /* TeachingSchedulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A12CBE23A3B21800009F52 /* TeachingSchedulesViewController.swift */; };
+		E1A12CC123A3B21900009F52 /* TeachingSchedulesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1A12CBF23A3B21900009F52 /* TeachingSchedulesViewController.xib */; };
 		E1A53F96239B657C00E6B6FE /* SeeDetailBimbelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A53F94239B657C00E6B6FE /* SeeDetailBimbelViewController.swift */; };
 		E1A53F97239B657C00E6B6FE /* SeeDetailBimbelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1A53F95239B657C00E6B6FE /* SeeDetailBimbelViewController.xib */; };
 		E1BDDE58239B7AB6003B4414 /* SeeDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BDDE56239B7AB6003B4414 /* SeeDetailTableViewCell.swift */; };
@@ -177,13 +179,27 @@
 		E1CE74382395374900FA8FEC /* SubjectBimbelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1CE74362395374900FA8FEC /* SubjectBimbelViewController.xib */; };
 		E1CE743B2395376D00FA8FEC /* GradeBimbelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CE74392395376D00FA8FEC /* GradeBimbelViewController.swift */; };
 		E1CE743C2395376D00FA8FEC /* GradeBimbelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1CE743A2395376D00FA8FEC /* GradeBimbelViewController.xib */; };
-		E1DF1F78239F605C00C53123 /* AddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1DF1F76239F605C00C53123 /* AddressTableViewCell.xib */; };
-		E1DF1F79239F605C00C53123 /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF1F77239F605C00C53123 /* AddressTableViewCell.swift */; };
+		E1D5051923A3B01300EEE158 /* TeachingGradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D5050D23A3B01200EEE158 /* TeachingGradeViewController.swift */; };
+		E1D5051A23A3B01300EEE158 /* TeachingGradeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1D5050E23A3B01200EEE158 /* TeachingGradeViewController.xib */; };
+		E1D5051B23A3B01300EEE158 /* JobDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D5051023A3B01200EEE158 /* JobDetailsViewController.swift */; };
+		E1D5051C23A3B01300EEE158 /* JobDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1D5051123A3B01200EEE158 /* JobDetailsViewController.xib */; };
+		E1D5051D23A3B01300EEE158 /* JobSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D5051323A3B01200EEE158 /* JobSuccessViewController.swift */; };
+		E1D5051E23A3B01300EEE158 /* JobSuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1D5051423A3B01200EEE158 /* JobSuccessViewController.xib */; };
+		E1D5052023A3B01300EEE158 /* TeachingSubjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1D5051723A3B01300EEE158 /* TeachingSubjectViewController.xib */; };
+		E1D5052123A3B01300EEE158 /* TeachingSubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D5051823A3B01300EEE158 /* TeachingSubjectViewController.swift */; };
 		E1E0087F2380317100FD985A /* LogoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E0087D2380317100FD985A /* LogoutTableViewCell.swift */; };
 		E1E008802380317100FD985A /* LogoutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E0087E2380317100FD985A /* LogoutTableViewCell.xib */; };
 		E1E3A89B2366CA8800F1571E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E3A89A2366CA8800F1571E /* AppDelegate.swift */; };
 		E1E3A8A42366CA8900F1571E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1E3A8A32366CA8900F1571E /* Assets.xcassets */; };
 		E1E3A8B62366CFC700F1571E /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E3A8B52366CFC700F1571E /* Extension.swift */; };
+		E1F47B8923A2150200EE6073 /* SegmentedBimbelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F47B8723A2150200EE6073 /* SegmentedBimbelViewController.swift */; };
+		E1F47B8A23A2150200EE6073 /* SegmentedBimbelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1F47B8823A2150200EE6073 /* SegmentedBimbelViewController.xib */; };
+		E1F47B8F23A21A7200EE6073 /* ApplicantProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F47B8D23A21A7200EE6073 /* ApplicantProfileViewController.swift */; };
+		E1F47B9323A226BD00EE6073 /* TestScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F47B9123A226BD00EE6073 /* TestScheduleViewController.swift */; };
+		E1F47B9423A226BD00EE6073 /* TestScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1F47B9223A226BD00EE6073 /* TestScheduleViewController.xib */; };
+		E1F47B9A23A226EC00EE6073 /* ApplicantProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1F47B9823A226EC00EE6073 /* ApplicantProfileViewController.xib */; };
+		E1F47B9D23A2272900EE6073 /* ResultBimbelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F47B9B23A2272900EE6073 /* ResultBimbelViewController.swift */; };
+		E1F47B9E23A2272900EE6073 /* ResultBimbelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1F47B9C23A2272900EE6073 /* ResultBimbelViewController.xib */; };
 		E1F5BB4F2382C75A00BC9CFE /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F5BB4D2382C75A00BC9CFE /* ActivityTableViewCell.swift */; };
 		E1F5BB502382C75A00BC9CFE /* ActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1F5BB4E2382C75A00BC9CFE /* ActivityTableViewCell.xib */; };
 		E1F5BB532382CDFD00BC9CFE /* FooterActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F5BB512382CDFD00BC9CFE /* FooterActivityTableViewCell.swift */; };
@@ -195,13 +211,7 @@
 /* Begin PBXFileReference section */
 		1422237E2382916C004F2625 /* DetailScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		1422237F2382916C004F2625 /* DetailScheduleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailScheduleTableViewCell.xib; sourceTree = "<group>"; };
-		144B432123964B9B00F1ACE1 /* DetailMahasiswaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMahasiswaViewController.swift; sourceTree = "<group>"; };
-		144B432223964B9B00F1ACE1 /* DetailMahasiswaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailMahasiswaViewController.xib; sourceTree = "<group>"; };
-		144B432623966FBA00F1ACE1 /* Tab2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab2ViewController.swift; sourceTree = "<group>"; };
-		144B432723966FBA00F1ACE1 /* Tab2ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Tab2ViewController.xib; sourceTree = "<group>"; };
 		144B432E2398AE5700F1ACE1 /* Cloudkit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloudkit.swift; sourceTree = "<group>"; };
-		144B4338239F5FD500F1ACE1 /* AddressTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressTableViewCell.xib; sourceTree = "<group>"; };
-		144B4339239F5FD500F1ACE1 /* AddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
 		144B433C239FD30400F1ACE1 /* SetupSkillTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupSkillTableViewCell.swift; sourceTree = "<group>"; };
 		144B433D239FD30400F1ACE1 /* SetupSkillTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetupSkillTableViewCell.xib; sourceTree = "<group>"; };
 		144B4340239FD32500F1ACE1 /* ChoosenSkillTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosenSkillTableViewCell.swift; sourceTree = "<group>"; };
@@ -210,6 +220,8 @@
 		144B4345239FD5E600F1ACE1 /* SetupSkillViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetupSkillViewController.xib; sourceTree = "<group>"; };
 		144B434923A0B18600F1ACE1 /* SkillCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillCollectionViewCell.swift; sourceTree = "<group>"; };
 		144B434A23A0B18600F1ACE1 /* SkillCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SkillCollectionViewCell.xib; sourceTree = "<group>"; };
+		144B435723A38C2700F1ACE1 /* SummarySetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummarySetupViewController.swift; sourceTree = "<group>"; };
+		144B435823A38C2700F1ACE1 /* SummarySetupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummarySetupViewController.xib; sourceTree = "<group>"; };
 		145705D7237A9C130093E944 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		145705D8237A9C130093E944 /* FilterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterViewController.xib; sourceTree = "<group>"; };
 		147E1ECD2382B1DD003CAF5D /* DetailBimbelTabFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBimbelTabFirstViewController.swift; sourceTree = "<group>"; };
@@ -254,12 +266,8 @@
 		14C1018123793DCF0074469D /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		14C10186237943300074469D /* ListJobTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListJobTableViewCell.swift; sourceTree = "<group>"; };
 		14C10187237943300074469D /* ListJobTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListJobTableViewCell.xib; sourceTree = "<group>"; };
-		276127352397A994007BC852 /* TeachingSubjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeachingSubjectViewController.swift; sourceTree = "<group>"; };
-		276127362397A994007BC852 /* TeachingSubjectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeachingSubjectViewController.xib; sourceTree = "<group>"; };
 		2761273B2397AC32007BC852 /* TeachingSubjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeachingSubjectTableViewCell.swift; sourceTree = "<group>"; };
 		2761273C2397AC32007BC852 /* TeachingSubjectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeachingSubjectTableViewCell.xib; sourceTree = "<group>"; };
-		276127402397B171007BC852 /* TeachingGradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeachingGradeViewController.swift; sourceTree = "<group>"; };
-		276127412397B171007BC852 /* TeachingGradeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeachingGradeViewController.xib; sourceTree = "<group>"; };
 		276127462397B331007BC852 /* TeachingGradeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeachingGradeTableViewCell.swift; sourceTree = "<group>"; };
 		276127472397B331007BC852 /* TeachingGradeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeachingGradeTableViewCell.xib; sourceTree = "<group>"; };
 		278FABD1239675E600590D4A /* DetailPostedJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostedJobViewController.swift; sourceTree = "<group>"; };
@@ -334,6 +342,12 @@
 		E168479E237903B2001B6319 /* AchievementTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AchievementTableViewCell.xib; sourceTree = "<group>"; };
 		E1713A4E237AC68C00F6A8A7 /* ContentViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewTableViewCell.swift; sourceTree = "<group>"; };
 		E1713A4F237AC68C00F6A8A7 /* ContentViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentViewTableViewCell.xib; sourceTree = "<group>"; };
+		E178C2A023A3B75000EF1F21 /* TeachingGradePlainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeachingGradePlainTableViewCell.swift; sourceTree = "<group>"; };
+		E178C2A123A3B75000EF1F21 /* TeachingGradePlainTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeachingGradePlainTableViewCell.xib; sourceTree = "<group>"; };
+		E178C2A523A3B83400EF1F21 /* TeachingScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeachingScheduleTableViewCell.swift; sourceTree = "<group>"; };
+		E178C2A623A3B83400EF1F21 /* TeachingScheduleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeachingScheduleTableViewCell.xib; sourceTree = "<group>"; };
+		E178C2A923A3C75300EF1F21 /* JobInformationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobInformationViewController.xib; sourceTree = "<group>"; };
+		E178C2AA23A3C75300EF1F21 /* JobInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobInformationViewController.swift; sourceTree = "<group>"; };
 		E17F320D23793BFE00AEBCD5 /* EducationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationViewController.swift; sourceTree = "<group>"; };
 		E17F320E23793BFE00AEBCD5 /* EducationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EducationViewController.xib; sourceTree = "<group>"; };
 		E17F32112379446300AEBCD5 /* ExperienceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceViewController.swift; sourceTree = "<group>"; };
@@ -368,6 +382,8 @@
 		E19D1AEA237BF10F003AFFBD /* CustomLanguageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomLanguageTableViewCell.xib; sourceTree = "<group>"; };
 		E19D1AEE237BF274003AFFBD /* CustomExperienceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomExperienceTableViewCell.swift; sourceTree = "<group>"; };
 		E19D1AEF237BF274003AFFBD /* CustomExperienceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomExperienceTableViewCell.xib; sourceTree = "<group>"; };
+		E1A12CBE23A3B21800009F52 /* TeachingSchedulesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeachingSchedulesViewController.swift; path = "Final Challenge/Bimbel/Controller/Post Job Bimbel (TAB 1)/Teaching Schedule (Bimbel)/TeachingSchedulesViewController.swift"; sourceTree = SOURCE_ROOT; };
+		E1A12CBF23A3B21900009F52 /* TeachingSchedulesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TeachingSchedulesViewController.xib; path = "Final Challenge/Bimbel/Controller/Post Job Bimbel (TAB 1)/Teaching Schedule (Bimbel)/TeachingSchedulesViewController.xib"; sourceTree = SOURCE_ROOT; };
 		E1A53F94239B657C00E6B6FE /* SeeDetailBimbelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeDetailBimbelViewController.swift; sourceTree = "<group>"; };
 		E1A53F95239B657C00E6B6FE /* SeeDetailBimbelViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeeDetailBimbelViewController.xib; sourceTree = "<group>"; };
 		E1BDDE56239B7AB6003B4414 /* SeeDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeDetailTableViewCell.swift; sourceTree = "<group>"; };
@@ -386,6 +402,14 @@
 		E1CE74362395374900FA8FEC /* SubjectBimbelViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubjectBimbelViewController.xib; sourceTree = "<group>"; };
 		E1CE74392395376D00FA8FEC /* GradeBimbelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeBimbelViewController.swift; sourceTree = "<group>"; };
 		E1CE743A2395376D00FA8FEC /* GradeBimbelViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GradeBimbelViewController.xib; sourceTree = "<group>"; };
+		E1D5050D23A3B01200EEE158 /* TeachingGradeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeachingGradeViewController.swift; sourceTree = "<group>"; };
+		E1D5050E23A3B01200EEE158 /* TeachingGradeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeachingGradeViewController.xib; sourceTree = "<group>"; };
+		E1D5051023A3B01200EEE158 /* JobDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobDetailsViewController.swift; sourceTree = "<group>"; };
+		E1D5051123A3B01200EEE158 /* JobDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobDetailsViewController.xib; sourceTree = "<group>"; };
+		E1D5051323A3B01200EEE158 /* JobSuccessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobSuccessViewController.swift; sourceTree = "<group>"; };
+		E1D5051423A3B01200EEE158 /* JobSuccessViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobSuccessViewController.xib; sourceTree = "<group>"; };
+		E1D5051723A3B01300EEE158 /* TeachingSubjectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeachingSubjectViewController.xib; sourceTree = "<group>"; };
+		E1D5051823A3B01300EEE158 /* TeachingSubjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeachingSubjectViewController.swift; sourceTree = "<group>"; };
 		E1DF1F76239F605C00C53123 /* AddressTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressTableViewCell.xib; sourceTree = "<group>"; };
 		E1DF1F77239F605C00C53123 /* AddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
 		E1E0087D2380317100FD985A /* LogoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutTableViewCell.swift; sourceTree = "<group>"; };
@@ -396,6 +420,16 @@
 		E1E3A8A62366CA8900F1571E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1E3A8A82366CA8900F1571E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1E3A8B52366CFC700F1571E /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		E1F47B8723A2150200EE6073 /* SegmentedBimbelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedBimbelViewController.swift; sourceTree = "<group>"; };
+		E1F47B8823A2150200EE6073 /* SegmentedBimbelViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SegmentedBimbelViewController.xib; sourceTree = "<group>"; };
+		E1F47B8D23A21A7200EE6073 /* ApplicantProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicantProfileViewController.swift; sourceTree = "<group>"; };
+		E1F47B8E23A21A7200EE6073 /* ApplicantProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApplicantProfileViewController.xib; sourceTree = "<group>"; };
+		E1F47B9123A226BD00EE6073 /* TestScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestScheduleViewController.swift; sourceTree = "<group>"; };
+		E1F47B9223A226BD00EE6073 /* TestScheduleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestScheduleViewController.xib; sourceTree = "<group>"; };
+		E1F47B9723A226EC00EE6073 /* ApplicantProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicantProfileViewController.swift; sourceTree = "<group>"; };
+		E1F47B9823A226EC00EE6073 /* ApplicantProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApplicantProfileViewController.xib; sourceTree = "<group>"; };
+		E1F47B9B23A2272900EE6073 /* ResultBimbelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultBimbelViewController.swift; sourceTree = "<group>"; };
+		E1F47B9C23A2272900EE6073 /* ResultBimbelViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultBimbelViewController.xib; sourceTree = "<group>"; };
 		E1F5BB4D2382C75A00BC9CFE /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		E1F5BB4E2382C75A00BC9CFE /* ActivityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityTableViewCell.xib; sourceTree = "<group>"; };
 		E1F5BB512382CDFD00BC9CFE /* FooterActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterActivityTableViewCell.swift; sourceTree = "<group>"; };
@@ -428,7 +462,7 @@
 		144B4313239510CE00F1ACE1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				144B432A23966FBF00F1ACE1 /* Activity (TAB 2) */,
+				144B432A23966FBF00F1ACE1 /* Tab Progress (Bimbel) */,
 				2761272E2397A817007BC852 /* Post Job Bimbel (TAB 1) */,
 				278FABCF23966F3000590D4A /* Detail Job Bmbel */,
 				27CFEC8C239648380015B6CC /* Job Bimbel (TAB 1) */,
@@ -455,29 +489,22 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		144B432523964BA600F1ACE1 /* Detail Mahasiswa */ = {
-			isa = PBXGroup;
-			children = (
-				144B432123964B9B00F1ACE1 /* DetailMahasiswaViewController.swift */,
-				144B432223964B9B00F1ACE1 /* DetailMahasiswaViewController.xib */,
-			);
-			path = "Detail Mahasiswa";
-			sourceTree = "<group>";
-		};
-		144B432A23966FBF00F1ACE1 /* Activity (TAB 2) */ = {
+		144B432A23966FBF00F1ACE1 /* Tab Progress (Bimbel) */ = {
 			isa = PBXGroup;
 			children = (
 				144B432B23966FC800F1ACE1 /* Segmented */,
-				144B432523964BA600F1ACE1 /* Detail Mahasiswa */,
 			);
-			path = "Activity (TAB 2)";
+			path = "Tab Progress (Bimbel)";
 			sourceTree = "<group>";
 		};
 		144B432B23966FC800F1ACE1 /* Segmented */ = {
 			isa = PBXGroup;
 			children = (
-				144B432623966FBA00F1ACE1 /* Tab2ViewController.swift */,
-				144B432723966FBA00F1ACE1 /* Tab2ViewController.xib */,
+				E1F47B8723A2150200EE6073 /* SegmentedBimbelViewController.swift */,
+				E1F47B8823A2150200EE6073 /* SegmentedBimbelViewController.xib */,
+				E1F47B8623A2052400EE6073 /* Segmented Applicant */,
+				E1F47B8B23A219AE00EE6073 /* Segmented Test */,
+				E1F47B8C23A219EC00EE6073 /* Segmented Result */,
 			);
 			path = Segmented;
 			sourceTree = "<group>";
@@ -533,15 +560,6 @@
 			path = "Set Experience";
 			sourceTree = "<group>";
 		};
-		144B4337239F5FD500F1ACE1 /* Address */ = {
-			isa = PBXGroup;
-			children = (
-				144B4338239F5FD500F1ACE1 /* AddressTableViewCell.xib */,
-				144B4339239F5FD500F1ACE1 /* AddressTableViewCell.swift */,
-			);
-			path = Address;
-			sourceTree = "<group>";
-		};
 		144B434823A0B15000F1ACE1 /* Skill Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -549,6 +567,15 @@
 				144B434A23A0B18600F1ACE1 /* SkillCollectionViewCell.xib */,
 			);
 			path = "Skill Profile";
+			sourceTree = "<group>";
+		};
+		144B435B23A38C3C00F1ACE1 /* Summary Setup */ = {
+			isa = PBXGroup;
+			children = (
+				144B435723A38C2700F1ACE1 /* SummarySetupViewController.swift */,
+				144B435823A38C2700F1ACE1 /* SummarySetupViewController.xib */,
+			);
+			path = "Summary Setup";
 			sourceTree = "<group>";
 		};
 		145705D4237A9BE60093E944 /* Filter */ = {
@@ -565,31 +592,31 @@
 		147E1ECB2382B1AA003CAF5D /* Tab Progress */ = {
 			isa = PBXGroup;
 			children = (
-				147E1ED223831540003CAF5D /* Segmented Controller */,
+				147E1ED223831540003CAF5D /* Segmented Tutor */,
 				147E1EEC2383C245003CAF5D /* Result Card */,
 			);
 			path = "Tab Progress";
 			sourceTree = "<group>";
 		};
-		147E1ECC2382B1B6003CAF5D /* Segment Applicant */ = {
+		147E1ECC2382B1B6003CAF5D /* Segment Applied Job */ = {
 			isa = PBXGroup;
 			children = (
 				147E1ECD2382B1DD003CAF5D /* DetailBimbelTabFirstViewController.swift */,
 				147E1ECE2382B1DD003CAF5D /* DetailBimbelTabFirstViewController.xib */,
 			);
-			path = "Segment Applicant";
+			path = "Segment Applied Job";
 			sourceTree = "<group>";
 		};
-		147E1ED223831540003CAF5D /* Segmented Controller */ = {
+		147E1ED223831540003CAF5D /* Segmented Tutor */ = {
 			isa = PBXGroup;
 			children = (
 				147E1ED32383155A003CAF5D /* SegmentedViewController.swift */,
 				147E1ED42383155A003CAF5D /* SegmentedViewController.xib */,
-				147E1ECC2382B1B6003CAF5D /* Segment Applicant */,
+				147E1ECC2382B1B6003CAF5D /* Segment Applied Job */,
 				E1F5BB552382D22600BC9CFE /* Segment Test */,
 				147E1EDB23839E2A003CAF5D /* Segment Result */,
 			);
-			path = "Segmented Controller";
+			path = "Segmented Tutor";
 			sourceTree = "<group>";
 		};
 		147E1EDB23839E2A003CAF5D /* Segment Result */ = {
@@ -721,17 +748,11 @@
 		148C435E237E978C00B87174 /* Detail Bimbel */ = {
 			isa = PBXGroup;
 			children = (
-				144B4337239F5FD500F1ACE1 /* Address */,
 				148C436E237EA12A00B87174 /* Profile Bimbel */,
-<<<<<<< HEAD
-				148C436F237EA13800B87174 /* Qualification */,
-				148C438C237EAA2500B87174 /* Subject & Grade Category */,
-=======
 				E1DF1F75239F605C00C53123 /* Address */,
 				148C436F237EA13800B87174 /* Qualificationn */,
 				148C438C237EAA2500B87174 /* Subject */,
 				E1DF1F7A239F60C400C53123 /* Grade */,
->>>>>>> 78278fece57a7d5c7e6a09cf57a1d738b71c0a74
 				148C438E237EAA4100B87174 /* Salary */,
 				148C438F237EAA4D00B87174 /* Schedule */,
 				1422237D2382914B004F2625 /* Detail Schedule */,
@@ -778,21 +799,13 @@
 			path = "Profile Bimbel";
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
-		148C436F237EA13800B87174 /* Qualification */ = {
-=======
 		148C436F237EA13800B87174 /* Qualificationn */ = {
->>>>>>> 78278fece57a7d5c7e6a09cf57a1d738b71c0a74
 			isa = PBXGroup;
 			children = (
 				E18AEFB5239F56D30076000E /* QualificationTableViewCell.swift */,
 				E18AEFB6239F56D30076000E /* QualificationTableViewCell.xib */,
 			);
-<<<<<<< HEAD
-			path = Qualification;
-=======
 			path = Qualificationn;
->>>>>>> 78278fece57a7d5c7e6a09cf57a1d738b71c0a74
 			sourceTree = "<group>";
 		};
 		148C438C237EAA2500B87174 /* Subject */ = {
@@ -871,36 +884,20 @@
 		2761272E2397A817007BC852 /* Post Job Bimbel (TAB 1) */ = {
 			isa = PBXGroup;
 			children = (
-				2761272F2397A839007BC852 /* Teaching Subject (Bimbel) */,
-				276127302397A843007BC852 /* Teaching Grade (Bimbel) */,
+				E1D5051523A3B01300EEE158 /* Teaching Subject (Bimbel) */,
+				E1D5050C23A3B01200EEE158 /* Teaching Grade (Bimbel) */,
 				276127312397A857007BC852 /* Job Information (Bimbel) */,
-				276127332397A8A5007BC852 /* Job Details (Bimbel) */,
-				276127342397A8BF007BC852 /* Job Success Form (Bimbel) */,
+				E1D5050F23A3B01200EEE158 /* Job Details (Bimbel) */,
+				E1D5051223A3B01200EEE158 /* Job Success Form (Bimbel) */,
 			);
 			path = "Post Job Bimbel (TAB 1)";
-			sourceTree = "<group>";
-		};
-		2761272F2397A839007BC852 /* Teaching Subject (Bimbel) */ = {
-			isa = PBXGroup;
-			children = (
-				276127352397A994007BC852 /* TeachingSubjectViewController.swift */,
-				276127362397A994007BC852 /* TeachingSubjectViewController.xib */,
-			);
-			path = "Teaching Subject (Bimbel)";
-			sourceTree = "<group>";
-		};
-		276127302397A843007BC852 /* Teaching Grade (Bimbel) */ = {
-			isa = PBXGroup;
-			children = (
-				276127402397B171007BC852 /* TeachingGradeViewController.swift */,
-				276127412397B171007BC852 /* TeachingGradeViewController.xib */,
-			);
-			path = "Teaching Grade (Bimbel)";
 			sourceTree = "<group>";
 		};
 		276127312397A857007BC852 /* Job Information (Bimbel) */ = {
 			isa = PBXGroup;
 			children = (
+				E178C2AA23A3C75300EF1F21 /* JobInformationViewController.swift */,
+				E178C2A923A3C75300EF1F21 /* JobInformationViewController.xib */,
 				276127322397A87D007BC852 /* Teaching Schedule (Bimbel) */,
 			);
 			path = "Job Information (Bimbel)";
@@ -909,28 +906,17 @@
 		276127322397A87D007BC852 /* Teaching Schedule (Bimbel) */ = {
 			isa = PBXGroup;
 			children = (
+				E1A12CBE23A3B21800009F52 /* TeachingSchedulesViewController.swift */,
+				E1A12CBF23A3B21900009F52 /* TeachingSchedulesViewController.xib */,
 			);
 			path = "Teaching Schedule (Bimbel)";
-			sourceTree = "<group>";
-		};
-		276127332397A8A5007BC852 /* Job Details (Bimbel) */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Job Details (Bimbel)";
-			sourceTree = "<group>";
-		};
-		276127342397A8BF007BC852 /* Job Success Form (Bimbel) */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Job Success Form (Bimbel)";
 			sourceTree = "<group>";
 		};
 		276127392397AC09007BC852 /* Post Job (Bimbel) */ = {
 			isa = PBXGroup;
 			children = (
-				2761274A2397B4AA007BC852 /* Job Information (Bimbel) */,
+				E178C2A423A3B82000EF1F21 /* Teaching Schedule (Bimbel) */,
+				E178C29F23A3B71D00EF1F21 /* Teaching Grade Kotak */,
 				2761273F2397B142007BC852 /* Teaching Grade (Bimbel) */,
 				2761273A2397AC10007BC852 /* Teaching Subject (Bimbel) */,
 			);
@@ -953,13 +939,6 @@
 				276127472397B331007BC852 /* TeachingGradeTableViewCell.xib */,
 			);
 			path = "Teaching Grade (Bimbel)";
-			sourceTree = "<group>";
-		};
-		2761274A2397B4AA007BC852 /* Job Information (Bimbel) */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Job Information (Bimbel)";
 			sourceTree = "<group>";
 		};
 		278FABCF23966F3000590D4A /* Detail Job Bmbel */ = {
@@ -1237,6 +1216,7 @@
 				144B4332239ADE8700F1ACE1 /* Set Skill */,
 				144B4333239ADE9200F1ACE1 /* Set Language */,
 				144B4334239ADEA300F1ACE1 /* Set Experience */,
+				144B435B23A38C3C00F1ACE1 /* Summary Setup */,
 			);
 			path = "Setup Profile";
 			sourceTree = "<group>";
@@ -1287,6 +1267,24 @@
 				E1CE742C239536BD00FA8FEC /* Detail Profile Bimbel */,
 			);
 			path = "Profile Bimbel";
+			sourceTree = "<group>";
+		};
+		E178C29F23A3B71D00EF1F21 /* Teaching Grade Kotak */ = {
+			isa = PBXGroup;
+			children = (
+				E178C2A023A3B75000EF1F21 /* TeachingGradePlainTableViewCell.swift */,
+				E178C2A123A3B75000EF1F21 /* TeachingGradePlainTableViewCell.xib */,
+			);
+			path = "Teaching Grade Kotak";
+			sourceTree = "<group>";
+		};
+		E178C2A423A3B82000EF1F21 /* Teaching Schedule (Bimbel) */ = {
+			isa = PBXGroup;
+			children = (
+				E178C2A523A3B83400EF1F21 /* TeachingScheduleTableViewCell.swift */,
+				E178C2A623A3B83400EF1F21 /* TeachingScheduleTableViewCell.xib */,
+			);
+			path = "Teaching Schedule (Bimbel)";
 			sourceTree = "<group>";
 		};
 		E17F321F23796BBC00AEBCD5 /* Front View */ = {
@@ -1376,6 +1374,42 @@
 			path = "Detail Profile Bimbel";
 			sourceTree = "<group>";
 		};
+		E1D5050C23A3B01200EEE158 /* Teaching Grade (Bimbel) */ = {
+			isa = PBXGroup;
+			children = (
+				E1D5050D23A3B01200EEE158 /* TeachingGradeViewController.swift */,
+				E1D5050E23A3B01200EEE158 /* TeachingGradeViewController.xib */,
+			);
+			path = "Teaching Grade (Bimbel)";
+			sourceTree = "<group>";
+		};
+		E1D5050F23A3B01200EEE158 /* Job Details (Bimbel) */ = {
+			isa = PBXGroup;
+			children = (
+				E1D5051023A3B01200EEE158 /* JobDetailsViewController.swift */,
+				E1D5051123A3B01200EEE158 /* JobDetailsViewController.xib */,
+			);
+			path = "Job Details (Bimbel)";
+			sourceTree = "<group>";
+		};
+		E1D5051223A3B01200EEE158 /* Job Success Form (Bimbel) */ = {
+			isa = PBXGroup;
+			children = (
+				E1D5051323A3B01200EEE158 /* JobSuccessViewController.swift */,
+				E1D5051423A3B01200EEE158 /* JobSuccessViewController.xib */,
+			);
+			path = "Job Success Form (Bimbel)";
+			sourceTree = "<group>";
+		};
+		E1D5051523A3B01300EEE158 /* Teaching Subject (Bimbel) */ = {
+			isa = PBXGroup;
+			children = (
+				E1D5051723A3B01300EEE158 /* TeachingSubjectViewController.xib */,
+				E1D5051823A3B01300EEE158 /* TeachingSubjectViewController.swift */,
+			);
+			path = "Teaching Subject (Bimbel)";
+			sourceTree = "<group>";
+		};
 		E1DF1F75239F605C00C53123 /* Address */ = {
 			isa = PBXGroup;
 			children = (
@@ -1446,6 +1480,51 @@
 				E11BB7EF237D5BA600B3B5E7 /* Protocol.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		E1F47B8623A2052400EE6073 /* Segmented Applicant */ = {
+			isa = PBXGroup;
+			children = (
+				E1F47B8D23A21A7200EE6073 /* ApplicantProfileViewController.swift */,
+				E1F47B8E23A21A7200EE6073 /* ApplicantProfileViewController.xib */,
+			);
+			path = "Segmented Applicant";
+			sourceTree = "<group>";
+		};
+		E1F47B8B23A219AE00EE6073 /* Segmented Test */ = {
+			isa = PBXGroup;
+			children = (
+				E1F47B9523A226C300EE6073 /* Test Schedule */,
+				E1F47B9623A226CC00EE6073 /* Applicant Profile */,
+			);
+			path = "Segmented Test";
+			sourceTree = "<group>";
+		};
+		E1F47B8C23A219EC00EE6073 /* Segmented Result */ = {
+			isa = PBXGroup;
+			children = (
+				E1F47B9B23A2272900EE6073 /* ResultBimbelViewController.swift */,
+				E1F47B9C23A2272900EE6073 /* ResultBimbelViewController.xib */,
+			);
+			path = "Segmented Result";
+			sourceTree = "<group>";
+		};
+		E1F47B9523A226C300EE6073 /* Test Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				E1F47B9123A226BD00EE6073 /* TestScheduleViewController.swift */,
+				E1F47B9223A226BD00EE6073 /* TestScheduleViewController.xib */,
+			);
+			path = "Test Schedule";
+			sourceTree = "<group>";
+		};
+		E1F47B9623A226CC00EE6073 /* Applicant Profile */ = {
+			isa = PBXGroup;
+			children = (
+				E1F47B9723A226EC00EE6073 /* ApplicantProfileViewController.swift */,
+				E1F47B9823A226EC00EE6073 /* ApplicantProfileViewController.xib */,
+			);
+			path = "Applicant Profile";
 			sourceTree = "<group>";
 		};
 		E1F5BB4C2382C65000BC9CFE /* Progress  */ = {
@@ -1528,7 +1607,6 @@
 			files = (
 				E168478D2378F346001B6319 /* TitleTableViewCell.xib in Resources */,
 				E1E008802380317100FD985A /* LogoutTableViewCell.xib in Resources */,
-				144B432923966FBA00F1ACE1 /* Tab2ViewController.xib in Resources */,
 				E139B53F2375D6E400FEF1F5 /* ProfileViewController.xib in Resources */,
 				144B4347239FD5E600F1ACE1 /* SetupSkillViewController.xib in Resources */,
 				E16847A0237903B2001B6319 /* AchievementTableViewCell.xib in Resources */,
@@ -1536,6 +1614,7 @@
 				148C4392237EC18200B87174 /* LocationViewController.xib in Resources */,
 				E19D1AF1237BF274003AFFBD /* CustomExperienceTableViewCell.xib in Resources */,
 				147E1ED62383155A003CAF5D /* SegmentedViewController.xib in Resources */,
+				E1D5051A23A3B01300EEE158 /* TeachingGradeViewController.xib in Resources */,
 				E18AEFAD239F52EF0076000E /* BimbelProfileViewController.xib in Resources */,
 				147E1ED02382B1DD003CAF5D /* DetailBimbelTabFirstViewController.xib in Resources */,
 				E16847912378F88A001B6319 /* ContentTableViewCell.xib in Resources */,
@@ -1546,6 +1625,8 @@
 				148C436D237E9E2800B87174 /* LocationTableViewCell.xib in Resources */,
 				E1CBFEF6237CFB3F00DAC25D /* DetailHeaderTableViewCell.xib in Resources */,
 				E1CE743C2395376D00FA8FEC /* GradeBimbelViewController.xib in Resources */,
+				E178C2A323A3B75000EF1F21 /* TeachingGradePlainTableViewCell.xib in Resources */,
+				E1D5051E23A3B01300EEE158 /* JobSuccessViewController.xib in Resources */,
 				E18AEFB8239F56D30076000E /* QualificationTableViewCell.xib in Resources */,
 				142223812382916C004F2625 /* DetailScheduleTableViewCell.xib in Resources */,
 				278FABD4239675E600590D4A /* DetailPostedJobViewController.xib in Resources */,
@@ -1554,12 +1635,14 @@
 				E1CE74342395373600FA8FEC /* ChangePasswordViewController.xib in Resources */,
 				E168477723782B0F001B6319 /* SkillsViewController.xib in Resources */,
 				E13EE5FF2380F67D005016A0 /* HintTableViewCell.xib in Resources */,
+				E1F47B9423A226BD00EE6073 /* TestScheduleViewController.xib in Resources */,
 				147E1EF02383C261003CAF5D /* ResultViewController.xib in Resources */,
 				E17F321023793BFE00AEBCD5 /* EducationViewController.xib in Resources */,
 				E13EE61323811320005016A0 /* SetupExperienceViewController.xib in Resources */,
+				144B435523A2113300F1ACE1 /* AddressTableViewCell.xib in Resources */,
 				278FABE0239678D600590D4A /* PostedSalaryTableViewCell.xib in Resources */,
+				E178C2AB23A3C75300EF1F21 /* JobInformationViewController.xib in Resources */,
 				148C4368237E9D6C00B87174 /* FilterViewController.xib in Resources */,
-				276127432397B171007BC852 /* TeachingGradeViewController.xib in Resources */,
 				E1CE74382395374900FA8FEC /* SubjectBimbelViewController.xib in Resources */,
 				E13EE60B2381040E005016A0 /* SetupEducationViewController.xib in Resources */,
 				E17F321C23794A6D00AEBCD5 /* MoreDetailTableViewCell.xib in Resources */,
@@ -1574,6 +1657,7 @@
 				E1F5BB502382C75A00BC9CFE /* ActivityTableViewCell.xib in Resources */,
 				E106615E2381294D0098AE11 /* AdditionalExperienceViewController.xib in Resources */,
 				E168477B237834DD001B6319 /* LanguageViewController.xib in Resources */,
+				E1F47B8A23A2150200EE6073 /* SegmentedBimbelViewController.xib in Resources */,
 				E139B52E2375D20400FEF1F5 /* GoogleService-Info.plist in Resources */,
 				144B433F239FD30400F1ACE1 /* SetupSkillTableViewCell.xib in Resources */,
 				E1E3A8A42366CA8900F1571E /* Assets.xcassets in Resources */,
@@ -1585,21 +1669,24 @@
 				E106615223811A4A0098AE11 /* AdditionalLanguageViewController.xib in Resources */,
 				148C436B237E9E0800B87174 /* SubjectViewController.xib in Resources */,
 				144B4343239FD32500F1ACE1 /* ChoosenSkillTableViewCell.xib in Resources */,
+				E1D5052023A3B01300EEE158 /* TeachingSubjectViewController.xib in Resources */,
 				E1F5BB542382CDFD00BC9CFE /* FooterActivityTableViewCell.xib in Resources */,
 				148C438B237EAA0000B87174 /* SubmitTableViewCell.xib in Resources */,
 				148C4366237E9D5800B87174 /* HomeViewController.xib in Resources */,
 				148C4383237EA97D00B87174 /* ScheduleTableViewCell.xib in Resources */,
+				E1A12CC123A3B21900009F52 /* TeachingSchedulesViewController.xib in Resources */,
 				E13441C4239509310077E7D3 /* DetailAddressTableViewCell.xib in Resources */,
+				E1D5051C23A3B01300EEE158 /* JobDetailsViewController.xib in Resources */,
 				E168478523784354001B6319 /* DetailProfileTableViewCell.xib in Resources */,
 				276127492397B332007BC852 /* TeachingGradeTableViewCell.xib in Resources */,
 				14C10189237943300074469D /* ListJobTableViewCell.xib in Resources */,
 				E13EE6032380F759005016A0 /* SetupPersonalTableViewCell.xib in Resources */,
 				148C4356237C3D3300B87174 /* SubjectTableViewCell.xib in Resources */,
-				144B432423964B9B00F1ACE1 /* DetailMahasiswaViewController.xib in Resources */,
 				148C4362237E97FB00B87174 /* ProfileBimbelTableViewCell.xib in Resources */,
 				148C435D237D836100B87174 /* DetailBimbelViewController.xib in Resources */,
 				E1713A51237AC68C00F6A8A7 /* ContentViewTableViewCell.xib in Resources */,
 				E1F5BB592382D2B500BC9CFE /* DetailTestViewController.xib in Resources */,
+				144B435A23A38C2700F1ACE1 /* SummarySetupViewController.xib in Resources */,
 				147E1F10238409B2003CAF5D /* DetailFinalThirdViewController.xib in Resources */,
 				E1CE74302395372400FA8FEC /* DetailProfileBimbelViewController.xib in Resources */,
 				E13EE5F32380E86A005016A0 /* SetupPersonalViewController.xib in Resources */,
@@ -1607,16 +1694,13 @@
 				27CFEC9423964DA70015B6CC /* JobViewController.xib in Resources */,
 				E19D1AEC237BF10F003AFFBD /* CustomLanguageTableViewCell.xib in Resources */,
 				E18AEFB4239F56BE0076000E /* GradeCategoryTableViewCell.xib in Resources */,
+				E1F47B9E23A2272900EE6073 /* ResultBimbelViewController.xib in Resources */,
 				E18AEFBC239F56EA0076000E /* SubjectCategoryTableViewCell.xib in Resources */,
-				276127382397A994007BC852 /* TeachingSubjectViewController.xib in Resources */,
 				E168478923784463001B6319 /* AnotherDetailProfileTableViewCell.xib in Resources */,
 				147E1F0B2384024D003CAF5D /* WaitingConformationViewController.xib in Resources */,
-<<<<<<< HEAD
-				144B433A239F5FD600F1ACE1 /* AddressTableViewCell.xib in Resources */,
-=======
-				E1DF1F78239F605C00C53123 /* AddressTableViewCell.xib in Resources */,
->>>>>>> 78278fece57a7d5c7e6a09cf57a1d738b71c0a74
 				148C437F237EA96600B87174 /* SalaryTableViewCell.xib in Resources */,
+				E1F47B9A23A226EC00EE6073 /* ApplicantProfileViewController.xib in Resources */,
+				E178C2A823A3B83400EF1F21 /* TeachingScheduleTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1638,10 +1722,8 @@
 				147E1ECF2382B1DD003CAF5D /* DetailBimbelTabFirstViewController.swift in Sources */,
 				148C4382237EA97D00B87174 /* ScheduleTableViewCell.swift in Sources */,
 				E1F5BB582382D2B500BC9CFE /* DetailTestViewController.swift in Sources */,
-				144B432823966FBA00F1ACE1 /* Tab2ViewController.swift in Sources */,
 				E168478423784354001B6319 /* DetailProfileTableViewCell.swift in Sources */,
 				E13441C3239509310077E7D3 /* DetailAddressTableViewCell.swift in Sources */,
-				276127372397A994007BC852 /* TeachingSubjectViewController.swift in Sources */,
 				E139B53E2375D6E400FEF1F5 /* ProfileViewController.swift in Sources */,
 				148C4365237E9D5300B87174 /* HomeViewController.swift in Sources */,
 				278FABDF239678D600590D4A /* PostedSalaryTableViewCell.swift in Sources */,
@@ -1654,6 +1736,7 @@
 				E18AEFB7239F56D30076000E /* QualificationTableViewCell.swift in Sources */,
 				E139B5432375D7C200FEF1F5 /* TabBarController.swift in Sources */,
 				27CFEC9723965B640015B6CC /* JobBimbelTableViewCell.swift in Sources */,
+				E1D5051B23A3B01300EEE158 /* JobDetailsViewController.swift in Sources */,
 				E1CBFEF5237CFB3F00DAC25D /* DetailHeaderTableViewCell.swift in Sources */,
 				E16847942378FB66001B6319 /* AnotherContentTableViewCell.swift in Sources */,
 				E13EE5FE2380F67D005016A0 /* HintTableViewCell.swift in Sources */,
@@ -1664,21 +1747,27 @@
 				E106615D2381294D0098AE11 /* AdditionalExperienceViewController.swift in Sources */,
 				E1A53F96239B657C00E6B6FE /* SeeDetailBimbelViewController.swift in Sources */,
 				E1E3A8B62366CFC700F1571E /* Extension.swift in Sources */,
+				E1F47B9323A226BD00EE6073 /* TestScheduleViewController.swift in Sources */,
+				E178C2A723A3B83400EF1F21 /* TeachingScheduleTableViewCell.swift in Sources */,
 				144B433E239FD30400F1ACE1 /* SetupSkillTableViewCell.swift in Sources */,
 				144B4342239FD32500F1ACE1 /* ChoosenSkillTableViewCell.swift in Sources */,
 				E168479F237903B2001B6319 /* AchievementTableViewCell.swift in Sources */,
+				E1F47B9D23A2272900EE6073 /* ResultBimbelViewController.swift in Sources */,
 				E1E3A89B2366CA8800F1571E /* AppDelegate.swift in Sources */,
 				148C4367237E9D6A00B87174 /* FilterViewController.swift in Sources */,
+				E1D5051D23A3B01300EEE158 /* JobSuccessViewController.swift in Sources */,
 				E1CE742F2395372400FA8FEC /* DetailProfileBimbelViewController.swift in Sources */,
-<<<<<<< HEAD
-				144B433B239F5FD600F1ACE1 /* AddressTableViewCell.swift in Sources */,
-=======
-				E1DF1F79239F605C00C53123 /* AddressTableViewCell.swift in Sources */,
->>>>>>> 78278fece57a7d5c7e6a09cf57a1d738b71c0a74
+				E1A12CC023A3B21900009F52 /* TeachingSchedulesViewController.swift in Sources */,
 				E13EE60A2381040E005016A0 /* SetupEducationViewController.swift in Sources */,
 				E139B53A2375D6CA00FEF1F5 /* RegisterViewController.swift in Sources */,
+				E1F47B8923A2150200EE6073 /* SegmentedBimbelViewController.swift in Sources */,
 				276127482397B331007BC852 /* TeachingGradeTableViewCell.swift in Sources */,
 				148C436C237E9E2000B87174 /* SubjectTableViewCell.swift in Sources */,
+<<<<<<< HEAD
+				144B435923A38C2700F1ACE1 /* SummarySetupViewController.swift in Sources */,
+=======
+				E1D5051923A3B01300EEE158 /* TeachingGradeViewController.swift in Sources */,
+>>>>>>> b030057427dc733c8f80b5b5bb23b559712b2f2b
 				E139B5412375D73600FEF1F5 /* BaseViewController.swift in Sources */,
 				E19D1AEB237BF10F003AFFBD /* CustomLanguageTableViewCell.swift in Sources */,
 				E106615123811A4A0098AE11 /* AdditionalLanguageViewController.swift in Sources */,
@@ -1696,23 +1785,26 @@
 				148C436A237E9E0500B87174 /* SubjectViewController.swift in Sources */,
 				148C439E23824D8600B87174 /* SubjectCollectionViewCell.swift in Sources */,
 				148C4361237E97FB00B87174 /* ProfileBimbelTableViewCell.swift in Sources */,
-				144B432323964B9B00F1ACE1 /* DetailMahasiswaViewController.swift in Sources */,
 				E11BB7F0237D5BA600B3B5E7 /* Protocol.swift in Sources */,
-				276127422397B171007BC852 /* TeachingGradeViewController.swift in Sources */,
 				E168477A237834DD001B6319 /* LanguageViewController.swift in Sources */,
 				E1066155238125020098AE11 /* HintWithTableTableViewCell.swift in Sources */,
+				144B435623A2113800F1ACE1 /* AddressTableViewCell.swift in Sources */,
 				E17F321B23794A6D00AEBCD5 /* MoreDetailTableViewCell.swift in Sources */,
 				E1CE743B2395376D00FA8FEC /* GradeBimbelViewController.swift in Sources */,
+				E1F47B8F23A21A7200EE6073 /* ApplicantProfileViewController.swift in Sources */,
 				E17F320F23793BFE00AEBCD5 /* EducationViewController.swift in Sources */,
 				E1CE74372395374900FA8FEC /* SubjectBimbelViewController.swift in Sources */,
 				278FABE3239678E500590D4A /* PostedScheduleTableViewCell.swift in Sources */,
 				278FABD3239675E600590D4A /* DetailPostedJobViewController.swift in Sources */,
+				E178C2AC23A3C75300EF1F21 /* JobInformationViewController.swift in Sources */,
 				144B4346239FD5E600F1ACE1 /* SetupSkillViewController.swift in Sources */,
+				E1D5052123A3B01300EEE158 /* TeachingSubjectViewController.swift in Sources */,
 				E16847902378F88A001B6319 /* ContentTableViewCell.swift in Sources */,
 				E19D1AF0237BF274003AFFBD /* CustomExperienceTableViewCell.swift in Sources */,
 				148C4369237E9DED00B87174 /* ListJobTableViewCell.swift in Sources */,
 				E168477623782B0F001B6319 /* SkillsViewController.swift in Sources */,
 				E13EE60E23810475005016A0 /* SetupLanguageViewController.swift in Sources */,
+				E178C2A223A3B75000EF1F21 /* TeachingGradePlainTableViewCell.swift in Sources */,
 				E1BDDE58239B7AB6003B4414 /* SeeDetailTableViewCell.swift in Sources */,
 				E13EE61223811320005016A0 /* SetupExperienceViewController.swift in Sources */,
 				144B434B23A0B18600F1ACE1 /* SkillCollectionViewCell.swift in Sources */,
@@ -1862,7 +1954,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 34;
-				DEVELOPMENT_TEAM = SK54WQSLHU;
+				DEVELOPMENT_TEAM = A4K36C3NUA;
 				INFOPLIST_FILE = "Final Challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1883,7 +1975,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 34;
-				DEVELOPMENT_TEAM = SK54WQSLHU;
+				DEVELOPMENT_TEAM = A4K36C3NUA;
 				INFOPLIST_FILE = "Final Challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
