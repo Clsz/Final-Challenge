@@ -155,6 +155,7 @@ extension ApplicantProfileViewController:UITableViewDataSource, UITableViewDeleg
             return cell
         }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:[String],code:Int){
             let cell = tableView.dequeueReusableCell(withIdentifier: "ContentTableViewCellID", for: indexPath) as! ContentTableViewCell
+            cell.index = 0
             cell.setCell(title: "Skills", button: "")
             cell.editButton.isHidden = true
             cell.skills = keyValue.value
@@ -191,7 +192,6 @@ extension ApplicantProfileViewController:UITableViewDataSource, UITableViewDeleg
                 return cell
             }else if keyValue.value == -1{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AnotherContentTableViewCellID", for: indexPath) as! AnotherContentTableViewCell
-                
                 let lang = language?.value(forKey: "languageName") as! [String]
                 let level = language?.value(forKey: "languageLevel") as! [String]
                 cell.index = 1
@@ -200,7 +200,6 @@ extension ApplicantProfileViewController:UITableViewDataSource, UITableViewDeleg
                 //Hide button
                 cell.button.isHidden = true
                 cell.setCell(text: keyValue.key, button: "")
-                
                 return cell
             }
         }else{

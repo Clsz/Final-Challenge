@@ -33,7 +33,7 @@ class ContentTableViewCell: UITableViewCell {
     
     @IBAction func editTapped(_ sender: Any) {
         if index == 0{
-            tutorDelegate?.skillTapped()
+            
         }else{
             bimbelDelegate?.subjectTapped()
         }
@@ -54,6 +54,7 @@ extension ContentTableViewCell{
 }
 extension ContentTableViewCell:UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     private func registerCell() {
+        collectionView.register(UINib(nibName: "SubjectCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SubjectCollectionViewCellID")
         collectionView.register(UINib(nibName: "FilterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: filterCell)
     }
     
@@ -71,15 +72,15 @@ extension ContentTableViewCell:UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 180, height: 44)
+        return CGSize(width: 140, height: 44)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if index == 0{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: skillCell, for: indexPath) as! SubjectCollectionViewCell
-            if let skill = skills?[indexPath.row]{
-                 cell.setView(subject: skill)
-            }
+            
+            cell.setView(subject: skills?[indexPath.row] ?? "")
+            
             return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: filterCell, for: indexPath) as! FilterCollectionViewCell
