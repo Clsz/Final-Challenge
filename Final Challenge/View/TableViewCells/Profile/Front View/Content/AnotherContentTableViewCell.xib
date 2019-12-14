@@ -17,11 +17,11 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KpY-uw-B6J">
-                        <rect key="frame" x="20" y="30" width="53" height="28"/>
+                        <rect key="frame" x="20" y="30" width="55" height="28"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="28" id="gpd-7x-1E0"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -38,10 +38,12 @@
                             <action selector="buttonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cjS-kU-vZ6"/>
                         </connections>
                     </button>
-                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rhJ-dQ-A58">
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rhJ-dQ-A58">
                         <rect key="frame" x="20" y="66" width="374" height="220"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="220" id="uJu-Qp-UBt"/>
+                        </constraints>
                     </tableView>
                 </subviews>
                 <constraints>

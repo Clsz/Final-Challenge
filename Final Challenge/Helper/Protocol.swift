@@ -146,3 +146,6 @@ protocol PassSubjectToDetails{
     func passDataToSubject(arrSubject:[String])
 }
 
+protocol SendSchedule {
+    func sendTeachingSchedule(day:[String], startHour:[String], endHour:[String])
+}

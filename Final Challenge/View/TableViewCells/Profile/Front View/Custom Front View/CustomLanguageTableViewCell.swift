@@ -12,7 +12,6 @@ class CustomLanguageTableViewCell: UITableViewCell {
     
     
     @IBOutlet weak var outerView: UIView!
-    @IBOutlet weak var imageLanguage: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var level: UILabel!
     

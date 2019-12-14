@@ -16,7 +16,6 @@ class CustomExperienceTableViewCell: UITableViewCell {
     @IBOutlet weak var date: UILabel!
     
     func setCell(name:String, place:String, date:String) {
-        self.outerView.outerRound()
         self.name.text = name
         self.place.text = place
         self.date.text = date

@@ -28,7 +28,7 @@ class SegmentedBimbelViewController: BaseViewController {
         registerCell()
         cellDelegate()
         setMainInterface()
-        queryUser()
+        queryCourse()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,7 +55,7 @@ class SegmentedBimbelViewController: BaseViewController {
     
 }
 extension SegmentedBimbelViewController{
-    func queryUser() {
+    func queryCourse() {
         let token = CKUserData.shared.getToken()
         
         let pred = NSPredicate(format: "courseEmail == %@", token)

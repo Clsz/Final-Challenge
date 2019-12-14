@@ -22,6 +22,6 @@ class ConstantManager{
     static var hardSkill = [(1,"Natural Science"),(1,"Mathematics"),(1,"Physic"),(1,"Chemistry"),(1,"Biology"),(1,"Sociology"),(1,"Economics"),(1,"History"),(1,"Geography"),(1,"Code"),(1,"TIK")]
     static var softSkill = [(0,"Creativity"),(0,"Persuasive"),(0,"Collaboration"),(0,"Adaptability"),(0,"Time Management"),(0,"Decision Making"),(0,"Inisiative"),(0,"Communication"),(0,"Patience"),(0,"Resiliance"),(0,"Strong Will"),(0,"Hard Working"),(0,"Friendly"),(0,"Polite"),(0,"Honest"),(0,"Commitment"),(0,"Responsible"),(0,"Integrity"),(0,"Confidence"),(0,"Public Speaking"),(0,"Presentation Skill"),(0,"Leadership"),(0,"Ability to Work Under Pressure")]
     static let language = ["English","Mandarin","Indonesian","Japanese","Korean","Arabic","French","German","Spanish"]
-
+    static let day = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday","Weekdays"]
     
 }

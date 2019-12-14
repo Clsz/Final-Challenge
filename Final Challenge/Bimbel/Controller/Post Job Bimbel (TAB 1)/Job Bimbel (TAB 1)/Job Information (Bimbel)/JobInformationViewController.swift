@@ -58,6 +58,10 @@ class JobInformationViewController: BaseViewController {
     
     @IBAction func addNewScheduleTapped(_ sender: Any) {
         let destVC = TeachingSchedulesViewController()
+        destVC.selectedDays = self.day
+        destVC.selectedStart = self.startHour
+        destVC.selectedEnd = self.endHour
+        destVC.sendSchedule = self
         self.navigationController?.pushViewController(destVC, animated: true)
     }
     
@@ -72,7 +76,13 @@ class JobInformationViewController: BaseViewController {
     }
     
 }
-
+extension JobInformationViewController:SendSchedule{
+    func sendTeachingSchedule(day: [String], startHour: [String], endHour: [String]) {
+        self.day = day
+        self.startHour = startHour
+        self.endHour = endHour
+    }
+}
 extension JobInformationViewController: UITextFieldDelegate {
     
     
