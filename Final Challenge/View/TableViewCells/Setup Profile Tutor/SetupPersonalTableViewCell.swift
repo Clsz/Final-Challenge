@@ -66,6 +66,7 @@ extension SetupPersonalTableViewCell{
         self.nameTF.outerRound()
         self.ageTF.outerRound()
         self.addressTF.outerRound()
+        self.imageProfile.setRounded()
         
         self.nameTF.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         self.ageTF.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)

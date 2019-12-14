@@ -13,7 +13,7 @@ class ProfileViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var dataArray:[Any?] = []
-    var tutorModel:CKRecord?
+    var tutors:CKRecord?
     let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
     let header = "TitleTableViewCellID"
     let content = "ContentTableViewCellID"
@@ -21,7 +21,6 @@ class ProfileViewController: BaseViewController {
     let achievement = "AchievementTableViewCellID"
     let contentView = "ContentViewTableViewCellID"
     let logoutView = "LogoutTableViewCellID"
-//    var tutorModel = Tutor(tutorID: "01", tutorEducation: [], email: "unknown@gmail.com", password: "rahasia", tutorFirstName: "", tutorLastName: "", tutorImage: "", tutorPhoneNumber: "", tutorAddress: "", tutorGender: "", tutorBirthDate: "", tutorSkills: ["Algebra","Microsoft Word"], tutorExperience: [], tutorLanguage: [], tutorAchievement: [])
     var sendToCustom:SendTutorToCustom?
     
     override func viewDidLoad() {
@@ -46,19 +45,19 @@ class ProfileViewController: BaseViewController {
 extension ProfileViewController{
     private func setupData() {
         dataArray.removeAll()
-        dataArray.append(tutorModel)
-        dataArray.append(("Keterampilan","Tambah Keterampilan",0))
-        dataArray.append(("Bahasa","Tambah Bahasa"))
-        dataArray.append(("Pendidikan","Edit Pendidikan",1))
-        dataArray.append(("Pengalaman","Tambah Pengalaman"))
-        dataArray.append(("Pencapaian","Tambah Pencapain",2))
+        dataArray.append(tutors)
+        dataArray.append(("Skill","Add Skill",0))
+        dataArray.append(("Language","Add Language"))
+        dataArray.append(("Education","Edit Education",1))
+        dataArray.append(("Experience","Add Experience"))
+        dataArray.append(("Achievement","Add Achievement",2))
         dataArray.append(false)
     }
     
     private func addAchievement() {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let cancel = UIAlertAction(title: "Batal", style: .cancel, handler: nil)
-        let file = UIAlertAction(title: "Pilih Dari File", style: .default) { action in
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let file = UIAlertAction(title: "Choose from file", style: .default) { action in
             
             //Select from file
         }
@@ -79,7 +78,7 @@ extension ProfileViewController{
         database.perform(query, inZoneWith: nil) { (records, error) in
             guard let record = records else {return}
             
-            self.tutorModel = record[0]
+            self.tutors = record[0]
             DispatchQueue.main.async {
                 self.cellDelegate()
             }
@@ -97,7 +96,7 @@ extension ProfileViewController:ProfileProtocol, LanguageViewControllerDelegate{
     
     func pencilTapped() {
         let destVC = EditProfileViewController()
-        destVC.tutors = self.tutorModel
+        destVC.tutors = self.tutors
         destVC.delegate = self
         navigationController?.pushViewController(destVC, animated: true)
     }
@@ -168,13 +167,11 @@ extension ProfileViewController:UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: header, for: indexPath) as! TitleTableViewCell
-            if let tutor = dataArray[indexPath.row] as? Tutor {
-                let fullName = tutor.tutorFirstName + " " + tutor.tutorLastName
-                cell.setCell(image: tutor.tutorImage, name: fullName, university: "Bina Nusantara", age: 22)
-                print(fullName)
-            }
+            let fName = "\(tutors?.value(forKey: "tutorFirstName") as! String) \(tutors?.value(forKey: "tutorLastName") as! String)"
+            let imageProfile = tutors?.value(forKey: "tutorProfileImage") as! UIImage
+            cell.setCell(image: imageProfile, name: fName, university: "Bina Nusantara", age: 22)
             cell.tutorDelegate = self
-            return cell
+                   return cell
         }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:String, code:Int){
             if keyValue.code == 0{
                 let cell = tableView.dequeueReusableCell(withIdentifier: content, for: indexPath) as! ContentTableViewCell
