@@ -195,7 +195,7 @@ extension ProfileViewController:UITableViewDataSource, UITableViewDelegate{
         }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:String){
             let cell = tableView.dequeueReusableCell(withIdentifier: anotherContent, for: indexPath) as! AnotherContentTableViewCell
             cell.setCell(text: keyValue.key, button: keyValue.value)
-            cell.customIndex = indexPath.row
+            cell.index = indexPath.row
             print(indexPath.row)
             cell.contentDelegate = self
             return cell

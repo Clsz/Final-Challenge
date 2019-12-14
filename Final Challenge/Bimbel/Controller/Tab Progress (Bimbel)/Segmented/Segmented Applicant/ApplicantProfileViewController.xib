@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ApplicantProfileViewController" customModule="Final_Challenge" customModuleProvider="target">
             <connections>
-                <outlet property="tableView" destination="KBz-mW-HO9" id="GI3-cb-tuy"/>
+                <outlet property="tableView" destination="uPF-u6-kXP" id="KtK-wS-RUb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,17 +18,17 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KBz-mW-HO9">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uPF-u6-kXP">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="KBz-mW-HO9" secondAttribute="bottom" id="3Ob-hS-8dt"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="KBz-mW-HO9" secondAttribute="trailing" id="Mk5-cI-p9w"/>
-                <constraint firstItem="KBz-mW-HO9" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="cK6-pa-ksi"/>
-                <constraint firstItem="KBz-mW-HO9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="uzB-TI-mE5"/>
+                <constraint firstItem="uPF-u6-kXP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ECP-jA-wbV"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="uPF-u6-kXP" secondAttribute="bottom" id="Eda-ac-bP5"/>
+                <constraint firstItem="uPF-u6-kXP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="b8T-Ox-Bu3"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="uPF-u6-kXP" secondAttribute="trailing" id="hEx-aa-kfJ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="139" y="87"/>
