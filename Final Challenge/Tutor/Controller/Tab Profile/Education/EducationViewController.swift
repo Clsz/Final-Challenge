@@ -35,7 +35,7 @@ class EducationViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.delegate?.refreshData(withTutorModel: tutor)
+//        should be reload table view profile
     }
     
     @IBAction func applyTapped(_ sender: Any) {

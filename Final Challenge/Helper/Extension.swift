@@ -193,6 +193,12 @@ extension Date{
         return formatter.string(from: self)
     }
     
+    func toBirthString()->String{
+          let formatter = DateFormatter()
+          formatter.dateFormat = "dd MMMM yyyy"
+          return formatter.string(from: self)
+      }
+    
     func toTitle()->String{
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM yyyy"

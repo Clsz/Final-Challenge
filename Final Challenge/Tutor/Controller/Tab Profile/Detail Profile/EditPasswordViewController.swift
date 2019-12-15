@@ -18,7 +18,6 @@ class EditPasswordViewController: BaseViewController {
     @IBOutlet weak var errorText: UILabel!
     var passwordDelegate:PasswordProtocol?
     var delegate:ProfileDetailProtocol?
-    
     var accessoryDoneButton: UIBarButtonItem!
     let accessoryToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
     let flexiblea = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -26,6 +25,7 @@ class EditPasswordViewController: BaseViewController {
     let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
     
     override func viewDidLoad() {
+        doneButton()
         super.viewDidLoad()
     }
     
@@ -84,7 +84,10 @@ extension EditPasswordViewController{
                    if error != nil
                    {
                        self.showAlert(title: "Error", message: "Update Error")
-                   } else{
+                   } else{ DispatchQueue.main.async {
+                    self.navigationController?.popViewController(animated: true)
+                   }
+                    
                    }
                })
            }
@@ -92,7 +95,7 @@ extension EditPasswordViewController{
 }
 extension EditPasswordViewController:UITextFieldDelegate{
     private func doneButton() {
-        self.accessoryDoneButton = UIBarButtonItem(title: "Selesai", style: .done, target: self, action: #selector(self.donePressed))
+        self.accessoryDoneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.donePressed))
         self.accessoryToolBar.items = [self.accessoryDoneButton]
         
         accessoryToolBar.setItems([flexiblea, accessoryDoneButton], animated: false)

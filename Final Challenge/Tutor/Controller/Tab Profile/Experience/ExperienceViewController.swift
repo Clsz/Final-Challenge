@@ -44,7 +44,6 @@ class ExperienceViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.delegate?.refreshData(withTutorModel: tutor)
     }
     
     @IBAction func applyTapped(_ sender: Any) {

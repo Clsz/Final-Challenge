@@ -18,8 +18,6 @@ class SetupPersonalViewController: BaseViewController {
     var pickerBirthDate = UIDatePicker()
     var photoPicker = UIImagePickerController()
     var dob:Date?
-    var firstName:String?
-    var lastName:String?
     var fullNames:String?
     var arrName:[String]?
     var tutors:CKRecord?

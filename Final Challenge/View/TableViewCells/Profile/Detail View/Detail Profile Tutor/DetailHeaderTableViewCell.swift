@@ -10,6 +10,7 @@ import UIKit
 
 class DetailHeaderTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var imageProfile: UIImageView!
     @IBOutlet weak var nameTF: UITextField!
     @IBOutlet weak var ageTF: UITextField!
     @IBOutlet weak var addressTF: UITextField!
@@ -18,6 +19,7 @@ class DetailHeaderTableViewCell: UITableViewCell {
     var passwordDelegate:PasswordProtocol?
     var delegate:ProfileDetailProtocol?
     var birthDelegate:BirthProtocol?
+    var photoDelegate:PhotoProtocol?
     var accessoryDoneButton: UIBarButtonItem!
     let accessoryToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
     let flexiblea = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -31,6 +33,9 @@ class DetailHeaderTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
+    }
+    @IBAction func photoButton(_ sender: UIButton) {
+        photoDelegate?.photoTapped()
     }
     
     @IBAction func birthButton(_ sender: UIButton) {
@@ -61,6 +66,7 @@ extension DetailHeaderTableViewCell{
         self.nameTF.outerRound()
         self.ageTF.outerRound()
         self.addressTF.outerRound()
+         self.imageProfile.setRounded()
         
         self.nameTF.setLeftPaddingPoints(10.0)
         self.ageTF.setLeftPaddingPoints(10.0)

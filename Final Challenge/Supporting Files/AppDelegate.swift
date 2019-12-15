@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        //Penting nih
 //        UserDefaults.standard.set("multilanguage@gmail.com", forKey: "token")
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        let rv = SetupPersonalViewController()
+        let rv = ProfileViewController()
         let navigationController = UINavigationController(rootViewController: rv)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

@@ -212,6 +212,9 @@ extension DetailBimbelViewController: UITableViewDataSource,UITableViewDelegate{
             cell.setInterface()
             return cell
         }
+//        if education != nil {
+//
+//                       } cell.title = [""]
         return UITableViewCell()
     }
 }

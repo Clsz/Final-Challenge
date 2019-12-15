@@ -32,15 +32,15 @@ class ProfileViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         queryTutor()
-        setupData()
         registerCell()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Profile")
-        setupData()
-        registerCell()
-        cellDelegate()
+//        setupData()
+//        registerCell()
+//        cellDelegate()
+        tableView.reloadData()
         self.tabBarController?.tabBar.isHidden = false
         self.hidesBottomBarWhenPushed = true
     }
@@ -50,13 +50,13 @@ extension ProfileViewController{
     private func setupData() {
         dataArray.removeAll()
         dataArray.append(tutors)
+         dataArray.append(("Education","Edit Education",0))
 //        let skill = (tutors?.value(forKey: "tutorSkills") as! [String])
         dataArray.append(("Skill","Add Skill",["skill","makan","tidur","boker"]))
         dataArray.append(("Language","Add Language",2))
-        dataArray.append(("Education","Edit Education",0))
         dataArray.append(("Experience","Add Experience",1))
         //        dataArray.append(("Achievement","Add Achievement",2))
-        dataArray.append(true)
+        dataArray.append(false)
     }
     
     func queryTutor() {
@@ -165,7 +165,7 @@ extension ProfileViewController:ProfileProtocol, LanguageViewControllerDelegate{
     }
     
     func educationTapped() {
-        let destVC = EducationViewController()
+        let destVC = ListEducationViewController()
         
         destVC.delegate = self
         navigationController?.pushViewController(destVC, animated: true)
@@ -216,11 +216,21 @@ extension ProfileViewController:UITableViewDataSource, UITableViewDelegate{
         if indexPath.row == 0{
             // FOR TITLE
             let cell = tableView.dequeueReusableCell(withIdentifier: header, for: indexPath) as! TitleTableViewCell
-            let fName = (tutors?.value(forKey: "tutorFirstName") as! String) + (tutors?.value(forKey: "tutorLastName") as! String)
-            let imageProfile = tutors?.value(forKey: "tutorProfileImage") as! UIImage
-            cell.setCell(image: imageProfile, name: fName, university: "Bina Nusantara", age: 22)
+            let fName = "\(tutors?.value(forKey: "tutorFirstName") as! String) \(tutors?.value(forKey: "tutorLastName") as! String)"
+            let universityName = self.checkUniversity()
+//            let imageProfile = tutors?.value(forKey: "tutorProfileImage") as! CKAsset
+            let imageDefault = #imageLiteral(resourceName: "user-5")
+            cell.index = 0
+            
+            if tutors?.value(forKeyPath: "tutorProfilImage") != nil {
+            cell.setCell(image: imageDefault, name: fName, university: universityName, age: 22)
             cell.tutorDelegate = self
-            return cell
+                return cell
+            } else {
+                cell.setCell(image: imageDefault, name: fName, university: universityName, age: 22)
+                cell.tutorDelegate = self
+                return cell
+            }
         }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:String, content:[String]){
             // FOR SKILLS
             let cell = tableView.dequeueReusableCell(withIdentifier: content, for: indexPath) as! ContentTableViewCell
@@ -236,11 +246,13 @@ extension ProfileViewController:UITableViewDataSource, UITableViewDelegate{
                 let schoolName = education?.value(forKey: "schoolName") as! [String]
                 let grade = education?.value(forKey: "grade") as! [String]
                 let fos = education?.value(forKey: "fieldOfStudy") as! [String]
-                cell.index = 0
+                cell.index = 1
                 cell.title = schoolName
                 cell.content = grade
                 cell.footer = fos
                 cell.setCell(text: keyValue.key, button: keyValue.button)
+                cell.contentDelegate = self
+
                 return cell
             } else if keyValue.value == 1{
                 //FOR EXPERIENCE
@@ -253,18 +265,20 @@ extension ProfileViewController:UITableViewDataSource, UITableViewDelegate{
                 cell.content = companyName
                 cell.startYear = startYear
                 cell.endYear = endYear
-                cell.index = -1
+                cell.index = 3
                 cell.setCell(text: keyValue.key, button: keyValue.button)
+                cell.contentDelegate = self
                 return cell
             }else if keyValue.value == 2{
                 //FOR LANGUAGE
                 let cell = tableView.dequeueReusableCell(withIdentifier: anotherContent, for: indexPath) as! AnotherContentTableViewCell
                 let lang = language?.value(forKey: "languageName") as! [String]
                 let level = language?.value(forKey: "languageLevel") as! [String]
-                cell.index = 1
+                cell.index = 2
                 cell.title = lang
                 cell.content = level
                 cell.setCell(text: keyValue.key, button: keyValue.button)
+                cell.contentDelegate = self
                 return cell
             }else{
                 //FOR LOGOUT
@@ -275,6 +289,22 @@ extension ProfileViewController:UITableViewDataSource, UITableViewDelegate{
             }
         }
         return UITableViewCell()
+    }
+    
+    private func checkUniversity() -> String{
+        let grade = education?.value(forKey: "grade") as! [String]
+        let schoolName = education?.value(forKey: "schoolName") as! [String]
+        var university:String = ""
+        var id = 0
+        
+        for i in grade{
+            id += 1
+            if i == "University"{
+                id -= 1
+                university = schoolName[id]
+            }
+        }
+        return university
     }
     
 }
