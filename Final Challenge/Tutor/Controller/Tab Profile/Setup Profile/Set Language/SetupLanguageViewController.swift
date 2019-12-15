@@ -105,13 +105,9 @@ extension SetupLanguageViewController{
     }
     
     private func sendVC() {
-        if id == 0 {
         let vc = AdditionalLanguageViewController()
         vc.tutors = self.tutors
             self.navigationController?.pushViewController(vc, animated: true)
-        } else {
-            self.navigationController?.popViewController(animated: true)
-        }
     }
     
 }

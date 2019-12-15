@@ -156,7 +156,7 @@ extension ApplicantProfileViewController:UITableViewDataSource, UITableViewDeleg
         }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:[String],code:Int){
             let cell = tableView.dequeueReusableCell(withIdentifier: "ContentTableViewCellID", for: indexPath) as! ContentTableViewCell
             cell.index = 0
-            cell.setCell(title: "Skills", button: "")
+            cell.setCell(title: keyValue.key, button: "")
             cell.editButton.isHidden = true
             cell.skills = keyValue.value
             return cell

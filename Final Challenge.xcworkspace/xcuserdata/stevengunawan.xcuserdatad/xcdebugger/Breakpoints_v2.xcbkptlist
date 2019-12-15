@@ -132,5 +132,53 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E24F92BE-EFAB-4369-A6EB-1E65719A28C4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Final Challenge/Tutor/Controller/Tab Profile/Setup Profile/Set Personal/SetupPersonalViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E24F92BE-EFAB-4369-A6EB-1E65719A28C4 - eb80628cbfd1b682"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Final_Challenge.SetupPersonalViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "Final Challenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/stevengunawan/Desktop/Final-Challenge/Final%20Challenge/Tutor/Controller/Tab%20Profile/Setup%20Profile/Set%20Personal/SetupPersonalViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "158"
+                  endingLineNumber = "158"
+                  offsetFromSymbolStart = "476">
+               </Location>
+               <Location
+                  uuid = "E24F92BE-EFAB-4369-A6EB-1E65719A28C4 - eb80628cbfd1b682"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Final_Challenge.SetupPersonalViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "Final Challenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/stevengunawan/Desktop/Final-Challenge/Final%20Challenge/Tutor/Controller/Tab%20Profile/Setup%20Profile/Set%20Personal/SetupPersonalViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "158"
+                  endingLineNumber = "158"
+                  offsetFromSymbolStart = "3084">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
