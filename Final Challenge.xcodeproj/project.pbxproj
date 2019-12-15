@@ -1951,7 +1951,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 34;
-				DEVELOPMENT_TEAM = A4K36C3NUA;
+				DEVELOPMENT_TEAM = SK54WQSLHU;
 				INFOPLIST_FILE = "Final Challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1972,7 +1972,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 34;
-				DEVELOPMENT_TEAM = A4K36C3NUA;
+				DEVELOPMENT_TEAM = SK54WQSLHU;
 				INFOPLIST_FILE = "Final Challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
