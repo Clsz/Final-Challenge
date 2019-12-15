@@ -184,8 +184,6 @@ extension ApplicantProfileViewController:ActivityProcess{
     func reject() {
         self.rejectAlert()
     }
-    
-    
 }
 extension ApplicantProfileViewController:UITableViewDataSource, UITableViewDelegate{
     private func cellDelegate(){

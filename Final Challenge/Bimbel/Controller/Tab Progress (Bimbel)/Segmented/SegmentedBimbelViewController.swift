@@ -91,9 +91,9 @@ extension SegmentedBimbelViewController{
                         self.activityApplied.append(i)
                     }else if (i.value(forKey: "status") as! String) == "Waiting for Your Test Schedule"{
                         self.activityTest.append(i)
-                    }else if (i.value(forKey: "status") as! String) == "Waiting for New Test Schedule"{
+                    }else if (i.value(forKey: "status") as! String) == "Waiting for Test"{
                         self.activityTest.append(i)
-                    }else if (i.value(forKey: "status") as! String) == "Waiting for Test Result"{
+                    }else if (i.value(forKey: "status") as! String) == "Waiting for New Test Schedule"{
                         self.activityTest.append(i)
                     }else if (i.value(forKey: "status") as! String) == "Waiting for Your Approval"{
                         self.activityResult.append(i)
@@ -183,9 +183,18 @@ extension SegmentedBimbelViewController:UITableViewDataSource, UITableViewDelega
             self.navigationController?.pushViewController(destVC, animated: true)
         }else{
             let data = (activityResult[indexPath.row].value(forKey: "status") as? String) ?? ""
-            let destVC = ResultBimbelViewController()
-            //
-            self.navigationController?.pushViewController(destVC, animated: true)
+            if data == "Waiting for Your Approval"{
+                let destVC = WaitingForApprovalViewController()
+                destVC.tutorReference = (activityResult[indexPath.row].value(forKey: "tutorID") as! CKRecord.Reference)
+                destVC.jobStatus = data
+                destVC.applicant = activityResult[indexPath.row];
+                self.navigationController?.pushViewController(destVC, animated: true)
+            }else{
+                let destVC = ResultBimbelViewController()
+                destVC.tutorReference = (activityResult[indexPath.row].value(forKey: "tutorID") as! CKRecord.Reference)
+                destVC.jobStatus = (activityResult[indexPath.row].value(forKey: "status") as! String)
+                self.navigationController?.pushViewController(destVC, animated: true)
+            }
         }
     }
     

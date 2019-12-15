@@ -91,7 +91,7 @@ extension SegmentedViewController{
                     if (i.value(forKey: "status") as! String) == "Job Requested"{
                         self.activityApplied.append(i)
                     }else if (i.value(forKey: "status") as! String) == "Waiting for Your Test Schedule"{
-                        self.activityTest.append(i)
+                        self.activityApplied.append(i)
                     }else if (i.value(forKey: "status") as! String) == "Waiting for New Test Schedule"{
                         self.activityTest.append(i)
                     }else if (i.value(forKey: "status") as! String) == "Waiting for Test"{
@@ -99,6 +99,8 @@ extension SegmentedViewController{
                     }else if (i.value(forKey: "status") as! String) == "Waiting for Test Result"{
                         self.activityTest.append(i)
                     }else if (i.value(forKey: "status") as! String) == "Waiting for Your Approval"{
+                        self.activityTest.append(i)
+                    }else if (i.value(forKey: "status") as! String) == "Waiting for Applicant Approval"{
                         self.activityResult.append(i)
                     }else if (i.value(forKey: "status") as! String) == "Accepted"{
                         self.activityResult.append(i)
@@ -154,7 +156,13 @@ extension SegmentedViewController:UITableViewDataSource, UITableViewDelegate{
             let name = (activityTest[indexPath.row].value(forKey: "courseName") as? String) ?? ""
             var status = (activityTest[indexPath.row].value(forKey: "status") as? String) ?? ""
             if status == "Waiting for Your Test Schedule"{
+                status = "Job Requested"
+            }else if status == "Waiting for Test"{
                 status = "Waiting for Your Response"
+            }else if status == "Waiting for Test Result"{
+                status = "Waiting for Test"
+            }else if status == "Waiting for Your Approval"{
+                status = "Waiting for Test Result"
             }
             cell.statusBimbel.textColor = #colorLiteral(red: 1, green: 0.5843137255, blue: 0, alpha: 1)
             cell.setCell(nama: name, status: status)
@@ -186,10 +194,10 @@ extension SegmentedViewController:UITableViewDataSource, UITableViewDelegate{
             destVC.applicant = activityTest[indexPath.row];          self.navigationController?.pushViewController(destVC, animated: true)
         }else{
             let data = (activityResult[indexPath.row].value(forKey: "status") as? String) ?? ""
-            if data == "Waiting for Your Approval"{
+            if data == "Waiting for Applicant Approval"{
                 let destVC = WaitingConformationViewController()
                 destVC.jobReference = (activityResult[indexPath.row].value(forKey: "jobID") as! CKRecord.Reference)
-                destVC.jobStatus = (activityResult[indexPath.row].value(forKey: "status") as! String)
+                destVC.jobStatus = "Waiting for Your Approval"
                 destVC.applicant = activityResult[indexPath.row];
                 self.navigationController?.pushViewController(destVC, animated: true)
             }else{

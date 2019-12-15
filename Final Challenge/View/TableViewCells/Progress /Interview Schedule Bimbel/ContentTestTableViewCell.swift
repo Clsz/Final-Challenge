@@ -11,13 +11,14 @@ import UIKit
 class ContentTestTableViewCell: UITableViewCell {
 
     @IBOutlet weak var tableView: UITableView!
-    var title:[String]?
-    var date:[String]?
-    var time:[String]?
+    var date:[String] = []
+    var time:[String] = []
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        registerCell()
+        cellDelegate()
+        tableView.reloadData()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -27,9 +28,24 @@ class ContentTestTableViewCell: UITableViewCell {
     }
     
 }
-//extension ContentTableViewCell:UITableViewDataSource,UITableViewDelegate{
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 1
-//    }
-//}
+extension ContentTestTableViewCell:UITableViewDataSource,UITableViewDelegate{
+    
+    private func registerCell() {
+        tableView.register(UINib(nibName: "InterviewTestTableViewCell", bundle: nil), forCellReuseIdentifier: "InterviewTestTableViewCellID")
+    }
+    
+    private func cellDelegate() {
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return date.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "InterviewTestTableViewCellID", for: indexPath) as! InterviewTestTableViewCell
+        cell.setCell(index: indexPath.row, day: date[indexPath.row] , time: time[indexPath.row])
+        return cell
+    }
+}

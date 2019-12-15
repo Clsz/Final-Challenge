@@ -84,13 +84,6 @@ extension WaitingConformationViewController{
     
     private func updateToDatabase(status:String, completion : @escaping (Bool) -> Void) {
         if let record = applicant{
-            record["courseName"] = applicant?.value(forKey: "courseName") as! String
-            record["tutorID"] = applicant?.value(forKey: "tutorID") as! CKRecord.Reference
-            record["jobID"] = self.jobReference
-            record["testDay"] = applicant?.value(forKey: "testDay") as! [String]
-            record["testStartHour"] = applicant?.value(forKey: "testStartHour") as! [String]
-            record["testEndHour"] = applicant?.value(forKey: "testEndHour") as! [String]
-            record["testRequirement"] = applicant?.value(forKey: "testRequirement") as! String
             record["status"] = status
             
             self.database.save(record, completionHandler: {returnedRecord, error in

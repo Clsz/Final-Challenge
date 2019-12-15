@@ -196,6 +196,12 @@
 		E1D5051E23A3B01300EEE158 /* JobSuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1D5051423A3B01200EEE158 /* JobSuccessViewController.xib */; };
 		E1D5052023A3B01300EEE158 /* TeachingSubjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1D5051723A3B01300EEE158 /* TeachingSubjectViewController.xib */; };
 		E1D5052123A3B01300EEE158 /* TeachingSubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D5051823A3B01300EEE158 /* TeachingSubjectViewController.swift */; };
+		E1D56A0C23A623C6003FCF09 /* InterviewTestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D56A0A23A623C6003FCF09 /* InterviewTestTableViewCell.swift */; };
+		E1D56A0D23A623C6003FCF09 /* InterviewTestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1D56A0B23A623C6003FCF09 /* InterviewTestTableViewCell.xib */; };
+		E1D56A1223A67D31003FCF09 /* WaitingForApprovalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D56A1023A67D31003FCF09 /* WaitingForApprovalViewController.swift */; };
+		E1D56A1323A67D31003FCF09 /* WaitingForApprovalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1D56A1123A67D31003FCF09 /* WaitingForApprovalViewController.xib */; };
+		E1D56A1723A681FF003FCF09 /* BlankViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D56A1523A681FF003FCF09 /* BlankViewTableViewCell.swift */; };
+		E1D56A1823A681FF003FCF09 /* BlankViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1D56A1623A681FF003FCF09 /* BlankViewTableViewCell.xib */; };
 		E1E0087F2380317100FD985A /* LogoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E0087D2380317100FD985A /* LogoutTableViewCell.swift */; };
 		E1E008802380317100FD985A /* LogoutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E0087E2380317100FD985A /* LogoutTableViewCell.xib */; };
 		E1E3A89B2366CA8800F1571E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E3A89A2366CA8800F1571E /* AppDelegate.swift */; };
@@ -426,6 +432,12 @@
 		E1D5051423A3B01200EEE158 /* JobSuccessViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobSuccessViewController.xib; sourceTree = "<group>"; };
 		E1D5051723A3B01300EEE158 /* TeachingSubjectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeachingSubjectViewController.xib; sourceTree = "<group>"; };
 		E1D5051823A3B01300EEE158 /* TeachingSubjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeachingSubjectViewController.swift; sourceTree = "<group>"; };
+		E1D56A0A23A623C6003FCF09 /* InterviewTestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewTestTableViewCell.swift; sourceTree = "<group>"; };
+		E1D56A0B23A623C6003FCF09 /* InterviewTestTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InterviewTestTableViewCell.xib; sourceTree = "<group>"; };
+		E1D56A1023A67D31003FCF09 /* WaitingForApprovalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingForApprovalViewController.swift; sourceTree = "<group>"; };
+		E1D56A1123A67D31003FCF09 /* WaitingForApprovalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaitingForApprovalViewController.xib; sourceTree = "<group>"; };
+		E1D56A1523A681FF003FCF09 /* BlankViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankViewTableViewCell.swift; sourceTree = "<group>"; };
+		E1D56A1623A681FF003FCF09 /* BlankViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlankViewTableViewCell.xib; sourceTree = "<group>"; };
 		E1DF1F76239F605C00C53123 /* AddressTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressTableViewCell.xib; sourceTree = "<group>"; };
 		E1DF1F77239F605C00C53123 /* AddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
 		E1E0087D2380317100FD985A /* LogoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutTableViewCell.swift; sourceTree = "<group>"; };
@@ -1051,6 +1063,7 @@
 		E11DB88023A5DE55000CB02C /* Interview Schedule Bimbel */ = {
 			isa = PBXGroup;
 			children = (
+				E1D56A0923A623A4003FCF09 /* Reusable View Schedule Bimbel */,
 				E11DB88523A5E146000CB02C /* HeaderTestTableViewCell.swift */,
 				E11DB88623A5E146000CB02C /* HeaderTestTableViewCell.xib */,
 				E11DB88923A5E152000CB02C /* ContentTestTableViewCell.swift */,
@@ -1099,6 +1112,7 @@
 		E139B5302375D41C00FEF1F5 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				E1D56A1423A681E7003FCF09 /* Blank View */,
 				14C10185237943110074469D /* Home (Tutor) */,
 				27CFEC9923965B6B0015B6CC /* Home (Bimbel) */,
 				278FABD023966FDE00590D4A /* Detail Post Job (Bimbel) */,
@@ -1437,6 +1451,42 @@
 			path = "Teaching Subject (Bimbel)";
 			sourceTree = "<group>";
 		};
+		E1D56A0923A623A4003FCF09 /* Reusable View Schedule Bimbel */ = {
+			isa = PBXGroup;
+			children = (
+				E1D56A0A23A623C6003FCF09 /* InterviewTestTableViewCell.swift */,
+				E1D56A0B23A623C6003FCF09 /* InterviewTestTableViewCell.xib */,
+			);
+			path = "Reusable View Schedule Bimbel";
+			sourceTree = "<group>";
+		};
+		E1D56A0E23A67C7B003FCF09 /* Waiting for Approval */ = {
+			isa = PBXGroup;
+			children = (
+				E1D56A1023A67D31003FCF09 /* WaitingForApprovalViewController.swift */,
+				E1D56A1123A67D31003FCF09 /* WaitingForApprovalViewController.xib */,
+			);
+			path = "Waiting for Approval";
+			sourceTree = "<group>";
+		};
+		E1D56A0F23A67C83003FCF09 /* Detail Final */ = {
+			isa = PBXGroup;
+			children = (
+				E1F47B9B23A2272900EE6073 /* ResultBimbelViewController.swift */,
+				E1F47B9C23A2272900EE6073 /* ResultBimbelViewController.xib */,
+			);
+			path = "Detail Final";
+			sourceTree = "<group>";
+		};
+		E1D56A1423A681E7003FCF09 /* Blank View */ = {
+			isa = PBXGroup;
+			children = (
+				E1D56A1523A681FF003FCF09 /* BlankViewTableViewCell.swift */,
+				E1D56A1623A681FF003FCF09 /* BlankViewTableViewCell.xib */,
+			);
+			path = "Blank View";
+			sourceTree = "<group>";
+		};
 		E1DF1F75239F605C00C53123 /* Address */ = {
 			isa = PBXGroup;
 			children = (
@@ -1530,8 +1580,8 @@
 		E1F47B8C23A219EC00EE6073 /* Segmented Result */ = {
 			isa = PBXGroup;
 			children = (
-				E1F47B9B23A2272900EE6073 /* ResultBimbelViewController.swift */,
-				E1F47B9C23A2272900EE6073 /* ResultBimbelViewController.xib */,
+				E1D56A0E23A67C7B003FCF09 /* Waiting for Approval */,
+				E1D56A0F23A67C83003FCF09 /* Detail Final */,
 			);
 			path = "Segmented Result";
 			sourceTree = "<group>";
@@ -1675,8 +1725,10 @@
 				E11DB87B23A4E9F4000CB02C /* ApplicantProfileViewController.xib in Resources */,
 				E13EE60B2381040E005016A0 /* SetupEducationViewController.xib in Resources */,
 				E17F321C23794A6D00AEBCD5 /* MoreDetailTableViewCell.xib in Resources */,
+				E1D56A0D23A623C6003FCF09 /* InterviewTestTableViewCell.xib in Resources */,
 				147E1EDA23839AE3003CAF5D /* ProgressTableViewCell.xib in Resources */,
 				278FABE8239678F400590D4A /* PostedQualificationTableViewCell.xib in Resources */,
+				E1D56A1823A681FF003FCF09 /* BlankViewTableViewCell.xib in Resources */,
 				E1CBFEFA237D009E00DAC25D /* EditProfileViewController.xib in Resources */,
 				148C439D23824D8600B87174 /* SubjectCollectionViewCell.xib in Resources */,
 				E139B5372375D6B700FEF1F5 /* LoginViewController.xib in Resources */,
@@ -1731,6 +1783,7 @@
 				E18AEFBC239F56EA0076000E /* SubjectCategoryTableViewCell.xib in Resources */,
 				E168478923784463001B6319 /* AnotherDetailProfileTableViewCell.xib in Resources */,
 				147E1F0B2384024D003CAF5D /* WaitingConformationViewController.xib in Resources */,
+				E1D56A1323A67D31003FCF09 /* WaitingForApprovalViewController.xib in Resources */,
 				148C437F237EA96600B87174 /* SalaryTableViewCell.xib in Resources */,
 				E178C2A823A3B83400EF1F21 /* TeachingScheduleTableViewCell.xib in Resources */,
 			);
@@ -1798,10 +1851,12 @@
 				276127482397B331007BC852 /* TeachingGradeTableViewCell.swift in Sources */,
 				148C436C237E9E2000B87174 /* SubjectTableViewCell.swift in Sources */,
 				144B435923A38C2700F1ACE1 /* SummarySetupViewController.swift in Sources */,
+				E1D56A1723A681FF003FCF09 /* BlankViewTableViewCell.swift in Sources */,
 				E1D5051923A3B01300EEE158 /* TeachingGradeViewController.swift in Sources */,
 				E139B5412375D73600FEF1F5 /* BaseViewController.swift in Sources */,
 				E19D1AEB237BF10F003AFFBD /* CustomLanguageTableViewCell.swift in Sources */,
 				E106615123811A4A0098AE11 /* AdditionalLanguageViewController.swift in Sources */,
+				E1D56A0C23A623C6003FCF09 /* InterviewTestTableViewCell.swift in Sources */,
 				E10661592381278D0098AE11 /* AdditionalEducationViewController.swift in Sources */,
 				E17F32132379446300AEBCD5 /* ExperienceViewController.swift in Sources */,
 				E168479C237901D5001B6319 /* Model.swift in Sources */,
@@ -1833,6 +1888,7 @@
 				E16847902378F88A001B6319 /* ContentTableViewCell.swift in Sources */,
 				E19D1AF0237BF274003AFFBD /* CustomExperienceTableViewCell.swift in Sources */,
 				148C4369237E9DED00B87174 /* ListJobTableViewCell.swift in Sources */,
+				E1D56A1223A67D31003FCF09 /* WaitingForApprovalViewController.swift in Sources */,
 				E168477623782B0F001B6319 /* SkillsViewController.swift in Sources */,
 				E13EE60E23810475005016A0 /* SetupLanguageViewController.swift in Sources */,
 				E178C2A223A3B75000EF1F21 /* TeachingGradePlainTableViewCell.swift in Sources */,

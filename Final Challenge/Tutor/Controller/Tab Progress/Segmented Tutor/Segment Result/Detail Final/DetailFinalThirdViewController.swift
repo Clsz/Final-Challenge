@@ -108,7 +108,7 @@ extension DetailFinalThirdViewController: UITableViewDataSource,UITableViewDeleg
             let name = (course?.value(forKey: "courseName") as! String)
             let workHour = ((course?.value(forKey: "courseStartHour") as! String) + " - " + (course?.value(forKey: "courseEndHour") as! String))
             let status = ("Status: " + (jobStatus ?? ""))
-            if status == "Accepted"{
+            if status == "Status: Accepted"{
                 cell.statusBimbel.textColor = #colorLiteral(red: 0.2980392157, green: 0.8509803922, blue: 0.3921568627, alpha: 1)
             }else{
                 cell.statusBimbel.textColor = #colorLiteral(red: 1, green: 0.3333333333, blue: 0.2980392157, alpha: 1)

@@ -132,10 +132,16 @@ extension SeeDetailApplicantViewController:UITableViewDataSource, UITableViewDel
             return cell
         }else if indexPath.row == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "profileBimbelCell", for: indexPath) as! ProfileBimbelTableViewCell
-            cell.statusBimbel.textColor = #colorLiteral(red: 1, green: 0.5843137255, blue: 0, alpha: 1)
             let name = (tutor?.value(forKey: "tutorFirstName") as! String) + " " + (tutor?.value(forKey: "tutorLastName") as! String)
             let age = tutor?.value(forKey: "tutorBirthDate") as! Date
             let status = ("Status: " + (jobStatus ?? ""))
+            if status == "Status: Accepted"{
+                cell.statusBimbel.textColor = #colorLiteral(red: 0.2980392157, green: 0.8509803922, blue: 0.3921568627, alpha: 1)
+            }else if status == "Status: Rejected"{
+                cell.statusBimbel.textColor = #colorLiteral(red: 1, green: 0.3333333333, blue: 0.2980392157, alpha: 1)
+            }else{
+                cell.statusBimbel.textColor = #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)
+            }
             cell.setView(image: "school", name: name, jam: age.toYear(), status: status)
             return cell
         }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:String, code:Int){

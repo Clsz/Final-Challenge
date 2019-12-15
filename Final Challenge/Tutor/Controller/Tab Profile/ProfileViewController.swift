@@ -32,13 +32,11 @@ class ProfileViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         queryTutor()
-        setupData()
         registerCell()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Profile")
-        setupData()
         registerCell()
         cellDelegate()
         self.tabBarController?.tabBar.isHidden = false
@@ -50,7 +48,7 @@ extension ProfileViewController{
     private func setupData() {
         dataArray.removeAll()
         dataArray.append(tutors)
-//        let skill = (tutors?.value(forKey: "tutorSkills") as! [String])
+        //        let skill = (tutors?.value(forKey: "tutorSkills") as! [String])
         dataArray.append(("Skill","Add Skill",["skill","makan","tidur","boker"]))
         dataArray.append(("Language","Add Language",2))
         dataArray.append(("Education","Edit Education",0))
@@ -63,21 +61,20 @@ extension ProfileViewController{
         let token = CKUserData.shared.getToken()
         let pred = NSPredicate(format: "tutorEmail == %@", token)
         let query = CKQuery(recordType: "Tutor", predicate: pred)
-       
+        
         database.perform(query, inZoneWith: nil) { (records, error) in
             guard let record = records else {return}
-            if record.count > 0 {
+            
             self.tutors = record[0]
             
             DispatchQueue.main.async {
-                self.cellDelegate()
                 self.queryEducation()
                 self.queryLanguage()
                 self.queryExperience()
             }
         }
-        }
     }
+    
     
     private func queryEducation() {
         let education = (tutors?.value(forKey: "educationID") as! CKRecord.Reference)
@@ -131,6 +128,22 @@ extension ProfileViewController{
             self.tableView.reloadData()
         }
         
+    }
+    
+    private func checkUniversity() -> String{
+        let grade = education?.value(forKey: "grade") as! [String]
+        let schoolName = education?.value(forKey: "schoolName") as! [String]
+        var university:String = ""
+        var id = 0
+        
+        for i in grade{
+            id += 1
+            if i == "University"{
+                id -= 1
+                university = schoolName[id]
+            }
+        }
+        return university
     }
     
 }
@@ -216,9 +229,11 @@ extension ProfileViewController:UITableViewDataSource, UITableViewDelegate{
         if indexPath.row == 0{
             // FOR TITLE
             let cell = tableView.dequeueReusableCell(withIdentifier: header, for: indexPath) as! TitleTableViewCell
-            let fName = (tutors?.value(forKey: "tutorFirstName") as! String) + (tutors?.value(forKey: "tutorLastName") as! String)
+//            let fName = (tutors?.value(forKey: "tutorFirstName") as! String) + (tutors?.value(forKey: "tutorLastName") as! String)
+            let universityName = self.checkUniversity()
+            
             let imageProfile = tutors?.value(forKey: "tutorProfileImage") as! UIImage
-            cell.setCell(image: imageProfile, name: fName, university: "Bina Nusantara", age: 22)
+//            cell.setCell(image: imageProfile, name: fName, university: "Bina Nusantara", age: 22)
             cell.tutorDelegate = self
             return cell
         }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:String, content:[String]){

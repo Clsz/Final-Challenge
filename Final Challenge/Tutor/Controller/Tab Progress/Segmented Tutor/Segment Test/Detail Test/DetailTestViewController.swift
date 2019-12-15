@@ -98,7 +98,7 @@ extension DetailTestViewController{
         let confirmAlert = UIAlertController(title: "Accept the Test", message: "Are You Sure Want to Accept?", preferredStyle: UIAlertController.Style.alert)
         
         confirmAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
-            self.updateToDatabase(status: "Waiting for Test") { (res) in
+            self.updateToDatabase(status: "Waiting for Your Approval") { (res) in
                 if res == true{
                     let destVC = ResultViewController()
                     destVC.fromID = 1
@@ -191,9 +191,9 @@ extension DetailTestViewController: UITableViewDataSource,UITableViewDelegate{
         }else if let keyValue = dataArray[indexPath.row] as? (key:String, hint:String, anotherKey:String, content:String, button:String){
             let cell = tableView.dequeueReusableCell(withIdentifier: interviewSchedule, for: indexPath) as! ActivityTableViewCell
             cell.day = applicant?.value(forKey: "testDay") as! [String]
-            cell.scheduleStart = applicant?.value(forKey: "testStartHour") as! [String]
-            cell.scheduleEnd = applicant?.value(forKey: "testEndHour") as! [String]
+            cell.scheduleTime = applicant?.value(forKey: "testTime") as! [String]
             cell.setCell(text: keyValue.key, hint: keyValue.hint, anotherText: keyValue.anotherKey, equipment: keyValue.content, button: keyValue.button)
+            cell.activityDelegate = self
             return cell
         }else if let keyValue = dataArray[indexPath.row] as? Bool{
             if keyValue == true{

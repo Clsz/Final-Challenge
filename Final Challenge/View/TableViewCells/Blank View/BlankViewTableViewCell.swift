@@ -1,5 +1,5 @@
 //
-//  AddTestButtonTableViewCell.swift
+//  BlankViewTableViewCell.swift
 //  Final Challenge
 //
 //  Created by Muhammad Reynaldi on 15/12/19.
@@ -8,11 +8,8 @@
 
 import UIKit
 
-class AddTestButtonTableViewCell: UITableViewCell {
+class BlankViewTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var button: UIButton!
-    var delegate:AddInterviewSchedule?
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,13 +21,4 @@ class AddTestButtonTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    @IBAction func buttonTapped(_ sender: Any) {
-        delegate?.addScheduleTapped()
-    }
-    
-}
-extension AddTestButtonTableViewCell{
-    func setInterface() {
-        self.button.loginRound()
-    }
 }
