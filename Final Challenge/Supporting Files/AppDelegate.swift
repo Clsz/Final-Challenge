@@ -12,28 +12,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var tabBarController:TabBarController?
+    var flag:Bool = true
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         UITabBar.appearance().tintColor = ConstantManager.mainColor
-//        //Penting nih
-        UserDefaults.standard.set("multilanguage@gmail.com", forKey: "token")
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        let rv = SegmentedBimbelViewController()
-        let navigationController = UINavigationController(rootViewController: rv)
-        window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
-        
-//        if CKUserData.shared.getStatus() == true{
-//            self.tabBarController = TabBarController()
-//            window?.rootViewController = tabBarController
-//            window?.makeKeyAndVisible()
-//        }else{
-//            let rv = RegisterViewController()
-//            let navigationController = UINavigationController(rootViewController: rv)
-//            window?.rootViewController = navigationController
-//            window?.makeKeyAndVisible()
-//        }
+
+        if CKUserData.shared.getOnBoardingStatus() != "" {
+            self.tabBarController = TabBarController()
+            window?.rootViewController = tabBarController
+            window?.makeKeyAndVisible()
+            //Flag di set False ketika dia mau Apply tetapi belum login
+            //Selama dia true seperti flag yang sudah di inisialisasi di atas gak bakal di suruh login
+            //Kalau mau batasin hak akses contoh seperti DetailBimbelViewController (func requestTapped)
+            if flag == false{
+                let vc = LoginViewController()
+                let navigationController = UINavigationController(rootViewController: vc)
+                window?.rootViewController = navigationController
+                window?.makeKeyAndVisible()
+            }
+        }else{
+            // Inisialisasi Onboarding
+            
+            // Save UserDefault bahwa udh pernah Onboarding
+            CKUserData.shared.saveOnboardingStatus(status: "isOnBoard")
+            
+            //Inisialisasi ulang App Delegate
+            let vc = TabBarController()
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.window?.rootViewController = vc
+            appDelegate.window?.makeKeyAndVisible()
+        }
+
         return true
     }
     

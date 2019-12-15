@@ -19,7 +19,7 @@ class DetailBimbelViewController: BaseViewController {
     var tutor:CKRecord!
     var tempJobApplicant:[CKRecord.Reference] = []
     var tempUserApplicant:[CKRecord.Reference] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         queryCourse()
@@ -79,7 +79,7 @@ extension DetailBimbelViewController{
     private func applyJob(){
         let record = CKRecord(recordType: "Applicant")
         let fullName = (tutor.value(forKey: "firstName") as! String) + " " + (tutor.value(forKey: "tutorLastName") as! String)
-    
+        
         record["courseName"] = course?.value(forKey: "courseName") as! String
         record["tutorName"] = fullName
         record["jobID"] = CKRecord.Reference.init(recordID: job.recordID , action: .deleteSelf)
@@ -148,8 +148,17 @@ extension DetailBimbelViewController{
 }
 extension DetailBimbelViewController:DetailBimbel, UpdateConstraint{
     func requestTapped() {
-        self.queryUser()
-        self.navigationController?.popViewController(animated: true)
+        if CKUserData.shared.getToken() != "" {
+            self.queryUser()
+            self.navigationController?.popViewController(animated: true)
+        }else{
+            let vc = TabBarController()
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.flag = false
+            appDelegate.window?.rootViewController = vc
+            appDelegate.window?.makeKeyAndVisible()
+        }
+        
     }
     
     func updateViewConstraint() {
