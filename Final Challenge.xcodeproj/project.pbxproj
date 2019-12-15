@@ -90,6 +90,14 @@
 		E11DB87923A4E7EC000CB02C /* ProfileBimbelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148C435F237E97FB00B87174 /* ProfileBimbelTableViewCell.swift */; };
 		E11DB87A23A4E7EF000CB02C /* ProfileBimbelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 148C4360237E97FB00B87174 /* ProfileBimbelTableViewCell.xib */; };
 		E11DB87B23A4E9F4000CB02C /* ApplicantProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1F47B8E23A21A7200EE6073 /* ApplicantProfileViewController.xib */; };
+		E11DB87E23A5D700000CB02C /* SeeDetailApplicantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11DB87C23A5D700000CB02C /* SeeDetailApplicantViewController.swift */; };
+		E11DB87F23A5D700000CB02C /* SeeDetailApplicantViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E11DB87D23A5D700000CB02C /* SeeDetailApplicantViewController.xib */; };
+		E11DB88723A5E146000CB02C /* HeaderTestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11DB88523A5E146000CB02C /* HeaderTestTableViewCell.swift */; };
+		E11DB88823A5E146000CB02C /* HeaderTestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E11DB88623A5E146000CB02C /* HeaderTestTableViewCell.xib */; };
+		E11DB88B23A5E152000CB02C /* ContentTestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11DB88923A5E152000CB02C /* ContentTestTableViewCell.swift */; };
+		E11DB88C23A5E152000CB02C /* ContentTestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E11DB88A23A5E152000CB02C /* ContentTestTableViewCell.xib */; };
+		E11DB88F23A5E16C000CB02C /* AddTestButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11DB88D23A5E16C000CB02C /* AddTestButtonTableViewCell.swift */; };
+		E11DB89023A5E16C000CB02C /* AddTestButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E11DB88E23A5E16C000CB02C /* AddTestButtonTableViewCell.xib */; };
 		E13441B4238FEC580077E7D3 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E13441B3238FEC580077E7D3 /* CloudKit.framework */; };
 		E13441C3239509310077E7D3 /* DetailAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13441C1239509310077E7D3 /* DetailAddressTableViewCell.swift */; };
 		E13441C4239509310077E7D3 /* DetailAddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E13441C2239509310077E7D3 /* DetailAddressTableViewCell.xib */; };
@@ -295,6 +303,14 @@
 		E117B7E0239548DB00FAFFBA /* DetailProfileBimbelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProfileBimbelTableViewCell.swift; sourceTree = "<group>"; };
 		E117B7E1239548DB00FAFFBA /* DetailProfileBimbelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailProfileBimbelTableViewCell.xib; sourceTree = "<group>"; };
 		E11BB7EF237D5BA600B3B5E7 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
+		E11DB87C23A5D700000CB02C /* SeeDetailApplicantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeDetailApplicantViewController.swift; sourceTree = "<group>"; };
+		E11DB87D23A5D700000CB02C /* SeeDetailApplicantViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeeDetailApplicantViewController.xib; sourceTree = "<group>"; };
+		E11DB88523A5E146000CB02C /* HeaderTestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTestTableViewCell.swift; sourceTree = "<group>"; };
+		E11DB88623A5E146000CB02C /* HeaderTestTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTestTableViewCell.xib; sourceTree = "<group>"; };
+		E11DB88923A5E152000CB02C /* ContentTestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTestTableViewCell.swift; sourceTree = "<group>"; };
+		E11DB88A23A5E152000CB02C /* ContentTestTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentTestTableViewCell.xib; sourceTree = "<group>"; };
+		E11DB88D23A5E16C000CB02C /* AddTestButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTestButtonTableViewCell.swift; sourceTree = "<group>"; };
+		E11DB88E23A5E16C000CB02C /* AddTestButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTestButtonTableViewCell.xib; sourceTree = "<group>"; };
 		E13441B3238FEC580077E7D3 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		E13441B8238FEDC20077E7D3 /* Final Challenge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Final Challenge.entitlements"; sourceTree = "<group>"; };
 		E13441C1239509310077E7D3 /* DetailAddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAddressTableViewCell.swift; sourceTree = "<group>"; };
@@ -426,8 +442,6 @@
 		E1F47B8E23A21A7200EE6073 /* ApplicantProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApplicantProfileViewController.xib; sourceTree = "<group>"; };
 		E1F47B9123A226BD00EE6073 /* TestScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestScheduleViewController.swift; sourceTree = "<group>"; };
 		E1F47B9223A226BD00EE6073 /* TestScheduleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestScheduleViewController.xib; sourceTree = "<group>"; };
-		E1F47B9723A226EC00EE6073 /* ApplicantProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicantProfileViewController.swift; sourceTree = "<group>"; };
-		E1F47B9823A226EC00EE6073 /* ApplicantProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApplicantProfileViewController.xib; sourceTree = "<group>"; };
 		E1F47B9B23A2272900EE6073 /* ResultBimbelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultBimbelViewController.swift; sourceTree = "<group>"; };
 		E1F47B9C23A2272900EE6073 /* ResultBimbelViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultBimbelViewController.xib; sourceTree = "<group>"; };
 		E1F5BB4D2382C75A00BC9CFE /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
@@ -645,13 +659,13 @@
 			path = "Result Card";
 			sourceTree = "<group>";
 		};
-		147E1EF12383C2B5003CAF5D /* Interview Schedule */ = {
+		147E1EF12383C2B5003CAF5D /* Interview Schedule Tutor */ = {
 			isa = PBXGroup;
 			children = (
 				E1F5BB4D2382C75A00BC9CFE /* ActivityTableViewCell.swift */,
 				E1F5BB4E2382C75A00BC9CFE /* ActivityTableViewCell.xib */,
 			);
-			path = "Interview Schedule";
+			path = "Interview Schedule Tutor";
 			sourceTree = "<group>";
 		};
 		147E1EF22383C2BF003CAF5D /* Footer Activity */ = {
@@ -1032,6 +1046,19 @@
 				E117B7E1239548DB00FAFFBA /* DetailProfileBimbelTableViewCell.xib */,
 			);
 			path = "Detail Profile Bimbel";
+			sourceTree = "<group>";
+		};
+		E11DB88023A5DE55000CB02C /* Interview Schedule Bimbel */ = {
+			isa = PBXGroup;
+			children = (
+				E11DB88523A5E146000CB02C /* HeaderTestTableViewCell.swift */,
+				E11DB88623A5E146000CB02C /* HeaderTestTableViewCell.xib */,
+				E11DB88923A5E152000CB02C /* ContentTestTableViewCell.swift */,
+				E11DB88A23A5E152000CB02C /* ContentTestTableViewCell.xib */,
+				E11DB88D23A5E16C000CB02C /* AddTestButtonTableViewCell.swift */,
+				E11DB88E23A5E16C000CB02C /* AddTestButtonTableViewCell.xib */,
+			);
+			path = "Interview Schedule Bimbel";
 			sourceTree = "<group>";
 		};
 		E13441B2238FEC580077E7D3 /* Frameworks */ = {
@@ -1495,7 +1522,7 @@
 			isa = PBXGroup;
 			children = (
 				E1F47B9523A226C300EE6073 /* Test Schedule */,
-				E1F47B9623A226CC00EE6073 /* Applicant Profile */,
+				E1F47B9623A226CC00EE6073 /* See Detail Applicant */,
 			);
 			path = "Segmented Test";
 			sourceTree = "<group>";
@@ -1518,13 +1545,13 @@
 			path = "Test Schedule";
 			sourceTree = "<group>";
 		};
-		E1F47B9623A226CC00EE6073 /* Applicant Profile */ = {
+		E1F47B9623A226CC00EE6073 /* See Detail Applicant */ = {
 			isa = PBXGroup;
 			children = (
-				E1F47B9723A226EC00EE6073 /* ApplicantProfileViewController.swift */,
-				E1F47B9823A226EC00EE6073 /* ApplicantProfileViewController.xib */,
+				E11DB87C23A5D700000CB02C /* SeeDetailApplicantViewController.swift */,
+				E11DB87D23A5D700000CB02C /* SeeDetailApplicantViewController.xib */,
 			);
-			path = "Applicant Profile";
+			path = "See Detail Applicant";
 			sourceTree = "<group>";
 		};
 		E1F5BB4C2382C65000BC9CFE /* Progress  */ = {
@@ -1532,7 +1559,8 @@
 			children = (
 				147E1EF32383C2CC003CAF5D /* Progress */,
 				E1BDDE55239B7A89003B4414 /* See Detail */,
-				147E1EF12383C2B5003CAF5D /* Interview Schedule */,
+				147E1EF12383C2B5003CAF5D /* Interview Schedule Tutor */,
+				E11DB88023A5DE55000CB02C /* Interview Schedule Bimbel */,
 				147E1EF22383C2BF003CAF5D /* Footer Activity */,
 			);
 			path = "Progress ";
@@ -1654,6 +1682,7 @@
 				E139B5372375D6B700FEF1F5 /* LoginViewController.xib in Resources */,
 				E139B53B2375D6CA00FEF1F5 /* RegisterViewController.xib in Resources */,
 				E1CBFEFE237D00E100DAC25D /* EditPasswordViewController.xib in Resources */,
+				E11DB87F23A5D700000CB02C /* SeeDetailApplicantViewController.xib in Resources */,
 				E16847952378FB66001B6319 /* AnotherContentTableViewCell.xib in Resources */,
 				E1F5BB502382C75A00BC9CFE /* ActivityTableViewCell.xib in Resources */,
 				E106615E2381294D0098AE11 /* AdditionalExperienceViewController.xib in Resources */,
@@ -1661,6 +1690,7 @@
 				E1F47B8A23A2150200EE6073 /* SegmentedBimbelViewController.xib in Resources */,
 				E139B52E2375D20400FEF1F5 /* GoogleService-Info.plist in Resources */,
 				144B433F239FD30400F1ACE1 /* SetupSkillTableViewCell.xib in Resources */,
+				E11DB88C23A5E152000CB02C /* ContentTestTableViewCell.xib in Resources */,
 				E1E3A8A42366CA8900F1571E /* Assets.xcassets in Resources */,
 				E13EE60F23810475005016A0 /* SetupLanguageViewController.xib in Resources */,
 				27CFEC9823965B640015B6CC /* JobBimbelTableViewCell.xib in Resources */,
@@ -1674,6 +1704,7 @@
 				E1F5BB542382CDFD00BC9CFE /* FooterActivityTableViewCell.xib in Resources */,
 				148C438B237EAA0000B87174 /* SubmitTableViewCell.xib in Resources */,
 				148C4366237E9D5800B87174 /* HomeViewController.xib in Resources */,
+				E11DB89023A5E16C000CB02C /* AddTestButtonTableViewCell.xib in Resources */,
 				148C4383237EA97D00B87174 /* ScheduleTableViewCell.xib in Resources */,
 				E1A12CC123A3B21900009F52 /* TeachingSchedulesViewController.xib in Resources */,
 				E13441C4239509310077E7D3 /* DetailAddressTableViewCell.xib in Resources */,
@@ -1690,6 +1721,7 @@
 				144B435A23A38C2700F1ACE1 /* SummarySetupViewController.xib in Resources */,
 				147E1F10238409B2003CAF5D /* DetailFinalThirdViewController.xib in Resources */,
 				E1CE74302395372400FA8FEC /* DetailProfileBimbelViewController.xib in Resources */,
+				E11DB88823A5E146000CB02C /* HeaderTestTableViewCell.xib in Resources */,
 				E13EE5F32380E86A005016A0 /* SetupPersonalViewController.xib in Resources */,
 				278FABE4239678E500590D4A /* PostedScheduleTableViewCell.xib in Resources */,
 				27CFEC9423964DA70015B6CC /* JobViewController.xib in Resources */,
@@ -1715,6 +1747,7 @@
 				E13EE6022380F759005016A0 /* SetupPersonalTableViewCell.swift in Sources */,
 				E13EE5F22380E86A005016A0 /* SetupPersonalViewController.swift in Sources */,
 				E18AEFBB239F56EA0076000E /* SubjectCategoryTableViewCell.swift in Sources */,
+				E11DB88723A5E146000CB02C /* HeaderTestTableViewCell.swift in Sources */,
 				E1CBFEF9237D009E00DAC25D /* EditProfileViewController.swift in Sources */,
 				147E1F0A2384024D003CAF5D /* WaitingConformationViewController.swift in Sources */,
 				148C437E237EA96600B87174 /* SalaryTableViewCell.swift in Sources */,
@@ -1736,6 +1769,7 @@
 				E18AEFB7239F56D30076000E /* QualificationTableViewCell.swift in Sources */,
 				E139B5432375D7C200FEF1F5 /* TabBarController.swift in Sources */,
 				27CFEC9723965B640015B6CC /* JobBimbelTableViewCell.swift in Sources */,
+				E11DB88F23A5E16C000CB02C /* AddTestButtonTableViewCell.swift in Sources */,
 				E1D5051B23A3B01300EEE158 /* JobDetailsViewController.swift in Sources */,
 				E1CBFEF5237CFB3F00DAC25D /* DetailHeaderTableViewCell.swift in Sources */,
 				E16847942378FB66001B6319 /* AnotherContentTableViewCell.swift in Sources */,
@@ -1804,6 +1838,8 @@
 				E178C2A223A3B75000EF1F21 /* TeachingGradePlainTableViewCell.swift in Sources */,
 				E1BDDE58239B7AB6003B4414 /* SeeDetailTableViewCell.swift in Sources */,
 				E13EE61223811320005016A0 /* SetupExperienceViewController.swift in Sources */,
+				E11DB88B23A5E152000CB02C /* ContentTestTableViewCell.swift in Sources */,
+				E11DB87E23A5D700000CB02C /* SeeDetailApplicantViewController.swift in Sources */,
 				144B434B23A0B18600F1ACE1 /* SkillCollectionViewCell.swift in Sources */,
 				27CFEC9323964DA70015B6CC /* JobViewController.swift in Sources */,
 				E1713A50237AC68C00F6A8A7 /* ContentViewTableViewCell.swift in Sources */,

@@ -16,7 +16,7 @@ class ContentTableViewCell: UITableViewCell {
     var tutorDelegate:ProfileProtocol?
     var bimbelDelegate:BimbelProtocol?
     var index:Int?
-    var skills:[String]?
+    var skills:[String]!
     let filterCell = "filterCell"
     let skillCell = "SubjectCollectionViewCellID"
     
@@ -64,11 +64,7 @@ extension ContentTableViewCell:UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return skills?.count ?? 0
+        return skills.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -78,9 +74,7 @@ extension ContentTableViewCell:UICollectionViewDataSource, UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if index == 0{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: skillCell, for: indexPath) as! SubjectCollectionViewCell
-            
             cell.setView(subject: skills?[indexPath.row] ?? "")
-            
             return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: filterCell, for: indexPath) as! FilterCollectionViewCell

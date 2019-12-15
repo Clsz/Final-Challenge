@@ -30,7 +30,12 @@ class SubmitTableViewCell: UITableViewCell {
     
 }
 extension SubmitTableViewCell{
-    func setInterface(){
+    func setCell(button:String) {
+        self.requestButton.setTitle(button, for: .normal)
+        setInterface()
+    }
+    
+    private func setInterface(){
         self.requestButton.loginRound()
     }
 }

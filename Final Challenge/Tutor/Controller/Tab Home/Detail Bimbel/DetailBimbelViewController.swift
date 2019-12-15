@@ -78,8 +78,10 @@ extension DetailBimbelViewController{
     
     private func applyJob(){
         let record = CKRecord(recordType: "Applicant")
+        let fullName = (tutor.value(forKey: "firstName") as! String) + " " + (tutor.value(forKey: "tutorLastName") as! String)
     
         record["courseName"] = course?.value(forKey: "courseName") as! String
+        record["tutorName"] = fullName
         record["jobID"] = CKRecord.Reference.init(recordID: job.recordID , action: .deleteSelf)
         record["tutorID"] = CKRecord.Reference.init(recordID: tutor.recordID , action: .deleteSelf)
         record["status"] = "Job Requested"

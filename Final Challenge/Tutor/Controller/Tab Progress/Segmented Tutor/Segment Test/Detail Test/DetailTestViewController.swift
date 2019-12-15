@@ -37,6 +37,17 @@ class DetailTestViewController: BaseViewController {
     }
 }
 extension DetailTestViewController{
+    private func setupData() {
+        dataArray.removeAll()
+        dataArray.append(course)
+        dataArray.append(true)
+        let address = (course?.value(forKey: "courseAddress") as! String)
+        dataArray.append(("Address",address,0))
+        let testReq = (applicant?.value(forKey: "testRequirement") as! String)
+        dataArray.append(("Choose Test Schedule","Please select one of the tet schedule","Test Requirement",testReq,"Request New Schedule"))
+        dataArray.append(false)
+    }
+    
     private func queryJob() {
         let pred = NSPredicate(format: "recordID = %@", CKRecord.ID(recordName: jobReference.recordID.recordName))
         let query = CKQuery(recordType: "Job", predicate: pred)
@@ -68,15 +79,8 @@ extension DetailTestViewController{
     
     private func updateToDatabase(status:String, completion : @escaping (Bool) -> Void) {
         if let record = applicant{
-            record["courseName"] = applicant?.value(forKey: "courseName") as! String
-            record["tutorID"] = applicant?.value(forKey: "tutorID") as! CKRecord.Reference
-            record["jobID"] = self.jobReference
-            record["testDay"] = applicant?.value(forKey: "testDay") as! [String]
-            record["testStartHour"] = applicant?.value(forKey: "testStartHour") as! [String]
-            record["testEndHour"] = applicant?.value(forKey: "testEndHour") as! [String]
-            record["testRequirement"] = applicant?.value(forKey: "testRequirement") as! String
             record["status"] = status
-            
+            //Schedule
             self.database.save(record, completionHandler: {returnedRecord, error in
                 DispatchQueue.main.async {
                     if error != nil {
@@ -88,17 +92,6 @@ extension DetailTestViewController{
             })
         }
         
-    }
-    
-    private func setupData() {
-        dataArray.removeAll()
-        dataArray.append(course)
-        dataArray.append(true)
-        let address = (course?.value(forKey: "courseAddress") as! String)
-        dataArray.append(("Address",address,0))
-        let testReq = (applicant?.value(forKey: "testRequirement") as! String)
-        dataArray.append(("Choose Test Schedule","Please select one of the tet schedule","Test Requirement",testReq,"Request New Schedule"))
-        dataArray.append(false)
     }
     
     private func acceptAlert() {

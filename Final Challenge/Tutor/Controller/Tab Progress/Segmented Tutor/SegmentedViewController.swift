@@ -34,9 +34,8 @@ class SegmentedViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Progress")
         tableView.reloadData()
+        queryUser()
         self.navigationController?.navigationBar.isHidden = false
-        self.tabBarController?.hidesBottomBarWhenPushed = true
-        self.tabBarController?.tabBar.isHidden = false
         self.navigationItem.setHidesBackButton(true, animated:true);
     }
     
@@ -91,6 +90,8 @@ extension SegmentedViewController{
                 for i in self.activity{
                     if (i.value(forKey: "status") as! String) == "Job Requested"{
                         self.activityApplied.append(i)
+                    }else if (i.value(forKey: "status") as! String) == "Waiting for Your Test Schedule"{
+                        self.activityTest.append(i)
                     }else if (i.value(forKey: "status") as! String) == "Waiting for New Test Schedule"{
                         self.activityTest.append(i)
                     }else if (i.value(forKey: "status") as! String) == "Waiting for Test"{
@@ -151,7 +152,10 @@ extension SegmentedViewController:UITableViewDataSource, UITableViewDelegate{
             cell.setCell(nama: name, status: status)
         }else if currentTableView == 1{
             let name = (activityTest[indexPath.row].value(forKey: "courseName") as? String) ?? ""
-            let status = (activityTest[indexPath.row].value(forKey: "status") as? String) ?? ""
+            var status = (activityTest[indexPath.row].value(forKey: "status") as? String) ?? ""
+            if status == "Waiting for Your Test Schedule"{
+                status = "Waiting for Your Response"
+            }
             cell.statusBimbel.textColor = #colorLiteral(red: 1, green: 0.5843137255, blue: 0, alpha: 1)
             cell.setCell(nama: name, status: status)
         }else{
