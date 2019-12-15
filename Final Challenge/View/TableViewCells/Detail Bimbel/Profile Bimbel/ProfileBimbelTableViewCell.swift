@@ -10,7 +10,6 @@ import UIKit
 
 class ProfileBimbelTableViewCell: UITableViewCell {
     
-    
     @IBOutlet weak var viewBimbel: UIView!
     @IBOutlet weak var imageBimbel: UIImageView!
     @IBOutlet weak var namaBimbel: UILabel!

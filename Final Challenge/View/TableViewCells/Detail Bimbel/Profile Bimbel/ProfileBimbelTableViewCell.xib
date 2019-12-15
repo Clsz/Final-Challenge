@@ -10,14 +10,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="profileBimbelCell" id="KGk-i7-Jjw" customClass="ProfileBimbelTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="214"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="220"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="414" height="214"/>
+                <rect key="frame" x="0.0" y="0.0" width="414" height="220"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vxJ-zc-7TB">
-                        <rect key="frame" x="20" y="100" width="374" height="114"/>
+                        <rect key="frame" x="20" y="100" width="374" height="120"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NT3-Tp-nQe">
                                 <rect key="frame" x="0.0" y="81" width="374" height="16"/>
@@ -49,15 +49,14 @@
                         </subviews>
                         <color key="backgroundColor" red="0.10980392156862745" green="0.39215686274509803" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="114" id="2d5-Sh-kov"/>
                             <constraint firstAttribute="trailing" secondItem="RyE-j1-bLj" secondAttribute="trailing" id="4kc-Zx-PcI"/>
                             <constraint firstItem="ghe-s7-4nu" firstAttribute="leading" secondItem="vxJ-zc-7TB" secondAttribute="leading" id="DMM-80-AOH"/>
+                            <constraint firstAttribute="bottom" secondItem="ghe-s7-4nu" secondAttribute="bottom" constant="6" id="KzP-5V-LEH"/>
                             <constraint firstAttribute="trailing" secondItem="NT3-Tp-nQe" secondAttribute="trailing" id="L0n-2F-C2e"/>
                             <constraint firstItem="RyE-j1-bLj" firstAttribute="top" secondItem="vxJ-zc-7TB" secondAttribute="top" constant="58" id="P16-e5-RAb"/>
                             <constraint firstItem="NT3-Tp-nQe" firstAttribute="leading" secondItem="vxJ-zc-7TB" secondAttribute="leading" id="XBy-al-oTn"/>
                             <constraint firstItem="NT3-Tp-nQe" firstAttribute="top" secondItem="RyE-j1-bLj" secondAttribute="bottom" id="agX-Qg-ai2"/>
                             <constraint firstAttribute="trailing" secondItem="ghe-s7-4nu" secondAttribute="trailing" id="bvp-gx-pC1"/>
-                            <constraint firstAttribute="bottom" secondItem="ghe-s7-4nu" secondAttribute="bottom" id="d91-Zg-KW1"/>
                             <constraint firstItem="RyE-j1-bLj" firstAttribute="leading" secondItem="vxJ-zc-7TB" secondAttribute="leading" id="rj3-x7-2Lj"/>
                             <constraint firstItem="ghe-s7-4nu" firstAttribute="top" secondItem="NT3-Tp-nQe" secondAttribute="bottom" id="sc0-Ht-kJI"/>
                         </constraints>
@@ -74,10 +73,10 @@
                 <constraints>
                     <constraint firstItem="o3N-TY-ScP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="37" id="0c6-So-wmB"/>
                     <constraint firstItem="o3N-TY-ScP" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="5eE-74-Wti"/>
-                    <constraint firstItem="vxJ-zc-7TB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="100" id="5oN-hY-AML"/>
+                    <constraint firstItem="vxJ-zc-7TB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="100" id="Lne-5S-8pr"/>
                     <constraint firstAttribute="trailing" secondItem="vxJ-zc-7TB" secondAttribute="trailing" constant="20" id="NQm-1o-P9a"/>
+                    <constraint firstAttribute="bottom" secondItem="vxJ-zc-7TB" secondAttribute="bottom" id="dzK-ff-AWX"/>
                     <constraint firstItem="vxJ-zc-7TB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="qut-hq-U6I"/>
-                    <constraint firstAttribute="bottom" secondItem="vxJ-zc-7TB" secondAttribute="bottom" id="sMF-zi-1nk"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

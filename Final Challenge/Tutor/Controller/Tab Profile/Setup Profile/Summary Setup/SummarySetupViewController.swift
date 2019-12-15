@@ -143,7 +143,7 @@ extension SummarySetupViewController: UITableViewDataSource,UITableViewDelegate{
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "submitCell", for: indexPath) as! SubmitTableViewCell
 //            cell.contentDelegate = self
-            cell.setInterface()
+            
             return cell
         }
         return UITableViewCell()

@@ -7,24 +7,269 @@
 //
 
 import UIKit
+import CloudKit
 
-class TestScheduleViewController: UIViewController {
-
+class TestScheduleViewController: BaseViewController {
+    @IBOutlet var tableView: UITableView!
+    let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
+    var dataArray:[Any?] = []
+    var tutorReference:CKRecord.Reference!
+    var jobStatus:String?
+    var tutor:CKRecord?
+    var applicant:CKRecord?
+    var day:[String] = []
+    var time:[String] = []
+    var datePicker:UIDatePicker = UIDatePicker()
+    var toolBar = UIToolbar()
+    var accessoryDoneButton: UIBarButtonItem!
+    let accessoryToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
+    let flexiblea = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        queryTutor()
+        registerCell()
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setupView(text: "Applicant Profile")
+        setMainInterface()
     }
-    */
-
+    
+}
+extension TestScheduleViewController{
+    private func setupWithoutSchedule() {
+        dataArray.removeAll()
+        dataArray.append("ALL INFORMATION ABOUT YOUR APPLICANT")
+        dataArray.append(tutor)
+        dataArray.append(true)
+        dataArray.append(("Interview Schedule",0))
+        dataArray.append(("AddButton",1))
+        dataArray.append(false)
+    }
+    
+    private func setupDataWithSchedule() {
+        dataArray.removeAll()
+        dataArray.append("ALL INFORMATION ABOUT YOUR APPLICANT")
+        dataArray.append(tutor)
+        dataArray.append(true)
+        dataArray.append(("Interview Schedule",0))
+        dataArray.append(("List Schedule",-1))
+        dataArray.append(("AddButton",1))
+        dataArray.append(false)
+    }
+    
+    private func setMainInterface() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(gestureRecognizer:)))
+        view.addGestureRecognizer(tapGesture)
+        self.day = applicant?.value(forKey: "testDay") as? [String] ?? []
+        self.time = applicant?.value(forKey: "testTime") as? [String] ?? []
+        if self.day != [] && self.time != []{
+            let index = IndexPath(row: 6, section: 0)
+            let cell = tableView.cellForRow(at: index) as! SubmitTableViewCell
+            cell.requestButton.isEnabled = false
+        }
+    }
+    
+    @objc private func viewTapped(gestureRecognizer:UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
+    private func queryTutor() {
+        let pred = NSPredicate(format: "recordID == %@", CKRecord.ID(recordName: tutorReference.recordID.recordName))
+        let query = CKQuery(recordType: "Tutor", predicate: pred)
+        
+        database.perform(query, inZoneWith: nil) { (records, error) in
+            guard let record = records else {return}
+            self.tutor = record[0]
+            DispatchQueue.main.async {
+                if self.day.count != 0{
+                    self.setupDataWithSchedule()
+                    if self.day.count == 3{
+                        self.dataArray.remove(at: 5)
+                    }
+                }
+                self.setupWithoutSchedule()
+                self.cellDelegate()
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    private func updateToDatabase(status:String, completion : @escaping (Bool) -> Void) {
+        if let record = applicant{
+            record["status"] = status
+            record["testDay"] = self.day
+            record["testTime"] = self.time
+            self.database.save(record, completionHandler: {returnedRecord, error in
+                DispatchQueue.main.async {
+                    if error != nil {
+                        self.showAlert(title: "Error", message: "Cannot update :(")
+                    } else {
+                        completion(true)
+                    }
+                }
+            })
+        }
+    }
+    
+    private func submitTest() {
+        let confirmAlert = UIAlertController(title: "Submit the Test Schedule?", message: "Are you sure you want to submit?", preferredStyle: UIAlertController.Style.alert)
+        
+        confirmAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            self.updateToDatabase(status: "Waiting for Your Approval") { (res) in
+                if res == true{
+                    let destVC = ResultViewController()
+                    destVC.fromID = 1
+                    self.navigationController?.pushViewController(destVC, animated: true)
+                }
+            }
+        }))
+        
+        confirmAlert.addAction(UIAlertAction(title: "No", style: .destructive, handler: { (action: UIAlertAction!) in }))
+        
+        present(confirmAlert, animated: true, completion: nil)
+    }
+    
+    private func setSchedule() {
+        self.setupDataWithSchedule()
+        if day.count == 3{
+            dataArray.remove(at: 5)
+        }
+        self.tableView.reloadData()
+    }
+    
+    private func createPickerSchedule() {
+        datePicker.tag = 0
+        datePicker.datePickerMode = .dateAndTime
+        datePicker.backgroundColor = UIColor.white
+        datePicker.autoresizingMask = .flexibleWidth
+        datePicker.contentMode = .center
+        datePicker.setValue(UIColor.black, forKey: "textColor")
+        datePicker.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
+        self.view.addSubview(datePicker)
+        datePicker.addTarget(self, action: #selector(dateChanged(datePicker:)), for: .valueChanged)
+        
+        createToolbar()
+    }
+    
+    private func createToolbar() {
+        toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
+        toolBar.items = [UIBarButtonItem.init(title: "Done", style: .plain, target: self, action: #selector(onDoneButtonTapped))]
+        self.view.addSubview(toolBar)
+    }
+    
+    @objc func onDoneButtonTapped() {
+        toolBar.removeFromSuperview()
+        datePicker.removeFromSuperview()
+        self.setSchedule()
+    }
+    
+    @objc func dateChanged(datePicker:UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE, d MMMM, yyyy"
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "HH:mm"
+        self.day.append(dateFormatter.string(from: datePicker.date))
+        self.time.append(timeFormatter.string(from: datePicker.date))
+        
+        view.endEditing(true)
+    }
+    
+}
+extension TestScheduleViewController:AddInterviewSchedule{
+    func addScheduleTapped() {
+        self.createPickerSchedule()
+    }
+    
+}
+extension TestScheduleViewController:DetailBimbel{
+    func requestTapped() {
+        if self.day.count != 0 && self.time.count != 0{
+            self.submitTest()
+            setMainInterface()
+        }else{
+            self.showAlert(title: "Attention", message: "Please Fill The Schedule")
+        }
+    }
+    
+}
+extension TestScheduleViewController:JobDetail{
+    func seeDetailTapped() {
+        let destVC = SeeDetailApplicantViewController()
+        destVC.tutor = self.tutor
+        destVC.jobStatus = self.jobStatus
+        self.navigationController?.pushViewController(destVC, animated: true)
+    }
+    
+}
+extension TestScheduleViewController:UITableViewDataSource, UITableViewDelegate{
+    private func cellDelegate(){
+        tableView.dataSource = self
+        tableView.delegate = self
+    }
+    
+    private func registerCell() {
+        tableView.register(UINib(nibName: "HintTableViewCell", bundle: nil), forCellReuseIdentifier: "HintTableViewCellID")
+        tableView.register(UINib(nibName: "ProfileBimbelTableViewCell", bundle: nil), forCellReuseIdentifier: "profileBimbelCell")
+        tableView.register(UINib(nibName: "SeeDetailTableViewCell", bundle: nil), forCellReuseIdentifier: "SeeDetailTableViewCellID")
+        tableView.register(UINib(nibName: "HeaderTestTableViewCell", bundle: nil), forCellReuseIdentifier: "HeaderTestTableViewCellID")
+        tableView.register(UINib(nibName: "ContentTestTableViewCell", bundle: nil), forCellReuseIdentifier: "ContentTestTableViewCellID")
+        tableView.register(UINib(nibName: "AddTestButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "AddTestButtonTableViewCellID")
+        tableView.register(UINib(nibName: "SubmitTableViewCell", bundle: nil), forCellReuseIdentifier: "submitCell")
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "HintTableViewCellID", for: indexPath) as! HintTableViewCell
+            cell.setCell(text: "ALL INFORMATION ABOUT TEACHER CANDIDATE")
+            return cell
+        }else if indexPath.row == 1{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "profileBimbelCell", for: indexPath) as! ProfileBimbelTableViewCell
+            cell.statusBimbel.textColor = #colorLiteral(red: 1, green: 0.5843137255, blue: 0, alpha: 1)
+            let name = (tutor?.value(forKey: "tutorFirstName") as! String) + " " + (tutor?.value(forKey: "tutorLastName") as! String)
+            let age = tutor?.value(forKey: "tutorBirthDate") as! Date
+            let status = ("Status: " + (jobStatus ?? ""))
+            cell.setView(image: "school", name: name, jam: age.toYear(), status: status)
+            return cell
+        }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:Int){
+            if keyValue.value == 0{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderTestTableViewCellID", for: indexPath) as! HeaderTestTableViewCell
+                cell.setCell(text: "Interview Schedule")
+                return cell
+            }else if keyValue.value == 1{
+                
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AddTestButtonTableViewCellID", for: indexPath) as! AddTestButtonTableViewCell
+                cell.setInterface()
+                cell.delegate = self
+                return cell
+                
+            }else{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ContentTestTableViewCellID", for: indexPath) as! ContentTestTableViewCell
+                cell.date = self.day
+                cell.time = self.time
+                cell.tableView.reloadData()
+                return cell
+            }
+        }else if let keyValue = dataArray[indexPath.row] as? Bool{
+            if keyValue == true{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "SeeDetailTableViewCellID", for: indexPath) as! SeeDetailTableViewCell
+                cell.jobDetailDelegate = self
+                cell.setCell(titleButton: "See Teacher Profile")
+                return cell
+            }else{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "submitCell", for: indexPath) as! SubmitTableViewCell
+                cell.contentDelegate = self
+                cell.setCell(button: "Submit")
+                return cell
+            }
+        }
+        return UITableViewCell()
+    }
+    
+    
 }

@@ -37,6 +37,17 @@ class DetailTestViewController: BaseViewController {
     }
 }
 extension DetailTestViewController{
+    private func setupData() {
+        dataArray.removeAll()
+        dataArray.append(course)
+        dataArray.append(true)
+        let address = (course?.value(forKey: "courseAddress") as! String)
+        dataArray.append(("Address",address,0))
+        let testReq = (applicant?.value(forKey: "testRequirement") as! String)
+        dataArray.append(("Choose Test Schedule","Please select one of the tet schedule","Test Requirement",testReq,"Request New Schedule"))
+        dataArray.append(false)
+    }
+    
     private func queryJob() {
         let pred = NSPredicate(format: "recordID = %@", CKRecord.ID(recordName: jobReference.recordID.recordName))
         let query = CKQuery(recordType: "Job", predicate: pred)
@@ -68,15 +79,8 @@ extension DetailTestViewController{
     
     private func updateToDatabase(status:String, completion : @escaping (Bool) -> Void) {
         if let record = applicant{
-            record["courseName"] = applicant?.value(forKey: "courseName") as! String
-            record["tutorID"] = applicant?.value(forKey: "tutorID") as! CKRecord.Reference
-            record["jobID"] = self.jobReference
-            record["testDay"] = applicant?.value(forKey: "testDay") as! [String]
-            record["testStartHour"] = applicant?.value(forKey: "testStartHour") as! [String]
-            record["testEndHour"] = applicant?.value(forKey: "testEndHour") as! [String]
-            record["testRequirement"] = applicant?.value(forKey: "testRequirement") as! String
             record["status"] = status
-            
+            //Schedule
             self.database.save(record, completionHandler: {returnedRecord, error in
                 DispatchQueue.main.async {
                     if error != nil {
@@ -90,22 +94,11 @@ extension DetailTestViewController{
         
     }
     
-    private func setupData() {
-        dataArray.removeAll()
-        dataArray.append(course)
-        dataArray.append(true)
-        let address = (course?.value(forKey: "courseAddress") as! String)
-        dataArray.append(("Address",address,0))
-        let testReq = (applicant?.value(forKey: "testRequirement") as! String)
-        dataArray.append(("Choose Test Schedule","Please select one of the tet schedule","Test Requirement",testReq,"Request New Schedule"))
-        dataArray.append(false)
-    }
-    
     private func acceptAlert() {
         let confirmAlert = UIAlertController(title: "Accept the Test", message: "Are You Sure Want to Accept?", preferredStyle: UIAlertController.Style.alert)
         
         confirmAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
-            self.updateToDatabase(status: "Waiting for Test") { (res) in
+            self.updateToDatabase(status: "Waiting for Your Approval") { (res) in
                 if res == true{
                     let destVC = ResultViewController()
                     destVC.fromID = 1
@@ -198,9 +191,9 @@ extension DetailTestViewController: UITableViewDataSource,UITableViewDelegate{
         }else if let keyValue = dataArray[indexPath.row] as? (key:String, hint:String, anotherKey:String, content:String, button:String){
             let cell = tableView.dequeueReusableCell(withIdentifier: interviewSchedule, for: indexPath) as! ActivityTableViewCell
             cell.day = applicant?.value(forKey: "testDay") as! [String]
-            cell.scheduleStart = applicant?.value(forKey: "testStartHour") as! [String]
-            cell.scheduleEnd = applicant?.value(forKey: "testEndHour") as! [String]
+            cell.scheduleTime = applicant?.value(forKey: "testTime") as! [String]
             cell.setCell(text: keyValue.key, hint: keyValue.hint, anotherText: keyValue.anotherKey, equipment: keyValue.content, button: keyValue.button)
+            cell.activityDelegate = self
             return cell
         }else if let keyValue = dataArray[indexPath.row] as? Bool{
             if keyValue == true{

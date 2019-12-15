@@ -81,7 +81,7 @@ extension SetupSkillViewController: UITableViewDelegate, UITableViewDataSource{
                 return cell
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "submitCell", for: indexPath) as! SubmitTableViewCell
-                cell.setInterface()
+                
                 return cell
             }
         }else {
@@ -91,7 +91,7 @@ extension SetupSkillViewController: UITableViewDelegate, UITableViewDataSource{
                 return cell
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "submitCell", for: indexPath) as! SubmitTableViewCell
-                cell.setInterface()
+                
                 return cell
             }
         }

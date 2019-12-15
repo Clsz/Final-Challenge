@@ -63,21 +63,20 @@ extension ProfileViewController{
         let token = CKUserData.shared.getToken()
         let pred = NSPredicate(format: "tutorEmail == %@", token)
         let query = CKQuery(recordType: "Tutor", predicate: pred)
-       
+        
         database.perform(query, inZoneWith: nil) { (records, error) in
             guard let record = records else {return}
-            if record.count > 0 {
+            
             self.tutors = record[0]
             
             DispatchQueue.main.async {
-                self.cellDelegate()
                 self.queryEducation()
                 self.queryLanguage()
                 self.queryExperience()
             }
         }
-        }
     }
+    
     
     private func queryEducation() {
         let education = (tutors?.value(forKey: "educationID") as! CKRecord.Reference)
@@ -131,6 +130,22 @@ extension ProfileViewController{
             self.tableView.reloadData()
         }
         
+    }
+    
+    private func checkUniversity() -> String{
+        let grade = education?.value(forKey: "grade") as! [String]
+        let schoolName = education?.value(forKey: "schoolName") as! [String]
+        var university:String = ""
+        var id = 0
+        
+        for i in grade{
+            id += 1
+            if i == "University"{
+                id -= 1
+                university = schoolName[id]
+            }
+        }
+        return university
     }
     
 }
@@ -289,22 +304,6 @@ extension ProfileViewController:UITableViewDataSource, UITableViewDelegate{
             }
         }
         return UITableViewCell()
-    }
-    
-    private func checkUniversity() -> String{
-        let grade = education?.value(forKey: "grade") as! [String]
-        let schoolName = education?.value(forKey: "schoolName") as! [String]
-        var university:String = ""
-        var id = 0
-        
-        for i in grade{
-            id += 1
-            if i == "University"{
-                id -= 1
-                university = schoolName[id]
-            }
-        }
-        return university
     }
     
 }

@@ -19,8 +19,7 @@ class ActivityTableViewCell: UITableViewCell {
     @IBOutlet weak var viewEquipment: UIView!
     var activityDelegate:ActivityProtocol?
     var day:[String] = []
-    var scheduleStart:[String] = []
-    var scheduleEnd:[String] = []
+    var scheduleTime:[String] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -64,18 +63,18 @@ extension ActivityTableViewCell:UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "dsCell", for: indexPath) as! DetailScheduleTableViewCell
-//        cell.jadwalView.layer.borderWidth = 3
-//        cell.jadwalView.layer.borderColor =
+        //        cell.jadwalView.layer.borderWidth = 3
+        //        cell.jadwalView.layer.borderColor =
         cell.backgroundColor = .white
-         cell.jadwalView.layer.cornerRadius = 15
-         cell.jadwalView.layer.masksToBounds = true
+        cell.jadwalView.layer.cornerRadius = 15
+        cell.jadwalView.layer.masksToBounds = true
         cell.jadwalView.backgroundColor = .white
         cell.dayLabel.textColor = #colorLiteral(red: 0.2666666667, green: 0.2666666667, blue: 0.2666666667, alpha: 1)
         cell.scheduleLabel.textColor = #colorLiteral(red: 0.2666666667, green: 0.2666666667, blue: 0.2666666667, alpha: 1)
-         
-         let schedule = "\(scheduleStart[indexPath.row]) " + " - " + "\(scheduleEnd[indexPath.row]) "
-         cell.setView(day: day[indexPath.row], time: schedule)
-         return cell
+        
+        let schedule = "\(scheduleTime[indexPath.row])"
+        cell.setView(day: day[indexPath.row], time: schedule)
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

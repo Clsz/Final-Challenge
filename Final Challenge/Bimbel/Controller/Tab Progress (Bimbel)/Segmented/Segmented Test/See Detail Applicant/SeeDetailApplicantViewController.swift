@@ -1,42 +1,43 @@
 //
-//  ApplicantProfileViewController.swift
+//  SeeDetailApplicantViewController.swift
 //  Final Challenge
 //
-//  Created by Muhammad Reynaldi on 12/12/19.
+//  Created by Muhammad Reynaldi on 15/12/19.
 //  Copyright © 2019 12. All rights reserved.
 //
 
 import UIKit
 import CloudKit
 
-class ApplicantProfileViewController: BaseViewController {
+class SeeDetailApplicantViewController: BaseViewController {
     
     @IBOutlet var tableView: UITableView!
     let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
     var dataArray:[Any?] = []
-    var tutorReference:CKRecord.Reference!
     var jobStatus:String?
     var tutor:CKRecord?
     var education:CKRecord?
     var language:CKRecord?
     var experience:CKRecord?
-    var applicant:CKRecord?
     var isLoadedEducation:Bool?
     var isLoadedLanguage:Bool?
     var isLoadedExperience:Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        queryTutor()
         registerCell()
+        self.queryEducation()
+        self.queryLanguage()
+        self.queryExperience()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Applicant Profile")
+        self.tableView.reloadData()
     }
     
 }
-extension ApplicantProfileViewController{
+extension SeeDetailApplicantViewController{
     private func setupData() {
         dataArray.removeAll()
         dataArray.append("ALL INFORMATION ABOUT YOUR APPLICANT")
@@ -48,23 +49,6 @@ extension ApplicantProfileViewController{
         dataArray.append(("Skill",skill,1))
         dataArray.append(("Language",2))
         dataArray.append(("Experience",-1))
-        dataArray.append(true)
-    }
-    
-    private func queryTutor() {
-        let pred = NSPredicate(format: "recordID == %@", CKRecord.ID(recordName: tutorReference.recordID.recordName))
-        let query = CKQuery(recordType: "Tutor", predicate: pred)
-        
-        database.perform(query, inZoneWith: nil) { (records, error) in
-            guard let record = records else {return}
-            self.tutor = record[0]
-            
-            DispatchQueue.main.async {
-                self.queryEducation()
-                self.queryLanguage()
-                self.queryExperience()
-            }
-        }
     }
     
     private func queryEducation() {
@@ -120,72 +104,9 @@ extension ApplicantProfileViewController{
         }
         
     }
-    
-    private func updateToDatabase(status:String, completion : @escaping (Bool) -> Void) {
-        if let record = applicant{
-            record["status"] = status
-            self.database.save(record, completionHandler: {returnedRecord, error in
-                DispatchQueue.main.async {
-                    if error != nil {
-                        self.showAlert(title: "Error", message: "Cannot update :(")
-                    } else {
-                        completion(true)
-                    }
-                }
-            })
-        }
-        
-    }
-    
-    private func acceptAlert() {
-        let confirmAlert = UIAlertController(title: "Accept the Teacher?", message: "Are you sure you want to accept this Teacher?", preferredStyle: UIAlertController.Style.alert)
-        
-        confirmAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
-            self.updateToDatabase(status: "Waiting for Your Test Schedule") { (res) in
-                if res == true{
-                    let destVC = ResultViewController()
-                    destVC.fromID = 1
-                    self.navigationController?.pushViewController(destVC, animated: true)
-                }
-            }
-        }))
-        
-        confirmAlert.addAction(UIAlertAction(title: "No", style: .destructive, handler: { (action: UIAlertAction!) in }))
-        
-        present(confirmAlert, animated: true, completion: nil)
-    }
-    
-    private func rejectAlert() {
-        let confirmAlert = UIAlertController(title: "Decline the Teacher?", message: "Are you sure you want to decline this Teacher?", preferredStyle: UIAlertController.Style.alert)
-        
-        confirmAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
-            self.updateToDatabase(status: "Rejected") { (res) in
-                if res == true{
-                    let destVC = ResultViewController()
-                    destVC.fromID = 4
-                    self.navigationController?.pushViewController(destVC, animated: true)
-                }
-            }
-        }))
-        
-        confirmAlert.addAction(UIAlertAction(title: "No", style: .destructive, handler: { (action: UIAlertAction!) in
-            
-        }))
-        
-        present(confirmAlert, animated: true, completion: nil)
-    }
-    
+
 }
-extension ApplicantProfileViewController:ActivityProcess{
-    func accept() {
-        self.acceptAlert()
-    }
-    
-    func reject() {
-        self.rejectAlert()
-    }
-}
-extension ApplicantProfileViewController:UITableViewDataSource, UITableViewDelegate{
+extension SeeDetailApplicantViewController:UITableViewDataSource, UITableViewDelegate{
     private func cellDelegate(){
         tableView.dataSource = self
         tableView.delegate = self
@@ -197,7 +118,6 @@ extension ApplicantProfileViewController:UITableViewDataSource, UITableViewDeleg
         tableView.register(UINib(nibName: "AddressTableViewCell", bundle: nil), forCellReuseIdentifier: "addressCell")
         tableView.register(UINib(nibName: "AnotherContentTableViewCell", bundle: nil), forCellReuseIdentifier: "AnotherContentTableViewCellID")
         tableView.register(UINib(nibName: "ContentTableViewCell", bundle: nil), forCellReuseIdentifier: "ContentTableViewCellID")
-        tableView.register(UINib(nibName: "FooterActivityTableViewCell", bundle: nil), forCellReuseIdentifier: "FooterActivityTableViewCellID")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -212,10 +132,16 @@ extension ApplicantProfileViewController:UITableViewDataSource, UITableViewDeleg
             return cell
         }else if indexPath.row == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "profileBimbelCell", for: indexPath) as! ProfileBimbelTableViewCell
-            cell.statusBimbel.textColor = #colorLiteral(red: 1, green: 0.5843137255, blue: 0, alpha: 1)
             let name = (tutor?.value(forKey: "tutorFirstName") as! String) + " " + (tutor?.value(forKey: "tutorLastName") as! String)
             let age = tutor?.value(forKey: "tutorBirthDate") as! Date
             let status = ("Status: " + (jobStatus ?? ""))
+            if status == "Status: Accepted"{
+                cell.statusBimbel.textColor = #colorLiteral(red: 0.2980392157, green: 0.8509803922, blue: 0.3921568627, alpha: 1)
+            }else if status == "Status: Rejected"{
+                cell.statusBimbel.textColor = #colorLiteral(red: 1, green: 0.3333333333, blue: 0.2980392157, alpha: 1)
+            }else{
+                cell.statusBimbel.textColor = #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)
+            }
             cell.setView(image: "school", name: name, jam: age.toYear(), status: status)
             return cell
         }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:String, code:Int){
@@ -271,11 +197,6 @@ extension ApplicantProfileViewController:UITableViewDataSource, UITableViewDeleg
                 cell.setCell(text: keyValue.key, button: "")
                 return cell
             }
-        }else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "FooterActivityTableViewCellID", for: indexPath) as! FooterActivityTableViewCell
-            cell.setCell(accept: "Accept", reject: "Reject")
-            cell.footerDelegate = self
-            return cell
         }
         return UITableViewCell()
     }

@@ -137,5 +137,13 @@ class CKUserData {
     func getToken() -> String{
         return UserDefaults.standard.string(forKey: "token") ?? ""
     }
+    
+    func saveOnboardingStatus(status:String) {
+        UserDefaults.standard.set(status, forKey: "isOnBoard")
+    }
+    
+    func getOnBoardingStatus() -> String {
+        return UserDefaults.standard.string(forKey: "isOnBoard") ?? ""
+    }
 }
 

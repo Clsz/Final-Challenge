@@ -149,3 +149,11 @@ protocol PassSubjectToDetails{
 protocol SendSchedule {
     func sendTeachingSchedule(day:[String], startHour:[String], endHour:[String])
 }
+
+protocol AddInterviewSchedule{
+    func addScheduleTapped()
+}
+
+protocol SendInterview{
+    func sendInterviewSchedule(day:[String], time:[String])
+}
