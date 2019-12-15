@@ -17,9 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         UITabBar.appearance().tintColor = ConstantManager.mainColor
 //        //Penting nih
-        UserDefaults.standard.set("multilanguage@gmail.com", forKey: "token")
+//        UserDefaults.standard.set("multilanguage@gmail.com", forKey: "token")
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        let rv = SegmentedBimbelViewController()
+        let rv = SetupPersonalViewController()
         let navigationController = UINavigationController(rootViewController: rv)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

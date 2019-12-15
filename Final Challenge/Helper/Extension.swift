@@ -227,3 +227,12 @@ extension CKRecord.ID {
         return CKRecord.ID(recordName: string)
     }
 }
+
+extension CKAsset {
+    func toUIImage() -> UIImage? {
+        if let data = NSData(contentsOf: self.fileURL!) {
+            return UIImage(data: data as Data)
+        }
+        return nil
+    }
+}

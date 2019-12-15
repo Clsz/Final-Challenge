@@ -120,7 +120,7 @@ extension BimbelProfileViewController:UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: header, for: indexPath) as! TitleTableViewCell
-            cell.setCell(image: "", name: "Ming Ho", university: "Binus", age: 10)
+//            cell.setCell(image: "", name: "Ming Ho", university: "Binus", age: 10)
             
             //GENERATE DATANYA HEADER
             
