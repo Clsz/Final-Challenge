@@ -25,8 +25,8 @@
                         <textInputTraits key="textInputTraits" textContentType="street-address"/>
                     </textField>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DOT-dg-5WH">
-                        <rect key="frame" x="307" y="28" width="87" height="30"/>
-                        <state key="normal" title="Edit Address">
+                        <rect key="frame" x="304" y="28" width="90" height="30"/>
+                        <state key="normal" title="Edit Personal">
                             <color key="titleColor" red="0.10980392160000001" green="0.3921568627" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                         <connections>

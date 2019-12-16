@@ -14,9 +14,9 @@ class SetupPersonalViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     let hint = "HintTableViewCellID"
     let detailProfile = "SetupPersonalTableViewCellID"
-    var selectedBirthDate: String?
     var toolBar = UIToolbar()
     var pickerBirthDate = UIDatePicker()
+    var photoPicker = UIImagePickerController()
     var dob:Date?
     var firstName:String?
     var lastName:String?
@@ -48,7 +48,27 @@ extension SetupPersonalViewController{
         self.updateUser(name: cell.nameTF.text ?? "", age: cell.ageTF.text ?? "", address: cell.addressTF.text ?? "")
     }
     
+    fileprivate func createAsset(data: Data) -> CKAsset? {
+        
+        var returnAsset: CKAsset? = nil
+        
+        let tempStr = ProcessInfo.processInfo.globallyUniqueString
+        let filename = "\(tempStr)_file.dat"
+        let baseURL = URL(fileURLWithPath: NSTemporaryDirectory())
+        let fileURL = baseURL.appendingPathComponent(filename, isDirectory: false)
+        
+        do {
+            try data.write(to: fileURL, options: [.atomicWrite])
+            returnAsset = CKAsset(fileURL: fileURL)
+        } catch {
+            print("Error creating asset: \(error)")
+        }
+        
+        return returnAsset
+    }
+    
     func queryTutor() {
+        //        self.showLoading()
         let token = CKUserData.shared.getToken()
         let pred = NSPredicate(format: "tutorEmail == %@", token)
         let query = CKQuery(recordType: "Tutor", predicate: pred)
@@ -60,13 +80,23 @@ extension SetupPersonalViewController{
                 DispatchQueue.main.async {
                     self.cellDelegate()
                     self.tableView.reloadData()
+                    //                    self.hideLoading()
                 }
             }
         }
     }
     
     func updateUser(name:String, age:String, address:String){
+       
+        
         if let record = tutors{
+            let index = IndexPath(row: 0, section: 0)
+            let cell = tableView.cellForRow(at: index) as! SetupPersonalTableViewCell
+            
+            let tempImg = tutors?["tutorProfileImage"]  as?  CKAsset
+            let newImageData = cell.imageProfile.image?.jpegData(compressionQuality: 0.00000000000000001)
+            let imageData = createAsset(data: newImageData!)
+            cell.imageProfile.image =  tempImg?.toUIImage()
             if fullNames?.isEmpty == false{
                 let first = arrName?[0] ?? ""
                 let second = arrName?[1] ?? ""
@@ -75,6 +105,7 @@ extension SetupPersonalViewController{
             }
             record["tutorAddress"] = address
             record["tutorBirthDate"] = dob ?? ""
+            record["tutorProfileImage"] = imageData
             
             
             self.database.save(record, completionHandler: {returnRecord, error in
@@ -111,6 +142,7 @@ extension SetupPersonalViewController:BirthProtocol{
 
 extension SetupPersonalViewController:PhotoProtocol{
     func photoTapped() {
+        createImagePicker()
     }
     
     
@@ -186,59 +218,40 @@ extension SetupPersonalViewController{
     }
 }
 
-extension SetupPersonalViewController:UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+extension SetupPersonalViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
-    @objc func imageTapped(tapGesture: UITapGestureRecognizer){
-        let tappedImage = tapGesture.view as! UIImageView
+    private func createImagePicker() {
+        photoPicker.delegate = self
+//        photoPicker.sourceType = UIImagePickerController.SourceType.photoLibrary
         
-        //Codingan untuk Image Picker Controller
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.delegate = self
         
         let actionSheet = UIAlertController(title: "Photo Source", message: "Choose your photo evidence ", preferredStyle: .actionSheet)
         
-        actionSheet.addAction(.init(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
-            imagePickerController.sourceType = .camera
-            self.present(imagePickerController, animated: true, completion: nil)
-        }))
-        actionSheet.addAction(.init(title: "Photo Library", style: .default, handler: { (action:UIAlertAction) in
-            imagePickerController.sourceType = .photoLibrary
-            self.present(imagePickerController, animated: true, completion: nil)
-        }))
-        actionSheet.addAction(.init(title: "Cancel", style: .cancel, handler: nil))
+                actionSheet.addAction(.init(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
+                    self.photoPicker.sourceType = .camera
+                    self.present(self.photoPicker, animated: true, completion: nil)
+                }))
+                actionSheet.addAction(.init(title: "Photo Library", style: .default, handler: { (action:UIAlertAction) in
+                    self.photoPicker.sourceType = .photoLibrary
+                    self.present(self.photoPicker, animated: true, completion: nil)
+                }))
+                actionSheet.addAction(.init(title: "Cancel", style: .cancel, handler: nil))
         
-        self.present(actionSheet, animated: true, completion: nil)
+                self.present(actionSheet, animated: true, completion: nil)
+//        self.present(photoPicker, animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let index = IndexPath(row: 0, section: 0)
         let cell = tableView.cellForRow(at: index) as! SetupPersonalTableViewCell
         
-        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-        cell.imageProfile.image = image
-        picker.dismiss(animated: true, completion: nil)
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            cell.imageProfile.image = image
+        }
+        self.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-    fileprivate func createAsset(data: Data) -> CKAsset? {
-        
-        var returnAsset: CKAsset? = nil
-        
-        let tempStr = ProcessInfo.processInfo.globallyUniqueString
-        let filename = "\(tempStr)_file.dat"
-        let baseURL = URL(fileURLWithPath: NSTemporaryDirectory())
-        let fileURL = baseURL.appendingPathComponent(filename, isDirectory: false)
-        
-        do {
-            try data.write(to: fileURL, options: [.atomicWrite])
-            returnAsset = CKAsset(fileURL: fileURL)
-        } catch {
-            print("Error creating asset: \(error)")
-        }
-        
-        return returnAsset
-    }
+           picker.dismiss(animated: true, completion: nil)
+       }
 }

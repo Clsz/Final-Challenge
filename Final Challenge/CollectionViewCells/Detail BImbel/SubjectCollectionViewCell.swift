@@ -13,7 +13,6 @@ class SubjectCollectionViewCell: UICollectionViewCell {
     
     func setView(subject:String){
         self.labelSubjek.text = subject
-        
     }
     
     override func awakeFromNib() {

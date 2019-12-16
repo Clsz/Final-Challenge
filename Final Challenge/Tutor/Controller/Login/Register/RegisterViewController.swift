@@ -110,12 +110,13 @@ extension RegisterViewController: UITextFieldDelegate {
         }else if emailTF.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
             return textError.text = "Please enter your email address"
         }else if emailTF.text?.isValidEmail() == false {
-            return textError.text = "Invalid format"
+            return textError.text = "Invalid email format"
         }else if passwordTF.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
             return textError.text = "Please enter your password"
         }else if passwordTF.text?.isValidPassword() == false {
             return textError.text = "Password must contain 6 characters. Combination of uppercase letter, lowercase letter, and number"
         }else {
+            textError.isHidden = true
             self.showLoading()
             let firstName = firstNameTF.text!
             let lastName = lastNameTF.text!

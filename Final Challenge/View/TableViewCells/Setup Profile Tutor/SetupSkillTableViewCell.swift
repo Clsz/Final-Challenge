@@ -7,27 +7,26 @@
 //
 
 import UIKit
+import CloudKit
 
 class SetupSkillTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var choosenCV: UICollectionView!
     @IBOutlet weak var hardSkillCV: UICollectionView!
     @IBOutlet weak var softSkillCV: UICollectionView!
     let skillCell = "SkillCollectionViewCellID"
-    var selectedHardSkills:[String] = []
-    var selectedSoftSkills:[String] = []
-    var selectedChoosenSkills:[String] = []
-//    var selected:[Int] = []
-    var delegate:refreshTableProtocol?
+    var selectedChoosenSkills:[(key:Int, value:String)] = [(key:Int,value:String)]()
+    var tutors:CKRecord?
+    let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
+    var sendFlagDelegate:SendFlag?
+    var reloadDelegate:ChooseSkillProtocol?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         registerCell()
         cellDelegate()
+        flushArray()
         softSkillCV.reloadData()
         hardSkillCV.reloadData()
-        softSkillCV.allowsMultipleSelection = true
-        hardSkillCV.allowsMultipleSelection = true
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -36,30 +35,40 @@ class SetupSkillTableViewCell: UITableViewCell {
     }
     
 }
-
+extension SetupSkillTableViewCell{
+    private func flushArray() {
+        selectedChoosenSkills.removeAll()
+    }
+    
+}
+extension SetupSkillTableViewCell:ChooseSkillProtocol{
+    func passData(dataSkills: [(key: Int, value: String)]) {
+        self.selectedChoosenSkills = dataSkills
+    }
+    
+    func reloadCV() {
+        self.hardSkillCV.reloadData()
+        self.softSkillCV.reloadData()
+    }
+}
 extension SetupSkillTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func cellDelegate() {
         softSkillCV.dataSource = self
         softSkillCV.delegate = self
         hardSkillCV.dataSource = self
         hardSkillCV.delegate = self
-        choosenCV.dataSource = self
-        choosenCV.delegate = self
     }
     
     func registerCell() {
         softSkillCV.register(UINib(nibName: "SkillCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: skillCell)
         hardSkillCV.register(UINib(nibName: "SkillCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: skillCell)
-        choosenCV.register(UINib(nibName: "SkillCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: skillCell)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if (collectionView == self.hardSkillCV){
             return ConstantManager.hardSkill.count
-        } else if (collectionView == self.softSkillCV){
+        } else{
             return ConstantManager.softSkill.count
-        } else {
-            return selectedChoosenSkills.count
         }
     }
     
@@ -67,22 +76,17 @@ extension SetupSkillTableViewCell: UICollectionViewDelegate, UICollectionViewDat
         if (collectionView == self.hardSkillCV) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: skillCell, for: indexPath) as! SkillCollectionViewCell
             
-            cell.labelSkill.text = ConstantManager.hardSkill[indexPath.row]
+            let data:(key:Int,value:String) = ConstantManager.hardSkill[indexPath.row]
+            
+            cell.labelSkill.text = data.value
             
             return cell
-        } else if (collectionView == self.softSkillCV){
+        } else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: skillCell, for: indexPath) as! SkillCollectionViewCell
             
-            cell.labelSkill.text = ConstantManager.softSkill[indexPath.row]
+            let data:(key:Int,value:String) = ConstantManager.softSkill[indexPath.row]
             
-            return cell
-        } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: skillCell, for: indexPath) as! SkillCollectionViewCell
-            
-            cell.labelSkill.text = selectedChoosenSkills[indexPath.row]
-            cell.layer.backgroundColor = #colorLiteral(red: 0.1137254902, green: 0.3921568627, blue: 0.6666666667, alpha: 1)
-            cell.gambarSkill.image = #imageLiteral(resourceName: "tick")
-            cell.labelSkill.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            cell.labelSkill.text = data.value
             
             return cell
         }
@@ -93,25 +97,49 @@ extension SetupSkillTableViewCell: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView == self.softSkillCV {
-            let index = collectionView.indexPathsForSelectedItems
-            for i in index!{
-                selectedChoosenSkills.insert(ConstantManager.softSkill[indexPath.row], at: 0)
-                ConstantManager.softSkill.remove(at: i.row)
-                
-            }
-            collectionView.reloadData()
-            choosenCV.reloadData()
-        } else {
-            let index = collectionView.indexPathsForSelectedItems
-            for i in index!{
-                 selectedChoosenSkills.insert(ConstantManager.hardSkill[indexPath.row], at: 0)
-                ConstantManager.hardSkill.remove(at: i.row)
-            }
-            collectionView.reloadData()
-            choosenCV.reloadData()
+        if selectedChoosenSkills.count == 0{
+            sendFlagDelegate?.sendFlag(flag: true)
+            
         }
+        if collectionView == self.softSkillCV {
+            selectedChoosenSkills.insert(ConstantManager.softSkill[indexPath.row], at: 0)
+            ConstantManager.softSkill.remove(at: indexPath.row)
+            reloadDelegate?.reloadCV()
+            collectionView.reloadData()
+        } else if collectionView == self.hardSkillCV{
+            selectedChoosenSkills.insert(ConstantManager.hardSkill[indexPath.row], at: 0)
+            ConstantManager.hardSkill.remove(at: indexPath.row)
+            reloadDelegate?.reloadCV()
+            collectionView.reloadData()
+            
+        }
+//        reloadDelegate?.passData(dataSkills: selectedChoosenSkills)
     }
     
-    
 }
+//extension SetupSkillTableViewCell{
+//    private func getDataCustomCell() {
+//        let index = IndexPath(row: 0, section: 0)
+//        let cell = tableView.cellForRow(at: index) as! SetupPersonalTableViewCell
+//
+//        fullNames = cell.nameTF.text ?? ""
+//        arrName = fullNames?.components(separatedBy: " ")
+//
+//        self.updateUser(name: cell.nameTF.text ?? "", age: cell.ageTF.text ?? "", address: cell.addressTF.text ?? "")
+//    }
+//
+//    func updateUser(skill:[String]){
+//           if let record = tutors{
+//               record["tutorSkills"] = selectedChoosenSkills
+//
+//
+//               self.database.save(record, completionHandler: {returnRecord, error in
+//                   if error != nil
+//                   {
+//                       print("error")
+//                   } else{
+//                   }
+//               })
+//           }
+//       }
+//}

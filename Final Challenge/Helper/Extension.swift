@@ -36,12 +36,12 @@ extension UIView{
     
     func setBorder() {
         self.layer.borderWidth = 3
-        self.layer.borderColor = #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
+        self.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     }
     
     func setBorderBlue() {
-        self.layer.borderWidth = 3
-        self.layer.borderColor = #colorLiteral(red: 0.3254901961, green: 0.7803921569, blue: 0.9411764706, alpha: 1)
+        self.layer.borderWidth = 1
+        self.layer.borderColor = #colorLiteral(red: 0, green: 0.399238348, blue: 0.6880209446, alpha: 1)
     }
     
     func outerRound() {
@@ -225,5 +225,14 @@ extension CKRecord.ID {
         guard let _ = string.data(using: .ascii, allowLossyConversion: false) else { return nil }
         guard string.count > 0 && string.count < 255 else { return nil }
         return CKRecord.ID(recordName: string)
+    }
+}
+
+extension CKAsset {
+    func toUIImage() -> UIImage? {
+        if let data = NSData(contentsOf: self.fileURL!) {
+            return UIImage(data: data as Data)
+        }
+        return nil
     }
 }

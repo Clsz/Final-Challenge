@@ -9,34 +9,27 @@
 import UIKit
 
 class TeachingSchedulesViewController: BaseViewController {
-   
+    
     
     @IBOutlet weak var daysCV: UICollectionView!
     @IBOutlet weak var startTF: UITextField!
     @IBOutlet weak var endTF: UITextField!
     @IBOutlet weak var applyButton: UIButton!
-    lazy var jobDetailVC = JobDetailsViewController()
-    
-    
-//    var contentDelegate:sendLocation?
-//    var contDelegate:SubjectProtocol?
-    var selectedIndex:[Int] = []
-    var selectedDays:[String] = []
     var toolBar = UIToolbar()
     var accessoryDoneButton: UIBarButtonItem!
     let accessoryToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
     let flexiblea = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-    var selectedStartYear: String?
-    var selectedEndYear: String?
+    var selectedStart: [String] = []
+    var selectedEnd: [String] = []
+    var selectedDays:[String] = []
     var pickerStart = UIDatePicker()
     var pickerEnd = UIDatePicker()
-    
-  
+    var sendSchedule:SendSchedule?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setInterface()
-        daysCV.delegate = self
         registerCell()
         cellDelegate()
         daysCV.reloadData()
@@ -69,12 +62,26 @@ class TeachingSchedulesViewController: BaseViewController {
     }
     
     @IBAction func applyTapped(_ sender: Any) {
-        //PROTOCOL
+        if daysCV.indexPathsForSelectedItems?.count != 0 && startTF.text?.isEmpty == false && endTF.text?.isEmpty == false{
+            getAllData()
+            sendSchedule?.sendTeachingSchedule(day: selectedDays, startHour: selectedStart, endHour: selectedEnd)
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
 }
 
 extension TeachingSchedulesViewController{
+    private func getAllData() {
+        if let data = daysCV.indexPathsForSelectedItems{
+            for i in data{
+                selectedDays.append(ConstantManager.day[i.row])
+            }
+        }
+        self.selectedStart.append(startTF.text ?? "")
+        self.selectedEnd.append(endTF.text ?? "")
+    }
+    
     private func createStartHour() {
         pickerStart.tag = 0
         pickerStart.datePickerMode = .time
@@ -129,48 +136,31 @@ extension TeachingSchedulesViewController{
         }
     }
 }
-
-
-
 extension TeachingSchedulesViewController:UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
-    
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+    private func registerCell() {
+        daysCV.register(UINib(nibName: "FilterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "filterCell")
     }
     
+    private func cellDelegate() {
+        daysCV.delegate = self
+        daysCV.dataSource = self
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return ConstantManager.day.count
+    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filterCell", for: indexPath) as! FilterCollectionViewCell
-        
-        
         cell.kotakFilter.layer.cornerRadius = 10
         cell.kotakFilter.layer.borderColor = #colorLiteral(red: 0.1098039216, green: 0.3921568627, blue: 0.6666666667, alpha: 1)
         cell.kotakFilter.layer.borderWidth = 1
-        if selectedIndex.contains(indexPath.row) {
-//            selectedDays.insert(ConstantManager.day[indexPath.row], at: 0)
-            cell.isSelected = true
-        }
-//        cell.labelFilter.text = ConstantManager.day[indexPath.row]
-        
+        cell.labelFilter.text = ConstantManager.day[indexPath.row]
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 182, height: 44)
-    }
-    
-    func cellDelegate() {
-        daysCV.delegate = self
-        daysCV.dataSource = self
-    }
-    
-    func registerCell() {
-        daysCV.register(UINib(nibName: "FilterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "filterCell")
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        //Append data days yang di select ke dalam array
     }
     
     func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {

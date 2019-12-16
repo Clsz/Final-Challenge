@@ -9,11 +9,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SetupSkillTableViewCellID" rowHeight="907" id="KGk-i7-Jjw" customClass="SetupSkillTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="907"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SetupSkillTableViewCellID" rowHeight="605" id="KGk-i7-Jjw" customClass="SetupSkillTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="605"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="414" height="907"/>
+                <rect key="frame" x="0.0" y="0.0" width="414" height="605"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="GdW-4N-fq7">
@@ -38,7 +38,7 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="200" id="f0P-dZ-aMR"/>
                         </constraints>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0zk-wJ-Zqe">
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="7" id="0zk-wJ-Zqe">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -60,29 +60,7 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="200" id="vJV-Ut-ggy"/>
                         </constraints>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5mw-4L-rn7">
-                            <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                    </collectionView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choosen Skills" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="apz-js-1bB">
-                        <rect key="frame" x="20" y="668" width="374" height="27"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="27" id="41Z-ko-EhQ"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="pU4-uN-Oe9">
-                        <rect key="frame" x="20" y="707" width="374" height="200"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="200" id="38h-0W-7zp"/>
-                        </constraints>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vKM-nb-Zsx">
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="7" id="5mw-4L-rn7">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -92,36 +70,29 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="hm8-n4-5aZ" firstAttribute="top" secondItem="GdW-4N-fq7" secondAttribute="bottom" constant="30" id="2sP-nM-Meh"/>
+                    <constraint firstAttribute="bottom" secondItem="dul-cp-jSf" secondAttribute="bottom" constant="1" id="4jG-bE-0Uc"/>
                     <constraint firstAttribute="trailing" secondItem="Xuy-oY-yD3" secondAttribute="trailing" constant="20" id="4r4-jk-Erj"/>
-                    <constraint firstAttribute="trailing" secondItem="pU4-uN-Oe9" secondAttribute="trailing" constant="20" id="6kF-Ho-EYr"/>
                     <constraint firstItem="dul-cp-jSf" firstAttribute="top" secondItem="Xuy-oY-yD3" secondAttribute="bottom" constant="12" id="96r-Fa-el9"/>
-                    <constraint firstItem="apz-js-1bB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="LyS-YM-Lna"/>
-                    <constraint firstAttribute="trailing" secondItem="apz-js-1bB" secondAttribute="trailing" constant="20" id="Pdz-iO-gFe"/>
                     <constraint firstAttribute="trailing" secondItem="GdW-4N-fq7" secondAttribute="trailing" id="Qih-5t-M14"/>
                     <constraint firstItem="BVU-5Y-m4c" firstAttribute="top" secondItem="hm8-n4-5aZ" secondAttribute="bottom" constant="12" id="ST1-bC-Iwf"/>
                     <constraint firstItem="dul-cp-jSf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="VPt-L2-VrA"/>
-                    <constraint firstItem="apz-js-1bB" firstAttribute="top" secondItem="dul-cp-jSf" secondAttribute="bottom" constant="64" id="Vqr-o4-bSx"/>
                     <constraint firstItem="Xuy-oY-yD3" firstAttribute="top" secondItem="BVU-5Y-m4c" secondAttribute="bottom" constant="30" id="Wjy-gz-uo6"/>
                     <constraint firstAttribute="trailing" secondItem="BVU-5Y-m4c" secondAttribute="trailing" constant="20" id="YPD-pc-svj"/>
-                    <constraint firstAttribute="bottom" secondItem="pU4-uN-Oe9" secondAttribute="bottom" id="f6Q-Iw-MEn"/>
                     <constraint firstAttribute="trailing" secondItem="hm8-n4-5aZ" secondAttribute="trailing" constant="20" id="k3E-9n-lMg"/>
                     <constraint firstAttribute="trailing" secondItem="dul-cp-jSf" secondAttribute="trailing" constant="20" id="lM2-lC-hhq"/>
                     <constraint firstItem="BVU-5Y-m4c" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="lbs-cL-aYt"/>
                     <constraint firstItem="GdW-4N-fq7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="mUL-A5-eMS"/>
-                    <constraint firstItem="pU4-uN-Oe9" firstAttribute="top" secondItem="apz-js-1bB" secondAttribute="bottom" constant="12" id="pfD-PU-JCg"/>
                     <constraint firstItem="hm8-n4-5aZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="q5z-PO-vdw"/>
                     <constraint firstItem="Xuy-oY-yD3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="sdX-xC-xCa"/>
-                    <constraint firstItem="pU4-uN-Oe9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="vCZ-va-qIL"/>
                     <constraint firstItem="GdW-4N-fq7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="xox-FG-bTd"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="choosenCV" destination="pU4-uN-Oe9" id="o7K-Ji-Dlj"/>
                 <outlet property="hardSkillCV" destination="BVU-5Y-m4c" id="IMf-OC-4SR"/>
                 <outlet property="softSkillCV" destination="dul-cp-jSf" id="qIj-Ob-977"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="83.370535714285708"/>
+            <point key="canvasLocation" x="137.68115942028987" y="-17.745535714285712"/>
         </tableViewCell>
     </objects>
 </document>

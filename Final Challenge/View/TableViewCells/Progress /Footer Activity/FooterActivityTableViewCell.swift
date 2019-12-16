@@ -45,4 +45,13 @@ extension FooterActivityTableViewCell{
         self.acceptButton.loginRound()
         self.rejectButton.loginRound()
     }
+    
+    func resultButtonAppear() {
+        self.acceptButton.titleLabel?.textColor = #colorLiteral(red: 0.5960784314, green: 0.5921568627, blue: 0.5921568627, alpha: 1)
+        self.rejectButton.titleLabel?.textColor = #colorLiteral(red: 0.5960784314, green: 0.5921568627, blue: 0.5921568627, alpha: 1)
+        self.acceptButton.isEnabled = false
+        self.rejectButton.isEnabled = false
+        self.acceptButton.backgroundColor = #colorLiteral(red: 0.937254902, green: 0.937254902, blue: 0.937254902, alpha: 1)
+        self.rejectButton.backgroundColor = #colorLiteral(red: 0.937254902, green: 0.937254902, blue: 0.937254902, alpha: 1)
+    }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 class SetupExperienceViewController: BaseViewController {
     
@@ -25,8 +26,16 @@ class SetupExperienceViewController: BaseViewController {
     let contentDrop = "AnotherDetailProfileTableViewCellID"
     let contentDate = "MoreDetailTableViewCellID"
     let footer = "FooterTableViewCellID"
-    var tutor:Tutor!
-    var experience:Experience!
+    var tutors:CKRecord?
+    var experiences:CKRecord?
+    var experienceReference:CKRecord.Reference!
+    let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
+    var arrExperienceType:[String] = []
+    var arrTitle:[String] = []
+    var arrCompany:[String] = []
+    var arrLocation:[String] = []
+    var arrStartYear:[String] = []
+    var arrEndYear:[String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +52,7 @@ class SetupExperienceViewController: BaseViewController {
     
     @IBAction func applyTapped(_ sender: Any) {
         getDataCustomCell()
+        createExperience()
     }
     
 }
@@ -55,27 +65,70 @@ extension SetupExperienceViewController{
     private func setupData() {
         dataArray.removeAll()
         dataArray.append(0)
-        dataArray.append(("Title","Contoh: iOS Developer",0))
-        dataArray.append(("Experience Type","Part Time",1))
+        dataArray.append(("Title","Example: iOS Developer",0))
+        dataArray.append(("Experience Type","Example: Part Time",1))
         dataArray.append(("Company","Example: Apple Developer Academy",0))
         dataArray.append(("Location","Enter your Location",0))
         dataArray.append(true)
     }
     
     private func getDataCustomCell() {
-        let index = IndexPath(row: 0, section: 0)
+        let index = IndexPath(row: 1, section: 0)
         let cell = tableView.cellForRow(at: index) as! DetailProfileTableViewCell
-        let index1 = IndexPath(row: 1, section: 0)
+        let index1 = IndexPath(row: 2, section: 0)
         let cell1 = tableView.cellForRow(at: index1) as! AnotherDetailProfileTableViewCell
-        let index2 = IndexPath(row: 2, section: 0)
+        let index2 = IndexPath(row: 3, section: 0)
         let cell2 = tableView.cellForRow(at: index2) as! DetailProfileTableViewCell
-        let index3 = IndexPath(row: 3, section: 0)
+        let index3 = IndexPath(row: 4, section: 0)
         let cell3 = tableView.cellForRow(at: index3) as! DetailProfileTableViewCell
-        let index4 = IndexPath(row: 4, section: 0)
+        let index4 = IndexPath(row: 5, section: 0)
         let cell4 = tableView.cellForRow(at: index4) as! MoreDetailTableViewCell
         
-        experience = Experience(cell.textField.text ?? "", cell1.textField.text ?? "", cell2.textField.text ?? "", cell3.textField.text ?? "", cell4.startTF.text ?? "", cell4.endTF.text ?? "")
-        tutor.tutorExperience.append(experience!)
+        self.arrExperienceType.append(cell.textField.text ?? "")
+        self.arrTitle.append(cell1.textField.text ?? "")
+        self.arrCompany.append(cell2.textField.text ?? "")
+        self.arrLocation.append(cell3.textField.text ?? "")
+        self.arrStartYear.append(cell4.startTF.text ?? "")
+        self.arrEndYear.append(cell4.endTF.text ?? "")
+    }
+    
+    private func createExperience(){
+        let newExperience = CKRecord(recordType: "Experience")
+        newExperience["jobType"] = arrExperienceType
+        newExperience["jobTitle"] = arrTitle
+        newExperience["jobCompanyName"] = arrCompany
+        newExperience["jobNameLocation"] = arrLocation
+        newExperience["jobStartYear"] = arrStartYear
+        newExperience["jobEndYear"] = arrEndYear
+        
+        database.save(newExperience) { (record, error) in
+            guard record != nil  else { return print("error", error as Any) }
+            self.updateExperience(recordLanguage: record!)
+            
+        }
+        
+    }
+    
+    
+    private func updateExperience(recordLanguage:CKRecord){
+        if let record = tutors{
+            record["experienceID"] = CKRecord.Reference.init(recordID: recordLanguage.recordID, action: .deleteSelf)
+            self.database.save(record, completionHandler: {returnRecord, error in
+                if error != nil{
+                    self.showAlert(title: "Error", message: "Update Error")
+                }else{ DispatchQueue.main.async {
+                    self.sendVC()
+                    }
+                }
+            })
+        }
+        
+    }
+    
+    private func sendVC() {
+        let vc = AdditionalExperienceViewController()
+        vc.tutors = self.tutors
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }
@@ -253,4 +306,3 @@ extension SetupExperienceViewController:UITableViewDataSource,UITableViewDelegat
         return UITableViewCell()
     }
 }
-

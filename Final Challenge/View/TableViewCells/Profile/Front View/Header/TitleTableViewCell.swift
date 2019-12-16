@@ -41,7 +41,7 @@ class TitleTableViewCell: UITableViewCell {
     
 }
 extension TitleTableViewCell{
-    func setCell(image:String, name:String, university:String, age:Int) {
+    func setCell(image:UIImage, name:String, university:String, age:Int) {
         self.nameLabel.text = name
         self.universityLabel.text = university
         self.ageLabel.text = String(age)
