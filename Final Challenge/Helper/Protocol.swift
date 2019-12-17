@@ -27,6 +27,10 @@ protocol BimbelProtocol{
     func logout()
 }
 
+protocol SkillProtocol {
+    func applySkillTapped()
+}
+
 protocol SendLocation {
     func sendIndex(arrIndex:[Int])
 }
@@ -65,6 +69,11 @@ protocol ExperienceProtocol {
     func startTapped()
     func endTapped()
     func dropExperience()
+}
+
+protocol BimbelPersonalProtocol {
+    func startTapped()
+    func closeTapped()
 }
 
 protocol BirthProtocol {

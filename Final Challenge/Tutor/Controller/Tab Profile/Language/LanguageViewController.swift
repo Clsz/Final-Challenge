@@ -42,7 +42,7 @@ class LanguageViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.delegate?.refreshData(withTutorModel: tutor)
+//        self.delegate?.refreshData(withTutorModel: tutor)
     }
     
 }

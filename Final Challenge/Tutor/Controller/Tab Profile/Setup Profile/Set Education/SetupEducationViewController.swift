@@ -34,7 +34,7 @@ class SetupEducationViewController: BaseViewController {
     var arrSchoolName:[String] = []
     var arrGrade:[String] = []
     var arrFOS:[String] = []
-    var arrGPA:[Double] = []
+    var arrGPA:[String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,7 +92,7 @@ extension SetupEducationViewController{
         self.arrSchoolName.append(cell.textField.text ?? "")
         self.arrGrade.append(cell1.textField.text ?? "")
         self.arrFOS.append(cell2.textField.text ?? "")
-        self.arrGPA.append(Double(cell3.textField.text ?? "") ?? 0.0)
+        self.arrGPA.append(cell3.textField.text ?? "")
     }
     
     private func createEducation(){

@@ -299,7 +299,7 @@ extension SetupExperienceViewController:UITableViewDataSource,UITableViewDelegat
             }
         }else if let _ = dataArray[indexPath.row] as? Bool{
             let cell = tableView.dequeueReusableCell(withIdentifier: contentDate, for: indexPath) as! MoreDetailTableViewCell
-            cell.setCell(startText: "Tanggal Mulai", endText: "Tanggal Berakhir", buttStart: "", buttEnd: "")
+            cell.setCell(startText: "Start Year", endText: "End Year", buttStart: "", buttEnd: "")
             cell.dateDelegate = self
             return cell
         }

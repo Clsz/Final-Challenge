@@ -25,6 +25,8 @@ class RegisterViewController: BaseViewController {
         super.viewDidLoad()
         setupView()
         setTextField()
+        self.tabBarController?.tabBar.isHidden = true
+        
     }
     
     @IBAction func eyeTapped(_ sender: Any) {

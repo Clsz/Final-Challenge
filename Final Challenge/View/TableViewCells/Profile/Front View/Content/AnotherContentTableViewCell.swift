@@ -41,8 +41,10 @@ class AnotherContentTableViewCell: UITableViewCell {
     @IBAction func buttonTapped(_ sender: Any) {
         if index == 2{
             contentDelegate?.languageTapped()
-        }else{
+        }else if index == 3{
             contentDelegate?.experienceTapped()
+        } else {
+            contentDelegate?.educationTapped()
         }
     }
     

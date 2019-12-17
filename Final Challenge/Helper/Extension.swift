@@ -41,7 +41,7 @@ extension UIView{
     
     func setBorderBlue() {
         self.layer.borderWidth = 1
-        self.layer.borderColor = #colorLiteral(red: 0, green: 0.399238348, blue: 0.6880209446, alpha: 1)
+        self.layer.borderColor = #colorLiteral(red: 0, green: 0.4, blue: 0.6862745098, alpha: 1)
     }
     
     func outerRound() {
@@ -192,6 +192,12 @@ extension Date{
         formatter.dateFormat = "dd/MM/yyyy"
         return formatter.string(from: self)
     }
+    
+    func toBirthString()->String{
+          let formatter = DateFormatter()
+          formatter.dateFormat = "dd MMMM yyyy"
+          return formatter.string(from: self)
+      }
     
     func toTitle()->String{
         let formatter = DateFormatter()

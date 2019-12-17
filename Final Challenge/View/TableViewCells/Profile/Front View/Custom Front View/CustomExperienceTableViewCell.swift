@@ -19,6 +19,12 @@ class CustomExperienceTableViewCell: UITableViewCell {
         self.name.text = name
         self.place.text = place
         self.date.text = date
+        setInterface()
+    }
+    
+    func setInterface(){
+        self.outerView.setBorder()
+        self.outerView.outerRound()
     }
     
     override func awakeFromNib() {
