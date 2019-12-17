@@ -18,14 +18,12 @@ class ListEducationViewController: BaseViewController {
     var dataSchoolName:[String] = []
     var dataGrade:[String] = []
     var dataFieldStudy:[String] = []
-    var dataStart:[Int] = []
-    var dataEnd:[Int] = []
-    var dataGpa:[Double] = []
-      weak var delegate: LanguageViewControllerDelegate?
+    var dataStart:[String] = []
+    var dataEnd:[String] = []
+    var dataGpa:[String] = []
+    weak var delegate: LanguageViewControllerDelegate?
     var listEducation = [CKRecord]()
     var tutors:CKRecord?
-    var education:Education?
-    var dataArray:[Education] = []
     let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
     
     
@@ -80,6 +78,9 @@ extension ListEducationViewController{
             self.dataSchoolName = i.value(forKey: "schoolName") as! [String]
             self.dataGrade = i.value(forKey: "grade") as! [String]
             self.dataFieldStudy = i.value(forKey: "fieldOfStudy") as! [String]
+            self.dataEnd = i.value(forKey: "endYear") as! [String]
+            self.dataGpa = i.value(forKey: "gpa") as! [String]
+            self.dataStart = i.value(forKey: "startYear") as! [String]
         }
     }
 }
@@ -100,12 +101,28 @@ extension ListEducationViewController:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CustomExperienceTableViewCell, for: indexPath) as! CustomExperienceTableViewCell
         
-        //        let fos = "Field of Study: \(dataFieldStudy[indexPath.row])"
-        
-        
         cell.setCell(name: dataSchoolName[indexPath.row] , place: dataGrade[indexPath.row], date: "Field of Study: \(dataFieldStudy[indexPath.row])")
-        
-        
-        return cell}
+
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let destVC = EducationViewController()
+        destVC.tutors = self.tutors
+        destVC.arrSchoolName = self.dataSchoolName
+        destVC.arrEnd = self.dataEnd
+        destVC.arrFOS = self.dataFieldStudy
+        destVC.arrGPA = self.dataGpa
+        destVC.arrStart = self.dataStart
+        destVC.arrGrade = self.dataGrade
+        destVC.schoolName = self.dataSchoolName[indexPath.row]
+        destVC.endYear = self.dataEnd[indexPath.row]
+        destVC.fos = self.dataFieldStudy[indexPath.row]
+        destVC.gpa = self.dataGpa[indexPath.row]
+        destVC.startYear = self.dataStart[indexPath.row]
+        destVC.grade = self.dataGrade[indexPath.row]
+        destVC.listEducation = self.listEducation
+        self.navigationController?.pushViewController(destVC, animated: true)
+    }
 }
 

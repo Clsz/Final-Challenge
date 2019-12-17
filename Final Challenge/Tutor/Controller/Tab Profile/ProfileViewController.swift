@@ -181,6 +181,7 @@ extension ProfileViewController:ProfileProtocol, LanguageViewControllerDelegate{
     
     func educationTapped() {
         let destVC = ListEducationViewController()
+        destVC.tutors = self.tutors
         
         destVC.delegate = self
         navigationController?.pushViewController(destVC, animated: true)

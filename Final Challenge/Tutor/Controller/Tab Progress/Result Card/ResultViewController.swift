@@ -12,9 +12,12 @@ class ResultViewController: UIViewController {
     
     @IBOutlet weak var imageResult: UIImageView!
     @IBOutlet weak var labelResult: UILabel!
+    @IBOutlet weak var labelResultDescription: UILabel!
+    @IBOutlet weak var button: UIButton!
     
     let imageAcc = UIImage(named: "Accepted")
     let imageDec = UIImage(named: "Decline")
+    let imageSet = UIImage(named: "profilDone")
     var fromID: Int?
     
     override func viewDidLoad() {
@@ -29,15 +32,24 @@ class ResultViewController: UIViewController {
     
     
     @IBAction func buttonTapped(_ sender: UIButton) {
-        self.navigationController?.popToRootViewController(animated: true)
+        if fromID == 6 {
+            let vc = TabBarController()
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.window?.rootViewController = vc
+            appDelegate.window?.makeKeyAndVisible()
+        }else{
+            self.navigationController?.popToRootViewController(animated: true)
+        }
     }
     
     func setView() {
+        button.loginRound()
         if fromID == 0 {
             imageResult.image = imageAcc
-            labelResult.text = """
-            Success
-            All the best for you
+            labelResult.text = "Applied Success"
+            labelResultDescription.text = """
+            We have sent your profile details to the Course.
+            Please wait for their response.
             """
         } else if fromID == 1 {
             imageResult.image = imageAcc
@@ -57,6 +69,11 @@ class ResultViewController: UIViewController {
         } else if fromID == 5 {
             imageResult.image = imageDec
             labelResult.text = "Teacher Declined"
+        } else if fromID == 6 {
+            imageResult.image = imageSet
+            labelResult.text = "Profile Updated"
+            labelResultDescription.text = "You have filled your profile successfully."
+            button.setTitle("Back to Home", for: .normal)
         }
         
     }

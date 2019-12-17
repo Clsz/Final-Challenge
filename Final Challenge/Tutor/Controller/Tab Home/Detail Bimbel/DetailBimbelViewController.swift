@@ -29,6 +29,7 @@ class DetailBimbelViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Detail Pekerjaan")
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+         self.tabBarController?.tabBar.isHidden = true
         
     }
     
@@ -78,7 +79,7 @@ extension DetailBimbelViewController{
     
     private func applyJob(){
         let record = CKRecord(recordType: "Applicant")
-        let fullName = (tutor.value(forKey: "firstName") as! String) + " " + (tutor.value(forKey: "tutorLastName") as! String)
+        let fullName = (tutor.value(forKey: "tutorFirstName") as! String) + " " + (tutor.value(forKey: "tutorLastName") as! String)
         
         record["courseName"] = course?.value(forKey: "courseName") as! String
         record["tutorName"] = fullName
@@ -149,14 +150,14 @@ extension DetailBimbelViewController{
 extension DetailBimbelViewController:DetailBimbel, UpdateConstraint{
     func requestTapped() {
         if CKUserData.shared.getToken() != "" {
-            self.queryUser()
+             self.queryUser()
+//            let destVC = ResultViewController()
+//            destVC.fromID = 0
+//            self.navigationController?.pushViewController(destVC, animated: true)
             self.navigationController?.popViewController(animated: true)
         }else{
-            let vc = TabBarController()
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.flag = false
-            appDelegate.window?.rootViewController = vc
-            appDelegate.window?.makeKeyAndVisible()
+            let vc = RegisterViewController()
+           self.navigationController?.pushViewController(vc, animated: true)
         }
         
     }

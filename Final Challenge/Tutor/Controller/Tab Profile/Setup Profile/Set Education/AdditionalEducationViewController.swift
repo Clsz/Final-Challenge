@@ -21,7 +21,7 @@ class AdditionalEducationViewController: BaseViewController {
     var dataFieldStudy:[String] = []
     var dataStart:[Int] = []
     var dataEnd:[Int] = []
-    var dataGpa:[Double] = []
+    var dataGpa:[String] = []
     var listEducation = [CKRecord]()
     var tutors:CKRecord?
     var education:Education?
@@ -47,7 +47,7 @@ class AdditionalEducationViewController: BaseViewController {
     }
     
     @IBAction func applyTapped(_ sender: Any) {
-        let destVC = SetupLanguageViewController()
+        let destVC = SetupSkillViewController()
         destVC.tutors = tutors
         self.navigationController?.pushViewController(destVC, animated: true)
     }

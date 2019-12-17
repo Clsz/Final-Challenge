@@ -74,11 +74,18 @@ extension SegmentedBimbelViewController{
     }
     
     private func queryActivity() {
-        let arrApplicant = courseModel?.value(forKey: "jobID") as! [CKRecord.Reference]
-        let pred = NSPredicate(format: "jobID IN %@", arrApplicant)
-        let query = CKQuery(recordType: "Applicant", predicate: pred)
+        var query:CKQuery?
+        if courseModel?.value(forKey: "jobID") != nil {
+            let arrApplicant = courseModel?.value(forKey: "jobID") as! [CKRecord.Reference]
+            //        let listJob = arrApplicant != nil ?? arrApplicant : [CKRecord.Reference]()
+                    let pred = NSPredicate(format: "jobID IN %@", arrApplicant)
+             query = CKQuery(recordType: "Applicant", predicate: pred)
+        }else{
+            let pred = NSPredicate(format: "jobID IN %@", [])
+            query = CKQuery(recordType: "Applicant", predicate: pred)
+        }
         self.flushArray()
-        database.perform(query, inZoneWith: nil) { (records, error) in
+        database.perform(query!, inZoneWith: nil) { (records, error) in
             guard let records = records else {
                 print("error",error as Any)
                 return

@@ -44,10 +44,9 @@ class AdditionalExperienceViewController: BaseViewController {
     }
     
     @IBAction func applyTapped(_ sender: Any) {
-        let vc = TabBarController()
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.window?.rootViewController = vc
-        appDelegate.window?.makeKeyAndVisible()
+        let vc = ResultViewController()
+        vc.fromID = 6
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }
