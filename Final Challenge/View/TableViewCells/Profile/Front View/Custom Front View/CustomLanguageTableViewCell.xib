@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ve-rg-DaN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                        <rect key="frame" x="20" y="0.0" width="374" height="80"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IlB-8J-JlS">
                                 <rect key="frame" x="15" y="15" width="47.5" height="22"/>
@@ -53,9 +53,9 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="0Ve-rg-DaN" secondAttribute="bottom" id="3zH-YY-Cuc"/>
-                    <constraint firstItem="0Ve-rg-DaN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="6Cx-6V-Fro"/>
+                    <constraint firstItem="0Ve-rg-DaN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="6Cx-6V-Fro"/>
                     <constraint firstItem="0Ve-rg-DaN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="DHR-J2-Pve"/>
-                    <constraint firstAttribute="trailing" secondItem="0Ve-rg-DaN" secondAttribute="trailing" id="ws0-Ls-K1D"/>
+                    <constraint firstAttribute="trailing" secondItem="0Ve-rg-DaN" secondAttribute="trailing" constant="20" id="ws0-Ls-K1D"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

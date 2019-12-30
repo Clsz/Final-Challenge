@@ -89,7 +89,7 @@ extension BimbelProfileViewController:BimbelProtocol{
     }
     
     func gradesTapped() {
-        let destVC = GradeBimbelViewController()
+        let destVC = SubjectBimbelViewController()
         self.navigationController?.pushViewController(destVC, animated: true)
     }
     

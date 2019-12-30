@@ -24,6 +24,7 @@ class AnotherContentTableViewCell: UITableViewCell {
     
     let customLanguageTableViewCell = "CustomLanguageTableViewCellID"
     let customExperieneTableViewCell = "CustomExperienceTableViewCellID"
+    let customGradesTableViewCell = "CustomGradesTableViewCellID"
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,9 +40,9 @@ class AnotherContentTableViewCell: UITableViewCell {
     }
     
     @IBAction func buttonTapped(_ sender: Any) {
-        if index == 2{
+        if index == 1{
             contentDelegate?.languageTapped()
-        }else if index == 3{
+        }else if index == 0{
             contentDelegate?.experienceTapped()
         } else {
             contentDelegate?.educationTapped()
@@ -74,7 +75,16 @@ extension AnotherContentTableViewCell:UITableViewDelegate, UITableViewDataSource
             cell.outerView.outerRound()
             cell.setCell(name: title?[indexPath.row] ?? "", level: content?[indexPath.row] ?? "")
             return cell
-        }else{
+        } else if index == 2{
+            let cell = tableView.dequeueReusableCell(withIdentifier: customGradesTableViewCell, for: indexPath) as! CustomGradesTableViewCell
+            
+            cell.outerView.setBorderBlue()
+            cell.outerView.outerRound()
+            cell.setCell(grade: content?[indexPath.row] ?? "")
+            
+            return cell
+        }
+        else{
             let cell = tableView.dequeueReusableCell(withIdentifier: customExperieneTableViewCell, for: indexPath) as! CustomExperienceTableViewCell
             let start = startYear?[indexPath.row] ?? ""
             let end = endYear?[indexPath.row] ?? ""
@@ -89,6 +99,7 @@ extension AnotherContentTableViewCell:UITableViewDelegate, UITableViewDataSource
     func registerCell() {
         tableView.register(UINib(nibName: "CustomLanguageTableViewCell", bundle: nil), forCellReuseIdentifier: customLanguageTableViewCell)
         tableView.register(UINib(nibName: "CustomExperienceTableViewCell", bundle: nil), forCellReuseIdentifier: customExperieneTableViewCell)
+        tableView.register(UINib(nibName: "CustomGradesTableViewCell", bundle: nil), forCellReuseIdentifier: customGradesTableViewCell)
     }
     
     func cellDelegate() {

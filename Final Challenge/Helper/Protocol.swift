@@ -166,3 +166,11 @@ protocol AddInterviewSchedule{
 protocol SendInterview{
     func sendInterviewSchedule(day:[String], time:[String])
 }
+
+protocol setAccount{
+    func setAccountTapped()
+}
+
+protocol OnBoardingInputData {
+    func didTap()
+}

@@ -25,12 +25,15 @@ class SetupPersonalViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        queryTutor()
+        
         registerCell()
+        self.cellDelegate()
+        self.tableView.reloadData()
         self.hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationItem.setHidesBackButton(true, animated:true);
         self.tableView.contentInsetAdjustmentBehavior = .never
         setupView(text: "Personal")
     }
@@ -65,24 +68,21 @@ extension SetupPersonalViewController{
         return returnAsset
     }
     
-    func queryTutor() {
-        //        self.showLoading()
-        let token = CKUserData.shared.getToken()
-        let pred = NSPredicate(format: "tutorEmail == %@", token)
-        let query = CKQuery(recordType: "Tutor", predicate: pred)
-        
-        database.perform(query, inZoneWith: nil) { (records, error) in
-            guard let record = records else {return}
-            if record.count > 0 {
-                self.tutors = record[0]
-                DispatchQueue.main.async {
-                    self.cellDelegate()
-                    self.tableView.reloadData()
-                    //                    self.hideLoading()
-                }
-            }
-        }
-    }
+//    func queryTutor() {
+//        let token = CKUserData.shared.getToken()
+//        let pred = NSPredicate(format: "tutorEmail == %@", token)
+//        let query = CKQuery(recordType: "Tutor", predicate: pred)
+//
+//        database.perform(query, inZoneWith: nil) { (records, error) in
+//            guard let record = records else {return}
+//            if record.count > 0 {
+//                self.tutors = record[0]
+//                DispatchQueue.main.async {
+//
+//                }
+//            }
+//        }
+//    }
     
     func updateUser(name:String, age:String, address:String){
        
@@ -111,6 +111,7 @@ extension SetupPersonalViewController{
                 {
                     self.showAlert(title: "Error", message: "Update Error")
                 } else{
+                    
                 }
             })
         }

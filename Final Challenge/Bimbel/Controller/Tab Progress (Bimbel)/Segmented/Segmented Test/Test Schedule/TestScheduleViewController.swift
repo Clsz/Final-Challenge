@@ -118,9 +118,10 @@ extension TestScheduleViewController{
         
         confirmAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
             self.updateToDatabase(status: "Waiting for Your Approval") { (res) in
+                self.setMainInterface()
                 if res == true{
                     let destVC = ResultViewController()
-                    destVC.fromID = 1
+                    destVC.fromID = 7
                     self.navigationController?.pushViewController(destVC, animated: true)
                 }
             }
@@ -162,16 +163,17 @@ extension TestScheduleViewController{
     @objc func onDoneButtonTapped() {
         toolBar.removeFromSuperview()
         datePicker.removeFromSuperview()
-        self.setSchedule()
-    }
-    
-    @objc func dateChanged(datePicker:UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE, d MMMM, yyyy"
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "HH:mm"
         self.day.append(dateFormatter.string(from: datePicker.date))
         self.time.append(timeFormatter.string(from: datePicker.date))
+        self.setSchedule()
+    }
+    
+    @objc func dateChanged(datePicker:UIDatePicker) {
+      
         
         view.endEditing(true)
     }

@@ -10,6 +10,7 @@ import UIKit
 
 class TitleTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var hintLabel: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var universityLabel: UILabel!

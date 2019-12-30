@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OnboardingViewController" customModule="Final_Challenge" customModuleProvider="target">
+            <connections>
+                <outlet property="pageControl" destination="6Ph-of-CGh" id="4FB-1b-DvA"/>
+                <outlet property="scrollView" destination="hY4-P6-Agk" id="Vxp-KY-FXH"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hY4-P6-Agk">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                </scrollView>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="6Ph-of-CGh">
+                    <rect key="frame" x="187.5" y="629.5" width="39" height="37"/>
+                    <color key="pageIndicatorTintColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="currentPageIndicatorTintColor" red="0.1137254902" green="0.3921568627" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                </pageControl>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="hY4-P6-Agk" secondAttribute="bottom" id="Lbm-WS-nFO"/>
+                <constraint firstItem="hY4-P6-Agk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Qfd-Yd-OiM"/>
+                <constraint firstItem="hY4-P6-Agk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="kaa-Am-qvt"/>
+                <constraint firstItem="hY4-P6-Agk" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="mf4-lf-3QN"/>
+                <constraint firstItem="6Ph-of-CGh" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="sha-aw-77h"/>
+                <constraint firstItem="6Ph-of-CGh" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="200" id="tdg-Os-5oV"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
+        </view>
+    </objects>
+</document>
