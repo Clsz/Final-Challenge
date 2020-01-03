@@ -47,6 +47,10 @@ class RegisterViewController: BaseViewController {
         self.navigationController?.pushViewController(loginVC, animated: false)
     }
     
+    @IBAction func backTapped(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 }
 
 extension RegisterViewController {

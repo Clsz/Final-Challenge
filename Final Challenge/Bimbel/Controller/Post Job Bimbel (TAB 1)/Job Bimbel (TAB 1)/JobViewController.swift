@@ -40,6 +40,7 @@ extension JobViewController{
     }
     
     func queryCourse() {
+        let token = CKUserData.shared.getToken()
         let query = CKQuery(recordType: "Course", predicate: NSPredicate(value: true))
         database.perform(query, inZoneWith: nil) { (records, error) in
             guard let records = records else {
