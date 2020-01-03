@@ -13,6 +13,8 @@ class SegmentedViewController: BaseViewController {
     
     @IBOutlet weak var segmentView: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var caption: UILabel!
     let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
     var activity:[CKRecord] = []
     var tutorModel:CKRecord?
@@ -25,15 +27,13 @@ class SegmentedViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         currentTableView = 0
-        registerCell()
-        cellDelegate()
         setMainInterface()
         queryUser()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Progress")
-        tableView.reloadData()
+//        tableView.reloadData()
         queryUser()
         self.navigationController?.navigationBar.isHidden = false
         self.navigationItem.setHidesBackButton(true, animated:true);
@@ -55,27 +55,33 @@ class SegmentedViewController: BaseViewController {
         segmentView.selectedSegmentTintColor = #colorLiteral(red: 0.1098039216, green: 0.3921568627, blue: 0.6666666667, alpha: 1)
     }
     
+    private func hiddenImage() {
+        self.image.isHidden = true
+        self.caption.isHidden = true
+    }
 }
 extension SegmentedViewController{
     func queryUser() {
         let token = CKUserData.shared.getToken()
-        
         let pred = NSPredicate(format: "tutorEmail == %@", token)
-        
         let query = CKQuery(recordType: "Tutor", predicate: pred)
         
         database.perform(query, inZoneWith: nil) { (records, error) in
             guard let record = records else {return}
-            
-            self.tutorModel = record[0]
+            if record.count > 0{
+                self.tutorModel = record[0]
+            }
             DispatchQueue.main.async {
-                self.queryActivity()
+                if self.tutorModel != nil{
+                    self.hiddenImage()
+                    self.queryActivity()
+                }
             }
         }
     }
     
     private func queryActivity() {
-        let arrApplicant = tutorModel?.value(forKey: "applicantID") as! [CKRecord.Reference]
+        let arrApplicant = tutorModel?.value(forKey: "applicantID") as? [CKRecord.Reference] ?? [CKRecord.Reference]()
         let pred = NSPredicate(format: "recordID IN %@", arrApplicant)
         let query = CKQuery(recordType: "Applicant", predicate: pred)
         self.flushArray()
@@ -110,6 +116,8 @@ extension SegmentedViewController{
                         self.activityResult.append(i)
                     }
                 }
+                self.registerCell()
+                self.cellDelegate()
                 self.tableView.reloadData()
             }
         }
@@ -146,7 +154,6 @@ extension SegmentedViewController:UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "progressCell", for: indexPath) as! ProgressTableViewCell
-        
         if currentTableView == 0{
             let name = (activityApplied[indexPath.row].value(forKey: "courseName") as? String) ?? ""
             let status = (activityApplied[indexPath.row].value(forKey: "status") as? String) ?? ""

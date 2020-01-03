@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SegmentedViewController" customModule="Final_Challenge" customModuleProvider="target">
             <connections>
+                <outlet property="caption" destination="1sL-Ch-hzw" id="ncg-yl-Brm"/>
+                <outlet property="image" destination="VtC-Me-dt9" id="dnT-is-TfU"/>
                 <outlet property="segmentView" destination="wHR-0b-IMB" id="DDH-ea-hGV"/>
                 <outlet property="tableView" destination="wIK-KZ-K2v" id="RiL-Zr-RSb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -39,19 +41,44 @@
                     <rect key="frame" x="0.0" y="130" width="414" height="732"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="No Job" translatesAutoresizingMaskIntoConstraints="NO" id="VtC-Me-dt9">
+                    <rect key="frame" x="87" y="184" width="240" height="250"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="250" id="2Ot-6w-GXh"/>
+                        <constraint firstAttribute="width" constant="240" id="rq6-c1-JuY"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You Have Not Do Any Activity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1sL-Ch-hzw">
+                    <rect key="frame" x="48" y="462" width="318" height="54"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="54" id="DDy-Y8-cJ5"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.53725490200000003" green="0.53725490200000003" blue="0.55294117649999996" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="1sL-Ch-hzw" secondAttribute="trailing" constant="48" id="2ND-Rr-tJQ"/>
                 <constraint firstItem="wIK-KZ-K2v" firstAttribute="top" secondItem="wHR-0b-IMB" secondAttribute="bottom" constant="46" id="BPg-Ha-MN5"/>
                 <constraint firstItem="wIK-KZ-K2v" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Czl-ag-SaQ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wHR-0b-IMB" secondAttribute="trailing" constant="20" id="L6x-Md-lQx"/>
+                <constraint firstItem="VtC-Me-dt9" firstAttribute="top" secondItem="wHR-0b-IMB" secondAttribute="bottom" constant="100" id="N3O-7K-xVF"/>
                 <constraint firstItem="wHR-0b-IMB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="NQt-yk-cRr"/>
                 <constraint firstItem="wHR-0b-IMB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="OrO-hQ-bC9"/>
+                <constraint firstItem="1sL-Ch-hzw" firstAttribute="top" secondItem="VtC-Me-dt9" secondAttribute="bottom" constant="28" id="QgN-eJ-ECJ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wIK-KZ-K2v" secondAttribute="trailing" id="TeQ-Th-N7S"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VtC-Me-dt9" secondAttribute="trailing" constant="87" id="UzY-Xx-26c"/>
+                <constraint firstItem="1sL-Ch-hzw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="48" id="jgt-nu-xhR"/>
+                <constraint firstItem="VtC-Me-dt9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="87" id="kCs-eR-ebk"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="wIK-KZ-K2v" secondAttribute="bottom" id="ymd-F1-rFu"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="137.68115942028987" y="140.625"/>
         </view>
     </objects>
+    <resources>
+        <image name="No Job" width="245" height="259"/>
+    </resources>
 </document>

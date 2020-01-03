@@ -39,12 +39,8 @@ class ProfileViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Profile")
-        //        setupData()
-        //        registerCell()
-        //        cellDelegate()
         tableView.reloadData()
         self.tabBarController?.tabBar.isHidden = false
-        //        self.hidesBottomBarWhenPushed = true
     }
 
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -179,7 +175,6 @@ extension ProfileViewController:ProfileProtocol, LanguageViewControllerDelegate,
     }
     
     func refreshData(withTutorModel: Tutor) {
-        
         setupData()
         tableView.reloadData()
     }

@@ -20,6 +20,7 @@ class ChooseRoleViewController: UIViewController {
     @IBAction func tutorTapped(_ sender: UIButton) {
         let vc = TabBarController()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.role = 0
         appDelegate.window?.rootViewController = vc
         appDelegate.window?.makeKeyAndVisible()
     }
@@ -27,6 +28,7 @@ class ChooseRoleViewController: UIViewController {
     @IBAction func tuitionTapped(_ sender: UIButton) {
         let vc = TabBarBimbelController()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.role = 1
         appDelegate.window?.rootViewController = vc
         appDelegate.window?.makeKeyAndVisible()
     }

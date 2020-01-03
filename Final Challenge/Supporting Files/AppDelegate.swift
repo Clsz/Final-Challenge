@@ -13,32 +13,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var tabBarController:TabBarController?
     var flag:Bool = true
+    var role:Int = 0
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-//        UserDefaults.standard.set("smartbimbel@email.com", forKey: "token")
         //        let rv = HomeViewController()
         //        let navigationController = UINavigationController(rootViewController: rv)
-//        UserDefaults.standard.set("sbrr@gmail.com", forKey: "token")
+
         UITabBar.appearance().tintColor = ConstantManager.mainColor
         self.window = UIWindow(frame: UIScreen.main.bounds)
-
-        
-        
-        
         if CKUserData.shared.getOnBoardingStatus() != "" {
-            self.tabBarController = TabBarController()
-            window?.rootViewController = tabBarController
-            window?.makeKeyAndVisible()
             //Flag di set False ketika dia mau Apply tetapi belum login
             //Selama dia true seperti flag yang sudah di inisialisasi di atas gak bakal di suruh login
             //Kalau mau batasin hak akses contoh seperti DetailBimbelViewController (func requestTapped)
             if flag == false{
-                let vc = LoginViewController()
-                let navigationController = UINavigationController(rootViewController: vc)
+                let rootVC = LoginViewController()
+                let navigationController = UINavigationController(rootViewController: rootVC)
                 window?.rootViewController = navigationController
                 window?.makeKeyAndVisible()
             }
+            let rootVC = ChooseRoleViewController()
+            let navigationController = UINavigationController(rootViewController: rootVC)
+            window?.rootViewController = rootVC
+            window?.makeKeyAndVisible()
         }else{
             let vc = OnboardingViewController()
             let navigationController = UINavigationController(rootViewController: vc)
