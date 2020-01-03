@@ -16,12 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        UserDefaults.standard.set("smartbimbel@email.com", forKey: "token")
-//        UserDefaults.standard.set("reshagunawan99@gmail.com", forKey: "token")
+//        UserDefaults.standard.set("smartbimbel@email.com", forKey: "token")
+        UserDefaults.standard.set("sbrr@gmail.com", forKey: "token")
         UITabBar.appearance().tintColor = ConstantManager.mainColor
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        let rv = SegmentedBimbelViewController()
-//        let rv = SegmentedViewController()
+//        let rv = SegmentedBimbelViewController()
+        let rv = HomeViewController()
         let navigationController = UINavigationController(rootViewController: rv)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

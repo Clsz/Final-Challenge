@@ -75,7 +75,7 @@ extension SegmentedViewController{
     }
     
     private func queryActivity() {
-        let arrApplicant = tutorModel?.value(forKey: "applicantID") as! [CKRecord.Reference]
+        let arrApplicant = tutorModel?.value(forKey: "applicantID") as? [CKRecord.Reference] ?? [CKRecord.Reference]()
         let pred = NSPredicate(format: "recordID IN %@", arrApplicant)
         let query = CKQuery(recordType: "Applicant", predicate: pred)
         self.flushArray()

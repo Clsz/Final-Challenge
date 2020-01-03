@@ -32,8 +32,6 @@ class HomeViewController: BaseViewController{
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Jobs")
         queryJob()
-        self.tabBarController?.hidesBottomBarWhenPushed = true
-        self.tabBarController?.tabBar.isHidden = false
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     }
     
