@@ -26,8 +26,12 @@ class RegisterViewController: BaseViewController {
         setupView()
         setTextField()
         self.tabBarController?.tabBar.isHidden = true
-        
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
     
     @IBAction func eyeTapped(_ sender: Any) {
         passwordTF.isSecureTextEntry = !passwordTF.isSecureTextEntry
@@ -125,20 +129,28 @@ extension RegisterViewController: UITextFieldDelegate {
             let email = emailTF.text!
             let password = passwordTF.text!
             
-            if CKUserData.shared.checkUser(email: email) == LoginResults.userNotExist {
-                CKUserData.shared.addUser(firstName: firstName, lastName: lastName, email: email, password: password)
-                CKUserData.shared.saveUsers { (res) in
-                    if res == true{
+            
+            CKUserData.shared.loadAllTutor(email: email, password: password) { (res) in
+                if res == true{
+                    if CKUserData.shared.checkUser(email: email) == LoginResults.userNotExist {
+                        CKUserData.shared.addUser(firstName: firstName, lastName: lastName, email: email, password: password)
+                        CKUserData.shared.saveUsers { (res) in
+                                self.hideLoading()
+                                CKUserData.shared.saveToken(token: email)
+                                let vc = SetupPersonalViewController()
+                                vc.tutors = res
+                                self.navigationController?.pushViewController(vc, animated: true)
+                        }
+                    } else {
                         self.hideLoading()
-                        let vc = SetupPersonalViewController()
-                        self.navigationController?.pushViewController(vc, animated: true)
-                        CKUserData.shared.saveToken(token: email)
+                        self.showAlert(title: "Attention", message: "User already exist")
                     }
                 }
-            } else { return }
+                self.hideLoading()
+            }
+            
         }
     }
-    
     
     @objc func donePressed(_ textField: UITextField) {
         moveTextField(textField, moveDistance: 0, up: true)

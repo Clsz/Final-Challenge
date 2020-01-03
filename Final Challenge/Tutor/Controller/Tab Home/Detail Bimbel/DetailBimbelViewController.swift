@@ -11,6 +11,7 @@ import CloudKit
 
 class DetailBimbelViewController: BaseViewController {
     
+    @IBOutlet weak var tableHeight: NSLayoutConstraint!
     @IBOutlet weak var detailBimbelTV: UITableView!
     var dataArray:[Any?] = []
     let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
@@ -35,7 +36,7 @@ class DetailBimbelViewController: BaseViewController {
     
     override func viewWillLayoutSubviews() {
         super.updateViewConstraints()
-        
+        self.tableHeight?.constant = self.detailBimbelTV.contentSize.height
     }
     
 }
@@ -182,10 +183,15 @@ extension DetailBimbelViewController: UITableViewDataSource,UITableViewDelegate{
         detailBimbelTV.register(UINib(nibName: "SubmitTableViewCell", bundle: nil), forCellReuseIdentifier: "submitCell")
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        self.viewWillLayoutSubviews()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataArray.count
         
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         

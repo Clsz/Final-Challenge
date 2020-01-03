@@ -42,6 +42,7 @@ class SetupEducationViewController: BaseViewController {
         registerCell()
         cellDelegate()
         self.hideKeyboardWhenTappedAround()
+        self.navigationController?.navigationItem.hidesBackButton = true
     }
     
     override func viewWillAppear(_ animated: Bool) {

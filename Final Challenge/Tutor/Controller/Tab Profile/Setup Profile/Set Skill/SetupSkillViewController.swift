@@ -14,20 +14,30 @@ class SetupSkillViewController: BaseViewController {
     @IBOutlet weak var softSkillCV: UICollectionView!
     @IBOutlet weak var choosenCV: UICollectionView!
     @IBOutlet weak var applyButton: UIButton!
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var tableView: UITableView!
     let skillCell = "SkillCollectionViewCellID"
+    let searchCell = "SearchSkillTableViewCell"
     var selectedChoosenSkills:[(key:Int, value:String)] = [(key:Int,value:String)]()
     var sel:[String] = [String]()
+    //    var allSearchSkill:[(key:Int, value:String)] = [(key:Int,value:String)]()
+    var currentSearchSkills:[String] = []
+    var allSkill:[(key:Int, value:String)] = [(key:Int,value:String)]()
+    var searching = false
     let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
     var tutors:CKRecord?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-          registerCell()
-          cellDelegate()
-          flushArray()
-          setInterface()
-          softSkillCV.reloadData()
-          hardSkillCV.reloadData()
+        registerCell()
+        cellDelegate()
+        flushArray()
+        setInterface()
+        skillAppend()
+        cellDelegateTable()
+        softSkillCV.reloadData()
+        hardSkillCV.reloadData()
+        tableView.isHidden = true
         self.hideKeyboardWhenTappedAround()
     }
     
@@ -36,7 +46,7 @@ class SetupSkillViewController: BaseViewController {
         
     }
     @IBAction func applyTapped(_ sender: UIButton) {
-         updateSkill()
+        updateSkill()
     }
     
 }
@@ -57,7 +67,7 @@ extension SetupSkillViewController{
             self.database.save(record, completionHandler: {returnRecord, error in
                 if error != nil
                 {
-                  self.showAlert(title: "Error", message: "Update Error")
+                    self.showAlert(title: "Error", message: "Update Error")
                 } else{
                     DispatchQueue.main.async {
                         let destVC = SetupLanguageViewController()
@@ -72,6 +82,14 @@ extension SetupSkillViewController{
     private func getData() {
         for i in selectedChoosenSkills{
             sel.append(i.value)
+        }
+    }
+    
+    private func skillAppend() {
+        self.allSkill.append(contentsOf: ConstantManager.softSkill)
+        self.allSkill.append(contentsOf: ConstantManager.hardSkill)
+        for i in allSkill{
+            self.currentSearchSkills.append(i.value)
         }
     }
 }
@@ -164,40 +182,65 @@ extension SetupSkillViewController: UICollectionViewDelegate, UICollectionViewDa
         }
     }
 }
+extension SetupSkillViewController: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return currentSearchSkills.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: searchCell, for: indexPath) as! SearchSkillTableViewCell
+        
+        cell.selectionStyle = .none
+        if searching  {
+            cell.labelSearch.text = currentSearchSkills[indexPath.row]
+        } else {
+            cell.labelSearch.text = allSkill[indexPath.row].value
+        }
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
+    func cellDelegateTable() {
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+}
 
 
-
-
-
-//extension SetupSkillTableViewCell{
-//    private func getDataCustomCell() {
-//        let index = IndexPath(row: 0, section: 0)
-//        let cell = tableView.cellForRow(at: index) as! SetupPersonalTableViewCell
-//
-//        fullNames = cell.nameTF.text ?? ""
-//        arrName = fullNames?.components(separatedBy: " ")
-//
-//        self.updateUser(name: cell.nameTF.text ?? "", age: cell.ageTF.text ?? "", address: cell.addressTF.text ?? "")
-//    }
-//
-//    func updateUser(skill:[String]){
-//           if let record = tutors{
-//               record["tutorSkills"] = selectedChoosenSkills
-//
-//
-//               self.database.save(record, completionHandler: {returnRecord, error in
-//                   if error != nil
-//                   {
-//                       print("error")
-//                   } else{
-//                   }
-//               })
-//           }
-//       }
-//}
-
-
-//        if selectedChoosenSkills.count == 0{
-//            sendFlagDelegate?.sendFlag(flag: true)
-//
-//        }
+extension SetupSkillViewController: UISearchBarDelegate {
+    
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: false)
+        searchBar.showsCancelButton = false
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        currentSearchSkills = self.currentSearchSkills.filter({$0.lowercased().prefix(searchText.count) == searchText.lowercased()})
+        
+        searching = true
+        tableView.isHidden = false
+        tableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searching = false
+        searchBar.text = ""
+        tableView.reloadData()
+        tableView.isHidden = true
+    }
+    
+    func searchCellDelegate(){
+        searchBar.delegate = self
+    }
+    
+}

@@ -16,12 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        UserDefaults.standard.set("smartbimbel@email.com", forKey: "token")
-//        UserDefaults.standard.set("reshagunawan99@gmail.com", forKey: "token")
-        UITabBar.appearance().tintColor = ConstantManager.mainColor
+//        UserDefaults.standard.set("smartbimbel@email.com", forKey: "token")
+//        UserDefaults.standard.set("nextlevel@gmail.com", forKey: "token")
+//        UITabBar.appearance().tintColor = ConstantManager.mainColor
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        let rv = SegmentedBimbelViewController()
-//        let rv = SegmentedViewController()
+//        let rv = HomeViewController()
+        let rv = OnboardingViewController()
         let navigationController = UINavigationController(rootViewController: rv)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
@@ -40,7 +40,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //                window?.makeKeyAndVisible()
 //            }
 //        }else{
-//            // Inisialisasi Onboarding
+////            let vc = OnboardingViewController()
+////            let navigationController = UINavigationController(rootViewController: vc)
+////            window?.rootViewController = navigationController
+////            window?.makeKeyAndVisible()
+////            // Inisialisasi Onboarding
+//
 //
 //            // Save UserDefault bahwa udh pernah Onboarding
 //            CKUserData.shared.saveOnboardingStatus(status: "isOnBoard")

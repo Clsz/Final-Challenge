@@ -40,21 +40,6 @@ class LoginViewController:BaseViewController{
     @IBAction func loginTapped(_ sender: Any) {
         self.showLoading()
         validateFields()
-        let email = emailTF.text!
-        let password = passwordTF.text!
-        CKUserData.shared.loadUsers(email: email, password: password) { isSuccess in
-            if isSuccess{
-                self.hideLoading()
-                let vc = TabBarController()
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                appDelegate.window?.rootViewController = vc
-                appDelegate.window?.makeKeyAndVisible()
-                CKUserData.shared.saveToken(token: email)
-            }else{
-                self.showAlert(title: "Attention", message: "Invalid")
-            }
-        }
-        
     }
 }
 
@@ -92,6 +77,20 @@ extension LoginViewController{
         }else if passwordTF.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
             return self.showAlert(title: "Error", message: "Password belum diisi")
         }else {
+            let email = emailTF.text!
+            let password = passwordTF.text!
+            CKUserData.shared.loadUsers(email: email, password: password) { isSuccess in
+                if isSuccess{
+                    self.hideLoading()
+                    let vc = TabBarController()
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.window?.rootViewController = vc
+                    appDelegate.window?.makeKeyAndVisible()
+                    CKUserData.shared.saveToken(token: email)
+                }else{
+                    self.showAlert(title: "Attention", message: "User not exist")
+                }
+            }
         }
     }
     
