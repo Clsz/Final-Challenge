@@ -38,8 +38,8 @@
                             <action selector="buttonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cjS-kU-vZ6"/>
                         </connections>
                     </button>
-                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rhJ-dQ-A58">
-                        <rect key="frame" x="20" y="66" width="374" height="220"/>
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rhJ-dQ-A58">
+                        <rect key="frame" x="0.0" y="66" width="414" height="220"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="220" id="uJu-Qp-UBt"/>
@@ -48,9 +48,9 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="rhJ-dQ-A58" firstAttribute="top" secondItem="KpY-uw-B6J" secondAttribute="bottom" constant="8" id="0Cs-v8-byB"/>
-                    <constraint firstItem="rhJ-dQ-A58" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="2C4-wr-8f3"/>
+                    <constraint firstItem="rhJ-dQ-A58" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="2C4-wr-8f3"/>
                     <constraint firstAttribute="trailing" secondItem="diF-FE-snr" secondAttribute="trailing" constant="20" id="YeV-lk-SfR"/>
-                    <constraint firstAttribute="trailing" secondItem="rhJ-dQ-A58" secondAttribute="trailing" constant="20" id="ZJI-qQ-H4o"/>
+                    <constraint firstAttribute="trailing" secondItem="rhJ-dQ-A58" secondAttribute="trailing" id="ZJI-qQ-H4o"/>
                     <constraint firstItem="KpY-uw-B6J" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="bJq-g7-3aD"/>
                     <constraint firstItem="diF-FE-snr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="cIj-h6-pdx"/>
                     <constraint firstItem="KpY-uw-B6J" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="dfM-Mh-ja4"/>
@@ -63,6 +63,7 @@
             <connections>
                 <outlet property="button" destination="diF-FE-snr" id="GPg-nX-LyV"/>
                 <outlet property="label" destination="KpY-uw-B6J" id="dhK-43-fOO"/>
+                <outlet property="tableHeightConstraint" destination="uJu-Qp-UBt" id="nIG-tC-2Ai"/>
                 <outlet property="tableView" destination="rhJ-dQ-A58" id="hBe-qR-YfP"/>
             </connections>
             <point key="canvasLocation" x="95.652173913043484" y="107.47767857142857"/>

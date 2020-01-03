@@ -71,38 +71,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "AB3A7DAE-897E-4EA2-974F-916C04ABD0B5"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Final Challenge/Tutor/Controller/Login/Register/RegisterViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
-            landmarkName = "validateFields()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "8059F42E-6B2E-4F95-8F25-DA6C4E0B3AC1"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Final Challenge/Tutor/Controller/Login/Register/RegisterViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
-            landmarkName = "validateFields()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "586E630C-F4AB-498C-94B1-68E322553D9D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -343,48 +311,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CD4FF5A8-348A-4009-9D15-07370FBC5654"
-            shouldBeEnabled = "Yes"
+            uuid = "DD7179A3-F4BC-4134-A408-B19684B6FE71"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Final Challenge/Bimbel/Controller/Tab Progress (Bimbel)/Segmented/Segmented Test/Test Schedule/TestScheduleViewController.swift"
+            filePath = "Final Challenge/Tutor/Controller/Tab Profile/Setup Profile/Set Personal/SetupPersonalViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
-            landmarkName = "dateChanged(datePicker:)"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3502DEE2-B0BF-4C9E-94A0-7872082BC2E6"
-            shouldBeEnabled = "Yes"
+            uuid = "A362E74F-0FDE-4371-9A11-08F3132AB863"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Final Challenge/Bimbel/Controller/Tab Progress (Bimbel)/Segmented/Segmented Test/Test Schedule/TestScheduleViewController.swift"
+            filePath = "Final Challenge/Onboarding/Onboarding Screen/OnboardingViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
-            landmarkName = "dateChanged(datePicker:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "863FB451-6DB7-47E3-A5BB-214FD4A6F3A5"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Final Challenge/Bimbel/Controller/Tab Progress (Bimbel)/Segmented/Segmented Test/Test Schedule/TestScheduleViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
-            landmarkName = "dateChanged(datePicker:)"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "scrollViewDidScroll(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

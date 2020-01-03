@@ -11,6 +11,7 @@ import CloudKit
 
 class DetailBimbelViewController: BaseViewController {
     
+    @IBOutlet weak var tableHeight: NSLayoutConstraint!
     @IBOutlet weak var detailBimbelTV: UITableView!
     var dataArray:[Any?] = []
     let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
@@ -29,15 +30,9 @@ class DetailBimbelViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Detail Pekerjaan")
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-         self.tabBarController?.tabBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = true
         
     }
-    
-    override func viewWillLayoutSubviews() {
-        super.updateViewConstraints()
-        
-    }
-    
 }
 extension DetailBimbelViewController{
     private func setupData() {
@@ -150,14 +145,14 @@ extension DetailBimbelViewController{
 extension DetailBimbelViewController:DetailBimbel, UpdateConstraint{
     func requestTapped() {
         if CKUserData.shared.getToken() != "" {
-             self.queryUser()
-//            let destVC = ResultViewController()
-//            destVC.fromID = 0
-//            self.navigationController?.pushViewController(destVC, animated: true)
+            self.queryUser()
+            //            let destVC = ResultViewController()
+            //            destVC.fromID = 0
+            //            self.navigationController?.pushViewController(destVC, animated: true)
             self.navigationController?.popViewController(animated: true)
         }else{
             let vc = RegisterViewController()
-           self.navigationController?.pushViewController(vc, animated: true)
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         
     }
@@ -182,10 +177,15 @@ extension DetailBimbelViewController: UITableViewDataSource,UITableViewDelegate{
         detailBimbelTV.register(UINib(nibName: "SubmitTableViewCell", bundle: nil), forCellReuseIdentifier: "submitCell")
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        self.viewWillLayoutSubviews()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataArray.count
         
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -224,9 +224,9 @@ extension DetailBimbelViewController: UITableViewDataSource,UITableViewDelegate{
             
             return cell
         }
-//        if education != nil {
-//
-//                       } cell.title = [""]
+        //        if education != nil {
+        //
+        //                       } cell.title = [""]
         return UITableViewCell()
     }
 }

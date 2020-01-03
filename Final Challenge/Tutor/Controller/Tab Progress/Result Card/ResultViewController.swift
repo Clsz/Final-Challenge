@@ -53,19 +53,19 @@ class ResultViewController: UIViewController {
             """
         } else if fromID == 1 {
             imageResult.image = imageAcc
-            labelResult.text = "Anda Berhasil Menerima Jadwal Tes Ini"
+            labelResult.text = "You Accept the Interview"
+            labelResultDescription.text = "You have accepted the interview schedule with the Course. Do not miss the date. "
         } else if fromID == 2 {
             imageResult.image = imageAcc
-            labelResult.text = """
-            Anda Berhasil Meminta Jadwal Test Baru.
-            Harap Menunggu Respon Dari Bimbel
-            """
+            labelResult.text = "New Schedule Requested"
+            labelResultDescription.text = "We have sent your reschedule request to the Course. Please wait for their response."
         } else if fromID == 3 {
             imageResult.image = imageAcc
             labelResult.text = "Teacher Accepted"
         } else if fromID == 4 {
             imageResult.image = imageDec
-            labelResult.text = "Anda Telah Membatalkan Tes"
+            labelResult.text = "You Decline the Interview"
+            labelResultDescription.text = "You have declined this interview schedule with the Course. You skip this job."
         } else if fromID == 5 {
             imageResult.image = imageDec
             labelResult.text = "Teacher Declined"
@@ -74,8 +74,11 @@ class ResultViewController: UIViewController {
             labelResult.text = "Profile Updated"
             labelResultDescription.text = "You have filled your profile successfully."
             button.setTitle("Back to Home", for: .normal)
+        } else if fromID == 7 {
+        imageResult.image = imageAcc
+        labelResult.text = "Test Schedule Submitted"
+            labelResultDescription.text = "You have successfully submit the test schedule. Please wait for the Applicant to response."
         }
-        
     }
     
     

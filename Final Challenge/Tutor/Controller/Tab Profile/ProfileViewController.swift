@@ -11,6 +11,7 @@ import CloudKit
 
 class ProfileViewController: BaseViewController {
     
+    @IBOutlet weak var tableHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     let header = "TitleTableViewCellID"
     let content = "ContentTableViewCellID"
@@ -33,30 +34,45 @@ class ProfileViewController: BaseViewController {
         super.viewDidLoad()
         queryTutor()
         registerCell()
+        self.tableView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.new, context: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Profile")
-//        setupData()
-//        registerCell()
-//        cellDelegate()
+        //        setupData()
+        //        registerCell()
+        //        cellDelegate()
         tableView.reloadData()
         self.tabBarController?.tabBar.isHidden = false
-        self.hidesBottomBarWhenPushed = true
+        //        self.hidesBottomBarWhenPushed = true
+    }
+
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        tableView.layer.removeAllAnimations()
+        tableHeightConstraint.constant = tableView.contentSize.height
+        UIView.animate(withDuration: 0.5) {
+            self.view.updateConstraints()
+            self.view.layoutIfNeeded()
+        }
+
     }
     
 }
 extension ProfileViewController{
     private func setupData() {
         dataArray.removeAll()
-        dataArray.append(tutors)
-         dataArray.append(("Education","Edit Education",0))
-//        let skill = (tutors?.value(forKey: "tutorSkills") as! [String])
-        dataArray.append(("Skill","Add Skill",["skill","makan","tidur","boker"]))
-        dataArray.append(("Language","Add Language",2))
-        dataArray.append(("Experience","Add Experience",1))
-        //        dataArray.append(("Achievement","Add Achievement",2))
-        dataArray.append(false)
+        if self.tutors != nil{
+            dataArray.append(tutors)
+            dataArray.append(("Education","Edit Education",0))
+            let skill = (tutors?.value(forKey: "tutorSkills") as! [String])
+            dataArray.append(("Skill","Add Skill",skill))
+            dataArray.append(("Language","Add Language",1))
+            dataArray.append(("Experience","Add Experience",2))
+            dataArray.append(false)
+        }else{
+            dataArray.append("No Data")
+        }
+        
     }
     
     func queryTutor() {
@@ -66,13 +82,20 @@ extension ProfileViewController{
         
         database.perform(query, inZoneWith: nil) { (records, error) in
             guard let record = records else {return}
-            
-            self.tutors = record[0]
-            
+            if record.count > 0{
+                self.tutors = record[0]
+            }
             DispatchQueue.main.async {
-                self.queryEducation()
-                self.queryLanguage()
-                self.queryExperience()
+                if self.tutors != nil{
+                    self.queryEducation()
+                    self.queryLanguage()
+                    self.queryExperience()
+                }else{
+                    self.setupData()
+                    self.cellDelegate()
+                    self.tableView.reloadData()
+                }
+                
             }
         }
     }
@@ -149,7 +172,11 @@ extension ProfileViewController{
     }
     
 }
-extension ProfileViewController:ProfileProtocol, LanguageViewControllerDelegate{
+extension ProfileViewController:ProfileProtocol, LanguageViewControllerDelegate, setAccount{
+    func setAccountTapped() {
+        let vc = RegisterViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
     func refreshData(withTutorModel: Tutor) {
         
@@ -211,6 +238,7 @@ extension ProfileViewController:ProfileProtocol, LanguageViewControllerDelegate{
 }
 extension ProfileViewController:UITableViewDataSource, UITableViewDelegate{
     private func registerCell() {
+        tableView.register(UINib(nibName: "NoAccountTutorTableViewCell", bundle: nil), forCellReuseIdentifier: "NoAccountTutorTableViewCellID")
         tableView.register(UINib(nibName: "TitleTableViewCell", bundle: nil), forCellReuseIdentifier: header)
         tableView.register(UINib(nibName: "ContentTableViewCell", bundle: nil), forCellReuseIdentifier: content)
         tableView.register(UINib(nibName: "AnotherContentTableViewCell", bundle: nil), forCellReuseIdentifier: anotherContent)
@@ -229,80 +257,87 @@ extension ProfileViewController:UITableViewDataSource, UITableViewDelegate{
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0{
-            // FOR TITLE
-            let cell = tableView.dequeueReusableCell(withIdentifier: header, for: indexPath) as! TitleTableViewCell
-            let fName = "\(tutors?.value(forKey: "tutorFirstName") as! String) \(tutors?.value(forKey: "tutorLastName") as! String)"
-            let universityName = self.checkUniversity()
-//            let imageProfile = tutors?.value(forKey: "tutorProfileImage") as! CKAsset
-            let imageDefault = #imageLiteral(resourceName: "user-5")
-            cell.index = 0
-            
-            if tutors?.value(forKeyPath: "tutorProfilImage") != nil {
-            cell.setCell(image: imageDefault, name: fName, university: universityName, age: 22)
-            cell.tutorDelegate = self
+        if tutors != nil{
+            if indexPath.row == 0{
+                // FOR TITLE
+                let cell = tableView.dequeueReusableCell(withIdentifier: header, for: indexPath) as! TitleTableViewCell
+                let fName = "\(tutors?.value(forKey: "tutorFirstName") as! String) \(tutors?.value(forKey: "tutorLastName") as! String)"
+                let universityName = self.checkUniversity()
+                //            let imageProfile = tutors?.value(forKey: "tutorProfileImage") as! CKAsset
+                let imageDefault = #imageLiteral(resourceName: "user-5")
+                cell.index = 0
+                
+                if tutors?.value(forKeyPath: "tutorProfilImage") != nil {
+                    cell.setCell(image: imageDefault, name: fName, university: universityName, age: 22)
+                    cell.tutorDelegate = self
+                    return cell
+                } else {
+                    cell.setCell(image: imageDefault, name: fName, university: universityName, age: 22)
+                    cell.tutorDelegate = self
+                    return cell
+                }
+            }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:String, content:[String]){
+                // FOR SKILLS
+                let cell = tableView.dequeueReusableCell(withIdentifier: content, for: indexPath) as! ContentTableViewCell
+                cell.setCell(title: keyValue.key, button: keyValue.value)
+                cell.tutorDelegate =  self
+                cell.index = 0
+                cell.skills = keyValue.content
                 return cell
-            } else {
-                cell.setCell(image: imageDefault, name: fName, university: universityName, age: 22)
-                cell.tutorDelegate = self
-                return cell
+            }else if let keyValue = dataArray[indexPath.row] as? (key:String, button:String, value:Int){
+                if keyValue.value == 0{
+                    // FOR EDUCATION
+                    let cell = tableView.dequeueReusableCell(withIdentifier: anotherContent, for: indexPath) as! AnotherContentTableViewCell
+                    let schoolName = education?.value(forKey: "schoolName") as! [String]
+                    let grade = education?.value(forKey: "grade") as! [String]
+                    let fos = education?.value(forKey: "fieldOfStudy") as! [String]
+                    cell.index = 1
+                    cell.title = schoolName
+                    cell.content = grade
+                    cell.footer = fos
+                    cell.setCell(text: keyValue.key, button: keyValue.button)
+                    cell.contentDelegate = self
+                    
+                    return cell
+                } else if keyValue.value == 1{
+                    //FOR EXPERIENCE
+                    let cell = tableView.dequeueReusableCell(withIdentifier: anotherContent, for: indexPath) as! AnotherContentTableViewCell
+                    let companyName = experience?.value(forKey: "jobCompanyName") as! [String]
+                    let jobTitle = experience?.value(forKey: "jobTitle") as! [String]
+                    let startYear = experience?.value(forKey: "jobStartYear") as! [String]
+                    let endYear = experience?.value(forKey: "jobEndYear") as! [String]
+                    cell.title = jobTitle
+                    cell.content = companyName
+                    cell.startYear = startYear
+                    cell.endYear = endYear
+                    cell.index = 2
+                    cell.setCell(text: keyValue.key, button: keyValue.button)
+                    cell.contentDelegate = self
+                    return cell
+                }else if keyValue.value == 2{
+                    //FOR LANGUAGE
+                    let cell = tableView.dequeueReusableCell(withIdentifier: anotherContent, for: indexPath) as! AnotherContentTableViewCell
+                    let lang = language?.value(forKey: "languageName") as! [String]
+                    let level = language?.value(forKey: "languageLevel") as! [String]
+                    cell.index = 1
+                    cell.title = lang
+                    cell.content = level
+                    cell.setCell(text: keyValue.key, button: keyValue.button)
+                    cell.contentDelegate = self
+                    return cell
+                }else{
+                    //FOR LOGOUT
+                    let cell = tableView.dequeueReusableCell(withIdentifier: logoutView, for: indexPath) as! LogoutTableViewCell
+                    cell.contentDelegate = self
+                    cell.setInterface()
+                    return cell
+                }
             }
-        }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:String, content:[String]){
-            // FOR SKILLS
-            let cell = tableView.dequeueReusableCell(withIdentifier: content, for: indexPath) as! ContentTableViewCell
-            cell.setCell(title: keyValue.key, button: keyValue.value)
-            cell.tutorDelegate =  self
-            cell.index = 0
-            cell.skills = keyValue.content
+        }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NoAccountTutorTableViewCellID", for: indexPath) as! NoAccountTutorTableViewCell
+            cell.delegate = self
+            cell.setInterface()
             return cell
-        }else if let keyValue = dataArray[indexPath.row] as? (key:String, button:String, value:Int){
-            if keyValue.value == 0{
-                // FOR EDUCATION
-                let cell = tableView.dequeueReusableCell(withIdentifier: anotherContent, for: indexPath) as! AnotherContentTableViewCell
-                let schoolName = education?.value(forKey: "schoolName") as! [String]
-                let grade = education?.value(forKey: "grade") as! [String]
-                let fos = education?.value(forKey: "fieldOfStudy") as! [String]
-                cell.index = 1
-                cell.title = schoolName
-                cell.content = grade
-                cell.footer = fos
-                cell.setCell(text: keyValue.key, button: keyValue.button)
-                cell.contentDelegate = self
-
-                return cell
-            } else if keyValue.value == 1{
-                //FOR EXPERIENCE
-                let cell = tableView.dequeueReusableCell(withIdentifier: anotherContent, for: indexPath) as! AnotherContentTableViewCell
-                let companyName = experience?.value(forKey: "jobCompanyName") as! [String]
-                let jobTitle = experience?.value(forKey: "jobTitle") as! [String]
-                let startYear = experience?.value(forKey: "jobStartYear") as! [String]
-                let endYear = experience?.value(forKey: "jobEndYear") as! [String]
-                cell.title = jobTitle
-                cell.content = companyName
-                cell.startYear = startYear
-                cell.endYear = endYear
-                cell.index = 3
-                cell.setCell(text: keyValue.key, button: keyValue.button)
-                cell.contentDelegate = self
-                return cell
-            }else if keyValue.value == 2{
-                //FOR LANGUAGE
-                let cell = tableView.dequeueReusableCell(withIdentifier: anotherContent, for: indexPath) as! AnotherContentTableViewCell
-                let lang = language?.value(forKey: "languageName") as! [String]
-                let level = language?.value(forKey: "languageLevel") as! [String]
-                cell.index = 2
-                cell.title = lang
-                cell.content = level
-                cell.setCell(text: keyValue.key, button: keyValue.button)
-                cell.contentDelegate = self
-                return cell
-            }else{
-                //FOR LOGOUT
-                let cell = tableView.dequeueReusableCell(withIdentifier: logoutView, for: indexPath) as! LogoutTableViewCell
-                cell.contentDelegate = self
-                cell.setInterface()
-                return cell
-            }
         }
         return UITableViewCell()
     }

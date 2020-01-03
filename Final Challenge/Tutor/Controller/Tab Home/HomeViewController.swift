@@ -11,6 +11,10 @@ import CloudKit
 
 class HomeViewController: BaseViewController{
     
+    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var avaliableLabel: UILabel!
+    @IBOutlet weak var noDataImage: UIImageView!
+    @IBOutlet weak var noDataLabel: UILabel!
     @IBOutlet weak var jobTableView: UITableView!
     let images = UIImage(named: "school")
     var listJob = [CKRecord]()
@@ -32,6 +36,11 @@ class HomeViewController: BaseViewController{
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Jobs")
         queryJob()
+<<<<<<< HEAD
+=======
+        self.tabBarController?.hidesBottomBarWhenPushed = false
+        self.tabBarController?.tabBar.isHidden = false
+>>>>>>> 8900b6f3cf3493d5c204547bd1bdeca330ae19cd
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     }
     
@@ -39,11 +48,23 @@ class HomeViewController: BaseViewController{
     @IBAction func filterTapped(_ sender: UIButton) {
         let filterVC = FilterViewController()
         filterVC.sendFilterDelegate = self
-        self.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(filterVC, animated: true)
     }
 }
 extension HomeViewController{
+    private func setMainInterface() {
+        self.editButton.loginRound()
+        if listJob.count != 0{
+            self.noDataImage.isHidden = true
+            self.noDataLabel.isHidden = true
+            self.avaliableLabel.isHidden = false
+        }else{
+            self.noDataImage.isHidden = false
+            self.noDataLabel.isHidden = false
+            self.avaliableLabel.isHidden = true
+        }
+    }
+    
     private func queryJob() {
         let query:CKQuery!
         var preds:[NSPredicate] = []
@@ -75,6 +96,7 @@ extension HomeViewController{
             self.listJob = sortedRecords
             DispatchQueue.main.async {
                 self.jobTableView.reloadData()
+                self.setMainInterface()
             }
         }
         

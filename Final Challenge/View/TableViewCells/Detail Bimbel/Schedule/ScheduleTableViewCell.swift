@@ -32,10 +32,22 @@ class ScheduleTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         registerCell()
+          self.scheduleTV.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.new, context: nil)
         cellDelegate()
         refreshProtocol?.refreshTableView()
         scheduleTV.reloadData()
     }
+    
+  
+          override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+              scheduleTV.layer.removeAllAnimations()
+              heightConstraint.constant = scheduleTV.contentSize.height
+              UIView.animate(withDuration: 0.5) {
+                  self.updateConstraints()
+                  self.layoutIfNeeded()
+              }
+
+          }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -64,6 +76,7 @@ extension ScheduleTableViewCell: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         print(indexPath.row,"$")
+        self.layoutSubviews()
     }
     
     private func cellDelegate() {

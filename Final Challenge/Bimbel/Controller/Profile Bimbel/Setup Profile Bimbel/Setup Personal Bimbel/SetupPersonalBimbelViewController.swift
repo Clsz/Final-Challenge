@@ -18,8 +18,6 @@ class SetupPersonalBimbelViewController: BaseViewController {
     var pickerStartHour = UIDatePicker()
     var pickerEndHour = UIDatePicker()
     var photoPicker = UIImagePickerController()
-    var start:Date?
-    var end:Date?
     var course:CKRecord?
     let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
     
@@ -37,16 +35,19 @@ class SetupPersonalBimbelViewController: BaseViewController {
     }
     
     
-    
-    
 }
 extension SetupPersonalBimbelViewController{
+    
     private func getDataCustomCell() {
         let index = IndexPath(row: 1, section: 0)
         let cell = tableView.cellForRow(at: index) as! SetupPersonalBimbelTableViewCell
         
         
-        self.updateUser(name: cell.nameTF.text ?? "", address: cell.addressTF.text ?? "")
+        self.updateUser(name: cell.nameTF.text ?? "", address: cell.addressTF.text ?? "", startHour: cell.startTF.text ?? "", endHour: cell.endTF.text ?? "") { (res) in
+            //            if res == true{
+            //
+            //            }
+        }
     }
     
     fileprivate func createAsset(data: Data) -> CKAsset? {
@@ -85,23 +86,25 @@ extension SetupPersonalBimbelViewController{
         }
     }
     
-    func updateUser(name:String, address:String){
-        
+    func updateUser(name:String, address:String, startHour:String, endHour:String, completion: @escaping (Bool) -> Void){
         
         if let record = course{
             let index = IndexPath(row: 1, section: 0)
             let cell = tableView.cellForRow(at: index) as! SetupPersonalBimbelTableViewCell
             
             let tempImg = course?["courseImage"]  as?  CKAsset
-            let newImageData = cell.imageProfilBimbel.image?.jpegData(compressionQuality: 0.00000000000000001)
-            let imageData = createAsset(data: newImageData!)
             cell.imageProfilBimbel.image =  tempImg?.toUIImage()
+            
+            let newImageData = cell.imageProfilBimbel.image?.jpegData(compressionQuality: 0.00000000000000001)
+            if let newImage = newImageData{
+                let imageData = createAsset(data: newImage)
+                record["courseImage"] = imageData
+            }
             
             record["courseName"] = name
             record["courseAddress"] = address
-            record["courseStartHour"] = start ?? ""
-            record["courseEndHour"] = end ?? ""
-            record["courseImage"] = imageData
+            record["courseStartHour"] = startHour
+            record["courseEndHour"] = endHour
             
             
             self.database.save(record, completionHandler: {returnRecord, error in
@@ -109,14 +112,15 @@ extension SetupPersonalBimbelViewController{
                 {
                     self.showAlert(title: "Error", message: "Update Error")
                 } else{
+                    completion(true)
                 }
             })
         }
     }
     
     func sendVC() {
-        let vc = SetupEducationViewController()
-        vc.tutors = self.course
+        let vc = SetupSubjectBimbelViewController()
+        vc.course = self.course
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -137,9 +141,9 @@ extension SetupPersonalBimbelViewController:ProfileDetailProtocol,PhotoProtocol,
     }
     
     func photoTapped() {
-          createImagePicker()
-      }
- 
+        createImagePicker()
+    }
+    
 }
 
 extension SetupPersonalBimbelViewController:UITableViewDataSource, UITableViewDelegate{
@@ -155,18 +159,18 @@ extension SetupPersonalBimbelViewController:UITableViewDataSource, UITableViewDe
             
             return cell
         } else {
-        let cell = tableView.dequeueReusableCell(withIdentifier: detailProfile, for: indexPath) as! SetupPersonalBimbelTableViewCell
-    
-        cell.setCell(name: "", address: "")
-        cell.selectionStyle = .none
-        
-        cell.contentDelegate = self
-        cell.photoDelegate = self
-        cell.timeDelegate = self
-        
-        
-        cell.view = self.view
-        return cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: detailProfile, for: indexPath) as! SetupPersonalBimbelTableViewCell
+            
+            cell.setCell(name: "", address: "")
+            cell.selectionStyle = .none
+            
+            cell.contentDelegate = self
+            cell.photoDelegate = self
+            cell.timeDelegate = self
+            
+            
+            cell.view = self.view
+            return cell
         }
         
     }
@@ -199,18 +203,18 @@ extension SetupPersonalBimbelViewController{
     }
     
     private func createEndHour() {
-           pickerEndHour.tag = 1
-           pickerEndHour.backgroundColor = UIColor.white
+        pickerEndHour.tag = 1
+        pickerEndHour.backgroundColor = UIColor.white
         pickerEndHour.datePickerMode = .time
-           pickerEndHour.autoresizingMask = .flexibleWidth
-           pickerEndHour.contentMode = .center
-           pickerEndHour.setValue(UIColor.black, forKey: "textColor")
-           pickerEndHour.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
-           self.view.addSubview(pickerEndHour)
-           pickerEndHour.addTarget(self, action: #selector(dateChange(datePicker:)), for: .valueChanged)
-           
-           createToolbar()
-       }
+        pickerEndHour.autoresizingMask = .flexibleWidth
+        pickerEndHour.contentMode = .center
+        pickerEndHour.setValue(UIColor.black, forKey: "textColor")
+        pickerEndHour.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
+        self.view.addSubview(pickerEndHour)
+        pickerEndHour.addTarget(self, action: #selector(dateChange(datePicker:)), for: .valueChanged)
+        
+        createToolbar()
+    }
     
     private func createToolbar() {
         toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
@@ -228,12 +232,12 @@ extension SetupPersonalBimbelViewController{
         let index = IndexPath(row: 1, section: 0)
         let cell = tableView.cellForRow(at: index) as! SetupPersonalBimbelTableViewCell
         if datePicker.tag == 0 {
-            self.start = datePicker.date
+            //            self.start = datePicker.date
             let timeFormatter = DateFormatter()
             timeFormatter.dateFormat = "HH:mm"
             cell.startTF.text = timeFormatter.string(from: datePicker.date)
         } else {
-            self.end = datePicker.date
+            //            self.end = datePicker.date
             let timeFormatter = DateFormatter()
             timeFormatter.dateFormat = "HH:mm"
             cell.endTF.text = timeFormatter.string(from: datePicker.date)

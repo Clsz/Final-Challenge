@@ -12,7 +12,9 @@
                 <outlet property="applyButton" destination="9ma-H0-wrf" id="zRa-bT-nue"/>
                 <outlet property="choosenCV" destination="i9X-5Q-KKW" id="0Bq-b7-VcS"/>
                 <outlet property="hardSkillCV" destination="0Ec-Vc-Q9m" id="iHB-62-Dpi"/>
+                <outlet property="searchBar" destination="rUC-iL-4zY" id="HSK-6D-Fsk"/>
                 <outlet property="softSkillCV" destination="EIk-vP-DAB" id="0Xn-GB-sbY"/>
+                <outlet property="tableView" destination="HhI-Dw-f0M" id="m6W-O2-6Pj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -25,23 +27,24 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="1050"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4cS-hL-kwF">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="1050"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="1076"/>
                             <subviews>
-                                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="rUC-iL-4zY">
-                                    <rect key="frame" x="0.0" y="10" width="414" height="56"/>
+                                <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search other skill" translatesAutoresizingMaskIntoConstraints="NO" id="rUC-iL-4zY">
+                                    <rect key="frame" x="0.0" y="36" width="414" height="56"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="56" id="4Jt-HN-cqv"/>
                                     </constraints>
+                                    <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggested Hard Skills" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IW1-eC-8C3">
-                                    <rect key="frame" x="20" y="96" width="374" height="27"/>
+                                    <rect key="frame" x="20" y="122" width="374" height="27"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="0Ec-Vc-Q9m">
-                                    <rect key="frame" x="20" y="135" width="374" height="200"/>
+                                    <rect key="frame" x="20" y="161" width="374" height="200"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="200" id="f8d-l4-y49"/>
@@ -54,13 +57,13 @@
                                     </collectionViewFlowLayout>
                                 </collectionView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggested Soft Skills" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KFG-Sh-XMs">
-                                    <rect key="frame" x="20" y="365" width="374" height="27"/>
+                                    <rect key="frame" x="20" y="391" width="374" height="27"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="EIk-vP-DAB">
-                                    <rect key="frame" x="20" y="404" width="374" height="200"/>
+                                    <rect key="frame" x="20" y="430" width="374" height="200"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="200" id="geA-uM-cPT"/>
@@ -73,13 +76,13 @@
                                     </collectionViewFlowLayout>
                                 </collectionView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choosen Skills" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QLQ-x9-rLj">
-                                    <rect key="frame" x="20" y="664" width="374" height="27"/>
+                                    <rect key="frame" x="20" y="690" width="374" height="27"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="i9X-5Q-KKW">
-                                    <rect key="frame" x="20" y="703" width="374" height="200"/>
+                                    <rect key="frame" x="20" y="729" width="374" height="200"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="200" id="Gjc-HB-67b"/>
@@ -92,7 +95,7 @@
                                     </collectionViewFlowLayout>
                                 </collectionView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ma-H0-wrf">
-                                    <rect key="frame" x="20" y="946" width="374" height="44"/>
+                                    <rect key="frame" x="20" y="972" width="374" height="44"/>
                                     <color key="backgroundColor" red="0.1137254902" green="0.3921568627" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="44" id="OBu-os-Ask"/>
@@ -105,21 +108,37 @@
                                         <action selector="applyTapped:" destination="-1" eventType="touchUpInside" id="xyO-Yc-IZ0"/>
                                     </connections>
                                 </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLEASE ADD YOUR SKILLS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tco-OQ-RkS">
+                                    <rect key="frame" x="20" y="0.0" width="374" height="16"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                    <color key="textColor" red="0.53725490200000003" green="0.53725490200000003" blue="0.55294117649999996" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HhI-Dw-f0M">
+                                    <rect key="frame" x="0.0" y="83" width="414" height="612"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                </tableView>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
                                 <constraint firstItem="rUC-iL-4zY" firstAttribute="leading" secondItem="4cS-hL-kwF" secondAttribute="leading" id="18b-8a-aPh"/>
                                 <constraint firstItem="EIk-vP-DAB" firstAttribute="leading" secondItem="4cS-hL-kwF" secondAttribute="leading" constant="20" id="1rP-Bp-rw0"/>
-                                <constraint firstItem="rUC-iL-4zY" firstAttribute="top" secondItem="4cS-hL-kwF" secondAttribute="top" constant="10" id="3d4-pr-fdN"/>
+                                <constraint firstItem="i9X-5Q-KKW" firstAttribute="top" secondItem="HhI-Dw-f0M" secondAttribute="bottom" constant="34" id="2z0-gU-YTV"/>
                                 <constraint firstItem="9ma-H0-wrf" firstAttribute="top" secondItem="i9X-5Q-KKW" secondAttribute="bottom" constant="43" id="6vS-j6-KCF"/>
                                 <constraint firstItem="IW1-eC-8C3" firstAttribute="top" secondItem="rUC-iL-4zY" secondAttribute="bottom" constant="30" id="7mu-ey-JyR"/>
                                 <constraint firstItem="KFG-Sh-XMs" firstAttribute="top" secondItem="0Ec-Vc-Q9m" secondAttribute="bottom" constant="30" id="7yb-uH-N4e"/>
                                 <constraint firstItem="i9X-5Q-KKW" firstAttribute="leading" secondItem="4cS-hL-kwF" secondAttribute="leading" constant="20" id="938-Vq-baR"/>
                                 <constraint firstAttribute="trailing" secondItem="0Ec-Vc-Q9m" secondAttribute="trailing" constant="20" id="Esz-O1-p5z"/>
+                                <constraint firstItem="rUC-iL-4zY" firstAttribute="top" secondItem="Tco-OQ-RkS" secondAttribute="bottom" constant="20" id="FyC-j2-gDw"/>
+                                <constraint firstAttribute="trailing" secondItem="Tco-OQ-RkS" secondAttribute="trailing" constant="20" id="GDb-ok-UDT"/>
+                                <constraint firstItem="HhI-Dw-f0M" firstAttribute="top" secondItem="Tco-OQ-RkS" secondAttribute="bottom" constant="67" id="HgO-iz-EfS"/>
                                 <constraint firstAttribute="bottom" secondItem="9ma-H0-wrf" secondAttribute="bottom" constant="60" id="IZd-oS-GsU"/>
+                                <constraint firstItem="Tco-OQ-RkS" firstAttribute="leading" secondItem="4cS-hL-kwF" secondAttribute="leading" constant="20" id="ItH-sc-23D"/>
                                 <constraint firstItem="0Ec-Vc-Q9m" firstAttribute="leading" secondItem="4cS-hL-kwF" secondAttribute="leading" constant="20" id="Kbs-s9-l0w"/>
+                                <constraint firstAttribute="trailing" secondItem="HhI-Dw-f0M" secondAttribute="trailing" id="MJt-65-HPN"/>
                                 <constraint firstItem="KFG-Sh-XMs" firstAttribute="leading" secondItem="4cS-hL-kwF" secondAttribute="leading" constant="20" id="MVE-aU-mvZ"/>
                                 <constraint firstItem="QLQ-x9-rLj" firstAttribute="leading" secondItem="4cS-hL-kwF" secondAttribute="leading" constant="20" id="N2H-iU-U89"/>
+                                <constraint firstItem="Tco-OQ-RkS" firstAttribute="top" secondItem="4cS-hL-kwF" secondAttribute="top" id="Ohb-rG-yCC"/>
                                 <constraint firstItem="0Ec-Vc-Q9m" firstAttribute="top" secondItem="IW1-eC-8C3" secondAttribute="bottom" constant="12" id="Q0Z-Po-Gz1"/>
                                 <constraint firstItem="IW1-eC-8C3" firstAttribute="leading" secondItem="4cS-hL-kwF" secondAttribute="leading" constant="20" id="S1S-mn-wI3"/>
                                 <constraint firstAttribute="trailing" secondItem="QLQ-x9-rLj" secondAttribute="trailing" constant="20" id="SmH-NO-gZz"/>
@@ -128,6 +147,7 @@
                                 <constraint firstAttribute="trailing" secondItem="KFG-Sh-XMs" secondAttribute="trailing" constant="20" id="aUN-TA-kjY"/>
                                 <constraint firstAttribute="trailing" secondItem="IW1-eC-8C3" secondAttribute="trailing" constant="20" id="cOs-sL-U3M"/>
                                 <constraint firstItem="EIk-vP-DAB" firstAttribute="top" secondItem="KFG-Sh-XMs" secondAttribute="bottom" constant="12" id="ijX-qK-He1"/>
+                                <constraint firstItem="HhI-Dw-f0M" firstAttribute="leading" secondItem="4cS-hL-kwF" secondAttribute="leading" id="jbf-aR-rBD"/>
                                 <constraint firstItem="QLQ-x9-rLj" firstAttribute="top" secondItem="EIk-vP-DAB" secondAttribute="bottom" constant="60" id="jl4-Up-hZc"/>
                                 <constraint firstAttribute="trailing" secondItem="i9X-5Q-KKW" secondAttribute="trailing" constant="20" id="p16-bn-lH6"/>
                                 <constraint firstItem="9ma-H0-wrf" firstAttribute="leading" secondItem="4cS-hL-kwF" secondAttribute="leading" constant="20" id="sHC-H1-OwF"/>
@@ -157,7 +177,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="126" y="129"/>
+            <point key="canvasLocation" x="124.6376811594203" y="128.57142857142856"/>
         </view>
     </objects>
 </document>

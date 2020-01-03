@@ -121,7 +121,7 @@ extension TestScheduleViewController{
                 self.setMainInterface()
                 if res == true{
                     let destVC = ResultViewController()
-                    destVC.fromID = 1
+                    destVC.fromID = 7
                     self.navigationController?.pushViewController(destVC, animated: true)
                 }
             }
@@ -175,6 +175,11 @@ extension TestScheduleViewController{
     }
     
     @objc func dateChanged(datePicker:UIDatePicker) {
+<<<<<<< HEAD
+=======
+      
+        
+>>>>>>> 8900b6f3cf3493d5c204547bd1bdeca330ae19cd
         view.endEditing(true)
     }
     

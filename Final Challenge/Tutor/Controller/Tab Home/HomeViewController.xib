@@ -9,7 +9,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="Final_Challenge" customModuleProvider="target">
             <connections>
+                <outlet property="avaliableLabel" destination="Rhb-ha-pgj" id="E5K-OD-hxQ"/>
+                <outlet property="editButton" destination="nTj-c3-Au6" id="NTl-ja-43Q"/>
                 <outlet property="jobTableView" destination="yE2-nx-vdp" id="T23-Gd-JUr"/>
+                <outlet property="noDataImage" destination="b96-WR-YVQ" id="pBo-qt-h73"/>
+                <outlet property="noDataLabel" destination="eI7-Ul-5IH" id="FyQ-pW-mEJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -65,13 +69,13 @@
                     <color key="textColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lowongan Kerja" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rhb-ha-pgj">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Jobs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rhb-ha-pgj">
                     <rect key="frame" x="20" y="216" width="374" height="27"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yE2-nx-vdp">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yE2-nx-vdp">
                     <rect key="frame" x="0.0" y="251" width="414" height="593"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -83,6 +87,23 @@
                     <color key="textColor" red="0.53725490200000003" green="0.53725490200000003" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="No Job" translatesAutoresizingMaskIntoConstraints="NO" id="b96-WR-YVQ">
+                    <rect key="frame" x="87" y="267" width="240" height="250"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="250" id="FR4-nT-6Fc"/>
+                        <constraint firstAttribute="width" constant="240" id="O4C-ru-Ksh"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eI7-Ul-5IH">
+                    <rect key="frame" x="48" y="545" width="318" height="54"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="54" id="spg-AE-W9L"/>
+                    </constraints>
+                    <string key="text">Hey! It is currently no available job that suited your preference. We will list it out for you if there is one. Try finding another preference.</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.53725490196078429" green="0.53725490196078429" blue="0.55294117647058827" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="0.99998801950000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
@@ -90,6 +111,7 @@
                 <constraint firstItem="Rhb-ha-pgj" firstAttribute="top" secondItem="g62-cE-uIB" secondAttribute="bottom" constant="49" id="21G-ES-psK"/>
                 <constraint firstItem="etv-LE-tx3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="3Ih-t2-hDv"/>
                 <constraint firstItem="e5b-a8-Ril" firstAttribute="top" secondItem="etv-LE-tx3" secondAttribute="bottom" constant="35" id="9kA-zw-epN"/>
+                <constraint firstItem="b96-WR-YVQ" firstAttribute="top" secondItem="g62-cE-uIB" secondAttribute="bottom" constant="100" id="Bq3-gq-wT0"/>
                 <constraint firstItem="g62-cE-uIB" firstAttribute="top" secondItem="e5b-a8-Ril" secondAttribute="bottom" constant="14" id="D0Z-4R-Py9"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="yE2-nx-vdp" secondAttribute="bottom" constant="18" id="INr-2e-uls"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="g62-cE-uIB" secondAttribute="trailing" constant="20" id="aV4-7c-Gjo"/>
@@ -98,16 +120,22 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="e5b-a8-Ril" secondAttribute="trailing" constant="20" id="hKI-e7-Nyk"/>
                 <constraint firstItem="yE2-nx-vdp" firstAttribute="top" secondItem="Rhb-ha-pgj" secondAttribute="bottom" constant="8" id="jN4-1e-HTH"/>
                 <constraint firstItem="g62-cE-uIB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="ley-UM-Dxb"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="b96-WR-YVQ" secondAttribute="trailing" constant="87" id="nWI-YF-taL"/>
+                <constraint firstItem="b96-WR-YVQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="87" id="rEN-Sr-64e"/>
                 <constraint firstItem="etv-LE-tx3" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="rlx-Z9-nZw"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Rhb-ha-pgj" secondAttribute="trailing" constant="20" id="t5x-L1-5tD"/>
+                <constraint firstItem="eI7-Ul-5IH" firstAttribute="top" secondItem="b96-WR-YVQ" secondAttribute="bottom" constant="28" id="ugl-om-aoi"/>
                 <constraint firstItem="yE2-nx-vdp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="uty-zY-oGT"/>
                 <constraint firstItem="e5b-a8-Ril" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="wR6-TB-9Gu"/>
+                <constraint firstItem="eI7-Ul-5IH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="48" id="xsS-aC-Il2"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="eI7-Ul-5IH" secondAttribute="trailing" constant="48" id="yff-ZL-VPk"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="57.971014492753625" y="122.54464285714285"/>
         </view>
     </objects>
     <resources>
+        <image name="No Job" width="245" height="259"/>
         <image name="Right Detail-1" width="10" height="15"/>
     </resources>
 </document>

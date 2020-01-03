@@ -49,22 +49,31 @@
                     </connections>
                 </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3tp-3D-yQj">
-                    <rect key="frame" x="0.0" y="44" width="414" height="712"/>
+                    <rect key="frame" x="0.0" y="80" width="414" height="676"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALL YOUR EDUCATION INFORMATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zy1-V5-jhP">
+                    <rect key="frame" x="20" y="44" width="374" height="16"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                    <color key="textColor" red="0.53725490200000003" green="0.53725490200000003" blue="0.55294117649999996" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="d6R-WC-TtJ" secondAttribute="trailing" constant="20" id="1a7-Jd-4Gg"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Ekp-KP-hwE" secondAttribute="bottom" constant="10" id="43Q-TX-O4m"/>
+                <constraint firstItem="3tp-3D-yQj" firstAttribute="top" secondItem="zy1-V5-jhP" secondAttribute="bottom" constant="20" id="Bre-ZT-aFI"/>
                 <constraint firstItem="Ekp-KP-hwE" firstAttribute="top" secondItem="d6R-WC-TtJ" secondAttribute="bottom" constant="8" id="Ny3-en-y9c"/>
                 <constraint firstItem="3tp-3D-yQj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Rno-hW-Dfw"/>
+                <constraint firstItem="zy1-V5-jhP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="S58-Js-yg1"/>
                 <constraint firstItem="Ekp-KP-hwE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="TP8-KC-mnm"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zy1-V5-jhP" secondAttribute="trailing" constant="20" id="bF1-x0-3pg"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3tp-3D-yQj" secondAttribute="trailing" id="cHr-uM-dLG"/>
-                <constraint firstItem="3tp-3D-yQj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="f3E-e8-gJZ"/>
                 <constraint firstItem="d6R-WC-TtJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="iaA-OJ-lGe"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ekp-KP-hwE" secondAttribute="trailing" constant="20" id="mDo-IJ-R8o"/>
                 <constraint firstItem="d6R-WC-TtJ" firstAttribute="top" secondItem="3tp-3D-yQj" secondAttribute="bottom" id="sak-2f-LFI"/>
+                <constraint firstItem="zy1-V5-jhP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="vEC-ve-1Fa"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="139" y="104"/>

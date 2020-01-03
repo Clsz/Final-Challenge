@@ -9,9 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="Final_Challenge" customModuleProvider="target">
             <connections>
-                <outlet property="checkBox" destination="zN5-cJ-9aX" id="3uD-on-iF8"/>
                 <outlet property="emailTF" destination="vKv-6Q-PJF" id="zbb-Jc-1Y5"/>
-                <outlet property="forgotPassButton" destination="ykY-go-viG" id="zzf-EJ-9H7"/>
                 <outlet property="loginButton" destination="BjI-Fw-Ohi" id="773-qW-hvW"/>
                 <outlet property="passwordTF" destination="GqX-O8-qeV" id="AzM-x1-kZt"/>
                 <outlet property="registerButton" destination="VCt-dM-Ypz" id="g8I-nV-dOm"/>
@@ -41,7 +39,7 @@
                     </subviews>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4g7-zb-ZmL">
-                    <rect key="frame" x="41" y="455" width="343" height="382"/>
+                    <rect key="frame" x="41" y="480" width="343" height="357"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7J1-MK-wAa">
                             <rect key="frame" x="0.0" y="0.0" width="343" height="42"/>
@@ -125,28 +123,7 @@
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Av-r5-ttI">
                             <rect key="frame" x="0.0" y="136" width="343" height="13"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zN5-cJ-9aX">
-                                    <rect key="frame" x="0.0" y="0.0" width="13" height="13"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="13" id="8iD-6N-hpX"/>
-                                        <constraint firstAttribute="width" constant="13" id="k75-J6-Ki9"/>
-                                    </constraints>
-                                    <state key="normal" title="Button" image="CheckBox"/>
-                                </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingat Saya" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z4k-1J-hlJ">
-                                    <rect key="frame" x="26" y="0.0" width="63" height="13"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
                             <constraints>
-                                <constraint firstItem="Z4k-1J-hlJ" firstAttribute="top" secondItem="2Av-r5-ttI" secondAttribute="top" id="30P-aQ-iSB"/>
-                                <constraint firstItem="zN5-cJ-9aX" firstAttribute="leading" secondItem="2Av-r5-ttI" secondAttribute="leading" id="CLC-Jl-6fn"/>
-                                <constraint firstItem="Z4k-1J-hlJ" firstAttribute="leading" secondItem="zN5-cJ-9aX" secondAttribute="trailing" constant="13" id="DJd-nX-5Ml"/>
-                                <constraint firstItem="zN5-cJ-9aX" firstAttribute="top" secondItem="2Av-r5-ttI" secondAttribute="top" id="MG1-bv-uhT"/>
-                                <constraint firstAttribute="bottom" secondItem="Z4k-1J-hlJ" secondAttribute="bottom" id="Sd3-Be-mTg"/>
                                 <constraint firstAttribute="height" constant="13" id="dfB-Mw-CaN"/>
                             </constraints>
                         </view>
@@ -163,7 +140,7 @@
                                 <constraint firstAttribute="height" constant="50" id="C7l-he-bkO"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                            <state key="normal" title="Masuk">
+                            <state key="normal" title="Login">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>
@@ -176,45 +153,28 @@
                                 <constraint firstAttribute="height" constant="40" id="QUP-nR-Ly5"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KeE-wp-2eT">
-                            <rect key="frame" x="0.0" y="285" width="343" height="25"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ykY-go-viG">
-                                    <rect key="frame" x="138.5" y="-1" width="66" height="27"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <state key="normal" title="Lupa Akun?">
-                                        <color key="titleColor" red="0.094117647058823528" green="0.3529411764705882" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </state>
-                                </button>
-                            </subviews>
-                            <constraints>
-                                <constraint firstItem="ykY-go-viG" firstAttribute="centerY" secondItem="KeE-wp-2eT" secondAttribute="centerY" id="OBh-Cc-may"/>
-                                <constraint firstAttribute="height" constant="25" id="a7G-p8-CeN"/>
-                                <constraint firstItem="ykY-go-viG" firstAttribute="centerX" secondItem="KeE-wp-2eT" secondAttribute="centerX" id="iAA-H0-fEC"/>
-                            </constraints>
-                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GLy-Dj-CcZ">
-                            <rect key="frame" x="0.0" y="310" width="343" height="47"/>
+                            <rect key="frame" x="0.0" y="285" width="343" height="47"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="47" id="yzL-PQ-aXa"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MMa-nE-AmT">
-                            <rect key="frame" x="0.0" y="357" width="343" height="25"/>
+                            <rect key="frame" x="0.0" y="332" width="343" height="25"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ooI-8k-QYV">
-                                    <rect key="frame" x="79.5" y="-1" width="184" height="27"/>
+                                    <rect key="frame" x="78" y="-1" width="187.5" height="27"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Belum mempunyai akun?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVr-YE-okJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="140" height="27"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVr-YE-okJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="132.5" height="27"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCt-dM-Ypz">
-                                            <rect key="frame" x="148" y="0.0" width="36" height="27"/>
+                                            <rect key="frame" x="140.5" y="0.0" width="47" height="27"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <state key="normal" title="Daftar">
+                                            <state key="normal" title="Register">
                                                 <color key="titleColor" red="0.094117647058823528" green="0.3529411764705882" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                             <connections>
@@ -232,8 +192,9 @@
                         </view>
                     </subviews>
                 </stackView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Header New" translatesAutoresizingMaskIntoConstraints="NO" id="Rn2-tk-tdN">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Header" translatesAutoresizingMaskIntoConstraints="NO" id="Rn2-tk-tdN">
                     <rect key="frame" x="0.0" y="-13" width="414" height="345"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="Rn2-tk-tdN" secondAttribute="height" multiplier="414:345" id="d2O-9y-PXk"/>
                     </constraints>
@@ -270,8 +231,7 @@
         </view>
     </objects>
     <resources>
-        <image name="CheckBox" width="15" height="15"/>
-        <image name="Header New" width="414" height="319"/>
+        <image name="Header" width="414" height="319"/>
         <image name="icon_eye" width="32" height="19"/>
     </resources>
 </document>

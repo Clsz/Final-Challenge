@@ -102,6 +102,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="ageLabel" destination="AFq-b5-dft" id="6XX-a6-jkz"/>
+                <outlet property="hintLabel" destination="u5U-1V-NFV" id="Hjx-Nq-2EN"/>
                 <outlet property="nameLabel" destination="wu6-Vx-NUb" id="snx-WU-fMS"/>
                 <outlet property="outerProfile" destination="ruf-6B-N2O" id="jbr-ar-WvF"/>
                 <outlet property="pencil" destination="Oa2-Pg-pab" id="2Dz-p4-baI"/>
