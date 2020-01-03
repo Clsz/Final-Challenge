@@ -63,6 +63,7 @@
             <connections>
                 <outlet property="button" destination="diF-FE-snr" id="GPg-nX-LyV"/>
                 <outlet property="label" destination="KpY-uw-B6J" id="dhK-43-fOO"/>
+                <outlet property="tableHeightConstraint" destination="uJu-Qp-UBt" id="nIG-tC-2Ai"/>
                 <outlet property="tableView" destination="rhJ-dQ-A58" id="hBe-qR-YfP"/>
             </connections>
             <point key="canvasLocation" x="95.652173913043484" y="107.47767857142857"/>

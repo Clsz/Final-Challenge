@@ -10,6 +10,7 @@ import UIKit
 
 class AnotherContentTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var tableHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -29,9 +30,19 @@ class AnotherContentTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         registerCell()
+        self.tableView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.new, context: nil)
         cellDelegate()
         tableView.reloadData()
     }
+       override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+           tableView.layer.removeAllAnimations()
+           tableHeightConstraint.constant = tableView.contentSize.height
+           UIView.animate(withDuration: 0.5) {
+               self.updateConstraints()
+               self.layoutIfNeeded()
+           }
+
+       }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
