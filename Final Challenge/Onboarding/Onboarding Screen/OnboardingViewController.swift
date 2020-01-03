@@ -38,6 +38,7 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate{
 extension OnboardingViewController:OnBoardingInputData{
     func didTap() {
         let vc = ChooseRoleViewController()
+        CKUserData.shared.saveOnboardingStatus(status: "isOnBoard")
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

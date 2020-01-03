@@ -11,6 +11,7 @@ import CloudKit
 
 class ProfileViewController: BaseViewController {
     
+    @IBOutlet weak var tableHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     let header = "TitleTableViewCellID"
     let content = "ContentTableViewCellID"
@@ -33,6 +34,7 @@ class ProfileViewController: BaseViewController {
         super.viewDidLoad()
         queryTutor()
         registerCell()
+        self.tableView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.new, context: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,6 +45,16 @@ class ProfileViewController: BaseViewController {
         tableView.reloadData()
         self.tabBarController?.tabBar.isHidden = false
         //        self.hidesBottomBarWhenPushed = true
+    }
+
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        tableView.layer.removeAllAnimations()
+        tableHeightConstraint.constant = tableView.contentSize.height
+        UIView.animate(withDuration: 0.5) {
+            self.view.updateConstraints()
+            self.view.layoutIfNeeded()
+        }
+
     }
     
 }
