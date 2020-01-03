@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UserDefaults.standard.set("smartbimbel@email.com", forKey: "token")
         //        let rv = HomeViewController()
         //        let navigationController = UINavigationController(rootViewController: rv)
-        UserDefaults.standard.set("sbrr@gmail.com", forKey: "token")
+//        UserDefaults.standard.set("sbrr@gmail.com", forKey: "token")
         UITabBar.appearance().tintColor = ConstantManager.mainColor
         self.window = UIWindow(frame: UIScreen.main.bounds)
 

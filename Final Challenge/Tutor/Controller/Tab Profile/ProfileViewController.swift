@@ -68,7 +68,7 @@ extension ProfileViewController{
             dataArray.append(("Skill","Add Skill",skill))
             dataArray.append(("Language","Add Language",1))
             dataArray.append(("Experience","Add Experience",2))
-            dataArray.append(false)
+            dataArray.append(true)
         }else{
             dataArray.append("No Data")
         }
