@@ -11,8 +11,13 @@ import CloudKit
 
 class JobViewController: BaseViewController {
     
+    @IBOutlet weak var titleTableView: UILabel!
     @IBOutlet weak var buttonPostJob: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var postNoData: UIButton!
+    @IBOutlet weak var caption: UILabel!
+    @IBOutlet weak var imageNoData: UIImageView!
+    @IBOutlet weak var postJobImage: UIImageView!
     
     var listJobs = [CKRecord]()
     let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
@@ -21,22 +26,36 @@ class JobViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setButton()
         registerCell()
         cellDelegate()
         queryCourse()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        setupInterface()
         setupView(text: "Post a Job")
     }
     
+    @IBAction func postJobTapped(_ sender: Any) {
+        let destVC = TeachingSubjectViewController()
+        self.navigationController?.pushViewController(destVC, animated: true)
+    }
+    
 }
-
-
 extension JobViewController{
-    func setButton(){
-        buttonPostJob.outerRound3()
+    private func setupInterface() {
+        buttonPostJob.loginRound()
+        postNoData.loginRound()
+        if listJobs.count != 0{
+            postNoData.isHidden = true
+            caption.isHidden = true
+            imageNoData.isHidden = true
+        }else{
+            postJobImage.isHidden = true
+            buttonPostJob.isHidden = true
+            titleTableView.isHidden = true
+            tableView.isHidden = true
+        }
     }
     
     func queryCourse() {
@@ -68,7 +87,6 @@ extension JobViewController{
         }
     }
 }
-
 extension JobViewController: UITableViewDelegate, UITableViewDataSource{
     
     private func registerCell() {

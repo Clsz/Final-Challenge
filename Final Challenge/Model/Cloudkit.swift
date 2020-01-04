@@ -168,6 +168,7 @@ class CKUserData {
                     completion(true)
                 }
             } else {
+                completion(false)
                 print ("There Was an Error with CloudKit")
                 print (error?.localizedDescription ?? "Error")
             }
@@ -191,14 +192,15 @@ class CKUserData {
         }
     }
     
-    func saveUsersBimbel(completion: @escaping (Bool) -> Void) {
+    func saveUsersBimbel(completion: @escaping (CKRecord) -> Void) {
         let record = CKRecord(recordType: "Course")
         for user in users {
             record.setObject(user.email as CKRecordValue?, forKey: "courseEmail")
             record.setObject(user.password as CKRecordValue? , forKey: "coursePassword")
             privateDB.save(record) { (savedRecord: CKRecord?, error: Error?) -> Void in
                 DispatchQueue.main.async {
-                    completion(true)
+                    guard let record = savedRecord else { return }
+                    completion(record)
                 }
             }
         }

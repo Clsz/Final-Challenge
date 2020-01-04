@@ -24,6 +24,8 @@
 		144B435A23A38C2700F1ACE1 /* SummarySetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 144B435823A38C2700F1ACE1 /* SummarySetupViewController.xib */; };
 		144B436023A61D5D00F1ACE1 /* ListEducationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 144B435D23A6185900F1ACE1 /* ListEducationViewController.xib */; };
 		144B436123A61D6200F1ACE1 /* ListEducationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144B435C23A6185800F1ACE1 /* ListEducationViewController.swift */; };
+		147CBC3B23C0E0F2001E9549 /* InterviewBimbelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147CBC3823C0DDD5001E9549 /* InterviewBimbelTableViewCell.xib */; };
+		147CBC3C23C0E123001E9549 /* InterviewBimbelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147CBC3723C0DDD5001E9549 /* InterviewBimbelTableViewCell.swift */; };
 		147E1ECF2382B1DD003CAF5D /* DetailBimbelTabFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147E1ECD2382B1DD003CAF5D /* DetailBimbelTabFirstViewController.swift */; };
 		147E1ED02382B1DD003CAF5D /* DetailBimbelTabFirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147E1ECE2382B1DD003CAF5D /* DetailBimbelTabFirstViewController.xib */; };
 		147E1ED52383155A003CAF5D /* SegmentedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147E1ED32383155A003CAF5D /* SegmentedViewController.swift */; };
@@ -64,13 +66,10 @@
 		14CD56F523A7919E00562371 /* SetupSubjectBimbelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14CD56F323A7919E00562371 /* SetupSubjectBimbelViewController.xib */; };
 		14CD56FC23A791CD00562371 /* SummarySetupBimbelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CD56FA23A791CD00562371 /* SummarySetupBimbelViewController.swift */; };
 		14CD56FD23A791CD00562371 /* SummarySetupBimbelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14CD56FB23A791CD00562371 /* SummarySetupBimbelViewController.xib */; };
-		14CD570823A880BE00562371 /* SetupPersonalBimbelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CD56EE23A7916900562371 /* SetupPersonalBimbelViewController.swift */; };
 		14CD570923A880C400562371 /* SetupPersonalBimbelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14CD56EF23A7916900562371 /* SetupPersonalBimbelViewController.xib */; };
-		14CD570A23A8848B00562371 /* SetupPersonalBimbelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CD570323A7929900562371 /* SetupPersonalBimbelTableViewCell.swift */; };
 		14CD570B23A8848E00562371 /* SetupPersonalBimbelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14CD570423A7929900562371 /* SetupPersonalBimbelTableViewCell.xib */; };
 		14CD570F23AC96E200562371 /* LoginBimbelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CD570D23AC96E200562371 /* LoginBimbelViewController.swift */; };
 		14CD571023AC96E200562371 /* LoginBimbelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14CD570E23AC96E200562371 /* LoginBimbelViewController.xib */; };
-		14CD571323AC96FA00562371 /* RegisterBimbelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CD571123AC96FA00562371 /* RegisterBimbelViewController.swift */; };
 		14CD571423AC96FA00562371 /* RegisterBimbelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14CD571223AC96FA00562371 /* RegisterBimbelViewController.xib */; };
 		14CD571923ACEDFD00562371 /* CustomGradesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CD571723ACEDFD00562371 /* CustomGradesTableViewCell.swift */; };
 		14CD571A23ACEDFD00562371 /* CustomGradesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14CD571823ACEDFD00562371 /* CustomGradesTableViewCell.xib */; };
@@ -89,6 +88,9 @@
 		14CD573A23B4ABCB00562371 /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14CD573823B4ABCB00562371 /* OnboardingViewController.xib */; };
 		14CD574123B5FF1B00562371 /* SearchSkillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CD573D23B5FBE700562371 /* SearchSkillTableViewCell.swift */; };
 		14CD574223B5FF2300562371 /* SearchSkillTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14CD573E23B5FBE700562371 /* SearchSkillTableViewCell.xib */; };
+		14CD574323C0CB7600562371 /* SetupPersonalBimbelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CD56EE23A7916900562371 /* SetupPersonalBimbelViewController.swift */; };
+		14CD574423C0CB8E00562371 /* RegisterBimbelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CD571123AC96FA00562371 /* RegisterBimbelViewController.swift */; };
+		14CD574523C0CB9100562371 /* SetupPersonalBimbelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CD570323A7929900562371 /* SetupPersonalBimbelTableViewCell.swift */; };
 		2761273D2397AC32007BC852 /* TeachingSubjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2761273B2397AC32007BC852 /* TeachingSubjectTableViewCell.swift */; };
 		2761273E2397AC32007BC852 /* TeachingSubjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2761273C2397AC32007BC852 /* TeachingSubjectTableViewCell.xib */; };
 		276127482397B331007BC852 /* TeachingGradeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276127462397B331007BC852 /* TeachingGradeTableViewCell.swift */; };
@@ -269,6 +271,8 @@
 		144B435D23A6185900F1ACE1 /* ListEducationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListEducationViewController.xib; sourceTree = "<group>"; };
 		145705D7237A9C130093E944 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		145705D8237A9C130093E944 /* FilterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterViewController.xib; sourceTree = "<group>"; };
+		147CBC3723C0DDD5001E9549 /* InterviewBimbelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewBimbelTableViewCell.swift; sourceTree = "<group>"; };
+		147CBC3823C0DDD5001E9549 /* InterviewBimbelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InterviewBimbelTableViewCell.xib; sourceTree = "<group>"; };
 		147E1ECD2382B1DD003CAF5D /* DetailBimbelTabFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBimbelTabFirstViewController.swift; sourceTree = "<group>"; };
 		147E1ECE2382B1DD003CAF5D /* DetailBimbelTabFirstViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailBimbelTabFirstViewController.xib; sourceTree = "<group>"; };
 		147E1ED32383155A003CAF5D /* SegmentedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedViewController.swift; sourceTree = "<group>"; };
@@ -1242,6 +1246,8 @@
 		E11DB88023A5DE55000CB02C /* Interview Schedule Bimbel */ = {
 			isa = PBXGroup;
 			children = (
+				147CBC3723C0DDD5001E9549 /* InterviewBimbelTableViewCell.swift */,
+				147CBC3823C0DDD5001E9549 /* InterviewBimbelTableViewCell.xib */,
 				E1D56A0923A623A4003FCF09 /* Reusable View Schedule Bimbel */,
 				E11DB88523A5E146000CB02C /* HeaderTestTableViewCell.swift */,
 				E11DB88623A5E146000CB02C /* HeaderTestTableViewCell.xib */,
@@ -1635,8 +1641,8 @@
 		E1D5051523A3B01300EEE158 /* Teaching Subject (Bimbel) */ = {
 			isa = PBXGroup;
 			children = (
-				E1D5051723A3B01300EEE158 /* TeachingSubjectViewController.xib */,
 				E1D5051823A3B01300EEE158 /* TeachingSubjectViewController.swift */,
+				E1D5051723A3B01300EEE158 /* TeachingSubjectViewController.xib */,
 			);
 			path = "Teaching Subject (Bimbel)";
 			sourceTree = "<group>";
@@ -1910,6 +1916,7 @@
 				E13EE5FF2380F67D005016A0 /* HintTableViewCell.xib in Resources */,
 				E1F47B9423A226BD00EE6073 /* TestScheduleViewController.xib in Resources */,
 				147E1EF02383C261003CAF5D /* ResultViewController.xib in Resources */,
+				147CBC3B23C0E0F2001E9549 /* InterviewBimbelTableViewCell.xib in Resources */,
 				E17F321023793BFE00AEBCD5 /* EducationViewController.xib in Resources */,
 				E13EE61323811320005016A0 /* SetupExperienceViewController.xib in Resources */,
 				144B435523A2113300F1ACE1 /* AddressTableViewCell.xib in Resources */,
@@ -2004,7 +2011,6 @@
 				144B432F2398AE5700F1ACE1 /* Cloudkit.swift in Sources */,
 				E13EE6022380F759005016A0 /* SetupPersonalTableViewCell.swift in Sources */,
 				E13EE5F22380E86A005016A0 /* SetupPersonalViewController.swift in Sources */,
-				14CD570823A880BE00562371 /* SetupPersonalBimbelViewController.swift in Sources */,
 				E18AEFBB239F56EA0076000E /* SubjectCategoryTableViewCell.swift in Sources */,
 				E11DB88723A5E146000CB02C /* HeaderTestTableViewCell.swift in Sources */,
 				E1CBFEF9237D009E00DAC25D /* EditProfileViewController.swift in Sources */,
@@ -2012,6 +2018,7 @@
 				148C437E237EA96600B87174 /* SalaryTableViewCell.swift in Sources */,
 				E1F5BB4F2382C75A00BC9CFE /* ActivityTableViewCell.swift in Sources */,
 				147E1ECF2382B1DD003CAF5D /* DetailBimbelTabFirstViewController.swift in Sources */,
+				147CBC3C23C0E123001E9549 /* InterviewBimbelTableViewCell.swift in Sources */,
 				148C4382237EA97D00B87174 /* ScheduleTableViewCell.swift in Sources */,
 				E1F5BB582382D2B500BC9CFE /* DetailTestViewController.swift in Sources */,
 				E168478423784354001B6319 /* DetailProfileTableViewCell.swift in Sources */,
@@ -2046,6 +2053,7 @@
 				E1F47B9323A226BD00EE6073 /* TestScheduleViewController.swift in Sources */,
 				E178C2A723A3B83400EF1F21 /* TeachingScheduleTableViewCell.swift in Sources */,
 				144B433E239FD30400F1ACE1 /* SetupSkillTableViewCell.swift in Sources */,
+				14CD574523C0CB9100562371 /* SetupPersonalBimbelTableViewCell.swift in Sources */,
 				144B4342239FD32500F1ACE1 /* ChoosenSkillTableViewCell.swift in Sources */,
 				E168479F237903B2001B6319 /* AchievementTableViewCell.swift in Sources */,
 				14CD572223B0947700562371 /* DetailSubjectAndGradeViewController.swift in Sources */,
@@ -2066,6 +2074,7 @@
 				E1D5051923A3B01300EEE158 /* TeachingGradeViewController.swift in Sources */,
 				E139B5412375D73600FEF1F5 /* BaseViewController.swift in Sources */,
 				E19D1AEB237BF10F003AFFBD /* CustomLanguageTableViewCell.swift in Sources */,
+				14CD574423C0CB8E00562371 /* RegisterBimbelViewController.swift in Sources */,
 				E106615123811A4A0098AE11 /* AdditionalLanguageViewController.swift in Sources */,
 				E1D56A0C23A623C6003FCF09 /* InterviewTestTableViewCell.swift in Sources */,
 				E10661592381278D0098AE11 /* AdditionalEducationViewController.swift in Sources */,
@@ -2084,7 +2093,6 @@
 				2761273D2397AC32007BC852 /* TeachingSubjectTableViewCell.swift in Sources */,
 				148C436A237E9E0500B87174 /* SubjectViewController.swift in Sources */,
 				148C439E23824D8600B87174 /* SubjectCollectionViewCell.swift in Sources */,
-				14CD571323AC96FA00562371 /* RegisterBimbelViewController.swift in Sources */,
 				E11BB7F0237D5BA600B3B5E7 /* Protocol.swift in Sources */,
 				14CD56F423A7919E00562371 /* SetupSubjectBimbelViewController.swift in Sources */,
 				E168477A237834DD001B6319 /* LanguageViewController.swift in Sources */,
@@ -2092,7 +2100,6 @@
 				E1066155238125020098AE11 /* HintWithTableTableViewCell.swift in Sources */,
 				144B435623A2113800F1ACE1 /* AddressTableViewCell.swift in Sources */,
 				E17F321B23794A6D00AEBCD5 /* MoreDetailTableViewCell.swift in Sources */,
-				14CD570A23A8848B00562371 /* SetupPersonalBimbelTableViewCell.swift in Sources */,
 				E1F47B8F23A21A7200EE6073 /* ApplicantProfileViewController.swift in Sources */,
 				E17F320F23793BFE00AEBCD5 /* EducationViewController.swift in Sources */,
 				E1CE74372395374900FA8FEC /* SubjectBimbelViewController.swift in Sources */,
@@ -2107,6 +2114,7 @@
 				E1D56A1223A67D31003FCF09 /* WaitingForApprovalViewController.swift in Sources */,
 				E168477623782B0F001B6319 /* SkillsViewController.swift in Sources */,
 				E13EE60E23810475005016A0 /* SetupLanguageViewController.swift in Sources */,
+				14CD574323C0CB7600562371 /* SetupPersonalBimbelViewController.swift in Sources */,
 				E178C2A223A3B75000EF1F21 /* TeachingGradePlainTableViewCell.swift in Sources */,
 				E1BDDE58239B7AB6003B4414 /* SeeDetailTableViewCell.swift in Sources */,
 				E13EE61223811320005016A0 /* SetupExperienceViewController.swift in Sources */,

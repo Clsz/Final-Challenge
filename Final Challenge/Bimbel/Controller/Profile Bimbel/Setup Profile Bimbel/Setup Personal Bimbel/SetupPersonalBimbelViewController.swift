@@ -23,13 +23,15 @@ class SetupPersonalBimbelViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        queryCourse()
         registerCell()
-        cellDelegate()
+        queryCourse()
         self.hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
+        
+        self.tableView.reloadData()
         self.tableView.contentInsetAdjustmentBehavior = .never
         setupView(text: "Bimbel Personal")
     }
@@ -44,9 +46,9 @@ extension SetupPersonalBimbelViewController{
         
         
         self.updateUser(name: cell.nameTF.text ?? "", address: cell.addressTF.text ?? "", startHour: cell.startTF.text ?? "", endHour: cell.endTF.text ?? "") { (res) in
-            //            if res == true{
-            //
-            //            }
+            if res == true{
+                
+            }
         }
     }
     
@@ -70,7 +72,7 @@ extension SetupPersonalBimbelViewController{
     }
     
     func queryCourse() {
-        let token = CKUserData.shared.getToken()
+        let token = CKUserData.shared.getTokenBimbel()
         let pred = NSPredicate(format: "courseEmail == %@", token)
         let query = CKQuery(recordType: "Course", predicate: pred)
         
@@ -108,12 +110,14 @@ extension SetupPersonalBimbelViewController{
             
             
             self.database.save(record, completionHandler: {returnRecord, error in
-                if error != nil
-                {
+                if error != nil{
                     self.showAlert(title: "Error", message: "Update Error")
-                } else{
-                    completion(true)
                 }
+                DispatchQueue.main.async {
+                    self.hideLoading()
+                    self.sendVC()
+                }
+                
             })
         }
     }
@@ -136,8 +140,8 @@ extension SetupPersonalBimbelViewController:ProfileDetailProtocol,PhotoProtocol,
     }
     
     func applyProfile() {
+        self.showLoading()
         getDataCustomCell()
-        sendVC()
     }
     
     func photoTapped() {

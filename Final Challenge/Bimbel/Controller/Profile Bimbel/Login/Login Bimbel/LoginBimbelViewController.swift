@@ -79,7 +79,7 @@ extension LoginBimbelViewController{
             CKUserData.shared.loadUsersBimbel(email: email, password: password) { isSuccess in
                 if isSuccess{
                     self.hideLoading()
-                    let vc = TabBarController()
+                    let vc = TabBarBimbelController()
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.window?.rootViewController = vc
                     appDelegate.window?.makeKeyAndVisible()

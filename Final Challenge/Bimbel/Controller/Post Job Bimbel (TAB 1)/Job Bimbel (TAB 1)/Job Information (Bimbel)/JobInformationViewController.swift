@@ -10,6 +10,7 @@ import UIKit
 
 class JobInformationViewController: BaseViewController {
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var maxSlider: UISlider!
     @IBOutlet weak var minSalaryLabel: UILabel!
     @IBOutlet weak var maxSalaryLabel: UILabel!
@@ -18,6 +19,7 @@ class JobInformationViewController: BaseViewController {
     let accessoryToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
     let flexiblea = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
     var salaryMin:Double!
+    var interviewCell = "InterviewBimbelTableViewCellID"
     //Value Min
     //Value Max
     var day:[String] = []
@@ -28,12 +30,14 @@ class JobInformationViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTextField()
-        
+        registerCell()
+        cellDelegate()
+        tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Job Information")
-        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        tableView.reloadData()
     }
     
     @IBAction func minSalarySlider(_ sender: UISlider) {
@@ -142,5 +146,29 @@ extension JobInformationViewController: UITextFieldDelegate {
         moveTextField(textField, moveDistance: 0, up: true)
         view.endEditing(true)
     }
+    
+}
+extension JobInformationViewController: UITableViewDataSource, UITableViewDelegate{
+    func registerCell() {
+        tableView.register(UINib(nibName: "InterviewBimbelTableViewCell", bundle: nil), forCellReuseIdentifier: interviewCell)
+    }
+    
+    func cellDelegate() {
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        day.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: interviewCell, for: indexPath) as! InterviewBimbelTableViewCell
+        let timeSchedule = "\(startHour[indexPath.row]) \(endHour[indexPath.row]) WIB"
+        cell.setCell(day: day[indexPath.row], time: timeSchedule)
+        
+        return cell
+    }
+    
     
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -9,7 +10,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JobViewController" customModule="Final_Challenge" customModuleProvider="target">
             <connections>
                 <outlet property="buttonPostJob" destination="EZT-2c-uce" id="Ifm-Tm-nGg"/>
+                <outlet property="caption" destination="009-re-eDP" id="Hb0-wy-0mm"/>
+                <outlet property="imageNoData" destination="jou-qq-zPr" id="Rxu-cl-AIh"/>
+                <outlet property="postJobImage" destination="iin-ZD-nlK" id="PUk-HW-dkc"/>
+                <outlet property="postNoData" destination="BhH-hN-pCC" id="ID4-Am-BkQ"/>
                 <outlet property="tableView" destination="cM1-3l-DOm" id="Vkw-hR-c6H"/>
+                <outlet property="titleTableView" destination="Qcb-cV-ixk" id="4d0-Uq-mj6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,13 +25,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOU CAN POST A JOB HERE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sxt-iv-Api">
-                    <rect key="frame" x="20" y="0.0" width="374" height="16"/>
+                    <rect key="frame" x="20" y="44" width="374" height="16"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                     <color key="textColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nbL-pQ-CXD">
-                    <rect key="frame" x="20" y="62" width="374" height="100"/>
+                    <rect key="frame" x="20" y="106" width="374" height="100"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EZT-2c-uce">
                             <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
@@ -33,6 +39,9 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="100" id="jwz-N1-zfR"/>
                             </constraints>
+                            <connections>
+                                <action selector="postJobTapped:" destination="-1" eventType="touchUpInside" id="d4a-eR-R0p"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEED ANOTHER TEACHER?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWI-ZW-iyb">
                             <rect key="frame" x="20" y="21" width="174" height="16"/>
@@ -46,12 +55,22 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noprofile" translatesAutoresizingMaskIntoConstraints="NO" id="iin-ZD-nlK">
+                            <rect key="frame" x="260" y="8" width="114" height="114"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="114" id="KXb-7I-xlG"/>
+                                <constraint firstAttribute="width" secondItem="iin-ZD-nlK" secondAttribute="height" multiplier="1:1" id="Ydk-jZ-fn5"/>
+                                <constraint firstAttribute="width" constant="114" id="qMg-4X-lCQ"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
                         <constraint firstItem="fWI-ZW-iyb" firstAttribute="top" secondItem="nbL-pQ-CXD" secondAttribute="top" constant="21" id="2wE-an-z4b"/>
                         <constraint firstAttribute="bottom" secondItem="k4e-Bq-ir1" secondAttribute="bottom" constant="25" id="4dV-zL-RnL"/>
+                        <constraint firstAttribute="trailing" secondItem="iin-ZD-nlK" secondAttribute="trailing" id="Fmt-Eo-tPT"/>
                         <constraint firstAttribute="bottom" secondItem="EZT-2c-uce" secondAttribute="bottom" id="JNS-g1-w4W"/>
+                        <constraint firstItem="iin-ZD-nlK" firstAttribute="top" secondItem="nbL-pQ-CXD" secondAttribute="top" constant="8" id="ONw-Xr-Kz6"/>
                         <constraint firstItem="fWI-ZW-iyb" firstAttribute="leading" secondItem="nbL-pQ-CXD" secondAttribute="leading" constant="20" id="Rok-bu-fwr"/>
                         <constraint firstAttribute="trailing" secondItem="k4e-Bq-ir1" secondAttribute="trailing" constant="203" id="ZB3-OE-UZR"/>
                         <constraint firstItem="k4e-Bq-ir1" firstAttribute="leading" secondItem="nbL-pQ-CXD" secondAttribute="leading" constant="20" id="Zmm-7G-huk"/>
@@ -63,27 +82,65 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posted Jobs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qcb-cV-ixk">
-                    <rect key="frame" x="20" y="191" width="129" height="27"/>
+                    <rect key="frame" x="20" y="235" width="129" height="27"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cM1-3l-DOm">
-                    <rect key="frame" x="0.0" y="226" width="414" height="670"/>
+                    <rect key="frame" x="0.0" y="270" width="414" height="592"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noprofile" translatesAutoresizingMaskIntoConstraints="NO" id="jou-qq-zPr">
+                    <rect key="frame" x="87" y="182" width="240" height="250"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="jou-qq-zPr" secondAttribute="height" multiplier="24:25" id="gDJ-YI-Rq0"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BhH-hN-pCC">
+                    <rect key="frame" x="20" y="496" width="374" height="44"/>
+                    <color key="backgroundColor" red="0.1137254902" green="0.3921568627" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="vq7-CI-4lJ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                    <state key="normal" title="Post a Job">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="postJobTapped:" destination="-1" eventType="touchUpInside" id="fnv-wF-euM"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi, you haven’t posted anything yet. Let’s post a job!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="009-re-eDP">
+                    <rect key="frame" x="50" y="446" width="314" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="36" id="XTe-E2-p2y"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.53725490200000003" green="0.53725490200000003" blue="0.55294117649999996" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="nbL-pQ-CXD" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="0KN-EH-vur"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="BhH-hN-pCC" secondAttribute="trailing" constant="20" id="4vc-hb-EVk"/>
                 <constraint firstItem="cM1-3l-DOm" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="5Lg-qL-eqD"/>
+                <constraint firstItem="jou-qq-zPr" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="87" id="7L9-2p-SeW"/>
                 <constraint firstItem="Sxt-iv-Api" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="AzQ-Cd-63f"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Qcb-cV-ixk" secondAttribute="trailing" constant="265" id="BZb-5h-MhE"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="009-re-eDP" secondAttribute="trailing" constant="50" id="DbE-Tk-v0u"/>
                 <constraint firstItem="cM1-3l-DOm" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="KY9-Mr-bDi"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cM1-3l-DOm" secondAttribute="trailing" id="Loa-09-hkQ"/>
+                <constraint firstItem="BhH-hN-pCC" firstAttribute="top" secondItem="009-re-eDP" secondAttribute="bottom" constant="14" id="PUH-R2-psK"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jou-qq-zPr" secondAttribute="trailing" constant="87" id="QqR-x3-psB"/>
+                <constraint firstItem="BhH-hN-pCC" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="RC5-AX-fUv"/>
+                <constraint firstItem="009-re-eDP" firstAttribute="top" secondItem="jou-qq-zPr" secondAttribute="bottom" constant="14" id="Ynz-Wa-xNX"/>
                 <constraint firstItem="cM1-3l-DOm" firstAttribute="top" secondItem="Qcb-cV-ixk" secondAttribute="bottom" constant="8" id="ZCE-Kx-Qid"/>
+                <constraint firstItem="009-re-eDP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="50" id="ZSh-s8-93q"/>
                 <constraint firstItem="Qcb-cV-ixk" firstAttribute="top" secondItem="nbL-pQ-CXD" secondAttribute="bottom" constant="29" id="boY-yu-RfN"/>
                 <constraint firstItem="Sxt-iv-Api" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="elt-zq-cgp"/>
+                <constraint firstItem="jou-qq-zPr" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="138" id="kjX-Wh-dVk"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Sxt-iv-Api" secondAttribute="trailing" constant="20" id="lQd-Hq-fxf"/>
                 <constraint firstItem="nbL-pQ-CXD" firstAttribute="top" secondItem="Sxt-iv-Api" secondAttribute="bottom" constant="46" id="rWB-fc-jG7"/>
                 <constraint firstItem="Qcb-cV-ixk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="rXo-1L-a5R"/>
@@ -93,4 +150,7 @@
             <point key="canvasLocation" x="176.81159420289856" y="178.79464285714286"/>
         </view>
     </objects>
+    <resources>
+        <image name="noprofile" width="150" height="150"/>
+    </resources>
 </document>
