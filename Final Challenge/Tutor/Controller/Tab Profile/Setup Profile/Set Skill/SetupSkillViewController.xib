@@ -43,13 +43,13 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="0Ec-Vc-Q9m">
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="0Ec-Vc-Q9m">
                                     <rect key="frame" x="20" y="161" width="374" height="200"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="200" id="f8d-l4-y49"/>
                                     </constraints>
-                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VRs-7D-HLU">
+                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VRs-7D-HLU">
                                         <size key="itemSize" width="50" height="50"/>
                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -62,13 +62,13 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="EIk-vP-DAB">
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="EIk-vP-DAB">
                                     <rect key="frame" x="20" y="430" width="374" height="200"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="200" id="geA-uM-cPT"/>
                                     </constraints>
-                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tEV-tO-dkp">
+                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tEV-tO-dkp">
                                         <size key="itemSize" width="50" height="50"/>
                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -114,16 +114,16 @@
                                     <color key="textColor" red="0.53725490200000003" green="0.53725490200000003" blue="0.55294117649999996" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HhI-Dw-f0M">
-                                    <rect key="frame" x="0.0" y="83" width="414" height="612"/>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HhI-Dw-f0M">
+                                    <rect key="frame" x="0.0" y="83" width="414" height="993"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </tableView>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
                                 <constraint firstItem="rUC-iL-4zY" firstAttribute="leading" secondItem="4cS-hL-kwF" secondAttribute="leading" id="18b-8a-aPh"/>
                                 <constraint firstItem="EIk-vP-DAB" firstAttribute="leading" secondItem="4cS-hL-kwF" secondAttribute="leading" constant="20" id="1rP-Bp-rw0"/>
-                                <constraint firstItem="i9X-5Q-KKW" firstAttribute="top" secondItem="HhI-Dw-f0M" secondAttribute="bottom" constant="34" id="2z0-gU-YTV"/>
                                 <constraint firstItem="9ma-H0-wrf" firstAttribute="top" secondItem="i9X-5Q-KKW" secondAttribute="bottom" constant="43" id="6vS-j6-KCF"/>
                                 <constraint firstItem="IW1-eC-8C3" firstAttribute="top" secondItem="rUC-iL-4zY" secondAttribute="bottom" constant="30" id="7mu-ey-JyR"/>
                                 <constraint firstItem="KFG-Sh-XMs" firstAttribute="top" secondItem="0Ec-Vc-Q9m" secondAttribute="bottom" constant="30" id="7yb-uH-N4e"/>
@@ -149,6 +149,7 @@
                                 <constraint firstItem="EIk-vP-DAB" firstAttribute="top" secondItem="KFG-Sh-XMs" secondAttribute="bottom" constant="12" id="ijX-qK-He1"/>
                                 <constraint firstItem="HhI-Dw-f0M" firstAttribute="leading" secondItem="4cS-hL-kwF" secondAttribute="leading" id="jbf-aR-rBD"/>
                                 <constraint firstItem="QLQ-x9-rLj" firstAttribute="top" secondItem="EIk-vP-DAB" secondAttribute="bottom" constant="60" id="jl4-Up-hZc"/>
+                                <constraint firstAttribute="bottom" secondItem="HhI-Dw-f0M" secondAttribute="bottom" id="mTs-Ok-OTs"/>
                                 <constraint firstAttribute="trailing" secondItem="i9X-5Q-KKW" secondAttribute="trailing" constant="20" id="p16-bn-lH6"/>
                                 <constraint firstItem="9ma-H0-wrf" firstAttribute="leading" secondItem="4cS-hL-kwF" secondAttribute="leading" constant="20" id="sHC-H1-OwF"/>
                                 <constraint firstAttribute="trailing" secondItem="EIk-vP-DAB" secondAttribute="trailing" constant="20" id="uIN-gK-14j"/>

@@ -16,6 +16,7 @@ class AdditionalEducationViewController: BaseViewController {
     @IBOutlet weak var applyButton: UIButton!
     let hint = "HintTableViewCellID"
     let CustomExperienceTableViewCell = "CustomExperienceTableViewCellID"
+    var flag = true
     var dataSchoolName:[String] = []
     var dataGrade:[String] = []
     var dataFieldStudy:[String] = []
@@ -47,9 +48,14 @@ class AdditionalEducationViewController: BaseViewController {
     }
     
     @IBAction func applyTapped(_ sender: Any) {
-        let destVC = SetupSkillViewController()
-        destVC.tutors = tutors
-        self.navigationController?.pushViewController(destVC, animated: true)
+        if flag == true {
+            let destVC = SetupSkillViewController()
+                   destVC.tutors = tutors
+                   self.navigationController?.pushViewController(destVC, animated: true)
+        } else {
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+       
     }
     
 }

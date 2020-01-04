@@ -131,23 +131,35 @@ extension EditProfileViewController:UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: detailProfile, for: indexPath) as! DetailHeaderTableViewCell
-        let fName = "\(tutors?.value(forKey: "tutorFirstName") as! String) \(tutors?.value(forKey: "tutorLastName") as! String)"
-        let tutorAddress = tutors?.value(forKey: "tutorAddress") as! String
-        let birth = tutors?.value(forKey: "tutorBirthDate") as! Date
-        let fbirth = birth.toBirthString()
+        if ((tutors?.value(forKey: "tutorFirstName")) != nil) && ((tutors?.value(forKey: "tutorBirthDate")) != nil) && tutors?.value(forKey: "tutorAddress") != nil {
+            let cell = tableView.dequeueReusableCell(withIdentifier: detailProfile, for: indexPath) as! DetailHeaderTableViewCell
+            let fName = "\(tutors?.value(forKey: "tutorFirstName") as! String) \(tutors?.value(forKey: "tutorLastName") as! String)"
+            let tutorAddress = tutors?.value(forKey: "tutorAddress") as! String
+            let birth = tutors?.value(forKey: "tutorBirthDate") as! Date
+            let fbirth = birth.toBirthString()
+            
+            cell.nameTF.attributedPlaceholder = NSAttributedString(string: fName, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+            cell.addressTF.attributedPlaceholder = NSAttributedString(string: tutorAddress, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+            cell.ageTF.attributedPlaceholder = NSAttributedString(string: fbirth, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+            
+            cell.setCell(name: fName, age: fbirth, address: tutorAddress)
+            cell.view = self.view
+            cell.passwordDelegate = self
+            cell.delegate = self
+            cell.photoDelegate = self
+            cell.birthDelegate = self
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: detailProfile, for: indexPath) as! DetailHeaderTableViewCell
+            cell.setCell(name: "", age: "", address: "")
+            cell.view = self.view
+            cell.passwordDelegate = self
+            cell.delegate = self
+            cell.photoDelegate = self
+            cell.birthDelegate = self
+            return cell
+        }
         
-        cell.nameTF.attributedPlaceholder = NSAttributedString(string: fName, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-        cell.addressTF.attributedPlaceholder = NSAttributedString(string: tutorAddress, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-        cell.ageTF.attributedPlaceholder = NSAttributedString(string: fbirth, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-        
-        cell.setCell(name: fName, age: fbirth, address: tutorAddress)
-        cell.view = self.view
-        cell.passwordDelegate = self
-        cell.delegate = self
-        cell.photoDelegate = self
-        cell.birthDelegate = self
-        return cell
     }
     
     func cellDelegate() {

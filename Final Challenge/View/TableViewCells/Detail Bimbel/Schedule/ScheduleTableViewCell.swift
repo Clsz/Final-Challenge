@@ -9,7 +9,7 @@
 import UIKit
 
 class ScheduleTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var scheduleTitle: UILabel!
     @IBOutlet weak var scheduleTV: UITableView!
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
@@ -17,8 +17,8 @@ class ScheduleTableViewCell: UITableViewCell {
     var scheduleStart:[String] = []
     var scheduleEnd:[String] = []
     var refreshProtocol:refreshTableProtocol?
-//    var constraintDelegate:UpdateConstraint?
-
+    //    var constraintDelegate:UpdateConstraint?
+    
     
     func setView(title:String) {
         self.scheduleTitle.text = title
@@ -32,23 +32,22 @@ class ScheduleTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         registerCell()
-          self.scheduleTV.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.new, context: nil)
+        self.scheduleTV.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.new, context: nil)
         cellDelegate()
         refreshProtocol?.refreshTableView()
         scheduleTV.reloadData()
     }
     
-  
-          override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-              scheduleTV.layer.removeAllAnimations()
-              heightConstraint.constant = scheduleTV.contentSize.height
-              UIView.animate(withDuration: 0.5) {
-                  self.updateConstraints()
-                  self.layoutIfNeeded()
-              }
-
-          }
-
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        scheduleTV.layer.removeAllAnimations()
+        heightConstraint.constant = scheduleTV.contentSize.height
+        UIView.animate(withDuration: 0.5) {
+            self.updateConstraints()
+            self.layoutIfNeeded()
+        }
+        
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }

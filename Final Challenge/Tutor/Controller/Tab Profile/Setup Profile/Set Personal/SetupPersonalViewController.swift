@@ -68,33 +68,17 @@ extension SetupPersonalViewController{
         return returnAsset
     }
     
-//    func queryTutor() {
-//        let token = CKUserData.shared.getToken()
-//        let pred = NSPredicate(format: "tutorEmail == %@", token)
-//        let query = CKQuery(recordType: "Tutor", predicate: pred)
-//
-//        database.perform(query, inZoneWith: nil) { (records, error) in
-//            guard let record = records else {return}
-//            if record.count > 0 {
-//                self.tutors = record[0]
-//                DispatchQueue.main.async {
-//
-//                }
-//            }
-//        }
-//    }
-    
     func updateUser(name:String, age:String, address:String){
-       
-        
         if let record = tutors{
             let index = IndexPath(row: 0, section: 0)
             let cell = tableView.cellForRow(at: index) as! SetupPersonalTableViewCell
             
-            let tempImg = tutors?["tutorProfileImage"]  as?  CKAsset
+            
             let newImageData = cell.imageProfile.image?.jpegData(compressionQuality: 0.00000000000000001)
             let imageData = createAsset(data: newImageData!)
-            cell.imageProfile.image =  tempImg?.toUIImage()
+
+            
+            
             if fullNames?.isEmpty == false{
                 let first = arrName?[0] ?? ""
                 let second = arrName?[1] ?? ""
@@ -107,11 +91,12 @@ extension SetupPersonalViewController{
             
             
             self.database.save(record, completionHandler: {returnRecord, error in
-                if error != nil
-                {
+                if error != nil{
                     self.showAlert(title: "Error", message: "Update Error")
-                } else{
-                    
+                }
+                DispatchQueue.main.async {
+                    self.hideLoading()
+                    self.sendVC()
                 }
             })
         }
@@ -127,8 +112,8 @@ extension SetupPersonalViewController{
 
 extension SetupPersonalViewController:ProfileDetailProtocol{
     func applyProfile() {
+        self.showLoading()
         getDataCustomCell()
-        sendVC()
     }
     
 }
