@@ -27,5 +27,11 @@ class TeachingGradePlainTableViewCell: UITableViewCell {
 extension TeachingGradePlainTableViewCell{
     func setCell(text:String) {
         self.label.text = text
+        setInterface()
+    }
+    
+    private func setInterface() {
+        self.outerRound()
+        self.setBorderBlue()
     }
 }

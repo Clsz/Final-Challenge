@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JobInformationViewController" customModule="Final_Challenge" customModuleProvider="target">
             <connections>
+                <outlet property="addJobDetailButton" destination="Snx-bB-Ehf" id="3KL-cg-g7H"/>
+                <outlet property="addNewScheduleButton" destination="gyz-0Z-RI4" id="WXY-rv-IVK"/>
                 <outlet property="maxSalaryLabel" destination="ivb-dW-PLj" id="j14-0K-ohX"/>
                 <outlet property="maxSlider" destination="NEl-PY-FIu" id="wpK-Ac-D5Q"/>
                 <outlet property="minSalaryLabel" destination="yAZ-bl-HIT" id="TIN-wj-zbl"/>
+                <outlet property="progressView1" destination="Zi8-Gs-71p" id="RFV-55-INW"/>
+                <outlet property="progressView2" destination="5Mj-gW-8uC" id="3Kt-Hj-gMB"/>
+                <outlet property="progressView3" destination="7hg-Ky-FQZ" id="QaW-8A-HEB"/>
+                <outlet property="progressView4" destination="Pv0-AH-KfG" id="Y1y-g4-Xxf"/>
                 <outlet property="qualificationTF" destination="fbe-ly-wox" id="mlE-6c-5i0"/>
                 <outlet property="tableView" destination="6Vv-O6-wcg" id="xMd-e8-HG0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -166,7 +172,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Vv-O6-wcg">
+                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Vv-O6-wcg">
                                             <rect key="frame" x="0.0" y="34.5" width="374" height="228"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
@@ -179,7 +185,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="44" id="Beo-z4-9pV"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                             <state key="normal" title="Add New Schedule">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
@@ -212,7 +218,7 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="44" id="i9A-0e-czN"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                     <state key="normal" title="Apply Job Details">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>

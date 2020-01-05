@@ -10,22 +10,29 @@ import UIKit
 
 class JobInformationViewController: BaseViewController {
     
+    @IBOutlet weak var progressView1: UIView!
+    @IBOutlet weak var progressView2: UIView!
+    @IBOutlet weak var progressView3: UIView!
+    @IBOutlet weak var progressView4: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var maxSlider: UISlider!
     @IBOutlet weak var minSalaryLabel: UILabel!
     @IBOutlet weak var maxSalaryLabel: UILabel!
     @IBOutlet weak var qualificationTF: UITextField!
+    @IBOutlet weak var addNewScheduleButton: UIButton!
+    @IBOutlet weak var addJobDetailButton: UIButton!
     var accessoryDoneButton: UIBarButtonItem!
     let accessoryToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
     let flexiblea = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
     var salaryMin:Double!
+    var salaryMax:Double!
     var interviewCell = "InterviewBimbelTableViewCellID"
-    //Value Min
-    //Value Max
     var day:[String] = []
     var startHour:[String] = []
     var endHour:[String] = []
     lazy var jobDetailVC = JobDetailsViewController()
+    var flag:Bool = true
+    var delegate:passDataToDetail?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,20 +44,19 @@ class JobInformationViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Job Information")
+        setMainInterface()
         tableView.reloadData()
     }
     
     @IBAction func minSalarySlider(_ sender: UISlider) {
         let minSalary = Int((roundf(sender.value)*50000))
         let myMinSalary = minSalary.formattedWithSeparator
-        
         let maxSalary = Int((roundf(sender.value)*50000))
         let myMaxSalary = maxSalary.formattedWithSeparator
-        
         minSalaryLabel.text = "Rp \(myMinSalary)"
-        
         maxSalaryLabel.text = "Rp \(myMaxSalary)"
         salaryMin = Double(sender.value)
+        checkData()
     }
     
     @IBAction func maxSalarySlider(_ sender: UISlider) {
@@ -58,6 +64,8 @@ class JobInformationViewController: BaseViewController {
         let maxSalary = Int((roundf(sender.value)*50000))
         let myMaxSalary = maxSalary.formattedWithSeparator
         maxSalaryLabel.text = "Rp \(myMaxSalary)"
+        salaryMax = Double(sender.value)
+        checkData()
     }
     
     @IBAction func addNewScheduleTapped(_ sender: Any) {
@@ -70,26 +78,54 @@ class JobInformationViewController: BaseViewController {
     }
     
     @IBAction func applyJobInformationTapped(_ sender: Any) {
-        jobDetailVC.startHour = self.startHour
-        jobDetailVC.endHour = self.endHour
-        jobDetailVC.day = self.day
-        //Min
-        //Max
-        jobDetailVC.qualification = self.qualificationTF.text
-        self.navigationController?.pushViewController(jobDetailVC, animated: true)
+        if flag == false{
+            delegate?.passSalary(minSalary: minSalaryLabel.text ?? "", maxSalary: maxSalaryLabel.text ?? "")
+            delegate?.passDataSchedule(day: day, startHour: startHour, endHour: endHour)
+            delegate?.passQualification(qualification: qualificationTF.text ?? "")
+            self.navigationController?.popViewController(animated: true)
+        }else{
+            jobDetailVC.startHour = self.startHour
+            jobDetailVC.endHour = self.endHour
+            jobDetailVC.day = self.day
+            jobDetailVC.minSalary = self.minSalaryLabel.text
+            jobDetailVC.maxSalary = self.maxSalaryLabel.text
+            jobDetailVC.qualification = self.qualificationTF.text
+            self.navigationController?.pushViewController(jobDetailVC, animated: true)
+        }
     }
     
+}
+extension JobInformationViewController{
+    private func setMainInterface() {
+        progressView1.setRoundView()
+        progressView2.setRoundView()
+        progressView3.setRoundView()
+        progressView4.setRoundView()
+        addNewScheduleButton.loginRound()
+        addJobDetailButton.loginRound()
+        qualificationTF.outerRound()
+        qualificationTF.setBorderBlue()
+    }
+    
+    private func checkData() {
+        if day.count == 0 || salaryMin == nil || qualificationTF.text == ""{
+            self.addJobDetailButton.isEnabled = false
+            self.addJobDetailButton.backgroundColor = #colorLiteral(red: 0.5921568627, green: 0.5921568627, blue: 0.5921568627, alpha: 1)
+        }else{
+            self.addJobDetailButton.isEnabled = true
+            self.addJobDetailButton.backgroundColor = #colorLiteral(red: 0, green: 0.399238348, blue: 0.6880209446, alpha: 1)
+        }
+    }
 }
 extension JobInformationViewController:SendSchedule{
     func sendTeachingSchedule(day: [String], startHour: [String], endHour: [String]) {
         self.day = day
         self.startHour = startHour
         self.endHour = endHour
+        checkData()
     }
 }
 extension JobInformationViewController: UITextFieldDelegate {
-    
-    
     func setTextField() {
         qualificationTF.delegate = self
         
@@ -107,10 +143,12 @@ extension JobInformationViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         moveTextField(textField, moveDistance: -250, up: true)
+        checkData()
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         moveTextField(textField, moveDistance: -250, up: false)
+        checkData()
     }
     
     func moveTextField(_ textField: UITextField, moveDistance: Int, up: Bool) {
@@ -122,23 +160,6 @@ extension JobInformationViewController: UITextFieldDelegate {
         UIView.setAnimationDuration(moveDuration)
         self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
         UIView.commitAnimations()
-    }
-    
-    class CustomTextField: UITextField {
-        
-        let padding = UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0);
-        
-        override func textRect(forBounds bounds: CGRect) -> CGRect {
-            return bounds.inset(by: padding)
-        }
-        
-        override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
-            return bounds.inset(by: padding)
-        }
-        
-        override func editingRect(forBounds bounds: CGRect) -> CGRect {
-            return bounds.inset(by: padding)
-        }
     }
     
     
@@ -164,11 +185,27 @@ extension JobInformationViewController: UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: interviewCell, for: indexPath) as! InterviewBimbelTableViewCell
-        let timeSchedule = "\(startHour[indexPath.row]) \(endHour[indexPath.row]) WIB"
+        let timeSchedule = "\(startHour[indexPath.row]) - \(endHour[indexPath.row]) WIB"
         cell.setCell(day: day[indexPath.row], time: timeSchedule)
         
         return cell
     }
     
+}
+
+class CustomTextField: UITextField {
     
+    let padding = UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0);
+    
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: padding)
+    }
+    
+    override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: padding)
+    }
+    
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: padding)
+    }
 }

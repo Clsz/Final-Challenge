@@ -151,9 +151,14 @@ protocol SendFlag{
 }
 
 
-protocol PassSubjectToDetails{
-    func passDataToSubject(arrSubject:[String])
+protocol passDataToDetail{
+    func passDataSubject(dataSubject:[String])
+    func passDataGrade(dataGrade:[String])
+    func passQualification(qualification:String)
+    func passSalary(minSalary:String, maxSalary:String)
+    func passDataSchedule(day:[String], startHour:[String], endHour:[String])
 }
+
 
 protocol SendSchedule {
     func sendTeachingSchedule(day:[String], startHour:[String], endHour:[String])

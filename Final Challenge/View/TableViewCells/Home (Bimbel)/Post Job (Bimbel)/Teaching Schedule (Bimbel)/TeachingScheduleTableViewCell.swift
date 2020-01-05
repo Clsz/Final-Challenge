@@ -30,4 +30,9 @@ extension TeachingScheduleTableViewCell{
         self.labelDay.text = day
         self.labelHour.text = hour
     }
+    
+    func setInterface() {
+        self.outerRound()
+        self.setBorderBlue()
+    }
 }

@@ -28,11 +28,11 @@ class JobViewController: BaseViewController {
         super.viewDidLoad()
         registerCell()
         cellDelegate()
-        queryCourse()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setupInterface()
+        queryCourse()
         setupView(text: "Post a Job")
     }
     
@@ -50,7 +50,16 @@ extension JobViewController{
             postNoData.isHidden = true
             caption.isHidden = true
             imageNoData.isHidden = true
+            
+            postJobImage.isHidden = false
+            buttonPostJob.isHidden = false
+            titleTableView.isHidden = false
+            tableView.isHidden = false
         }else{
+            postNoData.isHidden = false
+            caption.isHidden = false
+            imageNoData.isHidden = false
+            
             postJobImage.isHidden = true
             buttonPostJob.isHidden = true
             titleTableView.isHidden = true
@@ -82,13 +91,13 @@ extension JobViewController{
             guard let record = records else {return}
             self.listJobs = record
             DispatchQueue.main.async {
+                self.setupInterface()
                 self.tableView.reloadData()
             }
         }
     }
 }
 extension JobViewController: UITableViewDelegate, UITableViewDataSource{
-    
     private func registerCell() {
         self.tableView.register(UINib(nibName: "JobBimbelTableViewCell", bundle: nil), forCellReuseIdentifier: cellJob)
     }
@@ -106,13 +115,13 @@ extension JobViewController: UITableViewDelegate, UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: cellJob, for: indexPath) as! JobBimbelTableViewCell
         
         let number = (listJobs[indexPath.row].value(forKey: "courseName") as! String)
-        let subject = (listJobs[indexPath.row].value(forKey: "courseSubject") as! [String])
+        let subject = (listJobs[indexPath.row].value(forKey: "jobSubject") as! [String])
         let joined = subject.joined(separator: ", ")
         
-        let minFare = (listJobs[indexPath.row].value(forKey: "courseFareMinimum") as! Int)
-        let maxFare = (listJobs[indexPath.row].value(forKey: "courseFareMaximum") as! Int)
+        let minFare = (listJobs[indexPath.row].value(forKey: "minimumSalary") as! Double)
+        let maxFare = (listJobs[indexPath.row].value(forKey: "maximumSalary") as! Double)
         let gajiBimbel =  "Rp \(String(describing: minFare.formattedWithSeparator)) - Rp \(String(describing: maxFare.formattedWithSeparator))"
-        
+        cell.setBorder()
         cell.setCell(number: number, subject: joined, salary: gajiBimbel)
         
         return cell

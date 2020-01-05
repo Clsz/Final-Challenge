@@ -24,4 +24,9 @@ class LocationTableViewCell: UITableViewCell {
     }
     
 }
-
+extension LocationTableViewCell{
+    func setInterface() {
+        self.outerRound3()
+        self.setBorder()
+    }
+}

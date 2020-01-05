@@ -10,36 +10,64 @@ import UIKit
 
 class TeachingGradeViewController: BaseViewController {
     
-    //Table View Teaching Grade
+    @IBOutlet weak var progressView1: UIView!
+    @IBOutlet weak var progressView2: UIView!
+    @IBOutlet weak var progressView3: UIView!
+    @IBOutlet weak var progressView4: UIView!
     @IBOutlet weak var tableViewTG: UITableView!
+    @IBOutlet weak var applyButton: UIButton!
     let cellJob = "locationCell"
     var selectedGrade:[String] = []
     lazy var jobDetailVC = JobDetailsViewController()
-    
+    var flag:Bool = true
+    var delegate:passDataToDetail?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()
         cellDelegate()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Teaching Grade")
-        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        setMainInterface()
+        checkData()
     }
     
     
     @IBAction func applyGradeTapped(_ sender: Any) {
-        jobDetailVC.arrayGrade = self.selectedGrade
-        
-        let destVC = JobInformationViewController()
-        destVC.jobDetailVC = self.jobDetailVC
-        self.navigationController?.pushViewController(destVC, animated: true)
+        if flag == false{
+            delegate?.passDataGrade(dataGrade: selectedGrade)
+            self.navigationController?.popViewController(animated: true)
+        }else{
+            jobDetailVC.arrayGrade = self.selectedGrade
+            
+            let destVC = JobInformationViewController()
+            destVC.jobDetailVC = self.jobDetailVC
+            self.navigationController?.pushViewController(destVC, animated: true)
+        }
     }
     
 }
-
+extension TeachingGradeViewController{
+    private func setMainInterface() {
+        progressView1.setRoundView()
+        progressView2.setRoundView()
+        progressView3.setRoundView()
+        progressView4.setRoundView()
+        applyButton.loginRound()
+    }
+    
+    private func checkData() {
+        if selectedGrade.count == 0{
+            self.applyButton.isEnabled = false
+            self.applyButton.backgroundColor = #colorLiteral(red: 0.5921568627, green: 0.5921568627, blue: 0.5921568627, alpha: 1)
+        }else{
+            self.applyButton.isEnabled = true
+            self.applyButton.backgroundColor = #colorLiteral(red: 0, green: 0.399238348, blue: 0.6880209446, alpha: 1)
+        }
+    }
+}
 extension TeachingGradeViewController: UITableViewDelegate, UITableViewDataSource{
     private func registerCell() {
         self.tableViewTG.register(UINib(nibName: "LocationTableViewCell", bundle: nil), forCellReuseIdentifier: cellJob)
@@ -56,9 +84,8 @@ extension TeachingGradeViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableViewTG.dequeueReusableCell(withIdentifier: cellJob, for: indexPath) as! LocationTableViewCell
-        
         cell.selectionStyle = .none
-        
+        cell.setInterface()
         cell.lokasiLabel.text = ConstantManager.grade[indexPath.row]
         return cell
     }
@@ -68,18 +95,19 @@ extension TeachingGradeViewController: UITableViewDelegate, UITableViewDataSourc
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.none
         }else{
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.checkmark
-            let data:(key:Int, value:String) = ConstantManager.allSubject[indexPath.row]
-            selectedGrade.insert(data.value, at: 0)
+            let data = ConstantManager.grade[indexPath.row]
+            selectedGrade.insert(data, at: 0)
+            checkData()
         }
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.none
-        let data:(key:Int, value:String) = ConstantManager.allSubject[indexPath.row]
-        if let index = selectedGrade.firstIndex(of: data.value) {
+        let data = ConstantManager.grade[indexPath.row]
+        if let index = selectedGrade.firstIndex(of: data) {
             selectedGrade.remove(at: index)
+            checkData()
         }
     }
-    
     
 }

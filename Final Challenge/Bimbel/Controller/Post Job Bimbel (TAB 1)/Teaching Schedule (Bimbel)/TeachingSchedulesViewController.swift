@@ -22,6 +22,8 @@ class TeachingSchedulesViewController: BaseViewController {
     var selectedStart: [String] = []
     var selectedEnd: [String] = []
     var selectedDays:[String] = []
+    var currentSelected:[String] = []
+    var combinedDays:String = ""
     var pickerStart = UIDatePicker()
     var pickerEnd = UIDatePicker()
     var sendSchedule:SendSchedule?
@@ -75,9 +77,17 @@ extension TeachingSchedulesViewController{
     private func getAllData() {
         if let data = daysCV.indexPathsForSelectedItems{
             for i in data{
-                selectedDays.append(ConstantManager.day[i.row])
+                currentSelected.append(ConstantManager.day[i.row])
             }
         }
+        for i in  0..<currentSelected.count{
+            if i == 0{
+                combinedDays += currentSelected[i]
+            }else { combinedDays += ", \(currentSelected[i])" }
+            
+        }
+        
+        self.selectedDays.append(combinedDays)
         self.selectedStart.append(startTF.text ?? "")
         self.selectedEnd.append(endTF.text ?? "")
     }
