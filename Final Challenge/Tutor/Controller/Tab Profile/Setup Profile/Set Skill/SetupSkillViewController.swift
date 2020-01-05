@@ -17,11 +17,10 @@ class SetupSkillViewController: BaseViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     let skillCell = "SkillCollectionViewCellID"
-    let searchCell = "SearchSkillTableViewCell"
+    let searchCell = "SearchSkillTableViewCellID"
     var selectedChoosenSkills:[(key:Int, value:String)] = [(key:Int,value:String)]()
     var sel:[String] = [String]()
-    //    var allSearchSkill:[(key:Int, value:String)] = [(key:Int,value:String)]()
-    var currentSearchSkills:[String] = []
+    var currentSearchSkills:[(key:Int, value:String)] = [(key:Int,value:String)]()
     var allSkill:[(key:Int, value:String)] = [(key:Int,value:String)]()
     var searching = false
     let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
@@ -31,14 +30,18 @@ class SetupSkillViewController: BaseViewController {
         super.viewDidLoad()
         registerCell()
         cellDelegate()
+        cellDelegateTable()
+        registerCellTable()
         flushArray()
         setInterface()
         skillAppend()
-        cellDelegateTable()
+        searchCellDelegate()
         softSkillCV.reloadData()
         hardSkillCV.reloadData()
         tableView.isHidden = true
         self.hideKeyboardWhenTappedAround()
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,9 +91,6 @@ extension SetupSkillViewController{
     private func skillAppend() {
         self.allSkill.append(contentsOf: ConstantManager.softSkill)
         self.allSkill.append(contentsOf: ConstantManager.hardSkill)
-        for i in allSkill{
-            self.currentSearchSkills.append(i.value)
-        }
     }
 }
 
@@ -157,11 +157,13 @@ extension SetupSkillViewController: UICollectionViewDelegate, UICollectionViewDa
         if collectionView == self.softSkillCV {
             selectedChoosenSkills.insert(ConstantManager.softSkill[indexPath.row], at: 0)
             ConstantManager.softSkill.remove(at: indexPath.row)
+            allSkill.remove(at: indexPath.row)
             collectionView.reloadData()
             choosenCV.reloadData()
         } else if collectionView == self.hardSkillCV{
             selectedChoosenSkills.insert(ConstantManager.hardSkill[indexPath.row], at: 0)
             ConstantManager.hardSkill.remove(at: indexPath.row)
+            allSkill.remove(at: indexPath.row)
             collectionView.reloadData()
             choosenCV.reloadData()
         } else{
@@ -183,6 +185,10 @@ extension SetupSkillViewController: UICollectionViewDelegate, UICollectionViewDa
     }
 }
 extension SetupSkillViewController: UITableViewDelegate, UITableViewDataSource{
+    func registerCellTable() {
+        tableView.register(UINib(nibName: "SearchSkillTableViewCell", bundle: nil), forCellReuseIdentifier: searchCell)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentSearchSkills.count
     }
@@ -192,7 +198,7 @@ extension SetupSkillViewController: UITableViewDelegate, UITableViewDataSource{
         
         cell.selectionStyle = .none
         if searching  {
-            cell.labelSearch.text = currentSearchSkills[indexPath.row]
+            cell.labelSearch.text = currentSearchSkills[indexPath.row].value
         } else {
             cell.labelSearch.text = allSkill[indexPath.row].value
         }
@@ -201,6 +207,19 @@ extension SetupSkillViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedChoosenSkills.insert(currentSearchSkills[indexPath.row], at: 0)
+        if currentSearchSkills[indexPath.row].key == 0 {
+            ConstantManager.softSkill.remove(at: indexPath.row)
+            softSkillCV.reloadData()
+        }else{
+            ConstantManager.hardSkill.remove(at: indexPath.row)
+            hardSkillCV.reloadData()
+        }
+        searching = false
+        currentSearchSkills.remove(at: indexPath.row)
+        allSkill.remove(at: indexPath.row)
+        tableView.isHidden = true
+        choosenCV.reloadData()
         
     }
     
@@ -212,8 +231,6 @@ extension SetupSkillViewController: UITableViewDelegate, UITableViewDataSource{
 
 
 extension SetupSkillViewController: UISearchBarDelegate {
-    
-    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
         searchBar.showsCancelButton = true
@@ -225,19 +242,25 @@ extension SetupSkillViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        currentSearchSkills = self.currentSearchSkills.filter({$0.lowercased().prefix(searchText.count) == searchText.lowercased()})
-        
-        searching = true
-        tableView.isHidden = false
-        tableView.reloadData()
+        currentSearchSkills = self.allSkill.filter({$0.value.lowercased().prefix(searchText.count) == searchText.lowercased()})
+        if searchText != ""{
+            searching = true
+            tableView.isHidden = false
+            tableView.reloadData()
+        }else{
+            searching = false
+            tableView.isHidden = true
+            tableView.reloadData()
+        }
     }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searching = false
-        searchBar.text = ""
-        tableView.reloadData()
-        tableView.isHidden = true
-    }
+//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+//        searching = false
+//        searchBar.text = ""
+//        tableView.isHidden = true
+//        tableView.reloadData()
+//        print("text clicked")
+//    }
     
     func searchCellDelegate(){
         searchBar.delegate = self

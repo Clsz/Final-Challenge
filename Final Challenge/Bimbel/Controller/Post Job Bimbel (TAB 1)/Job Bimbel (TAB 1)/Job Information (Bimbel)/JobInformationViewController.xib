@@ -13,6 +13,7 @@
                 <outlet property="maxSlider" destination="NEl-PY-FIu" id="wpK-Ac-D5Q"/>
                 <outlet property="minSalaryLabel" destination="yAZ-bl-HIT" id="TIN-wj-zbl"/>
                 <outlet property="qualificationTF" destination="fbe-ly-wox" id="mlE-6c-5i0"/>
+                <outlet property="tableView" destination="6Vv-O6-wcg" id="xMd-e8-HG0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

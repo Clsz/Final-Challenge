@@ -133,7 +133,6 @@ extension RegisterViewController: UITextFieldDelegate {
             let email = emailTF.text!
             let password = passwordTF.text!
             
-            
             CKUserData.shared.loadAllTutor(email: email, password: password) { (res) in
                 if res == true{
                     if CKUserData.shared.checkUser(email: email) == LoginResults.userNotExist {

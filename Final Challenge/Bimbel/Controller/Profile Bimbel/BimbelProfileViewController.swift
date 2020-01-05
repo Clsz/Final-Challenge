@@ -51,14 +51,15 @@ extension BimbelProfileViewController{
     }
     
     func queryDatabase() {
-        let query = CKQuery(recordType: "Course", predicate: NSPredicate(value: true))
+        let token = CKUserData.shared.getTokenBimbel()
+        let pred = NSPredicate(format: "recordID == %@", token)
+        let query = CKQuery(recordType: "Course", predicate: pred)
         database.perform(query, inZoneWith: nil) { (records, error) in
             guard let records = records else {
                 print("error",error as Any)
                 return
             }
-            let sortedRecords = records.sorted(by: { $0.creationDate! > $1.creationDate! })
-            self.bimbel = sortedRecords[0]
+            self.bimbel = records[0]
         }
     }
 }

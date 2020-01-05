@@ -48,7 +48,8 @@ class EducationViewController: BaseViewController {
         setupData()
         registerCell()
         cellDelegate()
-            self.hideKeyboardWhenTappedAround()
+        self.hideKeyboardWhenTappedAround()
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,43 +67,53 @@ extension EducationViewController{
         self.tableView.contentInsetAdjustmentBehavior = .never
         self.applyButton.loginRound()
         self.outerView.outerRound()
-        setupView(text: "Pendidikan")
+        setupView(text: "Education")
     }
-     
-     private func setupData() {
-         dataArray.removeAll()
-         dataArray.append(("School",schoolName,0))
-         dataArray.append(("Education Type",grade,1))
-         dataArray.append(("Field of Study",fos,0))
-         dataArray.append(("GPA",gpa,0))
-         dataArray.append(true)
-     }
-     
-     private func getDataCustomCell() {
-         let index = IndexPath(row: 0, section: 0)
-         let cell = tableView.cellForRow(at: index) as! DetailProfileTableViewCell
-         let index1 = IndexPath(row: 1, section: 0)
-         let cell1 = tableView.cellForRow(at: index1) as! AnotherDetailProfileTableViewCell
-         let index2 = IndexPath(row: 2, section: 0)
-         let cell2 = tableView.cellForRow(at: index2) as! DetailProfileTableViewCell
-         let index3 = IndexPath(row: 3, section: 0)
-         let cell3 = tableView.cellForRow(at: index3) as! DetailProfileTableViewCell
-         let index4 = IndexPath(row: 4, section: 0)
-         let cell4 = tableView.cellForRow(at: index4) as! MoreDetailTableViewCell
-         
-         self.arrStart.append(cell4.startTF.text ?? "")
-         self.arrEnd.append(cell4.endTF.text ?? "")
-         self.arrSchoolName.append(cell.textField.text ?? "")
-         self.arrGrade.append(cell1.textField.text ?? "")
-         self.arrFOS.append(cell2.textField.text ?? "")
-         self.arrGPA.append(cell3.textField.text ?? "")
+    
+    private func setupData() {
+        if education != nil {
+            dataArray.removeAll()
+            dataArray.append(("School",schoolName,0))
+            dataArray.append(("Education Type",grade,1))
+            dataArray.append(("Field of Study",fos,0))
+            dataArray.append(("GPA",gpa,0))
+            dataArray.append(true)
+        } else {
+            dataArray.removeAll()
+            dataArray.append(("School","High School",0))
+            dataArray.append(("Education Type","Enter your School Name",1))
+            dataArray.append(("Field of Study","Enter your Field of Study",0))
+            dataArray.append(("GPA","Enter your Scores",0))
+            dataArray.append(true)
+        }
+        
+    }
+    
+    private func getDataCustomCell() {
+        let index = IndexPath(row: 0, section: 0)
+        let cell = tableView.cellForRow(at: index) as! DetailProfileTableViewCell
+        let index1 = IndexPath(row: 1, section: 0)
+        let cell1 = tableView.cellForRow(at: index1) as! AnotherDetailProfileTableViewCell
+        let index2 = IndexPath(row: 2, section: 0)
+        let cell2 = tableView.cellForRow(at: index2) as! DetailProfileTableViewCell
+        let index3 = IndexPath(row: 3, section: 0)
+        let cell3 = tableView.cellForRow(at: index3) as! DetailProfileTableViewCell
+        let index4 = IndexPath(row: 4, section: 0)
+        let cell4 = tableView.cellForRow(at: index4) as! MoreDetailTableViewCell
+        
+        self.arrStart.append(cell4.startTF.text ?? "")
+        self.arrEnd.append(cell4.endTF.text ?? "")
+        self.arrSchoolName.append(cell.textField.text ?? "")
+        self.arrGrade.append(cell1.textField.text ?? "")
+        self.arrFOS.append(cell2.textField.text ?? "")
+        self.arrGPA.append(cell3.textField.text ?? "")
         
         updateEducation(recordEducation: tutors!, name: cell.textField.text ?? "", grade: cell1.textField.text ?? "", fOS: cell2.textField.text ?? "", gPA: cell3.textField.text ?? "", start: cell4.startTF.text ?? "", end: cell4.endTF.text ?? "")
         
-     }
-     
+    }
+    
     private func updateEducation(recordEducation: CKRecord, name:String, grade:String, fOS:String, gPA:String, start:String, end:String){
-         if let record = tutors{
+        if let record = tutors{
             record["educationID"] = CKRecord.Reference.init(recordID: recordEducation.recordID, action: .deleteSelf)
             
             record["schoolName"] = name
@@ -112,25 +123,25 @@ extension EducationViewController{
             record["startYear"] = start
             record["endYear"] = end
             
-             self.database.save(record, completionHandler: {returnRecord, error in
-                 if error != nil{
-                     print("error")
-                 }else{
+            self.database.save(record, completionHandler: {returnRecord, error in
+                if error != nil{
+                    print("error")
+                }else{
                     DispatchQueue.main.async {
-                     self.sendVC()
-                     }
-                 }
-             })
-         }
-         
-     }
-
-     private func sendVC() {
-         let vc = AdditionalEducationViewController()
-         vc.tutors = self.tutors
-         self.navigationController?.pushViewController(vc, animated: true)
-     }
-     
+                        self.sendVC()
+                    }
+                }
+            })
+        }
+        
+    }
+    
+    private func sendVC() {
+        let vc = AdditionalEducationViewController()
+        vc.tutors = self.tutors
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     
 }
 extension EducationViewController:EducationProtocol{
@@ -164,33 +175,34 @@ extension EducationViewController:UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let keyValue = dataArray[indexPath.row] as? (key:String,value:String,code:Int){
-            if keyValue.code == 0{
-                let cell = tableView.dequeueReusableCell(withIdentifier: content, for: indexPath) as! DetailProfileTableViewCell
+            if let keyValue = dataArray[indexPath.row] as? (key:String,value:String,code:Int){
+                if keyValue.code == 0{
+                    let cell = tableView.dequeueReusableCell(withIdentifier: content, for: indexPath) as! DetailProfileTableViewCell
+                    
+                    cell.textField.attributedPlaceholder = NSAttributedString(string: keyValue.value, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+                    cell.setCell(text: keyValue.key, content: keyValue.value)
+                    cell.view = self.view
+                    return cell
+                }else{
+                    let cell = tableView.dequeueReusableCell(withIdentifier: contentDrop, for: indexPath) as! AnotherDetailProfileTableViewCell
+                    
+                    cell.textField.attributedPlaceholder = NSAttributedString(string: keyValue.value, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+                    cell.setCell(text: keyValue.key, content: keyValue.value)
+                    cell.dropID = 1
+                    cell.educationDelegate = self
+                    return cell
+                }
+            }
+            else if let _ = dataArray[indexPath.row] as? Bool{
+                let cell = tableView.dequeueReusableCell(withIdentifier: contentDate, for: indexPath) as! MoreDetailTableViewCell
                 
-                cell.textField.attributedPlaceholder = NSAttributedString(string: keyValue.value, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-                cell.setCell(text: keyValue.key, content: keyValue.value)
-                cell.view = self.view
-                return cell
-            }else{
-                let cell = tableView.dequeueReusableCell(withIdentifier: contentDrop, for: indexPath) as! AnotherDetailProfileTableViewCell
-                
-                cell.textField.attributedPlaceholder = NSAttributedString(string: keyValue.value, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-                cell.setCell(text: keyValue.key, content: keyValue.value)
-                cell.dropID = 1
+                cell.startTF.attributedPlaceholder = NSAttributedString(string: startYear!, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+                cell.endTF.attributedPlaceholder = NSAttributedString(string: endYear!, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+                cell.setCell(startText: "Start Year", endText: "End Year", buttStart: "", buttEnd: "")
                 cell.educationDelegate = self
                 return cell
             }
-        }
-        else if let _ = dataArray[indexPath.row] as? Bool{
-            let cell = tableView.dequeueReusableCell(withIdentifier: contentDate, for: indexPath) as! MoreDetailTableViewCell
-            
-            cell.startTF.attributedPlaceholder = NSAttributedString(string: startYear!, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-            cell.endTF.attributedPlaceholder = NSAttributedString(string: endYear!, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-            cell.setCell(startText: "Start Year", endText: "End Year", buttStart: "", buttEnd: "")
-            cell.educationDelegate = self
-            return cell
-        }
+        
         return UITableViewCell()
     }
     
