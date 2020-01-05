@@ -5,7 +5,6 @@
 //  Created by Steven Gunawan on 05/12/19.
 //  Copyright © 2019 12. All rights reserved.
 //
-
 import Foundation
 import CloudKit
 
@@ -137,6 +136,7 @@ class CKUserData {
                     completion(true)
                 }
             } else {
+                completion(false)
                 print ("There Was an Error with CloudKit")
                 print (error?.localizedDescription ?? "Error")
             }
@@ -167,6 +167,7 @@ class CKUserData {
                     completion(true)
                 }
             } else {
+                completion(false)
                 print ("There Was an Error with CloudKit")
                 print (error?.localizedDescription ?? "Error")
             }
@@ -190,14 +191,15 @@ class CKUserData {
         }
     }
     
-    func saveUsersBimbel(completion: @escaping (Bool) -> Void) {
+    func saveUsersBimbel(completion: @escaping (CKRecord) -> Void) {
         let record = CKRecord(recordType: "Course")
         for user in users {
             record.setObject(user.email as CKRecordValue?, forKey: "courseEmail")
             record.setObject(user.password as CKRecordValue? , forKey: "coursePassword")
             privateDB.save(record) { (savedRecord: CKRecord?, error: Error?) -> Void in
                 DispatchQueue.main.async {
-                    completion(true)
+                    guard let record = savedRecord else { return }
+                    completion(record)
                 }
             }
         }
@@ -252,8 +254,26 @@ class CKUserData {
     func saveToken(token:String){
         UserDefaults.standard.set(token, forKey: "token")
     }
+    
     func getToken() -> String{
         return UserDefaults.standard.string(forKey: "token") ?? ""
+    }
+    
+    func setStatusBimbel(status: Bool) {
+        UserDefaults.standard.set(status, forKey: "statusBimbel")
+        UserDefaults.standard.synchronize()
+    }
+    
+    func getStatusBimbel() -> Bool{
+        return UserDefaults.standard.bool(forKey: "statusBimbel")
+    }
+    
+    func saveTokenBimbel(token:String){
+        UserDefaults.standard.set(token, forKey: "tokenBimbel")
+    }
+    
+    func getTokenBimbel() -> String{
+        return UserDefaults.standard.string(forKey: "tokenBimbel") ?? ""
     }
     
     func saveOnboardingStatus(status:String) {
@@ -264,4 +284,3 @@ class CKUserData {
         return UserDefaults.standard.string(forKey: "isOnBoard") ?? ""
     }
 }
-
