@@ -14,29 +14,29 @@ class RegisterBimbelViewController: BaseViewController {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var registerButton: UIButton!
     var accessoryDoneButton: UIBarButtonItem!
-      let accessoryToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
-      let flexiblea = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+    let accessoryToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
+    let flexiblea = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-               setTextField()
-               self.tabBarController?.tabBar.isHidden = true
+        setTextField()
+        self.tabBarController?.tabBar.isHidden = true
     }
     @IBAction func eyeTapped(_ sender: Any) {
         passwordTF.isSecureTextEntry = !passwordTF.isSecureTextEntry
     }
     
     @IBAction func registerTapped(_ sender: Any) {
-             validateFields()
+        validateFields()
     }
     
     @IBAction func backToSignInTapped(_ sender: Any) {
         let loginVC = LoginViewController()
-               self.navigationController?.pushViewController(loginVC, animated: false)
+        self.navigationController?.pushViewController(loginVC, animated: true)
     }
     
-
+    
 }
 
 
@@ -111,13 +111,11 @@ extension RegisterBimbelViewController: UITextFieldDelegate {
                     if CKUserData.shared.checkUser(email: email) == LoginResults.userNotExist {
                         CKUserData.shared.addUserBimbel(email: email, password: password)
                         CKUserData.shared.saveUsersBimbel { (res) in
-                            if res == true{
                                 self.hideLoading()
+                                CKUserData.shared.saveTokenBimbel(token: email)
                                 let vc = SetupPersonalBimbelViewController()
+                                vc.course = res
                                 self.navigationController?.pushViewController(vc, animated: true)
-                                CKUserData.shared.saveToken(token: email)
-                                
-                            }
                         }
                     } else {
                         self.hideLoading()
@@ -126,7 +124,6 @@ extension RegisterBimbelViewController: UITextFieldDelegate {
                 }
                 self.hideLoading()
             }
-            
         }
     }
     

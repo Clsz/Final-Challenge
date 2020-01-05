@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Z7f-ev-Fmz">
-                    <rect key="frame" x="0.0" y="44" width="414" height="764"/>
+                    <rect key="frame" x="0.0" y="94" width="414" height="714"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A8h-IU-MeG">
@@ -42,7 +42,7 @@
             <constraints>
                 <constraint firstItem="A8h-IU-MeG" firstAttribute="top" secondItem="Z7f-ev-Fmz" secondAttribute="bottom" id="ELg-EW-0Kb"/>
                 <constraint firstItem="Z7f-ev-Fmz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="HUM-kw-9jf"/>
-                <constraint firstItem="Z7f-ev-Fmz" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="IRK-xz-HKt"/>
+                <constraint firstItem="Z7f-ev-Fmz" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="50" id="IRK-xz-HKt"/>
                 <constraint firstItem="A8h-IU-MeG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="WJQ-OB-F6B"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="A8h-IU-MeG" secondAttribute="trailing" constant="20" id="lCG-QU-Jm4"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Z7f-ev-Fmz" secondAttribute="trailing" id="pHX-qU-vtG"/>

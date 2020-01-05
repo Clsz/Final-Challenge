@@ -35,7 +35,7 @@ class TeachingGradeViewController: BaseViewController {
         
         let destVC = JobInformationViewController()
         destVC.jobDetailVC = self.jobDetailVC
-        self.navigationController?.pushViewController(jobDetailVC, animated: true)
+        self.navigationController?.pushViewController(destVC, animated: true)
     }
     
 }
@@ -68,14 +68,17 @@ extension TeachingGradeViewController: UITableViewDelegate, UITableViewDataSourc
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.none
         }else{
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.checkmark
-            
-            
+            let data:(key:Int, value:String) = ConstantManager.allSubject[indexPath.row]
+            selectedGrade.insert(data.value, at: 0)
         }
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.none
-        
+        let data:(key:Int, value:String) = ConstantManager.allSubject[indexPath.row]
+        if let index = selectedGrade.firstIndex(of: data.value) {
+            selectedGrade.remove(at: index)
+        }
     }
     
     

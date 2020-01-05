@@ -9,13 +9,14 @@
 import UIKit
 
 class AnotherContentTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var tableHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var tableView: UITableView!
     var contentDelegate:ProfileProtocol?
     var index:Int!
+    var destIndex:Int = 0
     var title:[String]?
     var content:[String]?
     var footer:[String]?
@@ -34,26 +35,26 @@ class AnotherContentTableViewCell: UITableViewCell {
         cellDelegate()
         tableView.reloadData()
     }
-       override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-           tableView.layer.removeAllAnimations()
-           tableHeightConstraint.constant = tableView.contentSize.height
-           UIView.animate(withDuration: 0.5) {
-               self.updateConstraints()
-               self.layoutIfNeeded()
-           }
-
-       }
-
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        tableView.layer.removeAllAnimations()
+        tableHeightConstraint.constant = tableView.contentSize.height
+        UIView.animate(withDuration: 0.5) {
+            self.updateConstraints()
+            self.layoutIfNeeded()
+        }
+        
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
     @IBAction func buttonTapped(_ sender: Any) {
-        if index == 1{
+        if destIndex == 0{
             contentDelegate?.languageTapped()
-        }else if index == 0{
+        }else if destIndex == 1{
             contentDelegate?.experienceTapped()
         } else {
             contentDelegate?.educationTapped()

@@ -103,54 +103,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B966DCA1-79D3-4196-A5F3-D623251C17B6"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Final Challenge/Tutor/Controller/Tab Profile/Education/EducationViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "updateEducation(recordEducation:name:grade:fOS:gPA:start:end:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "B966DCA1-79D3-4196-A5F3-D623251C17B6 - e1594d50d601f09e"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Final_Challenge.EducationViewController.(updateEducation in _E077933B1207AF67F8261D60107B09E2)(recordEducation: __C.CKRecord, name: Swift.String, grade: Swift.String, fOS: Swift.String, gPA: Swift.String, start: Swift.String, end: Swift.String) -&gt; ()"
-                  moduleName = "Final Challenge"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/stevengunawan/Desktop/Final-Challenge/Final%20Challenge/Tutor/Controller/Tab%20Profile/Education/EducationViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "115"
-                  endingLineNumber = "115"
-                  offsetFromSymbolStart = "1432">
-               </Location>
-               <Location
-                  uuid = "B966DCA1-79D3-4196-A5F3-D623251C17B6 - 24d9b348ab4754ed"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.CKRecord&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Final_Challenge.EducationViewController.(updateEducation in _E077933B1207AF67F8261D60107B09E2)(recordEducation: __C.CKRecord, name: Swift.String, grade: Swift.String, fOS: Swift.String, gPA: Swift.String, start: Swift.String, end: Swift.String) -&gt; ()"
-                  moduleName = "Final Challenge"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/stevengunawan/Desktop/Final-Challenge/Final%20Challenge/Tutor/Controller/Tab%20Profile/Education/EducationViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "116"
-                  endingLineNumber = "116"
-                  offsetFromSymbolStart = "184">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "59CABFA0-DA66-49DC-B3FF-2B6A7EA3F9A6"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -215,118 +167,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8FE07A8C-8FE5-4B47-A33F-3EAA71D160F8"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Final Challenge/Bimbel/Controller/Tab Progress (Bimbel)/Segmented/Segmented Test/Test Schedule/TestScheduleViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "updateToDatabase(status:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "8FE07A8C-8FE5-4B47-A33F-3EAA71D160F8 - c05c9b64e22c8020"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Final_Challenge.TestScheduleViewController.(updateToDatabase in _CB353AC64A54929E4B58E9671AE84EA1)(status: Swift.String, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "Final Challenge"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/stevengunawan/Desktop/Final-Challenge/Final%20Challenge/Bimbel/Controller/Tab%20Progress%20(Bimbel)/Segmented/Segmented%20Test/Test%20Schedule/TestScheduleViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "104"
-                  endingLineNumber = "104"
-                  offsetFromSymbolStart = "704">
-               </Location>
-               <Location
-                  uuid = "8FE07A8C-8FE5-4B47-A33F-3EAA71D160F8 - dfb25fa464e68123"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.CKRecord&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Final_Challenge.TestScheduleViewController.(updateToDatabase in _CB353AC64A54929E4B58E9671AE84EA1)(status: Swift.String, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "Final Challenge"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/stevengunawan/Desktop/Final-Challenge/Final%20Challenge/Bimbel/Controller/Tab%20Progress%20(Bimbel)/Segmented/Segmented%20Test/Test%20Schedule/TestScheduleViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "105"
-                  endingLineNumber = "105"
-                  offsetFromSymbolStart = "220">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "6F42E994-E517-41C8-93CE-510E8988862A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Final Challenge/Bimbel/Controller/Tab Progress (Bimbel)/Segmented/Segmented Test/Test Schedule/TestScheduleViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
-            landmarkName = "submitTest()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "6F42E994-E517-41C8-93CE-510E8988862A - 55f3eafa23939bfd"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.UIAlertAction&gt;) -&gt; () in Final_Challenge.TestScheduleViewController.(submitTest in _CB353AC64A54929E4B58E9671AE84EA1)() -&gt; ()"
-                  moduleName = "Final Challenge"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/stevengunawan/Desktop/Final-Challenge/Final%20Challenge/Bimbel/Controller/Tab%20Progress%20(Bimbel)/Segmented/Segmented%20Test/Test%20Schedule/TestScheduleViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "120"
-                  endingLineNumber = "120"
-                  offsetFromSymbolStart = "104">
-               </Location>
-               <Location
-                  uuid = "6F42E994-E517-41C8-93CE-510E8988862A - c13f0cc11385ba1b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool) -&gt; () in closure #1 (Swift.Optional&lt;__C.UIAlertAction&gt;) -&gt; () in Final_Challenge.TestScheduleViewController.(submitTest in _CB353AC64A54929E4B58E9671AE84EA1)() -&gt; ()"
-                  moduleName = "Final Challenge"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/stevengunawan/Desktop/Final-Challenge/Final%20Challenge/Bimbel/Controller/Tab%20Progress%20(Bimbel)/Segmented/Segmented%20Test/Test%20Schedule/TestScheduleViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "121"
-                  endingLineNumber = "121"
-                  offsetFromSymbolStart = "100">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DD7179A3-F4BC-4134-A408-B19684B6FE71"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Final Challenge/Tutor/Controller/Tab Profile/Setup Profile/Set Personal/SetupPersonalViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "A362E74F-0FDE-4371-9A11-08F3132AB863"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -337,6 +177,86 @@
             startingLineNumber = "101"
             endingLineNumber = "101"
             landmarkName = "scrollViewDidScroll(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "551FDA15-AF0D-4017-B665-93A461909D8F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Final Challenge/View/TableViewCells/Profile/Front View/Content/AnotherContentTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "buttonTapped(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "392DF532-5465-4AA4-A4CE-5710798B02A3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Final Challenge/View/TableViewCells/Profile/Front View/Content/AnotherContentTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "buttonTapped(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C0111AAD-DB16-4F18-8E86-57E99A056084"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Final Challenge/View/TableViewCells/Profile/Front View/Content/AnotherContentTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "buttonTapped(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "516B58D3-F15C-4647-8C75-6FF42DDD6921"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Final Challenge/Tutor/Controller/Tab Profile/ProfileViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
+            landmarkName = "languageTapped()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "559CBD38-8F80-415D-81B3-AAE2BF510706"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Final Challenge/Bimbel/Controller/Post Job Bimbel (TAB 1)/Job Bimbel (TAB 1)/Job Information (Bimbel)/JobInformationViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "addNewScheduleTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

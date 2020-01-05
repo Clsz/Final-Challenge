@@ -28,7 +28,8 @@ class SetupEducationViewController: BaseViewController {
     var education:CKRecord?
     var educationReference:CKRecord.Reference!
     let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
-    
+    lazy var additionalEducation = AdditionalEducationViewController()
+
     var arrStart:[String] = []
     var arrEnd:[String] = []
     var arrSchoolName:[String] = []
@@ -43,6 +44,7 @@ class SetupEducationViewController: BaseViewController {
         cellDelegate()
         self.hideKeyboardWhenTappedAround()
         self.navigationController?.navigationItem.hidesBackButton = true
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -108,7 +110,6 @@ extension SetupEducationViewController{
         database.save(newEducation) { (record, error) in
             guard record != nil  else { return print("error", error as Any) }
             self.updateEducation(recordEducation: record!)
-            
         }
         
     }
@@ -120,9 +121,9 @@ extension SetupEducationViewController{
             self.database.save(record, completionHandler: {returnRecord, error in
                 if error != nil{
                     self.showAlert(title: "Error", message: "Update Error")
-                }else{ DispatchQueue.main.async {
+                }
+                DispatchQueue.main.async {
                     self.sendVC()
-                    }
                 }
             })
         }
@@ -130,9 +131,8 @@ extension SetupEducationViewController{
     }
     
     private func sendVC() {
-        let vc = AdditionalEducationViewController()
-        vc.tutors = self.tutors
-        self.navigationController?.pushViewController(vc, animated: true)
+        additionalEducation.tutors = self.tutors
+        self.navigationController?.pushViewController(additionalEducation, animated: true)
     }
     
 }

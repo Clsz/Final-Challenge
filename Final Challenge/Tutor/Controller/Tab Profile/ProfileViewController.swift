@@ -39,10 +39,11 @@ class ProfileViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Profile")
+        queryTutor()
         tableView.reloadData()
         self.tabBarController?.tabBar.isHidden = false
     }
-
+    
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         tableView.layer.removeAllAnimations()
         tableHeightConstraint.constant = tableView.contentSize.height
@@ -50,7 +51,7 @@ class ProfileViewController: BaseViewController {
             self.view.updateConstraints()
             self.view.layoutIfNeeded()
         }
-
+        
     }
     
 }
@@ -60,11 +61,16 @@ extension ProfileViewController{
         if self.tutors != nil{
             dataArray.append(tutors)
             dataArray.append(("Education","Edit Education",0))
-            let skill = (tutors?.value(forKey: "tutorSkills") as! [String])
-            dataArray.append(("Skill","Add Skill",skill))
+            //            if let skill = (tutors?.value(forKey: "tutorSkills") as? [String]){
+            //                dataArray.append(("Skill","Add Skill",skill))
+            //            }else{
+            //                dataArray.append(("Skill","Add Skill",[String]()))
+            //
+            //            }
+            dataArray.append(("Skill","Add Skill",3))
             dataArray.append(("Language","Add Language",1))
             dataArray.append(("Experience","Add Experience",2))
-            dataArray.append(false)
+            dataArray.append(true)
         }else{
             dataArray.append("No Data")
         }
@@ -83,13 +89,18 @@ extension ProfileViewController{
             }
             DispatchQueue.main.async {
                 if self.tutors != nil{
-                    self.queryEducation()
-                    self.queryLanguage()
-                    self.queryExperience()
+                    if self.tutors?.value(forKey: "educationID") != nil{
+                        self.queryEducation()
+                    }
+                    if self.tutors?.value(forKey: "languageID") != nil{
+                        self.queryLanguage()
+                    }
+                    if self.tutors?.value(forKey: "experienceID") != nil{
+                        self.queryExperience()
+                    }
+                    self.refresh()
                 }else{
-                    self.setupData()
-                    self.cellDelegate()
-                    self.tableView.reloadData()
+                    self.refresh()
                 }
                 
             }
@@ -104,10 +115,12 @@ extension ProfileViewController{
         
         database.perform(query, inZoneWith: nil) { (records, error) in
             guard let record = records else {return}
-            self.education = record[0]
+            if record.count > 0 {
+                self.education = record[0]
+            }
             DispatchQueue.main.async {
-                self.isLoadedEducation = true
-                self.checkIsLoaded()
+                self.refresh()
+//                self.checkIsLoaded()
             }
         }
     }
@@ -119,10 +132,12 @@ extension ProfileViewController{
         
         database.perform(query, inZoneWith: nil) { (records, error) in
             guard let record = records else {return}
-            self.language = record[0]
+            if record.count > 0 {
+                self.language = record[0]
+            }
             DispatchQueue.main.async {
-                self.isLoadedLanguage = true
-                self.checkIsLoaded()
+                self.refresh()
+//                self.checkIsLoaded()
             }
         }
     }
@@ -134,12 +149,20 @@ extension ProfileViewController{
         
         database.perform(query, inZoneWith: nil) { (records, error) in
             guard let record = records else {return}
-            self.experience = record[0]
+            if record.count > 0{
+                self.experience = record[0]
+            }
             DispatchQueue.main.async {
-                self.isLoadedExperience = true
-                self.checkIsLoaded()
+                self.refresh()
+//                self.checkIsLoaded()
             }
         }
+    }
+    
+    private func refresh() {
+        self.setupData()
+        self.cellDelegate()
+        self.tableView.reloadData()
     }
     
     private func checkIsLoaded() {
@@ -152,19 +175,22 @@ extension ProfileViewController{
     }
     
     private func checkUniversity() -> String{
-        let grade = education?.value(forKey: "grade") as! [String]
-        let schoolName = education?.value(forKey: "schoolName") as! [String]
-        var university:String = ""
-        var id = 0
-        
-        for i in grade{
-            id += 1
-            if i == "University"{
-                id -= 1
-                university = schoolName[id]
+        if education != nil{
+            let grade = education?.value(forKey: "grade") as! [String]
+            let schoolName = education?.value(forKey: "schoolName") as! [String]
+            var university:String = ""
+            var id = 0
+            
+            for i in grade{
+                id += 1
+                if i == "University"{
+                    id -= 1
+                    university = schoolName[id]
+                }
             }
+            return university
         }
-        return university
+        return ""
     }
     
 }
@@ -202,11 +228,20 @@ extension ProfileViewController:ProfileProtocol, LanguageViewControllerDelegate,
     }
     
     func educationTapped() {
-        let destVC = ListEducationViewController()
-        destVC.tutors = self.tutors
+        if education != nil {
+            let destVC = ListEducationViewController()
+            destVC.tutors = self.tutors
+            destVC.delegate = self
+            navigationController?.pushViewController(destVC, animated: true)
+        } else {
+            let lastVC = AdditionalEducationViewController()
+            lastVC.flag = false
+            let destVC = SetupEducationViewController()
+            destVC.additionalEducation = lastVC
+            destVC.tutors = self.tutors
+            navigationController?.pushViewController(destVC, animated: true)
+        }
         
-        destVC.delegate = self
-        navigationController?.pushViewController(destVC, animated: true)
     }
     
     func experienceTapped() {
@@ -256,77 +291,111 @@ extension ProfileViewController:UITableViewDataSource, UITableViewDelegate{
             if indexPath.row == 0{
                 // FOR TITLE
                 let cell = tableView.dequeueReusableCell(withIdentifier: header, for: indexPath) as! TitleTableViewCell
-                let fName = "\(tutors?.value(forKey: "tutorFirstName") as! String) \(tutors?.value(forKey: "tutorLastName") as! String)"
-                let universityName = self.checkUniversity()
-                //            let imageProfile = tutors?.value(forKey: "tutorProfileImage") as! CKAsset
-                let imageDefault = #imageLiteral(resourceName: "user-5")
-                cell.index = 0
-                
-                if tutors?.value(forKeyPath: "tutorProfilImage") != nil {
-                    cell.setCell(image: imageDefault, name: fName, university: universityName, age: 22)
-                    cell.tutorDelegate = self
-                    return cell
-                } else {
-                    cell.setCell(image: imageDefault, name: fName, university: universityName, age: 22)
-                    cell.tutorDelegate = self
-                    return cell
+                if (tutors?.value(forKey: "tutorFirstName") as? String) != nil{
+                    let fName = "\(tutors?.value(forKey: "tutorFirstName") as! String) \(tutors?.value(forKey: "tutorLastName") as! String)"
+                    let universityName = self.checkUniversity()
+                    let imageDefault = #imageLiteral(resourceName: "user-5")
+                    cell.index = 0
+                    if tutors?.value(forKeyPath: "tutorProfilImage") != nil {
+                        let imageProfile = tutors?.value(forKey: "tutorProfileImage") as! CKAsset
+                        cell.setCell(image: imageProfile.toUIImage()!, name: fName, university: universityName, age: 22)
+                        cell.tutorDelegate = self
+                        return cell
+                    } else {
+                        cell.setCell(image: imageDefault, name: fName, university: universityName, age: 22)
+                        cell.tutorDelegate = self
+                        return cell
+                    }
                 }
-            }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:String, content:[String]){
-                // FOR SKILLS
-                let cell = tableView.dequeueReusableCell(withIdentifier: content, for: indexPath) as! ContentTableViewCell
-                cell.setCell(title: keyValue.key, button: keyValue.value)
-                cell.tutorDelegate =  self
-                cell.index = 0
-                cell.skills = keyValue.content
-                return cell
             }else if let keyValue = dataArray[indexPath.row] as? (key:String, button:String, value:Int){
                 if keyValue.value == 0{
                     // FOR EDUCATION
-                    let cell = tableView.dequeueReusableCell(withIdentifier: anotherContent, for: indexPath) as! AnotherContentTableViewCell
-                    let schoolName = education?.value(forKey: "schoolName") as! [String]
-                    let grade = education?.value(forKey: "grade") as! [String]
-                    let fos = education?.value(forKey: "fieldOfStudy") as! [String]
-                    cell.index = 1
-                    cell.title = schoolName
-                    cell.content = grade
-                    cell.footer = fos
-                    cell.setCell(text: keyValue.key, button: keyValue.button)
-                    cell.contentDelegate = self
-                    
-                    return cell
+                    if self.education != nil {
+                        let cell = tableView.dequeueReusableCell(withIdentifier: anotherContent, for: indexPath) as! AnotherContentTableViewCell
+                        let schoolName = education?.value(forKey: "schoolName") as! [String]
+                        let grade = education?.value(forKey: "grade") as! [String]
+                        let fos = education?.value(forKey: "fieldOfStudy") as! [String]
+                        cell.index = 1
+                        cell.destIndex = 2
+                        cell.title = schoolName
+                        cell.content = grade
+                        cell.footer = fos
+                        cell.setCell(text: keyValue.key, button: keyValue.button)
+                        cell.contentDelegate = self
+                        
+                        return cell
+                    } else {
+                        let cell = tableView.dequeueReusableCell(withIdentifier: anotherContent, for: indexPath) as! AnotherContentTableViewCell
+                        cell.setCell(text: keyValue.key, button: keyValue.button)
+                        cell.contentDelegate = self
+                        return cell
+                    }
                 } else if keyValue.value == 1{
                     //FOR EXPERIENCE
-                    let cell = tableView.dequeueReusableCell(withIdentifier: anotherContent, for: indexPath) as! AnotherContentTableViewCell
-                    let companyName = experience?.value(forKey: "jobCompanyName") as! [String]
-                    let jobTitle = experience?.value(forKey: "jobTitle") as! [String]
-                    let startYear = experience?.value(forKey: "jobStartYear") as! [String]
-                    let endYear = experience?.value(forKey: "jobEndYear") as! [String]
-                    cell.title = jobTitle
-                    cell.content = companyName
-                    cell.startYear = startYear
-                    cell.endYear = endYear
-                    cell.index = 2
-                    cell.setCell(text: keyValue.key, button: keyValue.button)
-                    cell.contentDelegate = self
-                    return cell
+                    if self.experience != nil {
+                        let cell = tableView.dequeueReusableCell(withIdentifier: anotherContent, for: indexPath) as! AnotherContentTableViewCell
+                        let companyName = experience?.value(forKey: "jobCompanyName") as! [String]
+                        let jobTitle = experience?.value(forKey: "jobTitle") as! [String]
+                        let startYear = experience?.value(forKey: "jobStartYear") as! [String]
+                        let endYear = experience?.value(forKey: "jobEndYear") as! [String]
+                        cell.title = jobTitle
+                        cell.content = companyName
+                        cell.startYear = startYear
+                        cell.endYear = endYear
+                        cell.index = 2
+                        cell.destIndex = 1
+                        cell.setCell(text: keyValue.key, button: keyValue.button)
+                        cell.contentDelegate = self
+                        return cell
+                    } else {
+                        let cell = tableView.dequeueReusableCell(withIdentifier: anotherContent, for: indexPath) as! AnotherContentTableViewCell
+                        cell.setCell(text: keyValue.key, button: keyValue.button)
+                        cell.contentDelegate = self
+                        return cell
+                    }
                 }else if keyValue.value == 2{
                     //FOR LANGUAGE
-                    let cell = tableView.dequeueReusableCell(withIdentifier: anotherContent, for: indexPath) as! AnotherContentTableViewCell
-                    let lang = language?.value(forKey: "languageName") as! [String]
-                    let level = language?.value(forKey: "languageLevel") as! [String]
-                    cell.index = 1
-                    cell.title = lang
-                    cell.content = level
-                    cell.setCell(text: keyValue.key, button: keyValue.button)
-                    cell.contentDelegate = self
-                    return cell
-                }else{
-                    //FOR LOGOUT
-                    let cell = tableView.dequeueReusableCell(withIdentifier: logoutView, for: indexPath) as! LogoutTableViewCell
-                    cell.contentDelegate = self
-                    cell.setInterface()
-                    return cell
+                    if self.language != nil {
+                        let cell = tableView.dequeueReusableCell(withIdentifier: anotherContent, for: indexPath) as! AnotherContentTableViewCell
+                        let lang = language?.value(forKey: "languageName") as! [String]
+                        let level = language?.value(forKey: "languageLevel") as! [String]
+                        cell.index = 1
+                        cell.destIndex = 0
+                        cell.title = lang
+                        cell.content = level
+                        cell.setCell(text: keyValue.key, button: keyValue.button)
+                        cell.contentDelegate = self
+                        return cell
+                    } else {
+                        let cell = tableView.dequeueReusableCell(withIdentifier: anotherContent, for: indexPath) as! AnotherContentTableViewCell
+                        cell.setCell(text: keyValue.key, button: keyValue.button)
+                        cell.contentDelegate = self
+                        return cell
+                    }
+                }else if keyValue.value == 3 {
+                    if tutors?.value(forKey: "tutorSkill") != nil{
+                        let cell = tableView.dequeueReusableCell(withIdentifier: content, for: indexPath) as! ContentTableViewCell
+                        let skill = (tutors?.value(forKey: "tutorSkills") as? [String])
+                        cell.setCell(title: keyValue.key, button: keyValue.button)
+                        cell.tutorDelegate =  self
+                        cell.index = 0
+                        cell.skills = skill
+                        return cell
+                    }else{
+                        let cell = tableView.dequeueReusableCell(withIdentifier: content, for: indexPath) as! ContentTableViewCell
+                        cell.setCell(title: keyValue.key, button: keyValue.button)
+                        cell.collectionView.isHidden = true
+                        cell.tutorDelegate =  self
+                        return cell
+                    }
                 }
+                
+            }else {
+                //FOR LOGOUT
+                let cell = tableView.dequeueReusableCell(withIdentifier: logoutView, for: indexPath) as! LogoutTableViewCell
+                cell.contentDelegate = self
+                cell.setInterface()
+                return cell
             }
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "NoAccountTutorTableViewCellID", for: indexPath) as! NoAccountTutorTableViewCell
@@ -338,31 +407,3 @@ extension ProfileViewController:UITableViewDataSource, UITableViewDelegate{
     }
     
 }
-
-
-//            }
-//            else if keyValue.code == 2{
-//                let cell = tableView.dequeueReusableCell(withIdentifier: achievement, for: indexPath) as! AchievementTableViewCell
-//                cell.setCell(label: keyValue.key, button: keyValue.value)
-//                cell.contentDelegate = self
-//                return cell
-//            }
-
-
-
-
-
-//    private func addAchievement() {
-//        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-//        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-//        let file = UIAlertAction(title: "Choose from file", style: .default) { action in
-//
-//            //Select from file
-//        }
-//
-//        actionSheet.addAction(file)
-//        actionSheet.addAction(cancel)
-//
-//        present(actionSheet, animated: true, completion: nil)
-//    }
-//        tableView.register(UINib(nibName: "AchievementTableViewCell", bundle: nil), forCellReuseIdentifier: achievement)

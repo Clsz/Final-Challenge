@@ -11,60 +11,91 @@ import CloudKit
 
 class JobViewController: BaseViewController {
     
+    @IBOutlet weak var titleTableView: UILabel!
     @IBOutlet weak var buttonPostJob: UIButton!
-    @IBOutlet weak var postedJobTableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var postNoData: UIButton!
+    @IBOutlet weak var caption: UILabel!
+    @IBOutlet weak var imageNoData: UIImageView!
+    @IBOutlet weak var postJobImage: UIImageView!
     
     var listJobs = [CKRecord]()
     let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
     let cellJob = "postedJobCell"
+    var course:CKRecord?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setButton()
         registerCell()
         cellDelegate()
         queryCourse()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        setupInterface()
         setupView(text: "Post a Job")
-        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    }
+    
+    @IBAction func postJobTapped(_ sender: Any) {
+        let destVC = TeachingSubjectViewController()
+        self.navigationController?.pushViewController(destVC, animated: true)
     }
     
 }
-
-
 extension JobViewController{
-    func setButton(){
-        buttonPostJob.outerRound3()
+    private func setupInterface() {
+        buttonPostJob.loginRound()
+        postNoData.loginRound()
+        if listJobs.count != 0{
+            postNoData.isHidden = true
+            caption.isHidden = true
+            imageNoData.isHidden = true
+        }else{
+            postJobImage.isHidden = true
+            buttonPostJob.isHidden = true
+            titleTableView.isHidden = true
+            tableView.isHidden = true
+        }
     }
     
     func queryCourse() {
-        let token = CKUserData.shared.getToken()
-        let query = CKQuery(recordType: "Course", predicate: NSPredicate(value: true))
+        let token = CKUserData.shared.getTokenBimbel()
+        let pred = NSPredicate(format: "courseEmail == %@", token)
+        let query = CKQuery(recordType: "Course", predicate: pred)
         database.perform(query, inZoneWith: nil) { (records, error) in
             guard let records = records else {
                 print("error",error as Any)
                 return
             }
-            let sortedRecords = records.sorted(by: { $0.creationDate! > $1.creationDate! })
-            self.listJobs = sortedRecords
+            self.course = records[0]
             DispatchQueue.main.async {
-                self.postedJobTableView.reloadData()
+                self.queryJob()
+            }
+        }
+    }
+    
+    private func queryJob() {
+        let pred = NSPredicate(format: "courseID = %@", CKRecord.ID(recordName: (course?.recordID.recordName)!))
+        let query = CKQuery(recordType: "Job", predicate: pred)
+        
+        database.perform(query, inZoneWith: nil) { (records, error) in
+            guard let record = records else {return}
+            self.listJobs = record
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
         }
     }
 }
-
 extension JobViewController: UITableViewDelegate, UITableViewDataSource{
     
     private func registerCell() {
-        self.postedJobTableView.register(UINib(nibName: "JobBimbelTableViewCell", bundle: nil), forCellReuseIdentifier: cellJob)
+        self.tableView.register(UINib(nibName: "JobBimbelTableViewCell", bundle: nil), forCellReuseIdentifier: cellJob)
     }
     
     private func cellDelegate() {
-        self.postedJobTableView.dataSource = self
-        self.postedJobTableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -72,7 +103,7 @@ extension JobViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = postedJobTableView.dequeueReusableCell(withIdentifier: cellJob, for: indexPath) as! JobBimbelTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellJob, for: indexPath) as! JobBimbelTableViewCell
         
         let number = (listJobs[indexPath.row].value(forKey: "courseName") as! String)
         let subject = (listJobs[indexPath.row].value(forKey: "courseSubject") as! [String])

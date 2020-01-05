@@ -25,7 +25,6 @@ class SetupSubjectBimbelViewController: BaseViewController {
     let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         setUpView()
         registerCellCV()

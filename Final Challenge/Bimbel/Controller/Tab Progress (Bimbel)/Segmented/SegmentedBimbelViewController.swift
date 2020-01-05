@@ -57,7 +57,7 @@ class SegmentedBimbelViewController: BaseViewController {
 }
 extension SegmentedBimbelViewController{
     func queryCourse() {
-        let token = CKUserData.shared.getToken()
+        let token = CKUserData.shared.getTokenBimbel()
         
         let pred = NSPredicate(format: "courseEmail == %@", token)
         
