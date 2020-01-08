@@ -23,7 +23,7 @@ class DetailTestViewController: BaseViewController {
     let seeDetail = "SeeDetailTableViewCellID"
     let interviewSchedule = "ActivityTableViewCellID"
     let footer = "FooterActivityTableViewCellID"
-    
+    var tokenUser:CKRecord?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +43,12 @@ extension DetailTestViewController{
         dataArray.append(true)
         let address = (course?.value(forKey: "courseAddress") as! String)
         dataArray.append(("Address",address,0))
-        let testReq = (applicant?.value(forKey: "testRequirement") as! String)
-        dataArray.append(("Choose Test Schedule","Please select one of the tet schedule","Test Requirement",testReq,"Request New Schedule"))
+        if (applicant?.value(forKey: "testRequirement")) != nil {
+            let testReq = (applicant?.value(forKey: "testRequirement") as! String)
+             dataArray.append(("Choose Test Schedule","Please select one of the tet schedule","Test Requirement",testReq,"Request New Schedule"))
+        } else {
+             dataArray.append(("Choose Test Schedule","Please select one of the tet schedule","Test Requirement","No requirement data","Request New Schedule"))
+        }
         dataArray.append(false)
     }
     
@@ -69,6 +73,22 @@ extension DetailTestViewController{
         database.perform(query, inZoneWith: nil) { (records, error) in
             guard let record = records else {return}
             self.course = record[0]
+            DispatchQueue.main.async {
+                self.fetchToken()
+            }
+        }
+    }
+    
+    private func fetchToken() {
+        let email = (course?.value(forKey: "courseEmail") as! String)
+        let pred = NSPredicate(format: "email == %@", email)
+        let query = CKQuery(recordType: "Token", predicate: pred)
+        
+        database.perform(query, inZoneWith: nil) { (records, error) in
+            guard let record = records else {return}
+            if record.count > 0{
+                self.tokenUser = record[0]
+            }
             DispatchQueue.main.async {
                 self.setupData()
                 self.cellDelegate()
@@ -100,9 +120,9 @@ extension DetailTestViewController{
         confirmAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
             self.updateToDatabase(status: "Waiting for Your Approval") { (res) in
                 if res == true{
-                    let destVC = ResultViewController()
-                    destVC.fromID = 1
-                    self.navigationController?.pushViewController(destVC, animated: true)
+                    DispatchQueue.main.async {
+                        self.sendNotif(message: "Accept The Test", destID: 1)
+                    }
                 }
             }
         }))
@@ -113,14 +133,14 @@ extension DetailTestViewController{
     }
     
     private func rejectAlert() {
-        let confirmAlert = UIAlertController(title: "Accept the Test", message: "Are You Sure Want to Declined? It Means you lost this job.", preferredStyle: UIAlertController.Style.alert)
+        let confirmAlert = UIAlertController(title: "Reject the Test", message: "Are You Sure Want to Declined? It Means you lost this job.", preferredStyle: UIAlertController.Style.alert)
         
         confirmAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
             self.updateToDatabase(status: "Test Declined") { (res) in
                 if res == true{
-                    let destVC = ResultViewController()
-                    destVC.fromID = 4
-                    self.navigationController?.pushViewController(destVC, animated: true)
+                    DispatchQueue.main.async {
+                        self.sendNotif(message: "Reject The Test", destID: 4)
+                    }
                 }
             }
         }))
@@ -130,6 +150,22 @@ extension DetailTestViewController{
         }))
         
         present(confirmAlert, animated: true, completion: nil)
+    }
+    
+    private func sendNotif(message:String,destID:Int) {
+        let token = self.tokenUser?.value(forKey: "token") as! String
+        let sender = self.applicant?.value(forKey: "tutorName") as! String
+        let request = self.job?.value(forKey: "courseName") as! String
+        let destVC = ResultViewController()
+        destVC.fromID = destID
+        
+        Service.sendNotification(message: "\(sender) \(message)", token: [token], idSender: sender, idRequest: request, tabBar: 1) { (error) in
+            if error == nil{
+                DispatchQueue.main.async {
+                    self.navigationController?.pushViewController(destVC, animated: true)
+                }
+            }
+        }
     }
     
 }

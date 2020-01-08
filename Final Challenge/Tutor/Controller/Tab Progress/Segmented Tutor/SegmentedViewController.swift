@@ -29,11 +29,11 @@ class SegmentedViewController: BaseViewController {
         currentTableView = 0
         setMainInterface()
         queryUser()
+        refresh()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Progress")
-//        tableView.reloadData()
         queryUser()
         self.navigationController?.navigationBar.isHidden = false
         self.navigationItem.setHidesBackButton(true, animated:true);
@@ -61,7 +61,15 @@ class SegmentedViewController: BaseViewController {
     }
 }
 extension SegmentedViewController{
-    func queryUser() {
+    func refresh(){
+        let refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "")
+        refreshControl.addTarget(self, action: #selector(queryUser), for: .valueChanged)
+        self.tableView.refreshControl = refreshControl
+        
+    }
+    
+    @objc func queryUser() {
         let token = CKUserData.shared.getEmail()
         let pred = NSPredicate(format: "tutorEmail == %@", token)
         let query = CKQuery(recordType: "Tutor", predicate: pred)
@@ -118,6 +126,7 @@ extension SegmentedViewController{
                 }
                 self.registerCell()
                 self.cellDelegate()
+                self.tableView.refreshControl?.endRefreshing()
                 self.tableView.reloadData()
             }
         }

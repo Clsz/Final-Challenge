@@ -82,11 +82,11 @@ extension LoginViewController{
             CKUserData.shared.loadUsers(email: email, password: password) { isSuccess in
                 if isSuccess{
                     self.hideLoading()
+                    CKUserData.shared.saveEmail(token: email)
                     let vc = TabBarController()
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.window?.rootViewController = vc
                     appDelegate.window?.makeKeyAndVisible()
-                    CKUserData.shared.saveEmail(token: email)
                 }else{
                     self.showAlert(title: "Attention", message: "User not exist")
                 }

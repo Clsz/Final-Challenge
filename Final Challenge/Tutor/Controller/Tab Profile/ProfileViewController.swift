@@ -41,7 +41,6 @@ class ProfileViewController: BaseViewController {
         setupView(text: "Profile")
         queryTutor()
         tableView.reloadData()
-        self.tabBarController?.tabBar.isHidden = false
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {

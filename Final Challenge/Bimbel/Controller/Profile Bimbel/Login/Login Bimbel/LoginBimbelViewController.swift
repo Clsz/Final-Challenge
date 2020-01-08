@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 class LoginBimbelViewController: BaseViewController {
     @IBOutlet weak var emailTF: UITextField!
@@ -16,6 +17,8 @@ class LoginBimbelViewController: BaseViewController {
     var accessoryDoneButton: UIBarButtonItem!
     let accessoryToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
     let flexiblea = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+    let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
+    var token:CKRecord?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +55,13 @@ extension LoginBimbelViewController{
         
     }
     
+    func goToHomeScreen() {
+        let vc = TabBarBimbelController()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = vc
+        appDelegate.window?.makeKeyAndVisible()
+    }
+    
     func userNotFound() {
         let alert = UIAlertController(title: "User Not Found", message: "Please Sign Up", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
@@ -66,6 +76,43 @@ extension LoginBimbelViewController{
         
     }
     
+    func fetchToken(email:String) {
+        let pred = NSPredicate(format: "email == %@", email)
+        let query = CKQuery(recordType: "Token", predicate: pred)
+        
+        database.perform(query, inZoneWith: nil) { (records, error) in
+            guard let record = records else {return}
+            if record.count > 0{
+                self.token = record[0]
+                DispatchQueue.main.async {
+                    self.updateToken(recordApplicant: self.token!)
+                }
+            }else{
+                DispatchQueue.main.async {
+                    self.showAlert(title: "Error Occured", message: "Try again later")
+                }
+            }
+        }
+    }
+    
+    func updateToken(recordApplicant:CKRecord) {
+        if let record = token{
+            let deviceToken = CKUserData.shared.getDeviceToken()
+            record["token"] = deviceToken
+            
+            self.database.save(record, completionHandler: {returnedRecord, error in
+                DispatchQueue.main.async {
+                    if error != nil {
+                        self.showAlert(title: "Error", message: "Cannot update :(")
+                    } else {
+                        self.hideLoading()
+                        self.goToHomeScreen()
+                    }
+                }
+            })
+        }
+    }
+    
     func validateFields() {
         if emailTF.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
             return self.showAlert(title: "Error", message: "Email belum diisi")
@@ -78,18 +125,18 @@ extension LoginBimbelViewController{
             let password = passwordTF.text!
             CKUserData.shared.loadUsersBimbel(email: email, password: password) { isSuccess in
                 if isSuccess{
-                    self.hideLoading()
-                    let vc = TabBarBimbelController()
-                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                    appDelegate.window?.rootViewController = vc
-                    appDelegate.window?.makeKeyAndVisible()
-                    CKUserData.shared.saveEmail(token: email)
+                    CKUserData.shared.saveEmailBimbel(token: email)
+                    self.fetchToken(email: email)
                 }else{
-                    self.hideLoading()
-                    self.showAlert(title: "Attention", message: "User not exist")
+                    DispatchQueue.main.async {
+                        self.hideLoading()
+                        self.showAlert(title: "Attention", message: "User not exist")
+                    }
                 }
             }
-            self.hideLoading()
+            DispatchQueue.main.async {
+                self.hideLoading()
+            }
         }
     }
     

@@ -58,17 +58,16 @@ class SegmentedBimbelViewController: BaseViewController {
 extension SegmentedBimbelViewController{
     func queryCourse() {
         let token = CKUserData.shared.getEmailBimbel()
-        
         let pred = NSPredicate(format: "courseEmail == %@", token)
-        
         let query = CKQuery(recordType: "Course", predicate: pred)
         
         database.perform(query, inZoneWith: nil) { (records, error) in
             guard let record = records else {return}
-            
-            self.courseModel = record[0]
-            DispatchQueue.main.async {
-                self.queryActivity()
+            if record.count > 0{
+                self.courseModel = record[0]
+                DispatchQueue.main.async {
+                    self.queryActivity()
+                }
             }
         }
     }

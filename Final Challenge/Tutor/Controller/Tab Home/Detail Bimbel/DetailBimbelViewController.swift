@@ -20,6 +20,7 @@ class DetailBimbelViewController: BaseViewController {
     var tutor:CKRecord!
     var tempJobApplicant:[CKRecord.Reference] = []
     var tempUserApplicant:[CKRecord.Reference] = []
+    var isUpdate:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +30,6 @@ class DetailBimbelViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Detail Pekerjaan")
-        view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        self.tabBarController?.tabBar.isHidden = true
         
     }
 }
@@ -65,12 +64,21 @@ extension DetailBimbelViewController{
         
         database.perform(query, inZoneWith: nil) { (records, error) in
             guard let record = records else {return}
-            self.tutor = record[0]
-            DispatchQueue.main.async {
-                self.applyJob()
+            if error != nil{
+                DispatchQueue.main.async {
+                    self.hideLoading()
+                }
+            }
+            if record.count > 0{
+                self.tutor = record[0]
+                DispatchQueue.main.async {
+                    self.applyJob()
+                }
             }
         }
     }
+    
+    
     
     private func applyJob(){
         let record = CKRecord(recordType: "Applicant")
@@ -78,11 +86,16 @@ extension DetailBimbelViewController{
         
         record["courseName"] = course?.value(forKey: "courseName") as! String
         record["tutorName"] = fullName
-        record["jobID"] = CKRecord.Reference.init(recordID: job.recordID , action: .deleteSelf)
-        record["tutorID"] = CKRecord.Reference.init(recordID: tutor.recordID , action: .deleteSelf)
+        record["jobID"] = CKRecord.Reference.init(recordID: job.recordID , action: .none)
+        record["tutorID"] = CKRecord.Reference.init(recordID: tutor.recordID , action: .none)
         record["status"] = "Job Requested"
         
         database.save(record) { (record, error) in
+            if error != nil{
+                DispatchQueue.main.async {
+                    self.hideLoading()
+                }
+            }
             guard record != nil  else { return print("error", error as Any) }
             self.updateToJob(recordApplicant: record!)
             self.updateToUser(recordApplicant: record!)
@@ -92,15 +105,18 @@ extension DetailBimbelViewController{
     private func updateToJob(recordApplicant:CKRecord) {
         if let record = tutor{
             tempJobApplicant = job.value(forKey: "applicantID") as? [CKRecord.Reference] ?? []
-            let tempID = CKRecord.Reference.init(recordID: recordApplicant.recordID, action: .deleteSelf)
+            let tempID = CKRecord.Reference.init(recordID: recordApplicant.recordID, action: .none)
             tempJobApplicant.append(tempID)
             record["applicantID"] = tempJobApplicant
             
             self.database.save(record, completionHandler: {returnedRecord, error in
-                if error != nil {
-                    self.showAlert(title: "Error", message: "Cannot update :(")
+                if error != nil{
+                    DispatchQueue.main.async {
+                        self.hideLoading()
+                    }
                 } else {
-                    
+                    self.isUpdate += 1
+                    self.isLoaded()
                 }
             })
         }
@@ -110,19 +126,31 @@ extension DetailBimbelViewController{
     private func updateToUser(recordApplicant:CKRecord) {
         if let record = job{
             tempUserApplicant = job.value(forKey: "applicantID") as? [CKRecord.Reference] ?? []
-            let tempID = CKRecord.Reference.init(recordID: recordApplicant.recordID, action: .deleteSelf)
+            let tempID = CKRecord.Reference.init(recordID: recordApplicant.recordID, action: .none)
             tempUserApplicant.append(tempID)
             record["applicantID"] = tempUserApplicant
             
             self.database.save(record, completionHandler: {returnedRecord, error in
-                if error != nil {
-                    self.showAlert(title: "Error", message: "Cannot update :(")
+                if error != nil{
+                    DispatchQueue.main.async {
+                        self.hideLoading()
+                    }
                 } else {
-                    
+                    self.isUpdate += 1
+                    self.isLoaded()
                 }
             })
         }
         
+    }
+    
+    private func isLoaded() {
+        if isUpdate == 2{
+            DispatchQueue.main.async {
+                self.hideLoading()
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
     }
     
     private func queryCourse() {
@@ -145,11 +173,9 @@ extension DetailBimbelViewController{
 extension DetailBimbelViewController:DetailBimbel, UpdateConstraint{
     func requestTapped() {
         if CKUserData.shared.getEmail() != "" {
+            self.showLoading()
             self.queryUser()
-            //            let destVC = ResultViewController()
-            //            destVC.fromID = 0
-            //            self.navigationController?.pushViewController(destVC, animated: true)
-            self.navigationController?.popViewController(animated: true)
+            
         }else{
             let vc = RegisterViewController()
             self.navigationController?.pushViewController(vc, animated: true)

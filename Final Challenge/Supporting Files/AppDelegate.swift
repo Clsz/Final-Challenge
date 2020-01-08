@@ -18,7 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        UserDefaults.standard.set("bimbelsg@gmail.com", forKey: "tokenBimbel")
+        UserDefaults.standard.set("nextlevel@gmail.com", forKey: "tokenBimbel")
+        UserDefaults.standard.set("noveliarefinda@gmail.com", forKey: "token")
+        
         UITabBar.appearance().tintColor = ConstantManager.mainColor
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
@@ -76,6 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
         let token = tokenParts.joined()
+        print(token)
         CKUserData.shared.saveDeviceToken(status: token)
     }
     

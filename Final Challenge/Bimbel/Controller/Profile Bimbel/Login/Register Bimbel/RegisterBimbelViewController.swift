@@ -109,12 +109,14 @@ extension RegisterBimbelViewController: UITextFieldDelegate {
                 if res == true{
                     if CKUserData.shared.checkUser(email: email) == LoginResults.userNotExist {
                         CKUserData.shared.addUserBimbel(email: email, password: password)
-                        CKUserData.shared.saveUsersBimbel { (res) in
+                        CKUserData.shared.saveUsersBimbel { (user) in
+                            DispatchQueue.main.async {
                                 self.hideLoading()
                                 CKUserData.shared.saveEmailBimbel(token: email)
                                 let vc = SetupPersonalBimbelViewController()
-                                vc.course = res
+                                vc.course = user
                                 self.navigationController?.pushViewController(vc, animated: true)
+                            }
                         }
                     } else {
                         self.hideLoading()

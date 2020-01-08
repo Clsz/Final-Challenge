@@ -76,9 +76,11 @@ extension JobViewController{
                 print("error",error as Any)
                 return
             }
-            self.course = records[0]
-            DispatchQueue.main.async {
-                self.queryJob()
+            if records.count > 0{
+                self.course = records[0]
+                DispatchQueue.main.async {
+                    self.queryJob()
+                }
             }
         }
     }
