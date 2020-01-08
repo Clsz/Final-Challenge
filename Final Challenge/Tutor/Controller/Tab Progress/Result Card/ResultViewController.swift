@@ -37,7 +37,12 @@ class ResultViewController: UIViewController {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.window?.rootViewController = vc
             appDelegate.window?.makeKeyAndVisible()
-        }else{
+        } else if fromID == 8 {
+            let vc = TabBarBimbelController()
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.window?.rootViewController = vc
+            appDelegate.window?.makeKeyAndVisible()
+        } else {
             self.navigationController?.popToRootViewController(animated: true)
         }
     }
@@ -78,7 +83,13 @@ class ResultViewController: UIViewController {
         imageResult.image = imageAcc
         labelResult.text = "Test Schedule Submitted"
             labelResultDescription.text = "You have successfully submit the test schedule. Please wait for the Applicant to response."
+        } else if fromID == 8 {
+        imageResult.image = imageSet
+        labelResult.text = "Profile Updated"
+        labelResultDescription.text = "You have filled your profile successfully."
+            button.setTitle("Back to Home", for: .normal)
         }
+        
     }
     
     

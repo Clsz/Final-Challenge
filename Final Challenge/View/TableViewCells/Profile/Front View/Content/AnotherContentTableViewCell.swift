@@ -15,6 +15,7 @@ class AnotherContentTableViewCell: UITableViewCell {
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var tableView: UITableView!
     var contentDelegate:ProfileProtocol?
+    var bimbelDelegate:BimbelProtocol?
     var index:Int!
     var destIndex:Int = 0
     var title:[String]?
@@ -57,8 +58,10 @@ class AnotherContentTableViewCell: UITableViewCell {
             contentDelegate?.languageTapped()
         }else if destIndex == 1{
             contentDelegate?.experienceTapped()
-        } else {
+        } else if destIndex == 2 {
             contentDelegate?.educationTapped()
+        } else {
+            bimbelDelegate?.gradesTapped()
         }
     }
     

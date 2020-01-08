@@ -26,6 +26,8 @@
 		144B436123A61D6200F1ACE1 /* ListEducationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144B435C23A6185800F1ACE1 /* ListEducationViewController.swift */; };
 		147CBC3B23C0E0F2001E9549 /* InterviewBimbelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147CBC3823C0DDD5001E9549 /* InterviewBimbelTableViewCell.xib */; };
 		147CBC3C23C0E123001E9549 /* InterviewBimbelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147CBC3723C0DDD5001E9549 /* InterviewBimbelTableViewCell.swift */; };
+		147CBC3F23C5BB37001E9549 /* TitleBimbelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147CBC3D23C5BB37001E9549 /* TitleBimbelTableViewCell.swift */; };
+		147CBC4023C5BB37001E9549 /* TitleBimbelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147CBC3E23C5BB37001E9549 /* TitleBimbelTableViewCell.xib */; };
 		147E1ECF2382B1DD003CAF5D /* DetailBimbelTabFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147E1ECD2382B1DD003CAF5D /* DetailBimbelTabFirstViewController.swift */; };
 		147E1ED02382B1DD003CAF5D /* DetailBimbelTabFirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147E1ECE2382B1DD003CAF5D /* DetailBimbelTabFirstViewController.xib */; };
 		147E1ED52383155A003CAF5D /* SegmentedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147E1ED32383155A003CAF5D /* SegmentedViewController.swift */; };
@@ -274,6 +276,8 @@
 		145705D8237A9C130093E944 /* FilterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterViewController.xib; sourceTree = "<group>"; };
 		147CBC3723C0DDD5001E9549 /* InterviewBimbelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewBimbelTableViewCell.swift; sourceTree = "<group>"; };
 		147CBC3823C0DDD5001E9549 /* InterviewBimbelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InterviewBimbelTableViewCell.xib; sourceTree = "<group>"; };
+		147CBC3D23C5BB37001E9549 /* TitleBimbelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBimbelTableViewCell.swift; sourceTree = "<group>"; };
+		147CBC3E23C5BB37001E9549 /* TitleBimbelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleBimbelTableViewCell.xib; sourceTree = "<group>"; };
 		147E1ECD2382B1DD003CAF5D /* DetailBimbelTabFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBimbelTabFirstViewController.swift; sourceTree = "<group>"; };
 		147E1ECE2382B1DD003CAF5D /* DetailBimbelTabFirstViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailBimbelTabFirstViewController.xib; sourceTree = "<group>"; };
 		147E1ED32383155A003CAF5D /* SegmentedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedViewController.swift; sourceTree = "<group>"; };
@@ -1394,6 +1398,8 @@
 			children = (
 				E168478A2378F346001B6319 /* TitleTableViewCell.swift */,
 				E168478B2378F346001B6319 /* TitleTableViewCell.xib */,
+				147CBC3D23C5BB37001E9549 /* TitleBimbelTableViewCell.swift */,
+				147CBC3E23C5BB37001E9549 /* TitleBimbelTableViewCell.xib */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -1900,6 +1906,7 @@
 				E1D5051A23A3B01300EEE158 /* TeachingGradeViewController.xib in Resources */,
 				E18AEFAD239F52EF0076000E /* BimbelProfileViewController.xib in Resources */,
 				147E1ED02382B1DD003CAF5D /* DetailBimbelTabFirstViewController.xib in Resources */,
+				147CBC4023C5BB37001E9549 /* TitleBimbelTableViewCell.xib in Resources */,
 				E16847912378F88A001B6319 /* ContentTableViewCell.xib in Resources */,
 				E1BDDE59239B7AB6003B4414 /* SeeDetailTableViewCell.xib in Resources */,
 				2761273E2397AC32007BC852 /* TeachingSubjectTableViewCell.xib in Resources */,
@@ -2127,6 +2134,7 @@
 				E11DB87E23A5D700000CB02C /* SeeDetailApplicantViewController.swift in Sources */,
 				144B434B23A0B18600F1ACE1 /* SkillCollectionViewCell.swift in Sources */,
 				E1A0ACA223C46050005940B0 /* Service.swift in Sources */,
+				147CBC3F23C5BB37001E9549 /* TitleBimbelTableViewCell.swift in Sources */,
 				27CFEC9323964DA70015B6CC /* JobViewController.swift in Sources */,
 				E1713A50237AC68C00F6A8A7 /* ContentViewTableViewCell.swift in Sources */,
 				E18AEFB3239F56BE0076000E /* GradeCategoryTableViewCell.swift in Sources */,
