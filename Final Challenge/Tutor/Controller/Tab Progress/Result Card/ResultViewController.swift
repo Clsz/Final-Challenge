@@ -67,13 +67,15 @@ class ResultViewController: UIViewController {
         } else if fromID == 3 {
             imageResult.image = imageAcc
             labelResult.text = "Teacher Accepted"
+            labelResultDescription.text = "Congratulation you've got a job, Best of Luck."
         } else if fromID == 4 {
             imageResult.image = imageDec
             labelResult.text = "You Decline the Interview"
             labelResultDescription.text = "You have declined this interview schedule with the Course. You skip this job."
         } else if fromID == 5 {
             imageResult.image = imageDec
-            labelResult.text = "Teacher Declined"
+            labelResult.text = "You Decline the Job"
+            labelResultDescription.text = "Oops, you've declined the job, let's find the other tuition."
         } else if fromID == 6 {
             imageResult.image = imageSet
             labelResult.text = "Profile Updated"

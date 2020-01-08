@@ -26,7 +26,7 @@ class DetailBimbelTabFirstViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setupView(text: "Bimbel Details")
+        setupView(text: "Tuition Details")
     }
     
 }

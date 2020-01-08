@@ -26,18 +26,15 @@ class SummarySetupBimbelViewController: BaseViewController{
         registerCell()
         cellDelegate()
         setupData()
-        setupView(text: "Bimbel Profile")
+        setupView(text: "Tuition Profile")
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setupView(text: "Bimbel Profile")
+        setupView(text: "Tuition Profile")
     }
-    
-    
     
 }
 extension SummarySetupBimbelViewController{
-    
     private func setupData() {
         dataArray.removeAll()
         dataArray.append(course)
@@ -48,6 +45,7 @@ extension SummarySetupBimbelViewController{
         dataArray.append(("Teaching Grades","Edit Grades",0))
         dataArray.append(true)
     }
+    
 }
 extension SummarySetupBimbelViewController:confirmProtocol{
     func confirmTapped() {

@@ -39,7 +39,7 @@ class ExperienceViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setMainInterface()
-        setupView(text: "Pengalaman")
+        setupView(text: "Experience")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
