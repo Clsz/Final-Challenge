@@ -25,11 +25,19 @@ class ChooseRoleViewController: UIViewController {
     }
     
     @IBAction func tuitionTapped(_ sender: UIButton) {
-        let vc = RegisterBimbelViewController()
-//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//        appDelegate.window?.rootViewController = vc
-//        appDelegate.window?.makeKeyAndVisible()
-        self.navigationController?.pushViewController(vc, animated: true)
+        if CKUserData.shared.getEmailBimbel() != ""{
+            let vc = TabBarBimbelController()
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.window?.rootViewController = vc
+            appDelegate.window?.makeKeyAndVisible()
+        }else{
+            let rootVC = RegisterBimbelViewController()
+            let navigationController = UINavigationController(rootViewController: rootVC)
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.window?.rootViewController = navigationController
+            appDelegate.window?.makeKeyAndVisible()
+        }
+        
     }
     
 }

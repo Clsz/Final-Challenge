@@ -24,6 +24,7 @@ class TestScheduleViewController: BaseViewController {
     var accessoryDoneButton: UIBarButtonItem!
     let accessoryToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
     let flexiblea = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+    var tokenUser:CKRecord?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,11 +65,6 @@ extension TestScheduleViewController{
         view.addGestureRecognizer(tapGesture)
         self.day = applicant?.value(forKey: "testDay") as? [String] ?? []
         self.time = applicant?.value(forKey: "testTime") as? [String] ?? []
-        if self.day != [] && self.time != []{
-            let index = IndexPath(row: 6, section: 0)
-            let cell = tableView.cellForRow(at: index) as! SubmitTableViewCell
-            cell.requestButton.isEnabled = false
-        }
     }
     
     @objc private func viewTapped(gestureRecognizer:UITapGestureRecognizer) {
@@ -82,6 +78,20 @@ extension TestScheduleViewController{
         database.perform(query, inZoneWith: nil) { (records, error) in
             guard let record = records else {return}
             self.tutor = record[0]
+            DispatchQueue.main.async {
+                self.fetchToken()
+            }
+        }
+    }
+    
+    private func fetchToken() {
+        let email = (tutor?.value(forKey: "tutorEmail") as! String)
+        let pred = NSPredicate(format: "email == %@", email)
+        let query = CKQuery(recordType: "Token", predicate: pred)
+        
+        database.perform(query, inZoneWith: nil) { (records, error) in
+            guard let record = records else {return}
+            self.tokenUser = record[0]
             DispatchQueue.main.async {
                 if self.day.count != 0{
                     self.setupDataWithSchedule()
@@ -120,9 +130,7 @@ extension TestScheduleViewController{
             self.updateToDatabase(status: "Waiting for Your Approval") { (res) in
                 self.setMainInterface()
                 if res == true{
-                    let destVC = ResultViewController()
-                    destVC.fromID = 7
-                    self.navigationController?.pushViewController(destVC, animated: true)
+                    self.sendNotif(message: "Waiting for Your Approval Schedule", destID: 7)
                 }
             }
         }))
@@ -132,6 +140,23 @@ extension TestScheduleViewController{
         }))
         
         present(confirmAlert, animated: true, completion: nil)
+    }
+    
+    private func sendNotif(message:String,destID:Int) {
+        let token = self.tokenUser?.value(forKey: "token") as! String
+        let sender = self.applicant?.value(forKey: "courseName") as! String
+        let request = self.applicant?.value(forKey: "tutorID") as! CKRecord.Reference
+        let destVC = ResultViewController()
+        destVC.fromID = destID
+        
+        Service.sendNotification(message: "\(message) \(sender))", token: [token], idSender: sender, idRequest: request.recordID.recordName, tabBar: 1) { (error) in
+            if error == nil{
+                DispatchQueue.main.async {
+                    self.navigationController?.pushViewController(destVC, animated: true)
+
+                }
+            }
+        }
     }
     
     private func setSchedule() {
@@ -175,7 +200,6 @@ extension TestScheduleViewController{
     }
     
     @objc func dateChanged(datePicker:UIDatePicker) {
-
         view.endEditing(true)
     }
     
@@ -265,6 +289,13 @@ extension TestScheduleViewController:UITableViewDataSource, UITableViewDelegate{
                 return cell
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "submitCell", for: indexPath) as! SubmitTableViewCell
+                if self.day.count > 2 && self.time.count > 2{
+                    cell.requestButton.backgroundColor = #colorLiteral(red: 0, green: 0.399238348, blue: 0.6880209446, alpha: 1)
+                    cell.requestButton.isEnabled = true
+                }else{
+                    cell.requestButton.backgroundColor = #colorLiteral(red: 0.6070619822, green: 0.6075353622, blue: 0.6215403676, alpha: 0.8470588235)
+                    cell.requestButton.isEnabled = false
+                }
                 cell.contentDelegate = self
                 cell.setCell(button: "Submit")
                 return cell

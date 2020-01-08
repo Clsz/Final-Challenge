@@ -27,6 +27,10 @@ protocol BimbelProtocol{
     func logout()
 }
 
+protocol confirmProtocol {
+    func confirmTapped()
+}
+
 protocol SkillProtocol {
     func applySkillTapped()
 }

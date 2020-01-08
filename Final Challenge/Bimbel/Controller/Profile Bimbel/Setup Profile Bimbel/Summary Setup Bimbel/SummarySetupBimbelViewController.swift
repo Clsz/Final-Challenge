@@ -49,6 +49,14 @@ extension SummarySetupBimbelViewController{
         dataArray.append(true)
     }
 }
+extension SummarySetupBimbelViewController:confirmProtocol{
+    func confirmTapped() {
+        let vc = TabBarBimbelController()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = vc
+        appDelegate.window?.makeKeyAndVisible()
+    }
+}
 
 extension SummarySetupBimbelViewController: UITableViewDataSource, UITableViewDelegate{
     func cellDelegate() {
@@ -116,13 +124,15 @@ extension SummarySetupBimbelViewController: UITableViewDataSource, UITableViewDe
                 
             }
         }else{
-                let cell = tableView.dequeueReusableCell(withIdentifier: logoutView, for: indexPath) as! LogoutTableViewCell
-                cell.setInterface()
-                cell.logoutButton.titleLabel?.text = "Confirm Profile"
+            let cell = tableView.dequeueReusableCell(withIdentifier: logoutView, for: indexPath) as! LogoutTableViewCell
+            cell.setInterface()
+            cell.index = 1
+            cell.logoutButton.titleLabel?.text = "Confirm Profile"
+            cell.confirmDelegate = self
             
-                return cell
-            }
-        return UITableViewCell()
+            return cell
         }
-        
+        return UITableViewCell()
+    }
+    
 }

@@ -12,6 +12,8 @@ class LogoutTableViewCell: UITableViewCell {
 
     @IBOutlet weak var logoutButton: UIButton!
     var contentDelegate:ProfileProtocol?
+    var confirmDelegate:confirmProtocol?
+    var index:Int?
         
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,7 +27,12 @@ class LogoutTableViewCell: UITableViewCell {
     }
     
     @IBAction func logoutTapped(_ sender: Any) {
-        contentDelegate?.logout()
+        if index == 0 {
+            contentDelegate?.logout()
+        } else {
+            confirmDelegate?.confirmTapped()
+        }
+        
     }
     
 }

@@ -83,8 +83,7 @@ class CKUserData {
         
         privateDB.perform(query, inZoneWith: nil) {(records: [CKRecord]?, error: Error?) in
             if error == nil {
-                guard let records = records else
-                {
+                guard let records = records else{
                     print ("No Records")
                     return
                 }
@@ -103,7 +102,6 @@ class CKUserData {
                             completion(false)
                         }
                     }
-                    
                 }
             } else {
                 print ("There Was an Error with CloudKit")
@@ -243,37 +241,43 @@ class CKUserData {
         return .passwordFails
     }
     
+    func saveDeviceToken(status: String) {
+        UserDefaults.standard.set(status, forKey: "deviceToken")
+    }
+    
+    func getDeviceToken() -> String{
+        return UserDefaults.standard.string(forKey: "deviceToken") ?? ""
+    }
+    
     func setStatus(status: Bool) {
         UserDefaults.standard.set(status, forKey: "status")
-        UserDefaults.standard.synchronize()
     }
     
     func getStatus() -> Bool{
         return UserDefaults.standard.bool(forKey: "status")
     }
     
-    func saveToken(token:String){
+    func saveEmail(token:String){
         UserDefaults.standard.set(token, forKey: "token")
     }
     
-    func getToken() -> String{
+    func getEmail() -> String{
         return UserDefaults.standard.string(forKey: "token") ?? ""
     }
     
     func setStatusBimbel(status: Bool) {
         UserDefaults.standard.set(status, forKey: "statusBimbel")
-        UserDefaults.standard.synchronize()
     }
     
     func getStatusBimbel() -> Bool{
         return UserDefaults.standard.bool(forKey: "statusBimbel")
     }
     
-    func saveTokenBimbel(token:String){
+    func saveEmailBimbel(token:String){
         UserDefaults.standard.set(token, forKey: "tokenBimbel")
     }
     
-    func getTokenBimbel() -> String{
+    func getEmailBimbel() -> String{
         return UserDefaults.standard.string(forKey: "tokenBimbel") ?? ""
     }
     

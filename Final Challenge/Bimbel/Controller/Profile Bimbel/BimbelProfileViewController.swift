@@ -14,7 +14,7 @@ class BimbelProfileViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
     var dataArray:[Any?] = []
-    var bimbel:CKRecord?
+    var course:CKRecord?
     let header = "TitleTableViewCellID"
     let address = "DetailAddressTableViewCellID"
     let subject = "ContentTableViewCellID"
@@ -43,7 +43,7 @@ class BimbelProfileViewController: BaseViewController {
 extension BimbelProfileViewController{
     private func setupData() {
         dataArray.removeAll()
-        dataArray.append(bimbel)
+        dataArray.append(course)
         dataArray.append(("Address","Edit Address",0))
         dataArray.append(("Teaching Subjects","Add Subjects",1))
         dataArray.append(("Teaching Grades","Edit Grades",2))
@@ -51,7 +51,7 @@ extension BimbelProfileViewController{
     }
     
     func queryDatabase() {
-        let token = CKUserData.shared.getTokenBimbel()
+        let token = CKUserData.shared.getEmailBimbel()
         let pred = NSPredicate(format: "recordID == %@", token)
         let query = CKQuery(recordType: "Course", predicate: pred)
         database.perform(query, inZoneWith: nil) { (records, error) in
@@ -59,14 +59,14 @@ extension BimbelProfileViewController{
                 print("error",error as Any)
                 return
             }
-            self.bimbel = records[0]
+            self.course = records[0]
         }
     }
 }
 extension BimbelProfileViewController:BimbelProtocol{
     func pencilTapped() {
         let destVC = DetailProfileBimbelViewController()
-        destVC.bimbel = self.bimbel
+        destVC.bimbel = self.course
         self.navigationController?.pushViewController(destVC, animated: true)
     }
     
@@ -121,14 +121,34 @@ extension BimbelProfileViewController:UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: header, for: indexPath) as! TitleTableViewCell
-//            cell.setCell(image: "", name: "Ming Ho", university: "Binus", age: 10)
             
             //GENERATE DATANYA HEADER
-            
+            if (course?.value(forKey: "")
             cell.index = 1
             cell.bimbelDelegate = self
             cell.outerProfile.outerRound()
             return cell
+            
+            if (tutors?.value(forKey: "tutorFirstName") as? String) != nil{
+                let fName = "\(tutors?.value(forKey: "tutorFirstName") as! String) \(tutors?.value(forKey: "tutorLastName") as! String)"
+                let universityName = self.checkUniversity()
+                let imageDefault = #imageLiteral(resourceName: "user-5")
+                cell.index = 0
+                if tutors?.value(forKeyPath: "tutorProfilImage") != nil {
+                    let imageProfile = tutors?.value(forKey: "tutorProfileImage") as! CKAsset
+                    cell.setCell(image: imageProfile.toUIImage()!, name: fName, university: universityName, age: 22)
+                    cell.tutorDelegate = self
+                    return cell
+                } else {
+                    cell.setCell(image: imageDefault, name: fName, university: universityName, age: 22)
+                    cell.tutorDelegate = self
+                    return cell
+                }
+            }
+            
+            
+            
+            
         }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:String, code:Int){
             if keyValue.code == 0{
                 let cell = tableView.dequeueReusableCell(withIdentifier: address, for: indexPath) as! DetailAddressTableViewCell

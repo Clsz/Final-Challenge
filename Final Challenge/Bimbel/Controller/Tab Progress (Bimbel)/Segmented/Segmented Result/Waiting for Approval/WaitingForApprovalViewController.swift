@@ -18,6 +18,7 @@ class WaitingForApprovalViewController: BaseViewController {
     var jobStatus:String?
     var tutor:CKRecord?
     var applicant:CKRecord?
+    var tokenUser:CKRecord?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,20 @@ extension WaitingForApprovalViewController{
             guard let record = records else {return}
             self.tutor = record[0]
             DispatchQueue.main.async {
+                self.fetchToken()
+            }
+        }
+    }
+    
+    private func fetchToken() {
+        let email = (tutor?.value(forKey: "tutorEmail") as! String)
+        let pred = NSPredicate(format: "email == %@", email)
+        let query = CKQuery(recordType: "Token", predicate: pred)
+        
+        database.perform(query, inZoneWith: nil) { (records, error) in
+            guard let record = records else {return}
+            self.tokenUser = record[0]
+            DispatchQueue.main.async {
                 self.setupData()
                 self.cellDelegate()
                 self.tableView.reloadData()
@@ -76,9 +91,7 @@ extension WaitingForApprovalViewController{
         confirmAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
             self.updateToDatabase(status: "Waiting for Applicant Approval") { (res) in
                 if res == true{
-                    let destVC = ResultViewController()
-                    destVC.fromID = 1
-                    self.navigationController?.pushViewController(destVC, animated: true)
+                    self.sendNotif(message: "Waiting for Your Last Approval", destID: 1)
                 }
             }
         }))
@@ -94,9 +107,7 @@ extension WaitingForApprovalViewController{
         confirmAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
             self.updateToDatabase(status: "Rejected") { (res) in
                 if res == true{
-                    let destVC = ResultViewController()
-                    destVC.fromID = 4
-                    self.navigationController?.pushViewController(destVC, animated: true)
+                    self.sendNotif(message: "Your Job Has Been Rejected", destID: 4)
                 }
             }
         }))
@@ -106,6 +117,23 @@ extension WaitingForApprovalViewController{
         }))
         
         present(confirmAlert, animated: true, completion: nil)
+    }
+    
+    private func sendNotif(message:String,destID:Int) {
+        let token = self.tokenUser?.value(forKey: "token") as! String
+        let sender = self.applicant?.value(forKey: "courseName") as! String
+        let request = self.applicant?.value(forKey: "tutorID") as! CKRecord.Reference
+        let destVC = ResultViewController()
+        destVC.fromID = destID
+        
+        Service.sendNotification(message: "\(message) \(sender))", token: [token], idSender: sender, idRequest: request.recordID.recordName, tabBar: 1) { (error) in
+            if error == nil{
+                DispatchQueue.main.async {
+                    self.navigationController?.pushViewController(destVC, animated: true)
+
+                }
+            }
+        }
     }
     
 }

@@ -78,7 +78,7 @@ extension ProfileViewController{
     }
     
     func queryTutor() {
-        let token = CKUserData.shared.getToken()
+        let token = CKUserData.shared.getEmail()
         let pred = NSPredicate(format: "tutorEmail == %@", token)
         let query = CKQuery(recordType: "Tutor", predicate: pred)
         
@@ -403,6 +403,9 @@ extension ProfileViewController:UITableViewDataSource, UITableViewDelegate{
                 //FOR LOGOUT
                 let cell = tableView.dequeueReusableCell(withIdentifier: logoutView, for: indexPath) as! LogoutTableViewCell
                 cell.contentDelegate = self
+                cell.index = 0
+                cell.logoutButton.titleLabel?.text = "Log Out"
+                cell.logoutButton.backgroundColor = #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1)
                 cell.setInterface()
                 return cell
             }

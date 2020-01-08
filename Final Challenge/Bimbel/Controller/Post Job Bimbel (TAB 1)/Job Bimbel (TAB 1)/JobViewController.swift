@@ -68,7 +68,7 @@ extension JobViewController{
     }
     
     func queryCourse() {
-        let token = CKUserData.shared.getTokenBimbel()
+        let token = CKUserData.shared.getEmailBimbel()
         let pred = NSPredicate(format: "courseEmail == %@", token)
         let query = CKQuery(recordType: "Course", predicate: pred)
         database.perform(query, inZoneWith: nil) { (records, error) in

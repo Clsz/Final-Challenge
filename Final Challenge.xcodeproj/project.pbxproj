@@ -201,6 +201,7 @@
 		E19D1AEC237BF10F003AFFBD /* CustomLanguageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E19D1AEA237BF10F003AFFBD /* CustomLanguageTableViewCell.xib */; };
 		E19D1AF0237BF274003AFFBD /* CustomExperienceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19D1AEE237BF274003AFFBD /* CustomExperienceTableViewCell.swift */; };
 		E19D1AF1237BF274003AFFBD /* CustomExperienceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E19D1AEF237BF274003AFFBD /* CustomExperienceTableViewCell.xib */; };
+		E1A0ACA223C46050005940B0 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A0ACA123C46050005940B0 /* Service.swift */; };
 		E1A12CC023A3B21900009F52 /* TeachingSchedulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A12CBE23A3B21800009F52 /* TeachingSchedulesViewController.swift */; };
 		E1A12CC123A3B21900009F52 /* TeachingSchedulesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1A12CBF23A3B21900009F52 /* TeachingSchedulesViewController.xib */; };
 		E1A53F96239B657C00E6B6FE /* SeeDetailBimbelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A53F94239B657C00E6B6FE /* SeeDetailBimbelViewController.swift */; };
@@ -468,6 +469,8 @@
 		E19D1AEA237BF10F003AFFBD /* CustomLanguageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomLanguageTableViewCell.xib; sourceTree = "<group>"; };
 		E19D1AEE237BF274003AFFBD /* CustomExperienceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomExperienceTableViewCell.swift; sourceTree = "<group>"; };
 		E19D1AEF237BF274003AFFBD /* CustomExperienceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomExperienceTableViewCell.xib; sourceTree = "<group>"; };
+		E1A0ACA023C368DE005940B0 /* Final ChallengeRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Final ChallengeRelease.entitlements"; sourceTree = "<group>"; };
+		E1A0ACA123C46050005940B0 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		E1A12CBE23A3B21800009F52 /* TeachingSchedulesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeachingSchedulesViewController.swift; path = "Final Challenge/Bimbel/Controller/Post Job Bimbel (TAB 1)/Teaching Schedule (Bimbel)/TeachingSchedulesViewController.swift"; sourceTree = SOURCE_ROOT; };
 		E1A12CBF23A3B21900009F52 /* TeachingSchedulesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TeachingSchedulesViewController.xib; path = "Final Challenge/Bimbel/Controller/Post Job Bimbel (TAB 1)/Teaching Schedule (Bimbel)/TeachingSchedulesViewController.xib"; sourceTree = SOURCE_ROOT; };
 		E1A53F94239B657C00E6B6FE /* SeeDetailBimbelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeDetailBimbelViewController.swift; sourceTree = "<group>"; };
@@ -1487,7 +1490,6 @@
 			isa = PBXGroup;
 			children = (
 				E168479B237901D5001B6319 /* Model.swift */,
-				144B432E2398AE5700F1ACE1 /* Cloudkit.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1722,6 +1724,7 @@
 		E1E3A8992366CA8800F1571E /* Final Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				E1A0ACA023C368DE005940B0 /* Final ChallengeRelease.entitlements */,
 				E13441B8238FEDC20077E7D3 /* Final Challenge.entitlements */,
 				E1E3A8B32366CF2800F1571E /* Supporting Files */,
 				E168479A237901BA001B6319 /* Model */,
@@ -1749,9 +1752,11 @@
 		E1E3A8B42366CFAA00F1571E /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				144B432E2398AE5700F1ACE1 /* Cloudkit.swift */,
 				E1E3A8B52366CFC700F1571E /* Extension.swift */,
 				E139B5442375D8B500FEF1F5 /* ConstantManager.swift */,
 				E11BB7EF237D5BA600B3B5E7 /* Protocol.swift */,
+				E1A0ACA123C46050005940B0 /* Service.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -2121,6 +2126,7 @@
 				E11DB88B23A5E152000CB02C /* ContentTestTableViewCell.swift in Sources */,
 				E11DB87E23A5D700000CB02C /* SeeDetailApplicantViewController.swift in Sources */,
 				144B434B23A0B18600F1ACE1 /* SkillCollectionViewCell.swift in Sources */,
+				E1A0ACA223C46050005940B0 /* Service.swift in Sources */,
 				27CFEC9323964DA70015B6CC /* JobViewController.swift in Sources */,
 				E1713A50237AC68C00F6A8A7 /* ContentViewTableViewCell.swift in Sources */,
 				E18AEFB3239F56BE0076000E /* GradeCategoryTableViewCell.swift in Sources */,
@@ -2289,7 +2295,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final ChallengeRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 34;
 				DEVELOPMENT_TEAM = SK54WQSLHU;

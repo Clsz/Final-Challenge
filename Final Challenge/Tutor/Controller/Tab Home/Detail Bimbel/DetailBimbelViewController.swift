@@ -57,7 +57,7 @@ extension DetailBimbelViewController{
     }
     
     private func queryUser() {
-        let token = CKUserData.shared.getToken()
+        let token = CKUserData.shared.getEmail()
         
         let pred = NSPredicate(format: "tutorEmail == %@", token)
         
@@ -144,7 +144,7 @@ extension DetailBimbelViewController{
 }
 extension DetailBimbelViewController:DetailBimbel, UpdateConstraint{
     func requestTapped() {
-        if CKUserData.shared.getToken() != "" {
+        if CKUserData.shared.getEmail() != "" {
             self.queryUser()
             //            let destVC = ResultViewController()
             //            destVC.fromID = 0
