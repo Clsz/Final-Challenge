@@ -51,7 +51,7 @@ extension BimbelProfileViewController{
     }
     
     func queryDatabase() {
-        let token = CKUserData.shared.getTokenBimbel()
+        let token = CKUserData.shared.getEmailBimbel()
         let pred = NSPredicate(format: "recordID == %@", token)
         let query = CKQuery(recordType: "Course", predicate: pred)
         database.perform(query, inZoneWith: nil) { (records, error) in

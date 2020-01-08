@@ -10,6 +10,8 @@ import UIKit
 
 class ConstantManager{
     
+    static let baseURL = "https://server-teach.herokuapp.com"
+    
     static let mainColor = #colorLiteral(red: 0.09411764706, green: 0.3529411765, blue: 0.6, alpha: 1)
     static var gender = ["Male", "Female"]
     static var location = ["Cilegon","Tangerang","Tangerang Selatan","Cibubur", "Jakarta Barat","Jakarta Pusat","Jakarta Timur","Jakarta Selatan","Jakarta Utara"]

@@ -27,7 +27,7 @@ class LoginBimbelViewController: BaseViewController {
         setupView()
     }
     @IBAction func registerTapped(_ sender: Any) {
-        let vc = RegisterViewController()
+        let vc = RegisterBimbelViewController()
         self.navigationController?.pushViewController(vc, animated: false)
     }
     
@@ -83,11 +83,13 @@ extension LoginBimbelViewController{
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.window?.rootViewController = vc
                     appDelegate.window?.makeKeyAndVisible()
-                    CKUserData.shared.saveToken(token: email)
+                    CKUserData.shared.saveEmail(token: email)
                 }else{
+                    self.hideLoading()
                     self.showAlert(title: "Attention", message: "User not exist")
                 }
             }
+            self.hideLoading()
         }
     }
     

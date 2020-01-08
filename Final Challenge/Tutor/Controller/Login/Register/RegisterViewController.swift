@@ -139,7 +139,7 @@ extension RegisterViewController: UITextFieldDelegate {
                         CKUserData.shared.addUser(firstName: firstName, lastName: lastName, email: email, password: password)
                         CKUserData.shared.saveUsers { (res) in
                                 self.hideLoading()
-                                CKUserData.shared.saveToken(token: email)
+                                CKUserData.shared.saveEmail(token: email)
                                 let vc = SetupPersonalViewController()
                                 vc.tutors = res
                                 self.navigationController?.pushViewController(vc, animated: true)

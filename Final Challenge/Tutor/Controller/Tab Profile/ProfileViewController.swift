@@ -78,7 +78,7 @@ extension ProfileViewController{
     }
     
     func queryTutor() {
-        let token = CKUserData.shared.getToken()
+        let token = CKUserData.shared.getEmail()
         let pred = NSPredicate(format: "tutorEmail == %@", token)
         let query = CKQuery(recordType: "Tutor", predicate: pred)
         

@@ -31,7 +31,7 @@ class RegisterBimbelViewController: BaseViewController {
     }
     
     @IBAction func backToSignInTapped(_ sender: Any) {
-        let loginVC = LoginViewController()
+        let loginVC = LoginBimbelViewController()
         self.navigationController?.pushViewController(loginVC, animated: true)
     }
     
@@ -111,7 +111,7 @@ extension RegisterBimbelViewController: UITextFieldDelegate {
                         CKUserData.shared.addUserBimbel(email: email, password: password)
                         CKUserData.shared.saveUsersBimbel { (res) in
                                 self.hideLoading()
-                                CKUserData.shared.saveTokenBimbel(token: email)
+                                CKUserData.shared.saveEmailBimbel(token: email)
                                 let vc = SetupPersonalBimbelViewController()
                                 vc.course = res
                                 self.navigationController?.pushViewController(vc, animated: true)

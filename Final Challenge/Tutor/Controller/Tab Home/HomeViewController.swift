@@ -98,7 +98,7 @@ extension HomeViewController{
     }
 
     private func getUser() {
-        let token = CKUserData.shared.getToken()
+        let token = CKUserData.shared.getEmail()
         
         let pred = NSPredicate(format: "tutorEmail == %@", token)
         

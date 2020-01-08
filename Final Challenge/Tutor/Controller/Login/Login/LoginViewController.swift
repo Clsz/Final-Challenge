@@ -86,7 +86,7 @@ extension LoginViewController{
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.window?.rootViewController = vc
                     appDelegate.window?.makeKeyAndVisible()
-                    CKUserData.shared.saveToken(token: email)
+                    CKUserData.shared.saveEmail(token: email)
                 }else{
                     self.showAlert(title: "Attention", message: "User not exist")
                 }
