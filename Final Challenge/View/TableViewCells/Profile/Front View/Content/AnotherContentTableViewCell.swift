@@ -35,6 +35,7 @@ class AnotherContentTableViewCell: UITableViewCell {
         cellDelegate()
         tableView.reloadData()
     }
+    
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         tableView.layer.removeAllAnimations()
         tableHeightConstraint.constant = tableView.contentSize.height

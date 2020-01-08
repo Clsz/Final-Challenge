@@ -27,7 +27,7 @@ class LoginBimbelViewController: BaseViewController {
         setupView()
     }
     @IBAction func registerTapped(_ sender: Any) {
-        let vc = RegisterViewController()
+        let vc = RegisterBimbelViewController()
         self.navigationController?.pushViewController(vc, animated: false)
     }
     

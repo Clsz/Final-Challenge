@@ -25,10 +25,11 @@ class ChooseRoleViewController: UIViewController {
     }
     
     @IBAction func tuitionTapped(_ sender: UIButton) {
-        let vc = SetupPersonalBimbelViewController()
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.window?.rootViewController = vc
-        appDelegate.window?.makeKeyAndVisible()
+        let vc = RegisterBimbelViewController()
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        appDelegate.window?.rootViewController = vc
+//        appDelegate.window?.makeKeyAndVisible()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

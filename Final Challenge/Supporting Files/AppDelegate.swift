@@ -17,36 +17,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        UserDefaults.standard.set("bimbelsg@gmail.com", forKey: "tokenBimbel")
+//        UserDefaults.standard.set("bimbelsg@gmail.com", forKey: "tokenBimbel")
         UITabBar.appearance().tintColor = ConstantManager.mainColor
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
-        let rv = JobViewController()
-        let navigationController = UINavigationController(rootViewController: rv)
+//        let rv = JobViewController()
+//        let navigationController = UINavigationController(rootViewController: rv)
         
         
-//        if CKUserData.shared.getOnBoardingStatus() != "" {
-//            //Flag di set False ketika dia mau Apply tetapi belum login
-//            //Selama dia true seperti flag yang sudah di inisialisasi di atas gak bakal di suruh login
-//            //Kalau mau batasin hak akses contoh seperti DetailBimbelViewController (func requestTapped)
-//            if flag == false{
-//                let rootVC = LoginViewController()
-//                let navigationController = UINavigationController(rootViewController: rootVC)
-//                window?.rootViewController = navigationController
-//                window?.makeKeyAndVisible()
-//            }
-//            let rootVC = ChooseRoleViewController()
-//            let navigationController = UINavigationController(rootViewController: rootVC)
-//            window?.rootViewController = rootVC
-//            window?.makeKeyAndVisible()
-//        }else{
-//            let vc = OnboardingViewController()
-//            let navigationController = UINavigationController(rootViewController: vc)
-//            window?.rootViewController = navigationController
-//            window?.makeKeyAndVisible()
-//        }
-        window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
+        if CKUserData.shared.getOnBoardingStatus() != "" {
+            //Flag di set False ketika dia mau Apply tetapi belum login
+            //Selama dia true seperti flag yang sudah di inisialisasi di atas gak bakal di suruh login
+            //Kalau mau batasin hak akses contoh seperti DetailBimbelViewController (func requestTapped)
+            if flag == false{
+                let rootVC = LoginViewController()
+                let navigationController = UINavigationController(rootViewController: rootVC)
+                window?.rootViewController = navigationController
+                window?.makeKeyAndVisible()
+            }
+            let rootVC = ChooseRoleViewController()
+            let navigationController = UINavigationController(rootViewController: rootVC)
+            window?.rootViewController = navigationController
+            window?.makeKeyAndVisible()
+        }else{
+            let vc = OnboardingViewController()
+            let navigationController = UINavigationController(rootViewController: vc)
+            window?.rootViewController = navigationController
+            window?.makeKeyAndVisible()
+        }
+//        window?.rootViewController = navigationController
+//        window?.makeKeyAndVisible()
         
         return true
     }

@@ -26,6 +26,7 @@ class SetupPersonalBimbelViewController: BaseViewController {
         registerCell()
         queryCourse()
         self.hideKeyboardWhenTappedAround()
+        self.navigationItem.setHidesBackButton(true, animated:true);
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -41,7 +41,7 @@ class ProfileViewController: BaseViewController {
         setupView(text: "Profile")
         queryTutor()
         tableView.reloadData()
-        self.tabBarController?.tabBar.isHidden = false
+        //        self.tabBarController?.tabBar.isHidden = false
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -88,21 +88,23 @@ extension ProfileViewController{
                 self.tutors = record[0]
             }
             DispatchQueue.main.async {
-                if self.tutors != nil{
-                    if self.tutors?.value(forKey: "educationID") != nil{
-                        self.queryEducation()
-                    }
-                    if self.tutors?.value(forKey: "languageID") != nil{
-                        self.queryLanguage()
-                    }
-                    if self.tutors?.value(forKey: "experienceID") != nil{
-                        self.queryExperience()
-                    }
-                    self.refresh()
-                }else{
-                    self.refresh()
-                }
-                
+                //                if self.tutors != nil{
+                //                    if self.tutors?.value(forKey: "educationID") != nil{
+                //                        self.queryEducation()
+                //                    }
+                //                    if self.tutors?.value(forKey: "languageID") != nil{
+                //                        self.queryLanguage()
+                //                    }
+                //                    if self.tutors?.value(forKey: "experienceID") != nil{
+                //                        self.queryExperience()
+                //                    }
+                //                    self.refresh()
+                //                }else{
+                //                    self.refresh()
+                //                }
+                self.queryEducation()
+                self.queryLanguage()
+                self.queryExperience()
             }
         }
     }
@@ -119,8 +121,9 @@ extension ProfileViewController{
                 self.education = record[0]
             }
             DispatchQueue.main.async {
-                self.refresh()
-//                self.checkIsLoaded()
+                //                self.refresh()
+                self.isLoadedEducation = true
+                self.checkIsLoaded()
             }
         }
     }
@@ -136,8 +139,9 @@ extension ProfileViewController{
                 self.language = record[0]
             }
             DispatchQueue.main.async {
-                self.refresh()
-//                self.checkIsLoaded()
+                //                self.refresh()
+                self.isLoadedLanguage = true
+                self.checkIsLoaded()
             }
         }
     }
@@ -153,8 +157,9 @@ extension ProfileViewController{
                 self.experience = record[0]
             }
             DispatchQueue.main.async {
-                self.refresh()
-//                self.checkIsLoaded()
+                //                self.refresh()
+                self.isLoadedExperience = true
+                self.checkIsLoaded()
             }
         }
     }
@@ -322,6 +327,9 @@ extension ProfileViewController:UITableViewDataSource, UITableViewDelegate{
                         cell.footer = fos
                         cell.setCell(text: keyValue.key, button: keyValue.button)
                         cell.contentDelegate = self
+                        //                        cell.content = education?.value(forKey: "schoolName") as? [String]
+                        cell.cellDelegate()
+                        
                         
                         return cell
                     } else {
@@ -373,6 +381,7 @@ extension ProfileViewController:UITableViewDataSource, UITableViewDelegate{
                         return cell
                     }
                 }else if keyValue.value == 3 {
+                    //FOR SKILL
                     if tutors?.value(forKey: "tutorSkill") != nil{
                         let cell = tableView.dequeueReusableCell(withIdentifier: content, for: indexPath) as! ContentTableViewCell
                         let skill = (tutors?.value(forKey: "tutorSkills") as? [String])

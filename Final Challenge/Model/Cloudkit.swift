@@ -214,6 +214,7 @@ class CKUserData {
     
     func addUserBimbel(email: String, password: String){
         let tempUser = User(email: email, password: password)
+        users.removeAll()
         users.append(tempUser)
     }
     

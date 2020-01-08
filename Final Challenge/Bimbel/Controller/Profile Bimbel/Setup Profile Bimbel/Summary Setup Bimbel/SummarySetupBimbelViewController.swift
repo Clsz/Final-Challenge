@@ -114,14 +114,15 @@ extension SummarySetupBimbelViewController: UITableViewDataSource, UITableViewDe
                 
                 return cell
                 
-            }else{
+            }
+        }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: logoutView, for: indexPath) as! LogoutTableViewCell
                 cell.setInterface()
                 cell.logoutButton.titleLabel?.text = "Confirm Profile"
+            
                 return cell
             }
-        }
         return UITableViewCell()
+        }
         
-    }
 }
