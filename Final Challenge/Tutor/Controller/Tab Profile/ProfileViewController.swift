@@ -87,21 +87,23 @@ extension ProfileViewController{
                 self.tutors = record[0]
             }
             DispatchQueue.main.async {
-                if self.tutors != nil{
-                    if self.tutors?.value(forKey: "educationID") != nil{
-                        self.queryEducation()
-                    }
-                    if self.tutors?.value(forKey: "languageID") != nil{
-                        self.queryLanguage()
-                    }
-                    if self.tutors?.value(forKey: "experienceID") != nil{
-                        self.queryExperience()
-                    }
-                    self.refresh()
-                }else{
-                    self.refresh()
-                }
-                
+                //                if self.tutors != nil{
+                //                    if self.tutors?.value(forKey: "educationID") != nil{
+                //                        self.queryEducation()
+                //                    }
+                //                    if self.tutors?.value(forKey: "languageID") != nil{
+                //                        self.queryLanguage()
+                //                    }
+                //                    if self.tutors?.value(forKey: "experienceID") != nil{
+                //                        self.queryExperience()
+                //                    }
+                //                    self.refresh()
+                //                }else{
+                //                    self.refresh()
+                //                }
+                self.queryEducation()
+                self.queryLanguage()
+                self.queryExperience()
             }
         }
     }
@@ -118,8 +120,9 @@ extension ProfileViewController{
                 self.education = record[0]
             }
             DispatchQueue.main.async {
-                self.refresh()
-//                self.checkIsLoaded()
+                //                self.refresh()
+                self.isLoadedEducation = true
+                self.checkIsLoaded()
             }
         }
     }
@@ -135,8 +138,9 @@ extension ProfileViewController{
                 self.language = record[0]
             }
             DispatchQueue.main.async {
-                self.refresh()
-//                self.checkIsLoaded()
+                //                self.refresh()
+                self.isLoadedLanguage = true
+                self.checkIsLoaded()
             }
         }
     }
@@ -152,8 +156,9 @@ extension ProfileViewController{
                 self.experience = record[0]
             }
             DispatchQueue.main.async {
-                self.refresh()
-//                self.checkIsLoaded()
+                //                self.refresh()
+                self.isLoadedExperience = true
+                self.checkIsLoaded()
             }
         }
     }
@@ -321,6 +326,9 @@ extension ProfileViewController:UITableViewDataSource, UITableViewDelegate{
                         cell.footer = fos
                         cell.setCell(text: keyValue.key, button: keyValue.button)
                         cell.contentDelegate = self
+                        //                        cell.content = education?.value(forKey: "schoolName") as? [String]
+                        cell.cellDelegate()
+                        
                         
                         return cell
                     } else {
@@ -372,6 +380,7 @@ extension ProfileViewController:UITableViewDataSource, UITableViewDelegate{
                         return cell
                     }
                 }else if keyValue.value == 3 {
+                    //FOR SKILL
                     if tutors?.value(forKey: "tutorSkill") != nil{
                         let cell = tableView.dequeueReusableCell(withIdentifier: content, for: indexPath) as! ContentTableViewCell
                         let skill = (tutors?.value(forKey: "tutorSkills") as? [String])
@@ -393,6 +402,9 @@ extension ProfileViewController:UITableViewDataSource, UITableViewDelegate{
                 //FOR LOGOUT
                 let cell = tableView.dequeueReusableCell(withIdentifier: logoutView, for: indexPath) as! LogoutTableViewCell
                 cell.contentDelegate = self
+                cell.index = 0
+                cell.logoutButton.titleLabel?.text = "Log Out"
+                cell.logoutButton.backgroundColor = #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1)
                 cell.setInterface()
                 return cell
             }

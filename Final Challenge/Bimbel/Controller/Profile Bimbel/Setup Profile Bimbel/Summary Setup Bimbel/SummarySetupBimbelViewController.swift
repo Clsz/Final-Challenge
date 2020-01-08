@@ -26,7 +26,7 @@ class SummarySetupBimbelViewController: BaseViewController{
         registerCell()
         cellDelegate()
         setupData()
-        setupView(text: "Course Profile")
+        setupView(text: "Bimbel Profile")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,6 +47,13 @@ extension SummarySetupBimbelViewController{
         dataArray.append(("Teaching Subjects","Edit Subjects",subjek))
         dataArray.append(("Teaching Grades","Edit Grades",0))
         dataArray.append(true)
+    }
+}
+extension SummarySetupBimbelViewController:confirmProtocol{
+    func confirmTapped() {
+        let vc = ResultViewController()
+        vc.fromID = 8
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -114,14 +121,17 @@ extension SummarySetupBimbelViewController: UITableViewDataSource, UITableViewDe
                 
                 return cell
                 
-            }else{
-                let cell = tableView.dequeueReusableCell(withIdentifier: logoutView, for: indexPath) as! LogoutTableViewCell
-                cell.setInterface()
-                cell.logoutButton.titleLabel?.text = "Confirm Profile"
-                return cell
             }
+        }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: logoutView, for: indexPath) as! LogoutTableViewCell
+            cell.setInterface()
+            cell.index = 1
+            cell.logoutButton.setTitle("Confirm Profile", for: .normal)
+            cell.confirmDelegate = self
+            
+            return cell
         }
         return UITableViewCell()
-        
     }
+    
 }

@@ -23,7 +23,7 @@
                             <constraint firstAttribute="height" constant="44" id="xE9-eb-MPm"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                        <state key="normal" title="Log Out ">
+                        <state key="normal" title="Log Out">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                         <connections>

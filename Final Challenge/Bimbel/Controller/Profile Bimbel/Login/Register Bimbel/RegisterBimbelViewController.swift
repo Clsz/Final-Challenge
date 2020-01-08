@@ -126,7 +126,6 @@ extension RegisterBimbelViewController: UITextFieldDelegate {
                 self.hideLoading()
             }
         }
-    }
     
     
     @objc func donePressed(_ textField: UITextField) {

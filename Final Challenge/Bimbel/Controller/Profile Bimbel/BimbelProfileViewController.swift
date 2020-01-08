@@ -14,11 +14,11 @@ class BimbelProfileViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
     var dataArray:[Any?] = []
-    var bimbel:CKRecord?
-    let header = "TitleTableViewCellID"
+    var course:CKRecord?
+    let header = "TitleBimbelTableViewCellID"
     let address = "DetailAddressTableViewCellID"
     let subject = "ContentTableViewCellID"
-    let grade = "ContentViewTableViewCellID"
+    let grade = "AnotherContentTableViewCellID"
     let logoutView = "LogoutTableViewCellID"
     var flag = false
     var sendToCustom:SendTutorToCustom?
@@ -43,7 +43,7 @@ class BimbelProfileViewController: BaseViewController {
 extension BimbelProfileViewController{
     private func setupData() {
         dataArray.removeAll()
-        dataArray.append(bimbel)
+        dataArray.append(course)
         dataArray.append(("Address","Edit Address",0))
         dataArray.append(("Teaching Subjects","Add Subjects",1))
         dataArray.append(("Teaching Grades","Edit Grades",2))
@@ -59,14 +59,14 @@ extension BimbelProfileViewController{
                 print("error",error as Any)
                 return
             }
-            self.bimbel = records[0]
+            self.course = records[0]
         }
     }
 }
 extension BimbelProfileViewController:BimbelProtocol{
     func pencilTapped() {
         let destVC = DetailProfileBimbelViewController()
-        destVC.bimbel = self.bimbel
+        destVC.bimbel = self.course
         self.navigationController?.pushViewController(destVC, animated: true)
     }
     
@@ -101,7 +101,7 @@ extension BimbelProfileViewController:BimbelProtocol{
 }
 extension BimbelProfileViewController:UITableViewDataSource, UITableViewDelegate{
     private func registerCell() {
-        tableView.register(UINib(nibName: "TitleTableViewCell", bundle: nil), forCellReuseIdentifier: header)
+        tableView.register(UINib(nibName: "TitleBimbelTableViewCell", bundle: nil), forCellReuseIdentifier: header)
         tableView.register(UINib(nibName: "DetailAddressTableViewCell", bundle: nil), forCellReuseIdentifier: address)
         tableView.register(UINib(nibName: "ContentTableViewCell", bundle: nil), forCellReuseIdentifier: subject)
         tableView.register(UINib(nibName: "ContentViewTableViewCell", bundle: nil), forCellReuseIdentifier: grade)
@@ -120,31 +120,68 @@ extension BimbelProfileViewController:UITableViewDataSource, UITableViewDelegate
     //NGE SET CONTENT BERDASARKAN ROW
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0{
-            let cell = tableView.dequeueReusableCell(withIdentifier: header, for: indexPath) as! TitleTableViewCell
-//            cell.setCell(image: "", name: "Ming Ho", university: "Binus", age: 10)
+            // FOR TITLE
+            let cell = tableView.dequeueReusableCell(withIdentifier: header, for: indexPath) as! TitleBimbelTableViewCell
             
-            //GENERATE DATANYA HEADER
-            
-            cell.index = 1
-            cell.bimbelDelegate = self
-            cell.outerProfile.outerRound()
-            return cell
+            if (course?.value(forKey: "courseName") as? String) != nil {
+                let imageDefault = #imageLiteral(resourceName: "user-5")
+                let name = course?.value(forKey: "courseName") as! String
+                let hourBimbel = "\(course?.value(forKey: "courseStartHour") as! String) - \(course?.value(forKey: "courseEndHour") as! String)"
+                
+                if course?.value(forKey: "courseImage") != nil{
+                    let imageProfile = course?.value(forKey: "courseImage") as! CKAsset
+                    cell.setCellBimbel(image: imageProfile.toUIImage()!, name: name, hour: hourBimbel)
+                    return cell
+                } else {
+                    cell.setCellBimbel(image: imageDefault, name: name, hour: hourBimbel)
+                    return cell
+                }
+            }
         }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:String, code:Int){
             if keyValue.code == 0{
-                let cell = tableView.dequeueReusableCell(withIdentifier: address, for: indexPath) as! DetailAddressTableViewCell
-                cell.setCell(keyValue.key, keyValue.value)
-                cell.bimbelDelegate = self
-                return cell
+                //FOR ADDRESS
+                if (course?.value(forKey: "courseAddress") as? String) != nil {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: address, for: indexPath) as! DetailAddressTableViewCell
+                    cell.setCell(keyValue.key, keyValue.value)
+                    cell.textField.text = course?.value(forKey: "courseAddress") as? String
+                    cell.bimbelDelegate = self
+                    return cell
+                } else {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: address, for: indexPath) as! DetailAddressTableViewCell
+                    cell.setCell(keyValue.key, keyValue.value)
+                    cell.bimbelDelegate = self
+                    return cell
+                }
             }else if keyValue.code == 1{
-                let cell = tableView.dequeueReusableCell(withIdentifier: subject, for: indexPath) as! ContentTableViewCell
-                cell.setCell(title: keyValue.key, button: keyValue.value)
-                cell.bimbelDelegate = self
-                return cell
+                //FOR SUBJECT
+                if (course?.value(forKey: "courseSubject") as? String) != nil {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: subject, for: indexPath) as! ContentTableViewCell
+                    cell.setCell(title: keyValue.key, button: keyValue.value)
+                    cell.bimbelDelegate = self
+                    cell.skills = course?.value(forKey: "courseSubject") as? [String]
+                    return cell
+                } else {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: subject, for: indexPath) as! ContentTableViewCell
+                    cell.setCell(title: keyValue.key, button: keyValue.value)
+                    cell.bimbelDelegate = self
+                    return cell
+                }
             }else if keyValue.code == 2{
-                let cell = tableView.dequeueReusableCell(withIdentifier: grade, for: indexPath) as! ContentViewTableViewCell
-                cell.setCell(text: keyValue.key, button: keyValue.value)
-                cell.bimbelDelegate = self
-                return cell
+                if (course?.value(forKey: "courseGrade") as? String) != nil {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: grade, for: indexPath) as! AnotherContentTableViewCell
+                    cell.setCell(text: keyValue.key, button: keyValue.value)
+                    cell.bimbelDelegate = self
+                    cell.destIndex = 3
+                    cell.index = 2
+                    cell.title = course?.value(forKey: "courseGrade") as? [String]
+                    return cell
+                } else {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: grade, for: indexPath) as! AnotherContentTableViewCell
+                    cell.setCell(text: keyValue.key, button: keyValue.value)
+                    cell.bimbelDelegate = self
+                    return cell
+                }
+                
             }
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: logoutView, for: indexPath) as! LogoutTableViewCell
