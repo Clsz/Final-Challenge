@@ -17,6 +17,7 @@ class DetailBimbelTabFirstViewController: BaseViewController {
     var jobStatus:String?
     var course:CKRecord?
     var job:CKRecord?
+    var tokenUser:CKRecord?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +80,6 @@ extension DetailBimbelTabFirstViewController{
         dataArray.append(("Qualification",qualification,0))
         dataArray.append(true)
     }
-    
 }
 
 extension DetailBimbelTabFirstViewController: UITableViewDataSource,UITableViewDelegate{

@@ -44,7 +44,6 @@ class SetupEducationViewController: BaseViewController {
         cellDelegate()
         self.hideKeyboardWhenTappedAround()
         self.navigationController?.navigationItem.hidesBackButton = true
-        self.tabBarController?.tabBar.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -117,7 +116,7 @@ extension SetupEducationViewController{
     
     private func updateEducation(recordEducation:CKRecord){
         if let record = tutors{
-            record["educationID"] = CKRecord.Reference.init(recordID: recordEducation.recordID, action: .deleteSelf)
+            record["educationID"] = CKRecord.Reference.init(recordID: recordEducation.recordID, action: .none)
             self.database.save(record, completionHandler: {returnRecord, error in
                 if error != nil{
                     self.showAlert(title: "Error", message: "Update Error")

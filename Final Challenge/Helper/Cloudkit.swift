@@ -161,9 +161,7 @@ class CKUserData {
                     let password = record.object(forKey: "coursePassword") as! String
                     self.addUserBimbel(email: email, password: password)
                 }
-                DispatchQueue.main.async {
-                    completion(true)
-                }
+                completion(true)
             } else {
                 completion(false)
                 print ("There Was an Error with CloudKit")
@@ -195,17 +193,14 @@ class CKUserData {
             record.setObject(user.email as CKRecordValue?, forKey: "courseEmail")
             record.setObject(user.password as CKRecordValue? , forKey: "coursePassword")
             privateDB.save(record) { (savedRecord: CKRecord?, error: Error?) -> Void in
-                DispatchQueue.main.async {
-                    guard let record = savedRecord else { return }
-                    completion(record)
-                }
+                guard let record = savedRecord else { return }
+                completion(record)
             }
         }
     }
     
     func addUser(firstName: String, lastName: String, email: String, password: String){
         users.removeAll()
-        
         let tempUser = User(firstName: firstName, lastName: lastName, email: email, password: password)
         users.append(tempUser)
     }

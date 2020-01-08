@@ -91,7 +91,7 @@ extension SetupLanguageViewController{
     
     private func updateLanguage(recordLanguage:CKRecord){
         if let record = tutors{
-            record["languageID"] = CKRecord.Reference.init(recordID: recordLanguage.recordID, action: .deleteSelf)
+            record["languageID"] = CKRecord.Reference.init(recordID: recordLanguage.recordID, action: .none)
             self.database.save(record, completionHandler: {returnRecord, error in
                 if error != nil{
                     self.showAlert(title: "Error", message: "Update Error")

@@ -289,7 +289,7 @@ extension TestScheduleViewController:UITableViewDataSource, UITableViewDelegate{
                 return cell
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "submitCell", for: indexPath) as! SubmitTableViewCell
-                if self.day.count > 2 && self.time.count > 2{
+                if self.day.count > 2 && self.time.count > 0{
                     cell.requestButton.backgroundColor = #colorLiteral(red: 0, green: 0.399238348, blue: 0.6880209446, alpha: 1)
                     cell.requestButton.isEnabled = true
                 }else{

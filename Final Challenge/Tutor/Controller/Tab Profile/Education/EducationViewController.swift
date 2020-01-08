@@ -49,7 +49,6 @@ class EducationViewController: BaseViewController {
         registerCell()
         cellDelegate()
         self.hideKeyboardWhenTappedAround()
-        self.tabBarController?.tabBar.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
