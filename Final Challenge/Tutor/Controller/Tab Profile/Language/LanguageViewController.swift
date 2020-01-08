@@ -33,7 +33,7 @@ class LanguageViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setMainInterface()
-        setupView(text: "Bahasa")
+        setupView(text: "Language")
     }
     
     @IBAction func applyTapped(_ sender: Any) {

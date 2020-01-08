@@ -381,7 +381,7 @@ extension ProfileViewController:UITableViewDataSource, UITableViewDelegate{
                     }
                 }else if keyValue.value == 3 {
                     //FOR SKILL
-                    if tutors?.value(forKey: "tutorSkill") != nil{
+                    if tutors?.value(forKey: "tutorSkills") != nil{
                         let cell = tableView.dequeueReusableCell(withIdentifier: content, for: indexPath) as! ContentTableViewCell
                         let skill = (tutors?.value(forKey: "tutorSkills") as? [String])
                         cell.setCell(title: keyValue.key, button: keyValue.button)

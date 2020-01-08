@@ -26,14 +26,14 @@ class BimbelProfileViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         queryDatabase()
-        setupView(text: "Bimbel Profile")
+        setupView(text: "Tuition Profile")
         setupData()
         registerCell()
         cellDelegate()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setupView(text: "Bimbel Profile")
+        setupView(text: "Tuition Profile")
         setupData()
         registerCell()
         cellDelegate()

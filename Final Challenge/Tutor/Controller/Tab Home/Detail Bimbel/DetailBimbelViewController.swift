@@ -29,7 +29,7 @@ class DetailBimbelViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setupView(text: "Detail Pekerjaan")
+        setupView(text: "Job Details")
         
     }
 }

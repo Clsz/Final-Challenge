@@ -34,7 +34,7 @@ class DetailProfileBimbelViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setMainInterface()
-        setupView(text: "Bimbel Personal")
+        setupView(text: "Tuition Personal")
     }
     
     override func viewWillDisappear(_ animated: Bool) {

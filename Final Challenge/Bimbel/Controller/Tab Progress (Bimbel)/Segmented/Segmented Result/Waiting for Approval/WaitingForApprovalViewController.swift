@@ -195,6 +195,8 @@ extension WaitingForApprovalViewController:UITableViewDataSource, UITableViewDel
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "FooterActivityTableViewCellID", for: indexPath) as! FooterActivityTableViewCell
                 cell.footerDelegate = self
+                cell.acceptButton.setTitleColor(.white, for: .normal)
+                cell.rejectButton.setTitleColor(.white, for: .normal)
                 cell.setCell(accept: "Accept", reject: "Reject")
                 return cell
             }
