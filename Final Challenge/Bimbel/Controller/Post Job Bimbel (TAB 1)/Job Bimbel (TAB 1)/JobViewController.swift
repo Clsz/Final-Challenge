@@ -34,6 +34,7 @@ class JobViewController: BaseViewController {
         setupInterface()
         queryCourse()
         setupView(text: "Post a Job")
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     @IBAction func postJobTapped(_ sender: Any) {

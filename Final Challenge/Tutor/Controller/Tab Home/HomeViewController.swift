@@ -36,7 +36,7 @@ class HomeViewController: BaseViewController{
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Jobs")
         queryJob()
-        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     
@@ -106,10 +106,11 @@ extension HomeViewController{
         
         database.perform(query, inZoneWith: nil) { (records, error) in
             guard let record = records else {return}
-            
-            self.tutorModel = record[0]
-            DispatchQueue.main.async {
-                self.queryJob()
+            if record.count > 0{
+                self.tutorModel = record[0]
+                DispatchQueue.main.async {
+                    self.queryJob()
+                }
             }
         }
     }
@@ -132,7 +133,6 @@ extension HomeViewController: UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "jobCell", for: indexPath) as! ListJobTableViewCell
-        
     
         let data = listJob[indexPath.row]
         let name = (data.value(forKey: "courseName") as! String)

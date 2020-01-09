@@ -154,6 +154,9 @@ protocol SendFlag{
     func sendFlag(flag:Bool)
 }
 
+protocol EditSchedule{
+    func pencilTapped()
+}
 
 protocol passDataToDetail{
     func passDataSubject(dataSubject:[String])

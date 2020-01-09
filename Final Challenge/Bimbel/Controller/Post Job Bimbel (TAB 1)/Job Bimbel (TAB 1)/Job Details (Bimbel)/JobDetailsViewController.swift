@@ -47,6 +47,10 @@ class JobDetailsViewController: BaseViewController {
         reloadTable()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     @IBAction func editSubjectTapped(_ sender: Any) {
         let editSubjectVC = TeachingSubjectViewController()
         editSubjectVC.delegate = self
@@ -171,7 +175,7 @@ extension JobDetailsViewController{
         let tokenMax = maxSalary.replacingOccurrences(of: ".", with: "").components(separatedBy: " ")
         
         record["courseAddress"] = course?.value(forKey: "courseAddress") as? String
-        record["courseCity"] = course?.value(forKey: "courseCity") as? String
+        record["courseCity"] = course?.value(forKey: "courseCity") as? String ?? ""
         record["courseID"] = CKRecord.Reference.init(recordID: course.recordID, action: .none)
         record["courseName"] = course?.value(forKey: "courseName") as? String
         record["jobSubject"] = arraySubject

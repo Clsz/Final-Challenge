@@ -41,6 +41,7 @@ class TeachingSchedulesViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Teaching Schedule")
+        setMainInterface()
     }
     
     func setInterface() {
@@ -61,6 +62,16 @@ class TeachingSchedulesViewController: BaseViewController {
     
     @IBAction func endTapped(_ sender: Any) {
         createEndHour()
+    }
+    
+    func setMainInterface() {
+        if daysCV.indexPathsForSelectedItems?.count == 0 || startTF.text?.isEmpty == true || endTF.text?.isEmpty == true{
+            applyButton.backgroundColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
+            applyButton.isEnabled = false
+        }else{
+            applyButton.backgroundColor = #colorLiteral(red: 0, green: 0.399238348, blue: 0.6880209446, alpha: 1)
+            applyButton.isEnabled = true
+        }
     }
     
     @IBAction func applyTapped(_ sender: Any) {
@@ -128,6 +139,8 @@ extension TeachingSchedulesViewController{
     }
     
     @objc func onDoneButtonTapped() {
+        setMainInterface()
+        
         toolBar.removeFromSuperview()
         pickerStart.removeFromSuperview()
         pickerEnd.removeFromSuperview()
@@ -176,6 +189,7 @@ extension TeachingSchedulesViewController:UICollectionViewDataSource, UICollecti
     func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
         if let selectedItems = collectionView.indexPathsForSelectedItems {
             if selectedItems.contains(indexPath) {
+                setMainInterface()
                 collectionView.deselectItem(at: indexPath, animated: true)
                 return false
             }
@@ -186,6 +200,8 @@ extension TeachingSchedulesViewController:UICollectionViewDataSource, UICollecti
 
 extension TeachingSchedulesViewController:UITextFieldDelegate{
     private func doneButton() {
+        setMainInterface()
+        
         self.accessoryDoneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.donePressed))
         self.accessoryToolBar.items = [self.accessoryDoneButton]
         accessoryToolBar.setItems([flexiblea, accessoryDoneButton], animated: false)

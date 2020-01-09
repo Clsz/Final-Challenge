@@ -16,12 +16,14 @@ class ChooseRoleViewController: UIViewController {
         super.viewDidLoad()
         setInterface()
     }
-
+    
     @IBAction func tutorTapped(_ sender: UIButton) {
+        
         let vc = TabBarController()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.window?.rootViewController = vc
         appDelegate.window?.makeKeyAndVisible()
+        
     }
     
     @IBAction func tuitionTapped(_ sender: UIButton) {

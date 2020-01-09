@@ -117,12 +117,16 @@ extension JobInformationViewController{
         }
     }
 }
-extension JobInformationViewController:SendSchedule{
+extension JobInformationViewController:SendSchedule, EditSchedule{
     func sendTeachingSchedule(day: [String], startHour: [String], endHour: [String]) {
         self.day = day
         self.startHour = startHour
         self.endHour = endHour
         checkData()
+    }
+    
+    func pencilTapped() {
+        self.showAlert(title: "Under Construction", message: "We Are Sorry Can;t Update Schedule For Now")
     }
 }
 extension JobInformationViewController: UITextFieldDelegate {
@@ -187,7 +191,7 @@ extension JobInformationViewController: UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: interviewCell, for: indexPath) as! InterviewBimbelTableViewCell
         let timeSchedule = "\(startHour[indexPath.row]) - \(endHour[indexPath.row]) WIB"
         cell.setCell(day: day[indexPath.row], time: timeSchedule)
-        
+        cell.delegate = self
         return cell
     }
     

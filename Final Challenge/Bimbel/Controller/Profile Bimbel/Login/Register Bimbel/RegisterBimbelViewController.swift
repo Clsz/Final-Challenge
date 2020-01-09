@@ -6,6 +6,7 @@
 //  Copyright © 2019 12. All rights reserved.
 //
 import UIKit
+import CloudKit
 
 class RegisterBimbelViewController: BaseViewController {
     @IBOutlet weak var emailTF: UITextField!
@@ -15,6 +16,7 @@ class RegisterBimbelViewController: BaseViewController {
     var accessoryDoneButton: UIBarButtonItem!
     let accessoryToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
     let flexiblea = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+    var database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,6 +92,21 @@ extension RegisterBimbelViewController: UITextFieldDelegate {
         UIView.commitAnimations()
     }
     
+    func createToken(email:String, completion: @escaping (Bool) -> Void){
+        let record = CKRecord(recordType: "Token")
+        record["email"] = email
+        record["token"] = CKUserData.shared.getDeviceToken()
+        
+        database.save(record) { (record, error) in
+            if error == nil{
+                completion(true)
+            }else{
+                completion(false)
+            }
+        }
+        
+    }
+    
     func validateFields() {
         errorLabel.textColor = .systemRed
         if emailTF.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
@@ -110,20 +127,31 @@ extension RegisterBimbelViewController: UITextFieldDelegate {
                     if CKUserData.shared.checkUser(email: email) == LoginResults.userNotExist {
                         CKUserData.shared.addUserBimbel(email: email, password: password)
                         CKUserData.shared.saveUsersBimbel { (user) in
-                            DispatchQueue.main.async {
-                                self.hideLoading()
-                                CKUserData.shared.saveEmailBimbel(token: email)
-                                let vc = SetupPersonalBimbelViewController()
-                                vc.course = user
-                                self.navigationController?.pushViewController(vc, animated: true)
+                            self.createToken(email: email) { (success) in
+                                DispatchQueue.main.async {
+                                    if success{
+                                        self.hideLoading()
+                                        CKUserData.shared.saveEmailBimbel(token: email)
+                                        let vc = SetupPersonalBimbelViewController()
+                                        vc.course = user
+                                        self.navigationController?.pushViewController(vc, animated: true)
+                                    }else{
+                                        self.hideLoading()
+                                        self.showAlert(title: "Attention", message: "User already exist")
+                                    }
+                                }
                             }
                         }
                     } else {
-                        self.hideLoading()
-                        self.showAlert(title: "Attention", message: "User already exist")
+                        DispatchQueue.main.async {
+                            self.hideLoading()
+                            self.showAlert(title: "Attention", message: "User already exist")
+                        }
                     }
                 }
-                self.hideLoading()
+                DispatchQueue.main.async {
+                    self.hideLoading()
+                }
             }
         }
         

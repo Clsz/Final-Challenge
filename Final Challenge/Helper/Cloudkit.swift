@@ -53,19 +53,20 @@ class CKUserData {
                     let password = record.object(forKey: "tutorPassword") as! String
                     self.addUser(firstName: firstName, lastName: lastName, email: email, password: password)
                 }
-                DispatchQueue.main.async {
-                    if CKUserData.shared.checkUser(email: email) == LoginResults.userExists {
-                        if CKUserData.shared.login(email: email, password: password) == .loginSucceeds {
-                            self.setStatus(status: true)
-                            completion(true)
-                        } else { // Login Failed
-                            self.setStatus(status: false)
-                            completion(false)
-                        }
+                if CKUserData.shared.checkUser(email: email) == LoginResults.userExists {
+                    if CKUserData.shared.login(email: email, password: password) == .loginSucceeds {
+                        self.setStatus(status: true)
+                        completion(true)
+                    } else { // Login Failed
+                        self.setStatus(status: false)
+                        completion(false)
                     }
-                    
+                }else{
+                    self.setStatus(status: false)
+                    completion(false)
                 }
             } else {
+                completion(false)
                 print ("There Was an Error with CloudKit")
                 print (error?.localizedDescription ?? "Error")
             }
@@ -92,18 +93,20 @@ class CKUserData {
                     let password = record.object(forKey: "coursePassword") as! String
                     self.addUserBimbel(email: email, password: password)
                 }
-                DispatchQueue.main.async {
-                    if CKUserData.shared.checkUser(email: email) == LoginResults.userExists {
-                        if CKUserData.shared.login(email: email, password: password) == .loginSucceeds {
-                            self.setStatus(status: true)
-                            completion(true)
-                        } else { // Login Failed
-                            self.setStatus(status: false)
-                            completion(false)
-                        }
+                if CKUserData.shared.checkUser(email: email) == LoginResults.userExists {
+                    if CKUserData.shared.login(email: email, password: password) == .loginSucceeds {
+                        self.setStatus(status: true)
+                        completion(true)
+                    } else { // Login Failed
+                        self.setStatus(status: false)
+                        completion(false)
                     }
+                }else{
+                    self.setStatus(status: false)
+                    completion(false)
                 }
             } else {
+                completion(false)
                 print ("There Was an Error with CloudKit")
                 print (error?.localizedDescription ?? "Error")
             }
@@ -130,9 +133,7 @@ class CKUserData {
                     let password = record.object(forKey: "tutorPassword") as! String
                     self.addUserBimbel(email: email, password: password)
                 }
-                DispatchQueue.main.async {
-                    completion(true)
-                }
+                completion(true)
             } else {
                 completion(false)
                 print ("There Was an Error with CloudKit")
@@ -179,10 +180,8 @@ class CKUserData {
             record.setObject(user.email as CKRecordValue?, forKey: "tutorEmail")
             record.setObject(user.password as CKRecordValue? , forKey: "tutorPassword")
             privateDB.save(record) { (savedRecord: CKRecord?, error: Error?) -> Void in
-                DispatchQueue.main.async {
-                    guard let record = savedRecord else { return }
-                    completion(record)
-                }
+                guard let record = savedRecord else { return }
+                completion(record)
             }
         }
     }
@@ -200,14 +199,12 @@ class CKUserData {
     }
     
     func addUser(firstName: String, lastName: String, email: String, password: String){
-        users.removeAll()
         let tempUser = User(firstName: firstName, lastName: lastName, email: email, password: password)
         users.append(tempUser)
     }
     
     func addUserBimbel(email: String, password: String){
         let tempUser = User(email: email, password: password)
-        users.removeAll()
         users.append(tempUser)
     }
     
@@ -223,6 +220,7 @@ class CKUserData {
         if users.contains(where: {$0.email == email}) {
             return .userExists
         } else {
+            self.users.removeAll()
             return .userNotExist
         }
     }
