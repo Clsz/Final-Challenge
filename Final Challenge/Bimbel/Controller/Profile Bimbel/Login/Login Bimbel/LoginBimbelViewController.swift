@@ -29,9 +29,9 @@ class LoginBimbelViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         setupView()
     }
+    
     @IBAction func registerTapped(_ sender: Any) {
-        let vc = RegisterBimbelViewController()
-        self.navigationController?.pushViewController(vc, animated: false)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func eyeTapped(_ sender: Any) {
@@ -39,7 +39,6 @@ class LoginBimbelViewController: BaseViewController {
     }
     
     @IBAction func loginTapped(_ sender: Any) {
-        self.showLoading()
         validateFields()
     }
 }
@@ -84,9 +83,7 @@ extension LoginBimbelViewController{
             guard let record = records else {return}
             if record.count > 0{
                 self.token = record[0]
-                DispatchQueue.main.async {
-                    self.updateToken(recordApplicant: self.token!)
-                }
+                self.updateToken(recordApplicant: self.token!)
             }else{
                 DispatchQueue.main.async {
                     self.showAlert(title: "Error Occured", message: "Try again later")
@@ -121,6 +118,7 @@ extension LoginBimbelViewController{
         }else if passwordTF.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
             return self.showAlert(title: "Error", message: "Password belum diisi")
         }else {
+            self.showLoading()
             let email = emailTF.text!
             let password = passwordTF.text!
             CKUserData.shared.loadUsersBimbel(email: email, password: password) { isSuccess in
@@ -133,9 +131,6 @@ extension LoginBimbelViewController{
                         self.showAlert(title: "Attention", message: "User not exist")
                     }
                 }
-            }
-            DispatchQueue.main.async {
-                self.hideLoading()
             }
         }
     }

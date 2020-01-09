@@ -30,6 +30,11 @@ class DetailBimbelViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Job Details")
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
         
     }
 }
@@ -250,9 +255,6 @@ extension DetailBimbelViewController: UITableViewDataSource,UITableViewDelegate{
             
             return cell
         }
-        //        if education != nil {
-        //
-        //                       } cell.title = [""]
         return UITableViewCell()
     }
 }

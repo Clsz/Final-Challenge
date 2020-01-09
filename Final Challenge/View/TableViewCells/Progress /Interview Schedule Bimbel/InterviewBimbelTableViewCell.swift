@@ -12,6 +12,7 @@ class InterviewBimbelTableViewCell: UITableViewCell {
     @IBOutlet weak var labelHari: UILabel!
     @IBOutlet weak var labelWaktu: UILabel!
     @IBOutlet weak var outerView: UIView!
+    var delegate:EditSchedule?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,6 +26,7 @@ class InterviewBimbelTableViewCell: UITableViewCell {
     }
     
     @IBAction func pencilTapped(_ sender: UIButton) {
+        delegate?.pencilTapped()
     }
 }
 extension InterviewBimbelTableViewCell{

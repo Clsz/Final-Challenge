@@ -32,6 +32,7 @@ class TeachingSubjectViewController: BaseViewController{
         setupView(text: "Teaching Subject")
         setMainInterface()
         checkData()
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     @IBAction func applySubjectTapped(_ sender: UIButton) {

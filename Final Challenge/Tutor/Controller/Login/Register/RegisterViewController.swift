@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 class RegisterViewController: BaseViewController {
     
@@ -20,11 +21,17 @@ class RegisterViewController: BaseViewController {
     var accessoryDoneButton: UIBarButtonItem!
     let accessoryToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
     let flexiblea = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+    var database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         setTextField()
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setMainInterface()
         self.tabBarController?.tabBar.isHidden = true
     }
     
@@ -39,7 +46,6 @@ class RegisterViewController: BaseViewController {
     
     @IBAction func regiterTapped(_ sender: Any) {
         validateFields()
-        
     }
     
     @IBAction func loginTapped(_ sender: Any) {
@@ -61,7 +67,15 @@ extension RegisterViewController {
 }
 
 extension RegisterViewController: UITextFieldDelegate {
-    
+    func setMainInterface() {
+        if firstNameTF.text == "" || lastNameTF.text == "" || emailTF.text == "" || passwordTF.text == ""{
+            registerButton.isEnabled = false
+            registerButton.backgroundColor = #colorLiteral(red: 0.6070619822, green: 0.6075353622, blue: 0.6215403676, alpha: 0.8470588235)
+        }else{
+            registerButton.isEnabled = true
+            registerButton.backgroundColor = #colorLiteral(red: 0, green: 0.399238348, blue: 0.6880209446, alpha: 1)
+        }
+    }
     
     func setTextField() {
         firstNameTF.delegate = self
@@ -85,6 +99,7 @@ extension RegisterViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         moveTextField(textField, moveDistance: -250, up: false)
+        setMainInterface()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -113,16 +128,25 @@ extension RegisterViewController: UITextFieldDelegate {
         UIView.commitAnimations()
     }
     
+    func createToken(email:String, completion: @escaping (Bool) -> Void){
+        let record = CKRecord(recordType: "Token")
+        record["email"] = email
+        record["token"] = CKUserData.shared.getDeviceToken()
+        
+        database.save(record) { (record, error) in
+            if error == nil{
+                completion(true)
+            }else{
+                completion(false)
+            }
+        }
+        
+    }
+    
     func validateFields() {
         textError.textColor = .systemRed
-        if firstNameTF.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-            return textError.text = "Please enter your first name"
-        }else if emailTF.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-            return textError.text = "Please enter your email address"
-        }else if emailTF.text?.isValidEmail() == false {
+        if emailTF.text?.isValidEmail() == false {
             return textError.text = "Invalid email format"
-        }else if passwordTF.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-            return textError.text = "Please enter your password"
         }else if passwordTF.text?.isValidPassword() == false {
             return textError.text = "Password must contain 6 characters. Combination of uppercase letter, lowercase letter, and number"
         }else {
@@ -132,26 +156,37 @@ extension RegisterViewController: UITextFieldDelegate {
             let lastName = lastNameTF.text!
             let email = emailTF.text!
             let password = passwordTF.text!
-            
-            CKUserData.shared.loadAllTutor(email: email, password: password) { (res) in
+            CKUserData.shared.loadAllBimbel(email: email, password: password) { (res) in
                 if res == true{
                     if CKUserData.shared.checkUser(email: email) == LoginResults.userNotExist {
                         CKUserData.shared.addUser(firstName: firstName, lastName: lastName, email: email, password: password)
-                        CKUserData.shared.saveUsers { (res) in
-                                self.hideLoading()
-                                CKUserData.shared.saveEmail(token: email)
-                                let vc = SetupPersonalViewController()
-                                vc.tutors = res
-                                self.navigationController?.pushViewController(vc, animated: true)
+                        CKUserData.shared.saveUsers { (user) in
+                            self.createToken(email: email) { (success) in
+                                DispatchQueue.main.async {
+                                    if success{
+                                        self.hideLoading()
+                                        CKUserData.shared.saveEmail(token: email)
+                                        let vc = SetupPersonalViewController()
+                                        vc.tutors = user
+                                        self.navigationController?.pushViewController(vc, animated: true)
+                                    }else{
+                                        self.hideLoading()
+                                        self.showAlert(title: "Attention", message: "User already exist")
+                                    }
+                                }
+                            }
                         }
                     } else {
-                        self.hideLoading()
-                        self.showAlert(title: "Attention", message: "User already exist")
+                        DispatchQueue.main.async {
+                            self.hideLoading()
+                            self.showAlert(title: "Attention", message: "User already exist")
+                        }
                     }
                 }
-                self.hideLoading()
+                DispatchQueue.main.async {
+                    self.hideLoading()
+                }
             }
-            
         }
     }
     

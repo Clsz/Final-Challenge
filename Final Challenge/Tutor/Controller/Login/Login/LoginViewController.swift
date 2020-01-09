@@ -7,17 +7,18 @@
 //
 
 import UIKit
+import CloudKit
 
 class LoginViewController:BaseViewController{
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
-    @IBOutlet weak var checkBox: UIButton!
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var forgotPassButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
     var accessoryDoneButton: UIBarButtonItem!
     let accessoryToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
     let flexiblea = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+    let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
+    var token:CKRecord?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,6 @@ class LoginViewController:BaseViewController{
     }
     
     @IBAction func loginTapped(_ sender: Any) {
-        self.showLoading()
         validateFields()
     }
 }
@@ -51,8 +51,13 @@ extension LoginViewController{
     
     func loginSucceeded() {
         print ("Login Succeeded")
-        
-        
+    }
+    
+    func goToHomeScreen() {
+        let vc = TabBarController()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = vc
+        appDelegate.window?.makeKeyAndVisible()
     }
     
     func userNotFound() {
@@ -69,26 +74,63 @@ extension LoginViewController{
         
     }
     
+    func fetchToken(email:String) {
+        let pred = NSPredicate(format: "email == %@", email)
+        let query = CKQuery(recordType: "Token", predicate: pred)
+        
+        database.perform(query, inZoneWith: nil) { (records, error) in
+            guard let record = records else {return}
+            if record.count > 0{
+                self.token = record[0]
+                self.updateToken(recordApplicant: self.token!)
+            }else{
+                DispatchQueue.main.async {
+                    self.showAlert(title: "Error Occured", message: "Try again later")
+                }
+            }
+        }
+    }
+    
+    func updateToken(recordApplicant:CKRecord) {
+        if let record = token{
+            let deviceToken = CKUserData.shared.getDeviceToken()
+            record["token"] = deviceToken
+            
+            self.database.save(record, completionHandler: {returnedRecord, error in
+                DispatchQueue.main.async {
+                    if error != nil {
+                        self.showAlert(title: "Error", message: "Cannot update :(")
+                    } else {
+                        self.hideLoading()
+                        self.goToHomeScreen()
+                    }
+                }
+            })
+        }
+    }
+    
     func validateFields() {
         if emailTF.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
-            return self.showAlert(title: "Error", message: "Email belum diisi")
+            self.hideLoading()
+            return self.showAlert(title: "Error", message: "Please Fill The Email")
         }else if emailTF.text?.isValidEmail() == false{
-            return self.showAlert(title: "Error", message: "Format email salah")
+            self.hideLoading()
+            return self.showAlert(title: "Error", message: "Wrong Email Format")
         }else if passwordTF.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
-            return self.showAlert(title: "Error", message: "Password belum diisi")
+            return self.showAlert(title: "Error", message: "Please Fill The Password")
         }else {
+            self.showLoading()
             let email = emailTF.text!
             let password = passwordTF.text!
             CKUserData.shared.loadUsers(email: email, password: password) { isSuccess in
                 if isSuccess{
-                    self.hideLoading()
                     CKUserData.shared.saveEmail(token: email)
-                    let vc = TabBarController()
-                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                    appDelegate.window?.rootViewController = vc
-                    appDelegate.window?.makeKeyAndVisible()
+                    self.fetchToken(email: email)
                 }else{
-                    self.showAlert(title: "Attention", message: "User not exist")
+                    DispatchQueue.main.async {
+                        self.hideLoading()
+                        self.showAlert(title: "Attention", message: "User not exist")
+                    }
                 }
             }
         }
@@ -97,8 +139,6 @@ extension LoginViewController{
 }
 
 extension LoginViewController: UITextFieldDelegate {
-    
-    
     func setTextField() {
         emailTF.delegate = self
         passwordTF.delegate = self

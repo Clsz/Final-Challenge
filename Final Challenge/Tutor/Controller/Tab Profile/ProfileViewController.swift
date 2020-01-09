@@ -101,9 +101,13 @@ extension ProfileViewController{
                 //                }else{
                 //                    self.refresh()
                 //                }
-                self.queryEducation()
-                self.queryLanguage()
-                self.queryExperience()
+                if self.tutors != nil{
+                    self.queryEducation()
+                    self.queryLanguage()
+                    self.queryExperience()
+                }else{
+                    self.refresh()
+                }
             }
         }
     }
