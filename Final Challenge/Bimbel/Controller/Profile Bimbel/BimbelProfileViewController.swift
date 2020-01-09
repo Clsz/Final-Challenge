@@ -12,31 +12,23 @@ import CloudKit
 class BimbelProfileViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
-    var dataArray:[Any?] = []
-    var course:CKRecord?
     let header = "TitleBimbelTableViewCellID"
     let address = "DetailAddressTableViewCellID"
     let subject = "ContentTableViewCellID"
     let grade = "AnotherContentTableViewCellID"
     let logoutView = "LogoutTableViewCellID"
     var flag = false
+    var dataArray:[Any?] = []
+    let imageDefault = #imageLiteral(resourceName: "user-5")
+    var course:CKRecord?
+    let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
     var sendToCustom:SendTutorToCustom?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        queryDatabase()
         setupView(text: "Tuition Profile")
-        setupData()
+        queryCourse()
         registerCell()
-        cellDelegate()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        setupView(text: "Tuition Profile")
-        setupData()
-        registerCell()
-        cellDelegate()
     }
     
 }
@@ -50,18 +42,24 @@ extension BimbelProfileViewController{
         dataArray.append(true)
     }
     
-    func queryDatabase() {
+    func queryCourse() {
         let token = CKUserData.shared.getEmailBimbel()
         let pred = NSPredicate(format: "recordID == %@", token)
         let query = CKQuery(recordType: "Course", predicate: pred)
+        
         database.perform(query, inZoneWith: nil) { (records, error) in
-            guard let records = records else {
-                print("error",error as Any)
-                return
+            guard let record = records else {return}
+            if record.count > 0{
+                self.course = record[0]
             }
-            self.course = records[0]
+            DispatchQueue.main.async {
+                self.setupData()
+                self.cellDelegate()
+                self.tableView.reloadData()
+            }
         }
     }
+    
 }
 extension BimbelProfileViewController:BimbelProtocol{
     func pencilTapped() {
@@ -104,7 +102,7 @@ extension BimbelProfileViewController:UITableViewDataSource, UITableViewDelegate
         tableView.register(UINib(nibName: "TitleBimbelTableViewCell", bundle: nil), forCellReuseIdentifier: header)
         tableView.register(UINib(nibName: "DetailAddressTableViewCell", bundle: nil), forCellReuseIdentifier: address)
         tableView.register(UINib(nibName: "ContentTableViewCell", bundle: nil), forCellReuseIdentifier: subject)
-        tableView.register(UINib(nibName: "ContentViewTableViewCell", bundle: nil), forCellReuseIdentifier: grade)
+        tableView.register(UINib(nibName: "AnotherContentTableViewCell", bundle: nil), forCellReuseIdentifier: grade)
         tableView.register(UINib(nibName: "LogoutTableViewCell", bundle: nil), forCellReuseIdentifier: logoutView)
     }
     
@@ -121,21 +119,24 @@ extension BimbelProfileViewController:UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0{
             // FOR TITLE
-            let cell = tableView.dequeueReusableCell(withIdentifier: header, for: indexPath) as! TitleBimbelTableViewCell
-            
-            if (course?.value(forKey: "courseName") as? String) != nil {
-                let imageDefault = #imageLiteral(resourceName: "user-5")
+            if (course?.value(forKey: "courseName") as? String) != nil{
+                let cell = tableView.dequeueReusableCell(withIdentifier: header, for: indexPath) as! TitleBimbelTableViewCell
                 let name = course?.value(forKey: "courseName") as! String
                 let hourBimbel = "\(course?.value(forKey: "courseStartHour") as! String) - \(course?.value(forKey: "courseEndHour") as! String)"
                 
                 if course?.value(forKey: "courseImage") != nil{
                     let imageProfile = course?.value(forKey: "courseImage") as! CKAsset
                     cell.setCellBimbel(image: imageProfile.toUIImage()!, name: name, hour: hourBimbel)
+                    
                     return cell
                 } else {
                     cell.setCellBimbel(image: imageDefault, name: name, hour: hourBimbel)
                     return cell
                 }
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: header, for: indexPath) as! TitleBimbelTableViewCell
+                cell.setCellBimbel(image: imageDefault, name: "No Name Data", hour: "No Schedule Data")
+                return cell
             }
         }else if let keyValue = dataArray[indexPath.row] as? (key:String, value:String, code:Int){
             if keyValue.code == 0{
@@ -186,6 +187,7 @@ extension BimbelProfileViewController:UITableViewDataSource, UITableViewDelegate
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: logoutView, for: indexPath) as! LogoutTableViewCell
             cell.setInterface()
+            cell.logoutButton.backgroundColor = #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1)
             return cell
         }
         return UITableViewCell()

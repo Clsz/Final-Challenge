@@ -24,8 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().tintColor = ConstantManager.mainColor
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
-//        let rv = TabBarBimbelController()
+//        let rv = BimbelProfileViewController()
 //        let navigationController = UINavigationController(rootViewController: rv)
+//        window?.rootViewController = navigationController
+//        window?.makeKeyAndVisible()
         
         
                 if CKUserData.shared.getOnBoardingStatus() != "" {
@@ -40,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                     let rootVC = ChooseRoleViewController()
                     let navigationController = UINavigationController(rootViewController: rootVC)
-                    window?.rootViewController = rootVC
+                    window?.rootViewController = navigationController
                     window?.makeKeyAndVisible()
                 }else{
                     let vc = OnboardingViewController()
@@ -48,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     window?.rootViewController = navigationController
                     window?.makeKeyAndVisible()
                 }
-        
+
         registerForPushNotifications()
         return true
     }
