@@ -10,6 +10,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TeachingGradeViewController" customModule="Teachy" customModuleProvider="target">
             <connections>
                 <outlet property="applyButton" destination="rMX-pJ-VHH" id="u7j-2f-D1V"/>
+                <outlet property="progressView1" destination="64q-8U-jhX" id="ZV6-Gv-Qqy"/>
+                <outlet property="progressView2" destination="K6j-i1-5Ux" id="7uE-sa-5xG"/>
+                <outlet property="progressView3" destination="tey-AZ-vqD" id="rIc-5j-siO"/>
+                <outlet property="progressView4" destination="Ea0-3z-HuT" id="VpC-ui-xeQ"/>
                 <outlet property="tableViewTG" destination="wV4-SE-E3o" id="v6z-79-Mpf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

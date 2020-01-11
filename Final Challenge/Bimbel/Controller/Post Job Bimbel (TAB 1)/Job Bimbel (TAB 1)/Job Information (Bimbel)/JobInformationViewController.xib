@@ -14,6 +14,10 @@
                 <outlet property="maxSalaryLabel" destination="ivb-dW-PLj" id="j14-0K-ohX"/>
                 <outlet property="maxSlider" destination="NEl-PY-FIu" id="wpK-Ac-D5Q"/>
                 <outlet property="minSalaryLabel" destination="yAZ-bl-HIT" id="TIN-wj-zbl"/>
+                <outlet property="progressView1" destination="zuO-Nx-5IZ" id="8Nm-uO-RAO"/>
+                <outlet property="progressView2" destination="f1g-zb-l2t" id="Zk4-wX-EXE"/>
+                <outlet property="progressView3" destination="M33-q4-WFD" id="7Yp-5O-eM1"/>
+                <outlet property="progressView4" destination="nY7-zM-ox6" id="Ki9-WI-Iju"/>
                 <outlet property="qualificationTF" destination="fbe-ly-wox" id="mlE-6c-5i0"/>
                 <outlet property="tableView" destination="6Vv-O6-wcg" id="xMd-e8-HG0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
