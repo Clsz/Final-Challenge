@@ -93,7 +93,12 @@ extension BimbelProfileViewController:BimbelProtocol{
     }
     
     func logout() {
-        //Pindah logout
+        CKUserData.shared.setStatusBimbel(status: false)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let vc = LoginBimbelViewController()
+        let navigationController = UINavigationController(rootViewController: vc)
+        appDelegate.window?.rootViewController = navigationController
+        appDelegate.window?.makeKeyAndVisible()
     }
     
 }
@@ -187,6 +192,7 @@ extension BimbelProfileViewController:UITableViewDataSource, UITableViewDelegate
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: logoutView, for: indexPath) as! LogoutTableViewCell
             cell.setInterface()
+            cell.bimbelDelegate = self
             cell.logoutButton.backgroundColor = #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1)
             return cell
         }

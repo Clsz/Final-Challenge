@@ -116,12 +116,12 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "59CABFA0-DA66-49DC-B3FF-2B6A7EA3F9A6 - 843f414cb3462a91"
+                  uuid = "59CABFA0-DA66-49DC-B3FF-2B6A7EA3F9A6 - 8e6b390b8eb73fa5"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Final_Challenge.DetailTestViewController.(queryCourse in _E52C0915A25F57A02406DDCBF16E8060)() -&gt; ()"
-                  moduleName = "Final Challenge"
+                  symbolName = "Teachy.DetailTestViewController.(queryCourse in _394A7BBBBDAEEADCBF00CA7B5A0DA855)() -&gt; ()"
+                  moduleName = "Teachy"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/stevengunawan/Desktop/Final-Challenge/Final%20Challenge/Tutor/Controller/Tab%20Progress/Segmented%20Tutor/Segment%20Test/Detail%20Test/DetailTestViewController.swift"
                   startingColumnNumber = "9223372036854775807"
@@ -131,12 +131,12 @@
                   offsetFromSymbolStart = "64">
                </Location>
                <Location
-                  uuid = "59CABFA0-DA66-49DC-B3FF-2B6A7EA3F9A6 - 843f414cb3462a91"
+                  uuid = "59CABFA0-DA66-49DC-B3FF-2B6A7EA3F9A6 - 8e6b390b8eb73fa5"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Final_Challenge.DetailTestViewController.(queryCourse in _E52C0915A25F57A02406DDCBF16E8060)() -&gt; ()"
-                  moduleName = "Final Challenge"
+                  symbolName = "Teachy.DetailTestViewController.(queryCourse in _394A7BBBBDAEEADCBF00CA7B5A0DA855)() -&gt; ()"
+                  moduleName = "Teachy"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/stevengunawan/Desktop/Final-Challenge/Final%20Challenge/Tutor/Controller/Tab%20Progress/Segmented%20Tutor/Segment%20Test/Detail%20Test/DetailTestViewController.swift"
                   startingColumnNumber = "9223372036854775807"
@@ -192,7 +192,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "229"
             endingLineNumber = "229"
-            landmarkName = "languageTapped()"
+            landmarkName = "skillTapped()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -340,12 +340,12 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "8F94115B-CBE3-4148-B79A-018A60CD8B2B - 4a59072afcdcb7ac"
+                  uuid = "8F94115B-CBE3-4148-B79A-018A60CD8B2B - 6a33e1518c73dedd"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Final_Challenge.BimbelProfileViewController.queryCourse() -&gt; ()"
-                  moduleName = "Final Challenge"
+                  symbolName = "Teachy.BimbelProfileViewController.queryCourse() -&gt; ()"
+                  moduleName = "Teachy"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/stevengunawan/Desktop/Final-Challenge/Final%20Challenge/Bimbel/Controller/Profile%20Bimbel/BimbelProfileViewController.swift"
                   startingColumnNumber = "9223372036854775807"
@@ -355,12 +355,12 @@
                   offsetFromSymbolStart = "504">
                </Location>
                <Location
-                  uuid = "8F94115B-CBE3-4148-B79A-018A60CD8B2B - 86da51afd625ebe3"
+                  uuid = "8F94115B-CBE3-4148-B79A-018A60CD8B2B - 21a74a01fdc3fb1"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;__C.CKRecord&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Final_Challenge.BimbelProfileViewController.queryCourse() -&gt; ()"
-                  moduleName = "Final Challenge"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;__C.CKRecord&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Teachy.BimbelProfileViewController.queryCourse() -&gt; ()"
+                  moduleName = "Teachy"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/stevengunawan/Desktop/Final-Challenge/Final%20Challenge/Bimbel/Controller/Profile%20Bimbel/BimbelProfileViewController.swift"
                   startingColumnNumber = "9223372036854775807"
@@ -452,12 +452,12 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "3461847D-2BE1-4325-BEE4-10905C7F8E4D - 86da51afd625ebe3"
+                  uuid = "3461847D-2BE1-4325-BEE4-10905C7F8E4D - 21a74a01fdc3fb1"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;__C.CKRecord&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Final_Challenge.BimbelProfileViewController.queryCourse() -&gt; ()"
-                  moduleName = "Final Challenge"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;__C.CKRecord&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Teachy.BimbelProfileViewController.queryCourse() -&gt; ()"
+                  moduleName = "Teachy"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/stevengunawan/Desktop/Final-Challenge/Final%20Challenge/Bimbel/Controller/Profile%20Bimbel/BimbelProfileViewController.swift"
                   startingColumnNumber = "9223372036854775807"
@@ -467,12 +467,12 @@
                   offsetFromSymbolStart = "368">
                </Location>
                <Location
-                  uuid = "3461847D-2BE1-4325-BEE4-10905C7F8E4D - f0e2edc682f14eec"
+                  uuid = "3461847D-2BE1-4325-BEE4-10905C7F8E4D - 978ad0d0a5bd6ee7"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in closure #1 (Swift.Optional&lt;Swift.Array&lt;__C.CKRecord&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Final_Challenge.BimbelProfileViewController.queryCourse() -&gt; ()"
-                  moduleName = "Final Challenge"
+                  symbolName = "closure #1 () -&gt; () in closure #1 (Swift.Optional&lt;Swift.Array&lt;__C.CKRecord&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Teachy.BimbelProfileViewController.queryCourse() -&gt; ()"
+                  moduleName = "Teachy"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/stevengunawan/Desktop/Final-Challenge/Final%20Challenge/Bimbel/Controller/Profile%20Bimbel/BimbelProfileViewController.swift"
                   startingColumnNumber = "9223372036854775807"

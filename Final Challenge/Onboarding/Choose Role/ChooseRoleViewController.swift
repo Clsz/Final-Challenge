@@ -15,6 +15,7 @@ class ChooseRoleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setInterface()
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     @IBAction func tutorTapped(_ sender: UIButton) {
