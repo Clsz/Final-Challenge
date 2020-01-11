@@ -9,11 +9,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TitleBimbelTableViewCellID" id="KGk-i7-Jjw" customClass="TitleBimbelTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="247"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TitleBimbelTableViewCellID" rowHeight="223" id="KGk-i7-Jjw" customClass="TitleBimbelTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="223"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="414" height="247"/>
+                <rect key="frame" x="0.0" y="0.0" width="414" height="223"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALL INFORMATION ABOUT YOU" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NGF-Qb-c0X">
@@ -23,7 +23,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KIL-kg-COt">
-                        <rect key="frame" x="20" y="115" width="374" height="132"/>
+                        <rect key="frame" x="20" y="115" width="374" height="107"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khB-Ae-Qpt">
                                 <rect key="frame" x="20" y="58" width="334" height="21"/>
@@ -40,7 +40,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.10980392160000001" green="0.3921568627" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="oyp-xb-cgv" secondAttribute="bottom" constant="37" id="0Hc-WX-m0l"/>
+                            <constraint firstAttribute="bottom" secondItem="oyp-xb-cgv" secondAttribute="bottom" constant="12" id="0Hc-WX-m0l"/>
                             <constraint firstItem="oyp-xb-cgv" firstAttribute="leading" secondItem="KIL-kg-COt" secondAttribute="leading" constant="20" id="2N0-sM-1oj"/>
                             <constraint firstItem="oyp-xb-cgv" firstAttribute="top" secondItem="khB-Ae-Qpt" secondAttribute="bottom" id="7gP-W5-P5d"/>
                             <constraint firstItem="khB-Ae-Qpt" firstAttribute="top" secondItem="KIL-kg-COt" secondAttribute="top" constant="58" id="E92-WY-kHt"/>
@@ -65,9 +65,9 @@
                     <constraint firstItem="sPN-xH-Pb2" firstAttribute="top" secondItem="NGF-Qb-c0X" secondAttribute="bottom" constant="50" id="7F6-9O-Bf9"/>
                     <constraint firstItem="NGF-Qb-c0X" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Bau-76-aze"/>
                     <constraint firstItem="sPN-xH-Pb2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="137" id="FS1-Kv-56N"/>
-                    <constraint firstAttribute="bottom" secondItem="KIL-kg-COt" secondAttribute="bottom" id="HOg-V9-hPo"/>
                     <constraint firstItem="KIL-kg-COt" firstAttribute="top" secondItem="NGF-Qb-c0X" secondAttribute="bottom" constant="99" id="JpE-dw-HjD"/>
                     <constraint firstItem="KIL-kg-COt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="fT8-ca-8hf"/>
+                    <constraint firstAttribute="bottom" secondItem="KIL-kg-COt" secondAttribute="bottom" constant="1" id="tY8-5Z-r5m"/>
                     <constraint firstAttribute="trailing" secondItem="NGF-Qb-c0X" secondAttribute="trailing" constant="20" id="yY4-W5-MPN"/>
                     <constraint firstAttribute="trailing" secondItem="KIL-kg-COt" secondAttribute="trailing" constant="20" id="ztw-S5-IrS"/>
                 </constraints>
@@ -77,9 +77,9 @@
                 <outlet property="imageProfileBimbel" destination="sPN-xH-Pb2" id="Eo3-8S-lFh"/>
                 <outlet property="labelHourBimbel" destination="oyp-xb-cgv" id="LcB-fA-Lmx"/>
                 <outlet property="labelNameBimbel" destination="khB-Ae-Qpt" id="ttq-gE-kIj"/>
-                <outlet property="outerView" destination="H2p-sc-9uM" id="R5X-QD-V8Y"/>
+                <outlet property="outerView" destination="KIL-kg-COt" id="l4s-eJ-7Sc"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="140.29017857142856"/>
+            <point key="canvasLocation" x="137.68115942028987" y="130.91517857142856"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -18,14 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-//        UserDefaults.standard.set("nextlevel@gmail.com", forKey: "tokenBimbel")
-//        UserDefaults.standard.set("noveliarefinda@gmail.com", forKey: "token")
+        UserDefaults.standard.set("nextlevel@gmail.com", forKey: "tokenBimbel")
+        UserDefaults.standard.set("noveliarefinda@gmail.com", forKey: "token")
         
         UITabBar.appearance().tintColor = ConstantManager.mainColor
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
-//        let rv = TabBarBimbelController()
+//        let rv = BimbelProfileViewController()
 //        let navigationController = UINavigationController(rootViewController: rv)
+//        window?.rootViewController = navigationController
+//        window?.makeKeyAndVisible()
         
         
                 if CKUserData.shared.getOnBoardingStatus() != "" {
@@ -48,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     window?.rootViewController = navigationController
                     window?.makeKeyAndVisible()
                 }
-        
+
         registerForPushNotifications()
         return true
     }
