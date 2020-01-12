@@ -68,7 +68,10 @@ extension ContentTableViewCell:UICollectionViewDataSource, UICollectionViewDeleg
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 180, height: 44)
+        let label = UILabel(frame: CGRect.zero)
+        label.text = skills[indexPath.item]
+        label.sizeToFit()
+        return CGSize(width: label.frame.width + 50, height: 44)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

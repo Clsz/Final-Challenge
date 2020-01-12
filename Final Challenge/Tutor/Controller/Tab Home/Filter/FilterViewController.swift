@@ -225,7 +225,23 @@ extension FilterViewController:UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 180, height: 44)
+        if collectionView == LocationCV{
+            let label = UILabel(frame: CGRect.zero)
+            label.text = ConstantManager.location[indexPath.item]
+            label.sizeToFit()
+            return CGSize(width: label.frame.width + 60, height: 44)
+        }else if collectionView == subjectCV{
+            let label = UILabel(frame: CGRect.zero)
+            let textIndex = ConstantManager.allSubject[indexPath.item] as (key:Int, value:String)
+            label.text = textIndex.value
+            label.sizeToFit()
+            return CGSize(width: label.frame.width + 60, height: 44)
+        }else{
+            let label = UILabel(frame: CGRect.zero)
+            label.text = ConstantManager.grade[indexPath.item]
+            label.sizeToFit()
+            return CGSize(width: label.frame.width + 60, height: 44)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
