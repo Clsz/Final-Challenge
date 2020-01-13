@@ -19,12 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         UserDefaults.standard.set("nextlevel@gmail.com", forKey: "tokenBimbel")
-        UserDefaults.standard.set("noveliarefinda@gmail.com", forKey: "token")
+//        UserDefaults.standard.set("noveliarefinda@gmail.com", forKey: "token")
         
         UITabBar.appearance().tintColor = ConstantManager.mainColor
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
-//        let rv = BimbelProfileViewController()
+//        let rv = SetupSkillViewController()
 //        let navigationController = UINavigationController(rootViewController: rv)
 //        window?.rootViewController = navigationController
 //        window?.makeKeyAndVisible()

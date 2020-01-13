@@ -35,8 +35,6 @@ class TitleTableViewCell: UITableViewCell {
     @IBAction func pencilTapped(_ sender: Any) {
         if index == 0{
             tutorDelegate?.pencilTapped()
-        }else{
-            bimbelDelegate?.pencilTapped()
         }
     }
     

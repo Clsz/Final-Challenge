@@ -14,15 +14,20 @@ class SetupPersonalBimbelViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     let hint = "HintTableViewCellID"
     let detailProfile = "SetupPersonalBimbelTableViewCellID"
+    var selectedCity: String?
+    var selectedProvince: String?
     var toolBar = UIToolbar()
     var pickerStartHour = UIDatePicker()
     var pickerEndHour = UIDatePicker()
+    var pickerCity = UIPickerView()
+    var pickerProvince = UIPickerView()
     var photoPicker = UIImagePickerController()
     var course:CKRecord?
     let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView(text: "Tuition Personal")
         registerCell()
         queryCourse()
         self.hideKeyboardWhenTappedAround()
@@ -30,11 +35,9 @@ class SetupPersonalBimbelViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = false
-        
         self.tableView.reloadData()
+        self.navigationController?.navigationBar.isHidden = false
         self.tableView.contentInsetAdjustmentBehavior = .never
-        setupView(text: "Bimbel Personal")
     }
     
     
@@ -46,7 +49,7 @@ extension SetupPersonalBimbelViewController{
         let cell = tableView.cellForRow(at: index) as! SetupPersonalBimbelTableViewCell
         
         
-        self.updateUser(name: cell.nameTF.text ?? "", address: cell.addressTF.text ?? "", startHour: cell.startTF.text ?? "", endHour: cell.endTF.text ?? "") { (res) in
+        self.updateUser(name: cell.nameTF.text ?? "", address: cell.addressTF.text ?? "", startHour: cell.startTF.text ?? "", endHour: cell.endTF.text ?? "", city: cell.cityTF.text ?? "", province: cell.provinceTF.text ?? "") { (res) in
             if res == true{
                 
             }
@@ -89,7 +92,7 @@ extension SetupPersonalBimbelViewController{
         }
     }
     
-    func updateUser(name:String, address:String, startHour:String, endHour:String, completion: @escaping (Bool) -> Void){
+    func updateUser(name:String, address:String, startHour:String, endHour:String, city:String, province:String, completion: @escaping (Bool) -> Void){
         
         if let record = course{
             let index = IndexPath(row: 1, section: 0)
@@ -108,7 +111,8 @@ extension SetupPersonalBimbelViewController{
             record["courseAddress"] = address
             record["courseStartHour"] = startHour
             record["courseEndHour"] = endHour
-            
+            record["courseCity"] = city
+            record["courseProvince"] = province
             
             self.database.save(record, completionHandler: {returnRecord, error in
                 if error != nil{
@@ -131,7 +135,15 @@ extension SetupPersonalBimbelViewController{
     
 }
 
-extension SetupPersonalBimbelViewController:ProfileDetailProtocol,PhotoProtocol,BimbelPersonalProtocol{
+extension SetupPersonalBimbelViewController:ProfileDetailProtocol,PhotoProtocol,BimbelPersonalProtocol,AddressProtocol{
+    func cityTapped() {
+        createCityPicker()
+    }
+    
+    func provinceTapped() {
+        createProvincePicker()
+    }
+    
     func startTapped() {
         createStartHour()
     }
@@ -160,21 +172,28 @@ extension SetupPersonalBimbelViewController:UITableViewDataSource, UITableViewDe
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: hint, for: indexPath) as! HintTableViewCell
             
-            cell.setCell(text: "PLEASE SET YOUR BIMBEL PROFILE")
+            cell.setCell(text: "PLEASE SET YOUR TUITION PROFILE")
             
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: detailProfile, for: indexPath) as! SetupPersonalBimbelTableViewCell
             
-            cell.setCell(name: "", address: "")
-            cell.selectionStyle = .none
+            //            if cell.nameTF.text?.isEmpty == true || cell.addressTF.text?.isEmpty == true || cell.startTF.text?.isEmpty == true || cell.endTF.text?.isEmpty == true || cell.cityTF.text?.isEmpty == true || cell.provinceTF.text?.isEmpty == true{
+            //                cell.buttonApply.isEnabled = false
+            //                cell.buttonApply.backgroundColor = #colorLiteral(red: 0.6070619822, green: 0.6075353622, blue: 0.6215403676, alpha: 0.8470588235)
+            //            }else{
+            //                cell.buttonApply.isEnabled = true
+            //                cell.buttonApply.backgroundColor = #colorLiteral(red: 0, green: 0.399238348, blue: 0.6880209446, alpha: 1)
+            //            }
             
+            cell.selectionStyle = .none
+            cell.setCell(name: "", address: "")
+            cell.view = self.view
             cell.contentDelegate = self
             cell.photoDelegate = self
             cell.timeDelegate = self
+            cell.addressDelegate = self
             
-            
-            cell.view = self.view
             return cell
         }
         
@@ -192,7 +211,7 @@ extension SetupPersonalBimbelViewController:UITableViewDataSource, UITableViewDe
     }
     
 }
-extension SetupPersonalBimbelViewController{
+extension SetupPersonalBimbelViewController:UIPickerViewDelegate, UIPickerViewDataSource{
     private func createStartHour() {
         pickerStartHour.tag = 0
         pickerStartHour.backgroundColor = UIColor.white
@@ -221,16 +240,57 @@ extension SetupPersonalBimbelViewController{
         createToolbar()
     }
     
+    func createCityPicker() {
+        pickerCity = UIPickerView.init()
+        pickerCity.tag = 2
+        pickerCity.delegate = self
+        pickerCity.selectRow(0, inComponent:0, animated:true)
+        
+        pickerCity.backgroundColor = UIColor.white
+        pickerCity.autoresizingMask = .flexibleWidth
+        pickerCity.contentMode = .center
+        pickerCity.setValue(UIColor.black, forKey: "textColor")
+        pickerCity.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
+        self.view.addSubview(pickerCity)
+        
+        createToolbar()
+    }
+    
+    func createProvincePicker() {
+        pickerProvince = UIPickerView.init()
+        pickerProvince.tag = 3
+        pickerProvince.delegate = self
+        pickerProvince.selectRow(0, inComponent:0, animated:true)
+        
+        pickerProvince.backgroundColor = UIColor.white
+        pickerProvince.autoresizingMask = .flexibleWidth
+        pickerProvince.contentMode = .center
+        pickerProvince.setValue(UIColor.black, forKey: "textColor")
+        pickerProvince.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
+        self.view.addSubview(pickerProvince)
+        
+        createToolbar()
+    }
+    
     private func createToolbar() {
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
-        toolBar.items = [UIBarButtonItem.init(title: "Done", style: .plain, target: self, action: #selector(onDoneButtonTapped))]
+        toolBar.items = [flexibleSpace, (UIBarButtonItem.init(title: "Done", style: .plain, target: self, action: #selector(onDoneButtonTapped)))]
+        
         self.view.addSubview(toolBar)
     }
     
     @objc func onDoneButtonTapped() {
+        let index = IndexPath(row: 1, section: 0)
+        let cell = tableView.cellForRow(at: index) as! SetupPersonalBimbelTableViewCell
+        
+        cell.cityTF.text = selectedCity
+        cell.provinceTF.text = selectedProvince
         toolBar.removeFromSuperview()
         pickerStartHour.removeFromSuperview()
         pickerEndHour.removeFromSuperview()
+        pickerCity.removeFromSuperview()
+        pickerProvince.removeFromSuperview()
     }
     
     @objc func dateChange(datePicker: UIDatePicker) {
@@ -241,7 +301,7 @@ extension SetupPersonalBimbelViewController{
             let timeFormatter = DateFormatter()
             timeFormatter.dateFormat = "HH:mm"
             cell.startTF.text = timeFormatter.string(from: datePicker.date)
-        } else {
+        } else if datePicker.tag == 1 {
             //            self.end = datePicker.date
             let timeFormatter = DateFormatter()
             timeFormatter.dateFormat = "HH:mm"
@@ -249,8 +309,35 @@ extension SetupPersonalBimbelViewController{
         }
     }
     
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if pickerView.tag == 2{
+            return ConstantManager.location.count
+        }else{
+            return ConstantManager.province.count
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView.tag == 2{
+            return ConstantManager.location[row]
+        }else{
+            return ConstantManager.province[row]
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView.tag == 2{
+            selectedCity = ConstantManager.location[row]
+        }else{
+            selectedProvince = ConstantManager.province[row]
+        }
+    }
+    
 }
-
 extension SetupPersonalBimbelViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     private func createImagePicker() {

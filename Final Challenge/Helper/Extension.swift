@@ -44,6 +44,16 @@ extension UIView{
         self.layer.borderColor = #colorLiteral(red: 0, green: 0.4, blue: 0.6862745098, alpha: 1)
     }
     
+    func setBorderRed() {
+           self.layer.borderWidth = 2
+           self.layer.borderColor = #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1)
+       }
+    
+    func setBorderRedThin() {
+        self.layer.borderWidth = 1
+        self.layer.borderColor = #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1)
+    }
+
     func setRoundView() {
         self.layer.masksToBounds = false
         self.layer.cornerRadius = self.frame.height/2

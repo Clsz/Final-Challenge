@@ -25,12 +25,12 @@ class EditPasswordViewController: BaseViewController {
     let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
     
     override func viewDidLoad() {
+        setupView(text: "Change Password")
         doneButton()
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setupView(text: "Change Password")
         setMainInterface()
     }
     
@@ -74,24 +74,24 @@ extension EditPasswordViewController{
     
     private func getDataCustomCell() {
         self.updateUser(password: newPasswordTF.text ?? "")
-       }
-       
-       func updateUser(password:String){
-           if let record = tutors{
-               record["tutorPassword"] = password
-           
-               self.database.save(record, completionHandler: {returnRecord, error in
-                   if error != nil
-                   {
-                       self.showAlert(title: "Error", message: "Update Error")
-                   } else{ DispatchQueue.main.async {
+    }
+    
+    func updateUser(password:String){
+        if let record = tutors{
+            record["tutorPassword"] = password
+            
+            self.database.save(record, completionHandler: {returnRecord, error in
+                if error != nil
+                {
+                    self.showAlert(title: "Error", message: "Update Error")
+                } else{ DispatchQueue.main.async {
                     self.navigationController?.popViewController(animated: true)
-                   }
+                    }
                     
-                   }
-               })
-           }
-       }
+                }
+            })
+        }
+    }
 }
 extension EditPasswordViewController:UITextFieldDelegate{
     private func doneButton() {

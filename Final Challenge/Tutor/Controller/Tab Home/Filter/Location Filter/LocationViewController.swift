@@ -48,6 +48,7 @@ class LocationViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Locations")
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     func setUpSearchBar() {

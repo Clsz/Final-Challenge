@@ -28,6 +28,11 @@ class DetailFinalThirdViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Job Details")
         self.tableView.reloadData()
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
     }
     
 }

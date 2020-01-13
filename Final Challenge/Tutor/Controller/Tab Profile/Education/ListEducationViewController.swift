@@ -39,7 +39,11 @@ class ListEducationViewController: BaseViewController {
         setMainInterface()
         setupView(text: "Education")
         queryEducation()
-        //        self.navigationItem.setHidesBackButton(true, animated:true);
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     

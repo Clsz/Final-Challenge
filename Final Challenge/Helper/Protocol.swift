@@ -20,11 +20,15 @@ protocol ProfileProtocol{
 }
 
 protocol BimbelProtocol{
-    func pencilTapped()
     func addressTapped()
     func subjectTapped()
     func gradesTapped()
     func logout()
+}
+
+protocol AddressProtocol {
+    func cityTapped()
+    func provinceTapped()
 }
 
 protocol confirmProtocol {

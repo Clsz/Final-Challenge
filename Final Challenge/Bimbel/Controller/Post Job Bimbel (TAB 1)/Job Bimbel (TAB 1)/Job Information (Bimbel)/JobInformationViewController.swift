@@ -10,6 +10,7 @@ import UIKit
 
 class JobInformationViewController: BaseViewController {
     
+    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     @IBOutlet weak var progressView1: UIView!
     @IBOutlet weak var progressView2: UIView!
     @IBOutlet weak var progressView3: UIView!
@@ -36,6 +37,7 @@ class JobInformationViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+         self.tableView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.new, context: nil)
         setTextField()
         registerCell()
         cellDelegate()
@@ -44,8 +46,19 @@ class JobInformationViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Job Information")
+         self.tableView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.new, context: nil)
         setMainInterface()
         tableView.reloadData()
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        tableView.layer.removeAllAnimations()
+        heightConstraint.constant = tableView.contentSize.height
+        UIView.animate(withDuration: 0.5) {
+            self.view.updateConstraints()
+            self.view.layoutIfNeeded()
+        }
+        
     }
     
     @IBAction func minSalarySlider(_ sender: UISlider) {
@@ -126,7 +139,7 @@ extension JobInformationViewController:SendSchedule, EditSchedule{
     }
     
     func pencilTapped() {
-        self.showAlert(title: "Under Construction", message: "We Are Sorry Can;t Update Schedule For Now")
+        self.showAlert(title: "Under Construction", message: "We Are Sorry Can't Update Schedule For Now")
     }
 }
 extension JobInformationViewController: UITextFieldDelegate {

@@ -14,7 +14,7 @@ class SetupPersonalTableViewCell: UITableViewCell {
     @IBOutlet weak var changePhotoButton: UIButton!
     @IBOutlet weak var nameTF: UITextField!
     @IBOutlet weak var ageTF: UITextField!
-    @IBOutlet weak var addressTF: UITextField!
+    @IBOutlet weak var addressTF: UITextView!
     @IBOutlet weak var applyButton: UIButton!
     @IBOutlet weak var dobButton: UIButton!
     var contentDelegate:ProfileDetailProtocol?
@@ -54,9 +54,9 @@ class SetupPersonalTableViewCell: UITableViewCell {
 }
 extension SetupPersonalTableViewCell{
     func setCell(name:String, age:String, address:String) {
-        self.nameTF.placeholder = name
-        self.ageTF.placeholder = age
-        self.addressTF.placeholder = address
+        self.nameTF.text = name
+        self.ageTF.text = age
+        self.addressTF.text = address
         
         setInterface()
     }
@@ -74,32 +74,46 @@ extension SetupPersonalTableViewCell{
         
         self.nameTF.setLeftPaddingPoints(10.0)
         self.ageTF.setLeftPaddingPoints(10.0)
-        self.addressTF.setLeftPaddingPoints(10.0)
-        self.addressTF.contentVerticalAlignment = .top
     }
 }
-extension SetupPersonalTableViewCell:UITextFieldDelegate{
+extension SetupPersonalTableViewCell:UITextFieldDelegate, UITextViewDelegate{
     private func doneButton() {
+        addressTF.delegate = self
+        
         self.accessoryDoneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.donePressed))
-        
-        
         self.accessoryToolBar.items = [self.accessoryDoneButton]
-        
-        
         accessoryToolBar.setItems([flexiblea, accessoryDoneButton], animated: false)
         
-        self.nameTF.inputAccessoryView = accessoryToolBar
         self.addressTF.inputAccessoryView = accessoryToolBar
         
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if nameTF.isFirstResponder == true {
-            nameTF.placeholder = ""
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        moveTextView(textView, moveDistance: -250, up: true)
+            addressTF.text = ""
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        moveTextView(textView, moveDistance: -250, up: false)
+        if addressTF.text == "" {
+            addressTF.text = "Enter your address"
+            addressTF.textColor = UIColor.white
         }
     }
     
+    func moveTextView(_ textView: UITextView, moveDistance: Int, up: Bool) {
+        let moveDuration = 0.3
+        let movement: CGFloat = CGFloat(up ? moveDistance : -moveDistance)
+        
+        UIView.beginAnimations("animateTextView", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(moveDuration)
+        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
+        UIView.commitAnimations()
+    }
+    
     @objc func donePressed() {
+//        moveTextField(addressTF, moveDistance: 0, up: true)
         view.endEditing(true)
     }
 }

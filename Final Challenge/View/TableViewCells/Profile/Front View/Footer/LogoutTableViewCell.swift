@@ -30,8 +30,10 @@ class LogoutTableViewCell: UITableViewCell {
     @IBAction func logoutTapped(_ sender: Any) {
         if index == 0 {
             contentDelegate?.logout()
-        } else {
+        } else if index == 1{
             bimbelDelegate?.logout()
+        } else {
+            confirmDelegate?.confirmTapped()
         }
         
     }
@@ -40,6 +42,13 @@ class LogoutTableViewCell: UITableViewCell {
 extension LogoutTableViewCell{
     func setInterface() {
         logoutButton.loginRound()
+    }
+    
+    func setInterfaceLogOut() {
+        logoutButton.loginRound()
+        logoutButton.setBorderRed()
+        logoutButton.setTitleColor(#colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1), for: .normal)
+        logoutButton.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     }
     
     

@@ -151,6 +151,25 @@ extension SetupSkillViewController: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 180, height: 44)
+        
+//        if (collectionView == self.hardSkillCV) {
+//            let label = UILabel(frame: CGRect.zero)
+//            let data:(key:Int,value:String) = ConstantManager.hardSkill[indexPath.item]
+//            label.text = data.value
+//            label.sizeToFit()
+//            return CGSize(width: label.frame.width + 50, height: 44)
+//        } else if (collectionView == self.softSkillCV){
+//            let label = UILabel(frame: CGRect.zero)
+//            let data:(key:Int,value:String) = ConstantManager.softSkill[indexPath.item]
+//            label.text = data.value
+//            label.sizeToFit()
+//            return CGSize(width: label.frame.width + 50, height: 44)
+//        } else{
+//                let label = UILabel(frame: CGRect.zero)
+//                label.text = selectedChoosenSkills[indexPath.item].value
+//                label.sizeToFit()
+//                return CGSize(width: label.frame.width + 50, height: 44)
+//        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

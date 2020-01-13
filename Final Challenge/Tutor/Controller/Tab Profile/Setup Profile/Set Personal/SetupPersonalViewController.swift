@@ -76,7 +76,7 @@ extension SetupPersonalViewController{
             
             let newImageData = cell.imageProfile.image?.jpegData(compressionQuality: 0.00000000000000001)
             let imageData = createAsset(data: newImageData!)
-
+            
             
             
             if fullNames?.isEmpty == false{
@@ -141,9 +141,17 @@ extension SetupPersonalViewController:UITableViewDataSource, UITableViewDelegate
         let cell = tableView.dequeueReusableCell(withIdentifier: detailProfile, for: indexPath) as! SetupPersonalTableViewCell
         let fName = "\(tutors?.value(forKey: "tutorFirstName") as! String) \(tutors?.value(forKey: "tutorLastName") as! String)"
         
-        cell.nameTF.attributedPlaceholder = NSAttributedString(string: fName, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        //        if cell.nameTF.text == "" || cell.addressTF.text == "" || cell.ageTF.text == ""{
+        //            cell.applyButton.isEnabled = false
+        //            cell.applyButton.backgroundColor = #colorLiteral(red: 0.6070619822, green: 0.6075353622, blue: 0.6215403676, alpha: 0.8470588235)
+        //        } else{
+        //            cell.applyButton.isEnabled = true
+        //            cell.applyButton.backgroundColor = #colorLiteral(red: 0.1137254902, green: 0.3921568627, blue: 0.6666666667, alpha: 1)
+        //        }
         
-        cell.setCell(name: fName, age: "Choose your DOB", address: "Enter your address")
+        cell.ageTF.attributedPlaceholder = NSAttributedString(string: "Choose your DOB", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        
+        cell.setCell(name: fName, age: "", address: "Enter your address")
         cell.contentDelegate = self
         cell.birthDelegate = self
         cell.photoDelegate = self
@@ -180,8 +188,10 @@ extension SetupPersonalViewController{
     }
     
     private func createToolbar() {
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
-        toolBar.items = [UIBarButtonItem.init(title: "Done", style: .plain, target: self, action: #selector(onDoneButtonTapped))]
+        toolBar.items = [flexibleSpace, (UIBarButtonItem.init(title: "Done", style: .plain, target: self, action: #selector(onDoneButtonTapped)))]
+        
         self.view.addSubview(toolBar)
     }
     
@@ -206,23 +216,23 @@ extension SetupPersonalViewController: UIImagePickerControllerDelegate, UINaviga
     
     private func createImagePicker() {
         photoPicker.delegate = self
-//        photoPicker.sourceType = UIImagePickerController.SourceType.photoLibrary
+        //        photoPicker.sourceType = UIImagePickerController.SourceType.photoLibrary
         
         
         let actionSheet = UIAlertController(title: "Photo Source", message: "Choose your photo evidence ", preferredStyle: .actionSheet)
         
-                actionSheet.addAction(.init(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
-                    self.photoPicker.sourceType = .camera
-                    self.present(self.photoPicker, animated: true, completion: nil)
-                }))
-                actionSheet.addAction(.init(title: "Photo Library", style: .default, handler: { (action:UIAlertAction) in
-                    self.photoPicker.sourceType = .photoLibrary
-                    self.present(self.photoPicker, animated: true, completion: nil)
-                }))
-                actionSheet.addAction(.init(title: "Cancel", style: .cancel, handler: nil))
+        actionSheet.addAction(.init(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
+            self.photoPicker.sourceType = .camera
+            self.present(self.photoPicker, animated: true, completion: nil)
+        }))
+        actionSheet.addAction(.init(title: "Photo Library", style: .default, handler: { (action:UIAlertAction) in
+            self.photoPicker.sourceType = .photoLibrary
+            self.present(self.photoPicker, animated: true, completion: nil)
+        }))
+        actionSheet.addAction(.init(title: "Cancel", style: .cancel, handler: nil))
         
-                self.present(actionSheet, animated: true, completion: nil)
-//        self.present(photoPicker, animated: true, completion: nil)
+        self.present(actionSheet, animated: true, completion: nil)
+        //        self.present(photoPicker, animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -236,6 +246,6 @@ extension SetupPersonalViewController: UIImagePickerControllerDelegate, UINaviga
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-           picker.dismiss(animated: true, completion: nil)
-       }
+        picker.dismiss(animated: true, completion: nil)
+    }
 }
