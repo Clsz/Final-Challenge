@@ -80,7 +80,7 @@ extension SummarySetupBimbelViewController: UITableViewDataSource, UITableViewDe
             
             let image = UIImage(named: "school")!
             let name = course?.value(forKey: "courseName") as! String
-            let operationHour = "\(course?.value(forKey: "courseStartHour") as! String) - \(course?.value(forKey: "courseEndHour") as! String)"
+            let operationHour = "Operating Hour: \(course?.value(forKey: "courseStartHour") as! String) - \(course?.value(forKey: "courseEndHour") as! String)"
             
             cell.setCell(image: image, name: name, university: operationHour, age: 0)
             cell.hintLabel.text = "ALL INFORMATION ABOUT YOUR BIMBEL"
@@ -92,9 +92,7 @@ extension SummarySetupBimbelViewController: UITableViewDataSource, UITableViewDe
             let cell = tableView.dequeueReusableCell(withIdentifier: addressID, for: indexPath) as! DetailAddressTableViewCell
             
             cell.setCell(keyValue.key, keyValue.value)
-            cell.textField.text = keyValue.content
-            cell.textField.setBorderBlue()
-            cell.textField.outerRound()
+            cell.textView.text = keyValue.content
             
             return cell
             
@@ -123,7 +121,7 @@ extension SummarySetupBimbelViewController: UITableViewDataSource, UITableViewDe
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: logoutView, for: indexPath) as! LogoutTableViewCell
             cell.setInterface()
-            cell.index = 1
+            cell.index = 2
             cell.logoutButton.setTitle("Confirm Profile", for: .normal)
             cell.confirmDelegate = self
             

@@ -29,7 +29,7 @@ class SetupEducationViewController: BaseViewController {
     var educationReference:CKRecord.Reference!
     let database = CKContainer.init(identifier: "iCloud.Final-Challenge").publicCloudDatabase
     lazy var additionalEducation = AdditionalEducationViewController()
-
+    
     var arrStart:[String] = []
     var arrEnd:[String] = []
     var arrSchoolName:[String] = []
@@ -134,6 +134,27 @@ extension SetupEducationViewController{
         self.navigationController?.pushViewController(additionalEducation, animated: true)
     }
     
+    //    private func checkData() {
+    //        let index = IndexPath(row: 0, section: 0)
+    //        let cell = tableView.cellForRow(at: index) as! DetailProfileTableViewCell
+    //        let index1 = IndexPath(row: 1, section: 0)
+    //        let cell1 = tableView.cellForRow(at: index1) as! AnotherDetailProfileTableViewCell
+    //        let index2 = IndexPath(row: 2, section: 0)
+    //        let cell2 = tableView.cellForRow(at: index2) as! DetailProfileTableViewCell
+    //        let index3 = IndexPath(row: 3, section: 0)
+    //        let cell3 = tableView.cellForRow(at: index3) as! DetailProfileTableViewCell
+    //        let index4 = IndexPath(row: 4, section: 0)
+    //        let cell4 = tableView.cellForRow(at: index4) as! MoreDetailTableViewCell
+    //
+    //        if cell.textField.text == "" || cell1.textField.text == "" || cell2.textField.text == "" || cell3.textField.text == "" || cell4.startTF.text == "" || cell4.endTF.text == "" {
+    //            applyButton.isEnabled = false
+    //            applyButton.backgroundColor = #colorLiteral(red: 0.6070619822, green: 0.6075353622, blue: 0.6215403676, alpha: 0.8470588235)
+    //        }else{
+    //            applyButton.isEnabled = true
+    //            applyButton.backgroundColor = #colorLiteral(red: 0.1137254902, green: 0.3921568627, blue: 0.6666666667, alpha: 1)
+    //        }
+    //    }
+    
 }
 extension SetupEducationViewController:EducationProtocol{
     func dropEducation() {
@@ -171,12 +192,14 @@ extension SetupEducationViewController:UITableViewDataSource,UITableViewDelegate
                 let cell = tableView.dequeueReusableCell(withIdentifier: content, for: indexPath) as! DetailProfileTableViewCell
                 cell.setCell(text: keyValue.key, content: keyValue.value)
                 cell.view = self.view
+                //                checkData()
                 return cell
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: contentDrop, for: indexPath) as! AnotherDetailProfileTableViewCell
                 cell.setCell(text: keyValue.key, content: keyValue.value)
                 cell.dropID = 1
                 cell.educationDelegate = self
+                //                checkData()
                 return cell
             }
         }
@@ -184,6 +207,7 @@ extension SetupEducationViewController:UITableViewDataSource,UITableViewDelegate
             let cell = tableView.dequeueReusableCell(withIdentifier: contentDate, for: indexPath) as! MoreDetailTableViewCell
             cell.setCell(startText: "Start Year", endText: "End Year", buttStart: "", buttEnd: "")
             cell.educationDelegate = self
+            //            checkData()
             return cell
         }
         return UITableViewCell()
@@ -241,8 +265,10 @@ extension SetupEducationViewController:UIPickerViewDelegate, UIPickerViewDataSou
     }
     
     private func createToolbar() {
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
-        toolBar.items = [UIBarButtonItem.init(title: "Selesai", style: .plain, target: self, action: #selector(onDoneButtonTapped))]
+        toolBar.items = [flexibleSpace, (UIBarButtonItem.init(title: "Done", style: .plain, target: self, action: #selector(onDoneButtonTapped)))]
+        
         self.view.addSubview(toolBar)
     }
     
@@ -259,6 +285,7 @@ extension SetupEducationViewController:UIPickerViewDelegate, UIPickerViewDataSou
         picker.removeFromSuperview()
         pickerStart.removeFromSuperview()
         pickerEnd.removeFromSuperview()
+        //        checkData()
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

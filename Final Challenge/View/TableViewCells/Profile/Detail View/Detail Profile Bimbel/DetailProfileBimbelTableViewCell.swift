@@ -10,19 +10,24 @@ import UIKit
 
 class DetailProfileBimbelTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var endButton: UIButton!
+    @IBOutlet weak var provinceButton: UIButton!
+    @IBOutlet weak var provinceTF: UITextField!
+    @IBOutlet weak var cityButton: UIButton!
+    @IBOutlet weak var cityTF: UITextField!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var changePictureButton: UIButton!
     @IBOutlet weak var nameTF: UITextField!
-    @IBOutlet weak var addressTF: UITextField!
+    @IBOutlet weak var addressTF: UITextView!
     @IBOutlet weak var startTF: UITextField!
     @IBOutlet weak var endTF: UITextField!
-    @IBOutlet weak var outerStart: UIView!
-    @IBOutlet weak var outerEnd: UIView!
     @IBOutlet weak var changePasswordButton: UIButton!
     @IBOutlet weak var applyButton: UIButton!
     var toolBar = UIToolbar()
     var passwordDelegate:PasswordProtocol?
     var delegate:ProfileBimbelDetailProtocol?
+    var addressDelegate:AddressProtocol?
     var accessoryDoneButton: UIBarButtonItem!
     let accessoryToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
     let flexiblea = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -35,8 +40,6 @@ class DetailProfileBimbelTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
     }
     
     @IBAction func changePictureTapped(_ sender: Any) {
@@ -59,35 +62,57 @@ class DetailProfileBimbelTableViewCell: UITableViewCell {
         delegate?.applyProfileBimbel()
     }
     
+    @IBAction func cityTapped(_ sender: UIButton) {
+        addressDelegate?.cityTapped()
+    }
+    
+    @IBAction func provinceTapped(_ sender: Any) {
+        addressDelegate?.provinceTapped()
+    }
+    
 }
 extension DetailProfileBimbelTableViewCell{
-    func setCell(nameText:String, addressText:String, start:String, end:String) {
+    func setCell(nameText:String, addressText:String, start:String, end:String, city:String, province:String) {
         self.nameTF.text = nameText
         self.addressTF.text = addressText
         self.startTF.text = start
         self.endTF.text = end
+        self.cityTF.text = city
+        self.provinceTF.text = province
         
         setInterface()
     }
     
     func setInterface() {
-        self.profileImage.setRounded()
-        self.changePasswordButton.loginRound()
+        //LOGIN ROUND
         self.applyButton.loginRound()
-        self.nameTF.layer.borderWidth = 1.0
-        self.addressTF.layer.borderWidth = 1.0
-        self.startTF.layer.borderWidth = 1.0
-        self.endTF.layer.borderWidth = 1.0
-        self.nameTF.layer.borderColor = #colorLiteral(red: 0.1098039216, green: 0.3921568627, blue: 0.6666666667, alpha: 1)
-        self.addressTF.layer.borderColor = #colorLiteral(red: 0.1098039216, green: 0.3921568627, blue: 0.6666666667, alpha: 1)
-        self.startTF.layer.borderColor = #colorLiteral(red: 0.1098039216, green: 0.3921568627, blue: 0.6666666667, alpha: 1)
-        self.endTF.layer.borderColor = #colorLiteral(red: 0.1098039216, green: 0.3921568627, blue: 0.6666666667, alpha: 1)
-        self.startTF.setLeftPaddingPoints(10.0)
-        self.endTF.setLeftPaddingPoints(10.0)
-        self.nameTF.outerRound()
-        self.addressTF.outerRound()
+        self.cityButton.loginRound()
+        self.provinceButton.loginRound()
+        self.startButton.loginRound()
+        self.endButton.loginRound()
+        self.changePasswordButton.loginRound()
+        //OUTER ROUND
+        self.cityTF.outerRound()
+        self.provinceTF.outerRound()
         self.startTF.outerRound()
         self.endTF.outerRound()
+        self.nameTF.outerRound()
+        self.addressTF.outerRound()
+        //SET BORDER
+        self.startTF.setBorderBlue()
+        self.endTF.setBorderBlue()
+        self.nameTF.setBorderBlue()
+        self.addressTF.setBorderBlue()
+        self.cityTF.setBorderBlue()
+        self.provinceTF.setBorderBlue()
+        //SET IMAGE
+        self.profileImage.setRounded()
+        //SET PADDING
+        self.nameTF.setLeftPaddingPoints(10.0)
+        self.startTF.setLeftPaddingPoints(10.0)
+        self.endTF.setLeftPaddingPoints(10.0)
+        self.cityTF.setLeftPaddingPoints(10.0)
+        self.provinceTF.setLeftPaddingPoints(10.0)
     }
     
 }

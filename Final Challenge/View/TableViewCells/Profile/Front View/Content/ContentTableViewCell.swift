@@ -10,6 +10,7 @@ import UIKit
 
 class ContentTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var cvHeightConstaint: NSLayoutConstraint!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -22,18 +23,30 @@ class ContentTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+//        self.collectionView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.new, context: nil)
         registerCell()
         cellDelegate()
         collectionView.reloadData()
     }
     
+//    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+//        collectionView.layer.removeAllAnimations()
+//        cvHeightConstaint.constant = collectionView.contentSize.height
+//        UIView.animate(withDuration: 0.5) {
+//            self.updateConstraints()
+//            self.layoutIfNeeded()
+//        }
+//    }
+    
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
+    
     @IBAction func editTapped(_ sender: Any) {
         if index == 0{
-            
+            tutorDelegate?.skillTapped()
         }else{
             bimbelDelegate?.subjectTapped()
         }
@@ -66,7 +79,7 @@ extension ContentTableViewCell:UICollectionViewDataSource, UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return skills?.count ?? 0
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let label = UILabel(frame: CGRect.zero)
         label.text = skills[indexPath.item]

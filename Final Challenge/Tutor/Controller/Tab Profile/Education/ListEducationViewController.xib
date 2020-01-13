@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListEducationViewController" customModule="Final_Challenge" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListEducationViewController" customModule="Teachy" customModuleProvider="target">
             <connections>
                 <outlet property="applyButton" destination="A8h-IU-MeG" id="yjM-S0-n5x"/>
                 <outlet property="tableView" destination="Z7f-ev-Fmz" id="m4f-fK-N0m"/>
@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Z7f-ev-Fmz">
-                    <rect key="frame" x="0.0" y="94" width="414" height="714"/>
+                    <rect key="frame" x="0.0" y="80" width="414" height="728"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A8h-IU-MeG">
@@ -37,16 +37,25 @@
                         <action selector="applyTapped:" destination="-1" eventType="touchUpInside" id="9yb-7h-vOl"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALL INFORMATION ABOUT YOUR EDUCATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmr-lz-a1e">
+                    <rect key="frame" x="20" y="44" width="374" height="16"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                    <color key="textColor" red="0.53725490200000003" green="0.53725490200000003" blue="0.55294117649999996" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="cmr-lz-a1e" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="2M4-6B-5IO"/>
                 <constraint firstItem="A8h-IU-MeG" firstAttribute="top" secondItem="Z7f-ev-Fmz" secondAttribute="bottom" id="ELg-EW-0Kb"/>
                 <constraint firstItem="Z7f-ev-Fmz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="HUM-kw-9jf"/>
-                <constraint firstItem="Z7f-ev-Fmz" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="50" id="IRK-xz-HKt"/>
                 <constraint firstItem="A8h-IU-MeG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="WJQ-OB-F6B"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="A8h-IU-MeG" secondAttribute="trailing" constant="20" id="lCG-QU-Jm4"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cmr-lz-a1e" secondAttribute="trailing" constant="20" id="mit-1s-xbr"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Z7f-ev-Fmz" secondAttribute="trailing" id="pHX-qU-vtG"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="A8h-IU-MeG" secondAttribute="bottom" constant="10" id="r15-GK-1GY"/>
+                <constraint firstItem="Z7f-ev-Fmz" firstAttribute="top" secondItem="cmr-lz-a1e" secondAttribute="bottom" constant="20" id="u6g-fN-1oi"/>
+                <constraint firstItem="cmr-lz-a1e" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="vcc-RD-ir0"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="137.68115942028987" y="102.45535714285714"/>

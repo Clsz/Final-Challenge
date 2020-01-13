@@ -17,7 +17,7 @@ class AnotherContentTableViewCell: UITableViewCell {
     var contentDelegate:ProfileProtocol?
     var bimbelDelegate:BimbelProtocol?
     var index:Int!
-    var destIndex:Int = 0
+    var destIndex:Int!
     var title:[String]?
     var content:[String]?
     var footer:[String]?
@@ -81,7 +81,7 @@ extension AnotherContentTableViewCell:UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if index == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: customExperieneTableViewCell, for: indexPath) as! CustomExperienceTableViewCell
-            cell.setCell(name: title?[indexPath.row] ?? "", place: content?[indexPath.row] ?? "", date: footer?[indexPath.row] ?? "")
+            cell.setCell(name: title?[indexPath.row] ?? "", place: content?[indexPath.row] ?? "", date: "\(startYear?[indexPath.row] ?? "") - \(endYear?[indexPath.row] ?? "")")
             self.tableView.separatorColor = .white
             self.tableView.separatorInset = UIEdgeInsets.init(top: 0.0, left: 15.0, bottom: 0.0, right: 0.0)
             return cell
@@ -93,7 +93,7 @@ extension AnotherContentTableViewCell:UITableViewDelegate, UITableViewDataSource
             return cell
         } else if index == 2{
             let cell = tableView.dequeueReusableCell(withIdentifier: customGradesTableViewCell, for: indexPath) as! CustomGradesTableViewCell
-            
+            cell.selectionStyle = .none
             cell.outerView.setBorderBlue()
             cell.outerView.outerRound()
             cell.setCell(grade: content?[indexPath.row] ?? "")

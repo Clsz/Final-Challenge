@@ -11,6 +11,8 @@ import CloudKit
 
 class JobDetailsViewController: BaseViewController {
     
+    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var tableHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var progressView1: UIView!
     @IBOutlet weak var progressView2: UIView!
     @IBOutlet weak var progressView3: UIView!
@@ -34,6 +36,8 @@ class JobDetailsViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+         self.gradeTV.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.new, context: nil)
+        self.scheduleTV.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.new, context: nil)
         registerCell()
         cellDelegateCV()
         cellDelegateTV()
@@ -41,15 +45,30 @@ class JobDetailsViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+         self.gradeTV.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.new, context: nil)
+        self.scheduleTV.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.new, context: nil)
         setupView(text: "Job Details")
         setMainInterface()
         setData()
         reloadTable()
     }
     
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        gradeTV.layer.removeAllAnimations()
+        scheduleTV.layer.removeAllAnimations()
+        tableHeightConstraint.constant = gradeTV.contentSize.height
+        heightConstraint.constant = scheduleTV.contentSize.height
+        UIView.animate(withDuration: 0.5) {
+            self.view.updateConstraints()
+            self.view.layoutIfNeeded()
+        }
+        
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
     }
+    
     
     @IBAction func editSubjectTapped(_ sender: Any) {
         let editSubjectVC = TeachingSubjectViewController()
@@ -230,8 +249,11 @@ extension JobDetailsViewController:UICollectionViewDataSource, UICollectionViewD
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 180, height: 44)
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let label = UILabel(frame: CGRect.zero)
+        label.text = arraySubject[indexPath.item]
+        label.sizeToFit()
+        return CGSize(width: label.frame.width + 50, height: 44)
     }
     
 }

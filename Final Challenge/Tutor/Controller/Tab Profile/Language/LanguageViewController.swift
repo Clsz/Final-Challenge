@@ -11,7 +11,7 @@ import UIKit
 
 
 class LanguageViewController: BaseViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var applyButton: UIButton!
     @IBOutlet weak var outerView: UIView!
@@ -23,7 +23,7 @@ class LanguageViewController: BaseViewController {
     let contentDrop = "AnotherDetailProfileTableViewCellID"
     var tutor:Tutor!
     weak var delegate: LanguageViewControllerDelegate?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()
@@ -42,7 +42,7 @@ class LanguageViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-//        self.delegate?.refreshData(withTutorModel: tutor)
+        //        self.delegate?.refreshData(withTutorModel: tutor)
     }
     
 }
@@ -66,7 +66,7 @@ extension LanguageViewController{
         let cell1 = tableView.cellForRow(at: index1) as! AnotherDetailProfileTableViewCell
         
         tutor?.tutorLanguage.append(Language(cell.textField.text ?? "", cell1.textField.text ?? ""))
-
+        
         showAlert(title: "Berhasil", message: "Profil anda telah diperbaruhi")
     }
 }
@@ -79,7 +79,7 @@ extension LanguageViewController:LanguageProtocol{
     func dropLanguage() {
         self.createLanguagePicker()
     }
-
+    
 }
 extension LanguageViewController:UITableViewDataSource,UITableViewDelegate{
     func registerCell() {
@@ -121,7 +121,7 @@ extension LanguageViewController:UIPickerViewDelegate, UIPickerViewDataSource{
         picker = UIPickerView.init()
         picker.delegate = self
         picker.selectRow(5, inComponent:0, animated:true)
-
+        
         picker.backgroundColor = UIColor.white
         picker.autoresizingMask = .flexibleWidth
         picker.contentMode = .center
@@ -133,9 +133,10 @@ extension LanguageViewController:UIPickerViewDelegate, UIPickerViewDataSource{
     }
     
     func createToolbar() {
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
-        toolBar.items = [UIBarButtonItem.init(title: "Selesai", style: .plain, target: self, action: #selector(onDoneButtonTapped))]
-            
+        toolBar.items = [flexibleSpace, (UIBarButtonItem.init(title: "Done", style: .plain, target: self, action: #selector(onDoneButtonTapped)))]
+        
         self.view.addSubview(toolBar)
     }
     

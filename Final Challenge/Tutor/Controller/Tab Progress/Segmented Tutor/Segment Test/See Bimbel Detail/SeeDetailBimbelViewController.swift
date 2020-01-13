@@ -28,7 +28,7 @@ class SeeDetailBimbelViewController: BaseViewController {
         setupView(text: "Bimbel Details")
         self.tableView.contentInsetAdjustmentBehavior = .never
         self.tableView.reloadData()
-
+        self.tabBarController?.tabBar.isHidden = true
     }
     
 }

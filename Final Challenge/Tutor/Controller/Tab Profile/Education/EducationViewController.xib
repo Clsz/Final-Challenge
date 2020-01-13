@@ -7,9 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EducationViewController" customModule="Final_Challenge" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EducationViewController" customModule="Teachy" customModuleProvider="target">
             <connections>
-                <outlet property="applyButton" destination="pHA-c4-wnI" id="dAT-BO-t6N"/>
+                <outlet property="applyButton" destination="kaL-4T-DMA" id="Sgw-r6-PF0"/>
+                <outlet property="deleteButton" destination="pHA-c4-wnI" id="aGC-UW-nho"/>
                 <outlet property="outerView" destination="u6n-YU-ctm" id="3bn-zp-gYH"/>
                 <outlet property="tableView" destination="wRq-7r-Fcd" id="dug-3g-BLI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -29,13 +30,13 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHA-c4-wnI">
                             <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
-                            <color key="backgroundColor" red="0.1137254902" green="0.3921568627" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                            <state key="normal" title="Apply Education">
+                            <state key="normal" title="Delete Education">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>
-                                <action selector="applyTapped:" destination="-1" eventType="touchUpInside" id="k1C-Hv-xkB"/>
+                                <action selector="deleteTapped:" destination="-1" eventType="touchUpInside" id="abG-oL-g1C"/>
                             </connections>
                         </button>
                     </subviews>
@@ -48,14 +49,30 @@
                         <constraint firstAttribute="trailing" secondItem="pHA-c4-wnI" secondAttribute="trailing" id="gNy-cL-MWi"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kaL-4T-DMA">
+                    <rect key="frame" x="20" y="752" width="374" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.1137254902" green="0.3921568627" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                    <state key="normal" title="Apply Education">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="applyTapped:" destination="-1" eventType="touchUpInside" id="cQZ-eU-WBj"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wRq-7r-Fcd" secondAttribute="trailing" id="4C9-RF-m0D"/>
+                <constraint firstItem="pHA-c4-wnI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="808" id="58L-9Y-PZA"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="u6n-YU-ctm" secondAttribute="bottom" constant="10" id="5K6-nj-sx6"/>
                 <constraint firstItem="u6n-YU-ctm" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="BEP-EW-RY1"/>
                 <constraint firstItem="wRq-7r-Fcd" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="LvS-hO-4YP"/>
+                <constraint firstAttribute="bottom" secondItem="pHA-c4-wnI" secondAttribute="bottom" constant="44" id="NGd-kn-APP"/>
                 <constraint firstItem="wRq-7r-Fcd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="YvV-jv-rog"/>
+                <constraint firstItem="pHA-c4-wnI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="m6c-OR-FtF"/>
+                <constraint firstAttribute="trailing" secondItem="pHA-c4-wnI" secondAttribute="trailing" constant="20" id="nFX-P0-Mjd"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="u6n-YU-ctm" secondAttribute="trailing" constant="20" id="uAu-aL-NK1"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="wRq-7r-Fcd" secondAttribute="bottom" id="x6t-Zu-4Vi"/>
             </constraints>

@@ -10,9 +10,9 @@ import UIKit
 
 class DetailAddressTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var button: UIButton!
-    @IBOutlet weak var textField: UITextField!
     var bimbelDelegate:BimbelProtocol?
     var index:Int?
     
@@ -35,5 +35,7 @@ extension DetailAddressTableViewCell{
     func setCell(_ label:String, _ button:String) {
         self.label.text = label
         self.button.setTitle(button, for: .normal)
+        self.textView.setBorderBlue()
+        self.textView.outerRound()
     }
 }

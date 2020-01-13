@@ -37,6 +37,7 @@ class SetupSubjectBimbelViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setupView(text: "Teaching Subject")
+        checkData()
     }
     
     
@@ -73,6 +74,16 @@ extension SetupSubjectBimbelViewController{
         }
     }
     
+     private func checkData() {
+        if selectedSubject.count == 0 || selectedGrade.count == 0{
+               self.applyButton.isEnabled = false
+               self.applyButton.backgroundColor = #colorLiteral(red: 0.6070619822, green: 0.6075353622, blue: 0.6215403676, alpha: 0.8470588235)
+           }else{
+               self.applyButton.isEnabled = true
+               self.applyButton.backgroundColor = #colorLiteral(red: 0, green: 0.399238348, blue: 0.6880209446, alpha: 1)
+           }
+       }
+    
 }
 
 extension SetupSubjectBimbelViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
@@ -108,15 +119,19 @@ extension SetupSubjectBimbelViewController: UICollectionViewDataSource, UICollec
         
         return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 200, height: 44)
+        let label = UILabel(frame: CGRect.zero)
+        label.text = ConstantManager.grade[indexPath.item]
+        label.sizeToFit()
+        return CGSize(width: label.frame.width + 50, height: 44)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndex.insert(indexPath.row, at: 0)
         selectedGrade.insert(ConstantManager.grade[indexPath.row], at: 0)
         reloadDataSubject(id: selectedIndex)
+        checkData()
     }
     
     func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
@@ -128,6 +143,7 @@ extension SetupSubjectBimbelViewController: UICollectionViewDataSource, UICollec
                     reloadDataSubject(id: selectedIndex)
                 }
                 collectionView.deselectItem(at: indexPath, animated: true)
+                checkData()
                 return false
             }
         }
@@ -178,6 +194,7 @@ extension SetupSubjectBimbelViewController: UITableViewDataSource, UITableViewDe
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.checkmark
             let data:(key:Int, value:String) = ConstantManager.allSubject[indexPath.row]
             selectedSubject.insert(data.value, at: 0)
+            checkData()
         }
         
     }
@@ -187,6 +204,7 @@ extension SetupSubjectBimbelViewController: UITableViewDataSource, UITableViewDe
         let data:(key:Int, value:String) = ConstantManager.allSubject[indexPath.row]
         if let index = selectedSubject.firstIndex(of: data.value) {
             selectedSubject.remove(at: index)
+            checkData()
         }
     }
     

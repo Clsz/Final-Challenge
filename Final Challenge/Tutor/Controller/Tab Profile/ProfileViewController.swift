@@ -66,9 +66,9 @@ extension ProfileViewController{
             //                dataArray.append(("Skill","Add Skill",[String]()))
             //
             //            }
-            dataArray.append(("Skill","Add Skill",3))
-            dataArray.append(("Language","Add Language",1))
-            dataArray.append(("Experience","Add Experience",2))
+            dataArray.append(("Skill","Edit Skill",3))
+            dataArray.append(("Language","Edit Language",2))
+            dataArray.append(("Experience","Edit Experience",1))
             dataArray.append(true)
         }else{
             dataArray.append("No Data")
@@ -201,6 +201,24 @@ extension ProfileViewController{
         return ""
     }
     
+    private func showLogoutAllert() {
+        let confirmAlert = UIAlertController(title: "Log Out", message: "Are you sure you want to log out?", preferredStyle: UIAlertController.Style.alert)
+        
+        confirmAlert.addAction(UIAlertAction(title: "No", style: .destructive, handler: { (action: UIAlertAction!) in  
+               }))
+        
+        confirmAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+           CKUserData.shared.setStatus(status: false)
+           let appDelegate = UIApplication.shared.delegate as! AppDelegate
+           let vc = LoginViewController()
+           let navigationController = UINavigationController(rootViewController: vc)
+           appDelegate.window?.rootViewController = navigationController
+           appDelegate.window?.makeKeyAndVisible()
+        }))
+        
+        present(confirmAlert, animated: true, completion: nil)
+    }
+    
 }
 extension ProfileViewController:ProfileProtocol, LanguageViewControllerDelegate, setAccount{
     func setAccountTapped() {
@@ -225,14 +243,15 @@ extension ProfileViewController:ProfileProtocol, LanguageViewControllerDelegate,
         //
         //        destVC.delegate = self
         //        navigationController?.pushViewController(destVC, animated: true)
-        print("")
+        self.showAlert(title: "Under Construction", message: "We're very sorry that you can't edit your skill's preference right now")
     }
     
     func languageTapped() {
-        let destVC = LanguageViewController()
-        
-        destVC.delegate = self
-        navigationController?.pushViewController(destVC, animated: true)
+//        let destVC = LanguageViewController()
+//
+//        destVC.delegate = self
+//        navigationController?.pushViewController(destVC, animated: true)
+        self.showAlert(title: "Under Construction", message: "We're very sorry that you can't edit your language's preference right now")
     }
     
     func educationTapped() {
@@ -253,10 +272,11 @@ extension ProfileViewController:ProfileProtocol, LanguageViewControllerDelegate,
     }
     
     func experienceTapped() {
-        let destVC = ExperienceViewController()
-        
-        destVC.delegate = self
-        navigationController?.pushViewController(destVC, animated: true)
+//        let destVC = ExperienceViewController()
+//
+//        destVC.delegate = self
+//        navigationController?.pushViewController(destVC, animated: true)
+        self.showAlert(title: "Under Construction", message: "We're very sorry that you can't edit your experience's preference right now")
     }
     
     func achievementTapped() {
@@ -265,12 +285,7 @@ extension ProfileViewController:ProfileProtocol, LanguageViewControllerDelegate,
     }
     
     func logout() {
-        CKUserData.shared.setStatus(status: false)
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let vc = LoginViewController()
-        let navigationController = UINavigationController(rootViewController: vc)
-        appDelegate.window?.rootViewController = navigationController
-        appDelegate.window?.makeKeyAndVisible()
+        showLogoutAllert()
     }
     
 }
@@ -353,7 +368,7 @@ extension ProfileViewController:UITableViewDataSource, UITableViewDelegate{
                         cell.content = companyName
                         cell.startYear = startYear
                         cell.endYear = endYear
-                        cell.index = 2
+                        cell.index = 0
                         cell.destIndex = 1
                         cell.setCell(text: keyValue.key, button: keyValue.button)
                         cell.contentDelegate = self
@@ -407,9 +422,7 @@ extension ProfileViewController:UITableViewDataSource, UITableViewDelegate{
                 let cell = tableView.dequeueReusableCell(withIdentifier: logoutView, for: indexPath) as! LogoutTableViewCell
                 cell.contentDelegate = self
                 cell.index = 0
-                cell.logoutButton.titleLabel?.text = "Log Out"
-                cell.logoutButton.backgroundColor = #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1)
-                cell.setInterface()
+                cell.setInterfaceLogOut()
                 return cell
             }
         }else{

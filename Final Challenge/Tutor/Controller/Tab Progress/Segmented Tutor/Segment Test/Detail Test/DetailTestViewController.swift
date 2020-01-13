@@ -34,6 +34,11 @@ class DetailTestViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.tableView.contentInsetAdjustmentBehavior = .never
         setupView(text: "Test Details")
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
     }
 }
 extension DetailTestViewController{

@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SetupPersonalTableViewCellID" rowHeight="710" id="KGk-i7-Jjw" customClass="SetupPersonalTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SetupPersonalTableViewCellID" rowHeight="710" id="KGk-i7-Jjw" customClass="SetupPersonalTableViewCell" customModule="Teachy" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="711"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -69,16 +69,6 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tvs-Bn-wvx">
-                        <rect key="frame" x="20" y="467.5" width="374" height="100"/>
-                        <color key="backgroundColor" red="0.1137254902" green="0.3921568627" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="100" id="n3Q-eh-98D"/>
-                        </constraints>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <textInputTraits key="textInputTraits"/>
-                    </textField>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2E-Wd-T2w">
                         <rect key="frame" x="20" y="661.5" width="374" height="44"/>
                         <color key="backgroundColor" red="0.1137254902" green="0.3921568627" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -116,15 +106,35 @@
                             <action selector="agePickerTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="zTD-ym-DVc"/>
                         </connections>
                     </button>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wyO-Xz-zwh">
+                        <rect key="frame" x="20" y="467.5" width="374" height="100"/>
+                        <color key="backgroundColor" red="0.11372549019607843" green="0.39215686274509803" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="100" id="IKO-Or-IWR"/>
+                        </constraints>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="textContainer.lineFragmentPadding">
+                                <integer key="value" value="0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="rect" keyPath="textContainerInset">
+                                <rect key="value" x="15" y="15" width="15" height="15"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </textView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="gfE-7W-rH1" firstAttribute="top" secondItem="5Lp-SI-WCv" secondAttribute="bottom" constant="20" id="2gM-TB-ryt"/>
                     <constraint firstItem="JgQ-on-cJt" firstAttribute="top" secondItem="3vD-wf-ww7" secondAttribute="bottom" constant="12" id="55X-Mb-hmP"/>
                     <constraint firstAttribute="trailingMargin" secondItem="vTq-El-QX7" secondAttribute="trailing" id="5Yq-Jh-dbG"/>
                     <constraint firstAttribute="trailing" secondItem="3vD-wf-ww7" secondAttribute="trailing" constant="20" id="9Af-iO-BCg"/>
+                    <constraint firstItem="wyO-Xz-zwh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="9CH-88-YWc"/>
                     <constraint firstAttribute="trailing" secondItem="gfE-7W-rH1" secondAttribute="trailing" constant="20" id="Agc-kV-BjL"/>
                     <constraint firstItem="JgQ-on-cJt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="DQ8-iX-kU2"/>
                     <constraint firstItem="aRb-zj-ROX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="140" id="H3q-kQ-I3Y"/>
+                    <constraint firstAttribute="trailing" secondItem="wyO-Xz-zwh" secondAttribute="trailing" constant="20" id="IAR-iG-SLe"/>
                     <constraint firstItem="5Lp-SI-WCv" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="JOC-L2-Vh5"/>
                     <constraint firstAttribute="trailing" secondItem="JgQ-on-cJt" secondAttribute="trailing" constant="20" id="JXP-Qb-oOk"/>
                     <constraint firstAttribute="trailing" secondItem="9MX-jk-m4z" secondAttribute="trailing" constant="132" id="McH-sw-kOm"/>
@@ -134,28 +144,26 @@
                     <constraint firstItem="3vD-wf-ww7" firstAttribute="top" secondItem="aRb-zj-ROX" secondAttribute="bottom" constant="12" id="XRt-Xt-yZ2"/>
                     <constraint firstAttribute="trailing" secondItem="tCv-l2-AX8" secondAttribute="trailing" constant="20" id="aab-GA-FIo"/>
                     <constraint firstItem="5Lp-SI-WCv" firstAttribute="top" secondItem="tCv-l2-AX8" secondAttribute="bottom" constant="12" id="ct3-zp-LZb"/>
-                    <constraint firstItem="tvs-Bn-wvx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="g82-fb-apc"/>
-                    <constraint firstAttribute="trailing" secondItem="tvs-Bn-wvx" secondAttribute="trailing" constant="20" id="hOy-15-d40"/>
+                    <constraint firstItem="wyO-Xz-zwh" firstAttribute="top" secondItem="gfE-7W-rH1" secondAttribute="bottom" constant="12" id="cyl-4R-6s1"/>
                     <constraint firstItem="vTq-El-QX7" firstAttribute="top" secondItem="tCv-l2-AX8" secondAttribute="bottom" constant="12" id="iRX-fH-5TT"/>
                     <constraint firstItem="vTq-El-QX7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="j96-Xj-uNb"/>
                     <constraint firstItem="tCv-l2-AX8" firstAttribute="top" secondItem="JgQ-on-cJt" secondAttribute="bottom" constant="20" id="jXz-dQ-6co"/>
                     <constraint firstItem="gfE-7W-rH1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="jbu-8E-dvn"/>
                     <constraint firstItem="gfE-7W-rH1" firstAttribute="top" secondItem="vTq-El-QX7" secondAttribute="bottom" constant="20" id="kJS-Ze-FOq"/>
-                    <constraint firstItem="tvs-Bn-wvx" firstAttribute="top" secondItem="gfE-7W-rH1" secondAttribute="bottom" constant="12" id="lRw-ZK-8GJ"/>
                     <constraint firstItem="Z2E-Wd-T2w" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="mwx-0M-Esg"/>
                     <constraint firstAttribute="bottom" secondItem="Z2E-Wd-T2w" secondAttribute="bottom" constant="5.5" id="qKx-AD-zlV"/>
-                    <constraint firstItem="Z2E-Wd-T2w" firstAttribute="top" secondItem="tvs-Bn-wvx" secondAttribute="bottom" constant="94" id="qWo-S0-m8h"/>
                     <constraint firstItem="aRb-zj-ROX" firstAttribute="top" secondItem="9MX-jk-m4z" secondAttribute="bottom" id="rEi-aF-HbF"/>
                     <constraint firstItem="9MX-jk-m4z" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="132" id="tPw-7X-Hwk"/>
                     <constraint firstItem="tCv-l2-AX8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="vzy-W2-N8T"/>
                     <constraint firstAttribute="trailing" secondItem="Z2E-Wd-T2w" secondAttribute="trailing" constant="20" id="xTT-m5-VFc"/>
+                    <constraint firstItem="Z2E-Wd-T2w" firstAttribute="top" secondItem="wyO-Xz-zwh" secondAttribute="bottom" constant="94" id="yce-bp-zpj"/>
                     <constraint firstItem="9MX-jk-m4z" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="zJE-NW-Vuy"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="addressTF" destination="tvs-Bn-wvx" id="kab-1J-rKz"/>
+                <outlet property="addressTF" destination="wyO-Xz-zwh" id="W1X-QX-awK"/>
                 <outlet property="ageTF" destination="5Lp-SI-WCv" id="ZSX-Vd-zFL"/>
                 <outlet property="applyButton" destination="Z2E-Wd-T2w" id="5tp-UB-hlI"/>
                 <outlet property="changePhotoButton" destination="aRb-zj-ROX" id="bJe-dV-dMB"/>

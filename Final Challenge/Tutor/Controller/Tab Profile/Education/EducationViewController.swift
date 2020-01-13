@@ -11,6 +11,7 @@ import CloudKit
 
 class EducationViewController: BaseViewController {
     
+    @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var outerView: UIView!
     @IBOutlet weak var applyButton: UIButton!
@@ -53,6 +54,7 @@ class EducationViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setMainInterface()
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     
@@ -60,12 +62,18 @@ class EducationViewController: BaseViewController {
         getDataCustomCell()
     }
     
+    @IBAction func deleteTapped(_ sender: Any) {
+    }
+    
 }
 extension EducationViewController{
     private func setMainInterface() {
         self.tableView.contentInsetAdjustmentBehavior = .never
         self.applyButton.loginRound()
+        self.deleteButton.loginRound()
         self.outerView.outerRound()
+        self.deleteButton.setBorderRedThin()
+        self.deleteButton.setTitleColor(#colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1), for: .normal)
         setupView(text: "Education")
     }
     
@@ -174,33 +182,33 @@ extension EducationViewController:UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            if let keyValue = dataArray[indexPath.row] as? (key:String,value:String,code:Int){
-                if keyValue.code == 0{
-                    let cell = tableView.dequeueReusableCell(withIdentifier: content, for: indexPath) as! DetailProfileTableViewCell
-                    
-                    cell.textField.attributedPlaceholder = NSAttributedString(string: keyValue.value, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-                    cell.setCell(text: keyValue.key, content: keyValue.value)
-                    cell.view = self.view
-                    return cell
-                }else{
-                    let cell = tableView.dequeueReusableCell(withIdentifier: contentDrop, for: indexPath) as! AnotherDetailProfileTableViewCell
-                    
-                    cell.textField.attributedPlaceholder = NSAttributedString(string: keyValue.value, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-                    cell.setCell(text: keyValue.key, content: keyValue.value)
-                    cell.dropID = 1
-                    cell.educationDelegate = self
-                    return cell
-                }
-            }
-            else if let _ = dataArray[indexPath.row] as? Bool{
-                let cell = tableView.dequeueReusableCell(withIdentifier: contentDate, for: indexPath) as! MoreDetailTableViewCell
+        if let keyValue = dataArray[indexPath.row] as? (key:String,value:String,code:Int){
+            if keyValue.code == 0{
+                let cell = tableView.dequeueReusableCell(withIdentifier: content, for: indexPath) as! DetailProfileTableViewCell
                 
-                cell.startTF.attributedPlaceholder = NSAttributedString(string: startYear!, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-                cell.endTF.attributedPlaceholder = NSAttributedString(string: endYear!, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-                cell.setCell(startText: "Start Year", endText: "End Year", buttStart: "", buttEnd: "")
+                cell.textField.attributedPlaceholder = NSAttributedString(string: keyValue.value, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+                cell.setCell(text: keyValue.key, content: keyValue.value)
+                cell.view = self.view
+                return cell
+            }else{
+                let cell = tableView.dequeueReusableCell(withIdentifier: contentDrop, for: indexPath) as! AnotherDetailProfileTableViewCell
+                
+                cell.textField.attributedPlaceholder = NSAttributedString(string: keyValue.value, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+                cell.setCell(text: keyValue.key, content: keyValue.value)
+                cell.dropID = 1
                 cell.educationDelegate = self
                 return cell
             }
+        }
+        else if let _ = dataArray[indexPath.row] as? Bool{
+            let cell = tableView.dequeueReusableCell(withIdentifier: contentDate, for: indexPath) as! MoreDetailTableViewCell
+            
+            cell.startTF.attributedPlaceholder = NSAttributedString(string: startYear!, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+            cell.endTF.attributedPlaceholder = NSAttributedString(string: endYear!, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+            cell.setCell(startText: "Start Year", endText: "End Year", buttStart: "", buttEnd: "")
+            cell.educationDelegate = self
+            return cell
+        }
         
         return UITableViewCell()
     }
@@ -257,8 +265,10 @@ extension EducationViewController:UIPickerViewDelegate, UIPickerViewDataSource{
     }
     
     private func createToolbar() {
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
-        toolBar.items = [UIBarButtonItem.init(title: "Done", style: .plain, target: self, action: #selector(onDoneButtonTapped))]
+        toolBar.items = [flexibleSpace, (UIBarButtonItem.init(title: "Done", style: .plain, target: self, action: #selector(onDoneButtonTapped)))]
+        
         self.view.addSubview(toolBar)
     }
     

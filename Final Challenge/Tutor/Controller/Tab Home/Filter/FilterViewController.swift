@@ -41,6 +41,7 @@ class FilterViewController: BaseViewController {
         self.LocationCV.allowsMultipleSelection = true
         self.subjectCV.allowsMultipleSelection = true
         self.gradeCV.allowsMultipleSelection = true
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,7 +50,11 @@ class FilterViewController: BaseViewController {
         setupView(text: "Filters")
         let vc = LocationViewController()
         vc.aldiDelegate = self
-        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     @IBAction func minSlider(_ sender: UISlider) {
@@ -75,12 +80,6 @@ class FilterViewController: BaseViewController {
         let locationVC = LocationViewController()
         locationVC.aldiDelegate =  self
         self.navigationController?.pushViewController(locationVC, animated: true)
-    }
-    
-    @IBAction func viewAllSubjectTapped(_ sender: UIButton) {
-        let subjectVC = SubjectViewController()
-        subjectVC.subjekDelegate = self
-        self.navigationController?.pushViewController(subjectVC, animated: true)
     }
     
     @IBAction func applyTapped(_ sender: UIButton) {
