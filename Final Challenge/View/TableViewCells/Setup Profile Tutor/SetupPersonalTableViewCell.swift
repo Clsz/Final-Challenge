@@ -20,6 +20,7 @@ class SetupPersonalTableViewCell: UITableViewCell {
     var contentDelegate:ProfileDetailProtocol?
     var birthDelegate:BirthProtocol?
     var photoDelegate:PhotoProtocol?
+    var refreshDelegate:refreshTableProtocol?
     var accessoryDoneButton: UIBarButtonItem!
     let accessoryToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
     let flexiblea = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -53,10 +54,8 @@ class SetupPersonalTableViewCell: UITableViewCell {
     
 }
 extension SetupPersonalTableViewCell{
-    func setCell(name:String, age:String, address:String) {
+    func setCell(name:String) {
         self.nameTF.text = name
-        self.ageTF.text = age
-        self.addressTF.text = address
         
         setInterface()
     }
@@ -79,6 +78,7 @@ extension SetupPersonalTableViewCell{
 extension SetupPersonalTableViewCell:UITextFieldDelegate, UITextViewDelegate{
     private func doneButton() {
         addressTF.delegate = self
+        addressTF.text = "Enter your address"
         
         self.accessoryDoneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.donePressed))
         self.accessoryToolBar.items = [self.accessoryDoneButton]
@@ -95,6 +95,8 @@ extension SetupPersonalTableViewCell:UITextFieldDelegate, UITextViewDelegate{
     
     func textViewDidEndEditing(_ textView: UITextView) {
         moveTextView(textView, moveDistance: -250, up: false)
+        refreshDelegate?.refreshTableView()
+        
         if addressTF.text == "" {
             addressTF.text = "Enter your address"
             addressTF.textColor = UIColor.white
@@ -114,6 +116,7 @@ extension SetupPersonalTableViewCell:UITextFieldDelegate, UITextViewDelegate{
     
     @objc func donePressed() {
 //        moveTextField(addressTF, moveDistance: 0, up: true)
+        refreshDelegate?.refreshTableView()
         view.endEditing(true)
     }
 }

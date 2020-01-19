@@ -210,7 +210,7 @@ extension ProfileViewController{
         confirmAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
            CKUserData.shared.setStatus(status: false)
            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-           let vc = LoginViewController()
+           let vc = RegisterViewController()
            let navigationController = UINavigationController(rootViewController: vc)
            appDelegate.window?.rootViewController = navigationController
            appDelegate.window?.makeKeyAndVisible()
