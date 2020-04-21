@@ -72,7 +72,7 @@ extension BimbelProfileViewController{
         confirmAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
            CKUserData.shared.setStatusBimbel(status: false)
            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-           let vc = LoginBimbelViewController()
+           let vc = RegisterBimbelViewController()
            let navigationController = UINavigationController(rootViewController: vc)
            appDelegate.window?.rootViewController = navigationController
            appDelegate.window?.makeKeyAndVisible()

@@ -124,7 +124,11 @@ extension SetupPersonalViewController:BirthProtocol{
     }
 }
 
-extension SetupPersonalViewController:PhotoProtocol{
+extension SetupPersonalViewController:PhotoProtocol, refreshTableProtocol{
+    func refreshTableView() {
+        tableView.reloadData()
+    }
+    
     func photoTapped() {
         createImagePicker()
     }
@@ -141,21 +145,22 @@ extension SetupPersonalViewController:UITableViewDataSource, UITableViewDelegate
         let cell = tableView.dequeueReusableCell(withIdentifier: detailProfile, for: indexPath) as! SetupPersonalTableViewCell
         let fName = "\(tutors?.value(forKey: "tutorFirstName") as! String) \(tutors?.value(forKey: "tutorLastName") as! String)"
         
-        //        if cell.nameTF.text == "" || cell.addressTF.text == "" || cell.ageTF.text == ""{
-        //            cell.applyButton.isEnabled = false
-        //            cell.applyButton.backgroundColor = #colorLiteral(red: 0.6070619822, green: 0.6075353622, blue: 0.6215403676, alpha: 0.8470588235)
-        //        } else{
-        //            cell.applyButton.isEnabled = true
-        //            cell.applyButton.backgroundColor = #colorLiteral(red: 0.1137254902, green: 0.3921568627, blue: 0.6666666667, alpha: 1)
-        //        }
-        
         cell.ageTF.attributedPlaceholder = NSAttributedString(string: "Choose your DOB", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-        
-        cell.setCell(name: fName, age: "", address: "Enter your address")
+        cell.setCell(name: fName)
         cell.contentDelegate = self
         cell.birthDelegate = self
         cell.photoDelegate = self
+        cell.refreshDelegate = self
         cell.view = self.view
+        
+        if cell.nameTF.text == "" || cell.addressTF.text == "" || cell.ageTF.text == ""{
+            cell.applyButton.isEnabled = false
+            cell.applyButton.backgroundColor = #colorLiteral(red: 0.6070619822, green: 0.6075353622, blue: 0.6215403676, alpha: 0.8470588235)
+        } else{
+            cell.applyButton.isEnabled = true
+            cell.applyButton.backgroundColor = #colorLiteral(red: 0.1137254902, green: 0.3921568627, blue: 0.6666666667, alpha: 1)
+        }
+        
         return cell
         
     }
@@ -198,6 +203,7 @@ extension SetupPersonalViewController{
     @objc func onDoneButtonTapped() {
         toolBar.removeFromSuperview()
         pickerBirthDate.removeFromSuperview()
+        tableView.reloadData()
     }
     
     @objc func dateChange(datePicker: UIDatePicker) {

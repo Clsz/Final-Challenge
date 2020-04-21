@@ -30,12 +30,14 @@ class SetupPersonalBimbelTableViewCell: UITableViewCell {
     var photoDelegate:PhotoProtocol?
     var timeDelegate:BimbelPersonalProtocol?
     var addressDelegate:AddressProtocol?
+    var tableDelegate:refreshTableProtocol?
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        setInterface()
         doneButton()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
@@ -47,7 +49,7 @@ class SetupPersonalBimbelTableViewCell: UITableViewCell {
     @IBAction func endTapped(_ sender: UIButton) {
         timeDelegate?.closeTapped()
     }
-
+    
     @IBAction func startTapped(_ sender: UIButton) {
         timeDelegate?.startTapped()
     }
@@ -66,14 +68,8 @@ class SetupPersonalBimbelTableViewCell: UITableViewCell {
     
 }
 extension SetupPersonalBimbelTableViewCell{
-    func setCell(name:String, address:String) {
-        self.nameTF.text = name
-        self.addressTF.text = address
-        
-        setInterface()
-    }
     
-    private func setInterface() {
+    func setInterface() {
         //LOGIN ROUND
         self.buttonApply.loginRound()
         self.buttonStart.loginRound()
@@ -94,7 +90,7 @@ extension SetupPersonalBimbelTableViewCell{
         self.addressTF.setBorderBlue()
         self.cityTF.setBorderBlue()
         self.provinceTF.setBorderBlue()
-       //SET IMAGE
+        //SET IMAGE
         self.imageProfilBimbel.setRounded()
         //SET PADDING
         self.nameTF.setLeftPaddingPoints(10.0)
@@ -122,7 +118,12 @@ extension SetupPersonalBimbelTableViewCell:UITextFieldDelegate{
         }
     }
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        tableDelegate?.refreshTableView()
+    }
+    
     @objc func donePressed() {
+        tableDelegate?.refreshTableView()
         view.endEditing(true)
     }
 }

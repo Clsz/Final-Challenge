@@ -135,7 +135,7 @@ extension SetupPersonalBimbelViewController{
     
 }
 
-extension SetupPersonalBimbelViewController:ProfileDetailProtocol,PhotoProtocol,BimbelPersonalProtocol,AddressProtocol{
+extension SetupPersonalBimbelViewController:ProfileDetailProtocol,PhotoProtocol,BimbelPersonalProtocol,AddressProtocol, refreshTableProtocol{
     func cityTapped() {
         createCityPicker()
     }
@@ -161,6 +161,10 @@ extension SetupPersonalBimbelViewController:ProfileDetailProtocol,PhotoProtocol,
         createImagePicker()
     }
     
+    func refreshTableView() {
+        tableView.reloadData()
+    }
+    
 }
 
 extension SetupPersonalBimbelViewController:UITableViewDataSource, UITableViewDelegate{
@@ -177,22 +181,22 @@ extension SetupPersonalBimbelViewController:UITableViewDataSource, UITableViewDe
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: detailProfile, for: indexPath) as! SetupPersonalBimbelTableViewCell
-            
-            //            if cell.nameTF.text?.isEmpty == true || cell.addressTF.text?.isEmpty == true || cell.startTF.text?.isEmpty == true || cell.endTF.text?.isEmpty == true || cell.cityTF.text?.isEmpty == true || cell.provinceTF.text?.isEmpty == true{
-            //                cell.buttonApply.isEnabled = false
-            //                cell.buttonApply.backgroundColor = #colorLiteral(red: 0.6070619822, green: 0.6075353622, blue: 0.6215403676, alpha: 0.8470588235)
-            //            }else{
-            //                cell.buttonApply.isEnabled = true
-            //                cell.buttonApply.backgroundColor = #colorLiteral(red: 0, green: 0.399238348, blue: 0.6880209446, alpha: 1)
-            //            }
-            
-            cell.selectionStyle = .none
-            cell.setCell(name: "", address: "")
             cell.view = self.view
             cell.contentDelegate = self
             cell.photoDelegate = self
             cell.timeDelegate = self
             cell.addressDelegate = self
+            cell.tableDelegate = self
+            
+            if cell.nameTF.text?.isEmpty == true || cell.addressTF.text?.isEmpty == true || cell.startTF.text?.isEmpty == true || cell.endTF.text?.isEmpty == true || cell.cityTF.text?.isEmpty == true || cell.provinceTF.text?.isEmpty == true{
+                cell.buttonApply.isEnabled = false
+                cell.buttonApply.backgroundColor = #colorLiteral(red: 0.6070619822, green: 0.6075353622, blue: 0.6215403676, alpha: 0.8470588235)
+            }else{
+                cell.buttonApply.isEnabled = true
+                cell.buttonApply.backgroundColor = #colorLiteral(red: 0, green: 0.399238348, blue: 0.6880209446, alpha: 1)
+            }
+            
+            cell.selectionStyle = .none
             
             return cell
         }
@@ -283,7 +287,7 @@ extension SetupPersonalBimbelViewController:UIPickerViewDelegate, UIPickerViewDa
     @objc func onDoneButtonTapped() {
         let index = IndexPath(row: 1, section: 0)
         let cell = tableView.cellForRow(at: index) as! SetupPersonalBimbelTableViewCell
-        
+        tableView.reloadData()
         cell.cityTF.text = selectedCity
         cell.provinceTF.text = selectedProvince
         toolBar.removeFromSuperview()
